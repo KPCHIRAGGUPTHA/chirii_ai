@@ -1,0 +1,22 @@
+{
+  "checkpoint": "best_model.pt",
+  "parameter_count": 3209216,
+  "vocab_size": 66,
+  "block_size": 128,
+  "n_layer": 4,
+  "n_head": 4,
+  "n_embd": 256,
+  "dropout": 0.1,
+  "dataset_total_chars": 1115394,
+  "dataset_train_tokens": 1003854,
+  "dataset_val_tokens": 111540,
+  "step": 600,
+  "train_loss": 1.7017,
+  "val_loss": 1.8537,
+  "val_perplexity": 6.3836,
+  "qualitative_samples": {
+    "ROMEO:": "ROMEO:\nHat our thee gody speak, would the father lear\nThat woman to to me my face thee",
+    "JULIET:": "JULIET:\nHe king I peopes is that was thee seather lear\nThat woman to to me my face thee",
+    "HAMLET:": "HAMLET:\nHe king I peop so she kings,\nWhat wear good not gave the king it.\n\nKING RICHARD"
+  }
+}

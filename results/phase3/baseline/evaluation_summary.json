@@ -1,0 +1,22 @@
+{
+  "checkpoint": "best_model.pt",
+  "parameter_count": 818176,
+  "vocab_size": 66,
+  "block_size": 128,
+  "n_layer": 4,
+  "n_head": 4,
+  "n_embd": 128,
+  "dropout": 0.1,
+  "dataset_total_chars": 1115394,
+  "dataset_train_tokens": 1003854,
+  "dataset_val_tokens": 111540,
+  "step": 600,
+  "train_loss": 2.0207,
+  "val_loss": 2.0898,
+  "val_perplexity": 8.0832,
+  "qualitative_samples": {
+    "ROMEO:": "ROMEO:\nBusten you and the be me best that hist dearss,\nI that to ar if sting a the the",
+    "JULIET:": "JULIET:\nBusten you are the bet prars in an is theee shars.\n\nKING REDICHARD:\nShat ay, br",
+    "HAMLET:": "HAMLET:\nBusten you are the bet prars in an is theee shars.\n\nKING REDICHARD:\nShat ay, br"
+  }
+}

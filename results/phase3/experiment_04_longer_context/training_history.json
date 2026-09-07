@@ -1,0 +1,118 @@
+{
+  "config": {
+    "vocab_size": 66,
+    "block_size": 256,
+    "n_layer": 4,
+    "n_head": 4,
+    "n_embd": 128,
+    "dropout": 0.1,
+    "batch_size": 32,
+    "max_iters": 600,
+    "learning_rate": 0.001,
+    "eval_interval": 50,
+    "eval_iters": 20,
+    "random_seed": 42
+  },
+  "history": [
+    {
+      "step": 50,
+      "train_loss": 2.587,
+      "val_loss": 2.5882,
+      "val_perplexity": 13.3061,
+      "learning_rate": 0.001,
+      "elapsed_sec": 106.5
+    },
+    {
+      "step": 100,
+      "train_loss": 2.5077,
+      "val_loss": 2.5102,
+      "val_perplexity": 12.3074,
+      "learning_rate": 0.001,
+      "elapsed_sec": 199.81
+    },
+    {
+      "step": 150,
+      "train_loss": 2.4709,
+      "val_loss": 2.4883,
+      "val_perplexity": 12.0405,
+      "learning_rate": 0.001,
+      "elapsed_sec": 287.1
+    },
+    {
+      "step": 200,
+      "train_loss": 2.453,
+      "val_loss": 2.4598,
+      "val_perplexity": 11.7024,
+      "learning_rate": 0.001,
+      "elapsed_sec": 376.3
+    },
+    {
+      "step": 250,
+      "train_loss": 2.418,
+      "val_loss": 2.4355,
+      "val_perplexity": 11.4219,
+      "learning_rate": 0.001,
+      "elapsed_sec": 465.27
+    },
+    {
+      "step": 300,
+      "train_loss": 2.38,
+      "val_loss": 2.4045,
+      "val_perplexity": 11.0728,
+      "learning_rate": 0.001,
+      "elapsed_sec": 552.24
+    },
+    {
+      "step": 350,
+      "train_loss": 2.3449,
+      "val_loss": 2.3724,
+      "val_perplexity": 10.7235,
+      "learning_rate": 0.001,
+      "elapsed_sec": 635.72
+    },
+    {
+      "step": 400,
+      "train_loss": 2.289,
+      "val_loss": 2.3271,
+      "val_perplexity": 10.2479,
+      "learning_rate": 0.001,
+      "elapsed_sec": 713.23
+    },
+    {
+      "step": 450,
+      "train_loss": 2.2281,
+      "val_loss": 2.2739,
+      "val_perplexity": 9.7174,
+      "learning_rate": 0.001,
+      "elapsed_sec": 788.38
+    },
+    {
+      "step": 500,
+      "train_loss": 2.1808,
+      "val_loss": 2.2324,
+      "val_perplexity": 9.3226,
+      "learning_rate": 0.001,
+      "elapsed_sec": 865.36
+    },
+    {
+      "step": 550,
+      "train_loss": 2.1193,
+      "val_loss": 2.1802,
+      "val_perplexity": 8.8481,
+      "learning_rate": 0.001,
+      "elapsed_sec": 945.05
+    },
+    {
+      "step": 600,
+      "train_loss": 2.0709,
+      "val_loss": 2.1339,
+      "val_perplexity": 8.4475,
+      "learning_rate": 0.001,
+      "elapsed_sec": 1029.05
+    }
+  ],
+  "best_val_loss": 2.1339,
+  "best_val_perplexity": 8.4475,
+  "final_val_loss": 2.1339,
+  "final_val_perplexity": 8.4475
+}

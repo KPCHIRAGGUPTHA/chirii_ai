@@ -1,0 +1,22 @@
+{
+  "checkpoint": "best_model.pt",
+  "parameter_count": 834560,
+  "vocab_size": 66,
+  "block_size": 256,
+  "n_layer": 4,
+  "n_head": 4,
+  "n_embd": 128,
+  "dropout": 0.1,
+  "dataset_total_chars": 1115394,
+  "dataset_train_tokens": 1003854,
+  "dataset_val_tokens": 111540,
+  "step": 600,
+  "train_loss": 2.0654,
+  "val_loss": 2.1383,
+  "val_perplexity": 8.4846,
+  "qualitative_samples": {
+    "ROMEO:": "ROMEO:\nWhet henot have on heaten.\n\n\nThen SINIUS:\nI'l way thee the sof but the sathe my",
+    "JULIET:": "JULIET:\n\n\nNow thou have on he fent seles:\nSay o besint ay the to grand,\nI the with ath ",
+    "HAMLET:": "HAMLET:\n\nSet hen tis for cest fent a lesery your as\nThous tint to with buthe the thate "
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "checkpoint": "best_model.pt",
+  "parameter_count": 1214720,
+  "vocab_size": 66,
+  "block_size": 128,
+  "n_layer": 6,
+  "n_head": 4,
+  "n_embd": 128,
+  "dropout": 0.1,
+  "dataset_total_chars": 1115394,
+  "dataset_train_tokens": 1003854,
+  "dataset_val_tokens": 111540,
+  "step": 600,
+  "train_loss": 2.0063,
+  "val_loss": 2.0753,
+  "val_perplexity": 7.9668,
+  "qualitative_samples": {
+    "ROMEO:": "ROMEO:\nHe I and for to promedy to agod ing lorgg.\nBOF But hert and you what man our sh",
+    "JULIET:": "JULIET:\nHe will he the doth bay to a defiring.\n\nBENLO:\nBut he that he sown is prece, sh",
+    "HAMLET:": "HAMLET:\nHe will the whath me all do wouth in pright of me,\nWhit and ban what there and "
+  }
+}

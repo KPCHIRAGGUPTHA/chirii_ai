@@ -1,0 +1,22 @@
+{
+  "checkpoint": "best_model.pt",
+  "parameter_count": 818176,
+  "vocab_size": 66,
+  "block_size": 128,
+  "n_layer": 4,
+  "n_head": 8,
+  "n_embd": 128,
+  "dropout": 0.1,
+  "dataset_total_chars": 1115394,
+  "dataset_train_tokens": 1003854,
+  "dataset_val_tokens": 111540,
+  "step": 600,
+  "train_loss": 2.0047,
+  "val_loss": 2.0759,
+  "val_perplexity": 7.9717,
+  "qualitative_samples": {
+    "ROMEO:": "ROMEO:\nBuste we it the the thous the grarightht parss,\nInd seeves he frid and that the",
+    "JULIET:": "JULIET:\nBuste well and that thouke stight ither dearss,\nI'lll will he for came that the",
+    "HAMLET:": "HAMLET:\nBuste well and that thouke stight ither dearss,\nI'lll will he for came that the"
+  }
+}

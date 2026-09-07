@@ -1,0 +1,6 @@
+experiment,n_layer,n_head,n_embd,block_size,parameter_count,parameter_increase_percent,training_time_seconds,final_train_loss,best_val_loss,best_val_perplexity,evaluation_val_loss,evaluation_perplexity
+baseline,4,4,128,128,818176,0.0,385.44,2.0241,2.0936,8.1142,2.0898,8.0832
+experiment_01_more_layers,6,4,128,128,1214720,48.47,596.96,2.0073,2.0707,7.93,2.0753,7.9668
+experiment_02_more_heads,4,8,128,128,818176,0.0,632.1,2.0086,2.0828,8.027,2.0759,7.9717
+experiment_03_larger_embedding,4,4,256,128,3209216,292.24,911.89,1.6968,1.8526,6.3764,1.8537,6.3836
+experiment_04_longer_context,4,4,128,256,834560,2.0,1029.5,2.0709,2.1339,8.4475,2.1383,8.4846

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini-GPT Studio - Build & Train Your Own LLM</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Chart.js for Loss curve visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Navigation -->
+        <header class="header-bar">
+            <div class="logo-group">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="logo-title">Mini-GPT Studio</h1>
+                    <p class="logo-subtitle">Custom PyTorch Transformer Decoder</p>
+                </div>
+            </div>
+            
+            <div class="status-badges">
+                <div class="badge badge-glow" id="deviceBadge">
+                    <span class="badge-dot green"></span>
+                    <span id="deviceText">CPU Mode</span>
+                </div>
+                <div class="badge" id="paramBadge">
+                    <span class="badge-label">Parameters:</span>
+                    <span class="badge-value" id="paramCount">818K</span>
+                </div>
+                <div class="badge" id="modelStatusBadge">
+                    <span class="badge-dot blue"></span>
+                    <span id="modelStatusText">Model Ready</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="chatStudio">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                AI Chat Studio
+            </button>
+            <button class="tab-btn" data-tab="trainerStudio">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                Training Studio & Loss Monitor
+            </button>
+            <button class="tab-btn" data-tab="archStudio">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="10" x2="6" y2="14"></line><line x1="18" y1="10" x2="18" y2="14"></line></svg>
+                Model Architecture Visualizer
+            </button>
+        </nav>
+
+        <!-- Main Workspace Content -->
+        <main class="main-content">
+            <!-- TAB 1: Chat Studio -->
+            <section id="chatStudio" class="tab-content active">
+                <div class="studio-grid">
+                    <!-- Left: Control Panel -->
+                    <div class="panel control-panel">
+                        <h3 class="panel-header">Sampling Parameters</h3>
+                        
+                        <div class="control-group">
+                            <div class="slider-header">
+                                <label for="tempSlider">Temperature (Randomness)</label>
+                                <span class="slider-value" id="tempVal">0.80</span>
+                            </div>
+                            <input type="range" id="tempSlider" min="0.1" max="2.0" step="0.05" value="0.8">
+                            <span class="control-help">Lower = predictable & strict, Higher = creative & diverse</span>
+                        </div>
+
+                        <div class="control-group">
+                            <div class="slider-header">
+                                <label for="tokensSlider">Max New Tokens</label>
+                                <span class="slider-value" id="tokensVal">150</span>
+                            </div>
+                            <input type="range" id="tokensSlider" min="20" max="400" step="10" value="150">
+                        </div>
+
+                        <div class="control-group">
+                            <div class="slider-header">
+                                <label for="topkSlider">Top-K Filtering</label>
+                                <span class="slider-value" id="topkVal">40</span>
+                            </div>
+                            <input type="range" id="topkSlider" min="1" max="100" step="1" value="40">
+                        </div>
+
+                        <div class="preset-group">
+                            <label class="control-label">Sample Prompts</label>
+                            <div class="preset-buttons">
+                                <button class="preset-btn" data-prompt="First Citizen:\n">First Citizen</button>
+                                <button class="preset-btn" data-prompt="To be or not to be:\n">Shakespeare</button>
+                                <button class="preset-btn" data-prompt="Once upon a time, ">Story Starter</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Interactive Playground / Chat -->
+                    <div class="panel chat-panel">
+                        <div class="chat-header">
+                            <h3>Mini-GPT Playground</h3>
+                            <button id="clearChatBtn" class="secondary-btn">Clear Output</button>
+                        </div>
+
+                        <div class="chat-messages" id="chatOutput">
+                            <div class="system-message">
+                                👋 Welcome to <strong>Mini-GPT Studio</strong>! Type a prompt below to see your trained Transformer LLM generate text autoregressively.
+                            </div>
+                        </div>
+
+                        <div class="chat-input-area">
+                            <textarea id="promptInput" placeholder="Enter a prompt (e.g. 'First Citizen:\nYou are all resolved...')" rows="3">First Citizen:</textarea>
+                            <button id="generateBtn" class="primary-btn">
+                                <span>Generate</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: Training Studio -->
+            <section id="trainerStudio" class="tab-content">
+                <div class="trainer-grid">
+                    <!-- Left: Configuration & Custom Dataset -->
+                    <div class="panel train-config-panel">
+                        <h3 class="panel-header">Train Your LLM</h3>
+                        
+                        <form id="trainForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Iterations</label>
+                                    <input type="number" id="trainIters" value="300" min="50" max="2000" step="50">
+                                </div>
+                                <div class="form-group">
+                                    <label>Batch Size</label>
+                                    <input type="number" id="trainBatch" value="32" min="8" max="128" step="8">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Embedding Dim (n_embd)</label>
+                                    <input type="number" id="trainEmbd" value="128" min="32" max="512" step="32">
+                                </div>
+                                <div class="form-group">
+                                    <label>Transformer Layers</label>
+                                    <input type="number" id="trainLayers" value="4" min="1" max="12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Custom Training Text (Optional)</label>
+                                <textarea id="customText" placeholder="Paste custom training text here, or leave empty to use Tiny Shakespeare..." rows="6"></textarea>
+                            </div>
+
+                            <button type="submit" id="startTrainBtn" class="primary-btn full-width">
+                                🚀 Start Training Run
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Right: Real-time Loss Monitor -->
+                    <div class="panel train-monitor-panel">
+                        <div class="monitor-header">
+                            <h3>Real-Time Loss Convergence</h3>
+                            <span id="trainStatusIndicator" class="status-indicator">Status: Idle</span>
+                        </div>
+
+                        <div class="metrics-row">
+                            <div class="metric-card">
+                                <span class="metric-title">Current Step</span>
+                                <span class="metric-value" id="metricStep">0 / 0</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-title">Train Loss</span>
+                                <span class="metric-value highlight" id="metricTrainLoss">0.0000</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-title">Val Loss</span>
+                                <span class="metric-value" id="metricValLoss">0.0000</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-title">Val Perplexity</span>
+                                <span class="metric-value" id="metricPerplexity">0.00</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-title">Elapsed Time</span>
+                                <span class="metric-value" id="metricTime">0.0s</span>
+                            </div>
+                        </div>
+
+                        <!-- Chart Container -->
+                        <div class="chart-container">
+                            <canvas id="lossChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: Model Architecture Inspector -->
+            <section id="archStudio" class="tab-content">
+                <div class="panel arch-panel">
+                    <h3 class="panel-header">Transformer Decoder Network Architecture</h3>
+                    <p class="panel-desc">Visual breakdown of your custom Mini-GPT model built from scratch in PyTorch.</p>
+                    
+                    <div class="arch-diagram">
+                        <div class="arch-node input-node">
+                            <div class="node-title">Input Token Sequence</div>
+                            <div class="node-detail">Shape: [Batch, Sequence_Length]</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+
+                        <div class="arch-dual-container">
+                            <div class="arch-node emb-node">
+                                <div class="node-title">Token Embedding (wte)</div>
+                                <div class="node-detail">Vocab Size → n_embd</div>
+                            </div>
+                            <div class="arch-plus">+</div>
+                            <div class="arch-node emb-node">
+                                <div class="node-title">Positional Embedding (wpe)</div>
+                                <div class="node-detail">Context Block Size → n_embd</div>
+                            </div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+
+                        <div class="arch-box transformer-box">
+                            <div class="box-tag">Transformer Block (x N Layers)</div>
+                            <div class="arch-node layer-node">LayerNorm (Pre-LN)</div>
+                            <div class="arch-node attn-node">
+                                <h4>Causal Multi-Head Self-Attention</h4>
+                                <p>Query, Key, Value Projections + Causal Masking Matrix</p>
+                            </div>
+                            <div class="arch-node layer-node">LayerNorm (Pre-LN)</div>
+                            <div class="arch-node mlp-node">
+                                <h4>Feed-Forward MLP Network</h4>
+                                <p>Linear(n_embd → 4*n_embd) → GELU → Linear(4*n_embd → n_embd)</p>
+                            </div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+
+                        <div class="arch-node output-node">
+                            <div class="node-title">Final LayerNorm & LM Head</div>
+                            <div class="node-detail">Projects n_embd → Vocab Logits for Sampling</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

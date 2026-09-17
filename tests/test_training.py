@@ -14,7 +14,7 @@ def test_overfitting():
 
     data = torch.tensor(tokenizer.encode(text), dtype=torch.long)[:config.block_size]
 
-    for _ in range(200):
+    for _ in range(250):
         model.train()
         x = data[:-1].unsqueeze(0)
         y = data[1:].unsqueeze(0)

@@ -1,0 +1,31 @@
+{
+  "phase": 5,
+  "dataset": "HuggingFaceFW/fineweb-edu",
+  "dataset_config": "sample-10BT",
+  "config": {
+    "vocab_size": 674,
+    "block_size": 128,
+    "n_layer": 4,
+    "n_head": 4,
+    "n_embd": 128,
+    "effective_batch_size": 32,
+    "max_iters": 20,
+    "learning_rate": 0.001,
+    "seed": 42
+  },
+  "history": [
+    {
+      "step": 20,
+      "train_loss": 5.9976,
+      "val_loss": 6.003,
+      "val_perplexity": 404.6506,
+      "val_bpc": 4.2515,
+      "learning_rate": 0.0004,
+      "elapsed_sec": 13.84
+    }
+  ],
+  "best_val_loss": 6.003,
+  "best_val_perplexity": 404.6506,
+  "final_val_loss": 6.003,
+  "final_val_perplexity": 404.6506
+}

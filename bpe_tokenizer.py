@@ -18,7 +18,7 @@ class BPETokenizer:
         self.unk_id: int = 0
 
     @classmethod
-    def train(cls, text: str, target_vocab_size: int = 256) -> "BPETokenizer":
+    def train(cls, text: str, target_vocab_size: int = 256, max_train_chars: int = 50000) -> "BPETokenizer":
         """
         Train a BPE tokenizer directly on input text corpus until target_vocab_size is reached.
         Uses deterministic lexicographical tie-breaking for equal pair frequencies.
@@ -38,8 +38,9 @@ class BPETokenizer:
         tokenizer.vocab_size = len(vocab)
         tokenizer.unk_id = tokenizer.stoi[tokenizer.unk_token]
 
-        # 2. Represent text as a sequence of character tokens
-        tokens = list(text)
+        # 2. Represent text as a sequence of character tokens (capped at max_train_chars for performance)
+        sample_text = text[:max_train_chars] if max_train_chars and len(text) > max_train_chars else text
+        tokens = list(sample_text)
         
         # 3. Iteratively learn merges
         num_merges_needed = target_vocab_size - tokenizer.vocab_size

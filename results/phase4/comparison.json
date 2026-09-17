@@ -1,0 +1,38 @@
+[
+  {
+    "experiment": "char_baseline",
+    "tokenizer": "CharTokenizer",
+    "vocab_size": 66,
+    "parameter_count": 818176,
+    "val_tokens_count": 111540,
+    "avg_chars_per_token": 1.0,
+    "token_reduction_percent": 0.0,
+    "compression_ratio": 1.0,
+    "training_time_seconds": 569.57,
+    "final_train_loss": 2.0241,
+    "best_val_loss": 2.0936,
+    "best_val_perplexity": 8.1142,
+    "best_val_bpc": 3.0205,
+    "evaluation_val_loss": 2.0898,
+    "evaluation_perplexity": 8.0832,
+    "evaluation_val_bpc": 3.0149
+  },
+  {
+    "experiment": "bpe",
+    "tokenizer": "BPETokenizer",
+    "vocab_size": 256,
+    "parameter_count": 842496,
+    "val_tokens_count": 60811,
+    "avg_chars_per_token": 1.8342,
+    "token_reduction_percent": 45.48,
+    "compression_ratio": 1.8342,
+    "training_time_seconds": 524.44,
+    "final_train_loss": 3.2324,
+    "best_val_loss": 3.4769,
+    "best_val_perplexity": 32.359,
+    "best_val_bpc": 2.7347,
+    "evaluation_val_loss": 3.4924,
+    "evaluation_perplexity": 32.8646,
+    "evaluation_val_bpc": 2.7469
+  }
+]

@@ -5,7 +5,7 @@ import torch
 from tokenizer import CharTokenizer
 from model import MiniGPT
 from dataset import get_or_download_text, get_batch
-from train import estimate_loss, calculate_perplexity, set_seed
+from train import estimate_loss, calculate_perplexity, calculate_bpc, set_seed
 from generate import generate_text
 
 def run_evaluation(
@@ -17,7 +17,7 @@ def run_evaluation(
 ) -> dict:
     """
     Load a model checkpoint and report architecture details, dataset stats,
-    train/val loss, perplexity, and qualitative generation samples.
+    train/val loss, perplexity, BPC, and qualitative generation samples.
     """
     set_seed(seed)
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -33,7 +33,13 @@ def run_evaluation(
         else:
             raise FileNotFoundError(f"Checkpoint not found at '{ckpt_path}' or '{fallback_path}'.")
 
-    tokenizer = CharTokenizer.load(vocab_path)
+    from bpe_tokenizer import BPETokenizer
+    with open(vocab_path, "r", encoding="utf-8") as f:
+        vocab_data = json.load(f)
+    if "merges" in vocab_data:
+        tokenizer = BPETokenizer.load(vocab_path)
+    else:
+        tokenizer = CharTokenizer.load(vocab_path)
     checkpoint = torch.load(ckpt_path, map_location='cpu', weights_only=False)
     config = checkpoint["config"]
 
@@ -43,16 +49,22 @@ def run_evaluation(
 
     # Load dataset for live validation assessment
     text = get_or_download_text()
-    data = torch.tensor(tokenizer.encode(text), dtype=torch.long)
-    n = int(0.9 * len(data))
-    train_data = data[:n]
-    val_data = data[n:]
+    n = int(0.9 * len(text))
+    train_text = text[:n]
+    val_text = text[n:]
+
+    train_tokens = tokenizer.encode(train_text)
+    val_tokens = tokenizer.encode(val_text)
+
+    train_data = torch.tensor(train_tokens, dtype=torch.long)
+    val_data = torch.tensor(val_tokens, dtype=torch.long)
 
     batch_size = checkpoint.get("batch_size", 32)
     losses = estimate_loss(model, train_data, val_data, config.block_size, batch_size, eval_iters, device)
     train_loss = losses['train']
     val_loss = losses['val']
     val_perplexity = calculate_perplexity(val_loss)
+    val_bpc = calculate_bpc(val_loss, len(val_tokens), len(val_text))
 
     eval_results = {
         "checkpoint": os.path.basename(ckpt_path),
@@ -64,12 +76,15 @@ def run_evaluation(
         "n_embd": config.n_embd,
         "dropout": config.dropout,
         "dataset_total_chars": len(text),
+        "dataset_train_chars": len(train_text),
+        "dataset_val_chars": len(val_text),
         "dataset_train_tokens": len(train_data),
         "dataset_val_tokens": len(val_data),
         "step": checkpoint.get("step", 0),
         "train_loss": round(train_loss, 4),
         "val_loss": round(val_loss, 4),
         "val_perplexity": round(val_perplexity, 4),
+        "val_bpc": round(val_bpc, 4),
         "qualitative_samples": {}
     }
 
@@ -89,6 +104,7 @@ def run_evaluation(
     print(f"Evaluated Train Loss:  {eval_results['train_loss']:.4f}")
     print(f"Evaluated Val Loss:    {eval_results['val_loss']:.4f}")
     print(f"Evaluated Perplexity:  {eval_results['val_perplexity']:.4f}")
+    print(f"Evaluated BPC:         {eval_results['val_bpc']:.4f}")
     print("-" * 60)
 
     print("\n--- QUALITATIVE GENERATION ANALYSIS ---")

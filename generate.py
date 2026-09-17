@@ -1,4 +1,5 @@
 import os
+import json
 import random
 import torch
 from tokenizer import CharTokenizer
@@ -26,7 +27,14 @@ def load_model_and_tokenizer(ckpt_dir: str = "checkpoints", filename: str = None
     if not os.path.exists(ckpt_path) or not os.path.exists(vocab_path):
         raise FileNotFoundError(f"Checkpoint '{ckpt_path}' or vocab file '{vocab_path}' not found. Please train the model first.")
 
-    tokenizer = CharTokenizer.load(vocab_path)
+    from bpe_tokenizer import BPETokenizer
+    with open(vocab_path, "r", encoding="utf-8") as f:
+        vocab_data = json.load(f)
+        
+    if "merges" in vocab_data:
+        tokenizer = BPETokenizer.load(vocab_path)
+    else:
+        tokenizer = CharTokenizer.load(vocab_path)
     
     checkpoint = torch.load(ckpt_path, map_location='cpu', weights_only=False)
     config = checkpoint["config"]

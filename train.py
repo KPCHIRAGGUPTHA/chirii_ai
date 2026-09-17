@@ -51,6 +51,15 @@ def calculate_perplexity(val_loss: float) -> float:
     safe_loss = min(max(val_loss, 0.0), 50.0)
     return math.exp(safe_loss)
 
+def calculate_bpc(val_loss: float, num_val_tokens: int, num_val_chars: int) -> float:
+    """
+    Calculate Bits Per Character (BPC) from cross-entropy validation loss (in natural log units).
+    BPC = (val_loss * number_of_validation_tokens) / (ln(2) * number_of_validation_characters)
+    """
+    if num_val_chars <= 0:
+        return 0.0
+    return (val_loss * num_val_tokens) / (math.log(2) * num_val_chars)
+
 def save_checkpoint(
     filepath: str,
     model: torch.nn.Module,
@@ -61,7 +70,13 @@ def save_checkpoint(
     val_loss: float,
     best_val_loss: float,
     history: list,
-    seed: int
+    seed: int,
+    batch_size: int = 32,
+    learning_rate: float = 1e-3,
+    eval_interval: int = 50,
+    eval_iters: int = 20,
+    max_iters: int = 600,
+    val_bpc: float = None
 ):
     """Save model checkpoint with full state and configuration metadata."""
     os.makedirs(os.path.dirname(filepath) or ".", exist_ok=True)
@@ -74,8 +89,14 @@ def save_checkpoint(
         "val_loss": val_loss,
         "best_val_loss": best_val_loss,
         "val_perplexity": calculate_perplexity(val_loss),
+        "val_bpc": val_bpc,
         "history": history,
         "seed": seed,
+        "batch_size": batch_size,
+        "learning_rate": learning_rate,
+        "eval_interval": eval_interval,
+        "eval_iters": eval_iters,
+        "max_iters": max_iters,
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
     }
     torch.save(checkpoint, filepath)
@@ -95,10 +116,13 @@ def train_model(
     eval_interval: int = 50,
     eval_iters: int = 20,
     random_seed: int = 42,
-    callback=None
+    callback=None,
+    tokenizer=None,
+    tokenizer_type: str = "char",
+    target_vocab_size: int = 256
 ):
     """
-    Train Mini-GPT on specified dataset with multi-batch evaluation, perplexity, and checkpointing.
+    Train Mini-GPT on specified dataset with multi-batch evaluation, perplexity, BPC, and checkpointing.
     """
     set_seed(random_seed)
     os.makedirs(out_dir, exist_ok=True)
@@ -113,16 +137,29 @@ def train_model(
     else:
         text = get_or_download_text()
 
-    # Train/Val split (90% train, 10% validation)
-    tokenizer = CharTokenizer.from_text(text)
+    # Train/Val split: train BPE strictly on 90% character split
+    n_char = int(0.9 * len(text))
+    train_text = text[:n_char]
+    val_text = text[n_char:]
+
+    if tokenizer is None:
+        if tokenizer_type == "bpe":
+            from bpe_tokenizer import BPETokenizer
+            print(f"Training BPE Tokenizer on TRAIN split (target_vocab_size={target_vocab_size})...")
+            tokenizer = BPETokenizer.train(train_text, target_vocab_size=target_vocab_size)
+        else:
+            tokenizer = CharTokenizer.from_text(train_text)
+
     vocab_path = os.path.join(out_dir, "vocab.json")
     tokenizer.save(vocab_path)
     print(f"Saved tokenizer vocab ({tokenizer.vocab_size} tokens) to {vocab_path}")
 
-    data = torch.tensor(tokenizer.encode(text), dtype=torch.long)
-    n = int(0.9 * len(data))
-    train_data = data[:n]
-    val_data = data[n:]
+    # Encode train and val text independently
+    train_tokens = tokenizer.encode(train_text)
+    val_tokens = tokenizer.encode(val_text)
+
+    train_data = torch.tensor(train_tokens, dtype=torch.long)
+    val_data = torch.tensor(val_tokens, dtype=torch.long)
 
     # Configure Model
     config = MiniGPTConfig(
@@ -142,6 +179,8 @@ def train_model(
     start_time = time.time()
     history = []
     best_val_loss = float('inf')
+    best_val_bpc = None
+    val_bpc = None
 
     for iter_step in range(1, max_iters + 1):
         model.train()
@@ -158,6 +197,7 @@ def train_model(
             train_loss_val = eval_metrics['train']
             val_loss_val = eval_metrics['val']
             val_perplexity = calculate_perplexity(val_loss_val)
+            val_bpc = calculate_bpc(val_loss_val, len(val_tokens), len(val_text))
             elapsed = time.time() - start_time
 
             record = {
@@ -165,19 +205,27 @@ def train_model(
                 "train_loss": round(train_loss_val, 4),
                 "val_loss": round(val_loss_val, 4),
                 "val_perplexity": round(val_perplexity, 4),
+                "val_bpc": round(val_bpc, 4),
                 "learning_rate": learning_rate,
                 "elapsed_sec": round(elapsed, 2)
             }
             history.append(record)
 
-            print(f"Iter {iter_step:4d}/{max_iters} | Train Loss: {train_loss_val:.4f} | Val Loss: {val_loss_val:.4f} | Val Perplexity: {val_perplexity:.4f} | Time: {elapsed:.2f}s")
+            print(f"Iter {iter_step:4d}/{max_iters} | Train Loss: {train_loss_val:.4f} | Val Loss: {val_loss_val:.4f} | Val PPL: {val_perplexity:.4f} | Val BPC: {val_bpc:.4f} | Time: {elapsed:.2f}s")
 
             # Check for best model update
             if val_loss_val < best_val_loss:
                 best_val_loss = val_loss_val
+                best_val_bpc = val_bpc
                 best_ckpt_path = os.path.join(out_dir, "best_model.pt")
-                save_checkpoint(best_ckpt_path, model, optimizer, config, tokenizer, iter_step, val_loss_val, best_val_loss, history, random_seed)
-                print(f" -> Saved new best model checkpoint to {best_ckpt_path} (val_loss: {val_loss_val:.4f})")
+                save_checkpoint(
+                    best_ckpt_path, model, optimizer, config, tokenizer, iter_step,
+                    val_loss_val, best_val_loss, history, random_seed,
+                    batch_size=batch_size, learning_rate=learning_rate,
+                    eval_interval=eval_interval, eval_iters=eval_iters,
+                    max_iters=max_iters, val_bpc=val_bpc
+                )
+                print(f" -> Saved new best model checkpoint to {best_ckpt_path} (val_loss: {val_loss_val:.4f}, val_bpc: {val_bpc:.4f})")
 
             if callback:
                 callback({
@@ -186,6 +234,7 @@ def train_model(
                     "train_loss": round(train_loss_val, 4),
                     "val_loss": round(val_loss_val, 4),
                     "val_perplexity": round(val_perplexity, 4),
+                    "val_bpc": round(val_bpc, 4),
                     "best_val_loss": round(best_val_loss, 4),
                     "elapsed_sec": round(elapsed, 2)
                 })
@@ -193,8 +242,20 @@ def train_model(
     # Save Final Model and Backwards-Compatible Checkpoint
     final_ckpt_path = os.path.join(out_dir, "final_model.pt")
     compat_ckpt_path = os.path.join(out_dir, "checkpoint.pt")
-    save_checkpoint(final_ckpt_path, model, optimizer, config, tokenizer, max_iters, val_loss_val, best_val_loss, history, random_seed)
-    save_checkpoint(compat_ckpt_path, model, optimizer, config, tokenizer, max_iters, val_loss_val, best_val_loss, history, random_seed)
+    save_checkpoint(
+        final_ckpt_path, model, optimizer, config, tokenizer, max_iters,
+        val_loss_val, best_val_loss, history, random_seed,
+        batch_size=batch_size, learning_rate=learning_rate,
+        eval_interval=eval_interval, eval_iters=eval_iters,
+        max_iters=max_iters, val_bpc=val_bpc
+    )
+    save_checkpoint(
+        compat_ckpt_path, model, optimizer, config, tokenizer, max_iters,
+        val_loss_val, best_val_loss, history, random_seed,
+        batch_size=batch_size, learning_rate=learning_rate,
+        eval_interval=eval_interval, eval_iters=eval_iters,
+        max_iters=max_iters, val_bpc=val_bpc
+    )
     print(f"Training complete! Saved final checkpoint to {final_ckpt_path} and {compat_ckpt_path}")
 
     # Save Machine-Readable Training History
@@ -217,8 +278,10 @@ def train_model(
         "history": history,
         "best_val_loss": round(best_val_loss, 4),
         "best_val_perplexity": round(calculate_perplexity(best_val_loss), 4),
+        "best_val_bpc": round(best_val_bpc if best_val_bpc is not None else val_bpc, 4),
         "final_val_loss": round(val_loss_val, 4),
-        "final_val_perplexity": round(val_perplexity, 4)
+        "final_val_perplexity": round(val_perplexity, 4),
+        "final_val_bpc": round(val_bpc, 4)
     }
     with open(history_path, "w", encoding="utf-8") as f:
         json.dump(history_data, f, indent=2)

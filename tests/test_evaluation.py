@@ -6,7 +6,7 @@ import pytest
 import torch
 from model import MiniGPT, MiniGPTConfig
 from tokenizer import CharTokenizer
-from train import set_seed, estimate_loss, calculate_perplexity, train_model
+from train import set_seed, estimate_loss, calculate_perplexity, calculate_bpc, train_model
 from generate import load_model_and_tokenizer, generate_text
 from evaluate import run_evaluation
 from plot_history import plot_training_history
@@ -184,3 +184,31 @@ def test_plotting_script():
         loss_plot, perp_plot = plot_training_history(history_path=history_path, output_dir=output_dir)
         assert os.path.exists(loss_plot), "loss_curve.png not created"
         assert os.path.exists(perp_plot), "perplexity_curve.png not created"
+
+def test_bpc_metric_calculation():
+    """Test BPC calculation according to formula BPC = (val_loss * val_tokens) / (ln(2) * val_chars)."""
+    val_loss = 2.0
+    num_val_tokens = 500
+    num_val_chars = 1000
+    expected_bpc = (2.0 * 500) / (math.log(2) * 1000)
+    bpc = calculate_bpc(val_loss, num_val_tokens, num_val_chars)
+    assert math.isclose(bpc, expected_bpc, rel_tol=1e-5)
+
+def test_train_val_split_methodology():
+    """Test that train and validation texts are split prior to encoding, preserving 90/10 character split."""
+    text = "A" * 900 + "B" * 100
+    n = int(0.9 * len(text))
+    train_text = text[:n]
+    val_text = text[n:]
+    assert len(train_text) == 900
+    assert len(val_text) == 100
+    
+    tokenizer = CharTokenizer.from_text(train_text)
+    train_tokens = tokenizer.encode(train_text)
+    val_tokens = tokenizer.encode(val_text)
+    
+    assert len(train_tokens) == 900
+    assert len(val_tokens) == 100
+    assert all(tok != tokenizer.unk_id for tok in train_tokens)
+    assert all(tok == tokenizer.unk_id for tok in val_tokens)
+

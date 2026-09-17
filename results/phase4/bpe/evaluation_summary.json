@@ -1,0 +1,25 @@
+{
+  "checkpoint": "best_model.pt",
+  "parameter_count": 842496,
+  "vocab_size": 256,
+  "block_size": 128,
+  "n_layer": 4,
+  "n_head": 4,
+  "n_embd": 128,
+  "dropout": 0.1,
+  "dataset_total_chars": 1115394,
+  "dataset_train_chars": 1003854,
+  "dataset_val_chars": 111540,
+  "dataset_train_tokens": 544227,
+  "dataset_val_tokens": 60811,
+  "step": 600,
+  "train_loss": 3.2497,
+  "val_loss": 3.4924,
+  "val_perplexity": 32.8646,
+  "val_bpc": 2.7469,
+  "qualitative_samples": {
+    "ROMEO:": "ROMEO: where the the hence, and sind sadsir, but my swart then.\n\nPRIVINCENTIO:\nI with him, he have sir: reet sir.\n\nPRINIUS:\nTo---by you word!\nFor have you ha",
+    "JULIET:": "JULIET: where the the henrow one.\n\nLUCET:\nThy way you do tood: will you me ay, whodere:\nAwell mevery thing a mudly me;\nAs moves to the confertoth, my hear.\n\nRI",
+    "HAMLET:": "HAMLET: where the the henrow one.\n\nLUCENCE:\nGood my lords.\n\nCINIOMINIUS:\nFor that some sir, he have sir: reevery's good;\nAs moves to the confertoth, my hear.\n\nRI"
+  }
+}

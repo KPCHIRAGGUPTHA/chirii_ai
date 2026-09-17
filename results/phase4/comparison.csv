@@ -1,0 +1,3 @@
+experiment,tokenizer,vocab_size,parameter_count,val_tokens_count,avg_chars_per_token,token_reduction_percent,compression_ratio,training_time_seconds,final_train_loss,best_val_loss,best_val_perplexity,best_val_bpc,evaluation_val_loss,evaluation_perplexity,evaluation_val_bpc
+char_baseline,CharTokenizer,66,818176,111540,1.0,0.0,1.0,569.57,2.0241,2.0936,8.1142,3.0205,2.0898,8.0832,3.0149
+bpe,BPETokenizer,256,842496,60811,1.8342,45.48,1.8342,524.44,3.2324,3.4769,32.359,2.7347,3.4924,32.8646,2.7469

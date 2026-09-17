@@ -16,3 +16,9 @@ ENV/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Temporary audit archives & binary model checkpoints
+phase4_audit/
+phase4_audit.zip
+checkpoints/
+*.pt

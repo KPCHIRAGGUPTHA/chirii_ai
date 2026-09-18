@@ -12,7 +12,7 @@ The objective of Phase 5 is to transition Mini-GPT from a domain-specific datase
 - **Verified Configuration**: `sample-10BT`
 - **Dataset Split**: `train`
 - **Streaming Mode**: `True`
-- **Target Mode**: `Phase 5A Pipeline Smoke Test`
+- **Target Mode**: `Phase 5B Small Pretraining`
 
 ### Data Cleaning Rules
 1. **Type & Null Check**: Non-string or null records are dropped.
@@ -42,11 +42,11 @@ Data split isolation is enforced via **Deterministic Document SHA-256 Hashing**:
 
 ## 4. Phase 5 BPE Tokenizer
 
-- **Vocabulary Size**: `674` tokens
-- **Base Characters**: `100` unique characters
-- **Learned Merges**: `573` subword merges
-- **Average Characters per Token**: `2.0832` chars/token
-- **Token Count Reduction**: `52.0%` over raw characters
+- **Vocabulary Size**: `1377` tokens
+- **Base Characters**: `1376` unique characters
+- **Learned Merges**: `0` subword merges
+- **Average Characters per Token**: `1.0` chars/token
+- **Token Count Reduction**: `0.0%` over raw characters
 - **Tokenizer Training Isolation**: BPE vocabulary was trained **STRICTLY ON TRAIN SPLIT** documents.
 
 ---
@@ -60,16 +60,16 @@ Data split isolation is enforced via **Deterministic Document SHA-256 Hashing**:
 - **Effective Batch Size**: `32`
 - **Learning Rate Schedule**: Warmup (50 steps) + Cosine Decay (0.001 -> 0.0001)
 - **Gradient Clipping**: `1.0`
-- **Total Training Duration**: `25.43` seconds
+- **Total Training Duration**: `1702.58` seconds
 
 ---
 
 ## 6. Quantitative Pretraining Results
 
-- **Final Step**: `20`
-- **Best Validation Loss**: `6.0030`
-- **Best Validation Perplexity**: `404.6506`
-- **Final Validation BPC**: `4.2515`
+- **Final Step**: `2500`
+- **Best Validation Loss**: `1.7467`
+- **Best Validation Perplexity**: `5.7354`
+- **Final Validation BPC**: `2.5199`
 
 ---
 
@@ -77,27 +77,27 @@ Data split isolation is enforced via **Deterministic Document SHA-256 Hashing**:
 
 ### Prompt: `Python is`
 ```text
-Python iso ilerte Astfonbss argt a  a tfors eachtdeorres elmlivssto cgaors stchonchartmbvpstechlwmflaroeromarararaotiortieporamam
+Python is a problem of examplication is a levelopment of the are has from a four becauses
 ```
 
 ### Prompt: `Artificial intelligence is`
 ```text
-Artificial intelligence iso iler the Astfonbsbargt a  a tfors eachtdeorres elmlivssto cgaors stchorchartmbvpstechlomflaroeromarararaotiortieporamam
+Artificial intelligence is a problem of examplication is a levelopment of the are a lath controllected by
 ```
 
 ### Prompt: `Machine learning is`
 ```text
-Machine learning iso ilerte Astfonbsbargt a  a tfors eachtdeorres elmlivssto cgaors stchorchartmamvpstechlomflare eromarararanotiortiepordeam
+Machine learning is a problem of examplication is a levelopment of the are a laters of place, and s
 ```
 
 ### Prompt: `The Internet is`
 ```text
-The Internet iso iler the Astfonbsbargt a  a tfors eachtdeorres elmlivssto cgaors stchonchartmamvpstechlwmflaroeromarararaotiortieporamam
+The Internet is a problem of educed of the regroup the government in the Carrican of place refo
 ```
 
 ### Prompt: `Once upon a time`
 ```text
-Once upon a timeo ilerte Astfsbsbargt a  a tfors eachtdeorres elmlivssto cgaors stchorchartmbvpstechlomflare eromarararaotiortieporamam
+Once upon a time a problem of examplication is a levelopment of the are a laters of place, ensur
 ```
 
 ---
@@ -107,11 +107,11 @@ Once upon a timeo ilerte Astfsbsbargt a  a tfors eachtdeorres elmlivssto cgaors 
 | Metric | Phase 2 Baseline | Phase 4 BPE (Shakespeare) | Phase 5 FineWeb-Edu |
 | :--- | :---: | :---: | :---: |
 | **Dataset** | Tiny Shakespeare | Tiny Shakespeare | **FineWeb-Edu** |
-| **Tokenizer** | Character (Vocab 66) | BPE (Vocab 256) | **Phase 5 BPE (Vocab 674)** |
-| **Avg Chars/Token** | 1.00 | 1.83 | **2.0832** |
+| **Tokenizer** | Character (Vocab 66) | BPE (Vocab 256) | **Phase 5 BPE (Vocab 1377)** |
+| **Avg Chars/Token** | 1.00 | 1.83 | **1.0** |
 | **Effective Batch Size** | 32 | 32 | **32** |
-| **Pretraining Loss** | 2.0936 | 3.4769 | **6.0030** |
-| **Bits Per Character** | 3.0149 | 2.7347 | **4.2515** |
+| **Pretraining Loss** | 2.0936 | 3.4769 | **1.7467** |
+| **Bits Per Character** | 3.0149 | 2.7347 | **2.5199** |
 
 ---
 
@@ -122,4 +122,4 @@ Once upon a timeo ilerte Astfsbsbargt a  a tfors eachtdeorres elmlivssto cgaors 
 3. **Resource Bound**: The current MiniGPT architecture (~870k params) learns general web text patterns, sentence boundaries, and vocabulary structures within a small compute budget.
 
 ---
-*Report generated automatically on 2026-09-18 00:13:31*
+*Report generated automatically on 2026-09-18 13:08:13*

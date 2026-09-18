@@ -93,7 +93,9 @@ def train_phase5(
     resume_ckpt_path: str = None,
     tokenizer = None,
     train_text: str = None,
-    val_text: str = None
+    val_text: str = None,
+    train_tokens: list = None,
+    val_tokens: list = None
 ):
     """
     Execute Phase 5 pretraining on FineWeb-Edu with gradient accumulation,
@@ -115,10 +117,6 @@ def train_phase5(
         scaler = None
         use_amp = False
 
-    # Load Corpora
-    if train_text is None or val_text is None:
-        train_text, val_text, _ = prepare_phase5_corpus(config)
-
     # Load Phase 5 BPE Tokenizer
     if tokenizer is None:
         tokenizer = load_phase5_tokenizer(config, vocab_size=config.vocab_size)
@@ -131,9 +129,33 @@ def train_phase5(
     tokenizer.save(ckpt_vocab_path)
     print(f"Loaded Phase 5 Tokenizer (vocab_size={tokenizer.vocab_size}), saved to {ckpt_vocab_path}", flush=True)
 
-    # Encode train and val text independently
-    train_tokens = tokenizer.encode(train_text)
-    val_tokens = tokenizer.encode(val_text)
+    # Encode train and val text independently if not pre-provided
+    train_tokens_path = os.path.join(config.data_dir, f"train_tokens_v{tokenizer.vocab_size}.pt")
+    val_tokens_path = os.path.join(config.data_dir, f"val_tokens_v{tokenizer.vocab_size}.pt")
+
+    if train_tokens is None and os.path.exists(train_tokens_path):
+        print(f"Loading cached encoded train tokens from {train_tokens_path}...", flush=True)
+        train_data = torch.load(train_tokens_path, weights_only=True)
+        train_tokens = train_data.tolist()
+    
+    if val_tokens is None and os.path.exists(val_tokens_path):
+        print(f"Loading cached encoded val tokens from {val_tokens_path}...", flush=True)
+        val_data = torch.load(val_tokens_path, weights_only=True)
+        val_tokens = val_data.tolist()
+
+    if train_tokens is None or val_tokens is None:
+        if train_text is None or val_text is None:
+            train_text, val_text, _ = prepare_phase5_corpus(config)
+        if train_tokens is None:
+            print("Encoding training corpus with BPE tokenizer...", flush=True)
+            train_tokens = tokenizer.encode(train_text)
+            torch.save(torch.tensor(train_tokens, dtype=torch.long), train_tokens_path)
+            print(f"Cached encoded train tokens to {train_tokens_path}", flush=True)
+        if val_tokens is None:
+            print("Encoding validation corpus with BPE tokenizer...", flush=True)
+            val_tokens = tokenizer.encode(val_text)
+            torch.save(torch.tensor(val_tokens, dtype=torch.long), val_tokens_path)
+            print(f"Cached encoded val tokens to {val_tokens_path}", flush=True)
 
     train_data = torch.tensor(train_tokens, dtype=torch.long)
     val_data = torch.tensor(val_tokens, dtype=torch.long)

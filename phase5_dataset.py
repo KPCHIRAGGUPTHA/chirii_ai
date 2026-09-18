@@ -22,11 +22,14 @@ def prepare_phase5_corpus(
     config: Phase5Config,
     max_train_docs: int = 300,
     max_val_docs: int = 50,
+    min_train_chars: Optional[int] = None,
+    min_val_chars: Optional[int] = None,
     force_rebuild: bool = False
 ) -> Tuple[str, str, Dict[str, Any]]:
     """
     Stream FineWeb-Edu documents once, apply deterministic hashing split, and cache
     isolated train and validation text corpora in data/phase5/ for fast local execution.
+    Can stream until either document count limits or character count targets are satisfied.
     """
     config.create_dirs()
     train_path = os.path.join(config.data_dir, "train_corpus.txt")
@@ -61,6 +64,7 @@ def prepare_phase5_corpus(
 
     train_docs, val_docs = [], []
     train_count, val_count = 0, 0
+    train_char_total, val_char_total = 0, 0
 
     for raw_doc in dataset:
         doc_split = get_document_split(raw_doc, val_ratio=config.val_hash_ratio)
@@ -69,14 +73,31 @@ def prepare_phase5_corpus(
         if cleaned_text is None:
             continue
 
-        if doc_split == "train" and train_count < max_train_docs:
+        doc_len = len(cleaned_text)
+
+        train_done = False
+        val_done = False
+
+        if min_train_chars is not None:
+            train_done = train_char_total >= min_train_chars
+        else:
+            train_done = train_count >= max_train_docs
+
+        if min_val_chars is not None:
+            val_done = val_char_total >= min_val_chars
+        else:
+            val_done = val_count >= max_val_docs
+
+        if doc_split == "train" and not train_done:
             train_docs.append(cleaned_text)
             train_count += 1
-        elif doc_split == "val" and val_count < max_val_docs:
+            train_char_total += doc_len
+        elif doc_split == "val" and not val_done:
             val_docs.append(cleaned_text)
             val_count += 1
+            val_char_total += doc_len
 
-        if train_count >= max_train_docs and val_count >= max_val_docs:
+        if train_done and val_done:
             break
 
     train_text = "\n\n".join(train_docs)
@@ -96,7 +117,7 @@ def prepare_phase5_corpus(
     with open(stats_path, "w", encoding="utf-8") as f:
         json.dump(stats, f, indent=2)
 
-    print(f"Cached Phase 5 corpora: Train ({len(train_text):,} chars), Val ({len(val_text):,} chars)", flush=True)
+    print(f"Cached Phase 5 corpora: Train ({len(train_text):,} chars, {len(train_docs):,} docs), Val ({len(val_text):,} chars, {len(val_docs):,} docs)", flush=True)
     return train_text, val_text, stats
 
 def get_batch_phase5(

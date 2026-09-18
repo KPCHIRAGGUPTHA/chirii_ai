@@ -90,20 +90,16 @@ class BPETokenizer:
             
         return tokenizer
 
-    def encode(self, text: str) -> List[int]:
-        """
-        Encode text into a list of BPE token IDs by applying learned merge rules.
-        """
-        if not text:
+    def _encode_chunk(self, chunk: str) -> List[int]:
+        if not chunk:
             return []
-            
-        tokens = list(text)
-        
-        # Apply merges in the exact sequence they were learned
+        tokens = list(chunk)
+        tokens_set = set(tokens)
         for pair in self.merges:
             token_a, token_b = pair
+            if token_a not in tokens_set or token_b not in tokens_set:
+                continue
             merged_token = token_a + token_b
-            
             new_tokens = []
             i = 0
             while i < len(tokens):
@@ -114,9 +110,24 @@ class BPETokenizer:
                     new_tokens.append(tokens[i])
                     i += 1
             tokens = new_tokens
-            
-        # Map subword strings to integer IDs
+            tokens_set.add(merged_token)
         return [self.stoi.get(tok, self.unk_id) for tok in tokens]
+
+    def encode(self, text: str, chunk_size: int = 5000) -> List[int]:
+        """
+        Encode text into a list of BPE token IDs by applying learned merge rules.
+        Chunks large text into blocks to fit in CPU L1/L2 cache for fast processing.
+        """
+        if not text:
+            return []
+        if len(text) <= chunk_size:
+            return self._encode_chunk(text)
+        
+        token_ids = []
+        for start in range(0, len(text), chunk_size):
+            chunk = text[start:start + chunk_size]
+            token_ids.extend(self._encode_chunk(chunk))
+        return token_ids
 
     def decode(self, token_ids: List[int]) -> str:
         """

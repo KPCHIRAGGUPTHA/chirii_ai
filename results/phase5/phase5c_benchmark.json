@@ -1,0 +1,26 @@
+{
+  "device": "cpu",
+  "cpu_threads": 8,
+  "benchmark_steps": 30,
+  "tokens_per_iter": 4096,
+  "total_tokens_benchmarked": 122880,
+  "elapsed_seconds": 15.9635,
+  "tokens_per_second": 7697.54,
+  "tokens_per_minute": 461852.54,
+  "tokens_per_hour": 27711152.68,
+  "iterations_per_minute": 112.76,
+  "estimated_time_hours": {
+    "1M_tokens": 0.0361,
+    "5M_tokens": 0.1804,
+    "10M_tokens": 0.3609,
+    "25M_tokens": 0.9022,
+    "50M_tokens": 1.8043
+  },
+  "estimated_time_minutes": {
+    "1M_tokens": 2.17,
+    "5M_tokens": 10.83,
+    "10M_tokens": 21.65,
+    "25M_tokens": 54.13,
+    "50M_tokens": 108.26
+  }
+}

@@ -1,13 +1,13 @@
 {
   "target_vocab_size": 1024,
-  "actual_vocab_size": 674,
-  "base_chars_count": 100,
-  "num_merges_learned": 573,
+  "actual_vocab_size": 1377,
+  "base_chars_count": 1376,
+  "num_merges_learned": 0,
   "sample_chars_evaluated": 50000,
-  "sample_tokens_produced": 24002,
-  "avg_chars_per_token": 2.0832,
-  "token_reduction_pct": 52.0,
-  "embedding_parameters_wte": 86272,
-  "vocab_saved_path": "tokenizers/phase5\\bpe_vocab_674.json",
-  "train_corpus_chars": 70345
+  "sample_tokens_produced": 50000,
+  "avg_chars_per_token": 1.0,
+  "token_reduction_pct": 0.0,
+  "embedding_parameters_wte": 176256,
+  "vocab_saved_path": "tokenizers/phase5\\bpe_vocab_1377.json",
+  "train_corpus_chars": 35030763
 }

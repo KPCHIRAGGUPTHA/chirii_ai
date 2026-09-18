@@ -5,9 +5,11 @@
 Phase 5C successfully scaled pretraining on **FineWeb-Edu (`sample-10BT`)** from 600 steps (~1M tokens) to **2,500 iterations** (~10.24M target tokens) using fresh model initialization. Dataset validation confirmed that the selected training documents contained **17,727,927 unique BPE tokens**, eliminating data recycling and ensuring that the model trained for only **0.5776 epochs** (less than 1 full pass).
 
 The scaled pretraining achieved dramatic perplexity and loss reductions over Phase 5B:
-- **Best Validation Loss**: `1.7467` (down from 4.9656 in Phase 5B)
-- **Best Validation Perplexity**: `5.7354` (down from 143.3899 in Phase 5B)
-- **Final Validation BPC**: `2.5199` (down from 3.1328 in Phase 5B)
+- **Best Validation Loss**: `3.2288` (down from 4.9656 in Phase 5B)
+- **Best Validation Perplexity**: `25.2495` (down from 143.3899 in Phase 5B)
+- **Final Validation BPC**: `2.4022`* (down from 3.1328 in Phase 5B)
+
+*\*Note: The recorded experiment metric saved in `phase5c_training_history.json` is `2.4022`. Independent recalculation using documented validation corpus counts yields `2.3932`.*
 
 ---
 
@@ -36,12 +38,12 @@ Estimated epochs/passes over selected documents: 0.5776
 Actual tokens processed: 10,240,000 tokens
 Training documents used: 7,411
 Validation documents used: 750
-Training time: 1,690.28 seconds (28.17 minutes)
-Tokens/sec: 6,058.17 tokens/sec
-Final train loss: 1.7884
-Best validation loss: 1.7467
-Best validation PPL: 5.7354
-Final validation BPC: 2.5199
+Training time: 1,664.37 seconds (27.74 minutes)
+Tokens/sec: 6,152.48 tokens/sec
+Final train loss: 3.1929
+Best validation loss: 3.2288
+Best validation PPL: 25.2495
+Final validation BPC: 2.4022
 pytest result: 64/64 passed (100% success)
 ```
 
@@ -57,10 +59,10 @@ pytest result: 64/64 passed (100% success)
 | **Total Pretraining Tokens** | ~2.45M | **10.24M** |
 | **Effective Batch Size** | 32 | **32** |
 | **Learning Rate Schedule** | Cosine (1e-3 -> 1e-4) | **Cosine (1e-3 -> 1e-4)** |
-| **Final Train Loss** | 2.8337 | **1.7884** |
-| **Best Validation Loss** | 4.9656 | **1.7467** |
-| **Best Validation Perplexity** | 143.3899 | **5.7354** |
-| **Final Bits Per Character (BPC)** | 3.1328 | **2.5199** |
+| **Final Train Loss** | 2.8337 | **3.1929** |
+| **Best Validation Loss** | 4.9656 | **3.2288** |
+| **Best Validation Perplexity** | 143.3899 | **25.2495** |
+| **Final Bits Per Character (BPC)** | 3.1328 | **2.4022** |
 
 ---
 

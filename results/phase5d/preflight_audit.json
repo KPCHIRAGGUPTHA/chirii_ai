@@ -1,0 +1,10 @@
+{
+  "training_documents": 7411,
+  "validation_documents": 750,
+  "unique_training_tokens": 17727927,
+  "unique_validation_tokens": 1765698,
+  "target_training_tokens": 10240000,
+  "capacity_sufficient": "YES",
+  "estimated_epochs": 0.5776,
+  "vocab_size": 1024
+}

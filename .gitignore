@@ -22,3 +22,7 @@ phase4_audit/
 phase4_audit.zip
 checkpoints/
 *.pt
+
+# Generated large datasets
+phase6/data/
+

@@ -1,0 +1,71 @@
+{
+  "selected_dataset": "yahma/alpaca-cleaned",
+  "dataset_source": "https://huggingface.co/datasets/yahma/alpaca-cleaned",
+  "license": "Apache-2.0",
+  "tokenizer_used": "BPETokenizer",
+  "tokenizer_path": "C:\\Users\\dell9\\OneDrive\\Desktop\\minigpt\\tokenizers\\phase5d\\bpe_vocab_1024.json",
+  "vocab_size": 1024,
+  "block_size": 128,
+  "random_seed": 42,
+  "raw_example_count": 51760,
+  "malformed_example_count": 0,
+  "missing_instruction_count": 0,
+  "missing_output_count": 0,
+  "empty_example_count": 0,
+  "duplicate_instruction_response_count": 4,
+  "duplicate_records_removed": 4,
+  "final_deduplicated_example_count": 51756,
+  "train_count": 41404,
+  "validation_count": 5176,
+  "test_count": 5176,
+  "cross_split_duplicate_count": 0,
+  "char_statistics": {
+    "min": 64,
+    "max": 5047,
+    "mean": 802.23,
+    "median": 617.0,
+    "p75": 1251.0,
+    "p90": 1779.0,
+    "p95": 2039.0,
+    "p99": 2511.0
+  },
+  "word_statistics": {
+    "min": 9,
+    "max": 667,
+    "mean": 128.31,
+    "median": 100.0,
+    "p75": 200.0,
+    "p90": 282.0,
+    "p95": 325.0,
+    "p99": 403.45
+  },
+  "token_statistics": {
+    "min": 42,
+    "max": 3910,
+    "mean": 407.86,
+    "median": 318.0,
+    "p75": 629.0,
+    "p90": 881.0,
+    "p95": 1010.0,
+    "p99": 1255.0
+  },
+  "examples_le_128_count": 12952,
+  "examples_gt_128_count": 38804,
+  "percentage_fitting_128": 25.03,
+  "percentage_requiring_truncation": 74.97,
+  "splits": {
+    "train": {
+      "count": 41404,
+      "percentage": 80.0
+    },
+    "validation": {
+      "count": 5176,
+      "percentage": 10.0
+    },
+    "test": {
+      "count": 5176,
+      "percentage": 10.0
+    },
+    "cross_split_duplicate_count": 0
+  }
+}

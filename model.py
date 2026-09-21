@@ -154,7 +154,7 @@ class MiniGPT(nn.Module):
             assert idx.size() == targets.size(), f"Targets shape {targets.size()} must match input shape {idx.size()}"
             # Evaluate loss over all positions
             logits = self.lm_head(x) # (b, t, vocab_size)
-            loss = F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)
+            loss = F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-100)
         else:
             # Inference: only calculate logits for the last token position
             logits = self.lm_head(x[:, -1:, :]) # (b, 1, vocab_size)

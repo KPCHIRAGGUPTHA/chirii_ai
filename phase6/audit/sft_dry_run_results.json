@@ -1,0 +1,30 @@
+{
+  "model_path": "checkpoints/phase5d/model_6_61m/best_model.pt",
+  "parameter_count": 6613504,
+  "vocab_size": 1024,
+  "block_size": 128,
+  "n_layer": 8,
+  "n_head": 8,
+  "n_embd": 256,
+  "batch_shape": [
+    8,
+    128
+  ],
+  "sequence_length": 128,
+  "masked_labels_count": 547,
+  "active_labels_count": 477,
+  "active_labels_pct": 46.58,
+  "initial_dry_run_loss": 2.7943,
+  "gradients_verified_exist": true,
+  "gradient_norm": 1.6488,
+  "tiny_sanity_initial_loss": 2.6646,
+  "tiny_sanity_final_loss": 1.1634,
+  "tiny_sanity_loss_reduced": true,
+  "checkpoint_sha256_before": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+  "checkpoint_sha256_after": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+  "checkpoint_byte_identical": true,
+  "tokenizer_sha256_before": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+  "tokenizer_sha256_after": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+  "tokenizer_byte_identical": true,
+  "full_sft_executed": false
+}

@@ -1,0 +1,47 @@
+{
+  "128": {
+    "context_length": 128,
+    "total_examples": 51756,
+    "fitting_count": 12952,
+    "exceeding_count": 38804,
+    "percentage_fitting": 25.03,
+    "percentage_requiring_truncation": 74.97,
+    "total_original_tokens": 21109080,
+    "tokens_retained_after_truncation": 6194649,
+    "average_retained_tokens": 119.69,
+    "median_retained_tokens": 128,
+    "content_lost_tokens": 14914431,
+    "content_lost_percentage": 70.65,
+    "capacity_utilization_pct": 93.51
+  },
+  "256": {
+    "context_length": 256,
+    "total_examples": 51756,
+    "fitting_count": 22588,
+    "exceeding_count": 29168,
+    "percentage_fitting": 43.64,
+    "percentage_requiring_truncation": 56.36,
+    "total_original_tokens": 21109080,
+    "tokens_retained_after_truncation": 10448477,
+    "average_retained_tokens": 201.88,
+    "median_retained_tokens": 256,
+    "content_lost_tokens": 10660603,
+    "content_lost_percentage": 50.5,
+    "capacity_utilization_pct": 78.86
+  },
+  "512": {
+    "context_length": 512,
+    "total_examples": 51756,
+    "fitting_count": 34872,
+    "exceeding_count": 16884,
+    "percentage_fitting": 67.38,
+    "percentage_requiring_truncation": 32.62,
+    "total_original_tokens": 21109080,
+    "tokens_retained_after_truncation": 16239942,
+    "average_retained_tokens": 313.78,
+    "median_retained_tokens": 318,
+    "content_lost_tokens": 4869138,
+    "content_lost_percentage": 23.07,
+    "capacity_utilization_pct": 61.28
+  }
+}

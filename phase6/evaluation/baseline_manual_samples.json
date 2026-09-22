@@ -1,0 +1,162 @@
+[
+  {
+    "prompt_id": 1,
+    "category": "factual question",
+    "instruction": "What is the capital of France?",
+    "input": "",
+    "expected_response": "The capital of France is Paris.",
+    "model_c_before_sft_response": "- Students (1999)\n- Stephysical Students (1999)\n-"
+  },
+  {
+    "prompt_id": 2,
+    "category": "factual question",
+    "instruction": "Name the planet closest to the Sun.",
+    "input": "",
+    "expected_response": "Mercury is the planet closest to the Sun.",
+    "model_c_before_sft_response": "- Students (1999)\n- Students (19999)\n- See Childr"
+  },
+  {
+    "prompt_id": 3,
+    "category": "factual question",
+    "instruction": "Who painted the Mona Lisa?",
+    "input": "",
+    "expected_response": "The Mona Lisa was painted by Leonardo da Vinci.",
+    "model_c_before_sft_response": "- Students are a first of his body of his body to his both his both"
+  },
+  {
+    "prompt_id": 4,
+    "category": "explanation",
+    "instruction": "Explain how photosynthesis works in plants.",
+    "input": "",
+    "expected_response": "Photosynthesis is the process by which green plants use sunlight, water, and carbon dioxide to create oxygen and energy in the form of sugar.",
+    "model_c_before_sft_response": "- Students are a few of his body of his both body to be a few of his"
+  },
+  {
+    "prompt_id": 5,
+    "category": "explanation",
+    "instruction": "Explain the concept of gravity in simple terms.",
+    "input": "",
+    "expected_response": "Gravity is an invisible force that pulls objects toward each other, keeping us on the ground and causing items to fall.",
+    "model_c_before_sft_response": "- Students (1999)\n- See of Students (1999)\n- See C"
+  },
+  {
+    "prompt_id": 6,
+    "category": "definition",
+    "instruction": "Provide a definition of cognitive automation.",
+    "input": "",
+    "expected_response": "Cognitive automation is an artificial intelligence technology that automates complex tasks requiring reasoning, learning, and decision-making.",
+    "model_c_before_sft_response": "- Students (1999)\n- See Children Christians (19999)"
+  },
+  {
+    "prompt_id": 7,
+    "category": "definition",
+    "instruction": "Define the term 'machine learning'.",
+    "input": "",
+    "expected_response": "Machine learning is a branch of artificial intelligence focused on building systems that learn from data to improve performance without explicit programming.",
+    "model_c_before_sft_response": "- Students (1999)\n- Stephysical Students (1999)\n-"
+  },
+  {
+    "prompt_id": 8,
+    "category": "summarization",
+    "instruction": "Summarize the following passage in one sentence.",
+    "input": "Solar energy is radiant light and heat from the Sun that is harnessed using a range of technologies such as solar power to generate electricity, solar thermal energy, and solar architecture. It is an essential source of renewable energy.",
+    "expected_response": "Solar energy harnesses sunlight and heat to generate renewable electricity and thermal power.",
+    "model_c_before_sft_response": "The first of his first of his body of his both to be a few of his body to be a"
+  },
+  {
+    "prompt_id": 9,
+    "category": "summarization",
+    "instruction": "Provide a brief summary of the main idea.",
+    "input": "Regular physical exercise improves cardiovascular health, boosts mental well-being, and reduces the risk of chronic diseases. Maintaining an active lifestyle is key to long-term health.",
+    "expected_response": "Regular exercise is key to long-term health and well-being.",
+    "model_c_before_sft_response": "The first of his first of his both of his both to be a first of his body to be a"
+  },
+  {
+    "prompt_id": 10,
+    "category": "rewriting",
+    "instruction": "Rewrite the following sentence in a formal tone.",
+    "input": "Hey, what's up? Can you give me a hand with this stuff later?",
+    "expected_response": "Hello, would you be able to assist me with these matters at your convenience later?",
+    "model_c_before_sft_response": "The first of his body of his both his was found to be a first of his body to h"
+  },
+  {
+    "prompt_id": 11,
+    "category": "rewriting",
+    "instruction": "Rephrase the text to make it more concise.",
+    "input": "Due to the fact that it was raining very heavily outside, we decided that it would be best if we cancelled the picnic.",
+    "expected_response": "Heavy rain forced us to cancel the picnic.",
+    "model_c_before_sft_response": "The first of his first of his body to be a first of his body to be a first of his b"
+  },
+  {
+    "prompt_id": 12,
+    "category": "classification",
+    "instruction": "Classify the following words as either nouns or verbs: Work, Run, Book.",
+    "input": "",
+    "expected_response": "Work: Noun or Verb\nRun: Noun or Verb\nBook: Noun or Verb",
+    "model_c_before_sft_response": "The Children: Students and Christians and Christian Christians and Chri"
+  },
+  {
+    "prompt_id": 13,
+    "category": "classification",
+    "instruction": "Classify the sentiment of the following review as Positive, Negative, or Neutral.",
+    "input": "The food was cold and service was terribly slow.",
+    "expected_response": "Negative",
+    "model_c_before_sft_response": "The Children's Christian Christians and Christian Christians and Christi"
+  },
+  {
+    "prompt_id": 14,
+    "category": "classification",
+    "instruction": "Categorize the following animal: Dolphin.",
+    "input": "",
+    "expected_response": "Dolphin is a marine mammal.",
+    "model_c_before_sft_response": "- Students (1999)\n- See Children Christians (19999)"
+  },
+  {
+    "prompt_id": 15,
+    "category": "reasoning",
+    "instruction": "If all dogs are mammals and all mammals are animals, are all dogs animals?",
+    "input": "",
+    "expected_response": "Yes, by logical deduction, all dogs are animals.",
+    "model_c_before_sft_response": "The Children's Christians and the Christian Christians and the Christian Chri"
+  },
+  {
+    "prompt_id": 16,
+    "category": "reasoning",
+    "instruction": "A train leaves Station A at 60 mph. Another train leaves Station B at 80 mph towards Station A. If they are 280 miles apart, how long until they meet?",
+    "input": "",
+    "expected_response": "They will meet in 2 hours.",
+    "model_c_before_sft_response": "The Students of the State Controlls and the State Children Christians and the Chri"
+  },
+  {
+    "prompt_id": 17,
+    "category": "simple calculation",
+    "instruction": "Calculate 15 multiplied by 4.",
+    "input": "",
+    "expected_response": "15 multiplied by 4 is 60.",
+    "model_c_before_sft_response": "- Students (1999)\n- See Controlll, 19999-1999-1"
+  },
+  {
+    "prompt_id": 18,
+    "category": "simple calculation",
+    "instruction": "What is 125 divided by 5?",
+    "input": "",
+    "expected_response": "125 divided by 5 is 25.",
+    "model_c_before_sft_response": "- Students (1999)\n- Students (19997)\n- See Childr"
+  },
+  {
+    "prompt_id": 19,
+    "category": "simple calculation",
+    "instruction": "Add 47 and 53.",
+    "input": "",
+    "expected_response": "47 + 53 = 100.",
+    "model_c_before_sft_response": "- Students (1999)\n- See Children States (1999)\n- St"
+  },
+  {
+    "prompt_id": 20,
+    "category": "coding/programming",
+    "instruction": "Write a Python function to check if a number is even.",
+    "input": "",
+    "expected_response": "def is_even(n):\n    return n % 2 == 0",
+    "model_c_before_sft_response": "The Children's Christian Christians and Christian Christians and Christi"
+  }
+]

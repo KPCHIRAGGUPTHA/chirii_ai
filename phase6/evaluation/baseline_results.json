@@ -1,0 +1,54 @@
+{
+  "evaluation_objective": "Measure Model C behavior BEFORE Supervised Fine-Tuning (Phase 6D Baseline)",
+  "model_metadata": {
+    "checkpoint_path": "checkpoints/phase5d/model_6_61m/best_model.pt",
+    "parameters": 6613504,
+    "n_layer": 8,
+    "n_head": 8,
+    "n_embd": 256,
+    "vocab_size": 1024,
+    "block_size": 128,
+    "checkpoint_sha256_before": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+    "checkpoint_sha256_after": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+    "is_checkpoint_unchanged": true
+  },
+  "tokenizer_metadata": {
+    "tokenizer_path": "tokenizers/phase5d/bpe_vocab_1024.json",
+    "vocab_size": 1024,
+    "tokenizer_sha256_before": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+    "tokenizer_sha256_after": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+    "is_tokenizer_unchanged": true
+  },
+  "dataset_metadata": {
+    "test_split_path": "phase6/data/sft/test_sft.jsonl",
+    "total_test_examples": 5176,
+    "duplicate_examples": 0,
+    "missing_responses": 0,
+    "cross_split_leakage": 0
+  },
+  "test_set_loss_metrics": {
+    "evaluated_examples": 5176,
+    "total_active_response_tokens": 275393,
+    "average_response_loss": 2.9912,
+    "perplexity": 19.9101
+  },
+  "generation_metrics": {
+    "fixed_prompts_count": 30,
+    "decoding_method": "deterministic greedy",
+    "temperature": 0.0,
+    "random_seed": 42,
+    "max_new_tokens": 40,
+    "average_generated_tokens": 40.0,
+    "exact_matches": 0,
+    "average_token_jaccard_overlap": 0.0905
+  },
+  "reproducibility": {
+    "python_version": "3.14.5",
+    "torch_version": "2.12.0+cpu",
+    "device": "cpu",
+    "random_seed": 42,
+    "optimizer_created": false,
+    "backward_called": false,
+    "training_mode_used": false
+  }
+}

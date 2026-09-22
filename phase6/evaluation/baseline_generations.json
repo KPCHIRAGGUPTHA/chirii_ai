@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "category": "factual question",
+    "instruction": "What is the capital of France?",
+    "input": "",
+    "expected_response": "The capital of France is Paris.",
+    "prompt_prefix": "Instruction:\nWhat is the capital of France?\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 44,
+    "full_generated_text": "Instruction:\nWhat is the capital of France?\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- Stephysical Students (1999)\n-",
+    "generated_response": "- Students (1999)\n- Stephysical Students (1999)\n-",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0294
+  },
+  {
+    "id": 2,
+    "category": "factual question",
+    "instruction": "Name the planet closest to the Sun.",
+    "input": "",
+    "expected_response": "Mercury is the planet closest to the Sun.",
+    "prompt_prefix": "Instruction:\nName the planet closest to the Sun.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 44,
+    "full_generated_text": "Instruction:\nName the planet closest to the Sun.\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- Students (19999)\n- See Childr",
+    "generated_response": "- Students (1999)\n- Students (19999)\n- See Childr",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0571
+  },
+  {
+    "id": 3,
+    "category": "factual question",
+    "instruction": "Who painted the Mona Lisa?",
+    "input": "",
+    "expected_response": "The Mona Lisa was painted by Leonardo da Vinci.",
+    "prompt_prefix": "Instruction:\nWho painted the Mona Lisa?\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 43,
+    "full_generated_text": "Instruction:\nWho painted the Mona Lisa?\n\nInput:\nNone\n\nResponse:\n- Students are a first of his body of his body to his both his both ",
+    "generated_response": "- Students are a first of his body of his body to his both his both",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0769
+  },
+  {
+    "id": 4,
+    "category": "explanation",
+    "instruction": "Explain how photosynthesis works in plants.",
+    "input": "",
+    "expected_response": "Photosynthesis is the process by which green plants use sunlight, water, and carbon dioxide to create oxygen and energy in the form of sugar.",
+    "prompt_prefix": "Instruction:\nExplain how photosynthesis works in plants.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 51,
+    "full_generated_text": "Instruction:\nExplain how photosynthesis works in plants.\n\nInput:\nNone\n\nResponse:\n- Students are a few of his body of his both body to be a few of his ",
+    "generated_response": "- Students are a few of his body of his both body to be a few of his",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.1587
+  },
+  {
+    "id": 5,
+    "category": "explanation",
+    "instruction": "Explain the concept of gravity in simple terms.",
+    "input": "",
+    "expected_response": "Gravity is an invisible force that pulls objects toward each other, keeping us on the ground and causing items to fall.",
+    "prompt_prefix": "Instruction:\nExplain the concept of gravity in simple terms.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 51,
+    "full_generated_text": "Instruction:\nExplain the concept of gravity in simple terms.\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- See of Students (1999)\n- See C",
+    "generated_response": "- Students (1999)\n- See of Students (1999)\n- See C",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0833
+  },
+  {
+    "id": 6,
+    "category": "definition",
+    "instruction": "Provide a definition of cognitive automation.",
+    "input": "",
+    "expected_response": "Cognitive automation is an artificial intelligence technology that automates complex tasks requiring reasoning, learning, and decision-making.",
+    "prompt_prefix": "Instruction:\nProvide a definition of cognitive automation.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 51,
+    "full_generated_text": "Instruction:\nProvide a definition of cognitive automation.\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- See Children Christians (19999)\n",
+    "generated_response": "- Students (1999)\n- See Children Christians (19999)",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.1143
+  },
+  {
+    "id": 7,
+    "category": "definition",
+    "instruction": "Define the term 'machine learning'.",
+    "input": "",
+    "expected_response": "Machine learning is a branch of artificial intelligence focused on building systems that learn from data to improve performance without explicit programming.",
+    "prompt_prefix": "Instruction:\nDefine the term 'machine learning'.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 47,
+    "full_generated_text": "Instruction:\nDefine the term 'machine learning'.\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- Stephysical Students (1999)\n-",
+    "generated_response": "- Students (1999)\n- Stephysical Students (1999)\n-",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.08
+  },
+  {
+    "id": 8,
+    "category": "summarization",
+    "instruction": "Summarize the following passage in one sentence.",
+    "input": "Solar energy is radiant light and heat from the Sun that is harnessed using a range of technologies such as solar power to generate electricity, solar thermal energy, and solar architecture. It is an essential source of renewable energy.",
+    "expected_response": "Solar energy harnesses sunlight and heat to generate renewable electricity and thermal power.",
+    "prompt_prefix": "Instruction:\nSummarize the following passage in one sentence.\n\nInput:\nSolar energy is radiant light and heat from the Sun that is harnessed using a range of technologies such as solar power to generate electricity, solar thermal energy, and solar architecture. It is an essential source of renewable energy.\n\nResponse:\n",
+    "prompt_token_count": 169,
+    "full_generated_text": "Instruction:\nSummarize the following passage in one sentence.\n\nInput:\nSolar energy is radiant light and heat from the Sun that is harnessed using a range of technologies such as solar power to generate electricity, solar thermal energy, and solar architecture. It is an essential source of renewable energy.\n\nResponse:\nThe first of his first of his body of his both to be a few of his body to be a ",
+    "generated_response": "The first of his first of his body of his both to be a few of his body to be a",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.1224
+  },
+  {
+    "id": 9,
+    "category": "summarization",
+    "instruction": "Provide a brief summary of the main idea.",
+    "input": "Regular physical exercise improves cardiovascular health, boosts mental well-being, and reduces the risk of chronic diseases. Maintaining an active lifestyle is key to long-term health.",
+    "expected_response": "Regular exercise is key to long-term health and well-being.",
+    "prompt_prefix": "Instruction:\nProvide a brief summary of the main idea.\n\nInput:\nRegular physical exercise improves cardiovascular health, boosts mental well-being, and reduces the risk of chronic diseases. Maintaining an active lifestyle is key to long-term health.\n\nResponse:\n",
+    "prompt_token_count": 146,
+    "full_generated_text": "Instruction:\nProvide a brief summary of the main idea.\n\nInput:\nRegular physical exercise improves cardiovascular health, boosts mental well-being, and reduces the risk of chronic diseases. Maintaining an active lifestyle is key to long-term health.\n\nResponse:\nThe first of his first of his both of his both to be a first of his body to be a ",
+    "generated_response": "The first of his first of his both of his both to be a first of his body to be a",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.1538
+  },
+  {
+    "id": 10,
+    "category": "rewriting",
+    "instruction": "Rewrite the following sentence in a formal tone.",
+    "input": "Hey, what's up? Can you give me a hand with this stuff later?",
+    "expected_response": "Hello, would you be able to assist me with these matters at your convenience later?",
+    "prompt_prefix": "Instruction:\nRewrite the following sentence in a formal tone.\n\nInput:\nHey, what's up? Can you give me a hand with this stuff later?\n\nResponse:\n",
+    "prompt_token_count": 78,
+    "full_generated_text": "Instruction:\nRewrite the following sentence in a formal tone.\n\nInput:\nHey, what's up? Can you give me a hand with this stuff later?\n\nResponse:\nThe first of his body of his both his was found to be a first of his body to h",
+    "generated_response": "The first of his body of his both his was found to be a first of his body to h",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.08
+  },
+  {
+    "id": 11,
+    "category": "rewriting",
+    "instruction": "Rephrase the text to make it more concise.",
+    "input": "Due to the fact that it was raining very heavily outside, we decided that it would be best if we cancelled the picnic.",
+    "expected_response": "Heavy rain forced us to cancel the picnic.",
+    "prompt_prefix": "Instruction:\nRephrase the text to make it more concise.\n\nInput:\nDue to the fact that it was raining very heavily outside, we decided that it would be best if we cancelled the picnic.\n\nResponse:\n",
+    "prompt_token_count": 98,
+    "full_generated_text": "Instruction:\nRephrase the text to make it more concise.\n\nInput:\nDue to the fact that it was raining very heavily outside, we decided that it would be best if we cancelled the picnic.\n\nResponse:\nThe first of his first of his body to be a first of his body to be a first of his b",
+    "generated_response": "The first of his first of his body to be a first of his body to be a first of his b",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0606
+  },
+  {
+    "id": 12,
+    "category": "classification",
+    "instruction": "Classify the following words as either nouns or verbs: Work, Run, Book.",
+    "input": "",
+    "expected_response": "Work: Noun or Verb\nRun: Noun or Verb\nBook: Noun or Verb",
+    "prompt_prefix": "Instruction:\nClassify the following words as either nouns or verbs: Work, Run, Book.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 65,
+    "full_generated_text": "Instruction:\nClassify the following words as either nouns or verbs: Work, Run, Book.\n\nInput:\nNone\n\nResponse:\n\nThe Children: Students and Christians and Christian Christians and Chri",
+    "generated_response": "The Children: Students and Christians and Christian Christians and Chri",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0588
+  },
+  {
+    "id": 13,
+    "category": "classification",
+    "instruction": "Classify the sentiment of the following review as Positive, Negative, or Neutral.",
+    "input": "The food was cold and service was terribly slow.",
+    "expected_response": "Negative",
+    "prompt_prefix": "Instruction:\nClassify the sentiment of the following review as Positive, Negative, or Neutral.\n\nInput:\nThe food was cold and service was terribly slow.\n\nResponse:\n",
+    "prompt_token_count": 88,
+    "full_generated_text": "Instruction:\nClassify the sentiment of the following review as Positive, Negative, or Neutral.\n\nInput:\nThe food was cold and service was terribly slow.\n\nResponse:\nThe Children's Christian Christians and Christian Christians and Christi",
+    "generated_response": "The Children's Christian Christians and Christian Christians and Christi",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0526
+  },
+  {
+    "id": 14,
+    "category": "classification",
+    "instruction": "Categorize the following animal: Dolphin.",
+    "input": "",
+    "expected_response": "Dolphin is a marine mammal.",
+    "prompt_prefix": "Instruction:\nCategorize the following animal: Dolphin.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 51,
+    "full_generated_text": "Instruction:\nCategorize the following animal: Dolphin.\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- See Children Christians (19999)\n",
+    "generated_response": "- Students (1999)\n- See Children Christians (19999)",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0556
+  },
+  {
+    "id": 15,
+    "category": "reasoning",
+    "instruction": "If all dogs are mammals and all mammals are animals, are all dogs animals?",
+    "input": "",
+    "expected_response": "Yes, by logical deduction, all dogs are animals.",
+    "prompt_prefix": "Instruction:\nIf all dogs are mammals and all mammals are animals, are all dogs animals?\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 69,
+    "full_generated_text": "Instruction:\nIf all dogs are mammals and all mammals are animals, are all dogs animals?\n\nInput:\nNone\n\nResponse:\nThe Children's Christians and the Christian Christians and the Christian Chri",
+    "generated_response": "The Children's Christians and the Christian Christians and the Christian Chri",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0833
+  },
+  {
+    "id": 16,
+    "category": "reasoning",
+    "instruction": "A train leaves Station A at 60 mph. Another train leaves Station B at 80 mph towards Station A. If they are 280 miles apart, how long until they meet?",
+    "input": "",
+    "expected_response": "They will meet in 2 hours.",
+    "prompt_prefix": "Instruction:\nA train leaves Station A at 60 mph. Another train leaves Station B at 80 mph towards Station A. If they are 280 miles apart, how long until they meet?\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 108,
+    "full_generated_text": "Instruction:\nA train leaves Station A at 60 mph. Another train leaves Station B at 80 mph towards Station A. If they are 280 miles apart, how long until they meet?\n\nInput:\nNone\n\nResponse:\nThe Students of the State Controlls and the State Children Christians and the Chri",
+    "generated_response": "The Students of the State Controlls and the State Children Christians and the Chri",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0857
+  },
+  {
+    "id": 17,
+    "category": "simple calculation",
+    "instruction": "Calculate 15 multiplied by 4.",
+    "input": "",
+    "expected_response": "15 multiplied by 4 is 60.",
+    "prompt_prefix": "Instruction:\nCalculate 15 multiplied by 4.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 44,
+    "full_generated_text": "Instruction:\nCalculate 15 multiplied by 4.\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- See Controlll, 19999-1999-1",
+    "generated_response": "- Students (1999)\n- See Controlll, 19999-1999-1",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0606
+  },
+  {
+    "id": 18,
+    "category": "simple calculation",
+    "instruction": "What is 125 divided by 5?",
+    "input": "",
+    "expected_response": "125 divided by 5 is 25.",
+    "prompt_prefix": "Instruction:\nWhat is 125 divided by 5?\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 43,
+    "full_generated_text": "Instruction:\nWhat is 125 divided by 5?\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- Students (19997)\n- See Childr",
+    "generated_response": "- Students (1999)\n- Students (19997)\n- See Childr",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.069
+  },
+  {
+    "id": 19,
+    "category": "simple calculation",
+    "instruction": "Add 47 and 53.",
+    "input": "",
+    "expected_response": "47 + 53 = 100.",
+    "prompt_prefix": "Instruction:\nAdd 47 and 53.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 36,
+    "full_generated_text": "Instruction:\nAdd 47 and 53.\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- See Children States (1999)\n- St",
+    "generated_response": "- Students (1999)\n- See Children States (1999)\n- St",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0667
+  },
+  {
+    "id": 20,
+    "category": "coding/programming",
+    "instruction": "Write a Python function to check if a number is even.",
+    "input": "",
+    "expected_response": "def is_even(n):\n    return n % 2 == 0",
+    "prompt_prefix": "Instruction:\nWrite a Python function to check if a number is even.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 56,
+    "full_generated_text": "Instruction:\nWrite a Python function to check if a number is even.\n\nInput:\nNone\n\nResponse:\nThe Children's Christian Christians and Christian Christians and Christi",
+    "generated_response": "The Children's Christian Christians and Christian Christians and Christi",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0303
+  },
+  {
+    "id": 21,
+    "category": "coding/programming",
+    "instruction": "Write a short Python code snippet to print numbers from 1 to 5.",
+    "input": "",
+    "expected_response": "for i in range(1, 6):\n    print(i)",
+    "prompt_prefix": "Instruction:\nWrite a short Python code snippet to print numbers from 1 to 5.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 63,
+    "full_generated_text": "Instruction:\nWrite a short Python code snippet to print numbers from 1 to 5.\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- Students (1999)\n- Students (1",
+    "generated_response": "- Students (1999)\n- Students (1999)\n- Students (1",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.24
+  },
+  {
+    "id": 22,
+    "category": "list generation",
+    "instruction": "Give three tips for staying healthy.",
+    "input": "",
+    "expected_response": "1. Eat a balanced diet.\n2. Exercise regularly.\n3. Get enough sleep.",
+    "prompt_prefix": "Instruction:\nGive three tips for staying healthy.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 46,
+    "full_generated_text": "Instruction:\nGive three tips for staying healthy.\n\nInput:\nNone\n\nResponse:\n- Students are a small of his body of his both body to be a few of h",
+    "generated_response": "- Students are a small of his body of his both body to be a few of h",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0702
+  },
+  {
+    "id": 23,
+    "category": "list generation",
+    "instruction": "List three primary colors.",
+    "input": "",
+    "expected_response": "1. Red\n2. Blue\n3. Yellow",
+    "prompt_prefix": "Instruction:\nList three primary colors.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 42,
+    "full_generated_text": "Instruction:\nList three primary colors.\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- Students (19999)\n- See Childr",
+    "generated_response": "- Students (1999)\n- Students (19999)\n- See Childr",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.1379
+  },
+  {
+    "id": 24,
+    "category": "comparison",
+    "instruction": "Describe the difference between a criminal justice system and a civil justice system.",
+    "input": "",
+    "expected_response": "A criminal justice system addresses public offenses against law and society, whereas a civil justice system resolves private disputes between individuals or entities.",
+    "prompt_prefix": "Instruction:\nDescribe the difference between a criminal justice system and a civil justice system.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 70,
+    "full_generated_text": "Instruction:\nDescribe the difference between a criminal justice system and a civil justice system.\n\nInput:\nNone\n\nResponse:\nThe Conference of American American American American American American Am",
+    "generated_response": "The Conference of American American American American American American Am",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0923
+  },
+  {
+    "id": 25,
+    "category": "comparison",
+    "instruction": "Compare renewable and non-renewable energy sources.",
+    "input": "",
+    "expected_response": "Renewable energy comes from self-replenishing natural resources like solar and wind, while non-renewable energy relies on finite resources like coal and oil.",
+    "prompt_prefix": "Instruction:\nCompare renewable and non-renewable energy sources.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 55,
+    "full_generated_text": "Instruction:\nCompare renewable and non-renewable energy sources.\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- See Children States (19999)\n- S",
+    "generated_response": "- Students (1999)\n- See Children States (19999)\n- S",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.129
+  },
+  {
+    "id": 26,
+    "category": "instruction following",
+    "instruction": "Capitalize every word in the input text.",
+    "input": "learning artificial intelligence is exciting",
+    "expected_response": "Learning Artificial Intelligence Is Exciting",
+    "prompt_prefix": "Instruction:\nCapitalize every word in the input text.\n\nInput:\nlearning artificial intelligence is exciting\n\nResponse:\n",
+    "prompt_token_count": 67,
+    "full_generated_text": "Instruction:\nCapitalize every word in the input text.\n\nInput:\nlearning artificial intelligence is exciting\n\nResponse:\nThe Conference of American American American American American American Am",
+    "generated_response": "The Conference of American American American American American American Am",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.1613
+  },
+  {
+    "id": 27,
+    "category": "instruction following",
+    "instruction": "Format the following names into a bulleted list.",
+    "input": "Alice, Bob, Charlie",
+    "expected_response": "- Alice\n- Bob\n- Charlie",
+    "prompt_prefix": "Instruction:\nFormat the following names into a bulleted list.\n\nInput:\nAlice, Bob, Charlie\n\nResponse:\n",
+    "prompt_token_count": 61,
+    "full_generated_text": "Instruction:\nFormat the following names into a bulleted list.\n\nInput:\nAlice, Bob, Charlie\n\nResponse:\n\nThe Children's Christian Christians and Christian Christians and Chris",
+    "generated_response": "The Children's Christian Christians and Christian Christians and Chris",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.1154
+  },
+  {
+    "id": 28,
+    "category": "instruction following",
+    "instruction": "Translate the phrase 'Hello world' to Spanish.",
+    "input": "",
+    "expected_response": "Hola mundo",
+    "prompt_prefix": "Instruction:\nTranslate the phrase 'Hello world' to Spanish.\n\nInput:\nNone\n\nResponse:\n",
+    "prompt_token_count": 56,
+    "full_generated_text": "Instruction:\nTranslate the phrase 'Hello world' to Spanish.\n\nInput:\nNone\n\nResponse:\n- Students (1999)\n- Stephysical Students (1999)\n-",
+    "generated_response": "- Students (1999)\n- Stephysical Students (1999)\n-",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0385
+  },
+  {
+    "id": 29,
+    "category": "instruction following",
+    "instruction": "Count the number of words in the following sentence.",
+    "input": "The quick brown fox jumps over the lazy dog.",
+    "expected_response": "There are 9 words in the sentence.",
+    "prompt_prefix": "Instruction:\nCount the number of words in the following sentence.\n\nInput:\nThe quick brown fox jumps over the lazy dog.\n\nResponse:\n",
+    "prompt_token_count": 74,
+    "full_generated_text": "Instruction:\nCount the number of words in the following sentence.\n\nInput:\nThe quick brown fox jumps over the lazy dog.\n\nResponse:\nThe first of his body of his both his both to be a first of his body to be a ",
+    "generated_response": "The first of his body of his both his both to be a first of his body to be a",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.069
+  },
+  {
+    "id": 30,
+    "category": "instruction following",
+    "instruction": "Reverse the letters of the given word.",
+    "input": "Python",
+    "expected_response": "nohtyP",
+    "prompt_prefix": "Instruction:\nReverse the letters of the given word.\n\nInput:\nPython\n\nResponse:\n",
+    "prompt_token_count": 45,
+    "full_generated_text": "Instruction:\nReverse the letters of the given word.\n\nInput:\nPython\n\nResponse:\nThe Children: A Students and Christians and Christians and Christian Ch",
+    "generated_response": "The Children: A Students and Christians and Christians and Christian Ch",
+    "generated_token_count": 40,
+    "generation_settings": {
+      "decoding": "deterministic greedy",
+      "temperature": 0.0,
+      "seed": 42,
+      "max_new_tokens": 40
+    },
+    "exact_match": false,
+    "token_jaccard_overlap": 0.0833
+  }
+]

@@ -1,0 +1,3 @@
+Artificial intelligence and deep learning models rely on transformer architectures with self-attention mechanisms.
+Machine learning models are trained using gradient descent and optimizer algorithms to minimize loss functions.
+MiniGPT Model C has 6.61M parameters and 8 transformer layers.

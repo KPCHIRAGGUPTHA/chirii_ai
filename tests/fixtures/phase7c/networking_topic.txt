@@ -1,0 +1,3 @@
+TCP/IP network protocols manage internet data routing, packet switching, and IP address resolution via DNS.
+Socket communication enables network data streams between server ports and client nodes.
+Network bandwidth and latency determine packet transmission speeds across distributed systems.

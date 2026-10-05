@@ -1,0 +1,3 @@
+Software engineering principles emphasize modular software architecture, design patterns, and unit test suites.
+CI/CD automated integration pipelines run continuous building and testing scripts before code deployment.
+Refactoring maintains code quality and reduces technical debt across software projects.

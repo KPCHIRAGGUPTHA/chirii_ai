@@ -1,0 +1,3 @@
+MiniGPT Model C has 6.61M parameters and 8 transformer layers. It was trained on FineWeb-Edu dataset. MiniGPT achieves fine-tuned instruction performance on Alpaca tasks.
+The model context length is strictly limited to 128 tokens.
+This text is used for unit testing Phase 7B document ingestion and micro-chunking pipeline.

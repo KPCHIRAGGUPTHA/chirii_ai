@@ -1,0 +1,95 @@
+{
+  "phase": "Phase 7A",
+  "project": "MiniGPT",
+  "status": "Frozen Baseline Design / Architecture Audit",
+  "baseline_git_commit": "3015a1a",
+  "model_config": {
+    "name": "MiniGPT Model C",
+    "param_count": 6613504,
+    "n_layer": 8,
+    "n_head": 8,
+    "n_embd": 256,
+    "block_size": 128,
+    "vocab_size": 1024,
+    "checkpoints": {
+      "base": "checkpoints/phase5d/model_6_61m/best_model.pt",
+      "sft": "checkpoints/phase6/model_c_sft/best_model.pt",
+      "tokenizer": "tokenizers/phase5d/bpe_vocab_1024.json"
+    }
+  },
+  "rag_design": {
+    "ingestion": {
+      "supported_document_types": ["txt", "md", "jsonl"],
+      "text_extraction": "UTF-8 text parsing with whitespace normalization and control character stripping",
+      "metadata_fields": ["doc_id", "chunk_id", "content", "token_count", "start_char", "end_char", "source"]
+    },
+    "chunking": {
+      "strategy": "Sentence-aware micro sliding window",
+      "chunk_size_tokens": 40,
+      "chunk_overlap_tokens": 10,
+      "min_chunk_size_tokens": 15,
+      "max_chunk_size_tokens": 45
+    },
+    "embedding_and_store": {
+      "primary_embedding": "BM25 / Lexical subword token distribution using BPE tokenizer",
+      "secondary_embedding": "Sentence-Transformers (all-MiniLM-L6-v2, 384-d dense vectors)",
+      "vector_store_type": "In-Memory NumPy/JSON Vector Index",
+      "similarity_metric": "Cosine Similarity / BM25 score",
+      "similarity_threshold": 0.25
+    },
+    "retrieval": {
+      "top_k": 1,
+      "fallback_on_low_score": true,
+      "fallback_behavior": "Bypass context injection and execute standard Alpaca SFT prompt"
+    },
+    "context_budget": {
+      "total_block_size": 128,
+      "template_overhead_tokens": 18,
+      "max_query_tokens": 22,
+      "max_context_tokens": 42,
+      "min_generation_reserve_tokens": 46,
+      "budget_verification_formula": "template_overhead (18) + query_tokens (22) + context_tokens (42) + generation_reserve (46) == 128"
+    },
+    "prompt_format": {
+      "template": "Instruction:\n{instruction}\n\nContext:\n{context}\n\nResponse:\n",
+      "alpaca_extended": true
+    },
+    "citation": {
+      "in_context_citations": false,
+      "api_envelope_citations": true,
+      "citation_fields": ["source", "chunk_id", "similarity_score"]
+    }
+  },
+  "comparison_pipeline": {
+    "models": [
+      {
+        "name": "Base",
+        "description": "MiniGPT Model C Pretrained model with raw query completion"
+      },
+      {
+        "name": "SFT",
+        "description": "MiniGPT Model C SFT model with standard Alpaca instruction prompt"
+      },
+      {
+        "name": "SFT + RAG",
+        "description": "MiniGPT Model C SFT model with Alpaca instruction prompt + retrieved micro-chunk"
+      }
+    ]
+  },
+  "evaluation_metrics": {
+    "retrieval_recall_at_1": "Target >= 85.0%",
+    "retrieval_mrr": "Target >= 0.85",
+    "answer_token_jaccard": "Target >= 0.45",
+    "exact_substring_match": "Target >= 70.0%",
+    "groundedness_faithfulness": "Target >= 80.0%",
+    "hallucination_rate": "Target <= 15.0%",
+    "retrieval_latency_ms": "Target < 5.0ms",
+    "generation_latency_ms": "Target < 150.0ms"
+  },
+  "risk_mitigation": {
+    "context_overflow": "Hard token counting guardrail & dynamic truncation prior to tokenization",
+    "tiny_model_capacity": "Micro-chunking (35-45 tokens) to prevent distraction",
+    "noisy_retrieval": "Distance thresholding (score >= 0.25) with automatic fallback to standard SFT",
+    "repetitive_generation": "Repetition penalty (1.15) and top-k/top-p sampling"
+  }
+}

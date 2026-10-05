@@ -1,0 +1,39 @@
+{
+  "repository": "KPCHIRAGGUPTHA/chirii_ai",
+  "base_checkpoint": "checkpoints/phase5d/model_6_61m/best_model.pt",
+  "base_sha": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+  "tokenizer_sha": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+  "sft_checkpoint": "checkpoints/phase6/model_c_sft/best_model.pt",
+  "sft_sha": "14f9335aa66d7168500c10cebaa20db373531cf87ae9dcd7d8ee1d8ed01cfb26",
+  "file_size_bytes": 27018621,
+  "modification_time": "Mon Oct  5 15:09:08 2026",
+  "parameter_count": 6613504,
+  "architecture": {
+    "n_layer": 8,
+    "n_head": 8,
+    "n_embd": 256,
+    "vocab_size": 1024,
+    "block_size": 128
+  },
+  "health_checks": {
+    "parameter_tensors": 100,
+    "nan_tensors": 0,
+    "inf_tensors": 0,
+    "forward_pass": "PASSED (8, 128, 1024)",
+    "loss_calculation": "PASSED",
+    "reload_test": "PASSED (Deterministic)"
+  },
+  "validation_metrics": {
+    "examples": 5176,
+    "active_response_tokens": 277210,
+    "validation_loss": 2.6027,
+    "validation_ppl": 13.5007
+  },
+  "isolation_checks": {
+    "base_checkpoint_unchanged": true,
+    "tokenizer_unchanged": true,
+    "pilot_checkpoint_preserved": true,
+    "test_set_untouched": true
+  },
+  "overall_status": "PASS"
+}

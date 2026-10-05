@@ -1,0 +1,127 @@
+{
+  "checkpoints": {
+    "base_checkpoint": "checkpoints/phase5d/model_6_61m/best_model.pt",
+    "base_sha256": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+    "sft_checkpoint": "checkpoints/phase6/model_c_sft/best_model.pt",
+    "sft_sha256": "14f9335aa66d7168500c10cebaa20db373531cf87ae9dcd7d8ee1d8ed01cfb26",
+    "tokenizer_path": "tokenizers/phase5d/bpe_vocab_1024.json",
+    "tokenizer_sha256": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d"
+  },
+  "architecture": {
+    "parameters": 6613504,
+    "n_layer": 8,
+    "n_head": 8,
+    "n_embd": 256,
+    "vocab_size": 1024,
+    "block_size": 128
+  },
+  "sft_config": {
+    "optimizer_steps": 1000,
+    "learning_rate": 0.0001,
+    "min_learning_rate": 1e-05,
+    "micro_batch_size": 8,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 32,
+    "weight_decay": 0.01,
+    "warmup_steps": 20,
+    "scheduler": "linear warmup + cosine decay",
+    "gradient_clipping": 1.0,
+    "hardware": "AMD Ryzen 7 7730U CPU (8 threads)",
+    "training_time_sec": 4167.88,
+    "training_time_min": 69.46
+  },
+  "metrics_comparison": {
+    "validation": {
+      "examples": 5176,
+      "baseline_loss": 3.0099,
+      "sft_loss": 2.6027,
+      "loss_absolute_improvement": 0.4072,
+      "loss_percentage_improvement": 13.53,
+      "baseline_ppl": 20.2864,
+      "sft_ppl": 13.5007,
+      "ppl_absolute_improvement": 6.7857,
+      "ppl_percentage_improvement": 33.45
+    },
+    "held_out_test": {
+      "examples": 5176,
+      "active_tokens": 275393,
+      "baseline_loss": 2.9912,
+      "sft_loss": 2.6084,
+      "loss_absolute_improvement": 0.3828,
+      "loss_percentage_improvement": 12.8,
+      "baseline_ppl": 19.9101,
+      "sft_ppl": 13.5777,
+      "ppl_absolute_improvement": 6.3324,
+      "ppl_percentage_improvement": 31.8
+    },
+    "generation": {
+      "prompt_count": 30,
+      "baseline_exact_match": "0/30",
+      "sft_exact_match": "0/30",
+      "exact_match_diff": 0,
+      "baseline_token_jaccard": 0.0905,
+      "sft_token_jaccard": 0.1059,
+      "jaccard_absolute_improvement": 0.0154,
+      "jaccard_percentage_improvement": 17.02
+    }
+  },
+  "qualitative_comparisons": [
+    {
+      "id": 1,
+      "category": "factual question",
+      "instruction": "What is the capital of France?",
+      "input": "",
+      "baseline_response": "- Students (1999)\n- Stephysical Students (1999)\n-",
+      "sft_response": "The United States of States and American American American American American",
+      "observation": "SFT response shows structured sentence prefix ('The United States of...') matching English grammar, but hallucinates country name rather than answering Paris. Baseline produces bulleted bibliography text."
+    },
+    {
+      "id": 4,
+      "category": "explanation",
+      "instruction": "Explain how photosynthesis works in plants.",
+      "input": "",
+      "baseline_response": "- Students are a few of his body of his both body to be a few of his",
+      "sft_response": "1. Start is a small of specific media is a small of specific metho",
+      "observation": "SFT model adopts numbered instructional list formatting ('1. Start...'), whereas baseline produces fragmented repetitive prose ('- Students are...'). Both remain incomplete due to 128 context constraint."
+    },
+    {
+      "id": 12,
+      "category": "classification",
+      "instruction": "Classify the following words as either nouns or verbs: Work, Run, Book.",
+      "input": "",
+      "baseline_response": "The Children: Students and Christians and Christian Christians and Chri",
+      "sft_response": "The sentence is a small of method of methods and the sentence of healthcare and he",
+      "observation": "SFT model generates grammatically structured sentence preamble ('The sentence is...'), whereas baseline outputs repetitive title-case nouns."
+    },
+    {
+      "id": 17,
+      "category": "simple calculation",
+      "instruction": "Calculate 15 multiplied by 4.",
+      "input": "",
+      "baseline_response": "- Students (1999)\n- See Controlll, 19999-1999-1",
+      "sft_response": "1. Controlling the sentence of 190 is a simple of 10 century.\"\n2. St",
+      "observation": "SFT model generates numbered step-by-step format ('1. Controlling... 2. St'), though arithmetic computation fails on both 6.61M models."
+    },
+    {
+      "id": 26,
+      "category": "instruction following",
+      "instruction": "Capitalize every word in the input text.",
+      "input": "learning artificial intelligence is exciting",
+      "baseline_response": "The Conference of American American American American American American Am",
+      "sft_response": "The sentence is a small of media is a small of methods and intelligence and inter",
+      "observation": "SFT response incorporates input topic keywords ('intelligence') into generated output, whereas baseline repeats generic capitalized words ('American American...')."
+    }
+  ],
+  "limitations": [
+    "Model is only 6.61M parameters.",
+    "Context length is limited to 128 tokens.",
+    "Exact Match remained 0/30 across both models.",
+    "Generation evaluation used only 30 fixed prompts.",
+    "Perplexity measures token-level modeling quality and does not directly prove human-rated instruction-following quality.",
+    "SFT dataset is based on deduplicated yahma/alpaca-cleaned.",
+    "CPU training was performed for 1000 optimizer steps.",
+    "No human evaluation was performed.",
+    "No external benchmark was used.",
+    "Results should not be generalized beyond the tested data."
+  ]
+}

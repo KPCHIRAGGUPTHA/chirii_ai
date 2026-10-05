@@ -1,0 +1,83 @@
+{
+  "test_examples": 5176,
+  "active_response_tokens": 275393,
+  "baseline_metrics": {
+    "checkpoint": "checkpoints/phase5d/model_6_61m/best_model.pt",
+    "sha256": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+    "test_loss": 2.9912,
+    "test_ppl": 19.9101,
+    "exact_match": "0/30",
+    "token_jaccard": 0.0905
+  },
+  "sft_metrics": {
+    "checkpoint": "checkpoints/phase6/model_c_sft/best_model.pt",
+    "sha256": "14f9335aa66d7168500c10cebaa20db373531cf87ae9dcd7d8ee1d8ed01cfb26",
+    "test_loss": 2.6084,
+    "test_ppl": 13.5777,
+    "exact_match": "0/30",
+    "token_jaccard": 0.1059
+  },
+  "improvements": {
+    "loss": {
+      "absolute": 0.3828,
+      "percentage": 12.8
+    },
+    "perplexity": {
+      "absolute": 6.3324,
+      "percentage": 31.81
+    },
+    "generation": {
+      "exact_match_diff": 0,
+      "token_jaccard_diff": 0.0154
+    }
+  },
+  "tokenizer_sha256": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+  "isolation_checks": {
+    "test_set_modified": false,
+    "training_performed": false,
+    "optimizer_used": false,
+    "checkpoint_integrity": true
+  },
+  "qualitative_samples": [
+    {
+      "id": 1,
+      "category": "factual question",
+      "instruction": "What is the capital of France?",
+      "input": "",
+      "baseline_response": "- Students (1999)\n- Stephysical Students (1999)\n-",
+      "sft_response": "The United States of States and American American American American American"
+    },
+    {
+      "id": 4,
+      "category": "explanation",
+      "instruction": "Explain how photosynthesis works in plants.",
+      "input": "",
+      "baseline_response": "- Students are a few of his body of his both body to be a few of his",
+      "sft_response": "1. Start is a small of specific media is a small of specific metho"
+    },
+    {
+      "id": 12,
+      "category": "classification",
+      "instruction": "Classify the following words as either nouns or verbs: Work, Run, Book.",
+      "input": "",
+      "baseline_response": "The Children: Students and Christians and Christian Christians and Chri",
+      "sft_response": "The sentence is a small of method of methods and the sentence of healthcare and he"
+    },
+    {
+      "id": 17,
+      "category": "simple calculation",
+      "instruction": "Calculate 15 multiplied by 4.",
+      "input": "",
+      "baseline_response": "- Students (1999)\n- See Controlll, 19999-1999-1",
+      "sft_response": "1. Controlling the sentence of 190 is a simple of 10 century.\"\n2. St"
+    },
+    {
+      "id": 26,
+      "category": "instruction following",
+      "instruction": "Capitalize every word in the input text.",
+      "input": "learning artificial intelligence is exciting",
+      "baseline_response": "The Conference of American American American American American American Am",
+      "sft_response": "The sentence is a small of media is a small of methods and intelligence and inter"
+    }
+  ]
+}

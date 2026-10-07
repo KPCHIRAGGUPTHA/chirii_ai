@@ -1,0 +1,32 @@
+[
+  {
+    "doc_id": "doc_astronomy",
+    "title": "Astronomy and Solar System Overview",
+    "text": "The Sun is a G-type main-sequence star that contains 99.86 percent of the mass in the Solar System. Jupiter is the largest planet, having a mass one-thousandth that of the Sun. Mars has two small natural satellites named Phobos and Deimos. The Apollo 11 mission landed humans on the Moon in July 1969."
+  },
+  {
+    "doc_id": "doc_computing_history",
+    "title": "History of Computing and Programming Languages",
+    "text": "The ENIAC computer was announced in February 1946 at the University of Pennsylvania. Ada Lovelace is widely considered the first computer programmer for her work on Babbage's Analytical Engine. Python was designed by Guido van Rossum and first released in February 1991. The Linux operating system kernel was released by Linus Torvalds in September 1991."
+  },
+  {
+    "doc_id": "doc_minigpt_specs",
+    "title": "MiniGPT Technical Architecture Specifications",
+    "text": "MiniGPT Model C is a micro-transformer architecture with 6,613,504 trainable parameters. The transformer configuration consists of 8 layers, 8 attention heads, and an embedding dimension of 256. Model C native context length is fixed at 128 tokens. Subword tokenization is handled by a Byte Pair Encoding tokenizer with a 1,024 vocabulary size."
+  },
+  {
+    "doc_id": "doc_physics_units",
+    "title": "Fundamental Physics Constants and Units",
+    "text": "The speed of light in vacuum is defined as exactly 299,792,458 meters per second. Planck constant is equal to 6.626 x 10^-34 joule-seconds. Absolute zero is defined as 0 Kelvin or minus 273.15 degrees Celsius. The gravitational constant G has a value of 6.674 x 10^-11 m^3 kg^-1 s^-2."
+  },
+  {
+    "doc_id": "doc_deep_learning",
+    "title": "Deep Learning and Transformer Concepts",
+    "text": "Transformer models replace recurrent layers with multi-head causal self-attention mechanisms. Supervised Fine-Tuning adapts pretrained language models to instruction-following tasks. Cross-entropy loss measures the KL divergence between target class labels and predicted probability distributions. AdamW optimizer decouples weight decay penalty from gradient updates."
+  },
+  {
+    "doc_id": "doc_geography",
+    "title": "Global Geography and World Capitals",
+    "text": "The capital city of France is Paris, located along the Seine River. Tokyo is the capital of Japan and the most populous metropolitan area in the world. The Amazon River is the largest river by discharge volume of water in the world. Mount Everest is Earth's highest mountain above sea level, reaching 8,848 meters."
+  }
+]

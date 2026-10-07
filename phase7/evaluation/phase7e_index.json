@@ -1,0 +1,5712 @@
+{
+  "total_chunks": 35,
+  "avgdl": 39.371428571428574,
+  "chunks": {
+    "doc_astronomy_chk_000": {
+      "document_id": "doc_astronomy",
+      "chunk_id": "doc_astronomy_chk_000",
+      "source": "doc_astronomy.txt",
+      "text": "The Sun is a G-type main-sequence star that contains 99.86 percent of the mass in the S",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_astronomy_chk_001": {
+      "document_id": "doc_astronomy",
+      "chunk_id": "doc_astronomy_chk_001",
+      "source": "doc_astronomy.txt",
+      "text": "86 percent of the mass in the Solar System. Jupiter is the largest planet, having a mas",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_astronomy_chk_002": {
+      "document_id": "doc_astronomy",
+      "chunk_id": "doc_astronomy_chk_002",
+      "source": "doc_astronomy.txt",
+      "text": "planet, having a mass one-thousandth that of the Sun. Mars has two small natural sat",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_astronomy_chk_003": {
+      "document_id": "doc_astronomy",
+      "chunk_id": "doc_astronomy_chk_003",
+      "source": "doc_astronomy.txt",
+      "text": "small natural satellites named Phobos and Deimos. The Apollo 11 missi",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_astronomy_chk_004": {
+      "document_id": "doc_astronomy",
+      "chunk_id": "doc_astronomy_chk_004",
+      "source": "doc_astronomy.txt",
+      "text": "e Apollo 11 mission landed humans on the Moon in July 1969.",
+      "token_count": 33,
+      "metadata": {}
+    },
+    "doc_computing_history_chk_000": {
+      "document_id": "doc_computing_history",
+      "chunk_id": "doc_computing_history_chk_000",
+      "source": "doc_computing_history.txt",
+      "text": "The ENIAC computer was announced in February 1946 at the University of Penn",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_computing_history_chk_001": {
+      "document_id": "doc_computing_history",
+      "chunk_id": "doc_computing_history_chk_001",
+      "source": "doc_computing_history.txt",
+      "text": "niversity of Pennsylvania. Ada Lovelace is widely considered the first comput",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_computing_history_chk_002": {
+      "document_id": "doc_computing_history",
+      "chunk_id": "doc_computing_history_chk_002",
+      "source": "doc_computing_history.txt",
+      "text": "dered the first computer programmer for her work on Babbage's Analytical Engine. ",
+      "token_count": 40,
+      "metadata": {}
+    },
+    "doc_computing_history_chk_003": {
+      "document_id": "doc_computing_history",
+      "chunk_id": "doc_computing_history_chk_003",
+      "source": "doc_computing_history.txt",
+      "text": "alytical Engine. Python was designed by Guido van Rossum and first released in ",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_computing_history_chk_004": {
+      "document_id": "doc_computing_history",
+      "chunk_id": "doc_computing_history_chk_004",
+      "source": "doc_computing_history.txt",
+      "text": "m and first released in February 1991. The Linux operating system kernel was ",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_computing_history_chk_005": {
+      "document_id": "doc_computing_history",
+      "chunk_id": "doc_computing_history_chk_005",
+      "source": "doc_computing_history.txt",
+      "text": "stem kernel was released by Linus Torvalds in September 1991.",
+      "token_count": 38,
+      "metadata": {}
+    },
+    "doc_deep_learning_chk_000": {
+      "document_id": "doc_deep_learning",
+      "chunk_id": "doc_deep_learning_chk_000",
+      "source": "doc_deep_learning.txt",
+      "text": "Transformer models replace recurrent layers with multi-head causal self-attention ",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_deep_learning_chk_001": {
+      "document_id": "doc_deep_learning",
+      "chunk_id": "doc_deep_learning_chk_001",
+      "source": "doc_deep_learning.txt",
+      "text": "usal self-attention mechanisms. Supervised Fine-Tuning adapts pretrained lang",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_deep_learning_chk_002": {
+      "document_id": "doc_deep_learning",
+      "chunk_id": "doc_deep_learning_chk_002",
+      "source": "doc_deep_learning.txt",
+      "text": "apts pretrained language models to instruction-following tasks. ",
+      "token_count": 34,
+      "metadata": {}
+    },
+    "doc_deep_learning_chk_003": {
+      "document_id": "doc_deep_learning",
+      "chunk_id": "doc_deep_learning_chk_003",
+      "source": "doc_deep_learning.txt",
+      "text": "following tasks. Cross-entropy loss measures the KL divergence between tar",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_deep_learning_chk_004": {
+      "document_id": "doc_deep_learning",
+      "chunk_id": "doc_deep_learning_chk_004",
+      "source": "doc_deep_learning.txt",
+      "text": "vergence between target class labels and predicted probability distributions. A",
+      "token_count": 40,
+      "metadata": {}
+    },
+    "doc_deep_learning_chk_005": {
+      "document_id": "doc_deep_learning",
+      "chunk_id": "doc_deep_learning_chk_005",
+      "source": "doc_deep_learning.txt",
+      "text": "ility distributions. AdamW optimizer decouples weight decay penalty from gradi",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_deep_learning_chk_006": {
+      "document_id": "doc_deep_learning",
+      "chunk_id": "doc_deep_learning_chk_006",
+      "source": "doc_deep_learning.txt",
+      "text": "penalty from gradient updates.",
+      "token_count": 17,
+      "metadata": {}
+    },
+    "doc_geography_chk_000": {
+      "document_id": "doc_geography",
+      "chunk_id": "doc_geography_chk_000",
+      "source": "doc_geography.txt",
+      "text": "The capital city of France is Paris, located along the Seine River. ",
+      "token_count": 35,
+      "metadata": {}
+    },
+    "doc_geography_chk_001": {
+      "document_id": "doc_geography",
+      "chunk_id": "doc_geography_chk_001",
+      "source": "doc_geography.txt",
+      "text": " the Seine River. Tokyo is the capital of Japan and the most populous metropolitan are",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_geography_chk_002": {
+      "document_id": "doc_geography",
+      "chunk_id": "doc_geography_chk_002",
+      "source": "doc_geography.txt",
+      "text": "ous metropolitan area in the world. The Amazon River is the largest river by discharge ",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_geography_chk_003": {
+      "document_id": "doc_geography",
+      "chunk_id": "doc_geography_chk_003",
+      "source": "doc_geography.txt",
+      "text": "river by discharge volume of water in the world. Mount Everest is Earth's highest moun",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_geography_chk_004": {
+      "document_id": "doc_geography",
+      "chunk_id": "doc_geography_chk_004",
+      "source": "doc_geography.txt",
+      "text": "arth's highest mountain above sea level, reaching 8,848 meters.",
+      "token_count": 37,
+      "metadata": {}
+    },
+    "doc_minigpt_specs_chk_000": {
+      "document_id": "doc_minigpt_specs",
+      "chunk_id": "doc_minigpt_specs_chk_000",
+      "source": "doc_minigpt_specs.txt",
+      "text": "MiniGPT Model C is a micro-transformer architecture with 6,613,50",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_minigpt_specs_chk_001": {
+      "document_id": "doc_minigpt_specs",
+      "chunk_id": "doc_minigpt_specs_chk_001",
+      "source": "doc_minigpt_specs.txt",
+      "text": "re with 6,613,504 trainable parameters. The transformer configuration consists of 8 layer",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_minigpt_specs_chk_002": {
+      "document_id": "doc_minigpt_specs",
+      "chunk_id": "doc_minigpt_specs_chk_002",
+      "source": "doc_minigpt_specs.txt",
+      "text": "ation consists of 8 layers, 8 attention heads, and an embedding dimension of 256. ",
+      "token_count": 41,
+      "metadata": {}
+    },
+    "doc_minigpt_specs_chk_003": {
+      "document_id": "doc_minigpt_specs",
+      "chunk_id": "doc_minigpt_specs_chk_003",
+      "source": "doc_minigpt_specs.txt",
+      "text": "dimension of 256. Model C native context length is fixed at 128 tokens. ",
+      "token_count": 43,
+      "metadata": {}
+    },
+    "doc_minigpt_specs_chk_004": {
+      "document_id": "doc_minigpt_specs",
+      "chunk_id": "doc_minigpt_specs_chk_004",
+      "source": "doc_minigpt_specs.txt",
+      "text": "ed at 128 tokens. Subword tokenization is handled by a Byte Pair Encoding to",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_minigpt_specs_chk_005": {
+      "document_id": "doc_minigpt_specs",
+      "chunk_id": "doc_minigpt_specs_chk_005",
+      "source": "doc_minigpt_specs.txt",
+      "text": "e Pair Encoding tokenizer with a 1,024 vocabulary size.",
+      "token_count": 35,
+      "metadata": {}
+    },
+    "doc_physics_units_chk_000": {
+      "document_id": "doc_physics_units",
+      "chunk_id": "doc_physics_units_chk_000",
+      "source": "doc_physics_units.txt",
+      "text": "The speed of light in vacuum is defined as exactly 299,792,458 meters per ",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_physics_units_chk_001": {
+      "document_id": "doc_physics_units",
+      "chunk_id": "doc_physics_units_chk_001",
+      "source": "doc_physics_units.txt",
+      "text": "458 meters per second. Planck constant is equal to 6.626 x 10^-34",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_physics_units_chk_002": {
+      "document_id": "doc_physics_units",
+      "chunk_id": "doc_physics_units_chk_002",
+      "source": "doc_physics_units.txt",
+      "text": "626 x 10^-34 joule-seconds. Absolute zero is defined as 0 Kelv",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_physics_units_chk_003": {
+      "document_id": "doc_physics_units",
+      "chunk_id": "doc_physics_units_chk_003",
+      "source": "doc_physics_units.txt",
+      "text": "defined as 0 Kelvin or minus 273.15 degrees Celsius. The gravitational constan",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_physics_units_chk_004": {
+      "document_id": "doc_physics_units",
+      "chunk_id": "doc_physics_units_chk_004",
+      "source": "doc_physics_units.txt",
+      "text": "e gravitational constant G has a value of 6.674 x 10^-11 m^3 kg",
+      "token_count": 42,
+      "metadata": {}
+    },
+    "doc_physics_units_chk_005": {
+      "document_id": "doc_physics_units",
+      "chunk_id": "doc_physics_units_chk_005",
+      "source": "doc_physics_units.txt",
+      "text": "-11 m^3 kg^-1 s^-2.",
+      "token_count": 19,
+      "metadata": {}
+    }
+  },
+  "doc_lengths": {
+    "doc_astronomy_chk_000": 42,
+    "doc_astronomy_chk_001": 42,
+    "doc_astronomy_chk_002": 42,
+    "doc_astronomy_chk_003": 42,
+    "doc_astronomy_chk_004": 33,
+    "doc_computing_history_chk_000": 42,
+    "doc_computing_history_chk_001": 42,
+    "doc_computing_history_chk_002": 40,
+    "doc_computing_history_chk_003": 42,
+    "doc_computing_history_chk_004": 42,
+    "doc_computing_history_chk_005": 38,
+    "doc_deep_learning_chk_000": 42,
+    "doc_deep_learning_chk_001": 42,
+    "doc_deep_learning_chk_002": 34,
+    "doc_deep_learning_chk_003": 42,
+    "doc_deep_learning_chk_004": 40,
+    "doc_deep_learning_chk_005": 42,
+    "doc_deep_learning_chk_006": 17,
+    "doc_geography_chk_000": 35,
+    "doc_geography_chk_001": 42,
+    "doc_geography_chk_002": 42,
+    "doc_geography_chk_003": 42,
+    "doc_geography_chk_004": 37,
+    "doc_minigpt_specs_chk_000": 42,
+    "doc_minigpt_specs_chk_001": 42,
+    "doc_minigpt_specs_chk_002": 41,
+    "doc_minigpt_specs_chk_003": 43,
+    "doc_minigpt_specs_chk_004": 42,
+    "doc_minigpt_specs_chk_005": 35,
+    "doc_physics_units_chk_000": 42,
+    "doc_physics_units_chk_001": 42,
+    "doc_physics_units_chk_002": 42,
+    "doc_physics_units_chk_003": 42,
+    "doc_physics_units_chk_004": 42,
+    "doc_physics_units_chk_005": 19
+  },
+  "doc_frequencies": {
+    "1": 26,
+    "13": 6,
+    "14": 11,
+    "15": 10,
+    "17": 7,
+    "18": 15,
+    "19": 9,
+    "20": 7,
+    "21": 8,
+    "22": 7,
+    "23": 11,
+    "24": 3,
+    "25": 9,
+    "26": 6,
+    "34": 5,
+    "35": 2,
+    "36": 5,
+    "37": 1,
+    "38": 6,
+    "39": 4,
+    "40": 4,
+    "42": 1,
+    "43": 3,
+    "44": 3,
+    "45": 4,
+    "46": 5,
+    "47": 1,
+    "49": 9,
+    "51": 4,
+    "52": 8,
+    "53": 5,
+    "54": 1,
+    "56": 1,
+    "63": 4,
+    "66": 10,
+    "67": 8,
+    "68": 10,
+    "69": 18,
+    "70": 20,
+    "71": 11,
+    "72": 15,
+    "73": 8,
+    "74": 15,
+    "75": 1,
+    "76": 10,
+    "77": 17,
+    "78": 23,
+    "79": 11,
+    "80": 10,
+    "81": 15,
+    "83": 4,
+    "84": 20,
+    "85": 18,
+    "86": 14,
+    "87": 13,
+    "88": 7,
+    "89": 5,
+    "90": 6,
+    "91": 5,
+    "734": 17,
+    "735": 14,
+    "736": 8,
+    "737": 12,
+    "738": 5,
+    "739": 6,
+    "740": 13,
+    "741": 10,
+    "742": 2,
+    "743": 2,
+    "744": 1,
+    "745": 16,
+    "746": 3,
+    "748": 3,
+    "749": 8,
+    "750": 12,
+    "751": 2,
+    "752": 10,
+    "753": 2,
+    "754": 3,
+    "755": 12,
+    "756": 6,
+    "757": 14,
+    "758": 12,
+    "759": 6,
+    "760": 5,
+    "761": 9,
+    "762": 4,
+    "763": 4,
+    "764": 2,
+    "765": 7,
+    "766": 3,
+    "767": 3,
+    "768": 1,
+    "769": 11,
+    "770": 13,
+    "771": 1,
+    "772": 8,
+    "773": 4,
+    "775": 13,
+    "776": 4,
+    "777": 2,
+    "779": 4,
+    "780": 7,
+    "781": 3,
+    "782": 3,
+    "783": 3,
+    "785": 2,
+    "786": 5,
+    "787": 9,
+    "788": 8,
+    "789": 3,
+    "791": 2,
+    "792": 3,
+    "794": 13,
+    "795": 4,
+    "796": 4,
+    "797": 2,
+    "798": 2,
+    "801": 11,
+    "802": 4,
+    "803": 1,
+    "804": 12,
+    "808": 1,
+    "809": 2,
+    "810": 4,
+    "811": 6,
+    "812": 1,
+    "813": 2,
+    "814": 6,
+    "815": 4,
+    "816": 2,
+    "818": 9,
+    "819": 2,
+    "821": 3,
+    "822": 3,
+    "823": 2,
+    "824": 1,
+    "825": 2,
+    "826": 4,
+    "827": 1,
+    "828": 3,
+    "829": 3,
+    "831": 2,
+    "833": 4,
+    "834": 1,
+    "835": 2,
+    "836": 1,
+    "837": 1,
+    "841": 4,
+    "842": 7,
+    "844": 2,
+    "845": 3,
+    "846": 2,
+    "849": 4,
+    "850": 7,
+    "851": 2,
+    "853": 3,
+    "854": 2,
+    "855": 4,
+    "859": 3,
+    "860": 9,
+    "861": 2,
+    "862": 2,
+    "863": 4,
+    "864": 3,
+    "865": 3,
+    "867": 3,
+    "869": 3,
+    "870": 3,
+    "871": 5,
+    "874": 3,
+    "875": 3,
+    "880": 1,
+    "882": 2,
+    "883": 3,
+    "888": 3,
+    "893": 4,
+    "894": 3,
+    "896": 1,
+    "899": 5,
+    "902": 1,
+    "905": 2,
+    "907": 1,
+    "909": 2,
+    "910": 1,
+    "917": 7,
+    "919": 5,
+    "921": 1,
+    "922": 2,
+    "926": 1,
+    "928": 1,
+    "931": 4,
+    "933": 4,
+    "936": 2,
+    "944": 4,
+    "945": 4,
+    "946": 4,
+    "949": 2,
+    "950": 5,
+    "951": 1,
+    "957": 3,
+    "961": 1,
+    "968": 2,
+    "970": 3,
+    "976": 1,
+    "984": 4,
+    "991": 4,
+    "995": 1,
+    "996": 2,
+    "999": 2,
+    "1003": 3,
+    "1004": 4,
+    "1006": 1,
+    "1012": 2,
+    "1013": 3,
+    "1014": 2,
+    "1019": 3,
+    "1020": 2,
+    "1023": 2
+  },
+  "postings": {
+    "1": [
+      [
+        "doc_astronomy_chk_000",
+        3
+      ],
+      [
+        "doc_astronomy_chk_001",
+        2
+      ],
+      [
+        "doc_astronomy_chk_002",
+        2
+      ],
+      [
+        "doc_astronomy_chk_003",
+        2
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        3
+      ],
+      [
+        "doc_computing_history_chk_005",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        3
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        4
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        2
+      ],
+      [
+        "doc_physics_units_chk_001",
+        3
+      ],
+      [
+        "doc_physics_units_chk_002",
+        4
+      ],
+      [
+        "doc_physics_units_chk_003",
+        2
+      ],
+      [
+        "doc_physics_units_chk_004",
+        5
+      ],
+      [
+        "doc_physics_units_chk_005",
+        3
+      ]
+    ],
+    "13": [
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        2
+      ]
+    ],
+    "14": [
+      [
+        "doc_astronomy_chk_000",
+        2
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        2
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_005",
+        3
+      ]
+    ],
+    "15": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_005",
+        1
+      ]
+    ],
+    "17": [
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        2
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "18": [
+      [
+        "doc_astronomy_chk_003",
+        2
+      ],
+      [
+        "doc_astronomy_chk_004",
+        3
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        2
+      ],
+      [
+        "doc_computing_history_chk_005",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        3
+      ],
+      [
+        "doc_physics_units_chk_005",
+        3
+      ]
+    ],
+    "19": [
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        2
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_005",
+        1
+      ]
+    ],
+    "20": [
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_005",
+        1
+      ]
+    ],
+    "21": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        2
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "22": [
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "23": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        3
+      ],
+      [
+        "doc_physics_units_chk_002",
+        2
+      ],
+      [
+        "doc_physics_units_chk_004",
+        2
+      ]
+    ],
+    "24": [
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "25": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        3
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ]
+    ],
+    "26": [
+      [
+        "doc_astronomy_chk_000",
+        2
+      ],
+      [
+        "doc_astronomy_chk_004",
+        2
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        2
+      ],
+      [
+        "doc_computing_history_chk_005",
+        2
+      ],
+      [
+        "doc_physics_units_chk_000",
+        3
+      ]
+    ],
+    "34": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ]
+    ],
+    "35": [
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ]
+    ],
+    "36": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "37": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ]
+    ],
+    "38": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "39": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ]
+    ],
+    "40": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "42": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ]
+    ],
+    "43": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ]
+    ],
+    "44": [
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "45": [
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ]
+    ],
+    "46": [
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ]
+    ],
+    "47": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ]
+    ],
+    "49": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ]
+    ],
+    "51": [
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ]
+    ],
+    "52": [
+      [
+        "doc_astronomy_chk_000",
+        2
+      ],
+      [
+        "doc_astronomy_chk_001",
+        2
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ]
+    ],
+    "53": [
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ]
+    ],
+    "54": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ]
+    ],
+    "56": [
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ]
+    ],
+    "63": [
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        2
+      ],
+      [
+        "doc_physics_units_chk_005",
+        3
+      ]
+    ],
+    "66": [
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        2
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "67": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        2
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "68": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        2
+      ],
+      [
+        "doc_geography_chk_000",
+        3
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ]
+    ],
+    "69": [
+      [
+        "doc_computing_history_chk_001",
+        2
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "70": [
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        2
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        2
+      ]
+    ],
+    "71": [
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "72": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        2
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        2
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_005",
+        1
+      ]
+    ],
+    "73": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ]
+    ],
+    "74": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        2
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        2
+      ],
+      [
+        "doc_geography_chk_000",
+        2
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "75": [
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "76": [
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_005",
+        1
+      ]
+    ],
+    "77": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_003",
+        2
+      ],
+      [
+        "doc_astronomy_chk_004",
+        2
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        2
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ]
+    ],
+    "78": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        2
+      ],
+      [
+        "doc_astronomy_chk_002",
+        2
+      ],
+      [
+        "doc_astronomy_chk_003",
+        2
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_005",
+        1
+      ]
+    ],
+    "79": [
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_astronomy_chk_003",
+        2
+      ],
+      [
+        "doc_computing_history_chk_000",
+        3
+      ],
+      [
+        "doc_computing_history_chk_001",
+        2
+      ],
+      [
+        "doc_computing_history_chk_002",
+        2
+      ],
+      [
+        "doc_computing_history_chk_003",
+        2
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "80": [
+      [
+        "doc_astronomy_chk_003",
+        2
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "81": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        2
+      ],
+      [
+        "doc_geography_chk_001",
+        2
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ]
+    ],
+    "83": [
+      [
+        "doc_deep_learning_chk_000",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ]
+    ],
+    "84": [
+      [
+        "doc_astronomy_chk_002",
+        3
+      ],
+      [
+        "doc_astronomy_chk_003",
+        3
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        4
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        2
+      ],
+      [
+        "doc_physics_units_chk_005",
+        1
+      ]
+    ],
+    "85": [
+      [
+        "doc_astronomy_chk_000",
+        2
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "86": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        2
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "87": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        2
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        2
+      ],
+      [
+        "doc_geography_chk_003",
+        2
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        2
+      ],
+      [
+        "doc_physics_units_chk_004",
+        2
+      ]
+    ],
+    "88": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ]
+    ],
+    "89": [
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "90": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        2
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        2
+      ]
+    ],
+    "91": [
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        2
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "734": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        2
+      ],
+      [
+        "doc_geography_chk_003",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        2
+      ]
+    ],
+    "735": [
+      [
+        "doc_astronomy_chk_000",
+        2
+      ],
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        3
+      ],
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        2
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "736": [
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "737": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        2
+      ]
+    ],
+    "738": [
+      [
+        "doc_astronomy_chk_002",
+        2
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ]
+    ],
+    "739": [
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ]
+    ],
+    "740": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "741": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        3
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "742": [
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ]
+    ],
+    "743": [
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ]
+    ],
+    "744": [
+      [
+        "doc_computing_history_chk_005",
+        1
+      ]
+    ],
+    "745": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        2
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        2
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "746": [
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "748": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ]
+    ],
+    "749": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        3
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ]
+    ],
+    "750": [
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "751": [
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ]
+    ],
+    "752": [
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        2
+      ],
+      [
+        "doc_computing_history_chk_001",
+        2
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "753": [
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ]
+    ],
+    "754": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ]
+    ],
+    "755": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        2
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        2
+      ],
+      [
+        "doc_geography_chk_003",
+        2
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "756": [
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "757": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ]
+    ],
+    "758": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        3
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        2
+      ],
+      [
+        "doc_geography_chk_003",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ]
+    ],
+    "759": [
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "760": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        2
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ]
+    ],
+    "761": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "762": [
+      [
+        "doc_deep_learning_chk_003",
+        2
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ]
+    ],
+    "763": [
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ]
+    ],
+    "764": [
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ]
+    ],
+    "765": [
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "766": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "767": [
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ]
+    ],
+    "768": [
+      [
+        "doc_minigpt_specs_chk_002",
+        2
+      ]
+    ],
+    "769": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "770": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        2
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ]
+    ],
+    "771": [
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "772": [
+      [
+        "doc_astronomy_chk_002",
+        2
+      ],
+      [
+        "doc_astronomy_chk_003",
+        2
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ]
+    ],
+    "773": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "775": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "776": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ]
+    ],
+    "777": [
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "779": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ]
+    ],
+    "780": [
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "781": [
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ]
+    ],
+    "782": [
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ]
+    ],
+    "783": [
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "785": [
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ]
+    ],
+    "786": [
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "787": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "788": [
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ]
+    ],
+    "789": [
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        2
+      ]
+    ],
+    "791": [
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ]
+    ],
+    "792": [
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ]
+    ],
+    "794": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        2
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        2
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        2
+      ]
+    ],
+    "795": [
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ]
+    ],
+    "796": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ]
+    ],
+    "797": [
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "798": [
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ]
+    ],
+    "801": [
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "802": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ]
+    ],
+    "803": [
+      [
+        "doc_computing_history_chk_002",
+        1
+      ]
+    ],
+    "804": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        2
+      ],
+      [
+        "doc_geography_chk_001",
+        2
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "808": [
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ]
+    ],
+    "809": [
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ]
+    ],
+    "810": [
+      [
+        "doc_deep_learning_chk_005",
+        2
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        2
+      ]
+    ],
+    "811": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "812": [
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ]
+    ],
+    "813": [
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ]
+    ],
+    "814": [
+      [
+        "doc_astronomy_chk_004",
+        2
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ]
+    ],
+    "815": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "816": [
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ]
+    ],
+    "818": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        2
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ]
+    ],
+    "819": [
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_astronomy_chk_003",
+        1
+      ]
+    ],
+    "821": [
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        3
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "822": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ]
+    ],
+    "823": [
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ]
+    ],
+    "824": [
+      [
+        "doc_computing_history_chk_003",
+        1
+      ]
+    ],
+    "825": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ]
+    ],
+    "826": [
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ]
+    ],
+    "827": [
+      [
+        "doc_physics_units_chk_000",
+        1
+      ]
+    ],
+    "828": [
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ]
+    ],
+    "829": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        2
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "831": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ]
+    ],
+    "833": [
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ]
+    ],
+    "834": [
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ]
+    ],
+    "835": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ]
+    ],
+    "836": [
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "837": [
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ]
+    ],
+    "841": [
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ]
+    ],
+    "842": [
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "844": [
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ]
+    ],
+    "845": [
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ]
+    ],
+    "846": [
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ]
+    ],
+    "849": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ]
+    ],
+    "850": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "851": [
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ]
+    ],
+    "853": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ]
+    ],
+    "854": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ]
+    ],
+    "855": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ]
+    ],
+    "859": [
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ]
+    ],
+    "860": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        2
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "861": [
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_001",
+        1
+      ]
+    ],
+    "862": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ]
+    ],
+    "863": [
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ]
+    ],
+    "864": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ]
+    ],
+    "865": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        2
+      ]
+    ],
+    "867": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ]
+    ],
+    "869": [
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ]
+    ],
+    "870": [
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ]
+    ],
+    "871": [
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "874": [
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ]
+    ],
+    "875": [
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "880": [
+      [
+        "doc_geography_chk_000",
+        1
+      ]
+    ],
+    "882": [
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ]
+    ],
+    "883": [
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ]
+    ],
+    "888": [
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        2
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ]
+    ],
+    "893": [
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        2
+      ]
+    ],
+    "894": [
+      [
+        "doc_physics_units_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ]
+    ],
+    "896": [
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ]
+    ],
+    "899": [
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ]
+    ],
+    "902": [
+      [
+        "doc_physics_units_chk_000",
+        1
+      ]
+    ],
+    "905": [
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ]
+    ],
+    "907": [
+      [
+        "doc_physics_units_chk_000",
+        1
+      ]
+    ],
+    "909": [
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ]
+    ],
+    "910": [
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ]
+    ],
+    "917": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ]
+    ],
+    "919": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ]
+    ],
+    "921": [
+      [
+        "doc_computing_history_chk_003",
+        1
+      ]
+    ],
+    "922": [
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ]
+    ],
+    "926": [
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ]
+    ],
+    "928": [
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ]
+    ],
+    "931": [
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_astronomy_chk_003",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ]
+    ],
+    "933": [
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ]
+    ],
+    "936": [
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ]
+    ],
+    "944": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_physics_units_chk_000",
+        1
+      ]
+    ],
+    "945": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ]
+    ],
+    "946": [
+      [
+        "doc_computing_history_chk_003",
+        1
+      ],
+      [
+        "doc_computing_history_chk_005",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ]
+    ],
+    "949": [
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ]
+    ],
+    "950": [
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_006",
+        1
+      ],
+      [
+        "doc_physics_units_chk_003",
+        1
+      ],
+      [
+        "doc_physics_units_chk_004",
+        1
+      ]
+    ],
+    "951": [
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ]
+    ],
+    "957": [
+      [
+        "doc_astronomy_chk_002",
+        1
+      ],
+      [
+        "doc_astronomy_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ]
+    ],
+    "961": [
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ]
+    ],
+    "968": [
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_003",
+        1
+      ]
+    ],
+    "970": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        2
+      ],
+      [
+        "doc_geography_chk_004",
+        1
+      ]
+    ],
+    "976": [
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ]
+    ],
+    "984": [
+      [
+        "doc_astronomy_chk_000",
+        1
+      ],
+      [
+        "doc_astronomy_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_003",
+        1
+      ]
+    ],
+    "991": [
+      [
+        "doc_deep_learning_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_002",
+        1
+      ],
+      [
+        "doc_geography_chk_000",
+        1
+      ],
+      [
+        "doc_geography_chk_001",
+        2
+      ]
+    ],
+    "995": [
+      [
+        "doc_astronomy_chk_004",
+        1
+      ]
+    ],
+    "996": [
+      [
+        "doc_geography_chk_001",
+        1
+      ],
+      [
+        "doc_geography_chk_002",
+        1
+      ]
+    ],
+    "999": [
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_004",
+        1
+      ]
+    ],
+    "1003": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ]
+    ],
+    "1004": [
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ],
+      [
+        "doc_deep_learning_chk_005",
+        1
+      ],
+      [
+        "doc_physics_units_chk_002",
+        1
+      ]
+    ],
+    "1006": [
+      [
+        "doc_deep_learning_chk_004",
+        1
+      ]
+    ],
+    "1012": [
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_003",
+        1
+      ]
+    ],
+    "1013": [
+      [
+        "doc_deep_learning_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_000",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ]
+    ],
+    "1014": [
+      [
+        "doc_minigpt_specs_chk_004",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_005",
+        1
+      ]
+    ],
+    "1019": [
+      [
+        "doc_computing_history_chk_000",
+        1
+      ],
+      [
+        "doc_computing_history_chk_001",
+        1
+      ],
+      [
+        "doc_computing_history_chk_002",
+        1
+      ]
+    ],
+    "1020": [
+      [
+        "doc_minigpt_specs_chk_001",
+        1
+      ],
+      [
+        "doc_minigpt_specs_chk_002",
+        1
+      ]
+    ],
+    "1023": [
+      [
+        "doc_computing_history_chk_002",
+        1
+      ],
+      [
+        "doc_computing_history_chk_003",
+        1
+      ]
+    ]
+  }
+}

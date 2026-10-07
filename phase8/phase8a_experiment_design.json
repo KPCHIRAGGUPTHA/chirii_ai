@@ -1,0 +1,138 @@
+{
+  "phase": "8A",
+  "title": "Controlled Model Scaling Experiment Design",
+  "date": "2026-10-07",
+  "baseline_commit": "2745326",
+  "research_question": "Does increasing model capacity materially improve context-grounded generation?",
+  "tokenizer": {
+    "path": "tokenizers/phase5d/bpe_vocab_1024.json",
+    "sha256": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+    "vocab_size": 1024
+  },
+  "baseline": {
+    "name": "Model C",
+    "parameters": 6613504,
+    "layers": 8,
+    "heads": 8,
+    "embedding_dim": 256,
+    "head_dim": 32,
+    "block_size": 128,
+    "vocab_size": 1024,
+    "val_loss": 2.9699,
+    "val_perplexity": 19.4901,
+    "val_bpc": 2.1596,
+    "exact_match_rag": "0/30 (0.0%)"
+  },
+  "models": [
+    {
+      "name": "Model A",
+      "layers": 4,
+      "heads": 4,
+      "embedding_dim": 128,
+      "head_dim": 32,
+      "parameters": 940800,
+      "vocab_size": 1024,
+      "block_size": 128,
+      "architecture_type": "Decoder-Only Pre-LN MiniGPT"
+    },
+    {
+      "name": "Model B",
+      "layers": 6,
+      "heads": 6,
+      "embedding_dim": 192,
+      "head_dim": 32,
+      "parameters": 2890752,
+      "vocab_size": 1024,
+      "block_size": 128,
+      "architecture_type": "Decoder-Only Pre-LN MiniGPT"
+    },
+    {
+      "name": "Model C",
+      "layers": 8,
+      "heads": 8,
+      "embedding_dim": 256,
+      "head_dim": 32,
+      "parameters": 6613504,
+      "vocab_size": 1024,
+      "block_size": 128,
+      "architecture_type": "Decoder-Only Pre-LN MiniGPT"
+    },
+    {
+      "name": "Model D",
+      "layers": 12,
+      "heads": 10,
+      "embedding_dim": 320,
+      "head_dim": 32,
+      "parameters": 15164800,
+      "vocab_size": 1024,
+      "block_size": 128,
+      "architecture_type": "Decoder-Only Pre-LN MiniGPT"
+    },
+    {
+      "name": "Model E",
+      "layers": 12,
+      "heads": 14,
+      "embedding_dim": 448,
+      "head_dim": 32,
+      "parameters": 29488256,
+      "vocab_size": 1024,
+      "block_size": 128,
+      "architecture_type": "Decoder-Only Pre-LN MiniGPT"
+    }
+  ],
+  "fixed_variables": [
+    "tokenizer",
+    "vocabulary_size",
+    "block_size",
+    "pretraining_dataset",
+    "sft_dataset",
+    "evaluation_dataset",
+    "retrieval_engine",
+    "top_k",
+    "random_seed",
+    "optimizer",
+    "training_token_budget",
+    "evaluation_rules"
+  ],
+  "variable": "model_parameter_capacity",
+  "training_budget": {
+    "total_tokens": 10240000,
+    "max_iters": 2500,
+    "micro_batch_size": 8,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 32,
+    "tokens_per_step": 4096,
+    "learning_rate": 0.001,
+    "min_lr": 0.0001,
+    "warmup_iters": 50,
+    "optimizer": "AdamW",
+    "grad_clip": 1.0,
+    "random_seed": 42,
+    "rationale": "10.24M tokens is a deliberately fixed experimental budget across all model sizes, ensuring larger models receive the same token volume exposure to isolate parameter capacity as the single variable under test."
+  },
+  "stage1_metrics": [
+    "val_loss",
+    "val_perplexity",
+    "val_bpc",
+    "tokens_per_sec",
+    "training_time_seconds",
+    "parameter_count"
+  ],
+  "stage2_metrics": [
+    "exact_substring_match",
+    "token_jaccard_similarity",
+    "groundedness_score",
+    "hallucination_intrusion_rate",
+    "retrieval_recall_at_1",
+    "generation_latency_ms",
+    "total_latency_ms"
+  ],
+  "evaluation_dataset": "Phase 7E 30-question dataset",
+  "isolated_checkpoint_paths": {
+    "model_d_pretrain": "checkpoints/phase8/model_d/",
+    "model_e_pretrain": "checkpoints/phase8/model_e/",
+    "model_d_sft": "checkpoints/phase8/model_d_sft/",
+    "model_e_sft": "checkpoints/phase8/model_e_sft/",
+    "results": "results/phase8/"
+  }
+}

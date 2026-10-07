@@ -1,0 +1,30 @@
+{
+  "total_records": 80,
+  "splits": {
+    "train": 64,
+    "val": 8,
+    "test": 8
+  },
+  "category_counts": {
+    "direct_lookup": 16,
+    "numbers": 16,
+    "names": 16,
+    "multi_word": 16,
+    "paraphrased": 16
+  },
+  "token_stats": {
+    "min_total": 58,
+    "max_total": 98,
+    "mean_total": 74.56,
+    "mean_context_tokens": 27.0,
+    "mean_question_tokens": 16.21,
+    "mean_answer_tokens": 8.69
+  },
+  "masking_stats": {
+    "total_tokens_sum": 5965,
+    "masked_prompt_tokens_sum": 5270,
+    "active_answer_tokens_sum": 695,
+    "masked_percentage": 88.35,
+    "active_percentage": 11.65
+  }
+}

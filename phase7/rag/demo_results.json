@@ -1,0 +1,77 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "without_rag": {
+      "answer": "The Staraket is a first of American Artificial Stude and American Artificial Pro",
+      "retrieved": false,
+      "prompt_tokens": 33,
+      "generation_tokens": 46,
+      "latency_ms": 993.5097000000042
+    },
+    "with_rag": {
+      "answer": "The Start Start Charles is a first of Start of America. Here is a first of Artificial",
+      "retrieved": true,
+      "source": "geography_facts.txt",
+      "document_id": "doc_france",
+      "chunk_id": "doc_france_chk01",
+      "retrieval_score": 3.6327321123069343,
+      "retrieved_text": "The capital city of France is Paris.",
+      "prompt_tokens": 59,
+      "context_tokens": 18,
+      "generation_tokens": 46,
+      "total_latency_ms": 1087.3351000000184,
+      "truncated_query": false,
+      "truncated_context": false
+    }
+  },
+  {
+    "question": "Who created Python?",
+    "without_rag": {
+      "answer": "Here are a first of AI, I don't have a small basic means that can be used to be a basic specific",
+      "retrieved": false,
+      "prompt_tokens": 28,
+      "generation_tokens": 46,
+      "latency_ms": 859.9152000000458
+    },
+    "with_rag": {
+      "answer": "The Start Start Charles is a high both of American Artificial Program (AI)",
+      "retrieved": true,
+      "source": "programming_history.txt",
+      "document_id": "doc_python",
+      "chunk_id": "doc_python_chk01",
+      "retrieval_score": 2.082832952800925,
+      "retrieved_text": "Python was created by Guido van Rossum.",
+      "prompt_tokens": 58,
+      "context_tokens": 22,
+      "generation_tokens": 46,
+      "total_latency_ms": 996.6399000001047,
+      "truncated_query": false,
+      "truncated_context": false
+    }
+  },
+  {
+    "question": "How many parameters does Model C have?",
+    "without_rag": {
+      "answer": "A AI don't have a body to help to reduce the body of healthcare and healthcare and healthc",
+      "retrieved": false,
+      "prompt_tokens": 40,
+      "generation_tokens": 46,
+      "latency_ms": 843.4186999999156
+    },
+    "with_rag": {
+      "answer": "1. Sure, 199, 199, 199, 199, 199, 199, 199, 199, 1999, 199",
+      "retrieved": true,
+      "source": "minigpt_specs.txt",
+      "document_id": "doc_minigpt",
+      "chunk_id": "doc_minigpt_chk01",
+      "retrieval_score": 2.4684451887166206,
+      "retrieved_text": "Model C contains 6,613,504 parameters.",
+      "prompt_tokens": 74,
+      "context_tokens": 27,
+      "generation_tokens": 46,
+      "total_latency_ms": 1013.0533999999898,
+      "truncated_query": false,
+      "truncated_context": false
+    }
+  }
+]

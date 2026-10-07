@@ -1,0 +1,66 @@
+{
+  "phase": "7F",
+  "dataset": {
+    "total_questions": 30,
+    "categories_count": 7,
+    "raw_documents_count": 6,
+    "micro_chunks_count": 35
+  },
+  "retrieval": {
+    "recall_at_1": 0.8667,
+    "mrr": 0.8667,
+    "avg_latency_ms": 0.84,
+    "min_latency_ms": 0.45,
+    "max_latency_ms": 1.32,
+    "category_recall": {
+      "factual_lookup": 1.0,
+      "names_entities": 1.0,
+      "numbers": 1.0,
+      "dates": 1.0,
+      "definitions": 0.60,
+      "technical_facts": 0.80,
+      "paraphrased": 0.75
+    }
+  },
+  "generation": {
+    "base_exact_match": 0.0,
+    "sft_exact_match": 0.0,
+    "sft_rag_exact_match": 0.0,
+    "base_token_jaccard": 0.0058,
+    "sft_token_jaccard": 0.0,
+    "sft_rag_token_jaccard": 0.0065,
+    "sft_rag_groundedness": 0.2073,
+    "base_hallucination_rate": 0.0,
+    "sft_hallucination_rate": 0.6667,
+    "sft_rag_hallucination_rate": 0.40,
+    "avg_total_latency_ms": 780.65
+  },
+  "failure_breakdown": {
+    "retrieval_failures": 4,
+    "generation_failures": 26,
+    "successes": 0,
+    "serendipity": 0
+  },
+  "context_budget": {
+    "min_prompt_tokens": 81,
+    "max_prompt_tokens": 98,
+    "mean_prompt_tokens": 89.5,
+    "generation_reserve": 30,
+    "max_prompt_plus_reserve": 128,
+    "violations": 0,
+    "truncations": 1,
+    "status": "PASS"
+  },
+  "phase7d_c_rag_sft": {
+    "heldout_test_exact_match": 0.0,
+    "heldout_test_token_jaccard": 0.0832,
+    "heldout_test_hallucination_rate": 0.0,
+    "status": "REJECTED (FAILURE)"
+  },
+  "checkpoint_integrity": {
+    "base_model_sha": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+    "sft_model_sha": "14f9335aa66d7168500c10cebaa20db373531cf87ae9dcd7d8ee1d8ed01cfb26",
+    "tokenizer_sha": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+    "verified": true
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "phase": "8D",
+  "mode": "GPU_PILOT",
+  "timestamp": "2026-10-08 13:01:20",
+  "hardware": {
+    "cpu_model": "AMD Ryzen 7 7730U",
+    "cpu_cores_logical": 24,
+    "ram_total_gb": 16.0,
+    "ram_available_gb": 4.0,
+    "python_version": "3.12.3",
+    "pytorch_version": "2.11.0+cu128",
+    "cuda_available": true,
+    "cuda_version": "12.8",
+    "gpu_count": 1,
+    "gpu_name": "NVIDIA GeForce RTX 3090",
+    "vram_total_gb": 23.56,
+    "vram_allocated_initial_gb": 0.0,
+    "vram_reserved_initial_gb": 0.0
+  },
+  "models": {
+    "model_d": {
+      "model_name": "MiniGPT",
+      "parameters": 15164800,
+      "device": "cuda",
+      "amp_enabled": true,
+      "steps_completed": 50,
+      "target_steps": 50,
+      "tokens_per_step": 4096,
+      "total_tokens_benchmarked": 204800,
+      "initial_loss": 28.0448,
+      "final_loss": 21.6719,
+      "min_loss": 21.3547,
+      "total_wall_time_seconds": 14.8593,
+      "seconds_per_step": 0.2972,
+      "tokens_per_second": 13782.58,
+      "estimated_2500_step_seconds": 742.97,
+      "estimated_2500_step_hours": 0.21,
+      "vram_peak_allocated_gb": 0.558,
+      "vram_peak_reserved_gb": 0.5781,
+      "ram_available_start_gb": 4.0,
+      "ram_available_end_gb": 4.0,
+      "oom_occurred": false,
+      "nan_count": 0,
+      "inf_count": 0,
+      "status": "PASS"
+    },
+    "model_e": {
+      "model_name": "MiniGPT",
+      "parameters": 29488256,
+      "device": "cuda",
+      "amp_enabled": true,
+      "steps_completed": 50,
+      "target_steps": 50,
+      "tokens_per_step": 4096,
+      "total_tokens_benchmarked": 204800,
+      "initial_loss": 27.9651,
+      "final_loss": 21.6559,
+      "min_loss": 21.3991,
+      "total_wall_time_seconds": 14.3807,
+      "seconds_per_step": 0.2876,
+      "tokens_per_second": 14241.35,
+      "estimated_2500_step_seconds": 719.03,
+      "estimated_2500_step_hours": 0.2,
+      "vram_peak_allocated_gb": 0.8999,
+      "vram_peak_reserved_gb": 0.9297,
+      "ram_available_start_gb": 4.0,
+      "ram_available_end_gb": 4.0,
+      "oom_occurred": false,
+      "nan_count": 0,
+      "inf_count": 0,
+      "status": "PASS"
+    }
+  },
+  "checkpoint_integrity": {
+    "all_passed": true,
+    "details": {
+      "model_c_pretrain": {
+        "path": "checkpoints/phase5d/model_6_61m/best_model.pt",
+        "expected_sha": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+        "actual_sha": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+        "integrity_passed": true
+      },
+      "tokenizer": {
+        "path": "tokenizers/phase5d/bpe_vocab_1024.json",
+        "expected_sha": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+        "actual_sha": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+        "integrity_passed": true
+      },
+      "phase6_sft": {
+        "path": "checkpoints/phase6/model_c_sft/best_model.pt",
+        "expected_sha": "14f9335aa66d7168500c10cebaa20db373531cf87ae9dcd7d8ee1d8ed01cfb26",
+        "actual_sha": "14f9335aa66d7168500c10cebaa20db373531cf87ae9dcd7d8ee1d8ed01cfb26",
+        "integrity_passed": true
+      },
+      "phase7_rag_sft": {
+        "path": "checkpoints/phase7/model_c_rag_sft/best_model.pt",
+        "expected_sha": "f3f21991d1262ed3bb6602b6c3d6abe609241a6c4d40c0b22a9c44b6d20d1ed3",
+        "actual_sha": "f3f21991d1262ed3bb6602b6c3d6abe609241a6c4d40c0b22a9c44b6d20d1ed3",
+        "integrity_passed": true
+      }
+    }
+  },
+  "recommendation": "BOTH STABLE \u2192 ready for full Phase 8D training on GPU"
+}

@@ -1,0 +1,200 @@
+{
+  "phase": "8B",
+  "validation_status": "PASS",
+  "timestamp": "2026-10-07 22:06:27",
+  "checkpoint_integrity": {
+    "all_passed": true,
+    "details": {
+      "model_c_pretrain": {
+        "path": "checkpoints/phase5d/model_6_61m/best_model.pt",
+        "expected_sha": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+        "actual_sha": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+        "integrity_passed": true
+      },
+      "tokenizer": {
+        "path": "tokenizers/phase5d/bpe_vocab_1024.json",
+        "expected_sha": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+        "actual_sha": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+        "integrity_passed": true
+      },
+      "phase6_sft": {
+        "path": "checkpoints/phase6/model_c_sft/best_model.pt",
+        "expected_sha": "14f9335aa66d7168500c10cebaa20db373531cf87ae9dcd7d8ee1d8ed01cfb26",
+        "actual_sha": "14f9335aa66d7168500c10cebaa20db373531cf87ae9dcd7d8ee1d8ed01cfb26",
+        "integrity_passed": true
+      },
+      "phase7_rag_sft": {
+        "path": "checkpoints/phase7/model_c_rag_sft/best_model.pt",
+        "expected_sha": "f3f21991d1262ed3bb6602b6c3d6abe609241a6c4d40c0b22a9c44b6d20d1ed3",
+        "actual_sha": "f3f21991d1262ed3bb6602b6c3d6abe609241a6c4d40c0b22a9c44b6d20d1ed3",
+        "integrity_passed": true
+      }
+    }
+  },
+  "parameter_counts": {
+    "Model C": {
+      "layers": 8,
+      "heads": 8,
+      "embedding_dim": 256,
+      "head_dim": 32,
+      "block_size": 128,
+      "vocab_size": 1024,
+      "actual_params": 6613504,
+      "expected_params": 6613504,
+      "passed": true
+    },
+    "Model D": {
+      "layers": 12,
+      "heads": 10,
+      "embedding_dim": 320,
+      "head_dim": 32,
+      "block_size": 128,
+      "vocab_size": 1024,
+      "actual_params": 15164800,
+      "expected_params": 15164800,
+      "passed": true
+    },
+    "Model E": {
+      "layers": 12,
+      "heads": 14,
+      "embedding_dim": 448,
+      "head_dim": 32,
+      "block_size": 128,
+      "vocab_size": 1024,
+      "actual_params": 29488256,
+      "expected_params": 29488256,
+      "passed": true
+    }
+  },
+  "shape_validation": {
+    "Model C": {
+      "input_shape": [
+        2,
+        128
+      ],
+      "logits_shape": [
+        2,
+        128,
+        1024
+      ],
+      "expected_logits_shape": [
+        2,
+        128,
+        1024
+      ],
+      "initial_loss": 7.0101,
+      "head_dim": 32,
+      "passed": true
+    },
+    "Model D": {
+      "input_shape": [
+        2,
+        128
+      ],
+      "logits_shape": [
+        2,
+        128,
+        1024
+      ],
+      "expected_logits_shape": [
+        2,
+        128,
+        1024
+      ],
+      "initial_loss": 6.9816,
+      "head_dim": 32,
+      "passed": true
+    },
+    "Model E": {
+      "input_shape": [
+        2,
+        128
+      ],
+      "logits_shape": [
+        2,
+        128,
+        1024
+      ],
+      "expected_logits_shape": [
+        2,
+        128,
+        1024
+      ],
+      "initial_loss": 7.0217,
+      "head_dim": 32,
+      "passed": true
+    }
+  },
+  "cpu_dry_run": {
+    "Model C": {
+      "steps": [
+        {
+          "step": 1,
+          "loss": 7.0085,
+          "grad_norm": 3.0618,
+          "finite_loss": true,
+          "finite_grad_norm": true
+        },
+        {
+          "step": 2,
+          "loss": 7.0043,
+          "grad_norm": 1.6062,
+          "finite_loss": true,
+          "finite_grad_norm": true
+        }
+      ],
+      "parameter_update_occurred": true,
+      "passed": true
+    },
+    "Model D": {
+      "steps": [
+        {
+          "step": 1,
+          "loss": 6.9871,
+          "grad_norm": 3.7291,
+          "finite_loss": true,
+          "finite_grad_norm": true
+        },
+        {
+          "step": 2,
+          "loss": 6.938,
+          "grad_norm": 1.7368,
+          "finite_loss": true,
+          "finite_grad_norm": true
+        }
+      ],
+      "parameter_update_occurred": true,
+      "passed": true
+    },
+    "Model E": {
+      "steps": [
+        {
+          "step": 1,
+          "loss": 7.0107,
+          "grad_norm": 4.592,
+          "finite_loss": true,
+          "finite_grad_norm": true
+        },
+        {
+          "step": 2,
+          "loss": 7.0148,
+          "grad_norm": 2.0592,
+          "finite_loss": true,
+          "finite_grad_norm": true
+        }
+      ],
+      "parameter_update_occurred": true,
+      "passed": true
+    }
+  },
+  "resource_monitoring": {
+    "models_instantiated": [
+      "Model C",
+      "Model D",
+      "Model E"
+    ],
+    "current_memory_mb": 0.98,
+    "peak_memory_mb": 0.98,
+    "instantiation_time_seconds": 0.88
+  }
+}

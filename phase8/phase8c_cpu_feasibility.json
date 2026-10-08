@@ -1,0 +1,95 @@
+{
+  "phase": "8C",
+  "mode": "CPU_ONLY",
+  "timestamp": "2026-10-08 16:22:52",
+  "hardware": {
+    "cpu": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD (16 logical cores)",
+    "cores_logical": 16,
+    "ram_gb": 15.35,
+    "ram_available_gb": 3.48,
+    "python_version": "3.14.5",
+    "pytorch_version": "2.12.0+cpu",
+    "cuda_available": false,
+    "cuda_used": false
+  },
+  "models": {
+    "model_d": {
+      "model_name": "Model D",
+      "parameters": 15164800,
+      "steps_completed": 50,
+      "target_steps": 50,
+      "tokens_per_step": 4096,
+      "total_tokens_benchmarked": 204800,
+      "initial_loss": 28.0927,
+      "final_loss": 33.7702,
+      "min_loss": 21.3008,
+      "total_wall_time_seconds": 296.2371,
+      "seconds_per_step": 5.9247,
+      "tokens_per_second": 691.34,
+      "estimated_2500_step_seconds": 14811.82,
+      "estimated_2500_step_hours": 4.11,
+      "ram_available_start_gb": 3.2,
+      "ram_available_end_gb": 1.04,
+      "nan_count": 0,
+      "inf_count": 0,
+      "status": "PASS"
+    },
+    "model_e": {
+      "model_name": "Model E",
+      "parameters": 29488256,
+      "steps_completed": 50,
+      "target_steps": 50,
+      "tokens_per_step": 4096,
+      "total_tokens_benchmarked": 204800,
+      "initial_loss": 27.9703,
+      "final_loss": 21.5275,
+      "min_loss": 21.4072,
+      "total_wall_time_seconds": 434.9675,
+      "seconds_per_step": 8.6993,
+      "tokens_per_second": 470.84,
+      "estimated_2500_step_seconds": 21748.34,
+      "estimated_2500_step_hours": 6.04,
+      "ram_available_start_gb": 1.18,
+      "ram_available_end_gb": 5.28,
+      "nan_count": 0,
+      "inf_count": 0,
+      "status": "PASS"
+    }
+  },
+  "model_c_baseline_cpu": {
+    "parameters": 6613504,
+    "tokens_per_second": 1593.05,
+    "estimated_2500_step_hours": 1.79,
+    "source": "results/phase5d/PHASE5D_REPORT.md Section 4"
+  },
+  "memory_safety": "PASS",
+  "checkpoint_integrity": {
+    "all_passed": true,
+    "details": {
+      "model_c_pretrain": {
+        "path": "checkpoints/phase5d/model_6_61m/best_model.pt",
+        "expected_sha": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+        "actual_sha": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+        "integrity_passed": true
+      },
+      "tokenizer": {
+        "path": "tokenizers/phase5d/bpe_vocab_1024.json",
+        "expected_sha": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+        "actual_sha": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+        "integrity_passed": true
+      },
+      "phase6_sft": {
+        "path": "checkpoints/phase6/model_c_sft/best_model.pt",
+        "expected_sha": "14f9335aa66d7168500c10cebaa20db373531cf87ae9dcd7d8ee1d8ed01cfb26",
+        "actual_sha": "14f9335aa66d7168500c10cebaa20db373531cf87ae9dcd7d8ee1d8ed01cfb26",
+        "integrity_passed": true
+      },
+      "phase7_rag_sft": {
+        "path": "checkpoints/phase7/model_c_rag_sft/best_model.pt",
+        "expected_sha": "f3f21991d1262ed3bb6602b6c3d6abe609241a6c4d40c0b22a9c44b6d20d1ed3",
+        "actual_sha": "f3f21991d1262ed3bb6602b6c3d6abe609241a6c4d40c0b22a9c44b6d20d1ed3",
+        "integrity_passed": true
+      }
+    }
+  }
+}

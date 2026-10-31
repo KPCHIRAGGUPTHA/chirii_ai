@@ -1,0 +1,29 @@
+{
+  "name": "SFT v1, without format exercises",
+  "init_checkpoint": "phase10/runs/foundation_v3_clean_2ep/snapshots/model_step_11524.pt",
+  "data": {
+    "tokenizer": "phase10/tokenizer/tokenizer_v2.json",
+    "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98",
+    "train": "phase11/data/sft_train_noformat.jsonl",
+    "val": "phase11/data/sft_val_noformat.jsonl",
+    "train_sha256": "1103582cb120f62aa557b012ab041e743d403ded682d61f3248e9f2ed73e7343",
+    "val_sha256": "9d3025a1a91473b6539a04806ab44003e3b237bc87d302502c406754637b9fa0"
+  },
+  "out_dir": "phase11/runs/sft_v1_noformat",
+  "training": {
+    "epochs": 2,
+    "micro_batch_size": 16,
+    "grad_accum_steps": 2,
+    "learning_rate": 0.0002,
+    "min_lr": 2e-05,
+    "warmup_steps": 50,
+    "weight_decay": 0.0,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip": 1.0,
+    "seed": 11,
+    "compile": true
+  }
+}

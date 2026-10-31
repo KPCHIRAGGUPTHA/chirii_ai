@@ -1,0 +1,11 @@
+{
+  "dataset": "data/phase5d/train_corpus.txt",
+  "records": 165095,
+  "threshold": 0.8,
+  "goal_items_matched": [],
+  "exact": [],
+  "near": [],
+  "contained": [],
+  "unflagged_matches": [],
+  "examples": []
+}

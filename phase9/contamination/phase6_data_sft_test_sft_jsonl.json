@@ -1,0 +1,11 @@
+{
+  "dataset": "phase6/data/sft/test_sft.jsonl",
+  "records": 5176,
+  "threshold": 0.8,
+  "goal_items_matched": [],
+  "exact": [],
+  "near": [],
+  "contained": [],
+  "unflagged_matches": [],
+  "examples": []
+}

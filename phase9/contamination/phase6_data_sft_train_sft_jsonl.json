@@ -1,0 +1,152 @@
+{
+  "dataset": "phase6/data/sft/train_sft.jsonl",
+  "records": 41404,
+  "threshold": 0.8,
+  "goal_items_matched": [
+    "definition_011",
+    "definition_018",
+    "fact_001",
+    "fact_013",
+    "fact_017",
+    "fact_018",
+    "fact_020",
+    "fact_023",
+    "fact_030",
+    "instruction_003"
+  ],
+  "exact": [
+    "definition_011",
+    "definition_018",
+    "fact_001",
+    "fact_013",
+    "fact_018",
+    "fact_020",
+    "instruction_003"
+  ],
+  "near": [
+    "fact_017",
+    "fact_023"
+  ],
+  "contained": [
+    "fact_030"
+  ],
+  "unflagged_matches": [
+    "fact_017",
+    "fact_023",
+    "fact_030"
+  ],
+  "examples": [
+    {
+      "line": 822,
+      "kind": "contained",
+      "goal_id": "fact_001",
+      "similarity": 1.0,
+      "text": "Q1. What is the capital of France?\nQ2. Who is the author of The Catcher in the Rye?"
+    },
+    {
+      "line": 2061,
+      "kind": "contained",
+      "goal_id": "fact_030",
+      "similarity": 1.0,
+      "text": "Find out what is the closest star to Earth."
+    },
+    {
+      "line": 5339,
+      "kind": "contained",
+      "goal_id": "fact_001",
+      "similarity": 1.0,
+      "text": "What is the capital of France?\nWhere do you live?"
+    },
+    {
+      "line": 6025,
+      "kind": "near",
+      "goal_id": "fact_023",
+      "similarity": 0.8,
+      "text": "Which is the hottest planet in our Solar System?"
+    },
+    {
+      "line": 10936,
+      "kind": "exact",
+      "goal_id": "instruction_003",
+      "similarity": 1.0,
+      "text": "Translate 'hello' into Spanish."
+    },
+    {
+      "line": 16520,
+      "kind": "exact",
+      "goal_id": "fact_001",
+      "similarity": 1.0,
+      "text": "What is the capital of France?"
+    },
+    {
+      "line": 19154,
+      "kind": "exact",
+      "goal_id": "fact_018",
+      "similarity": 1.0,
+      "text": "What is the longest river in Africa?"
+    },
+    {
+      "line": 19709,
+      "kind": "exact",
+      "goal_id": "fact_001",
+      "similarity": 1.0,
+      "text": "What is the capital of France?"
+    },
+    {
+      "line": 23589,
+      "kind": "near",
+      "goal_id": "fact_001",
+      "similarity": 0.833,
+      "text": "What is the capital of ________?"
+    },
+    {
+      "line": 24065,
+      "kind": "near",
+      "goal_id": "fact_017",
+      "similarity": 0.857,
+      "text": "Who developed the theory of relativity?"
+    },
+    {
+      "line": 24100,
+      "kind": "exact",
+      "goal_id": "fact_020",
+      "similarity": 1.0,
+      "text": "How many days are in a leap year?"
+    },
+    {
+      "line": 25241,
+      "kind": "contained",
+      "goal_id": "fact_001",
+      "similarity": 1.0,
+      "text": "Classify this sentence as \"question\", \"statement\", or \"command\".\n\nWhat is the capital of France?"
+    },
+    {
+      "line": 27713,
+      "kind": "exact",
+      "goal_id": "fact_013",
+      "similarity": 1.0,
+      "text": "How many legs does a spider have?"
+    },
+    {
+      "line": 31100,
+      "kind": "exact",
+      "goal_id": "definition_018",
+      "similarity": 1.0,
+      "text": "What is Machine Learning?"
+    },
+    {
+      "line": 34843,
+      "kind": "exact",
+      "goal_id": "definition_011",
+      "similarity": 1.0,
+      "text": "Tell me what an algorithm is."
+    },
+    {
+      "line": 38896,
+      "kind": "near",
+      "goal_id": "definition_018",
+      "similarity": 0.8,
+      "text": "Explain what machine learning is."
+    }
+  ]
+}

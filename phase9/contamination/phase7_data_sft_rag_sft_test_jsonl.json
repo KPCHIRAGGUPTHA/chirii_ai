@@ -1,0 +1,34 @@
+{
+  "dataset": "phase7/data/sft/rag_sft_test.jsonl",
+  "records": 8,
+  "threshold": 0.8,
+  "goal_items_matched": [
+    "fact_001",
+    "fact_006"
+  ],
+  "exact": [
+    "fact_001",
+    "fact_006"
+  ],
+  "near": [],
+  "contained": [],
+  "unflagged_matches": [
+    "fact_006"
+  ],
+  "examples": [
+    {
+      "line": 1,
+      "kind": "exact",
+      "goal_id": "fact_001",
+      "similarity": 1.0,
+      "text": "What is the capital of France?"
+    },
+    {
+      "line": 2,
+      "kind": "exact",
+      "goal_id": "fact_006",
+      "similarity": 1.0,
+      "text": "What is the largest ocean on Earth?"
+    }
+  ]
+}

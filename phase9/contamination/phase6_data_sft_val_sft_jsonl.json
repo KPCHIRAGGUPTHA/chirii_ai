@@ -1,0 +1,30 @@
+{
+  "dataset": "phase6/data/sft/val_sft.jsonl",
+  "records": 5176,
+  "threshold": 0.8,
+  "goal_items_matched": [
+    "fact_001"
+  ],
+  "exact": [
+    "fact_001"
+  ],
+  "near": [],
+  "contained": [],
+  "unflagged_matches": [],
+  "examples": [
+    {
+      "line": 1836,
+      "kind": "exact",
+      "goal_id": "fact_001",
+      "similarity": 1.0,
+      "text": "What is the capital of France?"
+    },
+    {
+      "line": 3125,
+      "kind": "contained",
+      "goal_id": "fact_001",
+      "similarity": 1.0,
+      "text": "Question: What is the capital of France?\nAnswer Choices: (A) London, (B) Paris, (C) Rome"
+    }
+  ]
+}

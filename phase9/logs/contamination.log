@@ -1,0 +1,27 @@
+phase6/data/sft/train_sft.jsonl: 41,404 records
+  exact 7, near 2, contained 1, unflagged 3
+  exact: definition_011, definition_018, fact_001, fact_013, fact_018, fact_020, instruction_003
+  near: fact_017, fact_023
+  contained: fact_030
+  RESULT: FAIL
+phase6/data/sft/val_sft.jsonl: 5,176 records
+  exact 1, near 0, contained 0, unflagged 0
+  exact: fact_001
+  RESULT: FAIL
+phase6/data/sft/test_sft.jsonl: 5,176 records
+  exact 0, near 0, contained 0, unflagged 0
+  RESULT: PASS
+phase7/data/sft/rag_sft_train.jsonl: 64 records
+  exact 0, near 3, contained 0, unflagged 3
+  near: fact_007, fact_008, fact_023
+  RESULT: FAIL
+phase7/data/sft/rag_sft_val.jsonl: 8 records
+  exact 0, near 0, contained 0, unflagged 0
+  RESULT: PASS
+phase7/data/sft/rag_sft_test.jsonl: 8 records
+  exact 2, near 0, contained 0, unflagged 1
+  exact: fact_001, fact_006
+  RESULT: FAIL
+data/phase5d/train_corpus.txt: 165,095 records
+  exact 0, near 0, contained 0, unflagged 0
+  RESULT: PASS

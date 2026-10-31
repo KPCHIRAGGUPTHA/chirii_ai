@@ -1,0 +1,45 @@
+{
+  "dataset": "phase7/data/sft/rag_sft_train.jsonl",
+  "records": 64,
+  "threshold": 0.8,
+  "goal_items_matched": [
+    "fact_007",
+    "fact_008",
+    "fact_023"
+  ],
+  "exact": [],
+  "near": [
+    "fact_007",
+    "fact_008",
+    "fact_023"
+  ],
+  "contained": [],
+  "unflagged_matches": [
+    "fact_007",
+    "fact_008",
+    "fact_023"
+  ],
+  "examples": [
+    {
+      "line": 4,
+      "kind": "near",
+      "goal_id": "fact_008",
+      "similarity": 0.857,
+      "text": "What language is spoken in Brazil?"
+    },
+    {
+      "line": 7,
+      "kind": "near",
+      "goal_id": "fact_023",
+      "similarity": 0.8,
+      "text": "The largest planet in our solar system is Jupiter."
+    },
+    {
+      "line": 32,
+      "kind": "near",
+      "goal_id": "fact_007",
+      "similarity": 0.8,
+      "text": "Who painted Mona Lisa?"
+    }
+  ]
+}

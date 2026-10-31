@@ -1,0 +1,11 @@
+{
+  "dataset": "phase7/data/sft/rag_sft_val.jsonl",
+  "records": 8,
+  "threshold": 0.8,
+  "goal_items_matched": [],
+  "exact": [],
+  "near": [],
+  "contained": [],
+  "unflagged_matches": [],
+  "examples": []
+}

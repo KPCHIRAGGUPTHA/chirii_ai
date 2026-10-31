@@ -1,0 +1,62 @@
+=== micro 32 accum 8
+~/anaconda3/envs/minigpt/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for b
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Fused AdamW: True | Compile: enabled | Parameters: 33,870,848
+Train tokens: 763,998,802 | Steps: 5,341 | Tokens per step: 131,072 (32 x 8 x 512) | Budget: 700,055,552
+step     1/5341 | loss 9.8329 | grad 3.844 | lr 0.000004 | 9,800 tok/s | gpu 100% | peak 4.126 GB
+step    12/5341 | loss 8.9877 | grad 1.788 | lr 0.000048 | 68,474 tok/s | gpu 99% | peak 4.382 GB
+  >>> step 12 val loss 8.9602 | 3.0502 bits/byte
+  checkpoint saved at step 12
+Finished: status=stopped_early steps=12 best_val_loss=8.960182861328125 train tok/s=45,683 overall tok/s=39,976
+{'compile': 'enabled', 'parameters': 33870848, 'gpu_peak_allocated_gb': 4.382, 'gpu_peak_reserved_gb': 4.574, 'train_seconds': 34.430237426946405, 'tokens_per_sec_training': 45682.63589053897, 'status': 'stopped_early'}
+=== micro 64 accum 4
+~/anaconda3/envs/minigpt/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for b
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Fused AdamW: True | Compile: enabled | Parameters: 33,870,848
+Train tokens: 763,998,802 | Steps: 5,341 | Tokens per step: 131,072 (64 x 4 x 512) | Budget: 700,055,552
+step     1/5341 | loss 9.8329 | grad 3.844 | lr 0.000004 | 9,526 tok/s | gpu 46% | peak 7.927 GB
+step    12/5341 | loss 8.9877 | grad 1.788 | lr 0.000048 | 62,845 tok/s | gpu 100% | peak 8.181 GB
+  >>> step 12 val loss 8.9602 | 3.0502 bits/byte
+  checkpoint saved at step 12
+Finished: status=stopped_early steps=12 best_val_loss=8.960203491210937 train tok/s=42,856 overall tok/s=37,715
+{'compile': 'enabled', 'parameters': 33870848, 'gpu_peak_allocated_gb': 8.181, 'gpu_peak_reserved_gb': 8.926, 'train_seconds': 36.70141566602979, 'tokens_per_sec_training': 42855.67658513555, 'status': 'stopped_early'}
+=== micro 128 accum 2
+~/anaconda3/envs/minigpt/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for b
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+torch.compile failed, using the plain model: OutOfMemoryError: CUDA out of memory. Tried to allocate 2.00 GiB. GPU 0 has a total capacity of 11.62 GiB of which 1.41 GiB i
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Fused AdamW: True | Compile: failed: OutOfMemoryError | Parameters: 33,870,848
+Train tokens: 763,998,802 | Steps: 5,341 | Tokens per step: 131,072 (128 x 2 x 512) | Budget: 700,055,552
+Traceback (most recent call last):
+  File "~/chirag_work/minigpt/phase10/train_v3.py", line 440, in <module>
+    main()
+  File "~/chirag_work/minigpt/phase10/train_v3.py", line 434, in main
+    summary = train(config, resume=args.resume or (args.auto_resume and has_checkpoint))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/chirag_work/minigpt/phase10/train_v3.py", line 317, in train
+    loss = accumulate_gradients(train_model, micro_batches, device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/chirag_work/minigpt/phase9/train_v2.py", line 156, in accumulate_gradients
+    _, loss = model(x.to(device), y.to(device))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/chirag_work/minigpt/model.py", line 156, in forward
+    logits = self.lm_head(x) # (b, t, vocab_size)
+             ^^^^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.00 GiB. GPU 0 has a total capacity of 11.62 GiB of which 1.15 GiB is free. Including non-PyTorch memory, t
+Traceback (most recent call last):
+  File "<string>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: 'phase10/runs/probe_128/metrics.json'

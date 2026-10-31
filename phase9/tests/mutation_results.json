@@ -1,0 +1,210 @@
+{
+  "phase9_trainer_and_eval": {
+    "baseline_passed": true,
+    "mutations": [
+      {
+        "bug": "Old trainer: logged loss is the sum of micro-batch losses",
+        "caught": true,
+        "failed_tests": [
+          "test_accumulated_loss_and_gradients_equal_full_batch",
+          "test_logged_loss_is_near_uniform_entropy_at_initialization",
+          "test_two_step_run_gives_finite_loss_and_loadable_checkpoint"
+        ]
+      },
+      {
+        "bug": "Old trainer: gradients not scaled per micro-batch",
+        "caught": true,
+        "failed_tests": [
+          "test_accumulated_loss_and_gradients_equal_full_batch"
+        ]
+      },
+      {
+        "bug": "Old trainer: sequential reads",
+        "caught": true,
+        "failed_tests": [
+          "test_final_valid_position_is_reachable_and_target_stays_in_bounds",
+          "test_positions_cover_the_whole_dataset"
+        ]
+      },
+      {
+        "bug": "Old trainer: only the first 10.24M tokens used",
+        "caught": true,
+        "failed_tests": [
+          "test_positions_cover_the_whole_dataset"
+        ]
+      },
+      {
+        "bug": "Old trainer: weight_decay=0.0",
+        "caught": true,
+        "failed_tests": [
+          "test_default_weight_decay_is_nonzero"
+        ]
+      },
+      {
+        "bug": "Weight decay applied to biases, LayerNorm and embeddings",
+        "caught": true,
+        "failed_tests": [
+          "test_groups_assign_each_parameter_correctly",
+          "test_tied_output_weight_is_not_decayed"
+        ]
+      },
+      {
+        "bug": "Resume does not restore the sampler state",
+        "caught": true,
+        "failed_tests": [
+          "test_resume_matches_an_uninterrupted_run_exactly"
+        ]
+      },
+      {
+        "bug": "Evaluation ignores pinned hashes",
+        "caught": true,
+        "failed_tests": [
+          "test_any_changed_file_fails"
+        ]
+      },
+      {
+        "bug": "Evaluation chunks overlap",
+        "caught": true,
+        "failed_tests": [
+          "test_bytes_are_counted_from_targets_only",
+          "test_chunks_do_not_overlap_and_cover_each_token_once",
+          "test_loss_weights_uneven_final_batch_correctly",
+          "test_one_byte_tokens_give_log2_vocab_bits_per_byte",
+          "test_partial_trailing_block_is_dropped",
+          "test_two_byte_tokens_with_1024_vocab_give_five_bits_per_byte"
+        ]
+      },
+      {
+        "bug": "Bits per byte computed per token (no byte normalization)",
+        "caught": true,
+        "failed_tests": [
+          "test_two_byte_tokens_with_1024_vocab_give_five_bits_per_byte"
+        ]
+      },
+      {
+        "bug": "Checkpoint loader rejects the Phase 6 SFT format",
+        "caught": true,
+        "failed_tests": [
+          "test_phase6_sft_format"
+        ]
+      },
+      {
+        "bug": "Unweighted batch-mean loss misweights the final batch",
+        "caught": true,
+        "failed_tests": [
+          "test_loss_weights_uneven_final_batch_correctly"
+        ]
+      }
+    ]
+  },
+  "phase8e_evaluation": {
+    "baseline_passed": true,
+    "mutations": [
+      {
+        "bug": "Sign: loss difference is C - D",
+        "caught": true,
+        "failed_tests": [
+          "test_differences_are_d_minus_c",
+          "test_report_follows_the_data",
+          "test_results_are_consistent"
+        ]
+      },
+      {
+        "bug": "Sign: perplexity difference is C - D",
+        "caught": true,
+        "failed_tests": [
+          "test_differences_are_d_minus_c",
+          "test_results_are_consistent"
+        ]
+      },
+      {
+        "bug": "Memory: handle return type not declared",
+        "caught": true,
+        "failed_tests": [
+          "test_peak_memory_is_measured"
+        ]
+      },
+      {
+        "bug": "Memory: failed lookup reported as 0.0",
+        "caught": true,
+        "failed_tests": [
+          "test_memory_failure_returns_none_not_zero"
+        ]
+      },
+      {
+        "bug": "Memory: missing value printed as a measurement",
+        "caught": true,
+        "failed_tests": [
+          "test_unavailable_memory_is_not_shown_as_zero"
+        ]
+      },
+      {
+        "bug": "Hard-coded: recommendation",
+        "caught": true,
+        "failed_tests": [
+          "test_report_follows_the_data"
+        ]
+      },
+      {
+        "bug": "Hard-coded: Model C loss in the metrics table",
+        "caught": true,
+        "failed_tests": [
+          "test_report_follows_the_data"
+        ]
+      },
+      {
+        "bug": "Hard-coded: Model D loss in the metrics table",
+        "caught": true,
+        "failed_tests": [
+          "test_report_follows_the_data"
+        ]
+      },
+      {
+        "bug": "Hard-coded: conclusion text regardless of outcome",
+        "caught": true,
+        "failed_tests": [
+          "test_report_follows_the_data",
+          "test_report_matches_results"
+        ]
+      },
+      {
+        "bug": "Hard-coded: model specification table",
+        "caught": true,
+        "failed_tests": [
+          "test_model_specifications_follow_the_data"
+        ]
+      },
+      {
+        "bug": "Decision rule: any improvement proceeds, ignoring the design gate",
+        "caught": true,
+        "failed_tests": [
+          "test_gate_boundary_comes_from_the_design",
+          "test_improvement_below_gate_holds_model_e"
+        ]
+      },
+      {
+        "bug": "Decision rule: wrong perplexity gate",
+        "caught": true,
+        "failed_tests": [
+          "test_gate_boundary_comes_from_the_design"
+        ]
+      },
+      {
+        "bug": "Validation hash: entry removed from the pinned list",
+        "caught": true,
+        "failed_tests": [
+          "test_validation_tokens_hash_is_pinned",
+          "test_changed_validation_file_aborts",
+          "test_results_are_consistent"
+        ]
+      },
+      {
+        "bug": "Validation hash: existence checked but mismatch allowed",
+        "caught": true,
+        "failed_tests": [
+          "test_changed_validation_file_aborts"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "max_new_tokens": 40,
+  "prompts": [
+    {
+      "instruction": "What is 2+2?"
+    },
+    {
+      "instruction": "What is Python?"
+    },
+    {
+      "instruction": "What is the capital of France?"
+    },
+    {
+      "instruction": "Write one sentence about the sea."
+    },
+    {
+      "instruction": "What is the name of the moon?",
+      "context": "The planet Quorra orbits a dim red star. Its largest moon is named Sel."
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "Phase 6 SFT",
+      "directory_files": [
+        "best_model.pt",
+        "cpu_pilot_50steps.pt",
+        "final_model.pt"
+      ],
+      "base_checkpoint": "checkpoints/phase5d/model_6_61m/best_model.pt",
+      "base_checkpoint_sha256": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+      "tokenizer": "tokenizers/phase5d/bpe_vocab_1024.json",
+      "data_source": "yahma/alpaca-cleaned, deduplicated (phase6/PHASE6_FINAL_REPORT.md)",
+      "data_examples": {
+        "phase6/data/sft/train_sft.jsonl": 41404,
+        "phase6/data/sft/val_sft.jsonl": 5176,
+        "phase6/data/sft/test_sft.jsonl": 5176
+      },
+      "learning_rate": 0.0001,
+      "planned_steps": 1000,
+      "final_checkpoint_step": 1000,
+      "training_finished": true,
+      "history_entries": 1000,
+      "first_history_entry": {
+        "step": 1,
+        "train_loss": 12.8287,
+        "val_loss": 3.0081,
+        "val_ppl": 20.2494,
+        "lr": 1e-05,
+        "step_time_sec": 2.6
+      },
+      "last_history_entry": {
+        "step": 1000,
+        "train_loss": 10.7386,
+        "val_loss": 2.6666,
+        "val_ppl": 14.3917,
+        "lr": 1e-05,
+        "step_time_sec": 2.69
+      },
+      "best_checkpoint": {
+        "path": "checkpoints/phase6/model_c_sft/best_model.pt",
+        "size_bytes": 27018621,
+        "sha256": "14f9335aa66d7168500c10cebaa20db373531cf87ae9dcd7d8ee1d8ed01cfb26",
+        "step": 1000,
+        "val_loss": 2.66664981842041,
+        "train_loss": null,
+        "architecture": {
+          "n_layer": 8,
+          "n_head": 8,
+          "n_embd": 256,
+          "block_size": 128,
+          "vocab_size": 1024
+        },
+        "has_optimizer_state": false
+      },
+      "final_checkpoint": {
+        "path": "checkpoints/phase6/model_c_sft/final_model.pt",
+        "size_bytes": 27018799,
+        "sha256": "de2b053b93fa0202efb0469ae3028a8fb802cdeede8d1fb3c53dec4b59d7d86e",
+        "step": 1000,
+        "val_loss": 2.66664981842041,
+        "train_loss": 10.738614797592163,
+        "architecture": {
+          "n_layer": 8,
+          "n_head": 8,
+          "n_embd": 256,
+          "block_size": 128,
+          "vocab_size": 1024
+        },
+        "has_optimizer_state": false
+      },
+      "reported_eval": "0/30 exact match; held-out test loss 2.6084 (phase6/evaluation/phase6g_results.json)",
+      "samples": [
+        {
+          "prompt": "What is 2+2?",
+          "context": null,
+          "response": "1. Sure, 19, 19, 19, 19, 19, 19, 19, 199, 199, 199, 1"
+        },
+        {
+          "prompt": "What is Python?",
+          "context": null,
+          "response": "A AI, I don't have a small media that is a small of AI, I can be a small of m"
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "context": null,
+          "response": "The United States of States and American American American American American "
+        },
+        {
+          "prompt": "Write one sentence about the sea.",
+          "context": null,
+          "response": "The sentence of specific species is a small specific method is a small of "
+        },
+        {
+          "prompt": "What is the name of the moon?",
+          "context": "The planet Quorra orbits a dim red star. Its largest moon is named Sel.",
+          "response": "The sentence of American American American American American American Americ"
+        }
+      ]
+    },
+    {
+      "name": "Phase 7 RAG-SFT",
+      "directory_files": [
+        "best_model.pt",
+        "experiment_config.json",
+        "final_model.pt",
+        "training_history.json",
+        "training_report.md"
+      ],
+      "base_checkpoint": "checkpoints/phase6/model_c_sft/best_model.pt",
+      "base_checkpoint_sha256": "14f9335aa66d7168500c10cebaa20db373531cf87ae9dcd7d8ee1d8ed01cfb26",
+      "tokenizer": "tokenizers/phase5d/bpe_vocab_1024.json",
+      "data_source": "Hand-built context/question/answer items in phase7/data/sft",
+      "data_examples": {
+        "phase7/data/sft/rag_sft_train.jsonl": 64,
+        "phase7/data/sft/rag_sft_val.jsonl": 8,
+        "phase7/data/sft/rag_sft_test.jsonl": 8
+      },
+      "learning_rate": 5e-05,
+      "planned_steps": 100,
+      "final_checkpoint_step": 100,
+      "training_finished": true,
+      "history_entries": 10,
+      "first_history_entry": {
+        "step": 10,
+        "train_loss": 2.7075,
+        "val_loss": 3.3483,
+        "learning_rate": 5e-05,
+        "grad_norm": 5.5445,
+        "elapsed_sec": 9.13
+      },
+      "last_history_entry": {
+        "step": 100,
+        "train_loss": 1.8718,
+        "val_loss": 2.96,
+        "learning_rate": 5e-05,
+        "grad_norm": 4.0254,
+        "elapsed_sec": 99.8
+      },
+      "best_checkpoint": {
+        "path": "checkpoints/phase7/model_c_rag_sft/best_model.pt",
+        "size_bytes": 27017917,
+        "sha256": "f3f21991d1262ed3bb6602b6c3d6abe609241a6c4d40c0b22a9c44b6d20d1ed3",
+        "step": 90,
+        "val_loss": 2.9198153018951416,
+        "train_loss": 1.9183364510536194,
+        "architecture": {
+          "n_layer": 8,
+          "n_head": 8,
+          "n_embd": 256,
+          "block_size": 128,
+          "vocab_size": 1024
+        },
+        "has_optimizer_state": false
+      },
+      "final_checkpoint": {
+        "path": "checkpoints/phase7/model_c_rag_sft/final_model.pt",
+        "size_bytes": 27018031,
+        "sha256": "4c160a24a967e3f6ce813c5a0cfef86a00d18998eeede8c6d9fa08429fc8133d",
+        "step": 100,
+        "val_loss": 2.959999680519104,
+        "train_loss": 1.8718496561050415,
+        "architecture": {
+          "n_layer": 8,
+          "n_head": 8,
+          "n_embd": 256,
+          "block_size": 128,
+          "vocab_size": 1024
+        },
+        "has_optimizer_state": false
+      },
+      "reported_eval": "0% exact match on 8 held-out items (checkpoints/phase7/model_c_rag_sft/training_report.md)",
+      "samples": [
+        {
+          "prompt": "What is 2+2?",
+          "context": null,
+          "response": "2 days.5 days.5 meters 2 meters 2 meters 2 meters 2 me"
+        },
+        {
+          "prompt": "What is Python?",
+          "context": null,
+          "response": "Oceansesses Chotosynthesizations:Advance, and advancement intel"
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "context": null,
+          "response": "Here's Statesting Startember Storet Storet Storet Startudes C"
+        },
+        {
+          "prompt": "Write one sentence about the sea.",
+          "context": null,
+          "response": "Advance.Statesting Startember Storet Storet Startember Star"
+        },
+        {
+          "prompt": "What is the name of the moon?",
+          "context": "The planet Quorra orbits a dim red star. Its largest moon is named Sel.",
+          "response": "Advance.Steps.com\nPhotosynthesism Startless:\nAntigle "
+        }
+      ]
+    }
+  ],
+  "samples": {
+    "Model C (base)": [
+      {
+        "prompt": "What is 2+2?",
+        "context": null,
+        "response": "- Students (1999)\n- Stephysical Students (1999)\n-"
+      },
+      {
+        "prompt": "What is Python?",
+        "context": null,
+        "response": "The Children Christians and the Christian Christians and the Christian Chris"
+      },
+      {
+        "prompt": "What is the capital of France?",
+        "context": null,
+        "response": "The Christian Christians and the Christian Christians and the Christian Chri"
+      },
+      {
+        "prompt": "Write one sentence about the sea.",
+        "context": null,
+        "response": "The first of his first his body to help the first of his body his both his w"
+      },
+      {
+        "prompt": "What is the name of the moon?",
+        "context": "The planet Quorra orbits a dim red star. Its largest moon is named Sel.",
+        "response": "The Christ's Christian Christians and the Christian Christians and the Chris"
+      }
+    ],
+    "Phase 6 SFT": [
+      {
+        "prompt": "What is 2+2?",
+        "context": null,
+        "response": "1. Sure, 19, 19, 19, 19, 19, 19, 19, 199, 199, 199, 1"
+      },
+      {
+        "prompt": "What is Python?",
+        "context": null,
+        "response": "A AI, I don't have a small media that is a small of AI, I can be a small of m"
+      },
+      {
+        "prompt": "What is the capital of France?",
+        "context": null,
+        "response": "The United States of States and American American American American American "
+      },
+      {
+        "prompt": "Write one sentence about the sea.",
+        "context": null,
+        "response": "The sentence of specific species is a small specific method is a small of "
+      },
+      {
+        "prompt": "What is the name of the moon?",
+        "context": "The planet Quorra orbits a dim red star. Its largest moon is named Sel.",
+        "response": "The sentence of American American American American American American Americ"
+      }
+    ],
+    "Phase 7 RAG-SFT": [
+      {
+        "prompt": "What is 2+2?",
+        "context": null,
+        "response": "2 days.5 days.5 meters 2 meters 2 meters 2 meters 2 me"
+      },
+      {
+        "prompt": "What is Python?",
+        "context": null,
+        "response": "Oceansesses Chotosynthesizations:Advance, and advancement intel"
+      },
+      {
+        "prompt": "What is the capital of France?",
+        "context": null,
+        "response": "Here's Statesting Startember Storet Storet Storet Startudes C"
+      },
+      {
+        "prompt": "Write one sentence about the sea.",
+        "context": null,
+        "response": "Advance.Statesting Startember Storet Storet Startember Star"
+      },
+      {
+        "prompt": "What is the name of the moon?",
+        "context": "The planet Quorra orbits a dim red star. Its largest moon is named Sel.",
+        "response": "Advance.Steps.com\nPhotosynthesism Startless:\nAntigle "
+      }
+    ]
+  }
+}

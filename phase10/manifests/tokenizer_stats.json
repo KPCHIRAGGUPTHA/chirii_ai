@@ -1,0 +1,33 @@
+{
+  "tokenizer": "phase10/tokenizer/tokenizer_v2.json",
+  "sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98",
+  "vocab_size": 16384,
+  "special_token_ids": {
+    "<|endoftext|>": 0,
+    "<|user|>": 1,
+    "<|assistant|>": 2,
+    "<|system|>": 3,
+    "<|calc|>": 4,
+    "<|/calc|>": 5,
+    "<|result|>": 6,
+    "<|/result|>": 7,
+    "<|pad|>": 8
+  },
+  "digit_token_ids": {
+    "0": 24,
+    "1": 25,
+    "2": 26,
+    "3": 27,
+    "4": 28,
+    "5": 29,
+    "6": 30,
+    "7": 31,
+    "8": 32,
+    "9": 33
+  },
+  "val_documents": 3311,
+  "val_text_bytes": 15792556,
+  "val_tokens_without_eot": 3786505,
+  "val_bytes_per_token": 4.1707474306781585,
+  "longest_token_bytes": 17
+}

@@ -1,0 +1,228 @@
+{
+  "dataset": "HuggingFaceFW/fineweb-edu",
+  "config": "sample-10BT",
+  "revision": "87f09149ef4734204d70ed1d046ddc9ca3f2b8f9",
+  "val_per_mille": 5,
+  "hash_note": "sha256 is over text with CRLF normalised to LF (phase10.common.sha256_text)",
+  "document_terminator": "<|endoftext|>",
+  "docs_read": 669469,
+  "docs_kept": 669469,
+  "text_bytes": 3200003620,
+  "skipped_special_token": 0,
+  "skipped_empty_or_bad": 0,
+  "status": "completed_target",
+  "shards": [
+    {
+      "file": "phase10/data/text/train_00000.txt",
+      "split": "train",
+      "documents": 52375,
+      "text_bytes": 254706821,
+      "file_bytes": 255387696,
+      "sha256": "5c10fece988554266eaf3fb7818e6626200f879c6505c9ba69a3a5594d100af2"
+    },
+    {
+      "file": "phase10/data/text/val_00000.txt",
+      "split": "val",
+      "documents": 257,
+      "text_bytes": 1293775,
+      "file_bytes": 1297116,
+      "sha256": "9f0ab2a8957dac8db57474f6da8a0ca6a214b3819c785e004e8d31a505028953"
+    },
+    {
+      "file": "phase10/data/text/train_00001.txt",
+      "split": "train",
+      "documents": 53641,
+      "text_bytes": 254640837,
+      "file_bytes": 255338170,
+      "sha256": "41daba7727054710fb216ca40f615752d39b40a3555c668ffad02d582cfec3c4"
+    },
+    {
+      "file": "phase10/data/text/val_00001.txt",
+      "split": "val",
+      "documents": 251,
+      "text_bytes": 1359603,
+      "file_bytes": 1362866,
+      "sha256": "219b3aef165218192afcd1c8f39b552f5be433a318f6f450985e31fa30963093"
+    },
+    {
+      "file": "phase10/data/text/train_00002.txt",
+      "split": "train",
+      "documents": 53845,
+      "text_bytes": 254998158,
+      "file_bytes": 255698143,
+      "sha256": "ce879723203b0652995a78919a869bec78f471dce254c099e34ca86ea7e022c5"
+    },
+    {
+      "file": "phase10/data/text/val_00002.txt",
+      "split": "val",
+      "documents": 251,
+      "text_bytes": 1003144,
+      "file_bytes": 1006407,
+      "sha256": "ef46e7826ccc1615fddb72c5bcda552169aece995b4dc83b8f73df6394bbd91f"
+    },
+    {
+      "file": "phase10/data/text/train_00003.txt",
+      "split": "train",
+      "documents": 53700,
+      "text_bytes": 254697603,
+      "file_bytes": 255395703,
+      "sha256": "6fb8efd461dd0cfc24c07d98617db1691421aacff4825295c9f931c8b82ce9ca"
+    },
+    {
+      "file": "phase10/data/text/val_00003.txt",
+      "split": "val",
+      "documents": 269,
+      "text_bytes": 1303297,
+      "file_bytes": 1306794,
+      "sha256": "019241af95f3864afb3e236c26dedfcf096697a131c20c5ea01a69ce94b6fb80"
+    },
+    {
+      "file": "phase10/data/text/train_00004.txt",
+      "split": "train",
+      "documents": 54272,
+      "text_bytes": 254587255,
+      "file_bytes": 255292791,
+      "sha256": "bbdd28d9946cd28ac77089316d4ca6aeb828cd16901f0ba94a29421f1af08caf"
+    },
+    {
+      "file": "phase10/data/text/val_00004.txt",
+      "split": "val",
+      "documents": 289,
+      "text_bytes": 1446657,
+      "file_bytes": 1450414,
+      "sha256": "4dcece6618b962d5d2ad61dda493e328f21003e5d8d341d7ac90cec7db440c70"
+    },
+    {
+      "file": "phase10/data/text/train_00005.txt",
+      "split": "train",
+      "documents": 54459,
+      "text_bytes": 254727687,
+      "file_bytes": 255435654,
+      "sha256": "e8cc1ccef74ce68f8c8ca59146ab215baadf5fa3549ccf2deae6b83459c3a93f"
+    },
+    {
+      "file": "phase10/data/text/val_00005.txt",
+      "split": "val",
+      "documents": 268,
+      "text_bytes": 1273950,
+      "file_bytes": 1277434,
+      "sha256": "f23f46b61055c3310c1f850f069a9588db767d858bb193c1f4465520a0c13425"
+    },
+    {
+      "file": "phase10/data/text/train_00006.txt",
+      "split": "train",
+      "documents": 52262,
+      "text_bytes": 254806632,
+      "file_bytes": 255486038,
+      "sha256": "9c02ed013e81f47ecad296a544f7a68bedf1bb74d82610bd428811cb414989a0"
+    },
+    {
+      "file": "phase10/data/text/val_00006.txt",
+      "split": "val",
+      "documents": 267,
+      "text_bytes": 1211977,
+      "file_bytes": 1215448,
+      "sha256": "6720c76fd5e3e1c92df68983dff8bf389dd3cec52b2eca6581290a0050a60005"
+    },
+    {
+      "file": "phase10/data/text/train_00007.txt",
+      "split": "train",
+      "documents": 52446,
+      "text_bytes": 254645729,
+      "file_bytes": 255327527,
+      "sha256": "f2e6d422907b2bffec5bb8f1271670a51a9cc5bf429bdd263ea58e1d3bcadb98"
+    },
+    {
+      "file": "phase10/data/text/val_00007.txt",
+      "split": "val",
+      "documents": 282,
+      "text_bytes": 1360289,
+      "file_bytes": 1363955,
+      "sha256": "dff944128052e2868b88999b08052581d73554a57e6c8b0fbdb768bd20e652b4"
+    },
+    {
+      "file": "phase10/data/text/train_00008.txt",
+      "split": "train",
+      "documents": 52527,
+      "text_bytes": 254824986,
+      "file_bytes": 255507837,
+      "sha256": "5430f59140cbbba77a32aa0e651cc01eee2070ea12a4ef0a7a6337064098633f"
+    },
+    {
+      "file": "phase10/data/text/val_00008.txt",
+      "split": "val",
+      "documents": 257,
+      "text_bytes": 1175198,
+      "file_bytes": 1178539,
+      "sha256": "48a43968670ee193ce6da500713220cc0d44e56ae140dd98c8f24247590ee47b"
+    },
+    {
+      "file": "phase10/data/text/train_00009.txt",
+      "split": "train",
+      "documents": 53954,
+      "text_bytes": 254844430,
+      "file_bytes": 255545832,
+      "sha256": "33d52b5ad47f487fccc0a457924f7072ab56ccf4e26031fa512e15275a682f97"
+    },
+    {
+      "file": "phase10/data/text/val_00009.txt",
+      "split": "val",
+      "documents": 273,
+      "text_bytes": 1168227,
+      "file_bytes": 1171776,
+      "sha256": "1041125fba9a36bcd38cd621143ac662077d153604e4cceca4d8024ba6c1e66b"
+    },
+    {
+      "file": "phase10/data/text/train_00010.txt",
+      "split": "train",
+      "documents": 52622,
+      "text_bytes": 254562583,
+      "file_bytes": 255246669,
+      "sha256": "7e586cc17e4874f42d2d1845cac3e85cfe92f1fe01777b663acd88691f6cd038"
+    },
+    {
+      "file": "phase10/data/text/val_00010.txt",
+      "split": "val",
+      "documents": 263,
+      "text_bytes": 1438275,
+      "file_bytes": 1441694,
+      "sha256": "cc7ca5e49a2f6d749fbc73bc6c915328b0a7d90717e430454e6adbd9f2a63f2a"
+    },
+    {
+      "file": "phase10/data/text/train_00011.txt",
+      "split": "train",
+      "documents": 53541,
+      "text_bytes": 254974001,
+      "file_bytes": 255670034,
+      "sha256": "46e8d05a78613a1f9c6f1d56d007cffa559ef27f3776fbb2b85e7517c821a04c"
+    },
+    {
+      "file": "phase10/data/text/val_00011.txt",
+      "split": "val",
+      "documents": 251,
+      "text_bytes": 1030921,
+      "file_bytes": 1034184,
+      "sha256": "ed37319d54613a7fe97d1bcaed5aec7374546becde5c6aee8ff5c85630f6ed1d"
+    },
+    {
+      "file": "phase10/data/text/train_00012.txt",
+      "split": "train",
+      "documents": 26514,
+      "text_bytes": 127194342,
+      "file_bytes": 127539024,
+      "sha256": "87a2ce028793a507d6331d8f55aafc01155caa8b0d3cf5ec6ae3f11ef316792c"
+    },
+    {
+      "file": "phase10/data/text/val_00012.txt",
+      "split": "val",
+      "documents": 133,
+      "text_bytes": 727243,
+      "file_bytes": 728972,
+      "sha256": "75394bb6bb4d58eb435b13c48eb6ac026a7ae06b8e5423905d5251fa4448acd2"
+    }
+  ],
+  "train_documents": 666158,
+  "train_text_bytes": 3184211064,
+  "val_documents": 3311,
+  "val_text_bytes": 15792556
+}

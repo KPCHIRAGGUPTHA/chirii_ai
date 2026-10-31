@@ -1,0 +1,21 @@
+HuggingFaceFW/fineweb-edu sample-10BT revision 87f09149ef4734204d70ed1d046ddc9ca3f2b8f9
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+chunk 0: total 0.256 GB, 52,632 docs, 23.88 MB/s
+chunk 1: total 0.512 GB, 106,524 docs, 37.56 MB/s
+chunk 2: total 0.768 GB, 160,620 docs, 41.45 MB/s
+chunk 3: total 1.024 GB, 214,589 docs, 38.12 MB/s
+chunk 4: total 1.280 GB, 269,150 docs, 38.26 MB/s
+chunk 5: total 1.536 GB, 323,877 docs, 38.70 MB/s
+chunk 6: total 1.792 GB, 376,406 docs, 38.49 MB/s
+chunk 7: total 2.048 GB, 429,134 docs, 38.81 MB/s
+chunk 8: total 2.304 GB, 481,918 docs, 37.48 MB/s
+chunk 9: total 2.560 GB, 536,145 docs, 37.63 MB/s
+chunk 10: total 2.816 GB, 589,030 docs, 37.54 MB/s
+chunk 11: total 3.072 GB, 642,822 docs, 34.62 MB/s
+chunk 12: total 3.200 GB, 669,469 docs, 44.43 MB/s
+Finished: completed_target, 3,200,003,620 bytes, 669,469 documents
+Fatal Python error: PyGILState_Release: thread state 0x723d2c58ecc0 must be current when releasing
+Python runtime state: finalizing (tstate=0x000063027005b098)
+
+Thread 0x0000723e409a6740 (most recent call first):
+  <no Python frame>

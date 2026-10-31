@@ -1,0 +1,156 @@
+id,category,prompt,response,verdict
+rag_001,rag,"Passage:
+The Lindqvist Bridge opened in 1931 and crosses the Varna River. It was designed by engineer Astrid Holm.
+
+Question:
+Who designed the Lindqvist Bridge?",19999 decent of 199 meters in 1999 meters in 19999 meters in 19999 me,fail
+rag_002,rag,"Passage:
+Tessa Oyelaran founded a bakery called Golden Crumb in the town of Marrowfield. It is known for walnut bread.
+
+Question:
+What is the bakery known for?","Adam Star Startless:
+Advance.da.da.da.da.da.da.......",fail
+rag_003,rag,"Passage:
+The planet Quorra orbits a dim red star every 44 days. Its largest moon is named Sel.
+
+Question:
+What is the name of Quorra's largest moon?",1999 meters per decendent of 199 meters in 1999 meters and per per of 1999 meter,fail
+rag_004,rag,"Passage:
+The Harbin Valley Railway has twelve stations. Its busiest station is Pell Junction, which serves nine thousand riders a day.
+
+Question:
+Which station is the busiest?","Advance.Steps.org.com
+carbong decrease of carbon carbon carbon carbon car",fail
+rag_005,rag,"Passage:
+Dr. Imani Castellan studied coral at the Brightwater Institute for sixteen years before retiring to Nairobi.
+
+Question:
+Where did Dr. Castellan retire to?","carbon Sheephotographic Shealth Starts,
+Berline Shealth Shealth S",fail
+rag_006,rag,"Passage:
+In the game Stonefall, each player starts with five shields. A player loses when all shields are broken.
+
+Question:
+How many shields does each player start with?","carbon specific specific specific specific specific steps. However, the senten",fail
+rag_007,rag,"Passage:
+The Kestrel 9 drone weighs 800 grams and flies for 35 minutes on one charge.
+
+Question:
+How long can the Kestrel 9 fly on one charge?",3 x x x x x x x x x x x x x x x x = x x = x x x ,fail
+rag_008,rag,"Passage:
+Lake Omari lies between two mountain ranges. Its water is green because of a mineral called olvite.
+
+Question:
+Why is the water of Lake Omari green?","Advance.Starts.Starts.com
+
+carbong carbon specific steps:
+carbon",fail
+rag_009,rag,"Passage:
+The Marlow Prize is awarded each spring to a young poet. In 2019 it went to Rafael Dunmore.
+
+Question:
+Who won the Marlow Prize in 2019?",1999 days.5 meters per days. He was a small of 199 meters in 1999 meter,fail
+rag_010,rag,"Passage:
+The village of Tern Hollow holds a lantern festival every October. Visitors float paper boats on the canal.
+
+Question:
+In which month is the lantern festival held?","the sentence.""
+customer of healthcare causes and carbon carbon carbon carbon carbon car",fail
+rag_011,rag,"Passage:
+Project Alder replaced old water pipes in the eastern district. The work finished in March and cost two million dollars.
+
+Question:
+How much did Project Alder cost?",Photosynthesizations: Alexander Startless: A Start Start Startsphersons. ,fail
+rag_012,rag,"Passage:
+The Fennimore Museum displays clocks from Switzerland. Its oldest clock was built in 1642.
+
+Question:
+When was the museum's oldest clock built?","19999 meters per decending the sentence.""
+3 meters per the sentence.""
+3.5 me",fail
+rag_013,rag,"Passage:
+Chef Noor Vasquez invented saffron dumplings at her restaurant, Blue Ember, in Lisbon.
+
+Question:
+In which city is Blue Ember?","Advance.Steps-both Start Start Start Start Starts
+
+Photosynthes",fail
+rag_014,rag,"Passage:
+The Tamsin river otter eats mostly crayfish. It sleeps in burrows dug into muddy banks.
+
+Question:
+What does the Tamsin river otter mostly eat?",the sentence.come.g. She was a small of healthcare weight to help the skills. He w,fail
+rag_015,rag,"Passage:
+Quillon Books sells only used maps. The shop's owner, Bram Sato, opened it after retiring as a sailor.
+
+Question:
+What was Bram Sato's job before opening the shop?","Advance.Starts.""
+Start Starts
+
+Photosynthesistic Starts,
+Berl",fail
+rag_016,rag,"Passage:
+Solvane is a language spoken by about four thousand people on the island of Ketu.
+
+Question:
+On which island is Solvane spoken?",Advance.Starts.Starts.Start Starts.Start Start Start Start Star,fail
+rag_017,rag,"Passage:
+The Ardent telescope has a mirror eleven meters wide and sits on Mount Serrin.
+
+Question:
+Where is the Ardent telescope located?","Advance.Steps-both Starts.Start Starts, a small data. Here are the sent",fail
+rag_018,rag,"Passage:
+The Hollis Tigers won the regional cup after beating the Dray City Foxes 3 to 1 in the final.
+
+Question:
+Which team did the Hollis Tigers beat in the final?",1999 days.5 meters the following of 199 meters in 1999 meters in 19999 m,fail
+rag_019,rag,"Passage:
+The medicine Corvaline is taken twice a day with food. It should not be given to children under six.
+
+Question:
+How often is Corvaline taken?","A Supple Starting Startless:
+Advance.g. Start Start Starts
+
+Pho",fail
+rag_020,rag,"Passage:
+Maya Rensford's novel 'Salt Orchard' follows a family of beekeepers in a drought.
+
+Question:
+What do the family in 'Salt Orchard' do for work?","Advance.Steps-both datas.com
+
+carbon specific specific specific s",fail
+rag_021,rag,"Passage:
+The town council of Eastmere voted to plant nine hundred oak trees along Canal Road.
+
+Question:
+What kind of trees will be planted?","Alexander Startless:
+Advance.Start Starts
+Newton
+Photosynthesistic",fail
+rag_022,rag,"Passage:
+The Vantor 3 phone has a battery that lasts two days. Its screen is made by a company called Lumio.
+
+Question:
+Which company makes the screen?",1999 days.5 meters per days. He was a small of healthcare weight to help the s,fail
+rag_023,rag,"Passage:
+Every winter, grey cranes fly from Lake Dorn to the marshes of Sabra.
+
+Question:
+Where do the grey cranes fly to in winter?","Antigravity and Shealth Sheepsons:
+Here's She's Shealth Shealth She",fail
+rag_024,rag,"Passage:
+The Orrin Theatre was destroyed by a flood in 1908 and rebuilt two years later.
+
+Question:
+What destroyed the Orrin Theatre?",1999 days.55 meters per seconds. He was a small of 199 meters in 1999 m,fail
+rag_025,rag,"Passage:
+Nadia Pell invented the folding kayak in her garage in Tromso during the 1970s.
+
+Question:
+What did Nadia Pell invent?",1999 meters per seconds:22 meters per days. He was a small of healthcare wei,fail
+rag_026,rag,"Passage:
+Fort Calder was built to guard the salt road. Today it houses a school for glassblowers.
+
+Question:
+What is Fort Calder used for today?","Advance.Steps.org.derline.org Starts
+Photosynthesistic Start S",fail

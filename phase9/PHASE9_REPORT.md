@@ -1,15 +1,16 @@
-# Phase 9 Report: Establish the Truth (CPU Work)
+# Phase 9 Report: Establish the Truth
 
-All numbers come from runs executed on this laptop on 2026-10-31, unless marked as recorded by an earlier phase. No GPU was used, and full training was not run.
+All numbers come from runs on 2026-10-31. The CPU work ran on the laptop, unless marked as recorded by an earlier phase. The retrains ran on the college GPU PC (NVIDIA RTX A2000 12GB), and their numbers appear under "Retrain Comparison" in section 3 and in section 10. Full GPU details are in `phase9/GPU_RESULTS.md`.
 
 ## Summary
 
-- **Model ranking**: on one pinned validation text, Model C is best at **2.1531 bits per byte**. Model D, from the old trainer, is worst at 2.8804.
+- **Closing result**: the gate **passed as inconclusive**. D is not better than C under the pre-registered rule; see section 10.
+- **Model ranking of the original checkpoints**: on one pinned validation text, Model C is best at **2.1531 bits per byte**. Model D, from the old trainer, is worst at 2.8804.
 - **Model C discrepancy**: the 2.0936 figure does not belong to Model C. It comes from a small Phase 3 character model trained on Tiny Shakespeare.
 - **Model A**: the 940,800-parameter Model A checkpoint is lost. The table uses the closest available model and labels it A*.
 - **Model E**: abandoned, with no local artifacts.
 - **Goal baseline**: no model gave a correct answer on the 202-prompt v1 or v2 sets. Goal eval v2 is the scorer to use from now on.
-- **Next step**: two-seed retrains of Model C and Model D are ready to run with `phase9/GPU_RUNBOOK.md`. The GPU code path itself is untested.
+- **Retrains**: two-seed retrains of Model C and Model D ran with `phase9/GPU_RUNBOOK.md`, adapted to run in the copied repo. The GPU code path is now tested.
 
 ## Closed Items and Known Issues
 
@@ -96,16 +97,20 @@ I added 5 tests. Four of the bugs above were caught only by new tests, so the ea
 
 ### Retrain Comparison
 
-C_v2 and D_v2 have not been trained, so their values are pending. After the GPU session, `phase9/compare_retrain.py` fills in the mean and both seeds for each model.
+Run on the GPU PC. `phase9/compare_retrain.py` gives the verdict **D NOT BETTER**, with a mean difference (D_v2 - C_v2) of +0.0703 bits per byte.
 
 | Model | Trainer | Parameters | Bits per byte | Loss | Perplexity |
 | :--- | :--- | ---: | ---: | ---: | ---: |
 | C_old | `run_model_c_gpu.py` | 6,613,504 | **2.1531** | 2.9730 | 19.55 |
-| C_v2 (seeds 42, 43) | `phase9/train_v2.py` | pending | pending | pending | pending |
+| C_v2 seed 42 | `phase9/train_v2.py` | 6,613,504 | 2.2548 | 3.1136 | 22.50 |
+| C_v2 seed 43 | `phase9/train_v2.py` | 6,613,504 | 2.1403 | 2.9554 | 19.21 |
+| C_v2 mean | | 6,613,504 | **2.1976** | 3.0345 | n/a |
 | D_old | `phase8/train_model_scaling.py` | 15,164,800 | **2.8804** | 3.9774 | 53.38 |
-| D_v2 (seeds 42, 43) | `phase9/train_v2.py` | pending | pending | pending | pending |
+| D_v2 seed 42 | `phase9/train_v2.py` | 15,164,800 | 2.3980 | 3.3112 | 27.42 |
+| D_v2 seed 43 | `phase9/train_v2.py` | 15,164,800 | 2.1377 | 2.9519 | 19.14 |
+| D_v2 mean | | 15,164,800 | **2.2679** | 3.1316 | n/a |
 
-D counts as better only if both D seeds (42 and 43) beat both C seeds in bits per byte.
+D counts as better only if both D seeds (42 and 43) beat both C seeds in bits per byte. All four retrains scored 0/202 on goal eval v2 (0/195 without the SFT-overlap prompts).
 
 ## 4. Model C Discrepancy Explained
 
@@ -253,12 +258,47 @@ These fixtures were chosen because the reviewed scorer got them wrong, so 3/79 i
 
 ## 8. What I Could Not Verify
 
-- **GPU path**: bf16 autocast, `nvidia-smi` utilization reading and GPU memory logging have never run, because this laptop has no GPU. The GPU test is skipped here, and the runbook runs it first.
-- **Runbook on Linux**: its environment setup and commands have not been run on Linux. `pip install torch` assumes the default Linux package includes CUDA.
-- **The retrain results**: C_v2 and D_v2 are pending, so the question of whether Model D beats Model C under the same trainer is still open.
-- **Run-to-run variation**: the runbook trains one seed per model, so it can't measure this. A small D_v2 - C_v2 difference should be treated as inconclusive.
+- **Runbook on Linux**: its training, evaluation and comparison commands ran on Ubuntu 24.04, adapted to the copied repo. Its bundle unpacking, venv setup and `pip install torch` steps were not run.
+- **Run-to-run variation**: two seeds per model measure a spread but can't explain it. Section 10 lists what to test.
 - **Weight decay test strength**: the old `weight_decay=0.0` bug is caught only by a test of the default value. The separate group-assignment test covers which parameters decay.
 
 ## 9. Artifact Integrity
 
-`phase9/verify_protected.py` compared the full SHA-256 of Model C, Model D, the tokenizer, SFT and RAG-SFT against their pinned values, and all 5 match (`phase9/logs/protected_hashes.log`). Phase 9 wrote new outputs only to `phase9/`, and did not change or delete any protected artifact.
+`phase9/verify_protected.py` compared the full SHA-256 of Model C, Model D, the tokenizer, SFT and RAG-SFT against their pinned values, and all 5 match (`phase9/logs/protected_hashes.log`). They matched again on the GPU PC, before training and after evaluation. Phase 9 wrote new outputs only to `phase9/`, and did not change or delete any protected artifact.
+
+## 10. Phase 9 Close
+
+### Gate: Passed as Inconclusive
+
+The pre-registered rule says D is better only if both D seeds beat both C seeds in bits per byte. `phase9/compare_retrain.py` gives `D NOT BETTER`. The rule has only those two outputs, so "inconclusive" is the reading recorded at close: D was not shown to be better, and C was not shown to be better either.
+
+| Bits per byte (lower is better) | C_v2 | D_v2 | D - C |
+| :--- | ---: | ---: | ---: |
+| Seed 42 | 2.2548 | 2.3980 | +0.1432 |
+| Seed 43 | 2.1403 | 2.1377 | -0.0026 |
+| Mean | 2.1976 | 2.2679 | +0.0703 |
+
+- **D not better**: D/43 beats both C seeds, but D/42 loses to both.
+- **Seed 43 is a tie**: D's loss lead of 0.0035 is close to the standard error of each loss (about 0.0028).
+- **Old trainer confirmed as the cause of D_old's deficit**: D_v2's mean is 0.61 bits per byte lower than D_old's (2.2679 vs 2.8804), and both seeds improved by far more than the gap between them. This compares the trainers as a whole; it doesn't show which fix mattered most.
+
+### Key Finding: Seed Variance Exceeds the C vs D Difference
+
+The gap between seeds is 0.11 bits per byte for C and 0.26 for D. Both are larger than the 0.07 gap between the C and D means, so two seeds of this setup can't separate these models.
+
+**Seed 42 is behind from early in training**: validation loss in all four runs sits near 5.36 at first, and the runs leave that level at different times. Seed 43 is below it by step 200 for both models (C 4.83, D 4.78). Seed 42 is still on it at step 200 (C 5.36, D 5.36), and is behind by a clear margin at step 300 (C 4.83 vs 4.49, D 5.36 vs 4.54). It stays behind to the end.
+
+**Likely causes to test in Phase 10** (none has been tested):
+
+| Candidate | What the runs show |
+| :--- | :--- |
+| 4,096-token steps | Each step uses 32 blocks of 128 tokens, and the same seed draws the same batch positions for C and D. That may be why seed 42 is worse for both models. |
+| Learning rate of 1e-3 | Validation loss falls steeply only as the rate decays, and was still falling at step 2,500 in all four runs. |
+| Early gradient spike | D/43 logged a norm of 74.85 at step 50, the end of warmup. This was in the best of the four runs, and neither seed 42 run logged a spike that size, so it doesn't by itself explain seed 42 lagging. Gradients are logged only every 50 steps. |
+
+### Carried Over to Phase 10
+
+- **Flag the extra contamination overlaps before Phase 11**. These are currently reported but not flagged in the goal set:
+  - **Phase 6 SFT train**: `fact_017` (near match) and `fact_030` (contained).
+  - **Phase 7 RAG-SFT**: `fact_006` (exact, test split), and `fact_007`, `fact_008` and `fact_023` (near, train split).
+- **Pinned hashes depend on Windows line endings**: git stores these 6 files with LF, but their pinned hashes match only the CRLF copies from the laptop: `data/phase5/val_corpus.txt`, `data/phase5d/val_corpus.txt` and the tokenizers `phase5/bpe_vocab_1024.json`, `phase5/bpe_vocab_1377.json`, `phase5/phase5_vocab.json` and `phase5d/bpe_vocab_1024.json`. On a fresh clone they have LF, so `phase9/verify_protected.py` and `phase9/eval_standard.py` would fail their hash checks.

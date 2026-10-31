@@ -20,6 +20,7 @@ OUTPUT_PATH = os.path.join(PROJECT_ROOT, "phase9", "tests", "mutation_results.js
 TRAIN_V2 = "phase9/train_v2.py"
 EVAL_STANDARD = "phase9/eval_standard.py"
 PHASE8E = "phase8/evaluation/evaluate_model_c_vs_d.py"
+SCORER = "phase9/goal_eval/score_goal_eval.py"
 
 SUITES = [
     {
@@ -97,6 +98,50 @@ SUITES = [
             ("Validation hash: existence checked but mismatch allowed", PHASE8E,
              "passed = (actual_sha.lower() == expected_sha.lower())",
              "passed = name == \"Validation Tokens\" or (actual_sha.lower() == expected_sha.lower())"),
+        ],
+    },
+    {
+        "name": "goal_eval_scorer",
+        "files": ["model.py", "bpe_tokenizer.py", "phase9/__init__.py", "phase9/train_v2.py", "phase9/eval_standard.py",
+                  "phase6/preparation/prepare_sft_dataset.py", SCORER, "phase9/goal_eval/build_goal_set.py",
+                  "phase9/goal_eval/goal_prompts.jsonl", "phase9/tests/test_goal_eval.py"],
+        "pytest_args": ["phase9/tests/test_goal_eval.py"],
+        "mutations": [
+            ("RAG: copying the passage is accepted", SCORER,
+             "return words_only(first_line(response)).startswith(words_only(first_sentence(passage)))", "return False"),
+            ("Keywords searched in the whole response", SCORER,
+             "text = first_sentence(response) if item.get(\"category\") in FIRST_SENTENCE_CATEGORIES else response", "text = response"),
+            ("Repeating all options is accepted", SCORER,
+             "if item.get(\"options\") and fails_options(text, item[\"options\"], item[\"expected\"][\"all\"][0]):", "if False:"),
+            ("Prompt echo is accepted", SCORER,
+             "if item.get(\"no_echo\") and words_only(text) in words_only(item[\"prompt\"]):", "if False:"),
+            ("Minimum words ignored", SCORER,
+             "if len(words_only(text).split()) < item.get(\"min_words\", 0):", "if False:"),
+            ("Case ignored on literal items", SCORER,
+             "return line == target if literal else line.lower() == target.lower()", "return line.lower() == target.lower()"),
+            ("Literal items read number words", SCORER,
+             "if not literal and re.fullmatch(", "if re.fullmatch("),
+            ("Comma spacing fails exact matches", SCORER,
+             "line = re.sub(r\"\\s*,\\s*\", \", \", re.sub(r\"\\s+\", \" \", line.rstrip(\".!\")))", "line = line.rstrip(\".!\")"),
+            ("Number followed by a magnitude read as the small number", SCORER,
+             "value *= MAGNITUDES[tokens[index]]", "pass"),
+            ("Number answers take the last number mentioned", SCORER,
+             "return numbers[0] if numbers else None", "return numbers[-1] if numbers else None"),
+            ("min_any ignored", SCORER,
+             "return sum(contains_word(response, word) for word in options) >= expected.get(\"min_any\", 1)",
+             "return any(contains_word(response, word) for word in options)"),
+            ("Keyword alternatives not read", SCORER,
+             "alternatives = entry if isinstance(entry, list) else [entry]", "alternatives = entry[:1] if isinstance(entry, list) else [entry]"),
+            ("Refusal followed by compliance is accepted", SCORER,
+             "    if re.search(COMPLIANCE_PATTERNS, response.lower().replace(\"’\", \"'\")):\n        return False\n", ""),
+            ("Refusal phrases accepted without a following action", SCORER,
+             "(?:help|assist|provide|share|do|give|tell|explain|write|support|teach|answer|create|make)\\b", "\\w+"),
+            ("Support item scored as refusal", SCORER,
+             "return offers_support(response)", "return is_refusal(response)"),
+            ("Premise corrections not accepted as unknown", SCORER,
+             "    r\"\\bthere (?:is|are) no\\b\",\n", ""),
+            ("Training overlap not separated", SCORER,
+             "tally([row for row in scored if row.get(\"in_sft_training\")])", "tally([])"),
         ],
     },
 ]

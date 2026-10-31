@@ -8,7 +8,7 @@ All numbers come from runs executed on this laptop on 2026-10-31, unless marked 
 - **Model C discrepancy**: the 2.0936 figure does not belong to Model C. It comes from a small Phase 3 character model trained on Tiny Shakespeare.
 - **Model A**: the 940,800-parameter Model A checkpoint is lost. The table uses the closest available model and labels it A*.
 - **Model E**: abandoned, with no local artifacts.
-- **Goal baseline**: no model gave a real correct answer on any of the 202 prompts. One point scored for the SFT model is a chance keyword match.
+- **Goal baseline**: no model gave a correct answer on any of the 202 prompts, under scoring tightened after a review of the set.
 - **Next step**: retraining both Model C and Model D is ready to run with `phase9/GPU_RUNBOOK.md`. The GPU code path itself is untested.
 
 ## Closed Items and Known Issues
@@ -42,7 +42,7 @@ Searched: the repo, `checkpoints/phase8/`, and files named like Model E under De
 
 Also added: auto device detection (CUDA, then CPU), bf16 autocast on CUDA, JSON config in, JSON metrics out, atomic checkpoints, and resume. A test confirms a resumed run matches an uninterrupted one exactly, weight for weight.
 
-**Proof the tests would have failed**: `phase9/tests/mutation_check.py` first confirms an unmodified temporary copy passes, then puts each bug back and requires a test failure. All 26 reintroduced bugs were caught: 12 for this phase's trainer and evaluation, and 14 for the Phase 8E fixes (`phase9/tests/mutation_results.json`).
+**Proof the tests would have failed**: `phase9/tests/mutation_check.py` first confirms an unmodified temporary copy passes, then puts each bug back and requires a test failure. All 43 reintroduced bugs were caught: 12 for this phase's trainer and evaluation, 14 for the Phase 8E fixes, and 17 for the goal scorer (`phase9/tests/mutation_results.json`).
 
 **Test results**: 74 pass and 1 is skipped across `phase9/tests` and `tests/test_phase8e_evaluation.py`. The skipped test needs a GPU.
 
@@ -155,15 +155,34 @@ None of these outputs answer the prompt. Full details are in `phase9/sft_invento
 | :--- | ---: | :--- | ---: | ---: | ---: |
 | Arithmetic | 32 | Exact | 0 | 0 | Not run |
 | Definitions | 28 | Keyword | 0 | 0 | Not run |
-| Facts | 34 | Keyword | 0 | 0 | Not run |
-| Instructions | 30 | Exact, keyword | 0 | 1 (false positive) | Not run |
+| Facts | 34 | Keyword, exact | 0 | 0 | Not run |
+| Instructions | 30 | Keyword, exact | 0 | 0 | Not run |
 | Should say "I don't know" | 26 | Abstention | 0 | 0 | Not run |
-| Should refuse | 26 | Refusal | 0 | 0 | Not run |
-| RAG | 26 | Keyword | 0 | 0 | 0 |
-| **Overall** | **202** | | **0/202** | **1/202 raw, 0 after review** | **0/26** |
+| Should refuse | 26 | Refusal, support | 0 | 0 | Not run |
+| RAG | 26 | Keyword, exact | 0 | 0 | 0 |
+| **Overall** | **202** | | **0/202** | **0/202** | **0/26** |
+| In SFT training data | 7 | | 0/7 | 0/7 | 0/0 |
+| Not in SFT training data | 195 | | 0/195 | 0/195 | 0/26 |
 
-- **The one point**: the SFT model answered `Complete the sequence: 2, 4, 6, 8,` with babble that happened to contain `10 million`. The scorer records it as correct, and I reviewed it by hand as a chance match.
-- **Context limit**: with 48 tokens reserved for the answer, these prompts exceed the 80 tokens left: 19 for Model C, 26 for SFT, 24 for RAG-SFT. All of them are RAG prompts, so their passages can be cut off during generation. This limit makes the RAG score harder, but outputs in the other categories are babble too.
+### Scoring changes after review
+
+| Problem found | Before | After |
+| :--- | :--- | :--- |
+| Copying the RAG passage | 26/26 correct | 0/26 |
+| Repeating the prompt | 7 instruction items correct | 0 on every item |
+| SFT's `10 million` false positive | Scored correct | Rejected; SFT is now 0/202 |
+| Close forms (`sunlight`, `networks`, `cost of living`) | Rejected | Accepted |
+| Number forms (`Four`, `5 apples`, `$36`, `2 + 2 is 4`) | Rejected | Accepted |
+| Case tasks (`river` for `RIVER`) | Accepted | Rejected |
+| Partial answers (one colour when three were asked for) | Accepted | Rejected |
+| Refusal followed by steps, or `I can't believe...` | Accepted | Rejected |
+| Refusals such as `I must decline`, and premise corrections | Rejected | Accepted |
+
+- **Prompt changes**: six personal prompts in the "I don't know" category were replaced with other unknowable questions, leaving 10 of 26 about the user. The self-harm prompt now scores on pointing toward help rather than refusing.
+- **Training overlap**: 7 prompts appear word for word in the SFT training data and are counted separately, because a pass may be memorization. Reworded overlaps are not detected.
+- **Known limits**: scoring still can't tell a wrong answer that contains the right word from a correct one. `The sun is a planet.` passes `fact_030`, and `There are 7 oceans.` passes `fact_005`. Copying a later passage sentence is allowed, since choosing the right sentence is a real skill; copying from the start is rejected, including when the first sentence is itself the answer.
+- **Chance matches**: against 3,000 random 200-character windows of validation text, 1 of 100 keyword items matches at 5% or more (`definition_006`, 6.1%). Random text triggers refusal scoring 0 times and "I don't know" scoring 8 times, slightly more than before (2) because premise corrections are now accepted.
+- **Context limit**: with 48 tokens reserved for the answer, these prompts exceed the 80 tokens left: 19 for Model C, 26 for SFT, 24 for RAG-SFT. All are RAG prompts, so their passages can be cut off during generation.
 - **Added beyond the request**: I scored RAG-SFT on the RAG category only, since that is all it was trained for.
 - **Full output**: `phase9/goal_eval/baseline_results.json` holds every response.
 

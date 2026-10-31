@@ -206,5 +206,136 @@
         ]
       }
     ]
+  },
+  "goal_eval_scorer": {
+    "baseline_passed": true,
+    "mutations": [
+      {
+        "bug": "RAG: copying the passage is accepted",
+        "caught": true,
+        "failed_tests": [
+          "test_copying_the_passage_scores_zero_on_rag"
+        ]
+      },
+      {
+        "bug": "Keywords searched in the whole response",
+        "caught": true,
+        "failed_tests": [
+          "test_repeating_the_prompt_scores_zero_on_every_item",
+          "test_wrong_answers_are_rejected"
+        ]
+      },
+      {
+        "bug": "Repeating all options is accepted",
+        "caught": true,
+        "failed_tests": [
+          "test_repeating_the_prompt_scores_zero_on_every_item",
+          "test_wrong_answers_are_rejected"
+        ]
+      },
+      {
+        "bug": "Prompt echo is accepted",
+        "caught": true,
+        "failed_tests": [
+          "test_repeating_the_prompt_scores_zero_on_every_item",
+          "test_wrong_answers_are_rejected"
+        ]
+      },
+      {
+        "bug": "Minimum words ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_wrong_answers_are_rejected"
+        ]
+      },
+      {
+        "bug": "Case ignored on literal items",
+        "caught": true,
+        "failed_tests": [
+          "test_wrong_answers_are_rejected"
+        ]
+      },
+      {
+        "bug": "Literal items read number words",
+        "caught": true,
+        "failed_tests": [
+          "test_repeating_the_prompt_scores_zero_on_every_item",
+          "test_wrong_answers_are_rejected"
+        ]
+      },
+      {
+        "bug": "Comma spacing fails exact matches",
+        "caught": true,
+        "failed_tests": [
+          "test_correct_answers_are_accepted"
+        ]
+      },
+      {
+        "bug": "Number followed by a magnitude read as the small number",
+        "caught": true,
+        "failed_tests": [
+          "test_wrong_answers_are_rejected",
+          "test_reads_digits_and_words_in_order"
+        ]
+      },
+      {
+        "bug": "Number answers take the last number mentioned",
+        "caught": true,
+        "failed_tests": [
+          "test_repeating_the_prompt_scores_zero_on_every_item",
+          "test_wrong_answers_are_rejected"
+        ]
+      },
+      {
+        "bug": "min_any ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_wrong_answers_are_rejected"
+        ]
+      },
+      {
+        "bug": "Keyword alternatives not read",
+        "caught": true,
+        "failed_tests": [
+          "test_correct_answers_are_accepted"
+        ]
+      },
+      {
+        "bug": "Refusal followed by compliance is accepted",
+        "caught": true,
+        "failed_tests": [
+          "test_wrong_answers_are_rejected"
+        ]
+      },
+      {
+        "bug": "Refusal phrases accepted without a following action",
+        "caught": true,
+        "failed_tests": [
+          "test_wrong_answers_are_rejected"
+        ]
+      },
+      {
+        "bug": "Support item scored as refusal",
+        "caught": true,
+        "failed_tests": [
+          "test_correct_answers_are_accepted",
+          "test_wrong_answers_are_rejected"
+        ]
+      },
+      {
+        "bug": "Premise corrections not accepted as unknown",
+        "caught": true,
+        "failed_tests": [
+          "test_correct_answers_are_accepted"
+        ]
+      },
+      {
+        "bug": "Training overlap not separated",
+        "caught": true,
+        "failed_tests": [
+          "test_training_overlap_is_reported_separately"
+        ]
+      }
+    ]
   }
 }

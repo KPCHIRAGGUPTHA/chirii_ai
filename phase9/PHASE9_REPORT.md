@@ -8,8 +8,8 @@ All numbers come from runs executed on this laptop on 2026-10-31, unless marked 
 - **Model C discrepancy**: the 2.0936 figure does not belong to Model C. It comes from a small Phase 3 character model trained on Tiny Shakespeare.
 - **Model A**: the 940,800-parameter Model A checkpoint is lost. The table uses the closest available model and labels it A*.
 - **Model E**: abandoned, with no local artifacts.
-- **Goal baseline**: no model gave a correct answer on any of the 202 prompts, under scoring tightened after a review of the set.
-- **Next step**: retraining both Model C and Model D is ready to run with `phase9/GPU_RUNBOOK.md`. The GPU code path itself is untested.
+- **Goal baseline**: no model gave a correct answer on the 202-prompt v1 or v2 sets. Goal eval v2 is the scorer to use from now on.
+- **Next step**: two-seed retrains of Model C and Model D are ready to run with `phase9/GPU_RUNBOOK.md`. The GPU code path itself is untested.
 
 ## Closed Items and Known Issues
 
@@ -42,9 +42,9 @@ Searched: the repo, `checkpoints/phase8/`, and files named like Model E under De
 
 Also added: auto device detection (CUDA, then CPU), bf16 autocast on CUDA, JSON config in, JSON metrics out, atomic checkpoints, and resume. A test confirms a resumed run matches an uninterrupted one exactly, weight for weight.
 
-**Proof the tests would have failed**: `phase9/tests/mutation_check.py` first confirms an unmodified temporary copy passes, then puts each bug back and requires a test failure. All 43 reintroduced bugs were caught: 12 for this phase's trainer and evaluation, 14 for the Phase 8E fixes, and 17 for the goal scorer (`phase9/tests/mutation_results.json`).
+**Proof the tests would have failed**: `phase9/tests/mutation_check.py` first confirms an unmodified temporary copy passes, then puts each bug back and requires a test failure. All 69 reintroduced bugs were caught: 12 for this phase's trainer and evaluation, 14 for the Phase 8E fixes, 17 for the v1 goal scorer, and 26 for goal eval v2 and the retrain rule (`phase9/tests/mutation_results.json`).
 
-**Test results**: 74 pass and 1 is skipped across `phase9/tests` and `tests/test_phase8e_evaluation.py`. The skipped test needs a GPU.
+**Test results**: 147 pass and 1 is skipped across `phase9/tests` and `tests/test_phase8e_evaluation.py`. The skipped test needs a GPU.
 
 **C_v2 and D_v2 match each other, but not the old runs**. A test confirms they share all training settings, the seed and the data, and differ only in `n_layer`, `n_head` and `n_embd`. C_v2 differs from C_old in these ways:
 
@@ -96,16 +96,16 @@ I added 5 tests. Four of the bugs above were caught only by new tests, so the ea
 
 ### Retrain Comparison
 
-C_v2 and D_v2 have not been trained, so their values are pending. After the GPU session, `phase9/compare_retrain.py` fills this table from the evaluation results.
+C_v2 and D_v2 have not been trained, so their values are pending. After the GPU session, `phase9/compare_retrain.py` fills in the mean and both seeds for each model.
 
 | Model | Trainer | Parameters | Bits per byte | Loss | Perplexity |
 | :--- | :--- | ---: | ---: | ---: | ---: |
 | C_old | `run_model_c_gpu.py` | 6,613,504 | **2.1531** | 2.9730 | 19.55 |
-| C_v2 | `phase9/train_v2.py` | pending | pending | pending | pending |
+| C_v2 (seeds 42, 43) | `phase9/train_v2.py` | pending | pending | pending | pending |
 | D_old | `phase8/train_model_scaling.py` | 15,164,800 | **2.8804** | 3.9774 | 53.38 |
-| D_v2 | `phase9/train_v2.py` | pending | pending | pending | pending |
+| D_v2 (seeds 42, 43) | `phase9/train_v2.py` | pending | pending | pending | pending |
 
-D_v2 - C_v2 will be the main result: the larger model against the smaller one, with the same trainer and settings.
+D counts as better only if both D seeds (42 and 43) beat both C seeds in bits per byte.
 
 ## 4. Model C Discrepancy Explained
 
@@ -186,15 +186,70 @@ None of these outputs answer the prompt. Full details are in `phase9/sft_invento
 - **Added beyond the request**: I scored RAG-SFT on the RAG category only, since that is all it was trained for.
 - **Full output**: `phase9/goal_eval/baseline_results.json` holds every response.
 
+## 6b. Goal Eval v2
+
+`phase9/goal_eval/goal_prompts_v2.jsonl` is the DEV set (202 prompts, SHA-256 `b2a3123ccb532763988f4967f0c118f0cc057a29beb4ce50ca7e57d89a696e85`). `phase9/goal_eval/scorer_v2.py` refuses to run if the hash differs. The v1 files are unchanged.
+
+| Model | v1 as reviewed | v1 tightened | v2 | v2 without SFT-overlap prompts |
+| :--- | ---: | ---: | ---: | ---: |
+| Model C | 0/202 | 0/202 | 0/202 | 0/195 |
+| Phase 6 SFT | 1/202 | 0/202 | 0/202 | 0/195 |
+| Phase 7 RAG-SFT | 0/26 | 0/26 | 0/26 | 0/26 |
+
+Prompts differ slightly between versions. Each run also writes a CSV to `phase9/goal_eval/results_v2/` for spot checks.
+
+### Scorer Fixtures
+
+Every tested case from the review's sections B and C became a fixture with its correct verdict, 79 in all, including copying each of the 26 RAG passages.
+
+| Scorer | Fixtures correct | Wrong |
+| :--- | ---: | :--- |
+| v1 as reviewed | 3/79 | 20 in section B, 56 in section C |
+| v1 tightened | 77/79 | `There are 7 oceans.`, `The sun is a planet.` |
+| v2 | 79/79 | None |
+
+These fixtures were chosen because the reviewed scorer got them wrong, so 3/79 is not a general accuracy figure. They also shaped v2, so 79/79 shows those known cases are fixed, not that v2 is free of errors. `Yes, fire is hot.` is a fixture that must fail, because that prompt says "Answer with one word."
+
+### Scorer Decisions Beyond the Brief
+
+- **Restated expressions**: "first number" alone would read `2 + 2 is 4` as 2, so a leading expression whose numbers all come from the prompt is skipped.
+- **Echo check**: a flat 80% rule would fail `Tiger.` and `The capital of France is Paris.`, so a response made only of the answer, or adding answer words not in the prompt, does not count as an echo.
+- **RAG copying**: the 8-word limit is checked on the whole response, because some passages open with a sentence under 8 words and copying them would otherwise pass.
+- **Options**: mentioning more than one option fails, as specified, so `Car, since dog, cat and horse are animals.` also fails.
+
+### Dataset Changes
+
+- **Replaced**: `fact_005`, `fact_034` and `harmful_019` became `fact_035`, `fact_036` and `harmful_027`; `unknown_011` was retired.
+- **Unknown**: 26 items, with 8 privacy, 9 future (`abstain`) and 9 false-premise. Eight v1 items were retired and 8 added (`unknown_027` to `unknown_034`).
+- **SFT overlap**: the 7 flagged items carry `overlap_sft`, and scores are reported with and without them.
+
+### Contamination Check
+
+`phase9/check_contamination.py` reports exact, near-duplicate and contained overlap, and exits 1 on any match. Full reports are in `phase9/contamination/`.
+
+| Dataset | Records | Exact | Near | Contained | Result |
+| :--- | ---: | ---: | ---: | ---: | :--- |
+| Phase 6 SFT train | 41,404 | 7 | 2 | 1 | Fail |
+| Phase 6 SFT val | 5,176 | 1 | 0 | 0 | Fail |
+| Phase 6 SFT test | 5,176 | 0 | 0 | 0 | Pass |
+| Phase 7 RAG-SFT train | 64 | 0 | 3 | 0 | Fail |
+| Phase 7 RAG-SFT val | 8 | 0 | 0 | 0 | Pass |
+| Phase 7 RAG-SFT test | 8 | 2 | 0 | 0 | Fail |
+| FineWeb train corpus | 165,095 | 0 | 0 | 0 | Pass |
+
+- **It caught my own error**: my first `fact_035`, about a hexagon, was in the SFT training data, so I replaced it before scoring the final baselines.
+- **Overlap beyond the 7 flags**: `fact_017` and `fact_030` look like real overlap with SFT training data. `fact_023` is a false match: `hottest planet` differs from `largest planet`. In RAG-SFT data, `fact_007`, `fact_008` and `fact_023` are near matches, and `fact_006` is an exact match in its test split. These are reported but not flagged, because the brief named 7 items.
+- **Line matching on FineWeb**: the corpus is checked line by line, so a prompt split across lines would not be found.
+
 ## 7. GPU Runbook Summary
 
-`phase9/GPU_RUNBOOK.md` retrains both models one after the other. It covers building the bundle, setup, hash checks, tests, 50-step smoke tests, throughput checks, the full runs, resume, evaluation, the four-model table, and copying files back.
+`phase9/GPU_RUNBOOK.md` trains in the order C/42, D/42, C/43, D/43, then scores each run with `eval_standard.py` and goal eval v2.
 
-- **Configs**: `phase9/configs/model_c_v2.json` (6,613,504 parameters) and `model_d_v2.json` (15,164,800), each 2,500 steps x 4,096 tokens = 10,240,000 tokens, with seed 42.
-- **Model C dry run**: 2 steps on CPU, loss 6.9900 then 6.9389, validation loss 6.8427, and the checkpoint reloads.
-- **Model D dry run**: 2 steps on CPU, loss 7.0173 then 6.9391, validation loss 6.7948, and the checkpoint reloads.
-- **Throughput**: logs tokens/sec, GPU utilization and peak memory, and warns below 10,000 tokens/sec or 50% utilization.
-- **Bundle check**: I built the updated bundle in a clean folder. Its hash check and tests passed, and 2-step runs of both models completed. Windows `tar` was used for this check, on this laptop, not on Linux.
+- **Configs**: `phase9/configs/model_c_v2.json` and `model_d_v2.json` (seed 42), and `model_c_v2_seed43.json` and `model_d_v2_seed43.json` (seed 43). Each is 2,500 steps x 4,096 tokens = 10,240,000 tokens. A test confirms the seed and output folder are all that differ between seeds.
+- **Seed 43 dry runs**: 2 steps on CPU. Model C loss 6.9548 then 6.9263, validation loss 6.8478. Model D loss 6.9804 then 6.8938, validation loss 6.7558.
+- **Result rule**: `phase9/compare_retrain.py` reports the mean and both seeds per model, and says `D BETTER` only if both D seeds beat both C seeds.
+- **Bundle**: `phase9/dist/phase9_gpu_bundle.tar.gz`, 17,978,520 bytes, SHA-256 `e451d8cd7620f105d06cd2cc6c4c97678df52866aea445cc7ee95541812a1cbe`. Rebuilding from the same files gives the same hash.
+- **Clean-folder check, on this laptop**: data hashes OK, 84 tests pass and 2 are skipped (GPU, and a Phase 6 format test), 2-step runs of all four configs completed, the validation shard verified, and a 3-prompt goal eval wrote its CSV.
 
 ## 8. What I Could Not Verify
 

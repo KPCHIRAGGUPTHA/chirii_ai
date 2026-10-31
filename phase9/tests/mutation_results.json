@@ -536,6 +536,7 @@
           "test_any_missing_seed_is_pending",
           "test_goal_scores_appear_with_and_without_overlap",
           "test_missing_runs_are_pending",
+          "test_old_model_without_goal_score_is_not_called_pending",
           "test_one_seed_alone_stays_pending"
         ]
       },

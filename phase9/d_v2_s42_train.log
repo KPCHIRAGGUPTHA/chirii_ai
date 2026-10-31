@@ -1,0 +1,79 @@
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Parameters: 15,164,800
+Train tokens: 17,727,927 | Steps: 2,500 | Token budget: 10,240,000
+step     1/2500 | loss 7.0179 | grad 2.871 | lr 0.000020 | 6,611 tok/s | gpu 0% | gpu mem 0.418 GB
+step    50/2500 | loss 5.3818 | grad 0.379 | lr 0.001000 | 24,443 tok/s | gpu 69% | gpu mem 0.54 GB
+step   100/2500 | loss 5.5673 | grad 0.642 | lr 0.000999 | 23,451 tok/s | gpu 70% | gpu mem 0.54 GB
+  >>> step 100 val loss 5.3593 (ppl 212.58)
+step   150/2500 | loss 5.4041 | grad 0.455 | lr 0.000996 | 20,415 tok/s | gpu 51% | gpu mem 0.54 GB
+step   200/2500 | loss 5.3502 | grad 0.349 | lr 0.000992 | 27,321 tok/s | gpu 97% | gpu mem 0.54 GB
+  >>> step 200 val loss 5.3627 (ppl 213.29)
+step   250/2500 | loss 5.3693 | grad 0.332 | lr 0.000985 | 34,134 tok/s | gpu 96% | gpu mem 0.54 GB
+step   300/2500 | loss 5.3457 | grad 0.347 | lr 0.000977 | 40,306 tok/s | gpu 97% | gpu mem 0.54 GB
+  >>> step 300 val loss 5.3589 (ppl 212.49)
+step   350/2500 | loss 5.3347 | grad 0.355 | lr 0.000967 | 32,563 tok/s | gpu 99% | gpu mem 0.54 GB
+step   400/2500 | loss 5.3464 | grad 0.364 | lr 0.000955 | 40,328 tok/s | gpu 98% | gpu mem 0.54 GB
+  >>> step 400 val loss 5.3157 (ppl 203.50)
+step   450/2500 | loss 5.1567 | grad 0.437 | lr 0.000942 | 33,094 tok/s | gpu 97% | gpu mem 0.54 GB
+step   500/2500 | loss 4.8755 | grad 0.444 | lr 0.000927 | 40,160 tok/s | gpu 97% | gpu mem 0.54 GB
+  >>> step 500 val loss 4.8684 (ppl 130.11)
+step   550/2500 | loss 4.7536 | grad 0.421 | lr 0.000911 | 32,647 tok/s | gpu 97% | gpu mem 0.54 GB
+step   600/2500 | loss 4.6392 | grad 0.419 | lr 0.000893 | 30,018 tok/s | gpu 72% | gpu mem 0.54 GB
+  >>> step 600 val loss 4.5976 (ppl 99.24)
+step   650/2500 | loss 4.6057 | grad 0.462 | lr 0.000873 | 19,665 tok/s | gpu 51% | gpu mem 0.54 GB
+step   700/2500 | loss 4.4767 | grad 0.476 | lr 0.000853 | 26,734 tok/s | gpu 52% | gpu mem 0.54 GB
+  >>> step 700 val loss 4.3538 (ppl 77.78)
+step   750/2500 | loss 4.3259 | grad 0.455 | lr 0.000831 | 19,617 tok/s | gpu 52% | gpu mem 0.54 GB
+step   800/2500 | loss 4.2960 | grad 0.498 | lr 0.000807 | 40,452 tok/s | gpu 97% | gpu mem 0.54 GB
+  >>> step 800 val loss 4.1641 (ppl 64.33)
+step   850/2500 | loss 4.1919 | grad 0.463 | lr 0.000783 | 25,700 tok/s | gpu 73% | gpu mem 0.54 GB
+step   900/2500 | loss 4.1238 | grad 0.472 | lr 0.000758 | 30,273 tok/s | gpu 76% | gpu mem 0.54 GB
+  >>> step 900 val loss 4.0668 (ppl 58.37)
+step   950/2500 | loss 4.1489 | grad 0.445 | lr 0.000732 | 26,755 tok/s | gpu 97% | gpu mem 0.54 GB
+step  1000/2500 | loss 4.0918 | grad 0.445 | lr 0.000705 | 39,963 tok/s | gpu 97% | gpu mem 0.54 GB
+  >>> step 1000 val loss 4.0074 (ppl 55.00)
+step  1050/2500 | loss 4.0472 | grad 0.458 | lr 0.000678 | 27,951 tok/s | gpu 71% | gpu mem 0.54 GB
+step  1100/2500 | loss 3.9976 | grad 0.446 | lr 0.000650 | 26,199 tok/s | gpu 75% | gpu mem 0.54 GB
+  >>> step 1100 val loss 3.9624 (ppl 52.58)
+step  1150/2500 | loss 4.0085 | grad 0.452 | lr 0.000622 | 31,834 tok/s | gpu 97% | gpu mem 0.54 GB
+step  1200/2500 | loss 3.9759 | grad 0.450 | lr 0.000593 | 39,863 tok/s | gpu 97% | gpu mem 0.54 GB
+  >>> step 1200 val loss 3.9287 (ppl 50.84)
+step  1250/2500 | loss 3.9838 | grad 0.429 | lr 0.000564 | 28,344 tok/s | gpu 69% | gpu mem 0.54 GB
+step  1300/2500 | loss 3.9189 | grad 0.457 | lr 0.000536 | 33,278 tok/s | gpu 97% | gpu mem 0.54 GB
+  >>> step 1300 val loss 3.8977 (ppl 49.29)
+step  1350/2500 | loss 3.9730 | grad 0.489 | lr 0.000507 | 32,711 tok/s | gpu 94% | gpu mem 0.54 GB
+step  1400/2500 | loss 3.9192 | grad 0.432 | lr 0.000478 | 29,170 tok/s | gpu 65% | gpu mem 0.54 GB
+  >>> step 1400 val loss 3.8577 (ppl 47.36)
+step  1450/2500 | loss 3.9166 | grad 0.463 | lr 0.000450 | 29,749 tok/s | gpu 97% | gpu mem 0.54 GB
+step  1500/2500 | loss 3.8784 | grad 0.486 | lr 0.000422 | 35,848 tok/s | gpu 71% | gpu mem 0.54 GB
+  >>> step 1500 val loss 3.8175 (ppl 45.49)
+step  1550/2500 | loss 3.8742 | grad 0.494 | lr 0.000395 | 22,341 tok/s | gpu 54% | gpu mem 0.54 GB
+step  1600/2500 | loss 3.8368 | grad 0.489 | lr 0.000368 | 23,481 tok/s | gpu 51% | gpu mem 0.54 GB
+  >>> step 1600 val loss 3.7666 (ppl 43.23)
+step  1650/2500 | loss 3.8205 | grad 0.529 | lr 0.000342 | 19,671 tok/s | gpu 51% | gpu mem 0.54 GB
+step  1700/2500 | loss 3.7552 | grad 0.507 | lr 0.000317 | 39,584 tok/s | gpu 97% | gpu mem 0.54 GB
+  >>> step 1700 val loss 3.7060 (ppl 40.69)
+step  1750/2500 | loss 3.7345 | grad 0.524 | lr 0.000293 | 20,978 tok/s | gpu 53% | gpu mem 0.54 GB
+step  1800/2500 | loss 3.7466 | grad 0.573 | lr 0.000269 | 34,437 tok/s | gpu 97% | gpu mem 0.54 GB
+  >>> step 1800 val loss 3.6375 (ppl 38.00)
+step  1850/2500 | loss 3.7483 | grad 0.570 | lr 0.000247 | 32,658 tok/s | gpu 97% | gpu mem 0.54 GB
+step  1900/2500 | loss 3.6592 | grad 0.562 | lr 0.000227 | 40,432 tok/s | gpu 97% | gpu mem 0.54 GB
+  >>> step 1900 val loss 3.5648 (ppl 35.33)
+step  1950/2500 | loss 3.6611 | grad 0.575 | lr 0.000207 | 23,935 tok/s | gpu 53% | gpu mem 0.54 GB
+step  2000/2500 | loss 3.5611 | grad 0.591 | lr 0.000189 | 30,036 tok/s | gpu 97% | gpu mem 0.54 GB
+  >>> step 2000 val loss 3.4972 (ppl 33.02)
+step  2050/2500 | loss 3.7249 | grad 0.592 | lr 0.000173 | 32,353 tok/s | gpu 97% | gpu mem 0.54 GB
+step  2100/2500 | loss 3.5559 | grad 0.579 | lr 0.000158 | 40,159 tok/s | gpu 98% | gpu mem 0.54 GB
+  >>> step 2100 val loss 3.4278 (ppl 30.81)
+step  2150/2500 | loss 3.5432 | grad 0.578 | lr 0.000145 | 32,781 tok/s | gpu 98% | gpu mem 0.54 GB
+step  2200/2500 | loss 3.5243 | grad 0.587 | lr 0.000133 | 34,759 tok/s | gpu 73% | gpu mem 0.54 GB
+  >>> step 2200 val loss 3.3798 (ppl 29.36)
+step  2250/2500 | loss 3.4609 | grad 0.593 | lr 0.000123 | 22,353 tok/s | gpu 53% | gpu mem 0.54 GB
+step  2300/2500 | loss 3.3888 | grad 0.606 | lr 0.000115 | 25,561 tok/s | gpu 69% | gpu mem 0.54 GB
+  >>> step 2300 val loss 3.3391 (ppl 28.19)
+step  2350/2500 | loss 3.4212 | grad 0.605 | lr 0.000108 | 21,168 tok/s | gpu 54% | gpu mem 0.54 GB
+step  2400/2500 | loss 3.4461 | grad 0.607 | lr 0.000104 | 22,420 tok/s | gpu 57% | gpu mem 0.54 GB
+  >>> step 2400 val loss 3.2969 (ppl 27.03)
+step  2450/2500 | loss 3.3986 | grad 0.594 | lr 0.000101 | 21,114 tok/s | gpu 52% | gpu mem 0.54 GB
+step  2500/2500 | loss 3.3892 | grad 0.615 | lr 0.000100 | 22,128 tok/s | gpu 53% | gpu mem 0.54 GB
+  >>> step 2500 val loss 3.2673 (ppl 26.24)
+Finished: status=completed best_val_loss=3.2673

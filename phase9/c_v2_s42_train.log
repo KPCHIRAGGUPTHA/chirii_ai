@@ -1,0 +1,101 @@
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Parameters: 6,613,504
+Train tokens: 17,727,927 | Steps: 2,500 | Token budget: 10,240,000
+step     1/2500 | loss 6.9907 | grad 2.383 | lr 0.000020 | 6,829 tok/s | gpu 4% | gpu mem 0.207 GB
+step    50/2500 | loss 5.3813 | grad 0.314 | lr 0.001000 | 32,284 tok/s | gpu 47% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 50: GPU utilization 47% is below 50%
+step   100/2500 | loss 5.5141 | grad 1.243 | lr 0.000999 | 38,807 tok/s | gpu 66% | gpu mem 0.257 GB
+  >>> step 100 val loss 5.3630 (ppl 213.36)
+step   150/2500 | loss 5.4004 | grad 0.439 | lr 0.000996 | 37,529 tok/s | gpu 51% | gpu mem 0.257 GB
+step   200/2500 | loss 5.3484 | grad 0.415 | lr 0.000992 | 33,236 tok/s | gpu 50% | gpu mem 0.257 GB
+  >>> step 200 val loss 5.3553 (ppl 211.72)
+step   250/2500 | loss 5.1188 | grad 0.373 | lr 0.000985 | 52,160 tok/s | gpu 81% | gpu mem 0.257 GB
+step   300/2500 | loss 4.8409 | grad 0.443 | lr 0.000977 | 66,648 tok/s | gpu 84% | gpu mem 0.257 GB
+  >>> step 300 val loss 4.8310 (ppl 125.33)
+step   350/2500 | loss 4.6637 | grad 0.471 | lr 0.000967 | 41,842 tok/s | gpu 57% | gpu mem 0.257 GB
+step   400/2500 | loss 4.5648 | grad 0.488 | lr 0.000955 | 35,463 tok/s | gpu 41% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 400: GPU utilization 41% is below 50%
+  >>> step 400 val loss 4.4936 (ppl 89.44)
+step   450/2500 | loss 4.5339 | grad 0.481 | lr 0.000942 | 36,049 tok/s | gpu 44% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 450: GPU utilization 44% is below 50%
+step   500/2500 | loss 4.3668 | grad 0.483 | lr 0.000927 | 54,158 tok/s | gpu 86% | gpu mem 0.257 GB
+  >>> step 500 val loss 4.3101 (ppl 74.44)
+step   550/2500 | loss 4.3148 | grad 0.454 | lr 0.000911 | 56,536 tok/s | gpu 83% | gpu mem 0.257 GB
+step   600/2500 | loss 4.2536 | grad 0.485 | lr 0.000893 | 67,374 tok/s | gpu 82% | gpu mem 0.257 GB
+  >>> step 600 val loss 4.1756 (ppl 65.08)
+step   650/2500 | loss 4.3097 | grad 0.486 | lr 0.000873 | 42,964 tok/s | gpu 65% | gpu mem 0.257 GB
+step   700/2500 | loss 4.2138 | grad 0.467 | lr 0.000853 | 38,027 tok/s | gpu 42% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 700: GPU utilization 42% is below 50%
+  >>> step 700 val loss 4.0873 (ppl 59.58)
+step   750/2500 | loss 4.1091 | grad 0.452 | lr 0.000831 | 30,976 tok/s | gpu 40% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 750: GPU utilization 40% is below 50%
+step   800/2500 | loss 4.1466 | grad 0.473 | lr 0.000807 | 32,893 tok/s | gpu 46% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 800: GPU utilization 46% is below 50%
+  >>> step 800 val loss 4.0121 (ppl 55.26)
+step   850/2500 | loss 4.0743 | grad 0.460 | lr 0.000783 | 30,013 tok/s | gpu 41% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 850: GPU utilization 41% is below 50%
+step   900/2500 | loss 4.0310 | grad 0.457 | lr 0.000758 | 54,768 tok/s | gpu 91% | gpu mem 0.257 GB
+  >>> step 900 val loss 3.9764 (ppl 53.33)
+step   950/2500 | loss 4.0729 | grad 0.439 | lr 0.000732 | 57,316 tok/s | gpu 83% | gpu mem 0.257 GB
+step  1000/2500 | loss 4.0232 | grad 0.438 | lr 0.000705 | 68,085 tok/s | gpu 83% | gpu mem 0.257 GB
+  >>> step 1000 val loss 3.9405 (ppl 51.44)
+step  1050/2500 | loss 3.9906 | grad 0.449 | lr 0.000678 | 56,840 tok/s | gpu 86% | gpu mem 0.257 GB
+step  1100/2500 | loss 3.9547 | grad 0.443 | lr 0.000650 | 66,930 tok/s | gpu 81% | gpu mem 0.257 GB
+  >>> step 1100 val loss 3.9019 (ppl 49.50)
+step  1150/2500 | loss 3.9598 | grad 0.457 | lr 0.000622 | 42,102 tok/s | gpu 58% | gpu mem 0.257 GB
+step  1200/2500 | loss 3.9288 | grad 0.466 | lr 0.000593 | 41,216 tok/s | gpu 40% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 1200: GPU utilization 40% is below 50%
+  >>> step 1200 val loss 3.8706 (ppl 47.97)
+step  1250/2500 | loss 3.9146 | grad 0.460 | lr 0.000564 | 36,351 tok/s | gpu 51% | gpu mem 0.257 GB
+step  1300/2500 | loss 3.8326 | grad 0.497 | lr 0.000536 | 38,122 tok/s | gpu 40% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 1300: GPU utilization 40% is below 50%
+  >>> step 1300 val loss 3.7914 (ppl 44.32)
+step  1350/2500 | loss 3.8749 | grad 0.496 | lr 0.000507 | 35,251 tok/s | gpu 40% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 1350: GPU utilization 40% is below 50%
+step  1400/2500 | loss 3.7697 | grad 0.501 | lr 0.000478 | 37,874 tok/s | gpu 39% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 1400: GPU utilization 39% is below 50%
+  >>> step 1400 val loss 3.6746 (ppl 39.43)
+step  1450/2500 | loss 3.7222 | grad 0.517 | lr 0.000450 | 31,450 tok/s | gpu 40% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 1450: GPU utilization 40% is below 50%
+step  1500/2500 | loss 3.6705 | grad 0.553 | lr 0.000422 | 41,131 tok/s | gpu 53% | gpu mem 0.257 GB
+  >>> step 1500 val loss 3.5679 (ppl 35.44)
+step  1550/2500 | loss 3.6224 | grad 0.509 | lr 0.000395 | 30,417 tok/s | gpu 39% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 1550: GPU utilization 39% is below 50%
+step  1600/2500 | loss 3.5902 | grad 0.540 | lr 0.000368 | 34,065 tok/s | gpu 40% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 1600: GPU utilization 40% is below 50%
+  >>> step 1600 val loss 3.4626 (ppl 31.90)
+step  1650/2500 | loss 3.5717 | grad 0.551 | lr 0.000342 | 53,683 tok/s | gpu 77% | gpu mem 0.257 GB
+step  1700/2500 | loss 3.4927 | grad 0.567 | lr 0.000317 | 67,896 tok/s | gpu 83% | gpu mem 0.257 GB
+  >>> step 1700 val loss 3.3725 (ppl 29.15)
+step  1750/2500 | loss 3.4554 | grad 0.567 | lr 0.000293 | 55,318 tok/s | gpu 79% | gpu mem 0.257 GB
+step  1800/2500 | loss 3.4517 | grad 0.565 | lr 0.000269 | 68,179 tok/s | gpu 83% | gpu mem 0.257 GB
+  >>> step 1800 val loss 3.2978 (ppl 27.05)
+step  1850/2500 | loss 3.4749 | grad 0.571 | lr 0.000247 | 45,812 tok/s | gpu 57% | gpu mem 0.257 GB
+step  1900/2500 | loss 3.3724 | grad 0.584 | lr 0.000227 | 64,859 tok/s | gpu 83% | gpu mem 0.257 GB
+  >>> step 1900 val loss 3.2419 (ppl 25.58)
+step  1950/2500 | loss 3.3753 | grad 0.592 | lr 0.000207 | 56,253 tok/s | gpu 81% | gpu mem 0.257 GB
+step  2000/2500 | loss 3.2703 | grad 0.601 | lr 0.000189 | 68,123 tok/s | gpu 83% | gpu mem 0.257 GB
+  >>> step 2000 val loss 3.1974 (ppl 24.47)
+step  2050/2500 | loss 3.4973 | grad 0.604 | lr 0.000173 | 41,645 tok/s | gpu 42% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 2050: GPU utilization 42% is below 50%
+step  2100/2500 | loss 3.3109 | grad 0.614 | lr 0.000158 | 33,343 tok/s | gpu 41% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 2100: GPU utilization 41% is below 50%
+  >>> step 2100 val loss 3.1530 (ppl 23.41)
+step  2150/2500 | loss 3.3546 | grad 0.626 | lr 0.000145 | 53,604 tok/s | gpu 84% | gpu mem 0.257 GB
+step  2200/2500 | loss 3.3125 | grad 0.621 | lr 0.000133 | 66,961 tok/s | gpu 90% | gpu mem 0.257 GB
+  >>> step 2200 val loss 3.1250 (ppl 22.76)
+step  2250/2500 | loss 3.2483 | grad 0.627 | lr 0.000123 | 35,109 tok/s | gpu 41% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 2250: GPU utilization 41% is below 50%
+step  2300/2500 | loss 3.1661 | grad 0.628 | lr 0.000115 | 33,263 tok/s | gpu 42% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 2300: GPU utilization 42% is below 50%
+  >>> step 2300 val loss 3.1052 (ppl 22.31)
+step  2350/2500 | loss 3.2147 | grad 0.618 | lr 0.000108 | 32,232 tok/s | gpu 41% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 2350: GPU utilization 41% is below 50%
+step  2400/2500 | loss 3.2339 | grad 0.610 | lr 0.000104 | 33,275 tok/s | gpu 43% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 2400: GPU utilization 43% is below 50%
+  >>> step 2400 val loss 3.0824 (ppl 21.81)
+step  2450/2500 | loss 3.2009 | grad 0.642 | lr 0.000101 | 30,970 tok/s | gpu 43% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 2450: GPU utilization 43% is below 50%
+step  2500/2500 | loss 3.1815 | grad 0.636 | lr 0.000100 | 33,626 tok/s | gpu 45% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 2500: GPU utilization 45% is below 50%
+  >>> step 2500 val loss 3.0693 (ppl 21.53)
+Finished: status=completed best_val_loss=3.0693

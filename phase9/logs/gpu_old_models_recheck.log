@@ -1,0 +1,6 @@
+Evaluating Model C on shard v1024...
+  bits/byte 2.1531 | loss 2.9730 | ppl 19.55 | 1,765,632 tokens | 15s
+Model C here 2.153051058101407 laptop 2.1530510486322263 diff 9.46918055078072e-09
+Evaluating Model D (old trainer) on shard v1024...
+  bits/byte 2.8804 | loss 3.9774 | ppl 53.38 | 1,765,632 tokens | 31s
+Model D (old trainer) here 2.8804104188797623 laptop 2.880410411569781 diff 7.3099815089960885e-09

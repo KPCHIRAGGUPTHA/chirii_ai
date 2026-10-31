@@ -1,0 +1,30 @@
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Parameters: 6,613,504
+Train tokens: 17,727,927 | Steps: 50 | Token budget: 204,800
+step     1/50 | loss 6.9907 | grad 2.383 | lr 0.000020 | 7,184 tok/s | gpu 4% | gpu mem 0.207 GB
+step    50/50 | loss 5.3813 | grad 0.314 | lr 0.000100 | 33,072 tok/s | gpu 48% | gpu mem 0.257 GB
+[THROUGHPUT WARNING] step 50: GPU utilization 48% is below 50%
+  >>> step 50 val loss 5.3702 (ppl 214.91)
+Finished: status=completed best_val_loss=5.3702
+	Command being timed: "python phase9/train_v2.py --config phase9/configs/model_c_v2.json --max-steps 50 --out-dir phase9/runs/model_c_v2_smoke"
+	User time (seconds): 11.44
+	System time (seconds): 1.03
+	Percent of CPU this job got: 108%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:11.45
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1863652
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 287044
+	Voluntary context switches: 1198
+	Involuntary context switches: 1917
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 312640
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

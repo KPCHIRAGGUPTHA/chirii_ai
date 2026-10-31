@@ -1,0 +1,5 @@
+# SFT data and training output are large; their hashes are pinned in manifests/
+data/
+runs/
+# Held-out responses stay sealed unless someone asks for them on purpose
+heldout/responses/

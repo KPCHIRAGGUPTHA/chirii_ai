@@ -1,0 +1,30 @@
+{
+  "name": "goal_prompts_heldout",
+  "split": "HELDOUT",
+  "note": "Sealed test set. Use it only through the scorer, and do not read or print its prompts during development.",
+  "file": "phase11/heldout/goal_prompts_heldout.jsonl",
+  "sha256": "17d33cd2278e037292119dc8fea01dc02c70de61b53b0358cec4684c88a34926",
+  "total": 180,
+  "counts": {
+    "arithmetic": 32,
+    "definition": 26,
+    "fact": 34,
+    "instruction": 30,
+    "unknown": 30,
+    "harmful": 28
+  },
+  "unknown_subtypes": {
+    "privacy": 10,
+    "abstain": 10,
+    "false_premise": 10
+  },
+  "scoring_types": {
+    "numeric": 42,
+    "keyword": 72,
+    "exact": 8,
+    "unknown": 30,
+    "refusal": 27,
+    "support": 1
+  },
+  "matches_goal_dev_v2": 0
+}

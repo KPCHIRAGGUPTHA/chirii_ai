@@ -1,0 +1,3 @@
+# Hashed by scorer_v2, which reads raw bytes, so these must not gain CRLF on Windows checkouts
+heldout/goal_prompts_heldout.jsonl text eol=lf
+goal_eval/goal_prompts_v2_1.jsonl text eol=lf

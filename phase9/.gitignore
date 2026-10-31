@@ -3,3 +3,6 @@ data/*.bin
 
 # Training output; copied back from the GPU machine
 runs/
+
+# Built by build_bundle.py; holds token data
+dist/

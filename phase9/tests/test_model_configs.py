@@ -50,5 +50,30 @@ class TestRetrainConfigs(unittest.TestCase):
         self.assertTrue(self.d["out_dir"].startswith("phase9/"))
 
 
+class TestSeedConfigs(unittest.TestCase):
+
+    def setUp(self):
+        self.base = {x: load_config(project_path(f"phase9/configs/model_{x}_v2.json")) for x in "cd"}
+        self.seed43 = {x: load_config(project_path(f"phase9/configs/model_{x}_v2_seed43.json")) for x in "cd"}
+
+    def test_seeds_are_42_and_43(self):
+        for x in "cd":
+            self.assertEqual(self.base[x]["training"]["seed"], 42)
+            self.assertEqual(self.seed43[x]["training"]["seed"], 43)
+
+    def test_seed_is_the_only_training_difference(self):
+        for x in "cd":
+            base = dict(self.base[x]["training"], seed=None)
+            other = dict(self.seed43[x]["training"], seed=None)
+            self.assertEqual(base, other)
+            self.assertEqual(self.base[x]["model"], self.seed43[x]["model"])
+            self.assertEqual(self.base[x]["data"], self.seed43[x]["data"])
+
+    def test_all_four_runs_write_to_different_directories(self):
+        directories = {c["out_dir"] for c in list(self.base.values()) + list(self.seed43.values())}
+        self.assertEqual(len(directories), 4)
+        self.assertTrue(all(directory.startswith("phase9/runs/") for directory in directories))
+
+
 if __name__ == "__main__":
     unittest.main()

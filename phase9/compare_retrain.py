@@ -1,6 +1,9 @@
 """
-Phase 9 — Builds the C_old / C_v2 / D_old / D_v2 table from phase9/eval_results/standard_eval.json.
-Models not evaluated yet are shown as pending, so the table can be generated before and after the GPU session.
+Phase 9 — Compares C_old, D_old and the two-seed C_v2 and D_v2 retrains, from phase9/eval_results/standard_eval.json
+and phase9/goal_eval/results_v2/goal_eval_v2.json. Runs not evaluated yet are shown as pending, so the table can be
+generated before and after the GPU session.
+
+D counts as better only if both D seeds beat both C seeds in bits per byte.
 
 Usage:
     python phase9/compare_retrain.py
@@ -9,7 +12,7 @@ Usage:
 import json
 import os
 import sys
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if PROJECT_ROOT not in sys.path:
@@ -18,65 +21,99 @@ if PROJECT_ROOT not in sys.path:
 from phase9.train_v2 import project_path
 
 RESULTS_PATH = "phase9/eval_results/standard_eval.json"
+GOAL_RESULTS_PATH = "phase9/goal_eval/results_v2/goal_eval_v2.json"
 OUTPUT_PATH = "phase9/eval_results/RETRAIN_COMPARISON.md"
 
-# Display label -> name in standard_eval.json
-MODELS = [
-    ("C_old", "Model C", "`run_model_c_gpu.py`"),
-    ("C_v2", "C_v2", "`phase9/train_v2.py`"),
-    ("D_old", "Model D (old trainer)", "`phase8/train_model_scaling.py`"),
-    ("D_v2", "D_v2", "`phase9/train_v2.py`"),
-]
+OLD_MODELS = [("C_old", "Model C", "`run_model_c_gpu.py`"), ("D_old", "Model D (old trainer)", "`phase8/train_model_scaling.py`")]
+SEED_MODELS = {"C_v2": ["C_v2_s42", "C_v2_s43"], "D_v2": ["D_v2_s42", "D_v2_s43"]}
+
+PENDING = "PENDING"
+D_BETTER = "D BETTER"
+D_NOT_BETTER = "D NOT BETTER"
 
 
-def bits_difference(models: Dict[str, Any], first: str, second: str) -> Optional[float]:
-    """Returns first - second in bits per byte, or None if either model is still pending."""
-    if first not in models or second not in models:
-        return None
-    return models[first]["bits_per_byte"] - models[second]["bits_per_byte"]
+def seed_values(models: Dict[str, Any], names: List[str]) -> List[Optional[float]]:
+    return [models[name]["bits_per_byte"] if name in models else None for name in names]
 
 
-def format_difference(value: Optional[float]) -> str:
-    return "pending" if value is None else f"{value:+.4f}"
+def decide(c_values: List[Optional[float]], d_values: List[Optional[float]]) -> str:
+    """D is better only if both D seeds beat both C seeds. Lower bits per byte is better."""
+    if None in c_values or None in d_values:
+        return PENDING
+    return D_BETTER if max(d_values) < min(c_values) else D_NOT_BETTER
 
 
-def build_table(results: Dict[str, Any]) -> str:
+def mean(values: List[Optional[float]]) -> Optional[float]:
+    return None if None in values else sum(values) / len(values)
+
+
+def bits_text(value: Optional[float]) -> str:
+    return "pending" if value is None else f"{value:.4f}"
+
+
+def goal_text(goal_models: Dict[str, Any], name: str, missing: str = "pending") -> str:
+    model = goal_models.get(name)
+    if model is None:
+        return missing
+    tally = model["summary"]["with_overlap"]
+    without = model["summary"]["without_overlap"]
+    return f"{tally['correct']}/{tally['total']} ({without['correct']}/{without['total']})"
+
+
+def build_table(results: Dict[str, Any], goal_results: Optional[Dict[str, Any]] = None) -> str:
     models = results["models"]
-    rows = []
-    for label, name, trainer in MODELS:
-        model = models.get(name)
-        if model is None:
-            rows.append(f"| {label} | {trainer} | pending | pending | pending | pending |")
-        else:
-            rows.append(
-                f"| {label} | {trainer} | {model['parameters']:,} | **{model['bits_per_byte']:.4f}** "
-                f"| {model['loss']:.4f} | {model['perplexity']:.2f} |"
-            )
-    table = "\n".join(rows)
+    goal_models = (goal_results or {}).get("models", {})
+
+    old_rows = "\n".join(
+        f"| {label} | {trainer} | {bits_text(models[name]['bits_per_byte'] if name in models else None)} | {goal_text(goal_models, name, 'not scored')} |"
+        for label, name, trainer in OLD_MODELS
+    )
+    seed_rows = []
+    for label, names in SEED_MODELS.items():
+        values = seed_values(models, names)
+        goals = " / ".join(goal_text(goal_models, name) for name in names)
+        seed_rows.append(f"| {label} | {bits_text(mean(values))} | {bits_text(values[0])} | {bits_text(values[1])} | {goals} |")
+    seed_table = "\n".join(seed_rows)
+
+    c_values = seed_values(models, SEED_MODELS["C_v2"])
+    d_values = seed_values(models, SEED_MODELS["D_v2"])
+    verdict = decide(c_values, d_values)
+    mean_gap = None if verdict == PENDING else mean(d_values) - mean(c_values)
+    gap_text = "pending" if mean_gap is None else f"{mean_gap:+.4f}"
+
     return f"""# Phase 9 Retrain Comparison
 
-Generated by `phase9/compare_retrain.py` from `{RESULTS_PATH}`. Lower is better.
+Generated by `phase9/compare_retrain.py`. Bits per byte: lower is better. Goal scores: correct on all 202 prompts, with the score excluding SFT-overlap prompts in brackets.
 
-| Model | Trainer | Parameters | Bits per Byte | Loss | Perplexity |
-| :--- | :--- | ---: | ---: | ---: | ---: |
-{table}
+## Verdict: {verdict}
 
-## Differences in Bits per Byte
+D counts as better only if both D seeds beat both C seeds in bits per byte.
 
-Negative means the first model is better.
+Mean difference, D_v2 - C_v2: {gap_text}
 
-| Comparison | What it shows | Difference |
-| :--- | :--- | ---: |
-| D_v2 - C_v2 | Larger model, with the same trainer and settings | {format_difference(bits_difference(models, 'D_v2', 'C_v2'))} |
-| C_v2 - C_old | Model C, new trainer against old | {format_difference(bits_difference(models, 'C_v2', 'Model C'))} |
-| D_v2 - D_old | Model D, new trainer against old | {format_difference(bits_difference(models, 'D_v2', 'Model D (old trainer)'))} |
+## Retrained Models (`phase9/train_v2.py`)
+
+| Model | Mean | Seed 42 | Seed 43 | Goal v2 (seed 42 / seed 43) |
+| :--- | ---: | ---: | ---: | :--- |
+{seed_table}
+
+## Original Models
+
+| Model | Trainer | Bits per Byte | Goal v2 |
+| :--- | :--- | ---: | :--- |
+{old_rows}
 """
 
 
+def load_json(path: str) -> Optional[Dict[str, Any]]:
+    if not os.path.exists(project_path(path)):
+        return None
+    with open(project_path(path), "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
 def main():
-    with open(project_path(RESULTS_PATH), "r", encoding="utf-8") as f:
-        results = json.load(f)
-    table = build_table(results)
+    table = build_table(load_json(RESULTS_PATH), load_json(GOAL_RESULTS_PATH))
     with open(project_path(OUTPUT_PATH), "w", encoding="utf-8") as f:
         f.write(table.strip() + "\n")
     print(table, flush=True)

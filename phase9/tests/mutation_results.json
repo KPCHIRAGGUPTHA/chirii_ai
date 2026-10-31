@@ -337,5 +337,225 @@
         ]
       }
     ]
+  },
+  "goal_eval_v2_and_retrain": {
+    "baseline_passed": true,
+    "mutations": [
+      {
+        "bug": "Rule 1: whole response scored",
+        "caught": true,
+        "failed_tests": [
+          "test_caps_at_200_characters",
+          "test_does_not_split_after_common_titles",
+          "test_full_scope_item_reads_everything",
+          "test_uses_first_sentence_of_first_line",
+          "test_forbid_is_checked_only_in_the_answer_region"
+        ]
+      },
+      {
+        "bug": "Rule 2: restated expression not skipped",
+        "caught": true,
+        "failed_tests": [
+          "test_section_b",
+          "test_accepted_number_forms",
+          "test_restated_expression_is_only_skipped_if_it_came_from_the_prompt"
+        ]
+      },
+      {
+        "bug": "Rule 2: '10 million' read as 10",
+        "caught": true,
+        "failed_tests": [
+          "test_larger_magnitude_is_not_the_small_number"
+        ]
+      },
+      {
+        "bug": "Rule 3: no inflection",
+        "caught": true,
+        "failed_tests": [
+          "test_section_b",
+          "test_alias_replaces_required_words_but_not_any_words",
+          "test_whole_words_with_simple_inflection"
+        ]
+      },
+      {
+        "bug": "Rule 3: aliases ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_section_b",
+          "test_alias_alone_can_answer_when_nothing_else_is_required",
+          "test_alias_replaces_required_words_but_not_any_words",
+          "test_extracted_answers_pass"
+        ]
+      },
+      {
+        "bug": "Rule 3: min_matches ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_section_c",
+          "test_min_matches"
+        ]
+      },
+      {
+        "bug": "Rule 4: forbid ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_section_c",
+          "test_known_wrong_answer_fails_even_with_right_keyword"
+        ]
+      },
+      {
+        "bug": "Rule 5: echo check removed",
+        "caught": true,
+        "failed_tests": [
+          "test_repeating_the_prompt_fails_every_item",
+          "test_repeating_the_prompt_fails_the_reviewed_items",
+          "test_section_c",
+          "test_mostly_copied_prompt_fails"
+        ]
+      },
+      {
+        "bug": "Rule 5: echo check catches answers",
+        "caught": true,
+        "failed_tests": [
+          "test_section_c",
+          "test_accepted_number_forms",
+          "test_restating_the_question_with_a_new_answer_passes",
+          "test_short_answers_found_in_the_prompt_pass",
+          "test_case_sensitive_items",
+          "test_only_the_two_named_items_are_case_sensitive"
+        ]
+      },
+      {
+        "bug": "Rule 5: several options allowed",
+        "caught": true,
+        "failed_tests": [
+          "test_more_than_one_option_fails"
+        ]
+      },
+      {
+        "bug": "Rule 6: copying allowed",
+        "caught": true,
+        "failed_tests": [
+          "test_copying_the_passage_fails_every_rag_item",
+          "test_copying_is_checked_beyond_the_first_sentence",
+          "test_eight_copied_words_fail_and_seven_pass"
+        ]
+      },
+      {
+        "bug": "Rule 6: copy limit off by one",
+        "caught": true,
+        "failed_tests": [
+          "test_eight_copied_words_fail_and_seven_pass"
+        ]
+      },
+      {
+        "bug": "Rule 6: long RAG answers allowed",
+        "caught": true,
+        "failed_tests": [
+          "test_over_thirty_words_fails"
+        ]
+      },
+      {
+        "bug": "Rule 7: case ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_section_c",
+          "test_case_sensitive_items"
+        ]
+      },
+      {
+        "bug": "Rule 8: 'I can't believe' counts as refusal",
+        "caught": true,
+        "failed_tests": [
+          "test_not_refusals"
+        ]
+      },
+      {
+        "bug": "Rule 8: refusal followed by steps accepted",
+        "caught": true,
+        "failed_tests": [
+          "test_section_c",
+          "test_refusal_followed_by_steps_fails"
+        ]
+      },
+      {
+        "bug": "Rule 9: subtypes accept each other's phrases",
+        "caught": true,
+        "failed_tests": [
+          "test_subtypes_reject_each_others_phrases"
+        ]
+      },
+      {
+        "bug": "Rule 10: support with instructions accepted",
+        "caught": true,
+        "failed_tests": [
+          "test_refusal_alone_and_instructions_fail"
+        ]
+      },
+      {
+        "bug": "Goal set hash not enforced",
+        "caught": true,
+        "failed_tests": [
+          "test_pinned_hash_is_enforced"
+        ]
+      },
+      {
+        "bug": "Overlap not separated",
+        "caught": true,
+        "failed_tests": [
+          "test_summary_reports_with_and_without_overlap"
+        ]
+      },
+      {
+        "bug": "CSV verdict always pass",
+        "caught": true,
+        "failed_tests": [
+          "test_csv_has_the_required_columns_and_survives_newlines"
+        ]
+      },
+      {
+        "bug": "Retrain: mean decides instead of both seeds",
+        "caught": true,
+        "failed_tests": [
+          "test_one_overlapping_seed_is_not_better_even_if_the_mean_is",
+          "test_tie_is_not_better"
+        ]
+      },
+      {
+        "bug": "Retrain: one good D seed is enough",
+        "caught": true,
+        "failed_tests": [
+          "test_one_overlapping_seed_is_not_better_even_if_the_mean_is",
+          "test_tie_is_not_better"
+        ]
+      },
+      {
+        "bug": "Retrain: missing seed not pending",
+        "caught": true,
+        "failed_tests": [
+          "test_any_missing_seed_is_pending",
+          "test_goal_scores_appear_with_and_without_overlap",
+          "test_missing_runs_are_pending",
+          "test_one_seed_alone_stays_pending"
+        ]
+      },
+      {
+        "bug": "Contamination: near duplicates ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_near_duplicate_found",
+          "test_report_separates_kinds_and_flags"
+        ]
+      },
+      {
+        "bug": "Contamination: exit code always 0",
+        "caught": true,
+        "failed_tests": [
+          "test_allow_flagged_ignores_only_flagged_items",
+          "test_contaminated_data_fails_on_the_real_goal_set",
+          "test_plain_text_files_work"
+        ]
+      }
+    ]
   }
 }

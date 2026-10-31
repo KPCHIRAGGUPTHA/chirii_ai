@@ -1,0 +1,76 @@
+{
+  "timestamp": "2026-10-31 00:00:55",
+  "tokenizer_sha256": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+  "val_dataset_path": "data/phase5d/val_tokens_v1024.pt",
+  "val_dataset_sha256": "a45af657b27115440ed995f738ebe1509d9b51f973003bbcdce55108f1f49c8a",
+  "val_total_tokens": 1765698,
+  "metrics_model_c": {
+    "model_name": "Model C",
+    "parameter_count": 6613504,
+    "n_layer": 8,
+    "n_head": 8,
+    "n_embd": 256,
+    "vocab_size": 1024,
+    "block_size": 128,
+    "validation_loss": 2.997,
+    "validation_perplexity": 20.03,
+    "eval_tokens": 256000,
+    "eval_time_seconds": 46.17,
+    "tokens_per_second": 5544.56,
+    "process_peak_memory_mb": 419.39,
+    "checkpoint_sha256": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433"
+  },
+  "metrics_model_d": {
+    "model_name": "Model D",
+    "parameter_count": 15164800,
+    "n_layer": 12,
+    "n_head": 10,
+    "n_embd": 320,
+    "vocab_size": 1024,
+    "block_size": 128,
+    "validation_loss": 3.9837,
+    "validation_perplexity": 53.72,
+    "eval_tokens": 256000,
+    "eval_time_seconds": 88.98,
+    "tokens_per_second": 2877.05,
+    "process_peak_memory_mb": 580.22,
+    "checkpoint_sha256": "2c3c662b99485b5ce93902cde37ef23f811e70620e1cba8c1af60dc088b0596c"
+  },
+  "comparison": {
+    "loss_diff_d_minus_c": 0.9867,
+    "relative_loss_improvement_pct": -32.92,
+    "ppl_diff_d_minus_c": 33.69,
+    "relative_ppl_improvement_pct": -168.2,
+    "param_increase_abs": 8551296,
+    "param_increase_pct": 129.3,
+    "cpu_throughput_diff_tps": -2667.51,
+    "cpu_throughput_ratio": 0.52,
+    "eval_time_diff_seconds": 42.81
+  },
+  "recommendation": {
+    "decision": "DEFER_MODEL_E",
+    "text": "Model D is worse than Model C by 32.92% in validation loss and 168.2% in perplexity (validation loss 3.9837 vs 2.9970, perplexity 53.72 vs 20.03). The cause is not established because the two models were trained differently. Defer Model E until Model D is retrained under Model C's procedure."
+  },
+  "recorded_training_val": {
+    "Model A": {
+      "val_loss": 3.2288,
+      "val_ppl": 25.25,
+      "source": "results/phase5d/MODEL_C_GPU_REPORT.md"
+    },
+    "Model B": {
+      "val_loss": 3.0642,
+      "val_ppl": 21.42,
+      "source": "results/phase5d/MODEL_C_GPU_REPORT.md"
+    },
+    "Model C": {
+      "val_loss": 2.9699,
+      "val_ppl": 19.49,
+      "source": "results/phase5d/MODEL_C_GPU_REPORT.md"
+    },
+    "Model D": {
+      "val_loss": 3.9488,
+      "val_ppl": 51.87,
+      "source": "checkpoints/phase8/model_d/training_report.md"
+    }
+  }
+}

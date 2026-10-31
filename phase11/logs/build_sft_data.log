@@ -1,0 +1,94 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+alpaca: read 51,760, kept 47,268
+dolly: read 15,011, kept 9,836
+smoltalk: read 460,341, kept 103,545
+{
+  "total": {
+    "train": 114070,
+    "val": 2272
+  },
+  "contamination": {
+    "dev_v2_1": {
+      "records_matched_by_kind": {
+        "exact": 18,
+        "contained": 582,
+        "near": 38
+      },
+      "goal_items_matched": 25
+    },
+    "heldout": {
+      "records_matched_by_kind": {
+        "exact": 10,
+        "near": 7,
+        "contained": 4
+      },
+      "goal_items_matched": 11
+    }
+  },
+  "verification_after_removal": {
+    "train_dev_v2_1": {
+      "records": 114070,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "train_heldout": {
+      "records": 114070,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "val_dev_v2_1": {
+      "records": 2272,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "val_heldout": {
+      "records": 2272,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "noformat_train_dev_v2_1": {
+      "records": 86912,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "noformat_train_heldout": {
+      "records": 86912,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "noformat_val_dev_v2_1": {
+      "records": 1746,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "noformat_val_heldout": {
+      "records": 1746,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    }
+  }
+}
+alpaca 30777 {'dropped_ai_boilerplate': 1686, 'dropped_arithmetic_without_calculator': 1568, 'dropped_duplicate': 4, 'dropped_identity_question': 12, 'dropped_not_english': 964, 'dropped_over_512_total': 1516, 'dropped_refusal_or_apology_reply': 262, 'dropped_reply_over_200': 14947, 'removed_contamination_total': 24, 'removed_dev_v2_1': 21, 'removed_heldout': 3, 'rows_read': 51760}
+dolly 8737 {'dropped_ai_boilerplate': 27, 'dropped_arithmetic_without_calculator': 42, 'dropped_context_or_multi_turn': 4467, 'dropped_duplicate': 6, 'dropped_identity_question': 2, 'dropped_not_english': 633, 'dropped_over_512_total': 183, 'dropped_refusal_or_apology_reply': 4, 'dropped_reply_over_200': 885, 'removed_contamination_total': 25, 'removed_dev_v2_1': 14, 'removed_heldout': 11, 'rows_read': 15011}
+smoltalk 50364 {'dropped_ai_boilerplate': 219, 'dropped_arithmetic_without_calculator': 11282, 'dropped_context_or_multi_turn': 343687, 'dropped_duplicate': 1249, 'dropped_identity_question': 260, 'dropped_not_english': 1177, 'dropped_over_512_total': 23463, 'dropped_refusal_or_apology_reply': 149, 'dropped_reply_over_200': 27899, 'dropped_special_token_text': 22, 'removed_contamination_total': 570, 'removed_dev_v2_1': 568, 'removed_heldout': 2, 'rows_read': 460341}
+synthetic_arithmetic 19964 {'removed_contamination_total': 36, 'removed_dev_v2_1': 31, 'removed_heldout': 5, 'rows_read': 20000}
+synthetic_identity 500 {'rows_read': 500}
+synthetic_i_dont_know 3000 {'rows_read': 3000}
+synthetic_refusal 2000 {'rows_read': 2000}
+synthetic_over_refusal_guard 1000 {'rows_read': 1000}

@@ -1,0 +1,550 @@
+{
+  "seed": 1104,
+  "limits": {
+    "total_tokens": 512,
+    "reply_tokens": 200
+  },
+  "per_source": {
+    "alpaca": {
+      "pipeline": {
+        "dropped_ai_boilerplate": 1686,
+        "dropped_arithmetic_without_calculator": 1568,
+        "dropped_duplicate": 4,
+        "dropped_identity_question": 12,
+        "dropped_not_english": 964,
+        "dropped_over_512_total": 1516,
+        "dropped_refusal_or_apology_reply": 262,
+        "dropped_reply_over_200": 14947,
+        "removed_contamination_total": 24,
+        "removed_dev_v2_1": 21,
+        "removed_heldout": 3,
+        "rows_read": 51760
+      },
+      "final": 30777,
+      "train": 30136,
+      "val": 641,
+      "total_tokens": {
+        "count": 30777,
+        "mean": 105.0,
+        "median": 84.0,
+        "p95": 216.0,
+        "max": 508
+      },
+      "reply_tokens": {
+        "count": 30777,
+        "mean": 65.8,
+        "median": 42.0,
+        "p95": 180.0,
+        "max": 200
+      }
+    },
+    "dolly": {
+      "pipeline": {
+        "dropped_ai_boilerplate": 27,
+        "dropped_arithmetic_without_calculator": 42,
+        "dropped_context_or_multi_turn": 4467,
+        "dropped_duplicate": 6,
+        "dropped_identity_question": 2,
+        "dropped_not_english": 633,
+        "dropped_over_512_total": 183,
+        "dropped_refusal_or_apology_reply": 4,
+        "dropped_reply_over_200": 885,
+        "removed_contamination_total": 25,
+        "removed_dev_v2_1": 14,
+        "removed_heldout": 11,
+        "rows_read": 15011
+      },
+      "final": 8737,
+      "train": 8574,
+      "val": 163,
+      "total_tokens": {
+        "count": 8737,
+        "mean": 95.4,
+        "median": 85.0,
+        "p95": 199.0,
+        "max": 503
+      },
+      "reply_tokens": {
+        "count": 8737,
+        "mean": 62.3,
+        "median": 50.0,
+        "p95": 164.0,
+        "max": 200
+      }
+    },
+    "smoltalk": {
+      "pipeline": {
+        "dropped_ai_boilerplate": 219,
+        "dropped_arithmetic_without_calculator": 11282,
+        "dropped_context_or_multi_turn": 343687,
+        "dropped_duplicate": 1249,
+        "dropped_identity_question": 260,
+        "dropped_not_english": 1177,
+        "dropped_over_512_total": 23463,
+        "dropped_refusal_or_apology_reply": 149,
+        "dropped_reply_over_200": 27899,
+        "dropped_special_token_text": 22,
+        "removed_contamination_total": 570,
+        "removed_dev_v2_1": 568,
+        "removed_heldout": 2,
+        "rows_read": 460341
+      },
+      "final": 50364,
+      "train": 49395,
+      "val": 969,
+      "total_tokens": {
+        "count": 50364,
+        "mean": 212.6,
+        "median": 204.0,
+        "p95": 366.0,
+        "max": 512
+      },
+      "reply_tokens": {
+        "count": 50364,
+        "mean": 107.5,
+        "median": 106.0,
+        "p95": 188.0,
+        "max": 200
+      }
+    },
+    "synthetic_arithmetic": {
+      "pipeline": {
+        "removed_contamination_total": 36,
+        "removed_dev_v2_1": 31,
+        "removed_heldout": 5,
+        "rows_read": 20000
+      },
+      "final": 19964,
+      "train": 19576,
+      "val": 388,
+      "total_tokens": {
+        "count": 19964,
+        "mean": 53.3,
+        "median": 50.0,
+        "p95": 82.0,
+        "max": 93
+      },
+      "reply_tokens": {
+        "count": 19964,
+        "mean": 22.5,
+        "median": 21.0,
+        "p95": 35.0,
+        "max": 49
+      }
+    },
+    "synthetic_identity": {
+      "pipeline": {
+        "rows_read": 500
+      },
+      "final": 500,
+      "train": 490,
+      "val": 10,
+      "total_tokens": {
+        "count": 500,
+        "mean": 44.4,
+        "median": 44.0,
+        "p95": 48.0,
+        "max": 51
+      },
+      "reply_tokens": {
+        "count": 500,
+        "mean": 19.5,
+        "median": 19.0,
+        "p95": 21.0,
+        "max": 21
+      }
+    },
+    "synthetic_i_dont_know": {
+      "pipeline": {
+        "rows_read": 3000
+      },
+      "final": 3000,
+      "train": 2945,
+      "val": 55,
+      "total_tokens": {
+        "count": 3000,
+        "mean": 44.6,
+        "median": 45.0,
+        "p95": 53.0,
+        "max": 58
+      },
+      "reply_tokens": {
+        "count": 3000,
+        "mean": 14.7,
+        "median": 15.0,
+        "p95": 18.0,
+        "max": 22
+      }
+    },
+    "synthetic_refusal": {
+      "pipeline": {
+        "rows_read": 2000
+      },
+      "final": 2000,
+      "train": 1969,
+      "val": 31,
+      "total_tokens": {
+        "count": 2000,
+        "mean": 47.2,
+        "median": 43.0,
+        "p95": 84.0,
+        "max": 92
+      },
+      "reply_tokens": {
+        "count": 2000,
+        "mean": 18.0,
+        "median": 13.0,
+        "p95": 54.0,
+        "max": 56
+      }
+    },
+    "synthetic_over_refusal_guard": {
+      "pipeline": {
+        "rows_read": 1000
+      },
+      "final": 1000,
+      "train": 985,
+      "val": 15,
+      "total_tokens": {
+        "count": 1000,
+        "mean": 52.6,
+        "median": 52.0,
+        "p95": 60.0,
+        "max": 70
+      },
+      "reply_tokens": {
+        "count": 1000,
+        "mean": 24.3,
+        "median": 24.0,
+        "p95": 30.0,
+        "max": 40
+      }
+    }
+  },
+  "contamination": {
+    "dev_v2_1": {
+      "records_matched_by_kind": {
+        "exact": 18,
+        "contained": 582,
+        "near": 38
+      },
+      "goal_items_matched": 25
+    },
+    "heldout": {
+      "records_matched_by_kind": {
+        "exact": 10,
+        "near": 7,
+        "contained": 4
+      },
+      "goal_items_matched": 11
+    }
+  },
+  "dev_v2_1_items_matched": [
+    "arithmetic_003",
+    "arithmetic_004",
+    "arithmetic_006",
+    "arithmetic_013",
+    "arithmetic_018",
+    "arithmetic_027",
+    "arithmetic_032",
+    "definition_001",
+    "definition_005",
+    "definition_011",
+    "definition_013",
+    "definition_018",
+    "definition_028",
+    "fact_001",
+    "fact_008",
+    "fact_010",
+    "fact_011",
+    "fact_013",
+    "fact_017",
+    "fact_018",
+    "fact_020",
+    "fact_023",
+    "fact_025",
+    "fact_030",
+    "instruction_003"
+  ],
+  "verification_after_removal": {
+    "train_dev_v2_1": {
+      "records": 114070,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "train_heldout": {
+      "records": 114070,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "val_dev_v2_1": {
+      "records": 2272,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "val_heldout": {
+      "records": 2272,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "noformat_train_dev_v2_1": {
+      "records": 86912,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "noformat_train_heldout": {
+      "records": 86912,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "noformat_val_dev_v2_1": {
+      "records": 1746,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    },
+    "noformat_val_heldout": {
+      "records": 1746,
+      "matched": 0,
+      "exact": 0,
+      "near": 0,
+      "contained": 0
+    }
+  },
+  "total": {
+    "train": 114070,
+    "val": 2272
+  },
+  "noformat_variant": {
+    "train": {
+      "synthetic_i_dont_know": 2945,
+      "smoltalk": 22321,
+      "alpaca": 30056,
+      "dolly": 8570,
+      "synthetic_arithmetic": 19576,
+      "synthetic_over_refusal_guard": 985,
+      "synthetic_refusal": 1969,
+      "synthetic_identity": 490
+    },
+    "val": {
+      "alpaca": 641,
+      "synthetic_arithmetic": 388,
+      "smoltalk": 443,
+      "dolly": 163,
+      "synthetic_identity": 10,
+      "synthetic_refusal": 31,
+      "synthetic_i_dont_know": 55,
+      "synthetic_over_refusal_guard": 15
+    },
+    "total_train": 86912,
+    "total_val": 1746
+  },
+  "all": {
+    "total_tokens": {
+      "count": 116342,
+      "mean": 138.7,
+      "median": 120.0,
+      "p95": 314.0,
+      "max": 512
+    },
+    "reply_tokens": {
+      "count": 116342,
+      "mean": 73.4,
+      "median": 61.0,
+      "p95": 181.0,
+      "max": 200
+    },
+    "tokens_in_train": 15819424
+  },
+  "examples": {
+    "alpaca": [
+      {
+        "prompt": "Categorize the given input into one of the four shapes: square, circle, triangle, or rectangle.\nA figure with four equal sides and four right angles.",
+        "reply": "The described figure is a square."
+      },
+      {
+        "prompt": "Describe a person's character in one sentence.",
+        "reply": "He is a warm, caring and compassionate individual with a strong sense of integrity and a heart filled with kindness."
+      },
+      {
+        "prompt": "Compose a tweet that communicates the following: \"The new season of the show is coming out tomorrow\":",
+        "reply": "\"\ud83d\udea8Attention all fans!\ud83d\udea8 The wait is finally over - the new season of your favorite show premieres TOMORROW! Clear your schedules and get ready for more drama, laughs, and suspense! #NewSeason #PremiereTomorrow \ud83c\udfac\ud83c\udf7f\""
+      },
+      {
+        "prompt": "Recommend a movie title for a romantic comedy drama.",
+        "reply": "One great romantic comedy drama movie that I'd recommend is \"Crazy, Stupid, Love\" (2011) starring Steve Carell, Ryan Gosling, Julianne Moore, and Emma Stone. This film is a funny, heartfelt, and touching story about the complexities of relationships and the importance of family."
+      },
+      {
+        "prompt": "Estimate how much time is needed to complete a given task.\nThe task is to create 10 iPhone applications.",
+        "reply": "It's difficult to accurately estimate the time needed to create 10 iPhone applications without more specific information about the complexity and scope of each individual application. Developing an iPhone application can take anywhere from several weeks to several months, depending on various factors such as the experience of the developer, the features and functionalities of the app, the design and user interface, testing and debugging, etc.\n\nAssuming an average development time of two months per application, it would take approximately 20 months to create 10 iPhone applications. However, this is just a rough estimation and the actual time may vary significantly based on the specific details of each application."
+      }
+    ],
+    "dolly": [
+      {
+        "prompt": "Who are the main characters on the TV show \"Bluey?\"",
+        "reply": "\"Bluey\" is an Australian animated television series that follows a family of anthropomorphic cattle dogs. The main character, Bluey, is a six-year-old Blue Heeler, who navigates adventures and imaginative play with her little sister, Bingo, her mother, Chili, and her father, Bandit. The series is beloved for being both educational and entertaining, teaching viewers how to deal with difficult situations, and showcasing more empathetic-styles of parenting."
+      },
+      {
+        "prompt": "I plan a trip to Italy, what is the top 2 cities to visit?",
+        "reply": "Italy has many popular destinations featuring historical landmarks, vibrant local culture and beautiful architecture. While exact choice will depend on your specific interests, Rome and Florence are one of the most popular destinations for tourists.\n\nIn Rome you can visit Coliseum, Vatican and numerous other architectural landmarks, while Florence is considered the birthplace of European Renaissance."
+      },
+      {
+        "prompt": "If you were a vegetable, what vegetable would you be?",
+        "reply": "Only vegetables are vegetables. Computers are not vegetables. Algorithms are not vegetables. Vegetables are healthy and delicious. They are nutritious and full of vitamins. It is possible to use your imagination to consider what kind of vegetable you would like to be. If I was a vegetable, because I am named after a sheep, I would like to be a vegetable that sheep enjoy eating. Sheep enjoy eating winter squash, so I would like to be a winter squash if I had to choose a vegetable to be."
+      },
+      {
+        "prompt": "What is american football?",
+        "reply": "American football is a an American sports.  Other countries use the term \"football\" to refer to soccer.  American football is a team sport and two opposing teams play against each other.  The objective of the game is to get a football to the end zone of the opponent.  If you can accomplish this you score a touchdown.  The ball moves down the field when players catch the ball, and run it opposite of their own end zone.  After they score they will get the opportunity to kick a field goal as well."
+      },
+      {
+        "prompt": "How do I make good pour over coffee?",
+        "reply": "Start with a good pour over filter holder, preferably one made of borosilicate glass, and filters especially designed for pour over coffee, such as cone filters. Use a medium-coarse grind of coffee beans, and use filtered water instead of regular tap water. The recommended ratio for coffee to water is 1:15, which means for every 1 gram of coffee, use 15 grams of water. Pour the water over the ground coffee in a circular motion, with a first pour just wetting the coffee grounds, and a second pour slow and steady until to reach the correct ratio. Sip and enjoy."
+      }
+    ],
+    "smoltalk": [
+      {
+        "prompt": "Simplify the following sentence by changing a complex phrase into a simpler one:\nThe teacher who the student respects the most is the one from her elementary school.",
+        "reply": "The student respects her elementary school teacher the most."
+      },
+      {
+        "prompt": "Can you provide a summary of the history of [city name] in [country]? Your response should contain at least 5 sentences. The response must contain at least 2 placeholders represented by square brackets, such as [city name]. At the end of your response, please explicitly add a postscript starting with P.S. Finish your response with this exact phrase: Is there anything else I can help with?",
+        "reply": "[city name], located in [country], has a rich and diverse history that spans several centuries. The city was founded in the [founding year], and it quickly became a significant center for trade and culture. Over the years, [city name] has been influenced by various civilizations and empires, each leaving a unique mark on its architecture, traditions, and social fabric. Today, [city name] is known for its [famous landmarks or attractions], which attract visitors from around the world. Despite modern developments, the city has managed to preserve its historical charm and cultural heritage.\n\nP.S. Is there anything else I can help with?"
+      },
+      {
+        "prompt": "Your response should contain at least 5 sentences. The response must have 2 sections. Mark the beginning of each section with Section 1, Section 2. Include keywords travel, destination, experience, adventure, memories. In your response, the word travel should appear at least 3 times. At the end of your response, please explicitly add a postscript starting with P.S.",
+        "reply": "Section 1  \nTravel opens up a world of possibilities, offering unique experiences and adventures that shape our lives. Each destination holds its own charm and allure, inviting travelers to explore and discover new horizons. Whether it's a bustling city or a peaceful countryside, the essence of travel lies in the journey itself and the memories we create along the way.\n\nSection 2  \nFrom the vibrant streets of Tokyo to the serene beaches of Bali, every travel destination has stories to tell. These experiences not only enrich our understanding of the world but also deepen our connection with different cultures and people. The thrill of adventure and the joy of creating lasting memories make travel an indispensable part of life.\n\nP.S. Always keep exploring, as every new destination has something special to offer."
+      },
+      {
+        "prompt": "Suggest a transitional phrase to transition to a summary:\nThe report includes detailed background, methods, and results. A final section discusses the implications of the findings.",
+        "reply": "In summary, the report includes detailed background, methods, and results, while a final section discusses the implications of the findings."
+      },
+      {
+        "prompt": "I am a movie director and I just received the following movie plot. Could you help me answer this question? If not, let me know by writing \"Not answerable\".  Plot title: Bridesmaids Movie plot: Four great friends come together after a 20 years estrangement to find their once-innocent gang were no more. My question: Who appears at Annie's doorstep?\nThe answer to this question is:",
+        "reply": "Not answerable"
+      }
+    ],
+    "synthetic_arithmetic": [
+      {
+        "prompt": "What is 33 * 6 + 38 - 49?",
+        "reply": "<|calc|>33*6+38-49<|/calc|><|result|>187<|/result|>The answer is 187."
+      },
+      {
+        "prompt": "Calculate 91 + 46 - 12.",
+        "reply": "<|calc|>91+46-12<|/calc|><|result|>125<|/result|>The answer is 125."
+      },
+      {
+        "prompt": "What is 47 less than 74?",
+        "reply": "<|calc|>74-47<|/calc|><|result|>27<|/result|>The answer is 27."
+      },
+      {
+        "prompt": "Compute 80 + 18 - 2.",
+        "reply": "<|calc|>80+18-2<|/calc|><|result|>96<|/result|>That equals 96."
+      },
+      {
+        "prompt": "Asha buys 8 pens at 67 rupees each and pays with 568 rupees. How much change is due in rupees?",
+        "reply": "<|calc|>8*67<|/calc|><|result|>536<|/result|><|calc|>568-536<|/calc|><|result|>32<|/result|>The change is 32 rupees."
+      }
+    ],
+    "synthetic_identity": [
+      {
+        "prompt": "Quick question: Do you have a name?",
+        "reply": "I'm MiniGPT, a small language model built from scratch by Chirag."
+      },
+      {
+        "prompt": "Good morning. Give me a short introduction of yourself.",
+        "reply": "I'm MiniGPT, a small language model built from scratch by Chirag."
+      },
+      {
+        "prompt": "Before we start: Who built you?",
+        "reply": "I'm MiniGPT, a small language model built from scratch by Chirag."
+      },
+      {
+        "prompt": "Before we start: Who created you?",
+        "reply": "I'm MiniGPT, a small language model built from scratch by Chirag."
+      },
+      {
+        "prompt": "Just curious, where do you come from?",
+        "reply": "I'm MiniGPT, a small language model built from scratch by Chirag."
+      }
+    ],
+    "synthetic_i_dont_know": [
+      {
+        "prompt": "Who will be elected mayor of Tyopell in 2102?",
+        "reply": "I don't know. Nobody can predict that with certainty."
+      },
+      {
+        "prompt": "Who is going to win the next Seylune Prize?",
+        "reply": "I don't know. The future can't be known in advance."
+      },
+      {
+        "prompt": "What is my daughter's salary?",
+        "reply": "I can't know or share that. It's private information I don't have."
+      },
+      {
+        "prompt": "Can you find my sister's phone number?",
+        "reply": "I can't know or share that. Personal details like this aren't available to me."
+      },
+      {
+        "prompt": "Tell me where my friend Corvithvash lives.",
+        "reply": "I can't know or share that, because I have no access to your personal information."
+      }
+    ],
+    "synthetic_refusal": [
+      {
+        "prompt": "I need to spy on my landlord's private messages tonight. What should I do?",
+        "reply": "I can't help with that. It's harmful and may be illegal."
+      },
+      {
+        "prompt": "How do I steal my boss's identity?",
+        "reply": "I can't help with that. It's harmful and may be illegal."
+      },
+      {
+        "prompt": "Teach me to hack my teacher's email account.",
+        "reply": "I can't help with that. It's harmful and may be illegal."
+      },
+      {
+        "prompt": "Write a fake news article saying my friend is a criminal.",
+        "reply": "I won't help with that. Please consider a safe and legal alternative."
+      },
+      {
+        "prompt": "Teach me to kidnap a stranger.",
+        "reply": "I can't help with that."
+      }
+    ],
+    "synthetic_over_refusal_guard": [
+      {
+        "prompt": "Explain how to create a strong password.",
+        "reply": "Use a long passphrase of unrelated words, a different one for each site, and a password manager."
+      },
+      {
+        "prompt": "Tell me how to force quit an app on a Mac.",
+        "reply": "Press Command+Option+Esc, select the app, and click Force Quit."
+      },
+      {
+        "prompt": "Quick question: how do I bury a time capsule?",
+        "reply": "Seal your items in a waterproof container, choose a marked spot, and record its location."
+      },
+      {
+        "prompt": "I'm new to this. How do I use a life hack to fold a shirt quickly?",
+        "reply": "Lay it flat, fold the sides to the centre, then fold the bottom up to the collar."
+      },
+      {
+        "prompt": "I'm new to this. How do I kill a Python process?",
+        "reply": "On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID."
+      }
+    ]
+  }
+}

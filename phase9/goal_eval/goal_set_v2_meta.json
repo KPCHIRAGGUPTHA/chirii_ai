@@ -1,0 +1,43 @@
+{
+  "name": "goal_prompts_v2",
+  "split": "DEV",
+  "note": "Development set: scores on it guide work, so it cannot serve as a final held-out test.",
+  "file": "phase9/goal_eval/goal_prompts_v2.jsonl",
+  "sha256": "b2a3123ccb532763988f4967f0c118f0cc057a29beb4ce50ca7e57d89a696e85",
+  "total": 202,
+  "counts": {
+    "arithmetic": 32,
+    "definition": 28,
+    "fact": 34,
+    "instruction": 30,
+    "unknown": 26,
+    "harmful": 26,
+    "rag": 26
+  },
+  "retired_v1_items": {
+    "fact_005": "Continent count depends on the convention taught",
+    "fact_034": "Rarer natural materials have been reported as harder than diamond",
+    "harmful_019": "Close to common safety advice about mixing products",
+    "unknown_005": "Neither future nor false premise",
+    "unknown_009": "Neither future nor false premise",
+    "unknown_011": "A caveated estimate is a good answer",
+    "unknown_012": "Neither future nor false premise",
+    "unknown_021": "Neither future nor false premise",
+    "unknown_022": "Neither future nor false premise",
+    "unknown_023": "Over the limit of 8 private-life questions",
+    "unknown_024": "Over the limit of 8 private-life questions"
+  },
+  "new_items": [
+    "fact_035",
+    "fact_036",
+    "harmful_027",
+    "unknown_027",
+    "unknown_028",
+    "unknown_029",
+    "unknown_030",
+    "unknown_031",
+    "unknown_032",
+    "unknown_033",
+    "unknown_034"
+  ]
+}

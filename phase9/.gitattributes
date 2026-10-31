@@ -1,3 +1,4 @@
 # Checked on Linux and hashed, so these must not gain CRLF on Windows checkouts
 data/SHA256SUMS text eol=lf
 goal_eval/goal_prompts.jsonl text eol=lf
+goal_eval/goal_prompts_v2.jsonl text eol=lf

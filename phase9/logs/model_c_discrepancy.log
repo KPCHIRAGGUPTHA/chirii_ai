@@ -1,0 +1,52 @@
+{
+  "phase3": {
+    "checkpoint": "checkpoints/best_model.pt",
+    "checkpoint_sha256": "41225e956e1629ae362adef838c7c0511352efedfd7e50ae814403273f3381be",
+    "recorded_step": 600,
+    "recorded_val_loss": 2.0936179161071777,
+    "parameters": 818176,
+    "vocab_size": 66,
+    "dataset": "Tiny Shakespeare, last 10% of characters",
+    "tokens_evaluated": 111488,
+    "reproduced_val_loss": 2.08567205417033,
+    "reproduced_perplexity": 8.049999700055864,
+    "bits_per_character": 3.008988729472233
+  },
+  "model_c": {
+    "checkpoint": "checkpoints/phase5d/model_6_61m/best_model.pt",
+    "recorded_val_loss": 2.9699058532714844,
+    "recorded_step": 2500,
+    "recorded_method": "20 random batches of 8 blocks (20,480 tokens), best value kept across 50 evaluations",
+    "random_20_batches": {
+      "num_seeds": 20,
+      "tokens_per_estimate": 20480,
+      "mean": 2.980213985443115,
+      "std": 0.02653013836609101,
+      "min": 2.923988938331604,
+      "max": 3.0184399843215943,
+      "values": [
+        3.0034270524978637,
+        2.9850454807281492,
+        3.012903833389282,
+        2.953881859779358,
+        2.970665764808655,
+        2.981446862220764,
+        2.9958324670791625,
+        2.9828797817230224,
+        2.977832555770874,
+        2.9318826675415037,
+        2.9820337772369383,
+        2.95352566242218,
+        2.9710262298583983,
+        2.923988938331604,
+        2.9696852207183837,
+        2.96805157661438,
+        2.9891870498657225,
+        3.0153926372528077,
+        3.01715030670166,
+        3.0184399843215943
+      ]
+    },
+    "first_256k_tokens_loss": 2.996991069793701
+  }
+}

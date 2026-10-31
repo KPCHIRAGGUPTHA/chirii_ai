@@ -1,0 +1,52 @@
+{
+  "batch_size": 16,
+  "cpu_threads": 8,
+  "unk_token_bytes": 3,
+  "shards": {
+    "v1024": {
+      "bin": "phase9/data/val_v1024.bin",
+      "bin_sha256": "ec9917aa49a17e6e31ea607bf1a9c11f07624a1411d81b855c3525519e39a006",
+      "tokenizer": "tokenizers/phase5d/bpe_vocab_1024.json",
+      "tokenizer_sha256": "6436b59303ef54cb91c6656f378f5a9bfb00fc55a3c2ad516ddf357cc58e3a5d",
+      "source_text": "data/phase5d/val_corpus.txt",
+      "source_text_sha256": "a54068af0cfbfeac56d7399b836cc6090eac10fa07a11f3e932f1759d2d2bb35",
+      "eval_tokens": 1765632
+    },
+    "v1377": {
+      "bin": "phase9/data/val_v1377.bin",
+      "bin_sha256": "8dc3255f81d06a2ea27723ea27da6d59966f7b1601f6570f654c6627c3feb1be",
+      "tokenizer": "tokenizers/phase5/bpe_vocab_1377.json",
+      "tokenizer_sha256": "1f4a691a62c46a904afa56187d7051580f34b816edb12d2851a2cb249f1a91c7",
+      "source_text": "data/phase5d/val_corpus.txt",
+      "source_text_sha256": "a54068af0cfbfeac56d7399b836cc6090eac10fa07a11f3e932f1759d2d2bb35",
+      "eval_tokens": 3503104
+    }
+  },
+  "models": [
+    {
+      "name": "Model A* (char-level)",
+      "note": "NOT the 940,800-parameter, vocab-1024 Phase 5C Model A, whose checkpoint is not on disk. This is the only 4-layer FineWeb-Edu checkpoint available: same architecture, but a 1,377-token character vocabulary (985,984 parameters).",
+      "checkpoint": "checkpoints/phase5/best_model.pt",
+      "shard": "v1377"
+    },
+    {
+      "name": "Model B",
+      "checkpoint": "checkpoints/phase5d/model_2_89m/best_model.pt",
+      "shard": "v1024"
+    },
+    {
+      "name": "Model C",
+      "checkpoint": "checkpoints/phase5d/model_6_61m/best_model.pt",
+      "checkpoint_sha256": "6f934bc3f2ca1cff6173896562cc215df5467274337c7af3fb265fb399fd2433",
+      "shard": "v1024"
+    },
+    {
+      "name": "Model D (old trainer)",
+      "note": "Trained by phase8/train_model_scaling.py, with sequential data and no weight decay. Not a fair test of capacity.",
+      "checkpoint": "checkpoints/phase8/model_d/best_model.pt",
+      "checkpoint_sha256": "2c3c662b99485b5ce93902cde37ef23f811e70620e1cba8c1af60dc088b0596c",
+      "model_config": {"vocab_size": 1024, "block_size": 128, "n_layer": 12, "n_head": 10, "n_embd": 320, "dropout": 0.1, "bias": true},
+      "shard": "v1024"
+    }
+  ]
+}

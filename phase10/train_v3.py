@@ -8,7 +8,7 @@ Output in out_dir: checkpoint.pt, best_model.pt (weights only), metrics.json, st
 generations.jsonl.
 
 Usage:
-    python phase10/train_v3.py --config phase10/configs/foundation_v3.json --auto-resume
+    python phase10/train_v3.py --config phase10/configs/foundation_v3_clean_2ep.json --auto-resume
     python phase10/train_v3.py --config phase10/configs/foundation_v3.json --seed 1 --stop-after-step 300 --eval-interval 50 --out-dir phase10/runs/stability_seed1
 """
 
@@ -17,6 +17,7 @@ import hashlib
 import json
 import math
 import os
+import subprocess
 import sys
 import time
 from typing import Any, Dict, List, Optional, Tuple
@@ -59,6 +60,7 @@ DEFAULT_TRAINING = {
     "log_interval": 50,
     "checkpoint_interval_minutes": 30,
     "checkpoint_every_steps": 0,
+    "snapshot_every_steps": 0,
     "stop_after_step": None,
     "compile": True,
     "cpu_threads": 8,
@@ -122,6 +124,18 @@ def generate_greedy(model: nn.Module, tokenizer: Any, prompt: str, max_new_token
             logits, _ = model(idx[:, -block_size:])
         idx = torch.cat((idx, logits[:, -1, :].float().argmax(dim=-1, keepdim=True)), dim=1)
     return tokenizer.decode(idx[0].tolist(), skip_special_tokens=False)
+
+
+def query_gpu_temperature() -> Optional[int]:
+    """Returns GPU temperature in Celsius from nvidia-smi, or None if it cannot be read."""
+    try:
+        output = subprocess.run(
+            ["nvidia-smi", "--query-gpu=temperature.gpu", "--format=csv,noheader,nounits"],
+            capture_output=True, text=True, timeout=5, check=True,
+        ).stdout
+        return int(output.strip().splitlines()[0])
+    except (OSError, ValueError, IndexError, subprocess.SubprocessError):
+        return None
 
 
 def truncate_jsonl(path: str, last_step: int) -> None:
@@ -357,9 +371,10 @@ def train(config: Dict[str, Any], resume: bool = False) -> Dict[str, Any]:
                 with autocast_context(device):
                     val = evaluate_tokens(raw_model, val_subset, token_bytes, block_size, training["eval_batch_size"], device)
                 raw_model.train()
-                entry = {"step": step, "val_loss": val["loss"], "val_bits_per_byte": val["bits_per_byte"], "val_tokens": val["eval_tokens"], "val_bytes": val["eval_bytes"]}
+                gpu_temp = query_gpu_temperature() if device.type == "cuda" else None
+                entry = {"step": step, "val_loss": val["loss"], "val_bits_per_byte": val["bits_per_byte"], "val_tokens": val["eval_tokens"], "val_bytes": val["eval_bytes"], "gpu_temp_c": gpu_temp}
                 metrics["evals"].append(entry)
-                print(f"  >>> step {step} val loss {val['loss']:.4f} | {val['bits_per_byte']:.4f} bits/byte", flush=True)
+                print(f"  >>> step {step} val loss {val['loss']:.4f} | {val['bits_per_byte']:.4f} bits/byte | gpu temp {gpu_temp} C", flush=True)
                 if val["loss"] < best_val_loss:
                     best_val_loss = val["loss"]
                     metrics["best_step"] = step
@@ -377,6 +392,15 @@ def train(config: Dict[str, Any], resume: bool = False) -> Dict[str, Any]:
                 wall_mark = add_time("wall_seconds", wall_mark)
                 record_memory()
                 atomic_write_json(metrics_path, metrics)
+
+            # Weights only, one file per step, never overwritten by a later snapshot
+            snapshot_every = training["snapshot_every_steps"]
+            if snapshot_every and (step % snapshot_every == 0 or is_last):
+                snapshot_dir = os.path.join(out_dir, "snapshots")
+                os.makedirs(snapshot_dir, exist_ok=True)
+                last_eval = metrics["evals"][-1] if metrics["evals"] and metrics["evals"][-1]["step"] == step else None
+                save_best_model(os.path.join(snapshot_dir, f"model_step_{step:05d}.pt"), raw_model, config, step, last_eval)
+                print(f"  snapshot saved at step {step}", flush=True)
 
             timed_out = time.monotonic() - last_checkpoint >= training["checkpoint_interval_minutes"] * 60
             by_steps = training["checkpoint_every_steps"] and step % training["checkpoint_every_steps"] == 0

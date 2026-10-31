@@ -1,0 +1,45 @@
+{
+  "name": "Foundation v3, 2 epochs of train_clean.bin",
+  "device": "auto",
+  "model": {
+    "vocab_size": 16384,
+    "block_size": 512,
+    "n_layer": 8,
+    "n_head": 8,
+    "n_embd": 512,
+    "dropout": 0.0,
+    "bias": true
+  },
+  "data": {
+    "train_bin": "phase10/data/tokens/train_clean.bin",
+    "train_sha256": "1906ef73e5041a5cd958f1ad2b5f14b70c09b23682b18ff63a993c593ab98458",
+    "val_bin": "phase10/data/tokens/val.bin",
+    "val_sha256": "21829bf07dd44e89ddb44916a362cfc5df4cacb15462211782bcfaadf54eedf0",
+    "val_subset_tokens": 256000,
+    "val_subset_sha256": "8ccf33a688a40884eb06a7ed49eff0681212d9ac33a2f16c251b97cc72e7431b",
+    "tokenizer": "phase10/tokenizer/tokenizer_v2.json",
+    "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98"
+  },
+  "out_dir": "phase10/runs/foundation_v3_clean_2ep",
+  "training": {
+    "max_steps": 11524,
+    "micro_batch_size": 64,
+    "grad_accum_steps": 4,
+    "learning_rate": 0.0008,
+    "min_lr": 8e-05,
+    "warmup_steps": 200,
+    "weight_decay": 0.1,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip": 1.0,
+    "seed": 1,
+    "eval_interval": 250,
+    "eval_batch_size": 16,
+    "log_interval": 50,
+    "checkpoint_interval_minutes": 30,
+    "compile": true,
+    "snapshot_every_steps": 2000
+  }
+}

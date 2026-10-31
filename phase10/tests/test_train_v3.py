@@ -17,9 +17,9 @@ import torch
 
 from model import MiniGPT, MiniGPTConfig
 from phase10.common import project_path, read_text_lf, sha256_text
-from phase10.eval_v3 import OLD_TEXT, OLD_TEXT_SHA256, tokenize_old_text
+from phase10.eval_v3 import OLD_TEXT, OLD_TEXT_SHA256, load_model_v3, tokenize_old_text
 from phase10.model_v3 import MiniGPTV3
-from phase10.train_v3 import DEFAULT_TRAINING, compile_model, load_config, train, truncate_jsonl
+from phase10.train_v3 import DEFAULT_TRAINING, compile_model, load_config, query_gpu_temperature, train, truncate_jsonl
 from phase9.train_v2 import build_param_groups, get_learning_rate
 
 FULL_MODEL = dict(vocab_size=16384, block_size=512, n_layer=8, n_head=8, n_embd=512, dropout=0.0, bias=True)
@@ -80,12 +80,43 @@ class TestSettings(unittest.TestCase):
         self.assertEqual(t["micro_batch_size"] * t["grad_accum_steps"] * 512, 131072)
         self.assertGreaterEqual(t["max_steps"] * 131072, 700_000_000)
 
-    def test_learning_rate_schedule(self):
-        lr = lambda step: get_learning_rate(step, 5341, 200, 8e-4, 8e-5)
+    def test_learning_rate_schedule_spans_the_full_two_epoch_run(self):
+        lr = lambda step: get_learning_rate(step, 11524, 200, 8e-4, 8e-5)
         self.assertAlmostEqual(lr(100), 4e-4)
         self.assertAlmostEqual(lr(200), 8e-4)
-        self.assertAlmostEqual(lr(5341), 8e-5)
+        self.assertAlmostEqual(lr(11524), 8e-5)
+        self.assertAlmostEqual(lr(200 + (11524 - 200) // 2), (8e-4 + 8e-5) / 2, places=6)
         self.assertGreater(lr(1000), lr(3000))
+        self.assertGreater(lr(5341), 8e-5 * 3)
+
+
+class TestTwoEpochConfig(unittest.TestCase):
+    def setUp(self):
+        with open(project_path("phase10/configs/foundation_v3_clean_2ep.json"), "r", encoding="utf-8") as f:
+            self.config = json.load(f)
+        with open(project_path("phase10/configs/foundation_v3_clean.json"), "r", encoding="utf-8") as f:
+            self.clean = json.load(f)
+        with open(project_path("phase10/manifests/train_clean_manifest.json"), "r", encoding="utf-8") as f:
+            self.manifest = json.load(f)
+
+    def test_steps_are_two_epochs_of_the_clean_data_rounded_up(self):
+        t = self.config["training"]
+        per_step = t["micro_batch_size"] * t["grad_accum_steps"] * self.config["model"]["block_size"]
+        self.assertEqual(per_step, 131072)
+        self.assertEqual(t["max_steps"], math.ceil(2 * self.manifest["tokens"] / per_step))
+        self.assertEqual(t["max_steps"], 11524)
+
+    def test_uses_the_pinned_clean_data(self):
+        self.assertEqual(self.config["data"]["train_bin"], self.manifest["file"])
+        self.assertEqual(self.config["data"]["train_sha256"], self.manifest["sha256"])
+
+    def test_only_the_budget_name_output_and_snapshots_differ_from_the_clean_config(self):
+        self.assertEqual(self.config["model"], self.clean["model"])
+        self.assertEqual(self.config["data"], self.clean["data"])
+        changed = {k for k in set(self.config["training"]) | set(self.clean["training"]) if self.config["training"].get(k) != self.clean["training"].get(k)}
+        self.assertEqual(changed, {"max_steps", "snapshot_every_steps"})
+        self.assertEqual(self.config["training"]["snapshot_every_steps"], 2000)
+        self.assertEqual(self.config["out_dir"], "phase10/runs/foundation_v3_clean_2ep")
 
 
 class TestCompileFallback(unittest.TestCase):
@@ -183,6 +214,58 @@ class TestTraining(RunBase):
         train(load_config(path, {"stop_after_step": 50}))
         self.assertEqual([e["step"] for e in self.metrics(out_dir)["evals"]], [20, 40, 50])
         self.assertEqual(self.metrics(out_dir)["status"], "stopped_early")
+
+    def test_snapshots_are_weights_only_kept_and_include_the_final_step(self):
+        path, out_dir = self.make_config("run", max_steps=50, snapshot_every_steps=20)
+        train(load_config(path))
+        names = sorted(os.listdir(os.path.join(out_dir, "snapshots")))
+        self.assertEqual(names, ["model_step_00020.pt", "model_step_00040.pt", "model_step_00050.pt"])
+        for name, step in zip(names, (20, 40, 50)):
+            state = torch.load(os.path.join(out_dir, "snapshots", name), map_location="cpu", weights_only=True)
+            self.assertEqual(state["step"], step)
+            self.assertNotIn("optimizer_state", state)
+            self.assertIn("transformer.wte.weight", state["model_state"])
+        final = torch.load(os.path.join(out_dir, "checkpoint.pt"), map_location="cpu", weights_only=True)["model_state"]
+        for key, value in state["model_state"].items():
+            self.assertTrue(torch.equal(value, final[key]), key)
+
+    def test_snapshots_load_for_evaluation(self):
+        path, out_dir = self.make_config("run", max_steps=20, snapshot_every_steps=20)
+        train(load_config(path))
+        model, state = load_model_v3(os.path.join(out_dir, "snapshots", "model_step_00020.pt"), torch.device("cpu"))
+        self.assertEqual(state["step"], 20)
+        self.assertEqual(model.config.n_embd, TINY_MODEL["n_embd"])
+
+    def test_no_snapshots_by_default(self):
+        path, out_dir = self.make_config("run", max_steps=10)
+        train(load_config(path))
+        self.assertFalse(os.path.exists(os.path.join(out_dir, "snapshots")))
+
+    def test_evals_record_gpu_temperature(self):
+        path, out_dir = self.make_config("run", max_steps=20)
+        with mock.patch("phase10.train_v3.resolve_device", return_value=torch.device("cpu")):
+            train(load_config(path))
+        self.assertIn("gpu_temp_c", self.metrics(out_dir)["evals"][-1])
+
+    @unittest.skipUnless(torch.cuda.is_available(), "Needs a CUDA GPU")
+    def test_gpu_temperature_is_read_on_gpu_runs(self):
+        path, out_dir = self.make_config("run", device="cuda", max_steps=20)
+        train(load_config(path))
+        temperature = self.metrics(out_dir)["evals"][-1]["gpu_temp_c"]
+        self.assertIsInstance(temperature, int)
+        self.assertGreater(temperature, 0)
+
+    def test_temperature_failure_gives_none(self):
+        with mock.patch("subprocess.run", side_effect=OSError("no nvidia-smi")):
+            self.assertIsNone(query_gpu_temperature())
+
+    def test_snapshots_survive_a_resume(self):
+        path, out_dir = self.make_config("run", max_steps=50, snapshot_every_steps=20, checkpoint_every_steps=10)
+        train(load_config(path, {"stop_after_step": 30}))
+        before = os.path.getmtime(os.path.join(out_dir, "snapshots", "model_step_00020.pt"))
+        train(load_config(path), resume=True)
+        self.assertEqual(sorted(os.listdir(os.path.join(out_dir, "snapshots"))), ["model_step_00020.pt", "model_step_00040.pt", "model_step_00050.pt"])
+        self.assertEqual(os.path.getmtime(os.path.join(out_dir, "snapshots", "model_step_00020.pt")), before)
 
     def test_non_finite_loss_stops_the_run_and_is_recorded(self):
         path, out_dir = self.make_config("run")

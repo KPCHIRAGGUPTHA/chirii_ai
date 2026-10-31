@@ -1,0 +1,6 @@
+Device: cpu | Autocast: disabled | Parameters: 15,164,800
+Train tokens: 17,727,927 | Steps: 2 | Token budget: 8,192
+step     1/2 | loss 7.0173 | grad 2.826 | lr 0.000020 | 725 tok/s | gpu None% | gpu mem None GB
+step     2/2 | loss 6.9391 | grad 2.599 | lr 0.000040 | 694 tok/s | gpu None% | gpu mem None GB
+  >>> step 2 val loss 6.7948 (ppl 893.21)
+Finished: status=completed best_val_loss=6.7948

@@ -1,0 +1,23 @@
+[
+  {
+    "source": "data/phase5d/train_tokens_v1024.pt",
+    "target": "phase9/data/train_v1024.bin",
+    "num_tokens": 17727927,
+    "source_sha256": "27a1edc1e1f59176e49835479a4e255952a8aec42b60cf1d62738c590adcbb73",
+    "sha256": "82f83c08192481963417f8e095fc48c8a5870bd9128067e9b8f8da1a96469b93"
+  },
+  {
+    "source": "data/phase5d/val_tokens_v1024.pt",
+    "target": "phase9/data/val_v1024.bin",
+    "num_tokens": 1765698,
+    "source_sha256": "a45af657b27115440ed995f738ebe1509d9b51f973003bbcdce55108f1f49c8a",
+    "sha256": "ec9917aa49a17e6e31ea607bf1a9c11f07624a1411d81b855c3525519e39a006"
+  },
+  {
+    "source": "data/phase5/val_tokens_v1377.pt",
+    "target": "phase9/data/val_v1377.bin",
+    "num_tokens": 3503110,
+    "source_sha256": "3bcf3588b41519a3fc33f2e9ddd03a1dbe4a897f17bc98d9c3615596c0096541",
+    "sha256": "8dc3255f81d06a2ea27723ea27da6d59966f7b1601f6570f654c6627c3feb1be"
+  }
+]

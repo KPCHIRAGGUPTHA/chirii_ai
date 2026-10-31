@@ -1,0 +1,88 @@
+{
+  "models": {
+    "stability_seed1": {
+      "name": "stability_seed1",
+      "note": "Stability run, 300 steps only; not the final model.",
+      "checkpoint": "phase10/runs/stability_seed1/best_model.pt",
+      "checkpoint_sha256": "00b4a7a43086d13e4df3110678f63e4e2fa29c1d1b23c7096a91b0c2aab15923",
+      "step": 300,
+      "device": "cuda",
+      "parameters": 33870848,
+      "new_val": {
+        "file": "phase10/data/tokens/val.bin",
+        "sha256": "21829bf07dd44e89ddb44916a362cfc5df4cacb15462211782bcfaadf54eedf0",
+        "eval_tokens": 3789312,
+        "eval_blocks": 7401,
+        "eval_bytes": 15790584,
+        "bytes_per_token": 4.16713746453182,
+        "bits_per_byte": 1.8149517491249334,
+        "loss": 5.242378476213369,
+        "perplexity": 189.11938384721827,
+        "loss_standard_error": 0.003686194213778988,
+        "first_2000_blocks_loss": 5.264651931524277,
+        "eval_seconds": 102.28522326302482,
+        "tokens_per_second": 37046.52421059731
+      },
+      "phase5d_val": {
+        "file": "data/phase5d/val_corpus.txt",
+        "sha256_lf": "6c5c425a42b6fa988afc6a081c9bb01773b449308165934c5bc3038789c6e683",
+        "eval_tokens": 839680,
+        "eval_blocks": 1640,
+        "eval_bytes": 3516278,
+        "bytes_per_token": 4.18764052972561,
+        "bits_per_byte": 1.8127439469386055,
+        "loss": 5.261763440690389,
+        "perplexity": 192.82122044921255,
+        "loss_standard_error": 0.007537285769786029,
+        "first_2000_blocks_loss": 5.261763440690389,
+        "eval_seconds": 23.300128051021602,
+        "tokens_per_second": 36037.57018679492
+      },
+      "model_c_phase5d_bits_per_byte": 2.1530510486322263,
+      "model_c_phase5d_eval_bytes": 3517395,
+      "difference_from_model_c": -0.3403071016936208
+    },
+    "stability_seed2": {
+      "name": "stability_seed2",
+      "note": "Stability run, 300 steps only; not the final model.",
+      "checkpoint": "phase10/runs/stability_seed2/best_model.pt",
+      "checkpoint_sha256": "bcfdc4771702826f60a0a24dcf6426776107da26741cf0c60eef21d1b4844822",
+      "step": 300,
+      "device": "cuda",
+      "parameters": 33870848,
+      "new_val": {
+        "file": "phase10/data/tokens/val.bin",
+        "sha256": "21829bf07dd44e89ddb44916a362cfc5df4cacb15462211782bcfaadf54eedf0",
+        "eval_tokens": 3789312,
+        "eval_blocks": 7401,
+        "eval_bytes": 15790584,
+        "bytes_per_token": 4.16713746453182,
+        "bits_per_byte": 1.8152749915314002,
+        "loss": 5.24331214237561,
+        "perplexity": 189.29604067295756,
+        "loss_standard_error": 0.0036747398498968957,
+        "first_2000_blocks_loss": 5.265829578995705,
+        "eval_seconds": 104.49879273003899,
+        "tokens_per_second": 36261.77777756023
+      },
+      "phase5d_val": {
+        "file": "data/phase5d/val_corpus.txt",
+        "sha256_lf": "6c5c425a42b6fa988afc6a081c9bb01773b449308165934c5bc3038789c6e683",
+        "eval_tokens": 839680,
+        "eval_blocks": 1640,
+        "eval_bytes": 3516278,
+        "bytes_per_token": 4.18764052972561,
+        "bits_per_byte": 1.8128080024725945,
+        "loss": 5.261949371564679,
+        "perplexity": 192.85707520046162,
+        "loss_standard_error": 0.0074869710804331985,
+        "first_2000_blocks_loss": 5.261949371564679,
+        "eval_seconds": 23.22436456300784,
+        "tokens_per_second": 36155.13344711513
+      },
+      "model_c_phase5d_bits_per_byte": 2.1530510486322263,
+      "model_c_phase5d_eval_bytes": 3517395,
+      "difference_from_model_c": -0.34024304615963175
+    }
+  }
+}

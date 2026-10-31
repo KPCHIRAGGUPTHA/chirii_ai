@@ -1,0 +1,8 @@
+Evaluating stability_seed1 (step 300, full precision)
+  new val:    1.8150 bits/byte | loss 5.2424 | 3,789,312 tokens | 15,790,584 bytes
+  Phase 5D:   1.8127 bits/byte | loss 5.2618 | 839,680 tokens | 3,516,278 bytes
+  Model C on Phase 5D: 2.1531 bits/byte on 3,517,395 bytes; difference -0.3403
+Evaluating stability_seed2 (step 300, full precision)
+  new val:    1.8153 bits/byte | loss 5.2433 | 3,789,312 tokens | 15,790,584 bytes
+  Phase 5D:   1.8128 bits/byte | loss 5.2619 | 839,680 tokens | 3,516,278 bytes
+  Model C on Phase 5D: 2.1531 bits/byte on 3,517,395 bytes; difference -0.3402

@@ -1,0 +1,11 @@
+{
+  "final_difference": 9.11657826867529e-05,
+  "checks": {
+    "final_difference_within_limit": true,
+    "no_non_finite": true,
+    "grad_norm_within_limit_after_warmup": true,
+    "loss_falls_smoothly": true
+  },
+  "passed": true
+}
+PASS

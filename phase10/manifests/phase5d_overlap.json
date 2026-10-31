@@ -1,0 +1,6 @@
+{
+  "old_val_long_lines": 12013,
+  "found_in_train": 11961,
+  "found_in_val": 78,
+  "train_docs_with_overlap": 7025
+}

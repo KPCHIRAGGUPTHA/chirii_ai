@@ -1,0 +1,25 @@
+~/anaconda3/envs/minigpt/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Fused AdamW: True | Compile: enabled | Parameters: 33,870,848
+Train tokens: 763,998,802 | Steps: 5,341 | Tokens per step: 131,072 (64 x 4 x 512) | Budget: 700,055,552
+step     1/5341 | loss 9.8329 | grad 3.844 | lr 0.000004 | 46,043 tok/s | gpu 100% | peak 7.927 GB
+  checkpoint saved at step 5
+  checkpoint saved at step 10
+  checkpoint saved at step 15
+=== killed with SIGKILL after 18 steps
+Resumed from step 15
+~/anaconda3/envs/minigpt/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Fused AdamW: True | Compile: enabled | Parameters: 33,870,848
+Train tokens: 763,998,802 | Steps: 5,341 | Tokens per step: 131,072 (64 x 4 x 512) | Budget: 700,055,552
+  checkpoint saved at step 20
+  checkpoint saved at step 25
+step    30/5341 | loss 8.2695 | grad 1.508 | lr 0.000120 | 70,710 tok/s | gpu 100% | peak 8.308 GB
+  >>> step 30 val loss 8.2338 | 2.8029 bits/byte
+      'The capital of France is the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the'
+      'Water is made of hydrogen and the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the'
+      '2 + 2 =................................................................'
+      'The main reason plants need sunlight is the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the'
+      'def add(a, b):\n................................................................'
+  checkpoint saved at step 30
+Finished: status=stopped_early steps=30 best_val_loss=8.233823852539063 train tok/s=71,019 overall tok/s=62,436

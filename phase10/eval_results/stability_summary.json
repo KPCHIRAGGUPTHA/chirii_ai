@@ -1,0 +1,152 @@
+{
+  "gate": {
+    "final_difference": 9.11657826867529e-05,
+    "checks": {
+      "final_difference_within_limit": true,
+      "no_non_finite": true,
+      "grad_norm_within_limit_after_warmup": true,
+      "loss_falls_smoothly": true
+    },
+    "passed": true
+  },
+  "runs": {
+    "phase10/runs/stability_seed1": {
+      "steps": 300,
+      "finite": true,
+      "max_grad_norm": 3.8441896438598633,
+      "max_grad_norm_step": 1,
+      "max_grad_norm_after_warmup": 0.9637402296066284,
+      "train_loss_50_step_means": [
+        8.45304654598236,
+        6.8157683801651,
+        6.158133733272552,
+        5.823331551551819,
+        5.565916774272918,
+        5.336896648406983
+      ],
+      "val_loss_falls_every_eval": true,
+      "train_windows_fall": true,
+      "final_val_bits_per_byte": 1.8069951164708682,
+      "curve": [
+        {
+          "step": 50,
+          "train_loss": 7.335216164588928,
+          "val_loss": 7.320882629394531,
+          "val_bits_per_byte": 2.492136505557037,
+          "grad_norm": 0.5962132215499878
+        },
+        {
+          "step": 100,
+          "train_loss": 6.425418496131897,
+          "val_loss": 6.458450775146485,
+          "val_bits_per_byte": 2.1985519726078233,
+          "grad_norm": 0.3238010108470917
+        },
+        {
+          "step": 150,
+          "train_loss": 5.977670907974243,
+          "val_loss": 6.053211463928223,
+          "val_bits_per_byte": 2.0606025296104917,
+          "grad_norm": 0.4524262249469757
+        },
+        {
+          "step": 200,
+          "train_loss": 5.701063275337219,
+          "val_loss": 5.784495007514954,
+          "val_bits_per_byte": 1.9691274815086999,
+          "grad_norm": 0.5654513239860535
+        },
+        {
+          "step": 250,
+          "train_loss": 5.441251516342163,
+          "val_loss": 5.525697313308716,
+          "val_bits_per_byte": 1.8810289264662061,
+          "grad_norm": 0.38697656989097595
+        },
+        {
+          "step": 300,
+          "train_loss": 5.22550642490387,
+          "val_loss": 5.3082161149978635,
+          "val_bits_per_byte": 1.8069951164708682,
+          "grad_norm": 0.4514962434768677
+        }
+      ],
+      "compile": "enabled",
+      "tokens_per_sec_training": 72988.49632798728,
+      "tokens_per_sec_overall": 70052.01360309137,
+      "gpu_peak_allocated_gb": 8.181,
+      "gpu_peak_reserved_gb": 8.926,
+      "train_seconds": 538.7369514135644,
+      "wall_seconds": 561.3200531649636
+    },
+    "phase10/runs/stability_seed2": {
+      "steps": 300,
+      "finite": true,
+      "max_grad_norm": 3.7526423931121826,
+      "max_grad_norm_step": 1,
+      "max_grad_norm_after_warmup": 0.9020574688911438,
+      "train_loss_50_step_means": [
+        8.462440612316131,
+        6.830605509281159,
+        6.168319206237793,
+        5.833420698642731,
+        5.567901320457459,
+        5.348751909732819
+      ],
+      "val_loss_falls_every_eval": true,
+      "train_windows_fall": true,
+      "final_val_bits_per_byte": 1.8069039506881814,
+      "curve": [
+        {
+          "step": 50,
+          "train_loss": 7.336458921432495,
+          "val_loss": 7.323648712158203,
+          "val_bits_per_byte": 2.4930781209580353,
+          "grad_norm": 0.607105553150177
+        },
+        {
+          "step": 100,
+          "train_loss": 6.427178502082825,
+          "val_loss": 6.472457496643067,
+          "val_bits_per_byte": 2.2033200673488382,
+          "grad_norm": 0.505580723285675
+        },
+        {
+          "step": 150,
+          "train_loss": 5.9986492395401,
+          "val_loss": 6.071714074134826,
+          "val_bits_per_byte": 2.0669010912291177,
+          "grad_norm": 0.8271045684814453
+        },
+        {
+          "step": 200,
+          "train_loss": 5.682751536369324,
+          "val_loss": 5.768646701812744,
+          "val_bits_per_byte": 1.9637324843217325,
+          "grad_norm": 0.4740344285964966
+        },
+        {
+          "step": 250,
+          "train_loss": 5.4485437870025635,
+          "val_loss": 5.542023843765259,
+          "val_bits_per_byte": 1.8865867184182954,
+          "grad_norm": 0.6417728662490845
+        },
+        {
+          "step": 300,
+          "train_loss": 5.251560568809509,
+          "val_loss": 5.307948307037353,
+          "val_bits_per_byte": 1.8069039506881814,
+          "grad_norm": 0.4339921772480011
+        }
+      ],
+      "compile": "enabled",
+      "tokens_per_sec_training": 73335.77345029051,
+      "tokens_per_sec_overall": 70230.11555289525,
+      "gpu_peak_allocated_gb": 8.181,
+      "gpu_peak_reserved_gb": 8.926,
+      "train_seconds": 536.18579514476,
+      "wall_seconds": 559.8965584840043
+    }
+  }
+}

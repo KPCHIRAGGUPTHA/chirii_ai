@@ -1,0 +1,49 @@
+~/anaconda3/envs/minigpt/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Fused AdamW: True | Compile: enabled | Parameters: 33,870,848
+Train tokens: 763,998,802 | Steps: 5,341 | Tokens per step: 131,072 (64 x 4 x 512) | Budget: 700,055,552
+step     1/5341 | loss 9.8329 | grad 3.844 | lr 0.000004 | 43,763 tok/s | gpu 100% | peak 7.927 GB
+step    50/5341 | loss 7.3352 | grad 0.596 | lr 0.000200 | 71,780 tok/s | gpu 100% | peak 8.181 GB
+  >>> step 50 val loss 7.3209 | 2.4921 bits/byte
+      'The capital of France is the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the'
+      'Water is made of hydrogen and the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the'
+      '2 + 2 =.\n.\n.\n.\n.\n.\n.\n.\n\n\n.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'
+      'The main reason plants need sunlight is the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the'
+      'def add(a, b):\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'
+step   100/5341 | loss 6.4254 | grad 0.324 | lr 0.000400 | 73,514 tok/s | gpu 100% | peak 8.181 GB
+  >>> step 100 val loss 6.4585 | 2.1986 bits/byte
+      'The capital of France is the the the the the 1999999999.\nThe 1999999.\nThe 19999999999999999.\nThe 1999999999.\n'
+      'Water is made of hydrogen and the first of the 1999999999999999.\nThe 199.\nThe 1999999999999999.\nThe 19999.\nThe 199'
+      '2 + 2 = 200000000000000000000000000000000000000000000000000000000000000'
+      'The main reason plants need sunlight is the most of the most of the 199999999999999999.\nThe 19999999999999999.\nThe 1999999999999'
+      'def add(a, b):\nThe 19999999999.\nThe 199999.\nThe 19999.\nThe 1999999999.\n-199.\n-1999.\n-19'
+step   150/5341 | loss 5.9777 | grad 0.452 | lr 0.000600 | 73,263 tok/s | gpu 100% | peak 8.181 GB
+  >>> step 150 val loss 6.0532 | 2.0606 bits/byte
+      'The capital of France is the 19999999999999999999999999999999999999999999999999999999999999'
+      'Water is made of hydrogen and the world.\nThe first of the first of the first of the first of the first of the first of the first of the first.\nThe first, and the first of the first, and the first, and the first.\nThe first, and the first of the first of the first, and the first'
+      '2 + 2 = 200000000000000000000000000000000000000000000000000000000000000'
+      'The main reason plants need sunlight is the same of the same.\nThe first 200000000000000000000000000000000000000000000000000000'
+      'def add(a, b):\n-199999999999999999999999999999999999999999999999999999999999999'
+step   200/5341 | loss 5.7011 | grad 0.565 | lr 0.000800 | 73,478 tok/s | gpu 100% | peak 8.181 GB
+  >>> step 200 val loss 5.7845 | 1.9691 bits/byte
+      'The capital of France is the 10000000000000000000000000000000000000000000000000000000000000'
+      'Water is made of hydrogen and the water.\nThe water is a water is a water.\nThe water is a water.\nThe water is a water.\nThe water is a water is a water.\nThe water is a water.\nThe water is a water.\nThe water.\nThe water is a water.\nThe'
+      '2 + 2 = 201201201201201201201201201201201201201201201201201201201201201'
+      'The main reason plants need sunlight is a water.\nThe water is a water is a water.\nThe water is a water is a water.\nThe water is a water is a water.\nThe water is a water is a water.\nThe water is a water.\nThe water.\nThe water is a water.\nThe water'
+      'def add(a, b):\n-199999999999999999999999999999999999999999999999999999999999999'
+step   250/5341 | loss 5.4413 | grad 0.387 | lr 0.000800 | 73,451 tok/s | gpu 99% | peak 8.181 GB
+  >>> step 250 val loss 5.5257 | 1.8810 bits/byte
+      'The capital of France is a few years.\nThe first two years, the first year, the 199999999999999999999999999999999999999999999999'
+      'Water is made of hydrogen and the water.\nThe water is the water is the water.\nThe water is the water is the water is the water.\nThe water is the water is the water is the water.\nThe water is the water is the water is the water is the water is the water.\nThe water is the water'
+      '2 + 2 = 200000000000000000000000000000000000000000000000000000000000000'
+      'The main reason plants need sunlight is a result of the most common.\nThe most common is the most common in the most common.\nThe most common is the most common.\nThe most common is the most common.\nThe most common is the most common is the most common.\nThe most common is the most common in the most common.'
+      'def add(a, b):\n- The first time, the first time, the first time, the first time, the first time, and the first time, and the first time, the first time, and the first time, and the first time, and the first time, and the first time, and the first time, and the first time'
+step   300/5341 | loss 5.2255 | grad 0.451 | lr 0.000799 | 73,429 tok/s | gpu 100% | peak 8.181 GB
+  >>> step 300 val loss 5.3082 | 1.8070 bits/byte
+      'The capital of France is the 19999.\nThe first 1999999.\nThe first was the first 1999999.\nThe first time, the first time, the first time, and the first time, and the first time, and the first time.\n'
+      'Water is made of hydrogen and the water.\nThe water is the water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water'
+      '2 + 2 = 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2'
+      'The main reason plants need sunlight is not to be used in the soil.\nThe soil is the soil is the soil.\nThe soil is the soil is the soil.\nThe soil is the soil.\nThe soil is the soil.\nThe soil is the soil.\nThe soil is the soil.\nThe soil is the soil.\n'
+      'def add(a, b):\n(1)\n(1)\n(1)\n(1)\n(1)\n(1)\n(1)\n(1)\n(1)\n(1)\n(1)\n(1)\n(1)\n(1)\n((1)\n(1)'
+  checkpoint saved at step 300
+Finished: status=stopped_early steps=300 best_val_loss=5.3082161149978635 train tok/s=72,988 overall tok/s=70,052

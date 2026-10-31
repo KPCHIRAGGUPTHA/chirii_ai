@@ -1,0 +1,17 @@
+{
+  "file": "phase10/data/tokens/train_clean.bin",
+  "source": "phase10/data/tokens/train.bin",
+  "source_sha256": "a7833f231745fd998a926e0434482216a38f93e157c0dad2c3e6f3fb1ffe230a",
+  "excluded_text": "data/phase5d/val_corpus.txt",
+  "excluded_text_sha256_lf": "6c5c425a42b6fa988afc6a081c9bb01773b449308165934c5bc3038789c6e683",
+  "min_line_chars": 40,
+  "old_text_unique_long_lines": 12013,
+  "removed_documents": 7025,
+  "removed_tokens": 8796530,
+  "removed_text_bytes": 34981554,
+  "documents": 659133,
+  "tokens": 755202272,
+  "text_bytes": 3149229510,
+  "sha256": "1906ef73e5041a5cd958f1ad2b5f14b70c09b23682b18ff63a993c593ab98458",
+  "kept_documents_still_overlapping": 0
+}

@@ -1,0 +1,31 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+{
+ "squad_answerable": 25000,
+ "squad_unanswerable": 10000,
+ "corpus_total": 5000,
+ "corpus_abstain": 780,
+ "contamination_dropped": 0,
+ "rag_examples_after_contamination": 40000,
+ "totals": {
+  "train": 147588,
+  "val": 2955
+ },
+ "subtypes": {
+  "squad_answerable": 25000,
+  "squad_unanswerable": 10000,
+  "corpus_grounded": 4220,
+  "corpus_abstain": 780
+ }
+}
+FILES: {
+ "train": {
+  "file": "phase11/data/sft_rag_train.jsonl",
+  "records": 147588,
+  "sha256": "d49ec72bc1605a0f906da0e5f59545e14a91a2f5d29eb024eaf9782e7d79e599"
+ },
+ "val": {
+  "file": "phase11/data/sft_rag_val.jsonl",
+  "records": 2955,
+  "sha256": "289248ed4da980fa56ef30f09e275691aee94bfce944bbe50f821384728adf8a"
+ }
+}

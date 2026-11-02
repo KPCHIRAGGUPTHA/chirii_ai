@@ -1,0 +1,25 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+{
+ "dump": "20231101.simple",
+ "dump_date": "2023-11-01",
+ "source": "wikimedia/wikipedia",
+ "licence": "CC BY-SA 4.0 (text of Wikipedia); dataset wikimedia/wikipedia",
+ "section": "lead only",
+ "max_tokens": 120,
+ "tokenizer": "phase10/tokenizer/tokenizer_v2.json",
+ "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98",
+ "articles_total": 241787,
+ "articles_kept": 239691,
+ "passages": 493609,
+ "passage_tokens": {
+  "mean": 82.3,
+  "median": 95,
+  "p95": 118,
+  "max": 124,
+  "min": 1
+ },
+ "over_120_tokens": 2,
+ "file": "phase15/corpus/passages.jsonl",
+ "file_bytes": 197471806,
+ "sha256": "23fea3c52d4d00476ec09b6265ac48056440fa1d4f8576194d134011238a86fd"
+}

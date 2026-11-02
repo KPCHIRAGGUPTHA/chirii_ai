@@ -30,3 +30,7 @@ phase6/data/
 # Phase 15 RAG-SFT data (large, rebuildable via phase15/build_rag_sft.py)
 phase11/data/sft_rag_train.jsonl
 phase11/data/sft_rag_val.jsonl
+phase11/data/sft_rag_abstain10_train.jsonl
+phase11/data/sft_rag_abstain10_val.jsonl
+phase11/data/sft_rag_abstain0_train.jsonl
+phase11/data/sft_rag_abstain0_val.jsonl

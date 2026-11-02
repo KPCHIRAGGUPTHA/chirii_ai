@@ -96,6 +96,7 @@ def mode_squad(args):
     res = {"squad_answerable": {"n": 0, "contains_gold": 0, "exact": 0, "said_sources_dont_say": 0, "cut": 0},
            "squad_unanswerable": {"n": 0, "said_sources_dont_say": 0, "cut": 0}}
     samples = []
+    pick = set(id(x) for x in random.Random(15).sample([r for r in sq if r["subtype"] == "squad_answerable"], 10))
     for r in sq:
         user = r["prompt"]
         plen = len(tok.encode(prompt_text(user), add_special_tokens=False).ids)
@@ -107,13 +108,18 @@ def mode_squad(args):
         b["said_sources_dont_say"] += int(ssd)
         if r["subtype"] == "squad_answerable":
             g = norm(r["text"]); p = norm(reply)
-            b["contains_gold"] += int(bool(g) and g in p)
+            hit = bool(g) and g in p
+            b["contains_gold"] += int(hit)
             b["exact"] += int(g == p)
-            if len(samples) < 8:
-                samples.append({"question": user.split("Question: ")[-1][:100], "gold": r["text"][:80], "reply": reply[:120]})
+            b["answered"] = b.get("answered", 0) + int(not ssd)
+            b["answered_and_correct"] = b.get("answered_and_correct", 0) + int(hit and not ssd)
+            if id(r) in pick:
+                samples.append({"question": user.split("Question: ")[-1][:120], "gold": r["text"][:80], "reply": reply[:140], "verdict": "correct" if hit else ("abstained" if ssd else "wrong")})
     for k, b in res.items():
         n = b["n"] or 1
-        b.update({kk + "_pct": round(100 * b[kk] / n, 1) for kk in list(b) if kk not in ("n",) and not kk.endswith("_pct")})
+        b.update({kk + "_pct": round(100 * b[kk] / n, 1) for kk in list(b) if kk not in ("n", "answered", "answered_and_correct") and not kk.endswith("_pct")})
+        if "answered" in b:
+            b["accuracy_when_answering_pct"] = round(100 * b["answered_and_correct"] / max(1, b["answered"]), 1)
     res["samples"] = samples
     atomic_write_json(project_path(f"{OUT}/squad_val_{args.name}.json"), res)
     print(json.dumps(res, indent=1))

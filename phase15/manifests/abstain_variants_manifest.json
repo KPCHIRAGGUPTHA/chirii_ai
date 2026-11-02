@@ -1,0 +1,85 @@
+{
+  "seed": 1516,
+  "variants": {
+    "abstain10": {
+      "stats": {
+        "train": {
+          "rows": 140217,
+          "rag_rows": 31839,
+          "abstain_rows": 3184,
+          "abstain_rows_before": 10555,
+          "abstain_share_of_rag": 0.1,
+          "rag_subtypes": {
+            "squad_answerable": 24516,
+            "corpus_grounded": 4139,
+            "squad_unanswerable": 2955,
+            "corpus_abstain": 229
+          }
+        },
+        "val": {
+          "rows": 2793,
+          "rag_rows": 628,
+          "abstain_rows": 63,
+          "abstain_rows_before": 225,
+          "abstain_share_of_rag": 0.1,
+          "rag_subtypes": {
+            "squad_answerable": 484,
+            "corpus_grounded": 81,
+            "squad_unanswerable": 61,
+            "corpus_abstain": 2
+          }
+        }
+      },
+      "files": {
+        "train": {
+          "file": "phase11/data/sft_rag_abstain10_train.jsonl",
+          "records": 140217,
+          "sha256": "12266149319c357345526292264d2f62131baf0a8488c093d7268e54ad437750"
+        },
+        "val": {
+          "file": "phase11/data/sft_rag_abstain10_val.jsonl",
+          "records": 2793,
+          "sha256": "f6bd15b0667a68a92b531fc23b271c3494323ae8a63aa5e7f3ab67a45aa3e2f2"
+        }
+      }
+    },
+    "abstain0": {
+      "stats": {
+        "train": {
+          "rows": 137033,
+          "rag_rows": 28655,
+          "abstain_rows": 0,
+          "abstain_rows_before": 10555,
+          "abstain_share_of_rag": 0.0,
+          "rag_subtypes": {
+            "squad_answerable": 24516,
+            "corpus_grounded": 4139
+          }
+        },
+        "val": {
+          "rows": 2730,
+          "rag_rows": 565,
+          "abstain_rows": 0,
+          "abstain_rows_before": 225,
+          "abstain_share_of_rag": 0.0,
+          "rag_subtypes": {
+            "squad_answerable": 484,
+            "corpus_grounded": 81
+          }
+        }
+      },
+      "files": {
+        "train": {
+          "file": "phase11/data/sft_rag_abstain0_train.jsonl",
+          "records": 137033,
+          "sha256": "f215da6140d41d5675a8c1473a56aa7c26ebb2f0660ea82d3c176da897bcc0bc"
+        },
+        "val": {
+          "file": "phase11/data/sft_rag_abstain0_val.jsonl",
+          "records": 2730,
+          "sha256": "473978d2f44594f06c2c2eb060b9fa02b2c916c12b73b943f0710d115b3188c6"
+        }
+      }
+    }
+  }
+}

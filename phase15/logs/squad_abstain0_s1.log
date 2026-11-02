@@ -1,0 +1,85 @@
+{
+ "squad_answerable": {
+  "n": 484,
+  "contains_gold": 130,
+  "exact": 105,
+  "said_sources_dont_say": 0,
+  "cut": 0,
+  "answered": 484,
+  "answered_and_correct": 130,
+  "contains_gold_pct": 26.9,
+  "exact_pct": 21.7,
+  "said_sources_dont_say_pct": 0.0,
+  "cut_pct": 0.0,
+  "accuracy_when_answering_pct": 26.9
+ },
+ "squad_unanswerable": {
+  "n": 215,
+  "said_sources_dont_say": 0,
+  "cut": 0,
+  "said_sources_dont_say_pct": 0.0,
+  "cut_pct": 0.0
+ },
+ "samples": [
+  {
+   "question": "Which tool is used in day to day life?",
+   "gold": "the clock",
+   "reply": "table",
+   "verdict": "wrong"
+  },
+  {
+   "question": "What is the earliest, most credible source of the Hellenistic period?",
+   "gold": "Polybius",
+   "reply": "Achaean League",
+   "verdict": "wrong"
+  },
+  {
+   "question": "What was Madonna's debut single called?",
+   "gold": "Everybody",
+   "reply": "B Turn on Hot Dance Club Songs chart",
+   "verdict": "wrong"
+  },
+  {
+   "question": "How far is Tucson from Mexico?",
+   "gold": "60 mi (97 km)",
+   "reply": "996,544",
+   "verdict": "wrong"
+  },
+  {
+   "question": "The goal of Metternich and Archduke Charles regarding the Treaty of Sch\u00f6nbrunn was to attempt the preservation of what?",
+   "gold": "the Habsburg Empire",
+   "reply": "the Habsburg Empire",
+   "verdict": "correct"
+  },
+  {
+   "question": "What percentage of incoming freshman at Washington University were in the top %10 of their class in 2013?",
+   "gold": "More than 90% of incoming freshmen",
+   "reply": "13",
+   "verdict": "wrong"
+  },
+  {
+   "question": "Who managed religious and regional political affairs?",
+   "gold": "Tibet",
+   "reply": "the Mongols",
+   "verdict": "wrong"
+  },
+  {
+   "question": "What distinction was afforded to New Haven in 2014 by Livability.com?",
+   "gold": "Best Foodie City",
+   "reply": "56 Zagat-rated restaurants",
+   "verdict": "wrong"
+  },
+  {
+   "question": "What did institutions rely more on as increasing distance from underlying assets occurred?",
+   "gold": "indirect information",
+   "reply": "international financial services",
+   "verdict": "wrong"
+  },
+  {
+   "question": "Who was signed to a contract at 8 years for $136 million?",
+   "gold": "Alfonso Soriano",
+   "reply": "Dusty Baker",
+   "verdict": "wrong"
+  }
+ ]
+}

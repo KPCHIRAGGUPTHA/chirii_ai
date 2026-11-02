@@ -1,0 +1,90 @@
+{
+  "runs": {
+    "rag_s1": {
+      "a_no_passage": {
+        "answerable": {
+          "correct": 25,
+          "total": 134,
+          "pct": 18.7
+        },
+        "unanswerable": {
+          "correct": 15,
+          "total": 32,
+          "pct": 46.9
+        }
+      },
+      "b_pipeline": {
+        "answerable": {
+          "correct": 19,
+          "total": 134,
+          "pct": 14.2
+        },
+        "unanswerable": {
+          "correct": 16,
+          "total": 32,
+          "pct": 50.0
+        }
+      },
+      "c_gold": {
+        "answerable": {
+          "correct": 27,
+          "total": 134,
+          "pct": 20.1
+        },
+        "unanswerable": {
+          "correct": 16,
+          "total": 32,
+          "pct": 50.0
+        }
+      },
+      "recall_at_2_answerable": {
+        "hit": 98,
+        "total": 134,
+        "pct": 73.1
+      }
+    },
+    "rag_s2": {
+      "a_no_passage": {
+        "answerable": {
+          "correct": 24,
+          "total": 134,
+          "pct": 17.9
+        },
+        "unanswerable": {
+          "correct": 13,
+          "total": 32,
+          "pct": 40.6
+        }
+      },
+      "b_pipeline": {
+        "answerable": {
+          "correct": 26,
+          "total": 134,
+          "pct": 19.4
+        },
+        "unanswerable": {
+          "correct": 21,
+          "total": 32,
+          "pct": 65.6
+        }
+      },
+      "c_gold": {
+        "answerable": {
+          "correct": 20,
+          "total": 134,
+          "pct": 14.9
+        },
+        "unanswerable": {
+          "correct": 21,
+          "total": 32,
+          "pct": 65.6
+        }
+      },
+      "recall_at_2_answerable": {
+        "hit": 98,
+        "total": 134,
+        "pct": 73.1
+      }
+    }
+  }
+}

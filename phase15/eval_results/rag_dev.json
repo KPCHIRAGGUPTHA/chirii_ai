@@ -1,0 +1,234 @@
+{
+  "runs": {
+    "rag_s1_dev/dev": {
+      "goal_set": "dev",
+      "scorer": "v3",
+      "sha256": "6063fc1f95baf2875942e01119454806ef3812b35a656dd95891baf8b69d5f86",
+      "items": 176,
+      "seconds": 9.2,
+      "summary": {
+        "with_overlap": {
+          "correct": 29,
+          "total": 176,
+          "pct": 16.5
+        },
+        "without_overlap": {
+          "correct": 28,
+          "total": 167,
+          "pct": 16.8
+        },
+        "overlap_only": {
+          "correct": 1,
+          "total": 9,
+          "pct": 11.1
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 25,
+            "total": 32,
+            "pct": 78.1
+          },
+          "definition": {
+            "correct": 0,
+            "total": 28,
+            "pct": 0.0
+          },
+          "fact": {
+            "correct": 3,
+            "total": 34,
+            "pct": 8.8
+          },
+          "instruction": {
+            "correct": 0,
+            "total": 30,
+            "pct": 0.0
+          },
+          "unknown": {
+            "correct": 0,
+            "total": 26,
+            "pct": 0.0
+          },
+          "harmful": {
+            "correct": 1,
+            "total": 26,
+            "pct": 3.8
+          }
+        }
+      },
+      "without_any_overlap_flag": {
+        "with_overlap": {
+          "correct": 27,
+          "total": 163,
+          "pct": 16.6
+        },
+        "without_overlap": {
+          "correct": 27,
+          "total": 163,
+          "pct": 16.6
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 25,
+            "total": 32,
+            "pct": 78.1
+          },
+          "definition": {
+            "correct": 0,
+            "total": 26,
+            "pct": 0.0
+          },
+          "fact": {
+            "correct": 1,
+            "total": 24,
+            "pct": 4.2
+          },
+          "instruction": {
+            "correct": 0,
+            "total": 29,
+            "pct": 0.0
+          },
+          "unknown": {
+            "correct": 0,
+            "total": 26,
+            "pct": 0.0
+          },
+          "harmful": {
+            "correct": 1,
+            "total": 26,
+            "pct": 3.8
+          }
+        }
+      },
+      "verdicts_changed_from_v2": 0,
+      "correct_under_v2": 29,
+      "replies_using_calculator": 24,
+      "calculator_errors": 0,
+      "stopped_at_token_limit": 0,
+      "loop_replies": 0,
+      "calc_fired_non_arithmetic": 0,
+      "non_arithmetic_items": 144,
+      "csv": "phase11/eval_results/responses/rag_s1_dev_dev.csv",
+      "raw": "phase11/eval_results/responses/rag_s1_dev_dev_raw.jsonl"
+    },
+    "rag_s2_dev/dev": {
+      "goal_set": "dev",
+      "scorer": "v3",
+      "sha256": "6063fc1f95baf2875942e01119454806ef3812b35a656dd95891baf8b69d5f86",
+      "items": 176,
+      "seconds": 19.0,
+      "summary": {
+        "with_overlap": {
+          "correct": 32,
+          "total": 176,
+          "pct": 18.2
+        },
+        "without_overlap": {
+          "correct": 31,
+          "total": 167,
+          "pct": 18.6
+        },
+        "overlap_only": {
+          "correct": 1,
+          "total": 9,
+          "pct": 11.1
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 25,
+            "total": 32,
+            "pct": 78.1
+          },
+          "definition": {
+            "correct": 1,
+            "total": 28,
+            "pct": 3.6
+          },
+          "fact": {
+            "correct": 3,
+            "total": 34,
+            "pct": 8.8
+          },
+          "instruction": {
+            "correct": 0,
+            "total": 30,
+            "pct": 0.0
+          },
+          "unknown": {
+            "correct": 0,
+            "total": 26,
+            "pct": 0.0
+          },
+          "harmful": {
+            "correct": 3,
+            "total": 26,
+            "pct": 11.5
+          }
+        }
+      },
+      "without_any_overlap_flag": {
+        "with_overlap": {
+          "correct": 30,
+          "total": 163,
+          "pct": 18.4
+        },
+        "without_overlap": {
+          "correct": 30,
+          "total": 163,
+          "pct": 18.4
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 25,
+            "total": 32,
+            "pct": 78.1
+          },
+          "definition": {
+            "correct": 1,
+            "total": 26,
+            "pct": 3.8
+          },
+          "fact": {
+            "correct": 1,
+            "total": 24,
+            "pct": 4.2
+          },
+          "instruction": {
+            "correct": 0,
+            "total": 29,
+            "pct": 0.0
+          },
+          "unknown": {
+            "correct": 0,
+            "total": 26,
+            "pct": 0.0
+          },
+          "harmful": {
+            "correct": 3,
+            "total": 26,
+            "pct": 11.5
+          }
+        }
+      },
+      "verdicts_changed_from_v2": 0,
+      "correct_under_v2": 32,
+      "replies_using_calculator": 24,
+      "calculator_errors": 0,
+      "stopped_at_token_limit": 0,
+      "loop_replies": 0,
+      "calc_fired_non_arithmetic": 0,
+      "non_arithmetic_items": 144,
+      "csv": "phase11/eval_results/responses/rag_s2_dev_dev.csv",
+      "raw": "phase11/eval_results/responses/rag_s2_dev_dev_raw.jsonl"
+    }
+  }
+}

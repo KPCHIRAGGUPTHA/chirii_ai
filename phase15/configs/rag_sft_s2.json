@@ -1,0 +1,30 @@
+{
+  "name": "RAG-SFT s2 (seed 2)",
+  "init_checkpoint": "phase10/runs/foundation_v3_clean_2ep/snapshots/model_step_11524.pt",
+  "data": {
+    "tokenizer": "phase10/tokenizer/tokenizer_v2.json",
+    "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98",
+    "train": "phase11/data/sft_rag_train.jsonl",
+    "val": "phase11/data/sft_rag_val.jsonl",
+    "train_sha256": "d49ec72bc1605a0f906da0e5f59545e14a91a2f5d29eb024eaf9782e7d79e599",
+    "val_sha256": "289248ed4da980fa56ef30f09e275691aee94bfce944bbe50f821384728adf8a"
+  },
+  "out_dir": "phase15/runs/rag_sft_s2",
+  "training": {
+    "epochs": 2,
+    "micro_batch_size": 16,
+    "grad_accum_steps": 2,
+    "learning_rate": 0.0002,
+    "min_lr": 2e-05,
+    "warmup_steps": 50,
+    "weight_decay": 0.0,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip": 1.0,
+    "seed": 2,
+    "compile": true
+  },
+  "init_checkpoint_sha256": "68ca4deaef0c3e57c8fa01bdc7f53a4c4826324e902732b2292d923c90c1b8bc"
+}

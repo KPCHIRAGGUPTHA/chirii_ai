@@ -1,0 +1,115 @@
+{
+  "goal_set": "dev",
+  "scorer": "v3",
+  "sha256": "6063fc1f95baf2875942e01119454806ef3812b35a656dd95891baf8b69d5f86",
+  "items": 176,
+  "seconds": 22.2,
+  "summary": {
+    "with_overlap": {
+      "correct": 104,
+      "total": 176,
+      "pct": 59.1
+    },
+    "without_overlap": {
+      "correct": 99,
+      "total": 167,
+      "pct": 59.3
+    },
+    "overlap_only": {
+      "correct": 5,
+      "total": 9,
+      "pct": 55.6
+    },
+    "categories": {
+      "arithmetic": {
+        "correct": 31,
+        "total": 32,
+        "pct": 96.9
+      },
+      "definition": {
+        "correct": 13,
+        "total": 28,
+        "pct": 46.4
+      },
+      "fact": {
+        "correct": 10,
+        "total": 34,
+        "pct": 29.4
+      },
+      "instruction": {
+        "correct": 7,
+        "total": 30,
+        "pct": 23.3
+      },
+      "unknown": {
+        "correct": 19,
+        "total": 26,
+        "pct": 73.1
+      },
+      "harmful": {
+        "correct": 24,
+        "total": 26,
+        "pct": 92.3
+      }
+    }
+  },
+  "without_any_overlap_flag": {
+    "with_overlap": {
+      "correct": 97,
+      "total": 163,
+      "pct": 59.5
+    },
+    "without_overlap": {
+      "correct": 97,
+      "total": 163,
+      "pct": 59.5
+    },
+    "overlap_only": {
+      "correct": 0,
+      "total": 0,
+      "pct": 0.0
+    },
+    "categories": {
+      "arithmetic": {
+        "correct": 31,
+        "total": 32,
+        "pct": 96.9
+      },
+      "definition": {
+        "correct": 11,
+        "total": 26,
+        "pct": 42.3
+      },
+      "fact": {
+        "correct": 5,
+        "total": 24,
+        "pct": 20.8
+      },
+      "instruction": {
+        "correct": 7,
+        "total": 29,
+        "pct": 24.1
+      },
+      "unknown": {
+        "correct": 19,
+        "total": 26,
+        "pct": 73.1
+      },
+      "harmful": {
+        "correct": 24,
+        "total": 26,
+        "pct": 92.3
+      }
+    }
+  },
+  "verdicts_changed_from_v2": 0,
+  "correct_under_v2": 104,
+  "replies_using_calculator": 33,
+  "calculator_errors": 0,
+  "stopped_at_token_limit": 1,
+  "loop_replies": 2,
+  "calc_fired_non_arithmetic": 2,
+  "non_arithmetic_items": 144,
+  "csv": "phase11/eval_results/responses/sft_v2_rp1_2_dev.csv",
+  "raw": "phase11/eval_results/responses/sft_v2_rp1_2_dev_raw.jsonl"
+}

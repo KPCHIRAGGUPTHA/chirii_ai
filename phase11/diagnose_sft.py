@@ -46,11 +46,11 @@ def arithmetic_type(raw: str, correct: bool, expected: float) -> str:
     return "bad_final_sentence" if same else "wrong_expression"
 
 
-def val_replies(checkpoint: str, rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def val_replies(checkpoint: str, rows: List[Dict[str, Any]], no_repeat_ngram: int = 0) -> List[Dict[str, Any]]:
     from tokenizers import Tokenizer
     from phase10.common import TOKENIZER_PATH
     from phase10.eval_v3 import load_model_v3
-    from phase11.chat import generate_reply
+    from phase11.chat import Decoding, generate_reply
     from phase9.train_v2 import resolve_device
 
     device = resolve_device("auto")
@@ -59,7 +59,7 @@ def val_replies(checkpoint: str, rows: List[Dict[str, Any]]) -> List[Dict[str, A
     tokenizer = Tokenizer.from_file(project_path(TOKENIZER_PATH))
     out = []
     for number, row in enumerate(rows):
-        reply = generate_reply(model, tokenizer, row["prompt"], device)
+        reply = generate_reply(model, tokenizer, row["prompt"], device, decoding=Decoding(no_repeat_ngram=no_repeat_ngram))
         out.append({**row, "raw": reply.raw, "final": reply.final, "stop": reply.stop})
         if number % 200 == 0:
             print(f"val reply {number}/{len(rows)}", flush=True)
@@ -71,6 +71,7 @@ def main():
     parser.add_argument("--checkpoint", required=True)
     parser.add_argument("--name", required=True)
     parser.add_argument("--dev-raw", required=True)
+    parser.add_argument("--no-repeat-ngram", type=int, default=0)
     args = parser.parse_args()
 
     raw_path = project_path(f"phase11/runs/diagnostics/{args.name}_val_raw.jsonl")
@@ -80,7 +81,7 @@ def main():
             val = [json.loads(line) for line in f]
     else:
         with open(project_path(VAL_PATH), "r", encoding="utf-8") as f:
-            val = val_replies(args.checkpoint, [json.loads(line) for line in f])
+            val = val_replies(args.checkpoint, [json.loads(line) for line in f], args.no_repeat_ngram)
         with open(raw_path, "w", encoding="utf-8") as f:
             for row in val:
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")

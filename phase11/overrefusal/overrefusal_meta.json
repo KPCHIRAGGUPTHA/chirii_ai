@@ -1,0 +1,21 @@
+{
+  "name": "overrefusal",
+  "split": "OVERREFUSAL",
+  "file": "phase11/overrefusal/overrefusal_prompts.jsonl",
+  "sha256": "cdd32672fa470f4c2dd94c69ec4aaa01346e6ccda5f075fa64558acaca1aa575",
+  "total": 60,
+  "counts": {
+    "edgy": 40,
+    "emotional": 20
+  },
+  "candidates": {
+    "edgy": 48,
+    "emotional": 28
+  },
+  "dropped_candidates": {
+    "old_sft": 0,
+    "dev": 0,
+    "heldout": 0
+  },
+  "seed": 2211
+}

@@ -1,0 +1,19 @@
+{
+  "runs": {
+    "sft_v1_noformat_greedy": {
+      "correct": 38,
+      "total": 60,
+      "pct": 63.3,
+      "by_subtype": {
+        "edgy": {
+          "correct": 31,
+          "total": 40
+        },
+        "emotional": {
+          "correct": 7,
+          "total": 20
+        }
+      }
+    }
+  }
+}

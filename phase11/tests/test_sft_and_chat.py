@@ -376,6 +376,7 @@ class TestGoalIntegration(unittest.TestCase):
             summary = run_goal_eval("stub", lambda prompt: self.reply("Lorem ipsum."), goal_set, results_path=results, responses_dir=directory)
             self.assertEqual(summary["items"], count)
             self.assertEqual(summary["summary"]["with_overlap"]["correct"], 0)
+            self.assertIn("loop_replies", summary)
 
     def test_heldout_stays_sealed_by_default(self):
         directory = tempfile.mkdtemp()

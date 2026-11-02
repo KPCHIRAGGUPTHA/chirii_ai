@@ -1,6 +1,7 @@
 """
 Phase 11A — The calculator tool. Parses with `ast` and walks an allow-list: numbers, + - * / // % **, parentheses and
 unary minus. Names, calls, attributes, strings and everything else are rejected. Never uses eval or exec.
+Exponents must be whole numbers, or exactly 0.5 for a square root (Phase 11C).
 """
 
 import ast
@@ -56,6 +57,8 @@ def _evaluate(node: ast.AST) -> Number:
         left = _evaluate(node.left)
         right = _evaluate(node.right)
         if isinstance(node.op, ast.Pow):
+            if type(right) is float and right == 0.5:
+                return _checked(left ** right)
             if type(right) is not int or not -MAX_EXPONENT <= right <= MAX_EXPONENT:
                 raise CalculatorError("exponent too large")
             return _checked(left ** right)

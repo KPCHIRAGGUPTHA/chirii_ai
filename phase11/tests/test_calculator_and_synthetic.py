@@ -17,7 +17,7 @@ from phase11.goal_eval.scorer_v3 import answer_region, is_echo, is_refusal, load
 class TestCalculatorMath(unittest.TestCase):
     def test_correct_results(self):
         for expression, expected in [("2+2", "4"), ("10-15", "-5"), ("6*7", "42"), ("7/2", "3.5"), ("8/2", "4"), ("7//2", "3"), ("7%3", "1"), ("2**10", "1024"), ("(2+3)*4", "20"), ("2+3*4", "14"),
-                                     ("-5+2", "-3"), ("-(3+4)", "-7"), ("1/3", "0.333333"), ("2.5*2", "5"), ("0.1+0.2", "0.3"), ("10/4", "2.5"), ("2**-2", "0.25"), ("--3", "3"), (" 1 + 1 ", "2"), ("-2**2", "-4")]:
+                                     ("-5+2", "-3"), ("-(3+4)", "-7"), ("1/3", "0.333333"), ("2.5*2", "5"), ("0.1+0.2", "0.3"), ("10/4", "2.5"), ("2**-2", "0.25"), ("--3", "3"), (" 1 + 1 ", "2"), ("-2**2", "-4"), ("49**0.5", "7"), ("2**0.5", "1.414214"), ("0**0.5", "0")]:
             result = calculate(expression)
             self.assertTrue(result.ok, expression)
             self.assertEqual(result.text, expected, expression)
@@ -48,7 +48,7 @@ class TestCalculatorRejects(unittest.TestCase):
 
     def test_huge_exponents_return_quickly(self):
         start = time.perf_counter()
-        for expression in ("9**9**9", "10**100000", "2**(10**8)", "(2**12)**(2**12)", f"2**{MAX_EXPONENT + 1}", "2**-13", "2**0.5", "(-8)**0.5", "1.5**1000", "9**9**9**9", "10**12*10**12*10**12"):
+        for expression in ("9**9**9", "10**100000", "2**(10**8)", "(2**12)**(2**12)", f"2**{MAX_EXPONENT + 1}", "2**-13", "2**0.25", "2**1.5", "(-8)**0.5", "1.5**1000", "9**9**9**9", "10**12*10**12*10**12"):
             self.assert_rejected(expression)
         self.assertLess(time.perf_counter() - start, 1.0)
 

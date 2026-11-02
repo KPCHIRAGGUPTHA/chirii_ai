@@ -25,7 +25,8 @@ import torch
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from phase10.common import atomic_write_json
-from phase11.chat import DEFAULT_MAX_NEW_TOKENS, ChatReply, generate_reply
+from phase11.chat import DEFAULT_MAX_NEW_TOKENS, ChatReply, Decoding, generate_reply
+from phase11.loop_metric import is_loop
 from phase11.goal_eval.scorer_v3 import SCORER_VERSION, load_goal_set, project_path, score_response, slug, summarize, write_csv
 from phase9.goal_eval import scorer_v2
 
@@ -45,7 +46,7 @@ def score_items(items: Sequence[Dict[str, Any]], reply_for: Callable[[str], Chat
             "id": item["id"], "category": item["category"], "prompt": item["prompt"], "response": reply.final, "raw": reply.raw,
             "correct": score_response(item, reply.final), "correct_v2": scorer_v2.score_response(item, reply.final), "overlap_sft": item.get("overlap_sft", False),
             "overlap_any": bool(item.get("overlap_sft") or item.get("overlap_rag_sft")),
-            "tool_calls": len(reply.tool_calls), "tool_errors": sum(not call["ok"] for call in reply.tool_calls), "stop": reply.stop,
+            "tool_calls": len(reply.tool_calls), "tool_errors": sum(not call["ok"] for call in reply.tool_calls), "stop": reply.stop, "loop": is_loop(reply.final, reply.stop),
         })
     return rows
 
@@ -68,7 +69,8 @@ def run_goal_eval(name: str, reply_for: Callable[[str], ChatReply], goal_set: st
         "verdicts_changed_from_v2": sum(row["correct"] != row["correct_v2"] for row in rows),
         "correct_under_v2": sum(row["correct_v2"] for row in rows),
         "replies_using_calculator": sum(row["tool_calls"] > 0 for row in rows), "calculator_errors": sum(row["tool_errors"] for row in rows),
-        "stopped_at_token_limit": sum(row["stop"] == "max_tokens" for row in rows),
+        "stopped_at_token_limit": sum(row["stop"] == "max_tokens" for row in rows), "loop_replies": sum(row["loop"] for row in rows),
+        "calc_fired_non_arithmetic": sum(row["tool_calls"] > 0 and row["category"] != "arithmetic" for row in rows), "non_arithmetic_items": sum(row["category"] != "arithmetic" for row in rows),
     }
     if extra_rows:
         summary["outside_main_totals"] = summarize(extra_rows)
@@ -105,6 +107,8 @@ def main():
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--max-new-tokens", type=int, default=DEFAULT_MAX_NEW_TOKENS)
     parser.add_argument("--write-responses", action="store_true", help="Held-out only: write prompts and responses to phase11/heldout/responses")
+    parser.add_argument("--repetition-penalty", type=float, default=1.0)
+    parser.add_argument("--no-repeat-ngram", type=int, default=0)
     parser.add_argument("--include-rag", action="store_true", help="Also run dev's RAG items, reported outside the main totals")
     args = parser.parse_args()
 
@@ -112,7 +116,7 @@ def main():
     model, _ = load_model_v3(project_path(args.checkpoint), device)
     model.eval()
     tokenizer = Tokenizer.from_file(project_path(TOKENIZER_PATH))
-    summary = run_goal_eval(args.name, lambda prompt: generate_reply(model, tokenizer, prompt, device, args.max_new_tokens), args.set, args.limit, args.write_responses, include_rag=args.include_rag)
+    summary = run_goal_eval(args.name, lambda prompt: generate_reply(model, tokenizer, prompt, device, args.max_new_tokens, decoding=Decoding(args.repetition_penalty, args.no_repeat_ngram)), args.set, args.limit, args.write_responses, include_rag=args.include_rag)
     print(json.dumps(summary, indent=2), flush=True)
 
 

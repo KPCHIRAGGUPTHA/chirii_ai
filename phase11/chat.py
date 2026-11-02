@@ -11,7 +11,7 @@ import argparse
 import os
 import sys
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Sequence, Set
 
 import torch
 
@@ -23,6 +23,28 @@ from phase9.train_v2 import autocast_context
 
 DEFAULT_MAX_NEW_TOKENS = 128
 MAX_TOOL_CALLS = 4
+DIGIT_TOKEN_IDS = frozenset(range(24, 34))  # Tokenizer v2 gives each digit one token; answers must be free to repeat them
+
+
+@dataclass(frozen=True)
+class Decoding:
+    """Greedy by default. Both options look only at the reply's own text: never at the prompt, calculator spans or digit tokens."""
+    repetition_penalty: float = 1.0
+    no_repeat_ngram: int = 0
+
+
+def adjust_for_repeats(logits: torch.Tensor, history: Sequence[int], decoding: Decoding) -> None:
+    """Changes logits in place. `history` holds the reply's plain-text tokens so far."""
+    if decoding.repetition_penalty != 1.0:
+        for token in set(history) - DIGIT_TOKEN_IDS:
+            value = logits[token]
+            logits[token] = value / decoding.repetition_penalty if value > 0 else value * decoding.repetition_penalty
+    n = decoding.no_repeat_ngram
+    if n and len(history) >= n - 1:
+        prefix = tuple(history[len(history) - n + 1:])
+        for start in range(len(history) - n + 1):
+            if tuple(history[start:start + n - 1]) == prefix and history[start + n - 1] not in DIGIT_TOKEN_IDS:
+                logits[history[start + n - 1]] = float("-inf")
 
 
 @dataclass
@@ -59,7 +81,7 @@ def blocked_tokens(ids_of: Dict[str, int], in_calc: bool, calls_used: int, max_t
 
 @torch.no_grad()
 def generate_reply(model: Any, tokenizer: Any, user: str, device: torch.device, max_new_tokens: int = DEFAULT_MAX_NEW_TOKENS, temperature: float = 0.0,
-                   top_k: Optional[int] = None, generator: Optional[torch.Generator] = None, max_tool_calls: int = MAX_TOOL_CALLS) -> ChatReply:
+                   top_k: Optional[int] = None, generator: Optional[torch.Generator] = None, max_tool_calls: int = MAX_TOOL_CALLS, decoding: Decoding = Decoding()) -> ChatReply:
     """Temperature 0 is greedy. Result tokens come from the runtime, and do not count toward max_new_tokens."""
     ids_of = special_ids(tokenizer)
     block_size = model.config.block_size
@@ -70,11 +92,14 @@ def generate_reply(model: Any, tokenizer: Any, user: str, device: torch.device, 
     tool_calls: List[Dict[str, Any]] = []
     stop = "max_tokens"
     new_tokens = 0
+    history: List[int] = []
     while new_tokens < max_new_tokens:
         idx = torch.tensor([ids[-block_size:]], dtype=torch.long, device=device)
         with autocast_context(device):
             logits, _ = model(idx)
         logits = logits[0, -1].float().clone()
+        if not in_calc:
+            adjust_for_repeats(logits, history, decoding)
         logits[list(blocked_tokens(ids_of, in_calc, len(tool_calls), max_tool_calls))] = float("-inf")
         if temperature and temperature > 0:
             logits = logits / temperature
@@ -89,6 +114,8 @@ def generate_reply(model: Any, tokenizer: Any, user: str, device: torch.device, 
             stop = "endoftext"
             break
         ids.append(token)
+        if not in_calc and token != ids_of[CALC_OPEN]:
+            history.append(token)
         if token == ids_of[CALC_OPEN]:
             in_calc = True
             calc_start = len(ids)
@@ -115,6 +142,8 @@ def main():
     parser.add_argument("--max-new-tokens", type=int, default=DEFAULT_MAX_NEW_TOKENS)
     parser.add_argument("--seed", type=int, default=1)
     parser.add_argument("--show-tools", action="store_true", help="Also print the calculator calls")
+    parser.add_argument("--repetition-penalty", type=float, default=1.0)
+    parser.add_argument("--no-repeat-ngram", type=int, default=0)
     args = parser.parse_args()
 
     device = resolve_device("auto")
@@ -132,7 +161,7 @@ def main():
             break
         if not user:
             continue
-        reply = generate_reply(model, tokenizer, user, device, args.max_new_tokens, args.temperature, args.top_k, generator)
+        reply = generate_reply(model, tokenizer, user, device, args.max_new_tokens, args.temperature, args.top_k, generator, decoding=Decoding(args.repetition_penalty, args.no_repeat_ngram))
         if args.show_tools:
             for call in reply.tool_calls:
                 print(f"  [calculator] {call['expression']} = {call['result']}", flush=True)

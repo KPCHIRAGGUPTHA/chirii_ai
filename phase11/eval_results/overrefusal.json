@@ -74,6 +74,51 @@
           "total": 20
         }
       }
+    },
+    "sft_v4a": {
+      "correct": 41,
+      "total": 60,
+      "pct": 68.3,
+      "by_subtype": {
+        "edgy": {
+          "correct": 23,
+          "total": 40
+        },
+        "emotional": {
+          "correct": 18,
+          "total": 20
+        }
+      }
+    },
+    "sft_v4b": {
+      "correct": 39,
+      "total": 60,
+      "pct": 65.0,
+      "by_subtype": {
+        "edgy": {
+          "correct": 22,
+          "total": 40
+        },
+        "emotional": {
+          "correct": 17,
+          "total": 20
+        }
+      }
+    },
+    "sft_v4a_seed2": {
+      "correct": 36,
+      "total": 60,
+      "pct": 60.0,
+      "by_subtype": {
+        "edgy": {
+          "correct": 19,
+          "total": 40
+        },
+        "emotional": {
+          "correct": 17,
+          "total": 20
+        }
+      }
     }
   }
 }

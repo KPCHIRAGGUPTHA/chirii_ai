@@ -1,0 +1,113 @@
+{
+  "goal_set": "heldout",
+  "scorer": "v3",
+  "sha256": "17d33cd2278e037292119dc8fea01dc02c70de61b53b0358cec4684c88a34926",
+  "items": 180,
+  "seconds": 19.8,
+  "summary": {
+    "with_overlap": {
+      "correct": 98,
+      "total": 180,
+      "pct": 54.4
+    },
+    "without_overlap": {
+      "correct": 98,
+      "total": 180,
+      "pct": 54.4
+    },
+    "overlap_only": {
+      "correct": 0,
+      "total": 0,
+      "pct": 0.0
+    },
+    "categories": {
+      "arithmetic": {
+        "correct": 28,
+        "total": 32,
+        "pct": 87.5
+      },
+      "definition": {
+        "correct": 10,
+        "total": 26,
+        "pct": 38.5
+      },
+      "fact": {
+        "correct": 8,
+        "total": 34,
+        "pct": 23.5
+      },
+      "instruction": {
+        "correct": 5,
+        "total": 30,
+        "pct": 16.7
+      },
+      "unknown": {
+        "correct": 22,
+        "total": 30,
+        "pct": 73.3
+      },
+      "harmful": {
+        "correct": 25,
+        "total": 28,
+        "pct": 89.3
+      }
+    }
+  },
+  "without_any_overlap_flag": {
+    "with_overlap": {
+      "correct": 98,
+      "total": 180,
+      "pct": 54.4
+    },
+    "without_overlap": {
+      "correct": 98,
+      "total": 180,
+      "pct": 54.4
+    },
+    "overlap_only": {
+      "correct": 0,
+      "total": 0,
+      "pct": 0.0
+    },
+    "categories": {
+      "arithmetic": {
+        "correct": 28,
+        "total": 32,
+        "pct": 87.5
+      },
+      "definition": {
+        "correct": 10,
+        "total": 26,
+        "pct": 38.5
+      },
+      "fact": {
+        "correct": 8,
+        "total": 34,
+        "pct": 23.5
+      },
+      "instruction": {
+        "correct": 5,
+        "total": 30,
+        "pct": 16.7
+      },
+      "unknown": {
+        "correct": 22,
+        "total": 30,
+        "pct": 73.3
+      },
+      "harmful": {
+        "correct": 25,
+        "total": 28,
+        "pct": 89.3
+      }
+    }
+  },
+  "verdicts_changed_from_v2": 0,
+  "correct_under_v2": 98,
+  "replies_using_calculator": 34,
+  "calculator_errors": 0,
+  "stopped_at_token_limit": 0,
+  "loop_replies": 0,
+  "calc_fired_non_arithmetic": 2,
+  "non_arithmetic_items": 148
+}

@@ -1,0 +1,110 @@
+{
+  "seed": 1515,
+  "squad_answerable": 25000,
+  "squad_unanswerable": 10000,
+  "corpus_total": 5000,
+  "corpus_abstain": 780,
+  "rag_examples_after_contamination": 40000,
+  "contamination_dropped": 0,
+  "totals": {
+    "train": 147588,
+    "val": 2955
+  },
+  "rag_train_tokens": 13864249,
+  "subtypes": {
+    "squad_answerable": 25000,
+    "squad_unanswerable": 10000,
+    "corpus_grounded": 4220,
+    "corpus_abstain": 780
+  },
+  "examples": {
+    "squad_answerable": [
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Context: Greenware ceramics made from celadon had been made in the area since the 3rd-century Jin dynasty, but it returned to prominence\u2014particularly in Longquan\u2014during the Southern Song and Yuan. Longquan greenware is characterized by a thick unctuous glaze of a particular bluish-green tint over ",
+        "reply": "in the western foothills of the Santa Catalina Mountains"
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Translation: Mark Twain provided humorously telling evidence for the frequent unreliability of back-translation when he issued his own back-translation of a French translation of his short story, \"The Celebrated Jumping Frog of Calaveras County\". He published his back-translation in a 1903 volume ",
+        "reply": "\"Private History of the 'Jumping Frog' Story\""
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] History of India: As a result of the three Carnatic Wars, the British East India Company gained exclusive control over the entire Carnatic region of India. The Company soon expanded its territories around its bases in Bombay and Madras; the Anglo-Mysore Wars (1766\u20131799) and later the Anglo-Maratha",
+        "reply": "1766\u20131799"
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Context: In Brazil, the Supreme Federal Tribunal (Supremo Tribunal Federal) is the highest court. It is both the constitutional court and the court of last resort in Brazilian law. It only reviews cases that may be unconstitutional or final habeas corpus pleads for criminal cases. It also judges, ",
+        "reply": "Moscow's"
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Context: The pointed arch, one of the defining attributes of Gothic, was earlier incorporated into Islamic architecture following the Islamic conquests of Roman Syria and the Sassanid Empire in the Seventh Century. The pointed arch and its precursors had been employed in Late Roman and Sassanian a",
+        "reply": "nine"
+      }
+    ],
+    "squad_unanswerable": [
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Context: Enisa Kafadar argues that there is only one Serbo-Croatian language with several varieties. This has made possible to include all four varieties into a new grammar book. Daniel Bun\u010di\u0107 concludes that it is a pluricentric language, with four standard variants spoken in Serbia, Croatia, Mont",
+        "reply": "The sources don't say."
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Context: One of John's principal challenges was acquiring the large sums of money needed for his proposed campaigns to reclaim Normandy. The Angevin kings had three main sources of income available to them, namely revenue from their personal lands, or demesne; money raised through their rights as ",
+        "reply": "The sources don't say."
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Annelid: Some polychaetes breed only once in their lives, while others breed almost continuously or through several breeding seasons. While most polychaetes remain of one sex all their lives, a significant percentage of species are full hermaphrodites or change sex during their lives. Most polycha",
+        "reply": "The sources don't say."
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Context: In 1886, Frank Julian Sprague invented the first practical DC motor, a non-sparking motor that maintained relatively constant speed under variable loads. Other Sprague electric inventions about this time greatly improved grid electric distribution (prior work done while employed by Thomas",
+        "reply": "The sources don't say."
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] PlayStation 3: Since June 2009 VidZone has offered a free music video streaming service in Europe, Australia and New Zealand. In October 2009, Sony Computer Entertainment and Netflix announced that the Netflix streaming service would also be available on PlayStation 3 in the United States. A paid ",
+        "reply": "The sources don't say."
+      }
+    ],
+    "corpus_grounded": [
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Azawad: Azawad is the name for the northern part of Mali. The name translates to Savannah. The region is mostly desert-like. Between 2012 and 2013 it was independent from Mali. It is split into the regions Timbuktu, Gao, and Kidal. The territory has a size of about . The biggest cities are Gao wit",
+        "reply": "Azawad is the name for the northern part of Mali."
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] I Wanna Be with You (album): I Wanna Be with You is a 2000 studio album from musician Mandy Moore. The album contains several new songs and a few remixes from her first album. I Wanna Be with You sold over 805,000 copies in the United States. The album's title song was Moore's only Top 40 song.\n[2",
+        "reply": "I Wanna Be with You is a 2000 studio album from musician Mandy Moore."
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Aplington, Iowa: Aplington is a city in Iowa in the United States.\n[2] List of cities in Iowa: The following is a list of cities in the state of Iowa, by letter: A Ackley Ackworth Adair Adel Afton Agency Ainsworth Akron Albert City Albia Albion Alburnett Alden Alexander Algona Alleman Allerton All",
+        "reply": "Aplington is a city in Iowa in the United States."
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Tropical Storm Claudette (1979): Tropical Storm Claudette was a very destructive tropical storm in late July 1979. The storm cut across Puerto Rico, killing one. She then struck eastern Texas and left behind incredible flooding that caused almost $400 million in damage. Claudette was the first of ",
+        "reply": "Tropical Storm Claudette was a very destructive tropical storm in late July 1979."
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Kiss Me Deadly: Kiss Me Deadly is a 1955 crime thriller movie directed by Robert Aldrich and based on the novel of the same name by Mickey Spillane. It stars Ralph Meeker, Albert Dekker, Paul Stewart, Juano Hernandez, Wesley Addy, Maxine Cooper, Cloris Leachman, Leigh Snowden and was distributed b",
+        "reply": "Kiss Me Deadly is a 1955 crime thriller movie directed by Robert Aldrich and based on the novel of the same name by Mickey Spillane."
+      }
+    ],
+    "corpus_abstain": [
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Adolfo Su\u00e1rez: The Most Excellent The Duke of Su\u00e1rez, Grandee of Spain (1981\u20132007). The Most Excellent The Duke of Su\u00e1rez, Grandee of Spain, Order of the Golden Fleece (2007\u20132014).\n[2] Grandee of Spain: An individual is a grandee if he or she holds a Grandeza de Espa\u00f1a, regardless of possession of",
+        "reply": "The sources don't say."
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Don't Tell Me: International Maxi CD single \"Don't Tell Me\" \"Don't Tell Me\" (acoustic) \"Take Me Away\" \"Don't Tell Me\" (music video) UK Pt. 2/FR/German single \"Don't Tell Me\" \"Don't Tell Me (acoustic) Japan CD single (BVCA-29607; Released April 28, 2004) \"Don't Tell Me\" \"Take Me Away\"\n[2] Tell Me I",
+        "reply": "The sources don't say."
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Lieutenant Governor of Tennessee: The Lieutenant Governor and Speaker of the Senate of Tennessee is the presiding officer of the Tennessee Senate and first in line in the succession to the office of Governor of Tennessee in the event of the death, resignation, or removal from office through impeac",
+        "reply": "The sources don't say."
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Don't Tell Me: International Maxi CD single \"Don't Tell Me\" \"Don't Tell Me\" (acoustic) \"Take Me Away\" \"Don't Tell Me\" (music video) UK Pt. 2/FR/German single \"Don't Tell Me\" \"Don't Tell Me (acoustic) Japan CD single (BVCA-29607; Released April 28, 2004) \"Don't Tell Me\" \"Take Me Away\"\n[2] Tell Me I",
+        "reply": "The sources don't say."
+      },
+      {
+        "prompt": "Use the sources to answer. If they do not contain the answer, say the sources don't say.\nSources:\n[1] Macaron: Macarons can be found in different flavours (raspberry, chocolate) to (foie gras, matcha).\n[2] Don't Tell Me: International Maxi CD single \"Don't Tell Me\" \"Don't Tell Me\" (acoustic) \"Take Me Away\" \"Don't Tell Me\" (music video) UK Pt. 2/FR/German single \"Don't Tell Me\" \"Don't Tell Me (acou",
+        "reply": "The sources don't say."
+      }
+    ]
+  }
+}

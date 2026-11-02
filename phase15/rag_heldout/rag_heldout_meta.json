@@ -1,0 +1,19 @@
+{
+  "name": "rag_heldout",
+  "split": "SEALED_RAG_TEST",
+  "file": "phase15/rag_heldout/rag_heldout.jsonl",
+  "sha256": "0bcb897eff04c8df9b1d845e7601e096c848dea990d3e0392ba61dd387e692ae",
+  "total": 166,
+  "answerable": 134,
+  "unanswerable": 32,
+  "answerable_by_topic": {
+    "science": 27,
+    "geography": 20,
+    "history": 19,
+    "people": 16,
+    "technology": 14,
+    "india": 17,
+    "definition": 21
+  },
+  "corpus_sha256": "e57a89ce4d178355b218b3d197988e0fd733b435c22e4332e99a7f6414b42f8c"
+}

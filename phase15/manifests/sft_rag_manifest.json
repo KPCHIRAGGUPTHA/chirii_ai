@@ -1,0 +1,18 @@
+{
+  "seed": 1515,
+  "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98",
+  "corpus_sha256": "e57a89ce4d178355b218b3d197988e0fd733b435c22e4332e99a7f6414b42f8c",
+  "rag_heldout_sha256": "0bcb897eff04c8df9b1d845e7601e096c848dea990d3e0392ba61dd387e692ae",
+  "files": {
+    "train": {
+      "file": "phase11/data/sft_rag_train.jsonl",
+      "records": 147588,
+      "sha256": "d49ec72bc1605a0f906da0e5f59545e14a91a2f5d29eb024eaf9782e7d79e599"
+    },
+    "val": {
+      "file": "phase11/data/sft_rag_val.jsonl",
+      "records": 2955,
+      "sha256": "289248ed4da980fa56ef30f09e275691aee94bfce944bbe50f821384728adf8a"
+    }
+  }
+}

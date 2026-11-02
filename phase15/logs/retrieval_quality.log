@@ -1,0 +1,22 @@
+=== DEV goal fact+definition (n=60) ===
+  recall@1: 29/60 = 48.3%
+  recall@2: 40/60 = 66.7%
+  recall@3: 50/60 = 83.3%
+  failure examples (gold not in top-2):
+    Q='What is Python?' gold=['programming', 'language', 'code'] top1='Monty Python'
+    Q='What does a CPU do?' gold=['instructions', 'processing', 'processor', 'computations'] top1='Direct memory access'
+    Q='What is a noun?' gold=['person', 'place', 'thing', 'idea'] top1='Mass noun'
+    Q='In simple words, what is inflation?' gold=['cost of living', 'prices', 'rise', 'rising'] top1='Word order'
+    Q='What is a virus in biology?' gold=['infect', 'infects', 'host', 'cells'] top1='Virome'
+    Q='Tell me what an algorithm is.' gold=['steps', 'procedure', 'instructions', 'rules'] top1="Don't Tell Me"
+    Q="What is the meaning of the word 'benevolent'?" gold=['kind', 'kindly', 'generous', 'charitable'] top1='Definition'
+    Q='What is a metaphor?' gold=['comparison', 'compares', 'figure', 'speech'] top1='Metaphor'
+    Q='Give a short definition of an ecosystem.' gold=['organisms', 'environment', 'community', 'living'] top1='Ecosystem valuation'
+    Q='What is a glacier?' gold=['ice'] top1='Vigne Glacier'
+=== SFT val factual questions (n=36, noisy gold) ===
+  recall@1: 24/36 = 66.7%
+  recall@2: 27/36 = 75.0%
+  recall@3: 28/36 = 77.8%
+=== DEV top-1 BM25 score distribution ===
+  min 5.17 p10 6.18 median 8.07 p90 12.11 max 18.48
+Chosen for 15B: k=2 (recall@2 >> recall@1, and 2 passages fit the 512 context). Threshold left at 0 for the model to judge via 'sources don't say'.

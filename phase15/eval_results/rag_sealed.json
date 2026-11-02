@@ -1,0 +1,17 @@
+{
+  "runs": {
+    "v1_0_1_baseline_no_rag": {
+      "mode": "no_rag",
+      "answerable": {
+        "correct": 35,
+        "total": 134,
+        "pct": 26.1
+      },
+      "unanswerable": {
+        "correct": 16,
+        "total": 32,
+        "pct": 50.0
+      }
+    }
+  }
+}

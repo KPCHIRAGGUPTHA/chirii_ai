@@ -1,0 +1,30 @@
+{
+  "name": "v2 data, seed3 (seed-noise measurement)",
+  "init_checkpoint": "phase10/runs/foundation_v3_clean_2ep/snapshots/model_step_11524.pt",
+  "data": {
+    "tokenizer": "phase10/tokenizer/tokenizer_v2.json",
+    "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98",
+    "train": "phase11/data/sft_v2_train.jsonl",
+    "val": "phase11/data/sft_v2_val.jsonl",
+    "train_sha256": "b4a7dadef407b40954f068297426ed1247a3f3c4cf2faad223f6751f3dd7efa0",
+    "val_sha256": "a74d51955015903765475063f66843ab8516d9fa8156c59acf550aca8c5635c9"
+  },
+  "out_dir": "phase14/runs/sft_v2_seed3",
+  "training": {
+    "epochs": 2,
+    "micro_batch_size": 16,
+    "grad_accum_steps": 2,
+    "learning_rate": 0.0002,
+    "min_lr": 2e-05,
+    "warmup_steps": 50,
+    "weight_decay": 0.0,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip": 1.0,
+    "seed": 3,
+    "compile": true
+  },
+  "init_checkpoint_sha256": "68ca4deaef0c3e57c8fa01bdc7f53a4c4826324e902732b2292d923c90c1b8bc"
+}

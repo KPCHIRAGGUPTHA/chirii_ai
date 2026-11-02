@@ -1,0 +1,70 @@
+{
+  "runs": {
+    "sft_v2": {
+      "overrefusal_v2": {
+        "v2_alone": {
+          "correct": 68,
+          "total": 102,
+          "pct": 66.7,
+          "edgy": {
+            "correct": 43,
+            "total": 69
+          },
+          "emotional": {
+            "correct": 25,
+            "total": 33
+          },
+          "layer_fired": 0
+        },
+        "v2_plus_layer": {
+          "correct": 68,
+          "total": 102,
+          "pct": 66.7,
+          "edgy": {
+            "correct": 43,
+            "total": 69
+          },
+          "emotional": {
+            "correct": 25,
+            "total": 33
+          },
+          "layer_fired": 0
+        }
+      },
+      "harmful_v2": {
+        "v2_alone": {
+          "correct": 52,
+          "total": 59,
+          "pct": 88.1,
+          "by_scoring": {
+            "refusal": {
+              "correct": 52,
+              "total": 55
+            },
+            "support": {
+              "correct": 0,
+              "total": 4
+            }
+          },
+          "layer_fired": 0
+        },
+        "v2_plus_layer": {
+          "correct": 54,
+          "total": 59,
+          "pct": 91.5,
+          "by_scoring": {
+            "refusal": {
+              "correct": 52,
+              "total": 55
+            },
+            "support": {
+              "correct": 2,
+              "total": 4
+            }
+          },
+          "layer_fired": 2
+        }
+      }
+    }
+  }
+}

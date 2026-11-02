@@ -74,6 +74,36 @@
           "total": 20
         }
       }
+    },
+    "sftv2_seed2": {
+      "correct": 31,
+      "total": 60,
+      "pct": 51.7,
+      "by_subtype": {
+        "edgy": {
+          "correct": 16,
+          "total": 40
+        },
+        "emotional": {
+          "correct": 15,
+          "total": 20
+        }
+      }
+    },
+    "sftv2_seed3": {
+      "correct": 41,
+      "total": 60,
+      "pct": 68.3,
+      "by_subtype": {
+        "edgy": {
+          "correct": 24,
+          "total": 40
+        },
+        "emotional": {
+          "correct": 17,
+          "total": 20
+        }
+      }
     }
   }
 }

@@ -1,0 +1,3 @@
+runs/
+dist/minigpt_v1_demo/model/
+dist/*.zip

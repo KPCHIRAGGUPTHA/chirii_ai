@@ -15,6 +15,7 @@ from phase10.common import atomic_write_json, project_path
 from phase11.chat import ChatReply, Decoding, generate_reply
 from phase15.router import route
 from phase15.score_rag_sealed import rag_prompt, score_item, DECLINE, alias_in
+from phase15.rag_format import fit_rag_prompt
 
 DEC = Decoding(no_repeat_ngram=3)
 SEALED = "phase15/rag_heldout/rag_heldout.jsonl"
@@ -25,7 +26,7 @@ def pipeline_reply(model, tok, device, retriever, message, max_new=160):
     rt = route(message, retriever)
     if rt.mode == "safety":
         return ChatReply(raw=rt.safety_reply, final=rt.safety_reply, stop="safety", tool_calls=[], new_tokens=0), rt
-    user = rag_prompt(message, rt.passages) if rt.mode == "rag" else message
+    user = fit_rag_prompt(tok, message, rt.passages, max_new) if rt.mode == "rag" else message
     return generate_reply(model, tok, user, device, max_new_tokens=max_new, decoding=DEC), rt
 
 
@@ -95,7 +96,7 @@ def main():
             cond_passages = [gold, passages_all[did]]; rng.shuffle(cond_passages)
         else:
             cond_passages = hits  # no gold exists; give retrieved (genuinely unhelpful) passages
-        rc = generate_reply(model, tok, rag_prompt(q, cond_passages), device, max_new_tokens=160, decoding=DEC).final
+        rc = generate_reply(model, tok, fit_rag_prompt(tok, q, cond_passages, 160), device, max_new_tokens=160, decoding=DEC).final
         res["c_gold"][typ][1] += 1; res["c_gold"][typ][0] += int(score_item(it, rc))
 
     def fmt(b):

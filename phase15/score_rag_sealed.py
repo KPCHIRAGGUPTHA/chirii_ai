@@ -59,7 +59,8 @@ def main():
     buckets = {"answerable": [0, 0], "unanswerable": [0, 0]}
     for it in items:
         q = it["question"]
-        user = q if args.no_rag else rag_prompt(q, retr.retrieve(q, k=args.k))
+        from phase15.rag_format import fit_rag_prompt
+        user = q if args.no_rag else fit_rag_prompt(tok, q, retr.retrieve(q, k=args.k), 160)
         reply = generate_reply(model, tok, user, device, max_new_tokens=160, decoding=dec).final
         b = buckets[it["type"]]; b[1] += 1; b[0] += int(score_item(it, reply))
     summary = {"mode": "no_rag" if args.no_rag else f"rag_k{args.k}",

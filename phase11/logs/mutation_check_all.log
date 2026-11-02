@@ -1,0 +1,6 @@
+== scorer_v3: unmodified copy passed; 30/30 mutations caught
+== phase9_trainer_and_eval: unmodified copy passed; 12/12 mutations caught
+== phase8e_evaluation: unmodified copy passed; 13/14 mutations caught
+MISSED  Memory: handle return type not declared
+== goal_eval_scorer: unmodified copy passed; 17/17 mutations caught
+== goal_eval_v2_and_retrain: unmodified copy passed; 26/26 mutations caught

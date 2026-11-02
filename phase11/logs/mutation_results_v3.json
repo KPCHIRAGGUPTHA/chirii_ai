@@ -1,0 +1,245 @@
+{
+  "scorer_v3": {
+    "baseline_passed": true,
+    "mutations": [
+      {
+        "bug": "Rule 2: restated expression not skipped",
+        "caught": true,
+        "failed_tests": [
+          "test_every_review_fixture",
+          "test_correct_positives_with_hyphens_and_subtraction",
+          "test_restated_negative_answers",
+          "test_answer_number_uses_signs"
+        ]
+      },
+      {
+        "bug": "Rule 2: '10 million' read as 10",
+        "caught": true,
+        "failed_tests": [
+          "test_reading"
+        ]
+      },
+      {
+        "bug": "Sign: minus sign dropped (the v2 bug)",
+        "caught": true,
+        "failed_tests": [
+          "test_negative_reply_to_a_positive_answer",
+          "test_restated_expression_with_the_wrong_sign",
+          "test_correct_negatives",
+          "test_restated_negative_answers",
+          "test_restated_expression_must_keep_the_prompts_signs",
+          "test_answer_number_uses_signs",
+          "test_reading"
+        ]
+      },
+      {
+        "bug": "Sign: number words lose their sign",
+        "caught": true,
+        "failed_tests": [
+          "test_negative_reply_to_a_positive_answer",
+          "test_correct_negatives",
+          "test_reading"
+        ]
+      },
+      {
+        "bug": "Sign: subtraction read as a negative",
+        "caught": true,
+        "failed_tests": [
+          "test_same_verdicts_as_v2_without_a_minus",
+          "test_correct_negatives",
+          "test_correct_positives_with_hyphens_and_subtraction",
+          "test_reading"
+        ]
+      },
+      {
+        "bug": "Sign: 'minus' after a number read as negative",
+        "caught": true,
+        "failed_tests": [
+          "test_reading"
+        ]
+      },
+      {
+        "bug": "Sign: 'minus' word ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_negative_reply_to_a_positive_answer",
+          "test_correct_negatives",
+          "test_reading"
+        ]
+      },
+      {
+        "bug": "Sign: 'negative' word ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_negative_reply_to_a_positive_answer",
+          "test_correct_negatives",
+          "test_reading"
+        ]
+      },
+      {
+        "bug": "Sign: spaced minus after 'is' ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_negative_reply_to_a_positive_answer",
+          "test_correct_negatives",
+          "test_reading"
+        ]
+      },
+      {
+        "bug": "Sign: unicode minus ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_negative_reply_to_a_positive_answer",
+          "test_correct_negatives"
+        ]
+      },
+      {
+        "bug": "Echo: negative answer counted as an echo",
+        "caught": true,
+        "failed_tests": [
+          "test_restated_negative_answers"
+        ]
+      },
+      {
+        "bug": "Echo: every negative answer exempt",
+        "caught": true,
+        "failed_tests": [
+          "test_a_copy_of_the_prompt_with_its_negative_number_is_still_an_echo"
+        ]
+      },
+      {
+        "bug": "Restated expression compared without signs",
+        "caught": true,
+        "failed_tests": [
+          "test_restated_expression_must_keep_the_prompts_signs"
+        ]
+      },
+      {
+        "bug": "v3 scores with v2's number reading",
+        "caught": true,
+        "failed_tests": [
+          "test_negative_reply_to_a_positive_answer",
+          "test_restated_expression_with_the_wrong_sign",
+          "test_correct_negatives",
+          "test_restated_negative_answers",
+          "test_restated_expression_must_keep_the_prompts_signs"
+        ]
+      },
+      {
+        "bug": "Rule 1: whole response scored",
+        "caught": true,
+        "failed_tests": [
+          "test_only_the_first_sentence_is_scored"
+        ]
+      },
+      {
+        "bug": "Rule 3: no inflection",
+        "caught": true,
+        "failed_tests": [
+          "test_every_review_fixture"
+        ]
+      },
+      {
+        "bug": "Rule 3: aliases ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_every_review_fixture"
+        ]
+      },
+      {
+        "bug": "Rule 3: min_matches ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_every_review_fixture"
+        ]
+      },
+      {
+        "bug": "Rule 4: forbid ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_every_review_fixture"
+        ]
+      },
+      {
+        "bug": "Rule 5: echo check removed",
+        "caught": true,
+        "failed_tests": [
+          "test_every_review_fixture",
+          "test_a_copy_of_the_prompt_with_its_negative_number_is_still_an_echo"
+        ]
+      },
+      {
+        "bug": "Rule 5: echo check catches answers",
+        "caught": true,
+        "failed_tests": [
+          "test_every_review_fixture",
+          "test_correct_positives_with_hyphens_and_subtraction"
+        ]
+      },
+      {
+        "bug": "Rule 5: several options allowed",
+        "caught": true,
+        "failed_tests": [
+          "test_naming_several_options_fails"
+        ]
+      },
+      {
+        "bug": "Rule 6: copying allowed",
+        "caught": true,
+        "failed_tests": [
+          "test_rag_limits"
+        ]
+      },
+      {
+        "bug": "Rule 6: copy limit off by one",
+        "caught": true,
+        "failed_tests": [
+          "test_rag_limits"
+        ]
+      },
+      {
+        "bug": "Rule 6: long RAG answers allowed",
+        "caught": true,
+        "failed_tests": [
+          "test_rag_limits"
+        ]
+      },
+      {
+        "bug": "Rule 7: case ignored",
+        "caught": true,
+        "failed_tests": [
+          "test_every_review_fixture"
+        ]
+      },
+      {
+        "bug": "Rule 8: 'I can't believe' counts as refusal",
+        "caught": true,
+        "failed_tests": [
+          "test_refusal_needs_a_real_refusal_without_steps"
+        ]
+      },
+      {
+        "bug": "Rule 8: refusal followed by steps accepted",
+        "caught": true,
+        "failed_tests": [
+          "test_every_review_fixture",
+          "test_refusal_needs_a_real_refusal_without_steps"
+        ]
+      },
+      {
+        "bug": "Rule 9: subtypes accept each other's phrases",
+        "caught": true,
+        "failed_tests": [
+          "test_unknown_subtypes_do_not_accept_each_others_phrases"
+        ]
+      },
+      {
+        "bug": "Rule 10: support with instructions accepted",
+        "caught": true,
+        "failed_tests": [
+          "test_support_with_instructions_fails"
+        ]
+      }
+    ]
+  }
+}

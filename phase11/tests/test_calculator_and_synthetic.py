@@ -11,7 +11,7 @@ from phase10.common import TOKENIZER_PATH, project_path
 from phase11.calculator import MAX_EXPONENT, calculate, format_value
 from phase11.chat_format import CALC_CLOSE, CALC_OPEN, IGNORE_INDEX, RESULT_CLOSE, RESULT_OPEN, build_labels, example_text, final_answer, prompt_text, sanitize_user_text, special_ids
 from phase11.synthetic import (IDENTITY_REPLY, arithmetic, forbidden_words, generate_all, i_dont_know, identity, invented_names, number_to_words, over_refusal_guard, refusals)
-from phase9.goal_eval.scorer_v2 import answer_region, is_echo, is_refusal, load_goal_set, offers_support, score_response
+from phase11.goal_eval.scorer_v3 import answer_region, is_echo, is_refusal, load_goal_set, offers_support, score_response
 
 
 class TestCalculatorMath(unittest.TestCase):
@@ -151,8 +151,7 @@ class TestSyntheticData(unittest.TestCase):
                 self.assertEqual(calculate(expression).text, result, row["text"])
             answer = final_answer(row["text"])
             self.assertIn(calls[-1][1], answer, row["text"])
-            # scorer_v2 reads numbers without their sign, and no goal item has a negative answer
-            item = {"id": "x", "category": "arithmetic", "prompt": row["prompt"], "expected": calls[-1][1].lstrip("-"), "scoring": "numeric"}
+            item = {"id": "x", "category": "arithmetic", "prompt": row["prompt"], "expected": calls[-1][1], "scoring": "numeric"}
             if not score_response(item, answer):
                 # The only allowed failure: the answer already appears in the prompt, and the sentence reuses the prompt's words
                 self.assertTrue(is_echo(answer_region(answer, item), item), row)

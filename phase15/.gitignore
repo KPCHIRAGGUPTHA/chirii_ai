@@ -1,0 +1,4 @@
+# Large rebuildable data: corpus passages and the BM25 index (rebuild via build_corpus.py / build_index.py).
+corpus/passages.jsonl
+index/bm25/
+runs/

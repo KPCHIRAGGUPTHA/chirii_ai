@@ -1,0 +1,16 @@
+{
+  "passages": 493607,
+  "index_dir": "phase15/index/bm25",
+  "index_bytes": 122772209,
+  "index_mb": 122.8,
+  "build_seconds": 27.9,
+  "query_seconds_mean": 0.0213,
+  "query_seconds_max": 0.0262,
+  "files": [
+    "data.csc.index.npy",
+    "indices.csc.index.npy",
+    "indptr.csc.index.npy",
+    "params.index.json",
+    "vocab.index.json"
+  ]
+}

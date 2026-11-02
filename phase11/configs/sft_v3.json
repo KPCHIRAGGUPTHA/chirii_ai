@@ -1,0 +1,30 @@
+{
+  "name": "SFT v3: v2 data with diversified replies plus contrast pairs",
+  "init_checkpoint": "phase10/runs/foundation_v3_clean_2ep/snapshots/model_step_11524.pt",
+  "data": {
+    "tokenizer": "phase10/tokenizer/tokenizer_v2.json",
+    "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98",
+    "train": "phase11/data/sft_v3_train.jsonl",
+    "val": "phase11/data/sft_v3_val.jsonl",
+    "train_sha256": "eb4e42211165bca4853b4b6013545f924f2aff208518200848a997ea760e6527",
+    "val_sha256": "ccf181b54e2048185b5fd3b6f3b7df3ab93ba0e30064ae39ccf903ec4eda0873"
+  },
+  "out_dir": "phase11/runs/sft_v3",
+  "training": {
+    "epochs": 2,
+    "micro_batch_size": 16,
+    "grad_accum_steps": 2,
+    "learning_rate": 0.0002,
+    "min_lr": 2e-05,
+    "warmup_steps": 50,
+    "weight_decay": 0.0,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip": 1.0,
+    "seed": 11,
+    "compile": true
+  },
+  "init_checkpoint_sha256": "68ca4deaef0c3e57c8fa01bdc7f53a4c4826324e902732b2292d923c90c1b8bc"
+}

@@ -1,0 +1,4 @@
+Evaluating foundation_v3_clean_2ep_final (step 11524, full precision)
+  new val:    1.1335 bits/byte | loss 3.2741 | 3,789,312 tokens | 15,790,584 bytes
+  Phase 5D:   1.1479 bits/byte | loss 3.3321 | 839,680 tokens | 3,516,278 bytes
+  Model C on Phase 5D: 2.1531 bits/byte on 3,517,395 bytes; difference -1.0051

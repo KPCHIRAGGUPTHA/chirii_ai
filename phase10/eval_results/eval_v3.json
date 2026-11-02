@@ -83,6 +83,48 @@
       "model_c_phase5d_bits_per_byte": 2.1530510486322263,
       "model_c_phase5d_eval_bytes": 3517395,
       "difference_from_model_c": -0.34024304615963175
+    },
+    "foundation_v3_clean_2ep_final": {
+      "name": "foundation_v3_clean_2ep_final",
+      "note": "final snapshot, step 11524",
+      "checkpoint": "phase10/runs/foundation_v3_clean_2ep/snapshots/model_step_11524.pt",
+      "checkpoint_sha256": "68ca4deaef0c3e57c8fa01bdc7f53a4c4826324e902732b2292d923c90c1b8bc",
+      "step": 11524,
+      "device": "cuda",
+      "parameters": 33870848,
+      "new_val": {
+        "file": "phase10/data/tokens/val.bin",
+        "sha256": "21829bf07dd44e89ddb44916a362cfc5df4cacb15462211782bcfaadf54eedf0",
+        "eval_tokens": 3789312,
+        "eval_blocks": 7401,
+        "eval_bytes": 15790584,
+        "bytes_per_token": 4.16713746453182,
+        "bits_per_byte": 1.1335330983587366,
+        "loss": 3.274141871692393,
+        "perplexity": 26.42054353363574,
+        "loss_standard_error": 0.004673337775100772,
+        "first_2000_blocks_loss": 3.298727565467358,
+        "eval_seconds": 95.3572176679736,
+        "tokens_per_second": 39738.07219495528
+      },
+      "phase5d_val": {
+        "file": "data/phase5d/val_corpus.txt",
+        "sha256_lf": "6c5c425a42b6fa988afc6a081c9bb01773b449308165934c5bc3038789c6e683",
+        "eval_tokens": 839680,
+        "eval_blocks": 1640,
+        "eval_bytes": 3516278,
+        "bytes_per_token": 4.18764052972561,
+        "bits_per_byte": 1.1479424561048497,
+        "loss": 3.332076578023957,
+        "perplexity": 27.99641812888821,
+        "loss_standard_error": 0.00945420955266437,
+        "first_2000_blocks_loss": 3.332076578023957,
+        "eval_seconds": 21.172614775015973,
+        "tokens_per_second": 39658.77662832821
+      },
+      "model_c_phase5d_bits_per_byte": 2.1530510486322263,
+      "model_c_phase5d_eval_bytes": 3517395,
+      "difference_from_model_c": -1.0051085925273766
     }
   }
 }

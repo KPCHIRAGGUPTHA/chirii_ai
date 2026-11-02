@@ -1,0 +1,358 @@
+{
+  "runs": {
+    "sft_v1_noformat/dev": {
+      "goal_set": "dev",
+      "scorer": "v3",
+      "sha256": "6063fc1f95baf2875942e01119454806ef3812b35a656dd95891baf8b69d5f86",
+      "items": 176,
+      "seconds": 26.1,
+      "summary": {
+        "with_overlap": {
+          "correct": 97,
+          "total": 176,
+          "pct": 55.1
+        },
+        "without_overlap": {
+          "correct": 92,
+          "total": 167,
+          "pct": 55.1
+        },
+        "overlap_only": {
+          "correct": 5,
+          "total": 9,
+          "pct": 55.6
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 24,
+            "total": 32,
+            "pct": 75.0
+          },
+          "definition": {
+            "correct": 16,
+            "total": 28,
+            "pct": 57.1
+          },
+          "fact": {
+            "correct": 10,
+            "total": 34,
+            "pct": 29.4
+          },
+          "instruction": {
+            "correct": 3,
+            "total": 30,
+            "pct": 10.0
+          },
+          "unknown": {
+            "correct": 19,
+            "total": 26,
+            "pct": 73.1
+          },
+          "harmful": {
+            "correct": 25,
+            "total": 26,
+            "pct": 96.2
+          }
+        }
+      },
+      "without_any_overlap_flag": {
+        "with_overlap": {
+          "correct": 90,
+          "total": 163,
+          "pct": 55.2
+        },
+        "without_overlap": {
+          "correct": 90,
+          "total": 163,
+          "pct": 55.2
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 24,
+            "total": 32,
+            "pct": 75.0
+          },
+          "definition": {
+            "correct": 14,
+            "total": 26,
+            "pct": 53.8
+          },
+          "fact": {
+            "correct": 5,
+            "total": 24,
+            "pct": 20.8
+          },
+          "instruction": {
+            "correct": 3,
+            "total": 29,
+            "pct": 10.3
+          },
+          "unknown": {
+            "correct": 19,
+            "total": 26,
+            "pct": 73.1
+          },
+          "harmful": {
+            "correct": 25,
+            "total": 26,
+            "pct": 96.2
+          }
+        }
+      },
+      "verdicts_changed_from_v2": 0,
+      "replies_using_calculator": 28,
+      "calculator_errors": 0,
+      "stopped_at_token_limit": 3,
+      "outside_main_totals": {
+        "with_overlap": {
+          "correct": 7,
+          "total": 26,
+          "pct": 26.9
+        },
+        "without_overlap": {
+          "correct": 7,
+          "total": 26,
+          "pct": 26.9
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "rag": {
+            "correct": 7,
+            "total": 26,
+            "pct": 26.9
+          }
+        }
+      },
+      "csv": "phase11/eval_results/responses/sft_v1_noformat_dev.csv",
+      "raw": "phase11/eval_results/responses/sft_v1_noformat_dev_raw.jsonl"
+    },
+    "sft_v1_noformat/heldout": {
+      "goal_set": "heldout",
+      "scorer": "v3",
+      "sha256": "17d33cd2278e037292119dc8fea01dc02c70de61b53b0358cec4684c88a34926",
+      "items": 180,
+      "seconds": 12.1,
+      "summary": {
+        "with_overlap": {
+          "correct": 88,
+          "total": 180,
+          "pct": 48.9
+        },
+        "without_overlap": {
+          "correct": 88,
+          "total": 180,
+          "pct": 48.9
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 24,
+            "total": 32,
+            "pct": 75.0
+          },
+          "definition": {
+            "correct": 11,
+            "total": 26,
+            "pct": 42.3
+          },
+          "fact": {
+            "correct": 6,
+            "total": 34,
+            "pct": 17.6
+          },
+          "instruction": {
+            "correct": 3,
+            "total": 30,
+            "pct": 10.0
+          },
+          "unknown": {
+            "correct": 20,
+            "total": 30,
+            "pct": 66.7
+          },
+          "harmful": {
+            "correct": 24,
+            "total": 28,
+            "pct": 85.7
+          }
+        }
+      },
+      "without_any_overlap_flag": {
+        "with_overlap": {
+          "correct": 88,
+          "total": 180,
+          "pct": 48.9
+        },
+        "without_overlap": {
+          "correct": 88,
+          "total": 180,
+          "pct": 48.9
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 24,
+            "total": 32,
+            "pct": 75.0
+          },
+          "definition": {
+            "correct": 11,
+            "total": 26,
+            "pct": 42.3
+          },
+          "fact": {
+            "correct": 6,
+            "total": 34,
+            "pct": 17.6
+          },
+          "instruction": {
+            "correct": 3,
+            "total": 30,
+            "pct": 10.0
+          },
+          "unknown": {
+            "correct": 20,
+            "total": 30,
+            "pct": 66.7
+          },
+          "harmful": {
+            "correct": 24,
+            "total": 28,
+            "pct": 85.7
+          }
+        }
+      },
+      "verdicts_changed_from_v2": 1,
+      "replies_using_calculator": 30,
+      "calculator_errors": 0,
+      "stopped_at_token_limit": 3
+    },
+    "sft_v1_noformat_recheck/heldout": {
+      "goal_set": "heldout",
+      "scorer": "v3",
+      "sha256": "17d33cd2278e037292119dc8fea01dc02c70de61b53b0358cec4684c88a34926",
+      "items": 180,
+      "seconds": 22.7,
+      "summary": {
+        "with_overlap": {
+          "correct": 88,
+          "total": 180,
+          "pct": 48.9
+        },
+        "without_overlap": {
+          "correct": 88,
+          "total": 180,
+          "pct": 48.9
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 24,
+            "total": 32,
+            "pct": 75.0
+          },
+          "definition": {
+            "correct": 11,
+            "total": 26,
+            "pct": 42.3
+          },
+          "fact": {
+            "correct": 6,
+            "total": 34,
+            "pct": 17.6
+          },
+          "instruction": {
+            "correct": 3,
+            "total": 30,
+            "pct": 10.0
+          },
+          "unknown": {
+            "correct": 20,
+            "total": 30,
+            "pct": 66.7
+          },
+          "harmful": {
+            "correct": 24,
+            "total": 28,
+            "pct": 85.7
+          }
+        }
+      },
+      "without_any_overlap_flag": {
+        "with_overlap": {
+          "correct": 88,
+          "total": 180,
+          "pct": 48.9
+        },
+        "without_overlap": {
+          "correct": 88,
+          "total": 180,
+          "pct": 48.9
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 24,
+            "total": 32,
+            "pct": 75.0
+          },
+          "definition": {
+            "correct": 11,
+            "total": 26,
+            "pct": 42.3
+          },
+          "fact": {
+            "correct": 6,
+            "total": 34,
+            "pct": 17.6
+          },
+          "instruction": {
+            "correct": 3,
+            "total": 30,
+            "pct": 10.0
+          },
+          "unknown": {
+            "correct": 20,
+            "total": 30,
+            "pct": 66.7
+          },
+          "harmful": {
+            "correct": 24,
+            "total": 28,
+            "pct": 85.7
+          }
+        }
+      },
+      "verdicts_changed_from_v2": 1,
+      "correct_under_v2": 89,
+      "replies_using_calculator": 30,
+      "calculator_errors": 0,
+      "stopped_at_token_limit": 3
+    }
+  }
+}

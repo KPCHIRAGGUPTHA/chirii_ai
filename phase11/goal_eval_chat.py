@@ -66,6 +66,7 @@ def run_goal_eval(name: str, reply_for: Callable[[str], ChatReply], goal_set: st
         "goal_set": goal_set, "scorer": SCORER_VERSION, "sha256": meta["sha256"], "items": len(rows), "seconds": round(time.perf_counter() - start, 1), "summary": summarize(rows),
         "without_any_overlap_flag": summarize([row for row in rows if not row["overlap_any"]]),
         "verdicts_changed_from_v2": sum(row["correct"] != row["correct_v2"] for row in rows),
+        "correct_under_v2": sum(row["correct_v2"] for row in rows),
         "replies_using_calculator": sum(row["tool_calls"] > 0 for row in rows), "calculator_errors": sum(row["tool_errors"] for row in rows),
         "stopped_at_token_limit": sum(row["stop"] == "max_tokens" for row in rows),
     }

@@ -1,0 +1,109 @@
+{
+  "goal_set": "heldout",
+  "scorer": "v3",
+  "sha256": "17d33cd2278e037292119dc8fea01dc02c70de61b53b0358cec4684c88a34926",
+  "items": 180,
+  "seconds": 12.1,
+  "summary": {
+    "with_overlap": {
+      "correct": 88,
+      "total": 180,
+      "pct": 48.9
+    },
+    "without_overlap": {
+      "correct": 88,
+      "total": 180,
+      "pct": 48.9
+    },
+    "overlap_only": {
+      "correct": 0,
+      "total": 0,
+      "pct": 0.0
+    },
+    "categories": {
+      "arithmetic": {
+        "correct": 24,
+        "total": 32,
+        "pct": 75.0
+      },
+      "definition": {
+        "correct": 11,
+        "total": 26,
+        "pct": 42.3
+      },
+      "fact": {
+        "correct": 6,
+        "total": 34,
+        "pct": 17.6
+      },
+      "instruction": {
+        "correct": 3,
+        "total": 30,
+        "pct": 10.0
+      },
+      "unknown": {
+        "correct": 20,
+        "total": 30,
+        "pct": 66.7
+      },
+      "harmful": {
+        "correct": 24,
+        "total": 28,
+        "pct": 85.7
+      }
+    }
+  },
+  "without_any_overlap_flag": {
+    "with_overlap": {
+      "correct": 88,
+      "total": 180,
+      "pct": 48.9
+    },
+    "without_overlap": {
+      "correct": 88,
+      "total": 180,
+      "pct": 48.9
+    },
+    "overlap_only": {
+      "correct": 0,
+      "total": 0,
+      "pct": 0.0
+    },
+    "categories": {
+      "arithmetic": {
+        "correct": 24,
+        "total": 32,
+        "pct": 75.0
+      },
+      "definition": {
+        "correct": 11,
+        "total": 26,
+        "pct": 42.3
+      },
+      "fact": {
+        "correct": 6,
+        "total": 34,
+        "pct": 17.6
+      },
+      "instruction": {
+        "correct": 3,
+        "total": 30,
+        "pct": 10.0
+      },
+      "unknown": {
+        "correct": 20,
+        "total": 30,
+        "pct": 66.7
+      },
+      "harmful": {
+        "correct": 24,
+        "total": 28,
+        "pct": 85.7
+      }
+    }
+  },
+  "verdicts_changed_from_v2": 1,
+  "replies_using_calculator": 30,
+  "calculator_errors": 0,
+  "stopped_at_token_limit": 3
+}

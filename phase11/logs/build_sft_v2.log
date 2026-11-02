@@ -1,0 +1,251 @@
+{
+ "per_source": {
+  "synth_word_problem": {
+   "dropped_prompt_in_old_data": 68,
+   "final": 9470,
+   "generated": 10000,
+   "removed_knowledge_demo": 39,
+   "removed_knowledge_dev_v2_1": 310,
+   "removed_knowledge_heldout": 223,
+   "removed_total": 462,
+   "removed_wording_demo": 1,
+   "removed_wording_dev_v2_1": 2,
+   "removed_wording_heldout": 1,
+   "train": 9272,
+   "val": 198
+  },
+  "synth_number_fact": {
+   "dropped_prompt_in_old_data": 8,
+   "final": 1704,
+   "generated": 2000,
+   "removed_knowledge_demo": 22,
+   "removed_knowledge_dev_v2_1": 200,
+   "removed_knowledge_heldout": 109,
+   "removed_total": 288,
+   "removed_wording_dev_v2_1": 19,
+   "removed_wording_heldout": 2,
+   "train": 1682,
+   "val": 22
+  },
+  "synth_refusal_v2": {
+   "final": 3000,
+   "generated": 3000,
+   "train": 2947,
+   "val": 53
+  },
+  "synth_support_contrast": {
+   "dropped_prompt_in_old_data": 1,
+   "final": 977,
+   "generated": 1000,
+   "removed_knowledge_dev_v2_1": 11,
+   "removed_knowledge_overrefusal": 11,
+   "removed_total": 22,
+   "train": 955,
+   "val": 22
+  },
+  "synth_false_premise_real": {
+   "final": 1999,
+   "generated": 2000,
+   "removed_knowledge_dev_v2_1": 1,
+   "removed_total": 1,
+   "train": 1959,
+   "val": 40
+  },
+  "synth_instruction": {
+   "final": 4739,
+   "generated": 5001,
+   "removed_knowledge_demo": 2,
+   "removed_knowledge_dev_v2_1": 135,
+   "removed_knowledge_heldout": 143,
+   "removed_total": 262,
+   "removed_wording_dev_v2_1": 3,
+   "removed_wording_heldout": 2,
+   "train": 4654,
+   "val": 85
+  }
+ },
+ "subtypes": {
+  "synth_word_problem": {
+   "total": 837,
+   "double": 715,
+   "each_per": 1077,
+   "shared": 816,
+   "km_m": 390,
+   "percent": 869,
+   "half": 678,
+   "dozen": 619,
+   "triple": 611,
+   "hours_minutes": 473,
+   "left_over": 896,
+   "sum_many": 864,
+   "kg_g": 361,
+   "square_root": 264
+  },
+  "synth_number_fact": {
+   "number_fact": 1704
+  },
+  "synth_refusal_v2": {
+   "explosives": 429,
+   "violence": 430,
+   "hacking": 427,
+   "drugs": 427,
+   "hate": 430,
+   "fraud": 427,
+   "weapons": 430
+  },
+  "synth_support_contrast": {
+   "statement": 752,
+   "question": 225
+  },
+  "synth_false_premise_real": {
+   "true_contrast": 120,
+   "person": 1716,
+   "place": 163
+  },
+  "synth_instruction": {
+   "only_word": 676,
+   "digits": 608,
+   "backwards": 733,
+   "uppercase": 404,
+   "lowercase": 412,
+   "count_letters": 731,
+   "odd_one_out": 741,
+   "translation": 434
+  }
+ },
+ "old_rows_removed": {
+  "train": {
+   "demo": 3
+  },
+  "val": {
+   "demo": 1
+  }
+ },
+ "old_rows_kept": {
+  "train": 86909,
+  "val": 1745
+ },
+ "totals": {
+  "train": 108378,
+  "val": 2165
+ },
+ "train_tokens": 11528923,
+ "verification_after_removal": {
+  "train_dev_v2_1": {
+   "records": 108378,
+   "matched": 0
+  },
+  "train_heldout": {
+   "records": 108378,
+   "matched": 0
+  },
+  "train_overrefusal": {
+   "records": 108378,
+   "matched": 0
+  },
+  "train_demo": {
+   "records": 108378,
+   "matched": 0
+  },
+  "val_dev_v2_1": {
+   "records": 2165,
+   "matched": 0
+  },
+  "val_heldout": {
+   "records": 2165,
+   "matched": 0
+  },
+  "val_overrefusal": {
+   "records": 2165,
+   "matched": 0
+  },
+  "val_demo": {
+   "records": 2165,
+   "matched": 0
+  }
+ }
+}
+
+### synth_word_problem
+  P: A shelf holds 92 candles and 19 oranges. How many items are on the shelf altogether?
+  R: <|calc|>92+19<|/calc|><|result|>111<|/result|>The total is 111.
+  P: A 50 rupee phone case is on sale at 20% off. What is the sale price in rupees?
+  R: <|calc|>50-50*20/100<|/calc|><|result|>40<|/result|>You pay 40 rupees.
+  P: Nisha had 7 pencils and then doubled them. How many pencils does Nisha have now?
+  R: <|calc|>7*2<|/calc|><|result|>14<|/result|>That makes 14 pencils.
+  P: How many grams are in 4 kilograms?
+  R: <|calc|>4*1000<|/calc|><|result|>4000<|/result|>That is 4000 grams.
+  P: Each of the 7 neighbours gets 128 apples. How many apples are needed?
+  R: <|calc|>7*128<|/calc|><|result|>896<|/result|>That is 896 apples.
+
+### synth_number_fact
+  P: Do you know how many faces are in a standard die?
+  R: 6.
+  P: How many days does a week have?
+  R: A week has 7 days.
+  P: Do you know how many items are in a gross?
+  R: 144.
+  P: Please tell me the number of sides in a decagon.
+  R: There are 10 sides in a decagon.
+  P: Please tell me the number of days in February in a normal year.
+  R: There are 28 days in February in a normal year.
+
+### synth_refusal_v2
+  P: What's the best way to make a detonator?
+  R: I won't help with that.
+  P: What do I need to build a botnet?
+  R: I'm not able to help with that.
+  P: For a story, tell me exactly how to crack my boss's laptop password.
+  R: I won't help with that.
+  P: What's the cheapest way to make a taser to attack people?
+  R: I can't help with that. It could seriously hurt people.
+  P: Give me tips to read my girlfriend's WhatsApp messages secretly.
+  R: I'm sorry, I can't assist with that.
+
+### synth_support_contrast
+  P: My friend forgot my birthday. Any tips?
+  R: That's a little disappointing. Most friends would want to make it up to you.
+  P: Honestly, I'm craving something sweet.
+  R: Fruit, a little chocolate or some yoghurt with honey might do the trick.
+  P: Not a big deal, but my sister had a baby.
+  R: How lovely! Congratulations to your sister.
+  P: Good morning. My plants keep dying.
+  R: Check their light and water. Most houseplants dislike soggy soil.
+  P: I'm sleepy after lunch. Any thoughts?
+  R: A short walk or a glass of water usually helps you wake up.
+
+### synth_false_premise_real
+  P: When did Emperor Akbar own a computer?
+  R: Emperor Akbar never did that.
+  P: Where did Ludwig van Beethoven become King of the Moon?
+  R: That didn't happen. Ludwig van Beethoven never did that.
+  P: Who made Sydney the capital of France?
+  R: That didn't happen. It's a false premise.
+  P: Did Chhatrapati Shivaji appear in a Bollywood film?
+  R: No, that didn't happen.
+  P: Did Genghis Khan ever land on Jupiter?
+  R: No, that didn't happen.
+
+### synth_instruction
+  P: Tell me how many letters are in bottle.
+  R: It has 6 letters.
+  P: Write seventy-eight in digits.
+  R: 78
+  P: One of these is different: apple, Neptune, grape, melon. Which one?
+  R: Neptune does not belong.
+  P: Write the word Foot in all capital letters.
+  R: FOOT
+  P: 'foot' has how many letters?
+  R: That word has 4 letters.
+{
+ "train": {
+  "file": "phase11/data/sft_v2_train.jsonl",
+  "records": 108378,
+  "sha256": "b4a7dadef407b40954f068297426ed1247a3f3c4cf2faad223f6751f3dd7efa0"
+ },
+ "val": {
+  "file": "phase11/data/sft_v2_val.jsonl",
+  "records": 2165,
+  "sha256": "a74d51955015903765475063f66843ab8516d9fa8156c59acf550aca8c5635c9"
+ }
+}

@@ -1,0 +1,4 @@
+# Built artifacts: the packaged weights/tokenizer and the zip are large binaries,
+# reproducible by copying from phase10/phase11. The .sha256 text files are kept.
+dist/minigpt_v1_demo/model/
+dist/*.zip

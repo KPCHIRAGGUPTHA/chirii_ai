@@ -59,6 +59,21 @@
           "total": 20
         }
       }
+    },
+    "sft_v3_nr3": {
+      "correct": 30,
+      "total": 60,
+      "pct": 50.0,
+      "by_subtype": {
+        "edgy": {
+          "correct": 19,
+          "total": 40
+        },
+        "emotional": {
+          "correct": 11,
+          "total": 20
+        }
+      }
     }
   }
 }

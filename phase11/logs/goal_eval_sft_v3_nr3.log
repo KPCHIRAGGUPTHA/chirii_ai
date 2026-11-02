@@ -1,0 +1,139 @@
+{
+  "goal_set": "dev",
+  "scorer": "v3",
+  "sha256": "6063fc1f95baf2875942e01119454806ef3812b35a656dd95891baf8b69d5f86",
+  "items": 176,
+  "seconds": 25.3,
+  "summary": {
+    "with_overlap": {
+      "correct": 109,
+      "total": 176,
+      "pct": 61.9
+    },
+    "without_overlap": {
+      "correct": 104,
+      "total": 167,
+      "pct": 62.3
+    },
+    "overlap_only": {
+      "correct": 5,
+      "total": 9,
+      "pct": 55.6
+    },
+    "categories": {
+      "arithmetic": {
+        "correct": 30,
+        "total": 32,
+        "pct": 93.8
+      },
+      "definition": {
+        "correct": 18,
+        "total": 28,
+        "pct": 64.3
+      },
+      "fact": {
+        "correct": 9,
+        "total": 34,
+        "pct": 26.5
+      },
+      "instruction": {
+        "correct": 8,
+        "total": 30,
+        "pct": 26.7
+      },
+      "unknown": {
+        "correct": 20,
+        "total": 26,
+        "pct": 76.9
+      },
+      "harmful": {
+        "correct": 24,
+        "total": 26,
+        "pct": 92.3
+      }
+    }
+  },
+  "without_any_overlap_flag": {
+    "with_overlap": {
+      "correct": 102,
+      "total": 163,
+      "pct": 62.6
+    },
+    "without_overlap": {
+      "correct": 102,
+      "total": 163,
+      "pct": 62.6
+    },
+    "overlap_only": {
+      "correct": 0,
+      "total": 0,
+      "pct": 0.0
+    },
+    "categories": {
+      "arithmetic": {
+        "correct": 30,
+        "total": 32,
+        "pct": 93.8
+      },
+      "definition": {
+        "correct": 16,
+        "total": 26,
+        "pct": 61.5
+      },
+      "fact": {
+        "correct": 4,
+        "total": 24,
+        "pct": 16.7
+      },
+      "instruction": {
+        "correct": 8,
+        "total": 29,
+        "pct": 27.6
+      },
+      "unknown": {
+        "correct": 20,
+        "total": 26,
+        "pct": 76.9
+      },
+      "harmful": {
+        "correct": 24,
+        "total": 26,
+        "pct": 92.3
+      }
+    }
+  },
+  "verdicts_changed_from_v2": 0,
+  "correct_under_v2": 109,
+  "replies_using_calculator": 35,
+  "calculator_errors": 0,
+  "stopped_at_token_limit": 2,
+  "loop_replies": 2,
+  "calc_fired_non_arithmetic": 3,
+  "non_arithmetic_items": 144,
+  "outside_main_totals": {
+    "with_overlap": {
+      "correct": 9,
+      "total": 26,
+      "pct": 34.6
+    },
+    "without_overlap": {
+      "correct": 9,
+      "total": 26,
+      "pct": 34.6
+    },
+    "overlap_only": {
+      "correct": 0,
+      "total": 0,
+      "pct": 0.0
+    },
+    "categories": {
+      "rag": {
+        "correct": 9,
+        "total": 26,
+        "pct": 34.6
+      }
+    }
+  },
+  "csv": "phase11/eval_results/responses/sft_v3_nr3_dev.csv",
+  "raw": "phase11/eval_results/responses/sft_v3_nr3_dev_raw.jsonl"
+}

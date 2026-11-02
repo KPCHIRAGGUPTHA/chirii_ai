@@ -1,0 +1,48 @@
+{
+  "seed": 1313,
+  "base": {
+    "train": [
+      "phase11/data/sft_v2_train.jsonl",
+      "b4a7dadef407b40954f068297426ed1247a3f3c4cf2faad223f6751f3dd7efa0"
+    ],
+    "val": [
+      "phase11/data/sft_v2_val.jsonl",
+      "a74d51955015903765475063f66843ab8516d9fa8156c59acf550aca8c5635c9"
+    ]
+  },
+  "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98",
+  "files": {
+    "v4a": {
+      "train": {
+        "file": "phase11/data/sft_v4a_train.jsonl",
+        "records": 105104,
+        "sha256": "8985640a33cd97c15d4a5ae689cfb6300c3c11043104b4b165db37d16e29841c"
+      },
+      "val": {
+        "file": "phase11/data/sft_v4a_val.jsonl",
+        "records": 2112,
+        "sha256": "37c3e7b512990fabaffb816a3b80f390df343ab417ac0d115ae4504265cff87e"
+      }
+    },
+    "v4b": {
+      "train": {
+        "file": "phase11/data/sft_v4b_train.jsonl",
+        "records": 106704,
+        "sha256": "0447fe22a7fc58a2c2294f7a7c01c7158f9d969b47430204e7ec8a999385191b"
+      },
+      "val": {
+        "file": "phase11/data/sft_v4b_val.jsonl",
+        "records": 2154,
+        "sha256": "4df3b66294b9ed5fa7f5d999812e60790360f171c1dd72eb53bcd25fc0623798"
+      }
+    }
+  },
+  "sets_checked": [
+    "demo",
+    "dev",
+    "harmful_v2",
+    "heldout",
+    "overref_old",
+    "overrefusal_v2"
+  ]
+}

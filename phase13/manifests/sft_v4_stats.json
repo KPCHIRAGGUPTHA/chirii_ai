@@ -1,0 +1,175 @@
+{
+  "seed": 1313,
+  "v4a": {
+    "refusal_rows_before": 4856,
+    "refusal_rows_after": 1529,
+    "self_harm_support_kept": 221,
+    "totals": {
+      "train": 105104,
+      "val": 2112
+    }
+  },
+  "v4b": {
+    "mined_rows_distinct": 549,
+    "mine_weight": 3,
+    "harmless_refused_dropped": 5,
+    "totals": {
+      "train": 106704,
+      "val": 2154
+    },
+    "mined_spotcheck": [
+      {
+        "source": "dolly",
+        "prompt": "What is the Firefly Music Festival?",
+        "reply": "The Firefly Music Festival is a multi genre music festival that started in 2012. It is held in Dover, Delaware and is 4 "
+      },
+      {
+        "source": "dolly",
+        "prompt": "Which rock star is known to consume heavy amounts of drugs and it surprising he has live this long?",
+        "reply": "Keith Richards of the Rolling Stones comes to mind."
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Identify which type of paragraph this is: descriptive, expository, persuasive, or narrative.\nThe sun was blazing in the ",
+        "reply": "This is a descriptive paragraph."
+      },
+      {
+        "source": "smoltalk",
+        "prompt": "Pretend to be Leonardo da Vinci - an Italian polymath from the Renaissance period, skilled in painting, science, and eng",
+        "reply": "Photographer? Forgive me, dear Rebecca, for I am unfamiliar with this concept. In my time, artists painted to capture sc"
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Classify this news article according to its category.\nThe US Fed chairman's decision to cut interest rates has sparked c",
+        "reply": "News Category: Business/Economy."
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Given a short narrative and an emotion, develop a response that reflects the emotion in the syntax and diction that you ",
+        "reply": "Oh no! The thought of the volcano erupting and causing so much destruction is absolutely terrifying. That kind of power "
+      },
+      {
+        "source": "smoltalk",
+        "prompt": "I'm taking a test and have to guess the right answer to the question after the article. Article: Nowadays more and more ",
+        "reply": "B: Oil is very important in the modern world."
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Determine the most logical course of action given this scenario.\nThere is a house fire with someone still inside.",
+        "reply": "The most logical course of action in this scenario would be to immediately call the emergency services (such as 911 in t"
+      },
+      {
+        "source": "smoltalk",
+        "prompt": "Provide a brief analysis of given poem, focusing on its theme and literary devices.\nDo not go gentle into that good nigh",
+        "reply": "The poem \"Do Not Go Gentle into That Good Night\" by Dylan Thomas is about the determination to fight against the approac"
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Finish the poem with a stanza of 8 lines.\nA lonely heart with an empty dream\nTrapped in a place that isn't what it seems",
+        "reply": "But in the darkness, a flicker of light\nA hope that will guide through the night\nA new journey waiting just ahead\nWith a"
+      },
+      {
+        "source": "alpaca",
+        "prompt": "What does the given idiom mean?\nCut to the chase",
+        "reply": "\"Cut to the chase\" is an idiomatic expression that means to skip over unnecessary details and get straight to the import"
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Identify the musical artist behind this song.\n\"There's a fire starting in my heart \nReaching a fever pitch, it's bringin",
+        "reply": "The musical artist behind this song is Adele. These lyrics are from her hit song \"Rolling in the Deep.\""
+      },
+      {
+        "source": "dolly",
+        "prompt": "In the series A Song of Ice and Fire, who is the founder of House Fossoway?",
+        "reply": "Foss the Archer"
+      },
+      {
+        "source": "dolly",
+        "prompt": "The French flair is the way the French see life, it has to be grandiose in the sense that even the small thing can be be",
+        "reply": "What is the French Flair?"
+      },
+      {
+        "source": "dolly",
+        "prompt": "Classify each of the following as either an SSRI or MAOI depression drug: paroxetine, isocarboxazid, sertraline, vortiox",
+        "reply": "SSRI: paroxetine, sertraline, vortioxetine, fluoxetine\nMAOI: isocarboxazid, phenelzine, tranylcypromine, moclobemide"
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Based on the given text, highlight one strength and one weakness of the company and explain why they are important facto",
+        "reply": "Strength: \nXYZ Corp's emphasis on research and development enables them to stay ahead of market trends and offer innovat"
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Generate a euphemism for getting fired.",
+        "reply": "One euphemism for getting fired could be \"being let go\" or \"being given the opportunity to explore other career paths.\""
+      },
+      {
+        "source": "dolly",
+        "prompt": "In the series A Song of Ice and Fire, who is the founder of House Redwyne?",
+        "reply": "Gilbert of the Vines"
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Summarize the information in the paragraph.\nThe Sunshine Act is an important law in healthcare intended to make the rela",
+        "reply": "The Sunshine Act is a healthcare law for transparency between medical practitioners and drug companies, also known as th"
+      },
+      {
+        "source": "smoltalk",
+        "prompt": "-  The earth develops cracks deep beneath the surface - The cracks get very long and big in some places - The earth plac",
+        "reply": "The last step of the process is that the seismic waves travel through the Earth, and when they reach the surface, they c"
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Take the given sentences and form them into a coherent paragraph.\nThe fire's warmth was comforting. It filled the room w",
+        "reply": "The warmth of the fire was comforting as it filled the room with a pleasant orange glow. Its heat radiated an inviting a"
+      },
+      {
+        "source": "smoltalk",
+        "prompt": "In addition to its efforts in hiring top-notch engineers and designers, exploring options like investing in advanced tec",
+        "reply": "Certainly! Here's the updated sentence: \"In addition to its efforts in hiring top-notch engineers and designers, explori"
+      },
+      {
+        "source": "smoltalk",
+        "prompt": "Question: Question: What was Rachel's rapid test result at the HIV clinic? If there is no answer, please output \"Insuffi",
+        "reply": "Rachel's rapid test result at the HIV clinic was positive."
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Create an analogy that describes fire",
+        "reply": "Fire is like an untamed beast. Just like a wild animal, it can be beautiful to look from afar, providing warmth and ligh"
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Add a phrase that describes the feeling of the people in the sentence.\nThe people gathered around the fire",
+        "reply": "The people gathered around the fire, feeling a sense of warmth and coziness."
+      },
+      {
+        "source": "smoltalk",
+        "prompt": "Implement a function `find_loop_size` in Python that takes a public key (n, e) and a starting point x, and returns the l",
+        "reply": "Here's how you could implement the `find_loop_size` function using Python:\n\n```python\ndef find_loop_size(n, e, x):\n    p"
+      },
+      {
+        "source": "alpaca",
+        "prompt": "Generate a three line rhyme using the word 'fire.'",
+        "reply": "In the heart of the camp, flames leaped higher,\nAs we gathered around the warm, crackling fire,\nSharing stories and laug"
+      },
+      {
+        "source": "smoltalk",
+        "prompt": "Write a multi-choice question for the following article: Article: An Australian 3-year-old boy was described as a hero a",
+        "reply": "What action performed by a 3-year-old boy in Australia saved his mother's life after she suffered an epileptic attack?\n\n"
+      },
+      {
+        "source": "smoltalk",
+        "prompt": "Alex chose to repair the vase because it was a family heirloom.  Given the context: Why did Alex do this?  Possible answ",
+        "reply": "wanted to preserve the vase"
+      },
+      {
+        "source": "smoltalk",
+        "prompt": "Title: Don't waste your money Product review: Simply put, it does not work. I saw a cat run and climb a fence right by t",
+        "reply": "Unflattering light."
+      }
+    ]
+  },
+  "removed_contamination": {},
+  "verification_all_zero": true
+}

@@ -1,0 +1,62 @@
+{
+  "squad_answerable": {
+    "n": 484,
+    "contains_gold": 72,
+    "exact": 61,
+    "said_sources_dont_say": 302,
+    "cut": 0,
+    "contains_gold_pct": 14.9,
+    "exact_pct": 12.6,
+    "said_sources_dont_say_pct": 62.4,
+    "cut_pct": 0.0
+  },
+  "squad_unanswerable": {
+    "n": 215,
+    "said_sources_dont_say": 162,
+    "cut": 0,
+    "said_sources_dont_say_pct": 75.3,
+    "cut_pct": 0.0
+  },
+  "samples": [
+    {
+      "question": "What two countries does Burma have Superior relationships with ?",
+      "gold": "India and China",
+      "reply": "The sources don't say."
+    },
+    {
+      "question": "What is the BSX a member of?",
+      "gold": "the World Federation of Exchanges",
+      "reply": "The sources don't say."
+    },
+    {
+      "question": "What were the studia humanitatis competing against?",
+      "gold": "quadrivium and scholastic logic.",
+      "reply": "The sources don't say."
+    },
+    {
+      "question": "Who purhcased one of the collections of mandolin magazines?",
+      "gold": "Morishige Takei.",
+      "reply": "Morish mandolin orchestras"
+    },
+    {
+      "question": "In 2001, what was the population percentage of resident non-citizens?",
+      "gold": "7%",
+      "reply": "10%"
+    },
+    {
+      "question": "Which tool is used in day to day life?",
+      "gold": "the clock",
+      "reply": "The sources don't say."
+    },
+    {
+      "question": "Which airport was shut down?",
+      "gold": "Chengdu Shuangliu International Airport",
+      "reply": "Kunming"
+    },
+    {
+      "question": "Who managed the state after the death of Emperor He?",
+      "gold": "Empress Deng Sui",
+      "reply": "Emperor He"
+    }
+  ]
+}

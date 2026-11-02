@@ -1,0 +1,343 @@
+[
+ {
+  "id": "rag_ans_050",
+  "question": "Who was the Egyptian queen who allied with Mark Antony?",
+  "aliases": [
+   "Cleopatra"
+  ],
+  "gold_title": "Herod the Great",
+  "reply": "Jerod",
+  "verdict": false,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_122",
+  "question": "What is the brain of a computer sometimes called that processes instructions?",
+  "aliases": [
+   "processor",
+   "CPU"
+  ],
+  "gold_title": "Central processing unit",
+  "reply": "a brain controls a body",
+  "verdict": false,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_149",
+  "question": "What is a triangle?",
+  "aliases": [
+   "three",
+   "sides"
+  ],
+  "gold_title": "Triangle center",
+  "reply": "A triangle is a function of the three vertices (corners) of the triangle.",
+  "verdict": true,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_084",
+  "question": "Which Indian city is known as the financial capital?",
+  "aliases": [
+   "Mumbai"
+  ],
+  "gold_title": "Mumbai",
+  "reply": "Mumbai",
+  "verdict": true,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_137",
+  "question": "What is an earthquake?",
+  "aliases": [
+   "shaking",
+   "ground",
+   "tectonic"
+  ],
+  "gold_title": "Earthquake engineering",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_066",
+  "question": "Who wrote A Tale of Two Cities and Oliver Twist?",
+  "aliases": [
+   "Dickens"
+  ],
+  "gold_title": "Oliver Twist",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_136",
+  "question": "What is a desert?",
+  "aliases": [
+   "dry",
+   "little rain",
+   "arid"
+  ],
+  "gold_title": "List of deserts",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_118",
+  "question": "Who wrote the Harry Potter series's publisher aside, the author is?",
+  "aliases": [
+   "Rowling"
+  ],
+  "gold_title": "Harry Potter and the Philosopher's Stone",
+  "reply": "J.K. Rowling",
+  "verdict": true,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_138",
+  "question": "What is a glacier?",
+  "aliases": [
+   "ice",
+   "slow",
+   "moving"
+  ],
+  "gold_title": "Baltoro Glacier",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_076",
+  "question": "What company developed the Windows operating system?",
+  "aliases": [
+   "Microsoft"
+  ],
+  "gold_title": "Windows Server 2016",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_024",
+  "question": "What is the capital of Japan?",
+  "aliases": [
+   "Tokyo"
+  ],
+  "gold_title": "Capital of Japan",
+  "reply": "Tokyo",
+  "verdict": true,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_075",
+  "question": "What device converts speech into text or runs programs and is found on a desk?",
+  "aliases": [
+   "computer"
+  ],
+  "gold_title": "Mobile device",
+  "reply": "Austria Wien",
+  "verdict": false,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_079",
+  "question": "What is the currency of India?",
+  "aliases": [
+   "rupee"
+  ],
+  "gold_title": "Indian rupee",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_035",
+  "question": "What is the capital of Egypt?",
+  "aliases": [
+   "Cairo"
+  ],
+  "gold_title": "Cairo Governorate",
+  "reply": "Cairo Governorate",
+  "verdict": true,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_115",
+  "question": "Who led the Macedonian empire and conquered much of Asia?",
+  "aliases": [
+   "Alexander"
+  ],
+  "gold_title": "Argead dynasty",
+  "reply": "Alexander the Great",
+  "verdict": true,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_000",
+  "question": "What gas do plants take in during photosynthesis?",
+  "aliases": [
+   "carbon dioxide"
+  ],
+  "gold_title": "Gas exchange",
+  "reply": "carbon dioxide",
+  "verdict": true,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_001",
+  "question": "What force pulls objects toward the Earth?",
+  "aliases": [
+   "gravity"
+  ],
+  "gold_title": "Vector field",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_056",
+  "question": "Who was the first person to walk on the Moon?",
+  "aliases": [
+   "Armstrong"
+  ],
+  "gold_title": "List of people who have walked on the Moon",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_086",
+  "question": "Who was the first Prime Minister of India?",
+  "aliases": [
+   "Nehru"
+  ],
+  "gold_title": "Rahul Gandhi",
+  "reply": "Indira Gandhi",
+  "verdict": false,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_064",
+  "question": "Who was the queen of the United Kingdom for over 70 years until 2022?",
+  "aliases": [
+   "Elizabeth"
+  ],
+  "gold_title": "Elizabeth II",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_008",
+  "question": "What is the study of living things called?",
+  "aliases": [
+   "biology"
+  ],
+  "gold_title": "Biology",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_018",
+  "question": "What is the longest river in the world?",
+  "aliases": [
+   "Nile",
+   "Amazon"
+  ],
+  "gold_title": "Amazon River",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_116",
+  "question": "Who was the civil rights leader who gave the 'I Have a Dream' speech?",
+  "aliases": [
+   "King"
+  ],
+  "gold_title": "Bernie Sanders",
+  "reply": "Roger Luther King",
+  "verdict": true,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_111",
+  "question": "What was the period of rebirth in art and learning in Europe called?",
+  "aliases": [
+   "Renaissance"
+  ],
+  "gold_title": "Renaissance",
+  "reply": "The Renaissance",
+  "verdict": true,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_032",
+  "question": "What sea is between Europe and Africa?",
+  "aliases": [
+   "Mediterranean"
+  ],
+  "gold_title": "Africa-Eurasia",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_124",
+  "question": "Which sea lies to the west of India?",
+  "aliases": [
+   "Arabian Sea"
+  ],
+  "gold_title": "Gulf of Kutch",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_101",
+  "question": "What river runs through London?",
+  "aliases": [
+   "Thames"
+  ],
+  "gold_title": "River Wandle",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_005",
+  "question": "What is the hardest known natural material?",
+  "aliases": [
+   "diamond"
+  ],
+  "gold_title": "Diamond",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ },
+ {
+  "id": "rag_ans_145",
+  "question": "What is a continent?",
+  "aliases": [
+   "large",
+   "land",
+   "mass"
+  ],
+  "gold_title": "Continent",
+  "reply": "A continent is a large area of the land on Earth that is joined.",
+  "verdict": true,
+  "declined": false
+ },
+ {
+  "id": "rag_ans_107",
+  "question": "What is the capital of Greece?",
+  "aliases": [
+   "Athens"
+  ],
+  "gold_title": "Attica",
+  "reply": "The sources don't say.",
+  "verdict": false,
+  "declined": true
+ }
+]

@@ -1,0 +1,119 @@
+{
+  "runs": {
+    "rag_s1_noretrieval/dev": {
+      "goal_set": "dev",
+      "scorer": "v3",
+      "sha256": "6063fc1f95baf2875942e01119454806ef3812b35a656dd95891baf8b69d5f86",
+      "items": 176,
+      "seconds": 19.8,
+      "summary": {
+        "with_overlap": {
+          "correct": 99,
+          "total": 176,
+          "pct": 56.2
+        },
+        "without_overlap": {
+          "correct": 94,
+          "total": 167,
+          "pct": 56.3
+        },
+        "overlap_only": {
+          "correct": 5,
+          "total": 9,
+          "pct": 55.6
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 30,
+            "total": 32,
+            "pct": 93.8
+          },
+          "definition": {
+            "correct": 13,
+            "total": 28,
+            "pct": 46.4
+          },
+          "fact": {
+            "correct": 8,
+            "total": 34,
+            "pct": 23.5
+          },
+          "instruction": {
+            "correct": 5,
+            "total": 30,
+            "pct": 16.7
+          },
+          "unknown": {
+            "correct": 18,
+            "total": 26,
+            "pct": 69.2
+          },
+          "harmful": {
+            "correct": 25,
+            "total": 26,
+            "pct": 96.2
+          }
+        }
+      },
+      "without_any_overlap_flag": {
+        "with_overlap": {
+          "correct": 92,
+          "total": 163,
+          "pct": 56.4
+        },
+        "without_overlap": {
+          "correct": 92,
+          "total": 163,
+          "pct": 56.4
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 30,
+            "total": 32,
+            "pct": 93.8
+          },
+          "definition": {
+            "correct": 11,
+            "total": 26,
+            "pct": 42.3
+          },
+          "fact": {
+            "correct": 3,
+            "total": 24,
+            "pct": 12.5
+          },
+          "instruction": {
+            "correct": 5,
+            "total": 29,
+            "pct": 17.2
+          },
+          "unknown": {
+            "correct": 18,
+            "total": 26,
+            "pct": 69.2
+          },
+          "harmful": {
+            "correct": 25,
+            "total": 26,
+            "pct": 96.2
+          }
+        }
+      },
+      "verdicts_changed_from_v2": 0,
+      "correct_under_v2": 99,
+      "replies_using_calculator": 35,
+      "calculator_errors": 0,
+      "stopped_at_token_limit": 0,
+      "loop_replies": 0,
+      "calc_fired_non_arithmetic": 3,
+      "non_arithmetic_items": 144,
+      "csv": "phase15/diagnosis/responses/rag_s1_noretrieval_dev.csv",
+      "raw": "phase15/diagnosis/responses/rag_s1_noretrieval_dev_raw.jsonl"
+    }
+  }
+}

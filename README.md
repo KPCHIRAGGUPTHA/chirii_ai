@@ -1,12 +1,10 @@
 # Chirii AI — MiniGPT
 
-**Chirii AI** is a long-term project toward a Cognitive OS. **MiniGPT** is its foundation language model: a small
-GPT-style model — **33,870,848 parameters** — built from scratch, with its own tokeniser, pretraining, instruction
-tuning, a calculator tool, a rule-based safety layer, and an honest evaluation with pre-registered pass/fail rules.
-
-Chirii AI is a Cognitive OS: an environment that understands instructions, retrieves relevant knowledge, keeps
-useful context, reasons, uses tools, carries out tasks, and evaluates its own outputs. MiniGPT is its intelligence
-layer, built from scratch so every part of it is understood and measurable.
+**Chirii AI** is a Cognitive OS: an environment that understands instructions, retrieves relevant knowledge, keeps
+useful context, reasons, uses tools, carries out tasks, and evaluates its own outputs. **MiniGPT** is its foundation
+language model, its intelligence layer: a small GPT-style model (**33,870,848 parameters**) built from scratch so
+every part of it is understood and measurable, with its own tokeniser, pretraining, instruction tuning, a calculator
+tool, a rule-based safety layer, and an honest evaluation with pre-registered pass/fail rules.
 
 **Status: v1.0.1 is an early milestone, not a production-ready system.** It gets many facts wrong and refuses some
 harmless questions, so use it for demonstration and evaluation only, and don't rely on its answers.
@@ -29,9 +27,11 @@ Every number in this README comes from a committed report in this repository; th
 **Pretraining.** 1.1479 bits per byte on the Phase 5D validation text, against the earlier Model C's 2.1531
 (lower is better) [`phase10/PHASE10B_REPORT.md`, branch `phase10-foundation-v2`].
 
-**Instruction tuning.** The raw pretrained model scores 0 on the goal evaluation; the released model (sft_v2,
-no-repeat-3-gram decoding) answers **102 of 180** held-out prompts and **105 of 176** dev prompts
-[`phase12/MINIGPT_V1_REPORT.md`, `phase11/PHASE11C_REPORT.md`].
+**Instruction tuning.** Earlier models — Model C, the first fine-tuned model (Phase 6 SFT) and the Phase 9
+retrains — scored 0/202 on the earlier goal evaluation [`phase9/goal_eval/results_v2/GOAL_EVAL_V2.md`,
+`phase9/GPU_RESULTS.md`]; the 34M base model was not scored on it. The released model (sft_v2, no-repeat-3-gram
+decoding) answers **102 of 180** held-out prompts and **105 of 176** dev prompts [`phase12/MINIGPT_V1_REPORT.md`,
+`phase11/PHASE11C_REPORT.md`].
 
 **Scorecard against bars written down before the final runs** [`phase11/PHASE11C_REPORT.md`, `phase11/PHASE11D_REPORT.md`]:
 
@@ -52,8 +52,8 @@ but it caught only 2 of 4 unseen self-harm items [`phase14/PHASE14_REPORT.md`].
 - **Facts are unreliable.** Held-out fact score is 9/34; the model confidently names wrong people and places
   [`phase11/PHASE11C_REPORT.md`, `phase12/MINIGPT_V1_REPORT.md`].
 - **Over-refusal.** It refuses some harmless questions that contain "risky" words. Cutting refusal examples did
-  **not** fix this and weakened refusal of genuinely harmful requests (sealed harmful score 52/59 for the released
-  model vs 46/59 for the rebalanced one) [`phase13/PHASE13_REPORT.md`].
+  **not** fix this, and in one of two seeds weakened refusal of genuinely harmful requests (sealed harmful score 52/59 for the released
+  model vs 46/59 and 52/59 for the two rebalanced seeds) [`phase13/PHASE13_REPORT.md`].
 - **Seed noise is large.** Training the same recipe three times gave over-refusal scores of 42, 31 and 41 out of
   60 — an 18-point spread — so small over-refusal differences between models are not meaningful
   [`phase14/PHASE14_REPORT.md`].

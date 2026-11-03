@@ -1,9 +1,11 @@
-# MiniGPT
+# Chirri AI — MiniGPT
 
-A small GPT-style language model — **33,870,848 parameters** — built from scratch: tokeniser, pretraining,
-instruction tuning, a calculator tool, a rule-based safety layer, and an honest evaluation with pre-registered
-pass/fail rules. It is an education and research project, not a useful assistant: it gets many facts wrong and
-refuses some harmless questions.
+**Chirri AI** is a long-term project toward a Cognitive OS. **MiniGPT** is its foundation language model: a small
+GPT-style model — **33,870,848 parameters** — built from scratch, with its own tokeniser, pretraining, instruction
+tuning, a calculator tool, a rule-based safety layer, and an honest evaluation with pre-registered pass/fail rules.
+
+**Status: v1.0.1 is an early milestone, not a production-ready system.** It is an education and research model: it
+gets many facts wrong and refuses some harmless questions. Do not rely on its answers.
 
 Every number in this README comes from a committed report in this repository; the source is named in brackets.
 
@@ -60,6 +62,24 @@ but it caught only 2 of 4 unseen self-harm items [`phase14/PHASE14_REPORT.md`].
   reading limit at 34M parameters" [`phase15/PHASE15D_REPORT.md`]. A larger model is the likely next step.
 - **The evaluation is in-house.** The dev, held-out and over-refusal sets were written by the same author, so
   they are not independent benchmarks [`phase12/MODEL_CARD.md`].
+- **The test sets in this repository have been used and are no longer sealed.** Treat them as development data;
+  any future claim needs a fresh, unseen test set.
+
+## Roadmap
+
+These come from the next steps and limitations recorded in the experiment reports; none of them is built yet
+[`POST_RELEASE_EXPERIMENTS.md`, `phase15/PHASE15D_REPORT.md`]:
+
+1. **A larger foundation model.** At 34M parameters the model could not reliably read an answer out of a passage;
+   a bigger model is the most likely route to useful retrieval.
+2. **Retrieval done safely.** A router that never attaches passages to harmful or "unknown" prompts, and training
+   examples where refusals and "I don't know" answers come *with* passages attached.
+3. **Fresh, sealed evaluation.** New test sets — including a retrieval set whose gold passages are checked by a
+   person — since the current ones have been used.
+4. **Multi-seed comparisons.** Over-refusal varies by up to 18 points between identical training runs, so every
+   model comparison needs several seeds [`phase14/PHASE14_REPORT.md`].
+5. **Wider safety-layer coverage.** The self-harm layer missed impersonally worded messages; its pattern list needs
+   to cover them without adding false triggers [`phase14/PHASE14_REPORT.md`].
 
 ## Running the demo
 

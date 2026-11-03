@@ -1,11 +1,15 @@
-# Chirri AI — MiniGPT
+# Chirii AI — MiniGPT
 
-**Chirri AI** is a long-term project toward a Cognitive OS. **MiniGPT** is its foundation language model: a small
+**Chirii AI** is a long-term project toward a Cognitive OS. **MiniGPT** is its foundation language model: a small
 GPT-style model — **33,870,848 parameters** — built from scratch, with its own tokeniser, pretraining, instruction
 tuning, a calculator tool, a rule-based safety layer, and an honest evaluation with pre-registered pass/fail rules.
 
-**Status: v1.0.1 is an early milestone, not a production-ready system.** It is an education and research model: it
-gets many facts wrong and refuses some harmless questions. Do not rely on its answers.
+Chirii AI is a Cognitive OS: an environment that understands instructions, retrieves relevant knowledge, keeps
+useful context, reasons, uses tools, carries out tasks, and evaluates its own outputs. MiniGPT is its intelligence
+layer, built from scratch so every part of it is understood and measurable.
+
+**Status: v1.0.1 is an early milestone, not a production-ready system.** It gets many facts wrong and refuses some
+harmless questions, so use it for demonstration and evaluation only, and don't rely on its answers.
 
 Every number in this README comes from a committed report in this repository; the source is named in brackets.
 
@@ -123,6 +127,8 @@ No licence has been chosen yet for the code in this repository.
 
 ## How this was built
 
-This project was built with AI assistance: **Claude** for planning and **Claude Code** for implementation. The
-work was directed and reviewed by me (GitHub: KPCHIRAGGUPTHA) — I set the goals, the constraints and the pre-registered
-rules, and decided what to keep, release or reject.
+Chirii AI and MiniGPT are built by K P Chirag Guptha, with AI assistance (Claude for planning, Claude Code for
+implementation).
+
+The work was directed and reviewed by me (GitHub: KPCHIRAGGUPTHA) — I set the goals, the constraints and the
+pre-registered rules, and decided what to keep, release or reject.

@@ -1,0 +1,141 @@
+{
+  "name": "Qwen2.5-0.5B-Instruct",
+  "info": {
+    "kind": "hf",
+    "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "transformers": "5.22.1",
+    "torch": "2.15.0+cu132",
+    "dtype": "float32",
+    "parameters": 494032768,
+    "template_example": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\n<PROMPT><|im_end|>\n<|im_start|>assistant\n",
+    "generation": {
+      "do_sample": false,
+      "max_new_tokens": 128,
+      "repetition_penalty": 1.0,
+      "eos_token_id": [
+        151645,
+        151643
+      ]
+    }
+  },
+  "scorer": "v3",
+  "scorer_sha256": {
+    "phase11/goal_eval/scorer_v3.py": "c64991656e85b1f2c6873a0a4983c25d9d64e19f69d2e50dcf8b33868146cfa2",
+    "phase9/goal_eval/scorer_v2.py": "9fad4cb194c943f4d13fc12901dcfcdb5c86a84cb29bebbd696ba89e5f4adfad"
+  },
+  "sets": {
+    "heldout": {
+      "items": 180,
+      "seconds": 274.5,
+      "summary": {
+        "with_overlap": {
+          "correct": 126,
+          "total": 180,
+          "pct": 70.0
+        },
+        "without_overlap": {
+          "correct": 126,
+          "total": 180,
+          "pct": 70.0
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 16,
+            "total": 32,
+            "pct": 50.0
+          },
+          "definition": {
+            "correct": 26,
+            "total": 26,
+            "pct": 100.0
+          },
+          "fact": {
+            "correct": 29,
+            "total": 34,
+            "pct": 85.3
+          },
+          "instruction": {
+            "correct": 21,
+            "total": 30,
+            "pct": 70.0
+          },
+          "unknown": {
+            "correct": 11,
+            "total": 30,
+            "pct": 36.7
+          },
+          "harmful": {
+            "correct": 23,
+            "total": 28,
+            "pct": 82.1
+          }
+        }
+      },
+      "stopped_at_token_limit": 32,
+      "layer_fired": 0,
+      "replies_using_calculator": 0
+    },
+    "dev": {
+      "items": 176,
+      "seconds": 197.1,
+      "summary": {
+        "with_overlap": {
+          "correct": 127,
+          "total": 176,
+          "pct": 72.2
+        },
+        "without_overlap": {
+          "correct": 127,
+          "total": 176,
+          "pct": 72.2
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 22,
+            "total": 32,
+            "pct": 68.8
+          },
+          "definition": {
+            "correct": 25,
+            "total": 28,
+            "pct": 89.3
+          },
+          "fact": {
+            "correct": 29,
+            "total": 34,
+            "pct": 85.3
+          },
+          "instruction": {
+            "correct": 20,
+            "total": 30,
+            "pct": 66.7
+          },
+          "unknown": {
+            "correct": 8,
+            "total": 26,
+            "pct": 30.8
+          },
+          "harmful": {
+            "correct": 23,
+            "total": 26,
+            "pct": 88.5
+          }
+        }
+      },
+      "stopped_at_token_limit": 24,
+      "layer_fired": 0,
+      "replies_using_calculator": 0
+    }
+  }
+}

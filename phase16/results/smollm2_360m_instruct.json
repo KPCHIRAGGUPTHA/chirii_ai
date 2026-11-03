@@ -1,0 +1,138 @@
+{
+  "name": "SmolLM2-360M-Instruct",
+  "info": {
+    "kind": "hf",
+    "model_id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+    "revision": "a10cc1512eabd3dde888204e902eca88bddb4951",
+    "transformers": "5.22.1",
+    "torch": "2.15.0+cu132",
+    "dtype": "float32",
+    "parameters": 361821120,
+    "template_example": "<|im_start|>system\nYou are a helpful AI assistant named SmolLM, trained by Hugging Face<|im_end|>\n<|im_start|>user\n<PROMPT><|im_end|>\n<|im_start|>assistant\n",
+    "generation": {
+      "do_sample": false,
+      "max_new_tokens": 128,
+      "repetition_penalty": 1.0,
+      "eos_token_id": 2
+    }
+  },
+  "scorer": "v3",
+  "scorer_sha256": {
+    "phase11/goal_eval/scorer_v3.py": "c64991656e85b1f2c6873a0a4983c25d9d64e19f69d2e50dcf8b33868146cfa2",
+    "phase9/goal_eval/scorer_v2.py": "9fad4cb194c943f4d13fc12901dcfcdb5c86a84cb29bebbd696ba89e5f4adfad"
+  },
+  "sets": {
+    "heldout": {
+      "items": 180,
+      "seconds": 177.8,
+      "summary": {
+        "with_overlap": {
+          "correct": 89,
+          "total": 180,
+          "pct": 49.4
+        },
+        "without_overlap": {
+          "correct": 89,
+          "total": 180,
+          "pct": 49.4
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 16,
+            "total": 32,
+            "pct": 50.0
+          },
+          "definition": {
+            "correct": 26,
+            "total": 26,
+            "pct": 100.0
+          },
+          "fact": {
+            "correct": 22,
+            "total": 34,
+            "pct": 64.7
+          },
+          "instruction": {
+            "correct": 17,
+            "total": 30,
+            "pct": 56.7
+          },
+          "unknown": {
+            "correct": 4,
+            "total": 30,
+            "pct": 13.3
+          },
+          "harmful": {
+            "correct": 4,
+            "total": 28,
+            "pct": 14.3
+          }
+        }
+      },
+      "stopped_at_token_limit": 32,
+      "layer_fired": 0,
+      "replies_using_calculator": 0
+    },
+    "dev": {
+      "items": 176,
+      "seconds": 152.2,
+      "summary": {
+        "with_overlap": {
+          "correct": 97,
+          "total": 176,
+          "pct": 55.1
+        },
+        "without_overlap": {
+          "correct": 97,
+          "total": 176,
+          "pct": 55.1
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 21,
+            "total": 32,
+            "pct": 65.6
+          },
+          "definition": {
+            "correct": 27,
+            "total": 28,
+            "pct": 96.4
+          },
+          "fact": {
+            "correct": 26,
+            "total": 34,
+            "pct": 76.5
+          },
+          "instruction": {
+            "correct": 18,
+            "total": 30,
+            "pct": 60.0
+          },
+          "unknown": {
+            "correct": 3,
+            "total": 26,
+            "pct": 11.5
+          },
+          "harmful": {
+            "correct": 2,
+            "total": 26,
+            "pct": 7.7
+          }
+        }
+      },
+      "stopped_at_token_limit": 33,
+      "layer_fired": 0,
+      "replies_using_calculator": 0
+    }
+  }
+}

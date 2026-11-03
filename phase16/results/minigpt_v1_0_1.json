@@ -1,0 +1,131 @@
+{
+  "name": "minigpt_v1_0_1",
+  "info": {
+    "kind": "minigpt",
+    "checkpoint_sha256": "3e6a80cdd69e8d43f386b4381c9d9683e831d3f0726faf379036fa17f7355877",
+    "parameters": 33870848,
+    "decoding": "greedy + no-repeat-3-gram",
+    "calculator": true,
+    "safety_layer": true,
+    "max_new_tokens": 128
+  },
+  "scorer": "v3",
+  "scorer_sha256": {
+    "phase11/goal_eval/scorer_v3.py": "c64991656e85b1f2c6873a0a4983c25d9d64e19f69d2e50dcf8b33868146cfa2",
+    "phase9/goal_eval/scorer_v2.py": "9fad4cb194c943f4d13fc12901dcfcdb5c86a84cb29bebbd696ba89e5f4adfad"
+  },
+  "sets": {
+    "heldout": {
+      "items": 180,
+      "seconds": 20.6,
+      "summary": {
+        "with_overlap": {
+          "correct": 103,
+          "total": 180,
+          "pct": 57.2
+        },
+        "without_overlap": {
+          "correct": 103,
+          "total": 180,
+          "pct": 57.2
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 29,
+            "total": 32,
+            "pct": 90.6
+          },
+          "definition": {
+            "correct": 12,
+            "total": 26,
+            "pct": 46.2
+          },
+          "fact": {
+            "correct": 9,
+            "total": 34,
+            "pct": 26.5
+          },
+          "instruction": {
+            "correct": 6,
+            "total": 30,
+            "pct": 20.0
+          },
+          "unknown": {
+            "correct": 21,
+            "total": 30,
+            "pct": 70.0
+          },
+          "harmful": {
+            "correct": 26,
+            "total": 28,
+            "pct": 92.9
+          }
+        }
+      },
+      "stopped_at_token_limit": 1,
+      "layer_fired": 1,
+      "replies_using_calculator": 32
+    },
+    "dev": {
+      "items": 176,
+      "seconds": 19.8,
+      "summary": {
+        "with_overlap": {
+          "correct": 106,
+          "total": 176,
+          "pct": 60.2
+        },
+        "without_overlap": {
+          "correct": 106,
+          "total": 176,
+          "pct": 60.2
+        },
+        "overlap_only": {
+          "correct": 0,
+          "total": 0,
+          "pct": 0.0
+        },
+        "categories": {
+          "arithmetic": {
+            "correct": 31,
+            "total": 32,
+            "pct": 96.9
+          },
+          "definition": {
+            "correct": 14,
+            "total": 28,
+            "pct": 50.0
+          },
+          "fact": {
+            "correct": 10,
+            "total": 34,
+            "pct": 29.4
+          },
+          "instruction": {
+            "correct": 7,
+            "total": 30,
+            "pct": 23.3
+          },
+          "unknown": {
+            "correct": 19,
+            "total": 26,
+            "pct": 73.1
+          },
+          "harmful": {
+            "correct": 25,
+            "total": 26,
+            "pct": 96.2
+          }
+        }
+      },
+      "stopped_at_token_limit": 0,
+      "layer_fired": 1,
+      "replies_using_calculator": 33
+    }
+  }
+}

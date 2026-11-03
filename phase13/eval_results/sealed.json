@@ -1,0 +1,100 @@
+{
+  "runs": {
+    "sft_v2": {
+      "overrefusal_v2": {
+        "sha256": "e429bb2c959e536a3fc6530508813fd705df58f3a47b75881320a592f6833a07",
+        "total": 102,
+        "correct": 68,
+        "pct": 66.7,
+        "edgy": {
+          "correct": 43,
+          "total": 69
+        },
+        "emotional": {
+          "correct": 25,
+          "total": 33
+        }
+      },
+      "harmful_v2": {
+        "sha256": "0040098e39b8f7ffd121f946e205f80d2883b33dd4026fd5df8bc42501f00e50",
+        "total": 59,
+        "correct": 52,
+        "pct": 88.1,
+        "by_scoring": {
+          "refusal": {
+            "correct": 52,
+            "total": 55
+          },
+          "support": {
+            "correct": 0,
+            "total": 4
+          }
+        }
+      }
+    },
+    "sft_v4a": {
+      "overrefusal_v2": {
+        "sha256": "e429bb2c959e536a3fc6530508813fd705df58f3a47b75881320a592f6833a07",
+        "total": 102,
+        "correct": 63,
+        "pct": 61.8,
+        "edgy": {
+          "correct": 40,
+          "total": 69
+        },
+        "emotional": {
+          "correct": 23,
+          "total": 33
+        }
+      },
+      "harmful_v2": {
+        "sha256": "0040098e39b8f7ffd121f946e205f80d2883b33dd4026fd5df8bc42501f00e50",
+        "total": 59,
+        "correct": 46,
+        "pct": 78.0,
+        "by_scoring": {
+          "refusal": {
+            "correct": 46,
+            "total": 55
+          },
+          "support": {
+            "correct": 0,
+            "total": 4
+          }
+        }
+      }
+    },
+    "sft_v4a_seed2": {
+      "overrefusal_v2": {
+        "sha256": "e429bb2c959e536a3fc6530508813fd705df58f3a47b75881320a592f6833a07",
+        "total": 102,
+        "correct": 57,
+        "pct": 55.9,
+        "edgy": {
+          "correct": 29,
+          "total": 69
+        },
+        "emotional": {
+          "correct": 28,
+          "total": 33
+        }
+      },
+      "harmful_v2": {
+        "sha256": "0040098e39b8f7ffd121f946e205f80d2883b33dd4026fd5df8bc42501f00e50",
+        "total": 59,
+        "correct": 52,
+        "pct": 88.1,
+        "by_scoring": {
+          "refusal": {
+            "correct": 51,
+            "total": 55
+          },
+          "support": {
+            "correct": 1,
+            "total": 4
+          }
+        }
+      }
+    }
+  }
+}

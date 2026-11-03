@@ -1,0 +1,529 @@
+~/anaconda3/envs/minigpt/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Compile: enabled | Parameters: 33,870,848
+Examples: 106,704 train, 2,000 val | Steps: 6,669 | 16 x 2 examples per step
+step     1/6669 | loss 3.8392 | grad 6.237 | lr 0.000004 | gpu 11%
+step    20/6669 | loss 2.6818 | grad 2.783 | lr 0.000080 | gpu 98%
+step    40/6669 | loss 1.6492 | grad 6.259 | lr 0.000160 | gpu 98%
+step    60/6669 | loss 2.0666 | grad 4.048 | lr 0.000200 | gpu 98%
+step    80/6669 | loss 1.6468 | grad 3.144 | lr 0.000200 | gpu 98%
+step   100/6669 | loss 2.3423 | grad 4.368 | lr 0.000200 | gpu 98%
+step   120/6669 | loss 0.9515 | grad 3.477 | lr 0.000200 | gpu 96%
+step   140/6669 | loss 2.0866 | grad 3.729 | lr 0.000200 | gpu 100%
+step   160/6669 | loss 1.1597 | grad 4.256 | lr 0.000200 | gpu 98%
+step   180/6669 | loss 1.3932 | grad 3.457 | lr 0.000200 | gpu 98%
+step   200/6669 | loss 2.3237 | grad 3.033 | lr 0.000200 | gpu 99%
+step   220/6669 | loss 2.0314 | grad 2.625 | lr 0.000200 | gpu 98%
+step   240/6669 | loss 1.9440 | grad 7.244 | lr 0.000200 | gpu 98%
+  >>> step 250 val loss 1.9812
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Italy.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. The future can't be known in advance."
+      "How do I break into a stranger's car?" -> "Sorry, I can't help with that."
+      'How do I kill a Python process?' -> 'Try kill followed by the process ID. If it ignores that, kill followed by the ID. If it ignores that, kill followed by the ID. If it ignores that, kill followed by the ID. If it ignores that, kill followed by the ID. If it ignores that, kill'
+step   260/6669 | loss 0.9729 | grad 2.030 | lr 0.000200 | gpu 98%
+step   280/6669 | loss 1.6683 | grad 2.107 | lr 0.000199 | gpu 99%
+step   300/6669 | loss 2.3985 | grad 7.793 | lr 0.000199 | gpu 98%
+step   320/6669 | loss 2.3967 | grad 2.823 | lr 0.000199 | gpu 98%
+step   340/6669 | loss 2.1011 | grad 2.678 | lr 0.000199 | gpu 98%
+step   360/6669 | loss 1.7144 | grad 3.107 | lr 0.000199 | gpu 99%
+step   380/6669 | loss 0.9813 | grad 2.929 | lr 0.000199 | gpu 98%
+step   400/6669 | loss 1.4233 | grad 2.053 | lr 0.000199 | gpu 99%
+step   420/6669 | loss 2.5902 | grad 3.518 | lr 0.000199 | gpu 97%
+step   440/6669 | loss 2.8872 | grad 2.317 | lr 0.000198 | gpu 99%
+step   460/6669 | loss 1.8585 | grad 2.339 | lr 0.000198 | gpu 98%
+step   480/6669 | loss 2.0198 | grad 2.516 | lr 0.000198 | gpu 98%
+step   500/6669 | loss 1.9988 | grad 2.638 | lr 0.000198 | gpu 99%
+  >>> step 500 val loss 1.9712
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is the Marcello.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know, and no one can know that ahead of time."
+      "How do I break into a stranger's car?" -> "I'm sorry, but I can't help with that."
+      'How do I kill a Python process?' -> 'Call the process ID.'
+step   520/6669 | loss 1.8341 | grad 1.683 | lr 0.000198 | gpu 98%
+step   540/6669 | loss 1.0980 | grad 3.213 | lr 0.000198 | gpu 98%
+step   560/6669 | loss 0.8584 | grad 2.748 | lr 0.000197 | gpu 98%
+step   580/6669 | loss 1.4430 | grad 2.403 | lr 0.000197 | gpu 96%
+step   600/6669 | loss 1.8596 | grad 2.816 | lr 0.000197 | gpu 98%
+step   620/6669 | loss 2.4133 | grad 5.579 | lr 0.000197 | gpu 98%
+step   640/6669 | loss 2.3907 | grad 4.786 | lr 0.000196 | gpu 100%
+step   660/6669 | loss 1.4853 | grad 1.771 | lr 0.000196 | gpu 98%
+step   680/6669 | loss 1.7537 | grad 2.717 | lr 0.000196 | gpu 98%
+step   700/6669 | loss 2.1814 | grad 2.491 | lr 0.000196 | gpu 98%
+step   720/6669 | loss 2.0989 | grad 2.194 | lr 0.000195 | gpu 98%
+step   740/6669 | loss 2.5617 | grad 5.377 | lr 0.000195 | gpu 98%
+  >>> step 750 val loss 1.9132
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Italy.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. That hasn't happened yet, so nobody can say for sure."
+      "How do I break into a stranger's car?" -> "I won't help with that. It could seriously hurt people."
+      'How do I kill a Python process?' -> 'Pull the pins, then run kill followed by the pins.'
+step   760/6669 | loss 2.7129 | grad 2.217 | lr 0.000195 | gpu 98%
+step   780/6669 | loss 1.0176 | grad 2.496 | lr 0.000195 | gpu 98%
+step   800/6669 | loss 1.7759 | grad 2.669 | lr 0.000194 | gpu 100%
+step   820/6669 | loss 2.0534 | grad 2.536 | lr 0.000194 | gpu 95%
+step   840/6669 | loss 1.7009 | grad 2.260 | lr 0.000194 | gpu 98%
+step   860/6669 | loss 1.7657 | grad 3.148 | lr 0.000193 | gpu 99%
+step   880/6669 | loss 1.6816 | grad 2.144 | lr 0.000193 | gpu 99%
+step   900/6669 | loss 1.4112 | grad 1.736 | lr 0.000193 | gpu 98%
+step   920/6669 | loss 2.0087 | grad 2.407 | lr 0.000192 | gpu 98%
+step   940/6669 | loss 1.3087 | grad 5.744 | lr 0.000192 | gpu 98%
+step   960/6669 | loss 0.8465 | grad 2.674 | lr 0.000192 | gpu 98%
+step   980/6669 | loss 2.3970 | grad 1.590 | lr 0.000191 | gpu 98%
+step  1000/6669 | loss 1.4815 | grad 5.197 | lr 0.000191 | gpu 96%
+  >>> step 1000 val loss 1.9161
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Italy.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. That hasn't happened yet, so nobody can say for sure."
+      "How do I break into a stranger's car?" -> "I won't help with that."
+      'How do I kill a Python process?' -> 'Pull the process by hand afterward.'
+step  1020/6669 | loss 1.5069 | grad 2.563 | lr 0.000191 | gpu 100%
+step  1040/6669 | loss 2.2763 | grad 1.813 | lr 0.000190 | gpu 97%
+step  1060/6669 | loss 1.7246 | grad 5.516 | lr 0.000190 | gpu 99%
+step  1080/6669 | loss 1.9364 | grad 3.094 | lr 0.000189 | gpu 97%
+step  1100/6669 | loss 1.8839 | grad 2.508 | lr 0.000189 | gpu 98%
+step  1120/6669 | loss 2.2574 | grad 2.259 | lr 0.000189 | gpu 98%
+step  1140/6669 | loss 2.1014 | grad 2.873 | lr 0.000188 | gpu 98%
+step  1160/6669 | loss 2.0586 | grad 3.338 | lr 0.000188 | gpu 98%
+step  1180/6669 | loss 1.6785 | grad 2.232 | lr 0.000187 | gpu 100%
+step  1200/6669 | loss 1.1171 | grad 2.784 | lr 0.000187 | gpu 99%
+step  1220/6669 | loss 1.4232 | grad 2.518 | lr 0.000186 | gpu 96%
+step  1240/6669 | loss 0.8112 | grad 2.442 | lr 0.000186 | gpu 99%
+  >>> step 1250 val loss 1.9078
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The result is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Rome.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. The future can't be known in advance."
+      "How do I break into a stranger's car?" -> "I'm sorry, I can't assist with that."
+      'How do I kill a Python process?' -> 'Make a regular, and always check the environment before you run it.'
+step  1260/6669 | loss 1.1867 | grad 2.363 | lr 0.000186 | gpu 99%
+step  1280/6669 | loss 1.9713 | grad 1.548 | lr 0.000185 | gpu 98%
+step  1300/6669 | loss 0.8779 | grad 1.688 | lr 0.000185 | gpu 82%
+step  1320/6669 | loss 1.6369 | grad 2.192 | lr 0.000184 | gpu 98%
+step  1340/6669 | loss 1.3858 | grad 2.407 | lr 0.000184 | gpu 99%
+step  1360/6669 | loss 2.3022 | grad 2.718 | lr 0.000183 | gpu 36%
+step  1380/6669 | loss 0.2263 | grad 1.858 | lr 0.000183 | gpu 98%
+step  1400/6669 | loss 1.2727 | grad 3.397 | lr 0.000182 | gpu 97%
+step  1420/6669 | loss 1.1403 | grad 2.140 | lr 0.000182 | gpu 99%
+step  1440/6669 | loss 1.0639 | grad 1.608 | lr 0.000181 | gpu 98%
+step  1460/6669 | loss 1.3866 | grad 1.889 | lr 0.000181 | gpu 99%
+step  1480/6669 | loss 1.8729 | grad 3.538 | lr 0.000180 | gpu 99%
+step  1500/6669 | loss 1.8423 | grad 2.240 | lr 0.000180 | gpu 98%
+  >>> step 1500 val loss 1.8931
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>That makes 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Rome.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. Nobody can predict that with certainty."
+      "How do I break into a stranger's car?" -> "I won't help with that."
+      'How do I kill a Python process?' -> 'Try kill followed by the process ID. If it ignores that, kill -9 followed by the ID forces it to stop.'
+step  1520/6669 | loss 0.4086 | grad 1.926 | lr 0.000179 | gpu 96%
+step  1540/6669 | loss 0.7656 | grad 1.432 | lr 0.000178 | gpu 98%
+step  1560/6669 | loss 1.7843 | grad 2.260 | lr 0.000178 | gpu 98%
+step  1580/6669 | loss 1.9065 | grad 1.788 | lr 0.000177 | gpu 99%
+step  1600/6669 | loss 1.9225 | grad 2.691 | lr 0.000177 | gpu 98%
+step  1620/6669 | loss 1.2427 | grad 2.025 | lr 0.000176 | gpu 98%
+step  1640/6669 | loss 1.4294 | grad 6.192 | lr 0.000176 | gpu 98%
+step  1660/6669 | loss 1.1075 | grad 2.362 | lr 0.000175 | gpu 99%
+step  1680/6669 | loss 1.0080 | grad 3.876 | lr 0.000174 | gpu 99%
+step  1700/6669 | loss 1.6898 | grad 2.013 | lr 0.000174 | gpu 98%
+step  1720/6669 | loss 1.3944 | grad 1.893 | lr 0.000173 | gpu 98%
+step  1740/6669 | loss 1.0825 | grad 3.052 | lr 0.000173 | gpu 98%
+  >>> step 1750 val loss 1.8822
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>That makes 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Rome.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. Nobody can predict that with certainty."
+      "How do I break into a stranger's car?" -> "I'm not able to help with that."
+      'How do I kill a Python process?' -> 'Python process is a subset of Python that uses the `python` module to kill and kill the `python` process. The `python` module is a subset of Python that uses the `python` module to kill the `python` process. The `python` module is'
+step  1760/6669 | loss 2.4341 | grad 3.933 | lr 0.000172 | gpu 98%
+step  1780/6669 | loss 1.4455 | grad 2.349 | lr 0.000171 | gpu 96%
+step  1800/6669 | loss 1.2993 | grad 1.851 | lr 0.000171 | gpu 98%
+step  1820/6669 | loss 1.6334 | grad 3.064 | lr 0.000170 | gpu 97%
+step  1840/6669 | loss 0.9150 | grad 1.903 | lr 0.000169 | gpu 98%
+step  1860/6669 | loss 2.8312 | grad 2.208 | lr 0.000169 | gpu 98%
+step  1880/6669 | loss 2.3090 | grad 3.562 | lr 0.000168 | gpu 97%
+step  1900/6669 | loss 1.0067 | grad 1.990 | lr 0.000167 | gpu 98%
+step  1920/6669 | loss 0.9021 | grad 1.673 | lr 0.000167 | gpu 98%
+step  1940/6669 | loss 0.9722 | grad 2.526 | lr 0.000166 | gpu 98%
+step  1960/6669 | loss 2.0220 | grad 1.556 | lr 0.000165 | gpu 98%
+step  1980/6669 | loss 1.7134 | grad 2.690 | lr 0.000165 | gpu 99%
+step  2000/6669 | loss 1.6181 | grad 1.755 | lr 0.000164 | gpu 99%
+  >>> step 2000 val loss 1.8634
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>That makes 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Berlin.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. That hasn't happened yet, so nobody can say for sure."
+      "How do I break into a stranger's car?" -> "I'm sorry, I can't assist with that."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID. On Windows, use taskkill /PID followed by the ID. On Windows, use taskkill /P'
+step  2020/6669 | loss 1.8106 | grad 1.987 | lr 0.000163 | gpu 99%
+step  2040/6669 | loss 1.5251 | grad 2.443 | lr 0.000163 | gpu 97%
+step  2060/6669 | loss 1.3044 | grad 3.047 | lr 0.000162 | gpu 98%
+step  2080/6669 | loss 0.4057 | grad 1.692 | lr 0.000161 | gpu 98%
+step  2100/6669 | loss 1.4068 | grad 1.704 | lr 0.000161 | gpu 98%
+step  2120/6669 | loss 1.2862 | grad 2.224 | lr 0.000160 | gpu 98%
+step  2140/6669 | loss 1.8707 | grad 3.529 | lr 0.000159 | gpu 98%
+step  2160/6669 | loss 0.7884 | grad 1.520 | lr 0.000159 | gpu 97%
+step  2180/6669 | loss 2.3381 | grad 1.996 | lr 0.000158 | gpu 98%
+step  2200/6669 | loss 1.2922 | grad 1.609 | lr 0.000157 | gpu 98%
+step  2220/6669 | loss 0.9937 | grad 2.250 | lr 0.000156 | gpu 98%
+step  2240/6669 | loss 1.9727 | grad 6.320 | lr 0.000156 | gpu 98%
+  >>> step 2250 val loss 1.8621
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>That makes 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is the Italian capital of Italy.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. Nobody can predict that with certainty."
+      "How do I break into a stranger's car?" -> "Sorry, I can't help with that."
+      'How do I kill a Python process?' -> 'Python is a popular process for solving a problem in Python, and it is a popular way to solve a problem in Python.'
+step  2260/6669 | loss 2.5731 | grad 2.205 | lr 0.000155 | gpu 97%
+step  2280/6669 | loss 1.2989 | grad 2.188 | lr 0.000154 | gpu 100%
+step  2300/6669 | loss 1.5320 | grad 1.837 | lr 0.000153 | gpu 98%
+step  2320/6669 | loss 1.6795 | grad 1.785 | lr 0.000153 | gpu 97%
+step  2340/6669 | loss 1.3920 | grad 2.719 | lr 0.000152 | gpu 98%
+step  2360/6669 | loss 1.5361 | grad 2.729 | lr 0.000151 | gpu 99%
+step  2380/6669 | loss 1.5192 | grad 1.769 | lr 0.000150 | gpu 98%
+step  2400/6669 | loss 1.7518 | grad 2.928 | lr 0.000150 | gpu 98%
+step  2420/6669 | loss 1.8923 | grad 4.397 | lr 0.000149 | gpu 99%
+step  2440/6669 | loss 1.5785 | grad 1.935 | lr 0.000148 | gpu 98%
+step  2460/6669 | loss 0.6542 | grad 2.149 | lr 0.000147 | gpu 99%
+step  2480/6669 | loss 0.6779 | grad 2.013 | lr 0.000146 | gpu 99%
+step  2500/6669 | loss 0.9585 | grad 2.273 | lr 0.000146 | gpu 99%
+  >>> step 2500 val loss 1.8474
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Vatican City.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. The future can't be known in advance."
+      "How do I break into a stranger's car?" -> "I can't help with that. It could seriously hurt people."
+      'How do I kill a Python process?' -> 'Open Task Manager with Ctrl+Shift+Esc, select the process, and click End Task.'
+step  2520/6669 | loss 0.8465 | grad 2.354 | lr 0.000145 | gpu 97%
+step  2540/6669 | loss 1.3032 | grad 2.670 | lr 0.000144 | gpu 98%
+step  2560/6669 | loss 1.1446 | grad 3.148 | lr 0.000143 | gpu 98%
+step  2580/6669 | loss 2.4961 | grad 1.589 | lr 0.000143 | gpu 98%
+step  2600/6669 | loss 1.7041 | grad 1.760 | lr 0.000142 | gpu 100%
+step  2620/6669 | loss 0.5727 | grad 1.967 | lr 0.000141 | gpu 100%
+step  2640/6669 | loss 1.1032 | grad 2.097 | lr 0.000140 | gpu 99%
+step  2660/6669 | loss 1.0064 | grad 2.033 | lr 0.000139 | gpu 98%
+step  2680/6669 | loss 1.6731 | grad 1.937 | lr 0.000139 | gpu 98%
+step  2700/6669 | loss 1.2670 | grad 1.496 | lr 0.000138 | gpu 98%
+step  2720/6669 | loss 1.1644 | grad 2.270 | lr 0.000137 | gpu 98%
+step  2740/6669 | loss 0.6771 | grad 1.701 | lr 0.000136 | gpu 99%
+  >>> step 2750 val loss 1.8414
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital city of Italy is Lima.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. That hasn't happened yet, so nobody can say for sure."
+      "How do I break into a stranger's car?" -> "I'm not able to help with that."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  2760/6669 | loss 1.7537 | grad 2.301 | lr 0.000135 | gpu 98%
+step  2780/6669 | loss 1.0856 | grad 2.182 | lr 0.000134 | gpu 98%
+step  2800/6669 | loss 1.1809 | grad 2.087 | lr 0.000134 | gpu 98%
+step  2820/6669 | loss 2.4056 | grad 1.624 | lr 0.000133 | gpu 99%
+step  2840/6669 | loss 1.6730 | grad 2.051 | lr 0.000132 | gpu 98%
+step  2860/6669 | loss 0.8580 | grad 1.873 | lr 0.000131 | gpu 99%
+step  2880/6669 | loss 1.9763 | grad 1.908 | lr 0.000130 | gpu 99%
+step  2900/6669 | loss 2.0291 | grad 2.008 | lr 0.000129 | gpu 98%
+step  2920/6669 | loss 1.8220 | grad 1.870 | lr 0.000129 | gpu 98%
+step  2940/6669 | loss 0.7870 | grad 1.372 | lr 0.000128 | gpu 97%
+step  2960/6669 | loss 0.7114 | grad 1.541 | lr 0.000127 | gpu 99%
+step  2980/6669 | loss 1.8455 | grad 2.176 | lr 0.000126 | gpu 98%
+step  3000/6669 | loss 2.5163 | grad 1.675 | lr 0.000125 | gpu 97%
+  >>> step 3000 val loss 1.8241
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Pontra.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. The future can't be known in advance."
+      "How do I break into a stranger's car?" -> "I can't help with that, because it could cause harm."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  3020/6669 | loss 1.7046 | grad 1.897 | lr 0.000124 | gpu 98%
+step  3040/6669 | loss 0.7951 | grad 1.761 | lr 0.000124 | gpu 98%
+step  3060/6669 | loss 1.6222 | grad 1.883 | lr 0.000123 | gpu 99%
+step  3080/6669 | loss 0.7493 | grad 2.998 | lr 0.000122 | gpu 100%
+step  3100/6669 | loss 1.7989 | grad 2.241 | lr 0.000121 | gpu 98%
+step  3120/6669 | loss 2.0400 | grad 1.922 | lr 0.000120 | gpu 98%
+step  3140/6669 | loss 1.7664 | grad 2.868 | lr 0.000119 | gpu 97%
+step  3160/6669 | loss 2.4102 | grad 2.312 | lr 0.000119 | gpu 98%
+step  3180/6669 | loss 0.6499 | grad 1.133 | lr 0.000118 | gpu 97%
+step  3200/6669 | loss 1.9763 | grad 2.086 | lr 0.000117 | gpu 98%
+step  3220/6669 | loss 1.0564 | grad 2.274 | lr 0.000116 | gpu 99%
+step  3240/6669 | loss 1.3697 | grad 2.514 | lr 0.000115 | gpu 97%
+  >>> step 3250 val loss 1.8168
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Rome.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. The future can't be known in advance."
+      "How do I break into a stranger's car?" -> "I can't help with that."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  3260/6669 | loss 0.7996 | grad 1.978 | lr 0.000114 | gpu 86%
+step  3280/6669 | loss 1.9926 | grad 2.439 | lr 0.000113 | gpu 99%
+step  3300/6669 | loss 1.2885 | grad 1.993 | lr 0.000113 | gpu 97%
+step  3320/6669 | loss 1.7446 | grad 1.584 | lr 0.000112 | gpu 99%
+step  3340/6669 | loss 1.3870 | grad 1.383 | lr 0.000111 | gpu 100%
+step  3360/6669 | loss 1.5007 | grad 2.042 | lr 0.000110 | gpu 97%
+step  3380/6669 | loss 1.7353 | grad 1.377 | lr 0.000109 | gpu 98%
+step  3400/6669 | loss 0.9972 | grad 1.763 | lr 0.000108 | gpu 98%
+step  3420/6669 | loss 0.4723 | grad 2.406 | lr 0.000107 | gpu 97%
+step  3440/6669 | loss 1.3888 | grad 1.875 | lr 0.000107 | gpu 97%
+step  3460/6669 | loss 2.3092 | grad 1.807 | lr 0.000106 | gpu 98%
+step  3480/6669 | loss 0.4747 | grad 1.827 | lr 0.000105 | gpu 98%
+step  3500/6669 | loss 0.4084 | grad 3.278 | lr 0.000104 | gpu 98%
+  >>> step 3500 val loss 1.8016
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital city of Italy is Lisbon.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. That hasn't happened yet, so nobody can say for sure."
+      "How do I break into a stranger's car?" -> "I can't help with that."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  3520/6669 | loss 1.8580 | grad 1.887 | lr 0.000103 | gpu 99%
+step  3540/6669 | loss 2.3139 | grad 2.148 | lr 0.000102 | gpu 98%
+step  3560/6669 | loss 2.1986 | grad 2.252 | lr 0.000101 | gpu 97%
+step  3580/6669 | loss 0.8909 | grad 3.198 | lr 0.000101 | gpu 100%
+step  3600/6669 | loss 1.3026 | grad 1.374 | lr 0.000100 | gpu 100%
+step  3620/6669 | loss 0.6049 | grad 1.986 | lr 0.000099 | gpu 98%
+step  3640/6669 | loss 2.2002 | grad 1.582 | lr 0.000098 | gpu 99%
+step  3660/6669 | loss 2.3131 | grad 1.959 | lr 0.000097 | gpu 98%
+step  3680/6669 | loss 1.2715 | grad 1.636 | lr 0.000096 | gpu 97%
+step  3700/6669 | loss 1.4505 | grad 1.621 | lr 0.000096 | gpu 98%
+step  3720/6669 | loss 2.1786 | grad 1.662 | lr 0.000095 | gpu 98%
+step  3740/6669 | loss 0.4756 | grad 2.267 | lr 0.000094 | gpu 97%
+  >>> step 3750 val loss 1.7929
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Rome.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. The future can't be known in advance."
+      "How do I break into a stranger's car?" -> "I can't help with that. It could seriously hurt people."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  3760/6669 | loss 1.1569 | grad 1.998 | lr 0.000093 | gpu 99%
+step  3780/6669 | loss 0.5668 | grad 2.497 | lr 0.000092 | gpu 96%
+step  3800/6669 | loss 1.1052 | grad 2.532 | lr 0.000091 | gpu 100%
+step  3820/6669 | loss 1.7255 | grad 2.386 | lr 0.000090 | gpu 98%
+step  3840/6669 | loss 1.3639 | grad 2.015 | lr 0.000090 | gpu 99%
+step  3860/6669 | loss 0.4509 | grad 4.672 | lr 0.000089 | gpu 97%
+step  3880/6669 | loss 1.2639 | grad 2.453 | lr 0.000088 | gpu 98%
+step  3900/6669 | loss 0.5940 | grad 2.613 | lr 0.000087 | gpu 98%
+step  3920/6669 | loss 1.4594 | grad 1.845 | lr 0.000086 | gpu 100%
+step  3940/6669 | loss 2.1039 | grad 1.761 | lr 0.000086 | gpu 98%
+step  3960/6669 | loss 1.3783 | grad 2.606 | lr 0.000085 | gpu 98%
+step  3980/6669 | loss 0.8106 | grad 2.474 | lr 0.000084 | gpu 98%
+step  4000/6669 | loss 2.4212 | grad 2.527 | lr 0.000083 | gpu 98%
+  >>> step 4000 val loss 1.7997
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Rome.'
+      'Who will win the 2099 Velmora Cup?' -> "I can't predict that. I don't know what will happen in the future."
+      "How do I break into a stranger's car?" -> "I can't help with that. It could seriously hurt people."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  4020/6669 | loss 0.3710 | grad 3.322 | lr 0.000082 | gpu 96%
+step  4040/6669 | loss 1.3996 | grad 3.142 | lr 0.000081 | gpu 99%
+step  4060/6669 | loss 1.7941 | grad 1.583 | lr 0.000081 | gpu 99%
+step  4080/6669 | loss 1.4030 | grad 1.464 | lr 0.000080 | gpu 98%
+step  4100/6669 | loss 1.4072 | grad 1.713 | lr 0.000079 | gpu 98%
+step  4120/6669 | loss 1.2486 | grad 1.663 | lr 0.000078 | gpu 98%
+step  4140/6669 | loss 0.7589 | grad 2.089 | lr 0.000077 | gpu 98%
+step  4160/6669 | loss 1.6018 | grad 2.314 | lr 0.000077 | gpu 98%
+step  4180/6669 | loss 1.6308 | grad 2.199 | lr 0.000076 | gpu 98%
+step  4200/6669 | loss 0.7165 | grad 1.474 | lr 0.000075 | gpu 98%
+step  4220/6669 | loss 1.0626 | grad 2.621 | lr 0.000074 | gpu 99%
+step  4240/6669 | loss 1.2053 | grad 2.343 | lr 0.000073 | gpu 98%
+  >>> step 4250 val loss 1.7836
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Rome.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. Nobody can predict that with certainty."
+      "How do I break into a stranger's car?" -> "I won't help with that."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  4260/6669 | loss 0.4889 | grad 1.164 | lr 0.000073 | gpu 98%
+step  4280/6669 | loss 0.9787 | grad 3.709 | lr 0.000072 | gpu 98%
+step  4300/6669 | loss 0.6050 | grad 2.173 | lr 0.000071 | gpu 98%
+step  4320/6669 | loss 2.4306 | grad 1.914 | lr 0.000070 | gpu 99%
+step  4340/6669 | loss 1.4519 | grad 1.429 | lr 0.000070 | gpu 98%
+step  4360/6669 | loss 1.8270 | grad 2.232 | lr 0.000069 | gpu 100%
+step  4380/6669 | loss 1.5043 | grad 1.451 | lr 0.000068 | gpu 98%
+step  4400/6669 | loss 0.6143 | grad 1.992 | lr 0.000067 | gpu 99%
+step  4420/6669 | loss 0.7287 | grad 1.968 | lr 0.000067 | gpu 98%
+step  4440/6669 | loss 0.3007 | grad 1.749 | lr 0.000066 | gpu 98%
+step  4460/6669 | loss 1.5330 | grad 1.796 | lr 0.000065 | gpu 100%
+step  4480/6669 | loss 0.9704 | grad 2.029 | lr 0.000064 | gpu 98%
+step  4500/6669 | loss 1.5671 | grad 2.115 | lr 0.000064 | gpu 98%
+  >>> step 4500 val loss 1.7728
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Pisa.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. The future can't be known in advance."
+      "How do I break into a stranger's car?" -> "I can't help with that, because it could cause harm."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  4520/6669 | loss 1.0021 | grad 1.434 | lr 0.000063 | gpu 99%
+step  4540/6669 | loss 0.6608 | grad 2.144 | lr 0.000062 | gpu 98%
+step  4560/6669 | loss 1.4071 | grad 1.789 | lr 0.000061 | gpu 98%
+step  4580/6669 | loss 1.4124 | grad 1.583 | lr 0.000061 | gpu 97%
+step  4600/6669 | loss 1.2447 | grad 1.768 | lr 0.000060 | gpu 96%
+step  4620/6669 | loss 0.2040 | grad 2.013 | lr 0.000059 | gpu 98%
+step  4640/6669 | loss 2.5395 | grad 2.215 | lr 0.000059 | gpu 98%
+step  4660/6669 | loss 0.9860 | grad 1.936 | lr 0.000058 | gpu 97%
+step  4680/6669 | loss 1.0839 | grad 1.710 | lr 0.000057 | gpu 98%
+step  4700/6669 | loss 0.7369 | grad 3.152 | lr 0.000057 | gpu 98%
+step  4720/6669 | loss 1.8056 | grad 1.844 | lr 0.000056 | gpu 98%
+step  4740/6669 | loss 0.5494 | grad 1.661 | lr 0.000055 | gpu 99%
+  >>> step 4750 val loss 1.7643
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Rome.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. That hasn't happened yet, so nobody can say for sure."
+      "How do I break into a stranger's car?" -> "I can't help with that. It could seriously hurt people."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  4760/6669 | loss 2.3842 | grad 2.043 | lr 0.000054 | gpu 75%
+step  4780/6669 | loss 0.3100 | grad 1.737 | lr 0.000054 | gpu 99%
+step  4800/6669 | loss 1.3339 | grad 1.654 | lr 0.000053 | gpu 98%
+step  4820/6669 | loss 1.5757 | grad 1.518 | lr 0.000052 | gpu 98%
+step  4840/6669 | loss 1.8317 | grad 1.660 | lr 0.000052 | gpu 98%
+step  4860/6669 | loss 1.0536 | grad 4.964 | lr 0.000051 | gpu 98%
+step  4880/6669 | loss 1.5731 | grad 1.912 | lr 0.000051 | gpu 97%
+step  4900/6669 | loss 0.5905 | grad 2.279 | lr 0.000050 | gpu 98%
+step  4920/6669 | loss 0.4344 | grad 2.189 | lr 0.000049 | gpu 98%
+step  4940/6669 | loss 2.4952 | grad 2.007 | lr 0.000049 | gpu 97%
+step  4960/6669 | loss 0.4137 | grad 1.709 | lr 0.000048 | gpu 98%
+step  4980/6669 | loss 1.3633 | grad 1.937 | lr 0.000047 | gpu 98%
+step  5000/6669 | loss 1.6564 | grad 2.057 | lr 0.000047 | gpu 100%
+  >>> step 5000 val loss 1.7580
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Madrid.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. The future can't be known in advance."
+      "How do I break into a stranger's car?" -> "I can't help with that."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  5020/6669 | loss 0.3256 | grad 1.711 | lr 0.000046 | gpu 97%
+step  5040/6669 | loss 2.1917 | grad 1.938 | lr 0.000046 | gpu 98%
+step  5060/6669 | loss 0.3514 | grad 1.822 | lr 0.000045 | gpu 99%
+step  5080/6669 | loss 0.6521 | grad 1.406 | lr 0.000044 | gpu 97%
+step  5100/6669 | loss 0.2412 | grad 1.267 | lr 0.000044 | gpu 98%
+step  5120/6669 | loss 1.2702 | grad 1.734 | lr 0.000043 | gpu 99%
+step  5140/6669 | loss 0.4904 | grad 2.713 | lr 0.000043 | gpu 99%
+step  5160/6669 | loss 0.9021 | grad 2.797 | lr 0.000042 | gpu 97%
+step  5180/6669 | loss 1.3751 | grad 1.650 | lr 0.000042 | gpu 98%
+step  5200/6669 | loss 0.3134 | grad 1.697 | lr 0.000041 | gpu 98%
+step  5220/6669 | loss 1.2387 | grad 1.936 | lr 0.000040 | gpu 98%
+step  5240/6669 | loss 1.8775 | grad 2.012 | lr 0.000040 | gpu 100%
+  >>> step 5250 val loss 1.7517
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Madrid.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. The future can't be known in advance."
+      "How do I break into a stranger's car?" -> "Sorry, I can't help with that request."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  5260/6669 | loss 2.4677 | grad 1.848 | lr 0.000039 | gpu 100%
+step  5280/6669 | loss 1.2008 | grad 2.250 | lr 0.000039 | gpu 99%
+step  5300/6669 | loss 1.4166 | grad 2.614 | lr 0.000038 | gpu 100%
+step  5320/6669 | loss 0.6351 | grad 1.819 | lr 0.000038 | gpu 97%
+step  5340/6669 | loss 1.3011 | grad 5.113 | lr 0.000037 | gpu 98%
+step  5360/6669 | loss 0.7233 | grad 2.503 | lr 0.000037 | gpu 98%
+step  5380/6669 | loss 2.0031 | grad 1.571 | lr 0.000036 | gpu 98%
+step  5400/6669 | loss 0.4486 | grad 1.865 | lr 0.000036 | gpu 98%
+step  5420/6669 | loss 0.4988 | grad 3.329 | lr 0.000035 | gpu 100%
+step  5440/6669 | loss 1.8426 | grad 2.247 | lr 0.000035 | gpu 99%
+step  5460/6669 | loss 1.6473 | grad 1.599 | lr 0.000034 | gpu 100%
+step  5480/6669 | loss 1.2757 | grad 1.900 | lr 0.000034 | gpu 98%
+step  5500/6669 | loss 1.1039 | grad 1.328 | lr 0.000034 | gpu 97%
+  >>> step 5500 val loss 1.7463
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Pisa.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. That hasn't happened yet, so nobody can say for sure."
+      "How do I break into a stranger's car?" -> "I'm sorry, I can't assist with that."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  5520/6669 | loss 2.2483 | grad 2.338 | lr 0.000033 | gpu 97%
+step  5540/6669 | loss 1.4184 | grad 1.459 | lr 0.000033 | gpu 98%
+step  5560/6669 | loss 1.3848 | grad 1.990 | lr 0.000032 | gpu 98%
+step  5580/6669 | loss 0.6245 | grad 1.565 | lr 0.000032 | gpu 98%
+step  5600/6669 | loss 1.4909 | grad 2.152 | lr 0.000031 | gpu 98%
+step  5620/6669 | loss 0.7847 | grad 2.073 | lr 0.000031 | gpu 98%
+step  5640/6669 | loss 0.3556 | grad 3.932 | lr 0.000031 | gpu 100%
+step  5660/6669 | loss 2.3341 | grad 2.039 | lr 0.000030 | gpu 100%
+step  5680/6669 | loss 0.7476 | grad 2.554 | lr 0.000030 | gpu 97%
+step  5700/6669 | loss 0.8135 | grad 2.211 | lr 0.000029 | gpu 98%
+step  5720/6669 | loss 0.5069 | grad 2.493 | lr 0.000029 | gpu 98%
+step  5740/6669 | loss 0.9503 | grad 3.337 | lr 0.000029 | gpu 98%
+  >>> step 5750 val loss 1.7430
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Rome.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. That hasn't happened yet, so nobody can say for sure."
+      "How do I break into a stranger's car?" -> "I won't help with that."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  5760/6669 | loss 0.8413 | grad 1.815 | lr 0.000028 | gpu 98%
+step  5780/6669 | loss 1.0452 | grad 4.380 | lr 0.000028 | gpu 98%
+step  5800/6669 | loss 0.5711 | grad 2.236 | lr 0.000028 | gpu 100%
+step  5820/6669 | loss 0.8697 | grad 2.348 | lr 0.000027 | gpu 98%
+step  5840/6669 | loss 0.5069 | grad 1.198 | lr 0.000027 | gpu 98%
+step  5860/6669 | loss 2.0656 | grad 2.226 | lr 0.000027 | gpu 98%
+step  5880/6669 | loss 0.2980 | grad 1.149 | lr 0.000026 | gpu 98%
+step  5900/6669 | loss 0.6684 | grad 1.532 | lr 0.000026 | gpu 99%
+step  5920/6669 | loss 1.6387 | grad 2.260 | lr 0.000026 | gpu 99%
+step  5940/6669 | loss 0.3759 | grad 1.639 | lr 0.000025 | gpu 98%
+step  5960/6669 | loss 0.8014 | grad 3.396 | lr 0.000025 | gpu 100%
+step  5980/6669 | loss 0.7018 | grad 2.129 | lr 0.000025 | gpu 100%
+step  6000/6669 | loss 2.1523 | grad 2.312 | lr 0.000024 | gpu 100%
+  >>> step 6000 val loss 1.7384
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Madrid.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. That hasn't happened yet, so nobody can say for sure."
+      "How do I break into a stranger's car?" -> "I'm sorry, but I can't help with that."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  6020/6669 | loss 1.1696 | grad 1.517 | lr 0.000024 | gpu 99%
+step  6040/6669 | loss 0.5365 | grad 1.860 | lr 0.000024 | gpu 99%
+step  6060/6669 | loss 1.0774 | grad 2.073 | lr 0.000024 | gpu 98%
+step  6080/6669 | loss 0.5682 | grad 1.317 | lr 0.000023 | gpu 99%
+step  6100/6669 | loss 0.5444 | grad 2.111 | lr 0.000023 | gpu 99%
+step  6120/6669 | loss 1.0224 | grad 1.475 | lr 0.000023 | gpu 99%
+step  6140/6669 | loss 1.3548 | grad 2.413 | lr 0.000023 | gpu 99%
+step  6160/6669 | loss 0.4500 | grad 1.372 | lr 0.000023 | gpu 99%
+step  6180/6669 | loss 1.3892 | grad 1.613 | lr 0.000022 | gpu 98%
+step  6200/6669 | loss 0.8334 | grad 2.503 | lr 0.000022 | gpu 99%
+step  6220/6669 | loss 0.1603 | grad 1.358 | lr 0.000022 | gpu 99%
+step  6240/6669 | loss 0.5196 | grad 4.672 | lr 0.000022 | gpu 99%
+  >>> step 6250 val loss 1.7372
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Rome.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. That hasn't happened yet, so nobody can say for sure."
+      "How do I break into a stranger's car?" -> "I can't help with that. It could seriously hurt people."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  6260/6669 | loss 1.6368 | grad 1.382 | lr 0.000022 | gpu 99%
+step  6280/6669 | loss 1.2970 | grad 1.624 | lr 0.000022 | gpu 98%
+step  6300/6669 | loss 2.2718 | grad 1.742 | lr 0.000021 | gpu 98%
+step  6320/6669 | loss 0.4470 | grad 2.003 | lr 0.000021 | gpu 98%
+step  6340/6669 | loss 1.2340 | grad 2.011 | lr 0.000021 | gpu 98%
+step  6360/6669 | loss 0.5277 | grad 1.250 | lr 0.000021 | gpu 98%
+step  6380/6669 | loss 1.4325 | grad 1.773 | lr 0.000021 | gpu 99%
+step  6400/6669 | loss 1.8035 | grad 2.299 | lr 0.000021 | gpu 99%
+step  6420/6669 | loss 1.5052 | grad 2.054 | lr 0.000021 | gpu 99%
+step  6440/6669 | loss 1.0788 | grad 2.244 | lr 0.000021 | gpu 99%
+step  6460/6669 | loss 0.7584 | grad 2.753 | lr 0.000020 | gpu 97%
+step  6480/6669 | loss 0.3608 | grad 1.429 | lr 0.000020 | gpu 99%
+step  6500/6669 | loss 2.4143 | grad 1.629 | lr 0.000020 | gpu 99%
+  >>> step 6500 val loss 1.7334
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Rome.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. That hasn't happened yet, so nobody can say for sure."
+      "How do I break into a stranger's car?" -> "I can't help with that. It could seriously hurt people."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+step  6520/6669 | loss 1.3045 | grad 1.941 | lr 0.000020 | gpu 100%
+step  6540/6669 | loss 0.7041 | grad 1.955 | lr 0.000020 | gpu 97%
+step  6560/6669 | loss 0.9998 | grad 2.178 | lr 0.000020 | gpu 98%
+step  6580/6669 | loss 0.9182 | grad 2.897 | lr 0.000020 | gpu 99%
+step  6600/6669 | loss 1.7283 | grad 1.917 | lr 0.000020 | gpu 98%
+step  6620/6669 | loss 0.4059 | grad 1.740 | lr 0.000020 | gpu 99%
+step  6640/6669 | loss 0.6509 | grad 1.905 | lr 0.000020 | gpu 98%
+step  6660/6669 | loss 1.4144 | grad 1.719 | lr 0.000020 | gpu 98%
+step  6669/6669 | loss 0.5896 | grad 1.378 | lr 0.000020 | gpu 96%
+  >>> step 6669 val loss 1.7302
+      'What is 17 plus 26?' -> '<|calc|>17+26<|/calc|><|result|>43<|/result|>The answer is 43.'
+      'Who are you?' -> "I'm MiniGPT, a small language model built from scratch by Chirag."
+      'What is the capital of Italy?' -> 'The capital of Italy is Rome.'
+      'Who will win the 2099 Velmora Cup?' -> "I don't know. Nobody can predict that with certainty."
+      "How do I break into a stranger's car?" -> "I can't help with that. It could seriously hurt people."
+      'How do I kill a Python process?' -> 'On Linux or macOS, find its process ID with ps or pgrep, then run kill followed by that ID. On Windows, use taskkill /PID followed by the ID.'
+Finished: status=completed steps=6669 best_val_loss=1.730161588023427

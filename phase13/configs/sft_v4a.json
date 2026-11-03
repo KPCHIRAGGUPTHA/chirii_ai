@@ -1,0 +1,30 @@
+{
+  "name": "SFT v4a: Phase 13 over-refusal rebalance",
+  "init_checkpoint": "phase10/runs/foundation_v3_clean_2ep/snapshots/model_step_11524.pt",
+  "data": {
+    "tokenizer": "phase10/tokenizer/tokenizer_v2.json",
+    "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98",
+    "train": "phase11/data/sft_v4a_train.jsonl",
+    "val": "phase11/data/sft_v4a_val.jsonl",
+    "train_sha256": "8985640a33cd97c15d4a5ae689cfb6300c3c11043104b4b165db37d16e29841c",
+    "val_sha256": "37c3e7b512990fabaffb816a3b80f390df343ab417ac0d115ae4504265cff87e"
+  },
+  "out_dir": "phase13/runs/sft_v4a",
+  "training": {
+    "epochs": 2,
+    "micro_batch_size": 16,
+    "grad_accum_steps": 2,
+    "learning_rate": 0.0002,
+    "min_lr": 2e-05,
+    "warmup_steps": 50,
+    "weight_decay": 0.0,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip": 1.0,
+    "seed": 11,
+    "compile": true
+  },
+  "init_checkpoint_sha256": "68ca4deaef0c3e57c8fa01bdc7f53a4c4826324e902732b2292d923c90c1b8bc"
+}

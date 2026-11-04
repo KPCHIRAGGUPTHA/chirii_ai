@@ -1,0 +1,25 @@
+{
+  "gsm8k": {
+    "source": "results/gpt2/gsm8k/openai-community__gpt2/samples_gsm8k_2026-11-03T22-16-54.959699.jsonl",
+    "logged_items": 1319,
+    "flexible-extract": {
+      "value": 0.016,
+      "stderr": 0.005617036781471969,
+      "n": 500
+    },
+    "strict-match": {
+      "value": 0.0,
+      "stderr": 0.0,
+      "n": 500
+    }
+  },
+  "triviaqa": {
+    "source": "results/gpt2/triviaqa/openai-community__gpt2/samples_triviaqa_2026-11-03T22-23-43.682322.jsonl",
+    "logged_items": 17944,
+    "remove_whitespace": {
+      "value": 0.003,
+      "stderr": 0.0017303161543469378,
+      "n": 1000
+    }
+  }
+}

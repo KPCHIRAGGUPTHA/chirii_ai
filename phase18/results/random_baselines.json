@@ -1,0 +1,14 @@
+{
+  "arc_easy": 0.25016133557800224,
+  "arc_challenge": 0.2501564277588168,
+  "hellaswag": 0.25,
+  "piqa": 0.5,
+  "winogrande": 0.5,
+  "sciq": 0.25,
+  "openbookqa": 0.25,
+  "boolq": 0.5,
+  "mmlu": 0.25,
+  "lambada_openai": 0.0,
+  "gsm8k": 0.0,
+  "triviaqa": 0.0
+}

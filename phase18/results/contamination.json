@@ -1,0 +1,213 @@
+{
+  "method": [
+    "An item is the exact text lm-eval evaluates (its prompt) plus its correct answer, taken from lm-eval's own task\nobjects. Text is lowercased and reduced to words ([a-z0-9]+). An item counts as \"overlapping\" if ANY of its 13-word\nsequences also occurs in the training text. Items with fewer than 13 words cannot be tested and are reported apart.",
+    "Training text checked:\n  - pretraining: every Phase 10 train text shard (phase10/data/text/train_*.txt, hash-checked). This includes the\n    ~1% of documents that were later removed by the Phase 5D filter, so the pretraining rate can only be overstated.\n  - SFT: phase11/data/sft_v2_train.jsonl (the released model's instruction data, hash-checked), all text fields."
+  ],
+  "n": 13,
+  "sources": {
+    "pretraining": {
+      "files": 13,
+      "text_bytes": 3184211064,
+      "documents": 666158
+    },
+    "sft_v2": {
+      "file": "phase11/data/sft_v2_train.jsonl",
+      "sha256": "b4a7dadef407b40954f068297426ed1247a3f3c4cf2faad223f6751f3dd7efa0"
+    }
+  },
+  "tasks": {
+    "arc_easy": {
+      "items": 2376,
+      "too_short_to_test": 204,
+      "pretraining": {
+        "overlapping_items": 3,
+        "rate_of_testable": 0.0014
+      },
+      "sft_v2": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      },
+      "either": {
+        "overlapping_items": 3,
+        "rate_of_testable": 0.0014
+      }
+    },
+    "arc_challenge": {
+      "items": 1172,
+      "too_short_to_test": 63,
+      "pretraining": {
+        "overlapping_items": 1,
+        "rate_of_testable": 0.0009
+      },
+      "sft_v2": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      },
+      "either": {
+        "overlapping_items": 1,
+        "rate_of_testable": 0.0009
+      }
+    },
+    "hellaswag": {
+      "items": 10042,
+      "too_short_to_test": 0,
+      "pretraining": {
+        "overlapping_items": 12,
+        "rate_of_testable": 0.0012
+      },
+      "sft_v2": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      },
+      "either": {
+        "overlapping_items": 12,
+        "rate_of_testable": 0.0012
+      }
+    },
+    "piqa": {
+      "items": 1838,
+      "too_short_to_test": 301,
+      "pretraining": {
+        "overlapping_items": 2,
+        "rate_of_testable": 0.0013
+      },
+      "sft_v2": {
+        "overlapping_items": 1,
+        "rate_of_testable": 0.0007
+      },
+      "either": {
+        "overlapping_items": 3,
+        "rate_of_testable": 0.002
+      }
+    },
+    "winogrande": {
+      "items": 1267,
+      "too_short_to_test": 0,
+      "pretraining": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      },
+      "sft_v2": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      },
+      "either": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      }
+    },
+    "sciq": {
+      "items": 1000,
+      "too_short_to_test": 29,
+      "pretraining": {
+        "overlapping_items": 38,
+        "rate_of_testable": 0.0391
+      },
+      "sft_v2": {
+        "overlapping_items": 5,
+        "rate_of_testable": 0.0051
+      },
+      "either": {
+        "overlapping_items": 42,
+        "rate_of_testable": 0.0433
+      }
+    },
+    "openbookqa": {
+      "items": 500,
+      "too_short_to_test": 274,
+      "pretraining": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      },
+      "sft_v2": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      },
+      "either": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      }
+    },
+    "boolq": {
+      "items": 3270,
+      "too_short_to_test": 0,
+      "pretraining": {
+        "overlapping_items": 216,
+        "rate_of_testable": 0.0661
+      },
+      "sft_v2": {
+        "overlapping_items": 10,
+        "rate_of_testable": 0.0031
+      },
+      "either": {
+        "overlapping_items": 217,
+        "rate_of_testable": 0.0664
+      }
+    },
+    "lambada_openai": {
+      "items": 5153,
+      "too_short_to_test": 0,
+      "pretraining": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      },
+      "sft_v2": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      },
+      "either": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      }
+    },
+    "mmlu": {
+      "items": 14042,
+      "too_short_to_test": 1,
+      "pretraining": {
+        "overlapping_items": 243,
+        "rate_of_testable": 0.0173
+      },
+      "sft_v2": {
+        "overlapping_items": 8,
+        "rate_of_testable": 0.0006
+      },
+      "either": {
+        "overlapping_items": 245,
+        "rate_of_testable": 0.0174
+      }
+    },
+    "gsm8k": {
+      "items": 1319,
+      "too_short_to_test": 0,
+      "pretraining": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      },
+      "sft_v2": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      },
+      "either": {
+        "overlapping_items": 0,
+        "rate_of_testable": 0.0
+      }
+    },
+    "triviaqa": {
+      "items": 17944,
+      "too_short_to_test": 2871,
+      "pretraining": {
+        "overlapping_items": 43,
+        "rate_of_testable": 0.0029
+      },
+      "sft_v2": {
+        "overlapping_items": 6,
+        "rate_of_testable": 0.0004
+      },
+      "either": {
+        "overlapping_items": 47,
+        "rate_of_testable": 0.0031
+      }
+    }
+  },
+  "seconds": 530.0
+}

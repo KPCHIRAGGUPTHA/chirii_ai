@@ -1,0 +1,39 @@
+{
+  "gsm8k": {
+    "source": "results/minigpt_v1_0_1/gsm8k/vdujuxrm/samples_gsm8k_2026-11-03T21-40-59.697432.jsonl",
+    "logged_items": 1319,
+    "flexible-extract": {
+      "value": 0.006,
+      "stderr": 0.0034571525577583653,
+      "n": 500
+    },
+    "strict-match": {
+      "value": 0.0,
+      "stderr": 0.0,
+      "n": 500
+    }
+  },
+  "gsm8k_no_calculator": {
+    "source": "results/minigpt_v1_0_1/gsm8k_no_calculator/vdujuxrm/samples_gsm8k_2026-11-03T21-42-37.021910.jsonl",
+    "logged_items": 1319,
+    "flexible-extract": {
+      "value": 0.006,
+      "stderr": 0.0034571525577583653,
+      "n": 500
+    },
+    "strict-match": {
+      "value": 0.0,
+      "stderr": 0.0,
+      "n": 500
+    }
+  },
+  "triviaqa": {
+    "source": "results/minigpt_v1_0_1/triviaqa/vdujuxrm/samples_triviaqa_2026-11-03T21-58-45.183752.jsonl",
+    "logged_items": 17944,
+    "remove_whitespace": {
+      "value": 0.004,
+      "stderr": 0.001996994739098728,
+      "n": 1000
+    }
+  }
+}

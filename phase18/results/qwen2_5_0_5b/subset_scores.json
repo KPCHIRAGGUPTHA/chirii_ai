@@ -1,0 +1,25 @@
+{
+  "gsm8k": {
+    "source": "results/qwen2_5_0_5b/gsm8k/local_models__qwen2_5_0_5b/samples_gsm8k_2026-11-04T08-04-02.963839.jsonl",
+    "logged_items": 500,
+    "flexible-extract": {
+      "value": 0.038,
+      "stderr": 0.008559118940292121,
+      "n": 500
+    },
+    "strict-match": {
+      "value": 0.0,
+      "stderr": 0.0,
+      "n": 500
+    }
+  },
+  "triviaqa": {
+    "source": "results/qwen2_5_0_5b/triviaqa/local_models__qwen2_5_0_5b/samples_triviaqa_2026-11-04T08-05-36.759703.jsonl",
+    "logged_items": 1000,
+    "remove_whitespace": {
+      "value": 0.115,
+      "stderr": 0.01009340759490461,
+      "n": 1000
+    }
+  }
+}

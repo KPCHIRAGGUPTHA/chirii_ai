@@ -1,0 +1,62 @@
+=== minigpt_base/mc 2026-11-03 20:33:17
+=== done minigpt_base/mc 2026-11-03 20:40:47
+=== minigpt_base/gsm8k 2026-11-03 20:40:47
+=== done minigpt_base/gsm8k 2026-11-03 21:11:10
+=== minigpt_base/triviaqa 2026-11-03 21:11:10
+=== done minigpt_base/triviaqa 2026-11-03 21:30:37
+=== minigpt_v1_0_1/mc 2026-11-03 21:30:37
+=== done minigpt_v1_0_1/mc 2026-11-03 21:38:10
+=== minigpt_v1_0_1/gsm8k 2026-11-03 21:38:10
+=== done minigpt_v1_0_1/gsm8k 2026-11-03 21:41:00
+=== minigpt_v1_0_1/gsm8k_no_calculator 2026-11-03 21:41:00
+=== done minigpt_v1_0_1/gsm8k_no_calculator 2026-11-03 21:42:37
+=== minigpt_v1_0_1/triviaqa 2026-11-03 21:42:37
+=== done minigpt_v1_0_1/triviaqa 2026-11-03 21:58:46
+=== gpt2/mc 2026-11-03 21:58:46
+=== done gpt2/mc 2026-11-03 22:11:50
+=== gpt2/gsm8k 2026-11-03 22:11:50
+=== done gpt2/gsm8k 2026-11-03 22:16:55
+=== gpt2/triviaqa 2026-11-03 22:16:55
+=== done gpt2/triviaqa 2026-11-03 22:23:45
+=== smollm2_135m/mc 2026-11-03 22:23:45
+=== done smollm2_135m/mc 2026-11-03 22:38:26
+=== smollm2_135m/gsm8k 2026-11-03 22:38:26
+=== done smollm2_135m/gsm8k 2026-11-03 22:46:24
+=== smollm2_135m/triviaqa 2026-11-03 22:46:24
+=== done smollm2_135m/triviaqa 2026-11-03 22:58:53
+=== smollm2_135m_instruct/mc 2026-11-03 22:58:53
+=== done smollm2_135m_instruct/mc 2026-11-03 23:13:30
+=== smollm2_135m_instruct/gsm8k 2026-11-03 23:13:30
+=== done smollm2_135m_instruct/gsm8k 2026-11-03 23:24:32
+=== smollm2_135m_instruct/triviaqa 2026-11-03 23:24:32
+=== done smollm2_135m_instruct/triviaqa 2026-11-03 23:36:01
+=== smollm2_360m/mc 2026-11-03 23:36:01
+=== done smollm2_360m/mc 2026-11-04 00:07:59
+=== smollm2_360m/gsm8k 2026-11-04 00:07:59
+=== done smollm2_360m/gsm8k 2026-11-04 00:16:52
+=== smollm2_360m/triviaqa 2026-11-04 00:16:52
+=== done smollm2_360m/triviaqa 2026-11-04 00:31:00
+=== smollm2_360m_instruct/mc 2026-11-04 00:31:00
+=== done smollm2_360m_instruct/mc 2026-11-04 01:03:09
+=== smollm2_360m_instruct/gsm8k 2026-11-04 01:03:10
+=== done smollm2_360m_instruct/gsm8k 2026-11-04 01:19:10
+=== smollm2_360m_instruct/triviaqa 2026-11-04 01:19:10
+=== done smollm2_360m_instruct/triviaqa 2026-11-04 01:35:43
+=== qwen2_5_0_5b/mc 2026-11-04 01:35:43
+=== done qwen2_5_0_5b/mc 2026-11-04 02:18:44
+=== qwen2_5_0_5b/gsm8k 2026-11-04 02:18:44
+=== done qwen2_5_0_5b/gsm8k 2026-11-04 05:58:41
+=== qwen2_5_0_5b/triviaqa 2026-11-04 05:58:41
+=== qwen2_5_0_5b/gsm8k 2026-11-04 07:53:02
+=== STOPPED qwen2_5_0_5b/gsm8k 2026-11-04 07:56:21: explicit max_new_tokens was overridden (shipped generation_config still applied)
+=== qwen2_5_0_5b/gsm8k 2026-11-04 07:58:27
+=== done qwen2_5_0_5b/gsm8k 2026-11-04 08:04:03
+=== qwen2_5_0_5b/triviaqa 2026-11-04 08:04:03
+=== done qwen2_5_0_5b/triviaqa 2026-11-04 08:05:37
+=== qwen2_5_0_5b_instruct/mc 2026-11-04 08:05:37
+=== done qwen2_5_0_5b_instruct/mc 2026-11-04 08:48:15
+=== qwen2_5_0_5b_instruct/gsm8k 2026-11-04 08:48:15
+=== done qwen2_5_0_5b_instruct/gsm8k 2026-11-04 08:53:39
+=== qwen2_5_0_5b_instruct/triviaqa 2026-11-04 08:53:39
+=== done qwen2_5_0_5b_instruct/triviaqa 2026-11-04 08:55:02
+ALL_DONE 2026-11-04 08:55:02

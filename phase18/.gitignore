@@ -1,0 +1,6 @@
+# Large or machine-specific; see BENCHMARKS.md "Files"
+local_models/
+results/**/samples_*.jsonl
+logs/run_all.log
+logs/validation.log
+__pycache__/

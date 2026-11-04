@@ -1,0 +1,25 @@
+{
+  "gsm8k": {
+    "source": "results/smollm2_360m_instruct/gsm8k/HuggingFaceTB__SmolLM2-360M-Instruct/samples_gsm8k_2026-11-04T01-19-09.182515.jsonl",
+    "logged_items": 1319,
+    "flexible-extract": {
+      "value": 0.07,
+      "stderr": 0.01142194912629566,
+      "n": 500
+    },
+    "strict-match": {
+      "value": 0.01,
+      "stderr": 0.0044541754970721,
+      "n": 500
+    }
+  },
+  "triviaqa": {
+    "source": "results/smollm2_360m_instruct/triviaqa/HuggingFaceTB__SmolLM2-360M-Instruct/samples_triviaqa_2026-11-04T01-35-41.719056.jsonl",
+    "logged_items": 17944,
+    "remove_whitespace": {
+      "value": 0.013,
+      "stderr": 0.003583830889403648,
+      "n": 1000
+    }
+  }
+}

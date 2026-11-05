@@ -1,0 +1,496 @@
+=== 2026-11-04 11:06:17 start/resume attempt 1
+~/anaconda3/envs/minigpt/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Fused AdamW: True | Compile: enabled | Parameters: 98,425,344
+Train tokens: 2,986,805,090 | Steps: 5,722 | Tokens per step: 524,288 (16 x 32 x 1024) | Budget: 2,999,975,936
+step     1/5722 | loss 9.8480 | grad 4.617 | lr 0.000001 | 24,432 tok/s | gpu 100% | peak 7.569 GB
+step    20/5722 | loss 8.7234 | grad 1.802 | lr 0.000017 | 27,697 tok/s | gpu 100% | peak 8.303 GB
+step    40/5722 | loss 8.2754 | grad 1.483 | lr 0.000034 | 27,872 tok/s | gpu 100% | peak 8.303 GB
+step    60/5722 | loss 7.6281 | grad 1.165 | lr 0.000051 | 27,877 tok/s | gpu 100% | peak 8.303 GB
+step    80/5722 | loss 7.1593 | grad 0.529 | lr 0.000069 | 27,857 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 96
+step   100/5722 | loss 6.8854 | grad 0.717 | lr 0.000086 | 27,833 tok/s | gpu 100% | peak 8.303 GB
+step   120/5722 | loss 6.6208 | grad 0.661 | lr 0.000103 | 27,674 tok/s | gpu 99% | peak 8.303 GB
+step   140/5722 | loss 6.4093 | grad 0.546 | lr 0.000120 | 27,804 tok/s | gpu 100% | peak 8.303 GB
+step   160/5722 | loss 6.2060 | grad 0.609 | lr 0.000137 | 27,778 tok/s | gpu 100% | peak 8.303 GB
+step   180/5722 | loss 6.0803 | grad 0.657 | lr 0.000154 | 27,776 tok/s | gpu 99% | peak 8.303 GB
+  checkpoint saved at step 192
+step   200/5722 | loss 5.9886 | grad 0.732 | lr 0.000171 | 27,770 tok/s | gpu 100% | peak 8.303 GB
+step   220/5722 | loss 5.9107 | grad 0.786 | lr 0.000189 | 27,726 tok/s | gpu 100% | peak 8.303 GB
+step   240/5722 | loss 5.7865 | grad 0.625 | lr 0.000206 | 27,725 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 250 val loss 5.8226 | 1.9821 bits/byte | gpu temp 90 C
+      'The capital of France is the first time of the first time.\nThe first time of the first time.\nThe first time is a time.\nThe first time is a time.\nThe first time is a time.\nThe first time is a time.\nThe first time is a time.\nThe first time.\nThe'
+      'Water is made of hydrogen and the world.\nThe 1999999999999999999999999999999999999999999999999999999999'
+      '2 + 2 = 200000000000000000000000000000000000000000000000000000000000000'
+      'The main reason plants need sunlight is a result of the water.\nThe first is a small water.\nThe water is a water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water water'
+      'def add(a, b):\n(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((('
+step   260/5722 | loss 5.7055 | grad 0.721 | lr 0.000223 | 27,722 tok/s | gpu 100% | peak 8.303 GB
+step   280/5722 | loss 5.6367 | grad 0.694 | lr 0.000240 | 27,727 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 287
+step   300/5722 | loss 5.5187 | grad 0.650 | lr 0.000257 | 27,698 tok/s | gpu 100% | peak 8.303 GB
+step   320/5722 | loss 5.4673 | grad 0.895 | lr 0.000274 | 27,700 tok/s | gpu 100% | peak 8.303 GB
+step   340/5722 | loss 5.3803 | grad 1.042 | lr 0.000291 | 27,570 tok/s | gpu 99% | peak 8.303 GB
+step   360/5722 | loss 5.3074 | grad 0.920 | lr 0.000309 | 27,695 tok/s | gpu 100% | peak 8.303 GB
+step   380/5722 | loss 5.2690 | grad 1.130 | lr 0.000326 | 27,748 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 383
+step   400/5722 | loss 5.1910 | grad 1.070 | lr 0.000343 | 27,712 tok/s | gpu 100% | peak 8.303 GB
+step   420/5722 | loss 5.1076 | grad 1.099 | lr 0.000360 | 27,730 tok/s | gpu 100% | peak 8.303 GB
+step   440/5722 | loss 5.0745 | grad 1.040 | lr 0.000377 | 27,704 tok/s | gpu 100% | peak 8.303 GB
+step   460/5722 | loss 5.0224 | grad 0.865 | lr 0.000394 | 27,762 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 479
+step   480/5722 | loss 4.9803 | grad 1.087 | lr 0.000411 | 27,749 tok/s | gpu 100% | peak 8.303 GB
+step   500/5722 | loss 4.9082 | grad 1.026 | lr 0.000429 | 27,706 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 500 val loss 5.0100 | 1.7055 bits/byte | gpu temp 90 C
+      'The capital of France is a part of the 190s, the 190s, the 1999, the 19999, the 19999, the 19999, the 199999, the 19999'
+      'Water is made of hydrogen and the water system.\nThe water system is a water system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system system'
+      '2 + 2 = 200000000000000000000000000000000000000000000000000000000000000'
+      'The main reason plants need sunlight is a good source of the plant.\nThe plant is a plant that is a plant plant plant plant plants.\nThe plant plants plant plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants plants'
+      'def add(a, b):\n(1)\n(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((('
+step   520/5722 | loss 4.8721 | grad 0.877 | lr 0.000446 | 27,735 tok/s | gpu 100% | peak 8.303 GB
+step   540/5722 | loss 4.7975 | grad 1.131 | lr 0.000463 | 27,751 tok/s | gpu 100% | peak 8.303 GB
+step   560/5722 | loss 4.7701 | grad 0.989 | lr 0.000480 | 27,752 tok/s | gpu 99% | peak 8.303 GB
+  checkpoint saved at step 574
+step   580/5722 | loss 4.7325 | grad 0.972 | lr 0.000497 | 27,754 tok/s | gpu 100% | peak 8.303 GB
+step   600/5722 | loss 4.6413 | grad 0.813 | lr 0.000514 | 27,736 tok/s | gpu 100% | peak 8.303 GB
+step   620/5722 | loss 4.6416 | grad 1.198 | lr 0.000531 | 27,763 tok/s | gpu 100% | peak 8.303 GB
+step   640/5722 | loss 4.5687 | grad 0.708 | lr 0.000549 | 27,757 tok/s | gpu 100% | peak 8.303 GB
+step   660/5722 | loss 4.5452 | grad 0.856 | lr 0.000566 | 27,765 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 670
+step   680/5722 | loss 4.5284 | grad 1.012 | lr 0.000583 | 27,761 tok/s | gpu 100% | peak 8.303 GB
+step   700/5722 | loss 4.4259 | grad 0.802 | lr 0.000600 | 27,775 tok/s | gpu 100% | peak 8.303 GB
+step   720/5722 | loss 4.3607 | grad 0.883 | lr 0.000600 | 27,747 tok/s | gpu 100% | peak 8.303 GB
+step   740/5722 | loss 4.3098 | grad 0.709 | lr 0.000600 | 27,730 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 750 val loss 4.3888 | 1.4940 bits/byte | gpu temp 89 C
+      'The capital of France is the most important.\nThe capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital of the capital'
+      'Water is made of hydrogen and hydrogen.\nThe main energy of the energy is the energy of the energy.\nThe energy is the energy of the energy.\nThe energy is the energy of energy.\nThe energy is the energy energy.\nThe energy is the energy energy energy.\nThe energy is the energy energy.\nThe energy energy'
+      '2 + 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = 2 = '
+      'The main reason plants need sunlight is a good idea to be able to grow in the soil.\nThe best way to grow in the soil is to be able to grow in the soil.\nThe best way to grow in the soil is to grow in the soil.\nThe best way to grow the soil is to grow in the soil.\nThe'
+      'def add(a, b):\n- The use of the word "c"\n- The word "c"\n- The word "c"\n- The word "c"\n- The word "c"\n- The word "c"\n- The word "c"\n- The word "c"\n- The word "c'
+step   760/5722 | loss 4.2660 | grad 0.880 | lr 0.000600 | 27,741 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 765
+step   780/5722 | loss 4.2151 | grad 0.934 | lr 0.000600 | 27,750 tok/s | gpu 100% | peak 8.303 GB
+step   800/5722 | loss 4.1730 | grad 1.056 | lr 0.000599 | 27,758 tok/s | gpu 100% | peak 8.303 GB
+step   820/5722 | loss 4.0838 | grad 0.720 | lr 0.000599 | 27,761 tok/s | gpu 100% | peak 8.303 GB
+step   840/5722 | loss 4.0610 | grad 0.964 | lr 0.000599 | 27,656 tok/s | gpu 99% | peak 8.303 GB
+step   860/5722 | loss 4.0441 | grad 0.722 | lr 0.000599 | 27,755 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 861
+step   880/5722 | loss 4.0135 | grad 0.686 | lr 0.000598 | 27,764 tok/s | gpu 100% | peak 8.303 GB
+step   900/5722 | loss 3.9951 | grad 0.720 | lr 0.000598 | 27,714 tok/s | gpu 100% | peak 8.303 GB
+step   920/5722 | loss 3.9685 | grad 0.792 | lr 0.000597 | 27,739 tok/s | gpu 100% | peak 8.303 GB
+step   940/5722 | loss 3.8983 | grad 0.777 | lr 0.000597 | 27,752 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 957
+step   960/5722 | loss 3.8594 | grad 0.511 | lr 0.000596 | 27,689 tok/s | gpu 100% | peak 8.303 GB
+step   980/5722 | loss 3.8814 | grad 0.575 | lr 0.000596 | 27,715 tok/s | gpu 99% | peak 8.303 GB
+step  1000/5722 | loss 3.8395 | grad 0.552 | lr 0.000595 | 27,741 tok/s | gpu 99% | peak 8.303 GB
+  >>> step 1000 val loss 3.9530 | 1.3457 bits/byte | gpu temp 90 C
+      'The capital of France is the capital of France.\nThe capital of France is the capital of France.\nThe capital of France is the capital of France.\nThe capital of France is the capital of France.\nThe capital of France is the capital of France.\nThe capital of France is the capital of France.\nThe capital of'
+      'Water is made of hydrogen and hydrogen.\nThe process of creating hydrogen is made of hydrogen and hydrogen.\nThe process of creating hydrogen is made of hydrogen.\nThe process of creating hydrogen is made of hydrogen.\nThe process of creating hydrogen is made of hydrogen.\nThe process of creating hydrogen is made of hydrogen.\nThe process of creating'
+      '2 + 2 = 100000000000000000000000000000000000000000000000000000000000000'
+      'The main reason plants need sunlight is a good idea to keep the plants in the garden.\nThe plant is a good idea to keep the plants in the garden.\nThe plant is a good idea to keep the plants in the garden.\nThe plant is a good idea to keep the plants in the garden.\nThe plant is a good idea to'
+      'def add(a, b):\n- 10000000000000000000000000000000000000000000000000000000000000'
+step  1020/5722 | loss 3.8028 | grad 0.647 | lr 0.000595 | 27,746 tok/s | gpu 100% | peak 8.303 GB
+step  1040/5722 | loss 3.8491 | grad 0.626 | lr 0.000594 | 27,730 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 1052
+step  1060/5722 | loss 3.7742 | grad 0.484 | lr 0.000593 | 27,751 tok/s | gpu 100% | peak 8.303 GB
+step  1080/5722 | loss 3.7786 | grad 0.524 | lr 0.000592 | 27,742 tok/s | gpu 100% | peak 8.303 GB
+step  1100/5722 | loss 3.7674 | grad 0.451 | lr 0.000592 | 27,738 tok/s | gpu 100% | peak 8.303 GB
+step  1120/5722 | loss 3.7306 | grad 0.455 | lr 0.000591 | 27,731 tok/s | gpu 99% | peak 8.303 GB
+step  1140/5722 | loss 3.7170 | grad 0.564 | lr 0.000590 | 27,720 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 1148
+step  1160/5722 | loss 3.7105 | grad 0.510 | lr 0.000589 | 27,724 tok/s | gpu 100% | peak 8.303 GB
+step  1180/5722 | loss 3.7022 | grad 0.455 | lr 0.000588 | 27,732 tok/s | gpu 100% | peak 8.303 GB
+step  1200/5722 | loss 3.7050 | grad 0.491 | lr 0.000587 | 27,732 tok/s | gpu 100% | peak 8.303 GB
+step  1220/5722 | loss 3.6756 | grad 0.445 | lr 0.000586 | 27,745 tok/s | gpu 100% | peak 8.303 GB
+step  1240/5722 | loss 3.6785 | grad 0.494 | lr 0.000585 | 27,738 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 1244
+  >>> step 1250 val loss 3.7525 | 1.2774 bits/byte | gpu temp 89 C
+      'The capital of France is the capital of the Roman Empire. The Roman Empire was the capital of the Roman Empire. The Roman Empire was the capital of the Roman Empire. The Roman Empire was the capital of the Roman Empire. The Roman Empire was the capital of the Roman Empire. The Roman Empire was the capital of the Roman Empire. The Roman'
+      'Water is made of hydrogen and hydrogen.\nThe first hydrogen atom is a hydrogen atom, which is the first hydrogen atom. The second hydrogen atom is the second hydrogen atom.\nThe second hydrogen atom is the second hydrogen atom.\nThe second hydrogen atom is the second hydrogen atom.\nThe second hydrogen atom is the second hydrogen atom.\nThe'
+      '2 + 2 = 1.1111111111111111111111111111111111111111111111111111111111111'
+      'The main reason plants need sunlight is a good idea.\n- The best way to do this is to use a sunny day.\n- The best way to do this is to use a sunny day.\n- The best way to do this is to use a sunny day.\n- The best way to do this is to use a'
+      'def add(a, b):\n- 1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.'
+step  1260/5722 | loss 3.6275 | grad 0.510 | lr 0.000584 | 27,769 tok/s | gpu 100% | peak 8.303 GB
+step  1280/5722 | loss 3.6271 | grad 0.441 | lr 0.000582 | 27,762 tok/s | gpu 99% | peak 8.303 GB
+step  1300/5722 | loss 3.6109 | grad 0.441 | lr 0.000581 | 27,783 tok/s | gpu 100% | peak 8.303 GB
+step  1320/5722 | loss 3.6198 | grad 0.483 | lr 0.000580 | 27,759 tok/s | gpu 99% | peak 8.303 GB
+  checkpoint saved at step 1339
+step  1340/5722 | loss 3.5926 | grad 0.476 | lr 0.000579 | 27,724 tok/s | gpu 100% | peak 8.303 GB
+step  1360/5722 | loss 3.5626 | grad 0.372 | lr 0.000577 | 27,704 tok/s | gpu 100% | peak 8.303 GB
+step  1380/5722 | loss 3.5603 | grad 0.511 | lr 0.000576 | 27,707 tok/s | gpu 100% | peak 8.303 GB
+step  1400/5722 | loss 3.5584 | grad 0.336 | lr 0.000575 | 27,719 tok/s | gpu 100% | peak 8.303 GB
+step  1420/5722 | loss 3.5403 | grad 0.377 | lr 0.000573 | 27,673 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 1435
+step  1440/5722 | loss 3.5516 | grad 0.469 | lr 0.000572 | 27,688 tok/s | gpu 100% | peak 8.303 GB
+step  1460/5722 | loss 3.5289 | grad 0.424 | lr 0.000570 | 27,703 tok/s | gpu 100% | peak 8.303 GB
+step  1480/5722 | loss 3.5161 | grad 0.437 | lr 0.000568 | 27,687 tok/s | gpu 100% | peak 8.303 GB
+step  1500/5722 | loss 3.5201 | grad 0.357 | lr 0.000567 | 27,666 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 1500 val loss 3.6272 | 1.2348 bits/byte | gpu temp 90 C
+      'The capital of France is the capital of the French Empire. The French capital of France is the capital of the French Empire. The capital of France is the capital of the French Empire.\nThe capital of France is the capital of the French Empire. The capital of France is the capital of the French Empire. The capital of France is the capital'
+      'Water is made of hydrogen and oxygen.\nThe main difference between the two is that the hydrogen atoms are the same as the hydrogen atoms are the same as the hydrogen atoms are the same as the hydrogen atoms are the same as the hydrogen atoms are the same as the hydrogen atoms are the same as the hydrogen atoms are the same as the hydrogen atoms are'
+      '2 + 2 = 100\nThe following is a list of the most common types of the word “biggest” and “biggest” and “biggest” and “biggest” and “biggest” and “biggest” and “biggest” and “biggest'
+      'The main reason plants need sunlight is to use a lot of water.\n- Water is the most important factor in the plant’s life.\n- Water is the most important factor in the plant’s life.\n- Water is the most important factor in the plant’s life.\n- Water is the most important factor in the plant’'
+      'def add(a, b):\n- The following are the steps to take to the next step.\n- The steps are:\n- The steps are:\n- The steps are:\n- The steps are:\n- The steps are:\n- The steps are:\n- The steps are:\n- The steps are:\n- The'
+step  1520/5722 | loss 3.4909 | grad 0.313 | lr 0.000565 | 27,681 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 1530
+step  1540/5722 | loss 3.5157 | grad 0.403 | lr 0.000564 | 27,696 tok/s | gpu 100% | peak 8.303 GB
+step  1560/5722 | loss 3.4953 | grad 0.325 | lr 0.000562 | 27,695 tok/s | gpu 100% | peak 8.303 GB
+step  1580/5722 | loss 3.5098 | grad 0.411 | lr 0.000560 | 27,672 tok/s | gpu 100% | peak 8.303 GB
+step  1600/5722 | loss 3.4960 | grad 0.423 | lr 0.000558 | 27,659 tok/s | gpu 100% | peak 8.303 GB
+step  1620/5722 | loss 3.4781 | grad 0.415 | lr 0.000557 | 27,674 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 1626
+step  1640/5722 | loss 3.4985 | grad 0.390 | lr 0.000555 | 27,716 tok/s | gpu 100% | peak 8.303 GB
+step  1660/5722 | loss 3.4471 | grad 0.326 | lr 0.000553 | 27,721 tok/s | gpu 100% | peak 8.303 GB
+step  1680/5722 | loss 3.4566 | grad 0.500 | lr 0.000551 | 27,710 tok/s | gpu 100% | peak 8.303 GB
+step  1700/5722 | loss 3.4290 | grad 0.338 | lr 0.000549 | 27,724 tok/s | gpu 100% | peak 8.303 GB
+step  1720/5722 | loss 3.4173 | grad 0.292 | lr 0.000547 | 27,739 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 1722
+step  1740/5722 | loss 3.4190 | grad 0.332 | lr 0.000545 | 27,758 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 1750 val loss 3.5349 | 1.2033 bits/byte | gpu temp 90 C
+      'The capital of France is the French capital of France.\nThe French capital of France is the French capital of France.\nThe French capital of France is the French capital of France.\nThe French capital of France is the French capital of France.\nThe French capital of France is the French capital of France.\nThe French capital of France'
+      'Water is made of hydrogen and oxygen.\nThe most common type of hydrogen is hydrogen.\nThe most common type of hydrogen is hydrogen.\nThe most common type of hydrogen is hydrogen.\nThe most common type of hydrogen is hydrogen.\nThe most common type of hydrogen is hydrogen.\nThe most common type of hydrogen is hydrogen.\nThe'
+      '2 + 2 = 2.\nThe following is a simple example:\n- 1 = 2.\n- 1 = 2.\n- 1 = 2.\n- 1 = 2.\n- 1 = 2.\n- 1 = 2.\n- 1 ='
+      'The main reason plants need sunlight is to grow in a sunny spot, which is why they need sunlight.\nThe main reason plants need sunlight is because they can grow in a sunny spot, which is why they need sunlight.\nThe main reason plants need sunlight is because they can grow in a sunny spot, which is why they need sunlight'
+      'def add(a, b):\n- 10000000000000000000000000000000000000000000000000000000000000'
+step  1760/5722 | loss 3.4118 | grad 0.336 | lr 0.000543 | 27,760 tok/s | gpu 100% | peak 8.303 GB
+step  1780/5722 | loss 3.4308 | grad 0.292 | lr 0.000541 | 27,767 tok/s | gpu 100% | peak 8.303 GB
+step  1800/5722 | loss 3.3983 | grad 0.382 | lr 0.000539 | 27,758 tok/s | gpu 99% | peak 8.303 GB
+  checkpoint saved at step 1817
+step  1820/5722 | loss 3.3930 | grad 0.304 | lr 0.000536 | 27,764 tok/s | gpu 100% | peak 8.303 GB
+step  1840/5722 | loss 3.3958 | grad 0.316 | lr 0.000534 | 27,763 tok/s | gpu 99% | peak 8.303 GB
+step  1860/5722 | loss 3.3588 | grad 0.294 | lr 0.000532 | 27,769 tok/s | gpu 100% | peak 8.303 GB
+step  1880/5722 | loss 3.3727 | grad 0.325 | lr 0.000530 | 27,742 tok/s | gpu 100% | peak 8.303 GB
+step  1900/5722 | loss 3.4002 | grad 0.322 | lr 0.000527 | 27,761 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 1913
+step  1920/5722 | loss 3.3679 | grad 0.277 | lr 0.000525 | 27,776 tok/s | gpu 100% | peak 8.303 GB
+step  1940/5722 | loss 3.3702 | grad 0.307 | lr 0.000523 | 27,793 tok/s | gpu 100% | peak 8.303 GB
+step  1960/5722 | loss 3.3575 | grad 0.304 | lr 0.000520 | 27,789 tok/s | gpu 99% | peak 8.303 GB
+step  1980/5722 | loss 3.3612 | grad 0.307 | lr 0.000518 | 27,783 tok/s | gpu 100% | peak 8.303 GB
+step  2000/5722 | loss 3.3200 | grad 0.327 | lr 0.000516 | 27,788 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 2000 val loss 3.4616 | 1.1784 bits/byte | gpu temp 89 C
+      'The capital of France is the largest city in the world. The city is the largest city in the world. The city is the largest city in the world. The city is the largest city in the world. The city is the largest city in the world. The city is the largest city in the world. The city is the largest city in'
+      'Water is made of hydrogen and oxygen.\nThe process of converting hydrogen and oxygen into hydrogen is called the “molecular-scale” of the process.\nThe process of converting hydrogen and oxygen into hydrogen is called the “molecular-scale” of the process.\nThe process of converting hydrogen and oxygen into hydrogen is called the “molecular'
+      '2 + 2 = 2 + 2 = 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + 2 + '
+      'The main reason plants need sunlight is that they can grow in a wide range of colors.\nThe plants need sunlight to grow and grow.\nThe plants need sunlight to grow and grow.\nThe plants need sunlight to grow and grow.\nThe plants need sunlight to grow and grow.\nThe plants need sunlight to grow and grow.\nThe plants'
+      'def add(a, b):\n- 1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.'
+  snapshot saved at step 2000
+  checkpoint saved at step 2008
+step  2020/5722 | loss 3.3307 | grad 0.323 | lr 0.000513 | 27,807 tok/s | gpu 100% | peak 8.303 GB
+step  2040/5722 | loss 3.3462 | grad 0.416 | lr 0.000511 | 27,795 tok/s | gpu 100% | peak 8.303 GB
+step  2060/5722 | loss 3.3175 | grad 0.351 | lr 0.000508 | 27,806 tok/s | gpu 100% | peak 8.303 GB
+step  2080/5722 | loss 3.3267 | grad 0.295 | lr 0.000505 | 27,803 tok/s | gpu 100% | peak 8.303 GB
+step  2100/5722 | loss 3.3288 | grad 0.307 | lr 0.000503 | 27,819 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 2104
+step  2120/5722 | loss 3.3295 | grad 0.369 | lr 0.000500 | 27,762 tok/s | gpu 100% | peak 8.303 GB
+step  2140/5722 | loss 3.3272 | grad 0.295 | lr 0.000498 | 27,814 tok/s | gpu 100% | peak 8.303 GB
+step  2160/5722 | loss 3.3144 | grad 0.370 | lr 0.000495 | 27,806 tok/s | gpu 100% | peak 8.303 GB
+step  2180/5722 | loss 3.3042 | grad 0.288 | lr 0.000492 | 27,826 tok/s | gpu 100% | peak 8.303 GB
+step  2200/5722 | loss 3.3197 | grad 0.341 | lr 0.000490 | 27,804 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 2200
+step  2220/5722 | loss 3.3074 | grad 0.313 | lr 0.000487 | 27,802 tok/s | gpu 100% | peak 8.303 GB
+step  2240/5722 | loss 3.2799 | grad 0.307 | lr 0.000484 | 27,821 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 2250 val loss 3.4099 | 1.1608 bits/byte | gpu temp 89 C
+      'The capital of France is the capital of the French Empire. The capital is the capital of the French Empire. The capital is the capital of the French Empire. The capital of the French Empire is the capital of the French Empire. The capital of the French Empire is the capital of the French Empire. The capital of the French Empire is the capital'
+      'Water is made of hydrogen and oxygen, and it is made of hydrogen and oxygen.\nThe hydrogen is made of hydrogen and oxygen, and it is made of hydrogen and oxygen.\nThe hydrogen is made of hydrogen and oxygen, and it is made of hydrogen and oxygen.\nThe hydrogen is made of hydrogen and oxygen, and it is made of'
+      '2 + 2 = 100000000000000000000000000000000000000000000000000000000000000'
+      'The main reason plants need sunlight is the ability to absorb sunlight.\n- The main reason plants need sunlight is the ability to absorb sunlight.\n- The main reason plants need sunlight is the ability to absorb sunlight.\n- The main reason plants need sunlight is the ability to absorb sunlight.\n- The main reason plants need sunlight is the ability to absorb'
+      'def add(a, b):\n- 1.1.1.2.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.'
+step  2260/5722 | loss 3.2675 | grad 0.324 | lr 0.000481 | 27,802 tok/s | gpu 100% | peak 8.303 GB
+step  2280/5722 | loss 3.2793 | grad 0.351 | lr 0.000479 | 27,753 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 2295
+step  2300/5722 | loss 3.2752 | grad 0.272 | lr 0.000476 | 27,743 tok/s | gpu 100% | peak 8.303 GB
+step  2320/5722 | loss 3.2837 | grad 0.301 | lr 0.000473 | 27,770 tok/s | gpu 100% | peak 8.303 GB
+step  2340/5722 | loss 3.2763 | grad 0.312 | lr 0.000470 | 27,794 tok/s | gpu 100% | peak 8.303 GB
+step  2360/5722 | loss 3.2706 | grad 0.340 | lr 0.000467 | 27,833 tok/s | gpu 100% | peak 8.303 GB
+step  2380/5722 | loss 3.2837 | grad 0.364 | lr 0.000464 | 27,827 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 2391
+step  2400/5722 | loss 3.2622 | grad 0.292 | lr 0.000461 | 27,831 tok/s | gpu 100% | peak 8.303 GB
+step  2420/5722 | loss 3.2655 | grad 0.315 | lr 0.000458 | 27,827 tok/s | gpu 100% | peak 8.303 GB
+step  2440/5722 | loss 3.2682 | grad 0.326 | lr 0.000455 | 27,828 tok/s | gpu 100% | peak 8.303 GB
+step  2460/5722 | loss 3.2712 | grad 0.322 | lr 0.000452 | 27,810 tok/s | gpu 100% | peak 8.303 GB
+step  2480/5722 | loss 3.2806 | grad 0.300 | lr 0.000449 | 27,814 tok/s | gpu 99% | peak 8.303 GB
+  checkpoint saved at step 2487
+step  2500/5722 | loss 3.2212 | grad 0.286 | lr 0.000446 | 27,815 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 2500 val loss 3.3620 | 1.1445 bits/byte | gpu temp 89 C
+      'The capital of France is the French capital.\nThe capital of France is the French capital.\nThe capital of France is the French capital.\nThe capital of France is the French capital.\nThe capital of France is the French capital.\nThe capital of France is the French capital.\nThe capital of France is the French capital.'
+      'Water is made of hydrogen and oxygen.\nThe hydrogen is a gas that is made of hydrogen and oxygen. It is a gas that is made of hydrogen and oxygen.\nThe hydrogen is a gas that is made of hydrogen and oxygen. It is made of hydrogen and oxygen.\nThe hydrogen is a gas that is made of hydrogen and oxygen.'
+      '2 + 2 = 100000000000000000000000000000000000000000000000000000000000000'
+      'The main reason plants need sunlight is because they are so sensitive to the sun’s rays.\nThe main reason plants need sunlight is because they are so sensitive to the sun’s rays.\nThe main reason plants need sunlight is because they are so sensitive to the sun’s rays.\nThe main reason plants need sunlight is because they are so'
+      'def add(a, b):\n- 1.1.2.1.2.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.'
+step  2520/5722 | loss 3.2395 | grad 0.288 | lr 0.000443 | 27,818 tok/s | gpu 100% | peak 8.303 GB
+step  2540/5722 | loss 3.2559 | grad 0.326 | lr 0.000440 | 27,838 tok/s | gpu 100% | peak 8.303 GB
+step  2560/5722 | loss 3.2461 | grad 0.314 | lr 0.000437 | 27,841 tok/s | gpu 100% | peak 8.303 GB
+step  2580/5722 | loss 3.2799 | grad 0.287 | lr 0.000434 | 27,826 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 2583
+step  2600/5722 | loss 3.2206 | grad 0.306 | lr 0.000431 | 27,788 tok/s | gpu 100% | peak 8.303 GB
+step  2620/5722 | loss 3.2513 | grad 0.273 | lr 0.000428 | 27,782 tok/s | gpu 100% | peak 8.303 GB
+step  2640/5722 | loss 3.2518 | grad 0.289 | lr 0.000424 | 27,801 tok/s | gpu 100% | peak 8.303 GB
+step  2660/5722 | loss 3.2466 | grad 0.324 | lr 0.000421 | 27,814 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 2679
+step  2680/5722 | loss 3.2051 | grad 0.302 | lr 0.000418 | 27,818 tok/s | gpu 99% | peak 8.303 GB
+step  2700/5722 | loss 3.2382 | grad 0.288 | lr 0.000415 | 27,806 tok/s | gpu 99% | peak 8.303 GB
+step  2720/5722 | loss 3.2314 | grad 0.307 | lr 0.000412 | 27,797 tok/s | gpu 100% | peak 8.303 GB
+step  2740/5722 | loss 3.2273 | grad 0.326 | lr 0.000408 | 27,803 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 2750 val loss 3.3290 | 1.1332 bits/byte | gpu temp 89 C
+      'The capital of France is the capital of the United Kingdom of Great Britain. The capital of France is the capital of the United Kingdom of Great Britain.\nThe capital of France is the capital of the United Kingdom of Great Britain. The capital of France is the capital of the United Kingdom of Great Britain. The capital of France is the capital of'
+      'Water is made of hydrogen and oxygen.\n- The temperature of the water is 100°C.\n- The temperature of the water is 100°C.\n- The temperature of the water is 100°C.\n- The temperature of the water is 100°C.\n-'
+      '2 + 2 = 1.\nThe 1.0 + 2.0 + 2.0 + 2.0 + 2.0 + 2.0 + 2.0 + 2.0 + 2.0 + 2.0 + 2.0 + 2.0'
+      'The main reason plants need sunlight is because they are not able to absorb sunlight.\nThe main reason plants need sunlight is because they are not able to absorb sunlight.\nThe main reason plants need sunlight is because they are not able to absorb sunlight.\nThe main reason plants need sunlight is because they are not able to absorb sunlight.\nThe main reason'
+      'def add(a, b):\n- 1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.'
+step  2760/5722 | loss 3.2109 | grad 0.313 | lr 0.000405 | 27,802 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 2775
+step  2780/5722 | loss 3.2022 | grad 0.289 | lr 0.000402 | 27,798 tok/s | gpu 100% | peak 8.303 GB
+step  2800/5722 | loss 3.2114 | grad 0.316 | lr 0.000399 | 27,809 tok/s | gpu 99% | peak 8.303 GB
+step  2820/5722 | loss 3.2262 | grad 0.285 | lr 0.000395 | 27,802 tok/s | gpu 100% | peak 8.303 GB
+step  2840/5722 | loss 3.2016 | grad 0.321 | lr 0.000392 | 27,810 tok/s | gpu 100% | peak 8.303 GB
+step  2860/5722 | loss 3.1934 | grad 0.277 | lr 0.000389 | 27,816 tok/s | gpu 99% | peak 8.303 GB
+  checkpoint saved at step 2871
+step  2880/5722 | loss 3.1787 | grad 0.328 | lr 0.000386 | 27,809 tok/s | gpu 100% | peak 8.303 GB
+step  2900/5722 | loss 3.2209 | grad 0.292 | lr 0.000382 | 27,825 tok/s | gpu 100% | peak 8.303 GB
+step  2920/5722 | loss 3.2132 | grad 0.324 | lr 0.000379 | 27,818 tok/s | gpu 100% | peak 8.303 GB
+step  2940/5722 | loss 3.2201 | grad 0.244 | lr 0.000376 | 27,848 tok/s | gpu 99% | peak 8.303 GB
+step  2960/5722 | loss 3.1898 | grad 0.268 | lr 0.000372 | 27,817 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 2967
+step  2980/5722 | loss 3.1864 | grad 0.257 | lr 0.000369 | 27,804 tok/s | gpu 100% | peak 8.303 GB
+step  3000/5722 | loss 3.1675 | grad 0.283 | lr 0.000366 | 27,814 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 3000 val loss 3.2928 | 1.1209 bits/byte | gpu temp 89 C
+      'The capital of France is the French capital, the French capital, and the French capital. The French capital is the French capital, the French capital, and the French capital. The French capital is the French capital, the French capital, and the French capital. The French capital is the French capital, the French capital, and the French capital.'
+      'Water is made of hydrogen and oxygen.\n- The hydrogen is a mixture of hydrogen and oxygen.\n- The hydrogen is a mixture of hydrogen and oxygen.\n- The hydrogen is a mixture of hydrogen and oxygen.\n- The hydrogen is a mixture of hydrogen and oxygen.\n- The hydrogen is a mixture of hydrogen and oxygen.\n-'
+      '2 + 2 = 1000\n- 1000 = 1000\n- 1000 = 1000\n- 1000 = 1000\n- 1000 = 1000\n- 1000'
+      'The main reason plants need sunlight is because they are able to grow in a wide range of climates.\nThe main reason plants need sunlight is because they are able to grow in a wide range of climates.\nThe main reason plants need sunlight is because they are able to grow in a wide range of climates.\nThe main reason plants need sunlight is because'
+      'def add(a, b):\n- 1.1.2.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.'
+step  3020/5722 | loss 3.1795 | grad 0.266 | lr 0.000362 | 27,822 tok/s | gpu 99% | peak 8.303 GB
+step  3040/5722 | loss 3.1576 | grad 0.268 | lr 0.000359 | 27,830 tok/s | gpu 100% | peak 8.303 GB
+step  3060/5722 | loss 3.1749 | grad 0.305 | lr 0.000355 | 27,828 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 3063
+step  3080/5722 | loss 3.2047 | grad 0.277 | lr 0.000352 | 27,826 tok/s | gpu 100% | peak 8.303 GB
+step  3100/5722 | loss 3.1943 | grad 0.267 | lr 0.000349 | 27,822 tok/s | gpu 99% | peak 8.303 GB
+step  3120/5722 | loss 3.1476 | grad 0.272 | lr 0.000345 | 27,815 tok/s | gpu 100% | peak 8.303 GB
+step  3140/5722 | loss 3.1664 | grad 0.262 | lr 0.000342 | 27,817 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 3159
+step  3160/5722 | loss 3.1584 | grad 0.260 | lr 0.000339 | 27,804 tok/s | gpu 100% | peak 8.303 GB
+step  3180/5722 | loss 3.1447 | grad 0.262 | lr 0.000335 | 27,809 tok/s | gpu 100% | peak 8.303 GB
+step  3200/5722 | loss 3.1309 | grad 0.292 | lr 0.000332 | 27,824 tok/s | gpu 100% | peak 8.303 GB
+step  3220/5722 | loss 3.1492 | grad 0.273 | lr 0.000328 | 27,837 tok/s | gpu 100% | peak 8.303 GB
+step  3240/5722 | loss 3.1662 | grad 0.248 | lr 0.000325 | 27,845 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 3250 val loss 3.2644 | 1.1112 bits/byte | gpu temp 89 C
+      'The capital of France is the capital of France. The capital of France is the capital of France. The capital of France is the capital of France. The capital of France is the capital of France. The capital of France is the capital of France. The capital of France is the capital of France. The capital of France is the capital of France'
+      'Water is made of hydrogen and oxygen.\n- The water is made of hydrogen and oxygen.\n- The water is made of hydrogen and oxygen.\n- The water is made of oxygen and oxygen.\n- The water is made of oxygen and oxygen.\n- The water is made of oxygen and oxygen.\n- The water is made of'
+      '2 + 2 = 100000000000000000000000000000000000000000000000000000000000000'
+      'The main reason plants need sunlight is because they are so much more sensitive to sunlight.\nThe main reason plants need sunlight is because they are so much more sensitive to sunlight.\nThe main reason plants need sunlight is because they are so much more sensitive to sunlight.\nThe main reason plants need sunlight is because they are so much more sensitive to sunlight.'
+      'def add(a, b):\nThe following is a list of the most common types of add(a, b):\n- The add(a, b):\nThe add(a, b):\nThe add(a, b):\nThe add(a, b):\nThe add(a, b):\nThe add(a,'
+  checkpoint saved at step 3255
+step  3260/5722 | loss 3.1641 | grad 0.246 | lr 0.000322 | 27,796 tok/s | gpu 100% | peak 8.303 GB
+step  3280/5722 | loss 3.1730 | grad 0.288 | lr 0.000318 | 27,732 tok/s | gpu 100% | peak 8.303 GB
+step  3300/5722 | loss 3.1676 | grad 0.275 | lr 0.000315 | 27,791 tok/s | gpu 100% | peak 8.303 GB
+step  3320/5722 | loss 3.1742 | grad 0.266 | lr 0.000312 | 27,816 tok/s | gpu 99% | peak 8.303 GB
+step  3340/5722 | loss 3.1438 | grad 0.277 | lr 0.000308 | 27,812 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 3351
+step  3360/5722 | loss 3.1563 | grad 0.283 | lr 0.000305 | 27,782 tok/s | gpu 100% | peak 8.303 GB
+step  3380/5722 | loss 3.1107 | grad 0.267 | lr 0.000302 | 27,788 tok/s | gpu 100% | peak 8.303 GB
+step  3400/5722 | loss 3.1271 | grad 0.275 | lr 0.000298 | 27,798 tok/s | gpu 100% | peak 8.303 GB
+step  3420/5722 | loss 3.1343 | grad 0.294 | lr 0.000295 | 27,811 tok/s | gpu 100% | peak 8.303 GB
+step  3440/5722 | loss 3.1063 | grad 0.259 | lr 0.000291 | 27,798 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 3447
+step  3460/5722 | loss 3.1230 | grad 0.301 | lr 0.000288 | 27,802 tok/s | gpu 100% | peak 8.303 GB
+step  3480/5722 | loss 3.1420 | grad 0.279 | lr 0.000285 | 27,804 tok/s | gpu 100% | peak 8.303 GB
+step  3500/5722 | loss 3.1256 | grad 0.270 | lr 0.000281 | 27,801 tok/s | gpu 99% | peak 8.303 GB
+  >>> step 3500 val loss 3.2367 | 1.1018 bits/byte | gpu temp 89 C
+      'The capital of France is the capital of France.\nThe capital of France is the capital of France.\nThe capital of France is the capital of France.\nThe capital of France is the capital of France.\nThe capital of France is the capital of France.\nThe capital of France is the capital of France.\nThe capital of'
+      'Water is made of hydrogen and oxygen.\n- The hydrogen is the oxygen that is released from the sun.\n- The oxygen is the oxygen that is released from the sun.\n- The oxygen is the oxygen that is released from the sun.\n- The oxygen is the oxygen that is released from the sun.\n- The oxygen is the'
+      '2 + 2 = 1000\n- 1000 + 1000 + 1000 + 1000 + 1000 + 1000 + 1000 + 1000 + 1000 + 10'
+      'The main reason plants need sunlight is because they are able to grow in the sun.\nThe sun is the most important factor in determining the amount of sunlight that plants need.\nThe sun is the most important factor in determining the amount of sunlight that plants need.\nThe sun is the most important factor in determining the amount of sunlight that plants need.'
+      'def add(a, b):\n- 1.1.1.2.168.199.206.206.206.206.206.206.206.206.206.206.206.20'
+step  3520/5722 | loss 3.1090 | grad 0.265 | lr 0.000278 | 27,806 tok/s | gpu 100% | peak 8.303 GB
+step  3540/5722 | loss 3.1381 | grad 0.268 | lr 0.000275 | 27,808 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 3543
+step  3560/5722 | loss 3.1185 | grad 0.267 | lr 0.000272 | 27,814 tok/s | gpu 100% | peak 8.303 GB
+step  3580/5722 | loss 3.1203 | grad 0.263 | lr 0.000268 | 27,790 tok/s | gpu 100% | peak 8.303 GB
+step  3600/5722 | loss 3.1162 | grad 0.261 | lr 0.000265 | 27,808 tok/s | gpu 100% | peak 8.303 GB
+step  3620/5722 | loss 3.1201 | grad 0.267 | lr 0.000262 | 27,808 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 3639
+step  3640/5722 | loss 3.0983 | grad 0.243 | lr 0.000258 | 27,800 tok/s | gpu 100% | peak 8.303 GB
+step  3660/5722 | loss 3.0693 | grad 0.266 | lr 0.000255 | 27,811 tok/s | gpu 100% | peak 8.303 GB
+step  3680/5722 | loss 3.0700 | grad 0.265 | lr 0.000252 | 27,828 tok/s | gpu 99% | peak 8.303 GB
+step  3700/5722 | loss 3.0818 | grad 0.302 | lr 0.000249 | 27,828 tok/s | gpu 100% | peak 8.303 GB
+step  3720/5722 | loss 3.1102 | grad 0.264 | lr 0.000245 | 27,785 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 3735
+step  3740/5722 | loss 3.0948 | grad 0.275 | lr 0.000242 | 27,796 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 3750 val loss 3.2159 | 1.0947 bits/byte | gpu temp 89 C
+      'The capital of France is the city of Paris.\nThe city of Paris is the capital of France.\nThe city of Paris is the capital of France.\nThe city of Paris is the capital of France.\nThe city of Paris is the capital of France.\nThe city of Paris is the capital of France.\nThe city of'
+      'Water is made of hydrogen and oxygen.\n- The hydrogen is made of hydrogen and oxygen.\n- The hydrogen is made of hydrogen and oxygen.\n- The hydrogen is made of hydrogen and oxygen.\n- The hydrogen is made of hydrogen and oxygen.\n- The hydrogen is made of hydrogen and oxygen.\n- The hydrogen is made of'
+      '2 + 2 = 100000000000000000000000000000000000000000000000000000000000000'
+      'The main reason plants need sunlight is because they are so sensitive to the sun’s UV rays.\nThe sun’s UV rays are the same as the sun’s rays.\nThe sun’s rays are the same as the sun’s rays.\nThe sun’s rays are the same as the sun’s rays.\nThe'
+      'def add(a, b):\n- 1.1.2.168.128.128.128.128.128.128.128.128.128.128.128.128.128.'
+step  3760/5722 | loss 3.1093 | grad 0.257 | lr 0.000239 | 27,813 tok/s | gpu 100% | peak 8.303 GB
+step  3780/5722 | loss 3.1086 | grad 0.275 | lr 0.000236 | 27,825 tok/s | gpu 100% | peak 8.303 GB
+step  3800/5722 | loss 3.1104 | grad 0.262 | lr 0.000233 | 27,804 tok/s | gpu 100% | peak 8.303 GB
+step  3820/5722 | loss 3.1074 | grad 0.269 | lr 0.000230 | 27,792 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 3831
+step  3840/5722 | loss 3.0901 | grad 0.262 | lr 0.000226 | 27,805 tok/s | gpu 100% | peak 8.303 GB
+step  3860/5722 | loss 3.0901 | grad 0.274 | lr 0.000223 | 27,831 tok/s | gpu 100% | peak 8.303 GB
+step  3880/5722 | loss 3.0702 | grad 0.257 | lr 0.000220 | 27,801 tok/s | gpu 100% | peak 8.303 GB
+step  3900/5722 | loss 3.0812 | grad 0.253 | lr 0.000217 | 27,785 tok/s | gpu 100% | peak 8.303 GB
+step  3920/5722 | loss 3.0772 | grad 0.271 | lr 0.000214 | 27,808 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 3927
+step  3940/5722 | loss 3.1156 | grad 0.266 | lr 0.000211 | 27,774 tok/s | gpu 100% | peak 8.303 GB
+step  3960/5722 | loss 3.0887 | grad 0.253 | lr 0.000208 | 27,806 tok/s | gpu 100% | peak 8.303 GB
+step  3980/5722 | loss 3.0463 | grad 0.244 | lr 0.000205 | 27,831 tok/s | gpu 100% | peak 8.303 GB
+step  4000/5722 | loss 3.0959 | grad 0.266 | lr 0.000202 | 27,825 tok/s | gpu 99% | peak 8.303 GB
+  >>> step 4000 val loss 3.1960 | 1.0880 bits/byte | gpu temp 89 C
+      'The capital of France is the city of Luxembourg.\nThe city of Luxembourg is the capital of the French state.\nThe city of Luxembourg is the capital of the French state.\nThe city of Luxembourg is the capital of the French state.\nThe city of'
+      'Water is made of hydrogen and oxygen. The oxygen is produced by the reaction of hydrogen and oxygen. The oxygen is produced by the reaction of hydrogen and oxygen. The oxygen is produced by the reaction of hydrogen and oxygen. The oxygen is produced by the reaction of oxygen and oxygen. The oxygen is produced by the reaction of oxygen and oxygen. The oxygen'
+      '2 + 2 = 100000000000000000000000000000000000000000000000000000000000000'
+      'The main reason plants need sunlight is because they are so sensitive to the sun.\nThe sun is the most important factor in the growth of plants.\nThe sun is the most important factor in the growth of plants.\nThe sun is the most important factor in the growth of plants.\nThe sun is the most important factor in the growth of plants'
+      'def add(a, b):\n- 1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.1.'
+  snapshot saved at step 4000
+step  4020/5722 | loss 3.0973 | grad 0.242 | lr 0.000199 | 27,810 tok/s | gpu 99% | peak 8.303 GB
+  checkpoint saved at step 4023
+step  4040/5722 | loss 3.0547 | grad 0.302 | lr 0.000196 | 27,824 tok/s | gpu 100% | peak 8.303 GB
+step  4060/5722 | loss 3.0985 | grad 0.256 | lr 0.000193 | 27,844 tok/s | gpu 100% | peak 8.303 GB
+step  4080/5722 | loss 3.1368 | grad 0.273 | lr 0.000190 | 27,830 tok/s | gpu 100% | peak 8.303 GB
+step  4100/5722 | loss 3.0751 | grad 0.281 | lr 0.000187 | 27,824 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 4119
+step  4120/5722 | loss 3.0609 | grad 0.263 | lr 0.000185 | 27,817 tok/s | gpu 100% | peak 8.303 GB
+step  4140/5722 | loss 3.0737 | grad 0.302 | lr 0.000182 | 27,807 tok/s | gpu 100% | peak 8.303 GB
+step  4160/5722 | loss 3.0536 | grad 0.254 | lr 0.000179 | 27,824 tok/s | gpu 100% | peak 8.303 GB
+step  4180/5722 | loss 3.0821 | grad 0.237 | lr 0.000176 | 27,835 tok/s | gpu 100% | peak 8.303 GB
+step  4200/5722 | loss 3.0556 | grad 0.258 | lr 0.000173 | 27,809 tok/s | gpu 99% | peak 8.303 GB
+  checkpoint saved at step 4215
+step  4220/5722 | loss 3.0762 | grad 0.260 | lr 0.000171 | 27,743 tok/s | gpu 100% | peak 8.303 GB
+step  4240/5722 | loss 3.0950 | grad 0.268 | lr 0.000168 | 27,786 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 4250 val loss 3.1796 | 1.0824 bits/byte | gpu temp 89 C
+      'The capital of France is the city of Luxembourg.\nThe city of Luxembourg is the capital of France.\nThe city of Luxembourg is the capital of France.\nThe city of Luxembourg is the capital of France.\nThe city of Luxembourg is'
+      'Water is made of hydrogen and oxygen.\nThe hydrogen is a mixture of hydrogen and oxygen. The hydrogen is a mixture of hydrogen and oxygen. The oxygen is a mixture of oxygen and oxygen. The oxygen is a mixture of oxygen and oxygen.\nThe oxygen is a mixture of oxygen and oxygen. The oxygen is a mixture of oxygen and oxygen.'
+      '2 + 2 = 1000\nThe second equation is the same as the first equation.\nThe second equation is the same as the first equation.\nThe third equation is the same as the first equation.\nThe third equation is the same as the first equation.\nThe third equation is the same as the first equation'
+      'The main reason plants need sunlight is because they are able to grow in a sunny, dry environment.\nThe main reason plants need sunlight is because they are able to grow in a sunny, dry environment.\nThe main reason plants need sunlight is because they are able to grow in a sunny, dry environment.\nThe main reason plants need'
+      'def add(a, b):\n- 1.1.1016/00000000000000000000000000000000000000000000000000000'
+step  4260/5722 | loss 3.0588 | grad 0.245 | lr 0.000165 | 27,790 tok/s | gpu 100% | peak 8.303 GB
+step  4280/5722 | loss 3.0875 | grad 0.238 | lr 0.000163 | 27,787 tok/s | gpu 100% | peak 8.303 GB
+step  4300/5722 | loss 3.0694 | grad 0.255 | lr 0.000160 | 27,761 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 4311
+step  4320/5722 | loss 3.0629 | grad 0.283 | lr 0.000157 | 27,759 tok/s | gpu 100% | peak 8.303 GB
+step  4340/5722 | loss 3.0411 | grad 0.254 | lr 0.000155 | 27,785 tok/s | gpu 100% | peak 8.303 GB
+step  4360/5722 | loss 3.0660 | grad 0.252 | lr 0.000152 | 27,786 tok/s | gpu 99% | peak 8.303 GB
+step  4380/5722 | loss 3.0825 | grad 0.274 | lr 0.000150 | 27,782 tok/s | gpu 100% | peak 8.303 GB
+step  4400/5722 | loss 3.0666 | grad 0.244 | lr 0.000147 | 27,793 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 4407
+step  4420/5722 | loss 3.0946 | grad 0.258 | lr 0.000145 | 27,772 tok/s | gpu 99% | peak 8.303 GB
+step  4440/5722 | loss 3.0654 | grad 0.258 | lr 0.000142 | 27,791 tok/s | gpu 100% | peak 8.303 GB
+step  4460/5722 | loss 3.0790 | grad 0.248 | lr 0.000140 | 27,793 tok/s | gpu 100% | peak 8.303 GB
+step  4480/5722 | loss 3.0464 | grad 0.251 | lr 0.000137 | 27,772 tok/s | gpu 99% | peak 8.303 GB
+step  4500/5722 | loss 3.0448 | grad 0.270 | lr 0.000135 | 27,768 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 4500 val loss 3.1638 | 1.0770 bits/byte | gpu temp 89 C
+      'The capital of France is the city of Luxembourg.\nThe city of Luxembourg is located in the heart of the city of Luxembourg.\nThe city of Luxembourg is located in the heart of the city of Luxembourg.\nThe city of Luxemb'
+      'Water is made of hydrogen and oxygen.\n- The hydrogen is made of hydrogen and oxygen.\n- The oxygen is made of hydrogen and oxygen.\n- The oxygen is made of hydrogen and oxygen.\n- The oxygen is made of hydrogen and oxygen.\n- The oxygen is made of oxygen and oxygen.\n- The oxygen is made of'
+      '2 + 2 = 1000\n- 1000 = 1000\n- 1000 = 1000\n- 1000 = 1000\n- 1000 = 1000\n- 1000'
+      'The main reason plants need sunlight is because they are able to grow in a sunny location.\nThe sun is the most important factor in determining the amount of sunlight you need.\nThe amount of sunlight you need depends on the type of plant you are growing.\nThe amount of sunlight you need depends on the type of plant you are growing.\n'
+      'def add(a, b):\nThe first step in the process is to identify the problem.\nThe second step is to identify the problem.\nThe third step is to identify the problem.\nThe third step is to identify the problem.\nThe third step is to identify the problem.\nThe fourth step is to identify the problem.\nThe'
+  checkpoint saved at step 4502
+step  4520/5722 | loss 3.0615 | grad 0.266 | lr 0.000133 | 27,769 tok/s | gpu 100% | peak 8.303 GB
+step  4540/5722 | loss 3.0634 | grad 0.254 | lr 0.000131 | 27,778 tok/s | gpu 100% | peak 8.303 GB
+step  4560/5722 | loss 3.0195 | grad 0.266 | lr 0.000128 | 27,771 tok/s | gpu 99% | peak 8.303 GB
+step  4580/5722 | loss 3.0511 | grad 0.248 | lr 0.000126 | 27,749 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 4598
+step  4600/5722 | loss 3.0601 | grad 0.248 | lr 0.000124 | 27,758 tok/s | gpu 100% | peak 8.303 GB
+step  4620/5722 | loss 3.0487 | grad 0.231 | lr 0.000122 | 27,770 tok/s | gpu 99% | peak 8.303 GB
+step  4640/5722 | loss 3.0660 | grad 0.251 | lr 0.000120 | 27,749 tok/s | gpu 100% | peak 8.303 GB
+step  4660/5722 | loss 3.0269 | grad 0.235 | lr 0.000117 | 27,765 tok/s | gpu 100% | peak 8.303 GB
+step  4680/5722 | loss 3.0411 | grad 0.256 | lr 0.000115 | 27,780 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 4694
+step  4700/5722 | loss 3.0553 | grad 0.249 | lr 0.000113 | 27,774 tok/s | gpu 100% | peak 8.303 GB
+step  4720/5722 | loss 3.0594 | grad 0.263 | lr 0.000111 | 27,765 tok/s | gpu 100% | peak 8.303 GB
+step  4740/5722 | loss 3.0447 | grad 0.249 | lr 0.000109 | 27,773 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 4750 val loss 3.1492 | 1.0720 bits/byte | gpu temp 89 C
+      'The capital of France is the city of Luxembourg, which is the capital of the French Republic.\nThe city of Luxembourg is located in the heart of the city of Luxembourg. The city is situated in the heart of the city of Luxembourg.\nThe city of L'
+      'Water is made of hydrogen and oxygen.\nThe hydrogen is a mixture of hydrogen and oxygen. The hydrogen is a mixture of hydrogen and oxygen. The oxygen is a mixture of hydrogen and oxygen. The oxygen is a mixture of hydrogen and oxygen.\nThe hydrogen is a mixture of hydrogen and oxygen. The oxygen is a mixture of hydrogen and oxygen.'
+      '2 + 2 = 1000\nThe number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number'
+      'The main reason plants need sunlight is because they are so sensitive to the sun.\nThe sun is the most important factor in the plant’s growth.\nThe sun is the most important factor in the plant’s growth.\nThe sun is the most important factor in the plant’s growth.\nThe sun is the most important factor in the'
+      'def add(a, b):\nThe first step in the process is to create a new file.\nThe second step is to create a new file.\nThe third step is to create a new file.\nThe third step is to create a new file.\nThe third step is to create a new file.\nThe final step is to create'
+step  4760/5722 | loss 3.0153 | grad 0.242 | lr 0.000107 | 27,770 tok/s | gpu 100% | peak 8.303 GB
+step  4780/5722 | loss 3.0390 | grad 0.259 | lr 0.000106 | 27,783 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 4789
+step  4800/5722 | loss 3.0606 | grad 0.264 | lr 0.000104 | 27,789 tok/s | gpu 100% | peak 8.303 GB
+step  4820/5722 | loss 3.0207 | grad 0.269 | lr 0.000102 | 27,800 tok/s | gpu 100% | peak 8.303 GB
+step  4840/5722 | loss 3.0088 | grad 0.247 | lr 0.000100 | 27,786 tok/s | gpu 99% | peak 8.303 GB
+step  4860/5722 | loss 3.0504 | grad 0.230 | lr 0.000098 | 27,795 tok/s | gpu 100% | peak 8.303 GB
+step  4880/5722 | loss 3.0131 | grad 0.260 | lr 0.000097 | 27,785 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 4885
+step  4900/5722 | loss 3.0440 | grad 0.244 | lr 0.000095 | 27,771 tok/s | gpu 99% | peak 8.303 GB
+step  4920/5722 | loss 3.0018 | grad 0.252 | lr 0.000093 | 27,767 tok/s | gpu 100% | peak 8.303 GB
+step  4940/5722 | loss 2.9982 | grad 0.236 | lr 0.000092 | 27,769 tok/s | gpu 100% | peak 8.303 GB
+step  4960/5722 | loss 3.0385 | grad 0.269 | lr 0.000090 | 27,783 tok/s | gpu 100% | peak 8.303 GB
+step  4980/5722 | loss 3.0262 | grad 0.237 | lr 0.000089 | 27,787 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 4981
+step  5000/5722 | loss 3.0580 | grad 0.247 | lr 0.000087 | 27,725 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 5000 val loss 3.1395 | 1.0687 bits/byte | gpu temp 90 C
+      'The capital of France is the city of Luxembourg.\nThe city is located in the heart of the city of Luxembourg.\nThe city is located in the heart of the city of Luxembourg.\nThe city is located in the heart of the city of Luxembourg.\n'
+      'Water is made of hydrogen and oxygen.\nThe hydrogen is a mixture of hydrogen and oxygen.\nThe oxygen is a mixture of hydrogen and oxygen.\nThe oxygen is a mixture of hydrogen and oxygen.\nThe oxygen is a mixture of oxygen and oxygen.\nThe oxygen is a mixture of oxygen and oxygen.\nThe oxygen is a mixture of'
+      '2 + 2 = 1000\nThe number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number'
+      'The main reason plants need sunlight is that they are able to grow in the shade.\nThe plants need to be watered regularly.\nThe plants need to be watered regularly.\nThe plants need to be watered regularly.\nThe plants need to be watered regularly.\nThe plants need to be watered regularly'
+      'def add(a, b):\nThe first step is to add a new element to the list.\nThe second step is to add a new element to the list.\nThe third step is to add a new element to the list.\nThe third step is to add a new element to the list.\nThe third step is to add a new'
+step  5020/5722 | loss 3.0133 | grad 0.284 | lr 0.000086 | 27,773 tok/s | gpu 99% | peak 8.303 GB
+step  5040/5722 | loss 3.0256 | grad 0.251 | lr 0.000084 | 27,774 tok/s | gpu 100% | peak 8.303 GB
+step  5060/5722 | loss 3.0150 | grad 0.237 | lr 0.000083 | 27,790 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 5076
+step  5080/5722 | loss 3.0309 | grad 0.261 | lr 0.000081 | 27,774 tok/s | gpu 100% | peak 8.303 GB
+step  5100/5722 | loss 2.9884 | grad 0.244 | lr 0.000080 | 27,782 tok/s | gpu 100% | peak 8.303 GB
+step  5120/5722 | loss 3.0366 | grad 0.238 | lr 0.000079 | 27,769 tok/s | gpu 100% | peak 8.303 GB
+step  5140/5722 | loss 3.0326 | grad 0.246 | lr 0.000078 | 27,787 tok/s | gpu 100% | peak 8.303 GB
+step  5160/5722 | loss 3.0045 | grad 0.240 | lr 0.000077 | 27,787 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 5172
+step  5180/5722 | loss 3.0295 | grad 0.253 | lr 0.000075 | 27,765 tok/s | gpu 100% | peak 8.303 GB
+step  5200/5722 | loss 3.0309 | grad 0.236 | lr 0.000074 | 27,768 tok/s | gpu 100% | peak 8.303 GB
+step  5220/5722 | loss 3.0456 | grad 0.246 | lr 0.000073 | 27,766 tok/s | gpu 100% | peak 8.303 GB
+step  5240/5722 | loss 3.0385 | grad 0.238 | lr 0.000072 | 27,768 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 5250 val loss 3.1304 | 1.0656 bits/byte | gpu temp 89 C
+      'The capital of France is the city of Lisbon, which is located in the heart of the city. The city is located in the heart of the city, and is surrounded by the city of Lisbon. The city of Lisbon is located in the heart of the city, and is surrounded by the city of Lisbon'
+      'Water is made of hydrogen and oxygen.\nThe hydrogen is a mixture of hydrogen and oxygen. The oxygen is a mixture of hydrogen and oxygen. The oxygen is a mixture of oxygen and oxygen.\nThe oxygen is a mixture of oxygen and oxygen. The oxygen is a mixture of oxygen and oxygen. The oxygen is a mixture of oxygen and oxygen.'
+      '2 + 2 = 1000.\nThe number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the'
+      'The main reason plants need sunlight is because they are so sensitive to the sun.\nThe plants need a lot of sunlight to grow.\nThe plants need a lot of sunlight to grow.\nThe plants need a lot of sunlight to grow.\nThe plants need a lot of sunlight to grow.\nThe plants need a lot of sunlight to grow.'
+      'def add(a, b):\nThe first step in the process is to create a new file.\nThe second step is to create a new file.\nThe third step is to create a new file.\nThe third step is to create a new file.\nThe third step is to create a new file.\nThe final step is to create'
+step  5260/5722 | loss 3.0083 | grad 0.238 | lr 0.000071 | 27,758 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 5267
+step  5280/5722 | loss 3.0283 | grad 0.227 | lr 0.000070 | 27,764 tok/s | gpu 100% | peak 8.303 GB
+step  5300/5722 | loss 3.0175 | grad 0.239 | lr 0.000069 | 27,766 tok/s | gpu 100% | peak 8.303 GB
+step  5320/5722 | loss 3.0022 | grad 0.241 | lr 0.000068 | 27,766 tok/s | gpu 100% | peak 8.303 GB
+step  5340/5722 | loss 3.0199 | grad 0.253 | lr 0.000068 | 27,747 tok/s | gpu 100% | peak 8.303 GB
+step  5360/5722 | loss 3.0109 | grad 0.262 | lr 0.000067 | 27,735 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 5363
+step  5380/5722 | loss 3.0074 | grad 0.243 | lr 0.000066 | 27,739 tok/s | gpu 100% | peak 8.303 GB
+step  5400/5722 | loss 3.0350 | grad 0.235 | lr 0.000065 | 27,750 tok/s | gpu 100% | peak 8.303 GB
+step  5420/5722 | loss 3.0000 | grad 0.241 | lr 0.000065 | 27,768 tok/s | gpu 100% | peak 8.303 GB
+step  5440/5722 | loss 3.0132 | grad 0.274 | lr 0.000064 | 27,783 tok/s | gpu 99% | peak 8.303 GB
+  checkpoint saved at step 5459
+step  5460/5722 | loss 3.0376 | grad 0.263 | lr 0.000064 | 27,772 tok/s | gpu 100% | peak 8.303 GB
+step  5480/5722 | loss 3.0456 | grad 0.238 | lr 0.000063 | 27,769 tok/s | gpu 99% | peak 8.303 GB
+step  5500/5722 | loss 2.9937 | grad 0.241 | lr 0.000063 | 27,803 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 5500 val loss 3.1240 | 1.0635 bits/byte | gpu temp 89 C
+      'The capital of France is the city of Luxembourg.\nThe city of Luxembourg is located in the heart of the city of Luxembourg.\nThe city of Luxembourg is located in the heart of the city of Luxembourg.\nThe city of Luxemb'
+      'Water is made of hydrogen and oxygen.\n- The hydrogen is a gas that is made of hydrogen and oxygen.\n- The oxygen is a gas that is made of hydrogen and oxygen.\n- The oxygen is a gas that is made of hydrogen and oxygen.\n- The oxygen is a gas that is made of oxygen and oxygen.\n-'
+      '2 + 2 = 1000)\n- 1000 = 1000\n- 1000 = 1000\n- 1000 = 1000\n- 1000 = 1000\n- 100'
+      'The main reason plants need sunlight is because they are able to grow in the shade.\nThe plants need to be watered regularly to keep them healthy.\nThe plants need to be watered regularly to keep them healthy.\nThe plants need to be watered regularly to keep them healthy.\nThe plants need to be watered'
+      'def add(a, b):\nThe first step is to add a new element to the list.\nThe second step is to add a new element to the list.\nThe third step is to add a new element to the list.\nThe third step is to add a new element to the list.\nThe third step is to add a new'
+step  5520/5722 | loss 2.9918 | grad 0.247 | lr 0.000062 | 27,780 tok/s | gpu 100% | peak 8.303 GB
+step  5540/5722 | loss 3.0145 | grad 0.245 | lr 0.000062 | 27,759 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 5554
+step  5560/5722 | loss 2.9954 | grad 0.252 | lr 0.000061 | 27,768 tok/s | gpu 100% | peak 8.303 GB
+step  5580/5722 | loss 3.0315 | grad 0.244 | lr 0.000061 | 27,773 tok/s | gpu 99% | peak 8.303 GB
+step  5600/5722 | loss 2.9964 | grad 0.242 | lr 0.000061 | 27,800 tok/s | gpu 100% | peak 8.303 GB
+step  5620/5722 | loss 2.9743 | grad 0.248 | lr 0.000061 | 27,811 tok/s | gpu 100% | peak 8.303 GB
+step  5640/5722 | loss 3.0165 | grad 0.275 | lr 0.000060 | 27,793 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 5650
+step  5660/5722 | loss 3.0369 | grad 0.254 | lr 0.000060 | 27,781 tok/s | gpu 100% | peak 8.303 GB
+step  5680/5722 | loss 3.0226 | grad 0.238 | lr 0.000060 | 27,780 tok/s | gpu 100% | peak 8.303 GB
+step  5700/5722 | loss 3.0153 | grad 0.254 | lr 0.000060 | 27,734 tok/s | gpu 100% | peak 8.303 GB
+step  5720/5722 | loss 3.0190 | grad 0.252 | lr 0.000060 | 27,776 tok/s | gpu 100% | peak 8.303 GB
+step  5722/5722 | loss 3.0030 | grad 0.249 | lr 0.000060 | 27,802 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 5722 val loss 3.1200 | 1.0621 bits/byte | gpu temp 89 C
+      'The capital of France is the city of Luxembourg.\nThe city of Luxembourg is located in the heart of the city of Luxembourg.\nThe city of Luxembourg is located in the heart of the city of Luxembourg.\nThe city of Luxemb'
+      'Water is made of hydrogen and oxygen.\nThe hydrogen is a mixture of hydrogen and oxygen. The oxygen is the same as the oxygen in the air.\nThe oxygen is the same as the oxygen in the air.\nThe oxygen is the same as the oxygen in the air.\nThe oxygen is the same as the oxygen in the air.'
+      '2 + 2 = 1000.\nThe first two numbers are the same, but the first two numbers are the same.\nThe second number is the same, but the first two numbers are the same.\nThe third number is the same, but the first two numbers are the same.\nThe third number is the'
+      'The main reason plants need sunlight is because they are so sensitive to the sun’s rays.\nThe sun’s rays are absorbed by the leaves and the air in the plant. The sun’s rays are absorbed by the leaves and the air in the plant.\nThe sun’s rays are absorbed by the leaves and the air in the plant'
+      'def add(a, b):\nThe first step is to add a new element to the element.\nThe second step is to add a new element to the element.\nThe third step is to add a new element to the element.\nThe third step is to add a new element to the element.\nThe third step is to add a new'
+  snapshot saved at step 5722
+  checkpoint saved at step 5722
+Finished: status=completed steps=5722 best_val_loss=3.119986933231354 train tok/s=27,774 overall tok/s=27,701
+=== 2026-11-05 17:11:36 trainer exited with code 0, status completed

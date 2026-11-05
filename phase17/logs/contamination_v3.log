@@ -1,0 +1,7 @@
+previous eval prompts: 1,334; SFT prompts: 1,074,456
+goal_heldout_v3: 200 items, 0 flagged against previous eval sets / SFT prompts
+overrefusal_v3: 100 items, 0 flagged against previous eval sets / SFT prompts
+harmful_v3: 60 items, 0 flagged against previous eval sets / SFT prompts
+goal_heldout_v3: pretraining 13-gram — 31 testable, 0 overlapping
+overrefusal_v3: pretraining 13-gram — 7 testable, 0 overlapping
+harmful_v3: pretraining 13-gram — 8 testable, 0 overlapping

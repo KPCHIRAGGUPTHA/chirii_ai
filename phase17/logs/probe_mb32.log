@@ -1,0 +1,54 @@
+~/anaconda3/envs/minigpt/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+torch.compile failed, using the plain model: OutOfMemoryError: CUDA out of memory. Tried to allocate 192.00 MiB. GPU 0 has a total capacity of 11.62 GiB of which 159.62 MiB is free. Including non-PyTorch memory, this process has 10.85 GiB memory in use. Of the allocated memory 10.71 GiB is allocated by PyTorch, and 14.27 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Fused AdamW: True | Compile: failed: OutOfMemoryError | Parameters: 98,425,344
+Train tokens: 2,986,805,090 | Steps: 5,700 | Tokens per step: 524,288 (32 x 16 x 1024) | Budget: 2,988,441,600
+Traceback (most recent call last):
+  File "~/chirag_work/minigpt/phase10/train_v3.py", line 464, in <module>
+    main()
+  File "~/chirag_work/minigpt/phase10/train_v3.py", line 458, in main
+    summary = train(config, resume=args.resume or (args.auto_resume and has_checkpoint))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/chirag_work/minigpt/phase10/train_v3.py", line 331, in train
+    loss = accumulate_gradients(train_model, micro_batches, device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/chirag_work/minigpt/phase9/train_v2.py", line 156, in accumulate_gradients
+    _, loss = model(x.to(device), y.to(device))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/chirag_work/minigpt/model.py", line 149, in forward
+    x = block(x)
+        ^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/chirag_work/minigpt/model.py", line 96, in forward
+    x = x + self.mlp(self.ln_2(x))
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/chirag_work/minigpt/model.py", line 80, in forward
+    x = self.gelu(x)
+        ^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1787, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1798, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/nn/modules/activation.py", line 817, in forward
+    return F.gelu(input, approximate=self.approximate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 192.00 MiB. GPU 0 has a total capacity of 11.62 GiB of which 83.62 MiB is free. Including non-PyTorch memory, this process has 10.93 GiB memory in use. Of the allocated memory 10.69 GiB is allocated by PyTorch, and 115.11 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)

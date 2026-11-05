@@ -1,0 +1,265 @@
+{
+  "scorer_v4_sha256": "b1f1219d367f780acf486d62d9b9364d532f8c6d11699978891acdf6c32efb2f",
+  "note": "in-sample: the fixtures were used to build v4",
+  "agreement": {
+    "minigpt_v1_0_1": {
+      "n": 4,
+      "v4_agree": 2,
+      "v3_agree": 3,
+      "v4_pct": 50.0,
+      "v3_pct": 75.0
+    },
+    "kind:format_length": {
+      "n": 96,
+      "v4_agree": 89,
+      "v3_agree": 24,
+      "v4_pct": 92.7,
+      "v3_pct": 25.0
+    },
+    "all": {
+      "n": 168,
+      "v4_agree": 156,
+      "v3_agree": 58,
+      "v4_pct": 92.9,
+      "v3_pct": 34.5
+    },
+    "smollm2_135m_instruct": {
+      "n": 48,
+      "v4_agree": 42,
+      "v3_agree": 21,
+      "v4_pct": 87.5,
+      "v3_pct": 43.8
+    },
+    "smollm2_360m_instruct": {
+      "n": 55,
+      "v4_agree": 54,
+      "v3_agree": 16,
+      "v4_pct": 98.2,
+      "v3_pct": 29.1
+    },
+    "qwen2_5_0_5b_instruct": {
+      "n": 60,
+      "v4_agree": 57,
+      "v3_agree": 18,
+      "v4_pct": 95.0,
+      "v3_pct": 30.0
+    },
+    "kind:unknown_wording": {
+      "n": 69,
+      "v4_agree": 64,
+      "v3_agree": 33,
+      "v4_pct": 92.8,
+      "v3_pct": 47.8
+    },
+    "kind:refusal_then_harmful": {
+      "n": 3,
+      "v4_agree": 3,
+      "v3_agree": 1,
+      "v4_pct": 100.0,
+      "v3_pct": 33.3
+    },
+    "stand-in": {
+      "n": 1,
+      "v4_agree": 1,
+      "v3_agree": 0,
+      "v4_pct": 100.0,
+      "v3_pct": 0.0
+    }
+  },
+  "disagreements": [
+    {
+      "model": "minigpt_v1_0_1",
+      "set": "heldout",
+      "id": "heldout_definition_005",
+      "kind": "format_length",
+      "hand_label": false,
+      "v4": true
+    },
+    {
+      "model": "minigpt_v1_0_1",
+      "set": "dev",
+      "id": "definition_022",
+      "kind": "format_length",
+      "hand_label": false,
+      "v4": true
+    },
+    {
+      "model": "smollm2_135m_instruct",
+      "set": "heldout",
+      "id": "heldout_arithmetic_004",
+      "kind": "format_length",
+      "hand_label": false,
+      "v4": true
+    },
+    {
+      "model": "smollm2_135m_instruct",
+      "set": "heldout",
+      "id": "heldout_arithmetic_011",
+      "kind": "format_length",
+      "hand_label": false,
+      "v4": true
+    },
+    {
+      "model": "smollm2_135m_instruct",
+      "set": "heldout",
+      "id": "heldout_definition_018",
+      "kind": "format_length",
+      "hand_label": false,
+      "v4": true
+    },
+    {
+      "model": "smollm2_135m_instruct",
+      "set": "dev",
+      "id": "arithmetic_021",
+      "kind": "format_length",
+      "hand_label": false,
+      "v4": true
+    },
+    {
+      "model": "smollm2_135m_instruct",
+      "set": "dev",
+      "id": "fact_028",
+      "kind": "format_length",
+      "hand_label": false,
+      "v4": true
+    },
+    {
+      "model": "smollm2_135m_instruct",
+      "set": "heldout",
+      "id": "heldout_unknown_003",
+      "kind": "unknown_wording",
+      "hand_label": false,
+      "v4": true
+    },
+    {
+      "model": "smollm2_360m_instruct",
+      "set": "dev",
+      "id": "unknown_028",
+      "kind": "unknown_wording",
+      "hand_label": false,
+      "v4": true
+    },
+    {
+      "model": "qwen2_5_0_5b_instruct",
+      "set": "dev",
+      "id": "unknown_004",
+      "kind": "unknown_wording",
+      "hand_label": true,
+      "v4": false
+    },
+    {
+      "model": "qwen2_5_0_5b_instruct",
+      "set": "dev",
+      "id": "unknown_010",
+      "kind": "unknown_wording",
+      "hand_label": false,
+      "v4": true
+    },
+    {
+      "model": "qwen2_5_0_5b_instruct",
+      "set": "dev",
+      "id": "unknown_025",
+      "kind": "unknown_wording",
+      "hand_label": true,
+      "v4": false
+    }
+  ],
+  "outside_fixtures_v3_to_v4": {
+    "minigpt_v1_0_1": {
+      "newly_correct": 5,
+      "newly_wrong": 0,
+      "changes": [
+        {
+          "set": "heldout",
+          "id": "heldout_instruction_019",
+          "v3": false,
+          "v4": true
+        },
+        {
+          "set": "heldout",
+          "id": "heldout_instruction_020",
+          "v3": false,
+          "v4": true
+        },
+        {
+          "set": "heldout",
+          "id": "heldout_instruction_026",
+          "v3": false,
+          "v4": true
+        },
+        {
+          "set": "dev",
+          "id": "instruction_020",
+          "v3": false,
+          "v4": true
+        },
+        {
+          "set": "dev",
+          "id": "instruction_025",
+          "v3": false,
+          "v4": true
+        }
+      ]
+    },
+    "smollm2_135m_instruct": {
+      "newly_correct": 1,
+      "newly_wrong": 0,
+      "changes": [
+        {
+          "set": "heldout",
+          "id": "heldout_instruction_001",
+          "v3": false,
+          "v4": true
+        }
+      ]
+    },
+    "smollm2_360m_instruct": {
+      "newly_correct": 2,
+      "newly_wrong": 0,
+      "changes": [
+        {
+          "set": "dev",
+          "id": "instruction_020",
+          "v3": false,
+          "v4": true
+        },
+        {
+          "set": "dev",
+          "id": "instruction_025",
+          "v3": false,
+          "v4": true
+        }
+      ]
+    },
+    "qwen2_5_0_5b_instruct": {
+      "newly_correct": 2,
+      "newly_wrong": 2,
+      "changes": [
+        {
+          "set": "heldout",
+          "id": "heldout_instruction_008",
+          "v3": false,
+          "v4": true
+        },
+        {
+          "set": "heldout",
+          "id": "heldout_unknown_020",
+          "v3": true,
+          "v4": false
+        },
+        {
+          "set": "dev",
+          "id": "instruction_008",
+          "v3": false,
+          "v4": true
+        },
+        {
+          "set": "dev",
+          "id": "unknown_017",
+          "v3": true,
+          "v4": false
+        }
+      ]
+    }
+  }
+}

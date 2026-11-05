@@ -1,0 +1,79 @@
+{
+  "method": "Both models are scored on exactly the tokens covered by v4's 1,024-token windows (non-overlapping, from the start),\nso the scored tokens and bytes are identical. Rows:\n  - 34M base, 512-token windows (two per 1,024-token span)\n  - v4, 512-token windows (equal context to the 34M model)\n  - v4, 1,024-token windows (its native context)\nFloat32, no autocast, as in phase10/eval_v3.py.",
+  "models": {
+    "minigpt_34m_base": {
+      "checkpoint": "phase10/runs/foundation_v3_clean_2ep/snapshots/model_step_11524.pt",
+      "sha256": "68ca4deaef0c3e57c8fa01bdc7f53a4c4826324e902732b2292d923c90c1b8bc",
+      "step": 11524,
+      "parameters": 33870848,
+      "block_size": 512,
+      "results": {
+        "phase10_val@512": {
+          "bits_per_byte": 1.133516886344109,
+          "loss": 3.2741237808240427,
+          "loss_standard_error": 0.004673934329439059,
+          "eval_tokens": 3788800,
+          "eval_bytes": 15788589
+        },
+        "phase5d_val_lf@512": {
+          "bits_per_byte": 1.1479424561048497,
+          "loss": 3.332076578023957,
+          "loss_standard_error": 0.00945420955266437,
+          "eval_tokens": 839680,
+          "eval_bytes": 3516278
+        }
+      }
+    },
+    "foundation_v4_base": {
+      "checkpoint": "phase17/runs/foundation_v4/snapshots/model_step_05722.pt",
+      "sha256": "3c5d02dd3f8ef070623b057828efa8856f0ec7ae630cb1b382011eb47b498851",
+      "step": 5722,
+      "parameters": 98425344,
+      "block_size": 1024,
+      "results": {
+        "phase10_val@512": {
+          "bits_per_byte": 1.0797537404533577,
+          "loss": 3.1188308190574516,
+          "loss_standard_error": 0.0047123869380648765,
+          "eval_tokens": 3788800,
+          "eval_bytes": 15788589
+        },
+        "phase10_val@1024": {
+          "bits_per_byte": 1.0596179495372486,
+          "loss": 3.06066929303311,
+          "loss_standard_error": 0.005895763529871535,
+          "eval_tokens": 3788800,
+          "eval_bytes": 15788589
+        },
+        "phase5d_val_lf@512": {
+          "bits_per_byte": 1.0960317309575456,
+          "loss": 3.1813978480129705,
+          "loss_standard_error": 0.009492275060673913,
+          "eval_tokens": 839680,
+          "eval_bytes": 3516278
+        },
+        "phase5d_val_lf@1024": {
+          "bits_per_byte": 1.077652849311272,
+          "loss": 3.128050364662961,
+          "loss_standard_error": 0.011921284326967135,
+          "eval_tokens": 839680,
+          "eval_bytes": 3516278
+        }
+      }
+    }
+  },
+  "texts": {
+    "phase10_val": {
+      "file": "phase10/data/tokens/val.bin",
+      "sha256": "21829bf07dd44e89ddb44916a362cfc5df4cacb15462211782bcfaadf54eedf0",
+      "tokens_scored": 3788800,
+      "spans_of_1024": 3700
+    },
+    "phase5d_val_lf": {
+      "file": "data/phase5d/val_corpus.txt",
+      "sha256_lf": "6c5c425a42b6fa988afc6a081c9bb01773b449308165934c5bc3038789c6e683",
+      "tokens_scored": 839680,
+      "spans_of_1024": 820
+    }
+  }
+}

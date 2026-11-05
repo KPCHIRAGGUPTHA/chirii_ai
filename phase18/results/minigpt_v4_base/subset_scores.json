@@ -1,0 +1,25 @@
+{
+  "gsm8k": {
+    "source": "results/minigpt_v4_base/gsm8k/vdujuxrm/samples_gsm8k_2026-11-05T18-32-24.886955.jsonl",
+    "logged_items": 500,
+    "flexible-extract": {
+      "value": 0.01,
+      "stderr": 0.0044541754970721026,
+      "n": 500
+    },
+    "strict-match": {
+      "value": 0.0,
+      "stderr": 0.0,
+      "n": 500
+    }
+  },
+  "triviaqa": {
+    "source": "results/minigpt_v4_base/triviaqa/vdujuxrm/samples_triviaqa_2026-11-05T18-35-00.878065.jsonl",
+    "logged_items": 1000,
+    "remove_whitespace": {
+      "value": 0.003,
+      "stderr": 0.0017303161543469378,
+      "n": 1000
+    }
+  }
+}

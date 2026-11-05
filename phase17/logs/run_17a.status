@@ -1,0 +1,9 @@
+start 2026-11-03 17:08:44
+collect FAILED 2026-11-03 17:15:23
+start 2026-11-03 17:16:54
+collect done 2026-11-03 17:16:56
+tokenize paused 2026-11-03 17:17:42 before finishing shard 0, at the user's request (Phase 18 first). Resume: setsid nohup phase17/run_17a.sh >> phase17/logs/run_17a.out 2>&1 < /dev/null &
+resumed 2026-11-03 17:21:33 (user: CPU parts may run alongside Phase 18)
+start 2026-11-03 17:21:33
+collect done 2026-11-03 17:21:35
+tokenize done 2026-11-03 17:40:03

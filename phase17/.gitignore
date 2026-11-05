@@ -1,0 +1,9 @@
+data/
+logs/*.out
+runs/*
+!runs/stability_gate.json
+!runs/foundation_v4/
+runs/foundation_v4/*
+!runs/foundation_v4/metrics.json
+!runs/foundation_v4/steps.jsonl
+!runs/foundation_v4/generations.jsonl

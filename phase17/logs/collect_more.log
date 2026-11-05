@@ -1,0 +1,28 @@
+HuggingFaceFW/fineweb-edu sample-10BT revision 87f09149ef4734204d70ed1d046ddc9ca3f2b8f9; 668,310 Phase 10 document keys and 12,013 Phase 5D line keys loaded in 16s
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Skipping the first 669,469 documents of the stream
+chunk 0: total 0.512 GB, 107,377 docs, 4.95 MB/s, skipped so far: phase10 dup 623, phase5d 726, special 0, dup 20
+chunk 1: total 1.024 GB, 216,594 docs, 31.13 MB/s, skipped so far: phase10 dup 1350, phase5d 1452, special 0, dup 74
+chunk 2: total 1.536 GB, 325,562 docs, 34.63 MB/s, skipped so far: phase10 dup 2012, phase5d 2110, special 0, dup 155
+chunk 3: total 2.048 GB, 433,364 docs, 35.09 MB/s, skipped so far: phase10 dup 2694, phase5d 2784, special 0, dup 396
+chunk 4: total 2.560 GB, 539,697 docs, 35.51 MB/s, skipped so far: phase10 dup 3338, phase5d 3358, special 1, dup 800
+chunk 5: total 3.072 GB, 647,194 docs, 34.58 MB/s, skipped so far: phase10 dup 3951, phase5d 3881, special 1, dup 1207
+chunk 6: total 3.584 GB, 754,135 docs, 37.39 MB/s, skipped so far: phase10 dup 4603, phase5d 4609, special 1, dup 1740
+chunk 7: total 4.096 GB, 859,376 docs, 28.71 MB/s, skipped so far: phase10 dup 5179, phase5d 5195, special 1, dup 2461
+chunk 8: total 4.608 GB, 968,055 docs, 32.07 MB/s, skipped so far: phase10 dup 5811, phase5d 5763, special 1, dup 3254
+chunk 9: total 5.120 GB, 1,074,955 docs, 33.62 MB/s, skipped so far: phase10 dup 6424, phase5d 6502, special 1, dup 4124
+chunk 10: total 5.632 GB, 1,182,898 docs, 34.40 MB/s, skipped so far: phase10 dup 7056, phase5d 7118, special 1, dup 5076
+chunk 11: total 6.144 GB, 1,289,679 docs, 35.37 MB/s, skipped so far: phase10 dup 7681, phase5d 7824, special 1, dup 6213
+chunk 12: total 6.656 GB, 1,396,004 docs, 30.03 MB/s, skipped so far: phase10 dup 8244, phase5d 8514, special 1, dup 7412
+chunk 13: total 7.168 GB, 1,503,420 docs, 28.64 MB/s, skipped so far: phase10 dup 8814, phase5d 9159, special 1, dup 8655
+chunk 14: total 7.680 GB, 1,610,598 docs, 34.58 MB/s, skipped so far: phase10 dup 9421, phase5d 9848, special 1, dup 10085
+chunk 15: total 8.192 GB, 1,719,302 docs, 33.92 MB/s, skipped so far: phase10 dup 9984, phase5d 10432, special 1, dup 11701
+chunk 16: total 8.704 GB, 1,828,715 docs, 33.57 MB/s, skipped so far: phase10 dup 10598, phase5d 11161, special 1, dup 13555
+chunk 17: total 9.216 GB, 1,936,694 docs, 34.17 MB/s, skipped so far: phase10 dup 11177, phase5d 11856, special 1, dup 15307
+chunk 18: total 9.400 GB, 1,975,769 docs, 35.35 MB/s, skipped so far: phase10 dup 11386, phase5d 12031, special 1, dup 15936
+Finished: completed_target, 9,400,014,557 bytes, 1,975,769 documents
+Fatal Python error: PyGILState_Release: auto-releasing thread-state, but no thread-state for this thread
+Python runtime state: finalizing (tstate=0x00006549a6c6d098)
+
+Already complete: 9,400,014,557 bytes, 1,975,769 documents; nothing to do
+Already complete: 9,400,014,557 bytes, 1,975,769 documents; nothing to do

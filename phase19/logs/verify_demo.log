@@ -1,0 +1,7 @@
+v2_preview {"cuda": 1, "cpu": 0} 1.38
+v1_0_1 {"cuda": 1, "cpu": 0} 0.53
+dev 236 mismatches 24
+{
+ "demo_prompts_in_training_data": [],
+ "training_prompts_indexed": 112968
+}

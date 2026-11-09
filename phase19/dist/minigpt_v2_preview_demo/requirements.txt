@@ -1,0 +1,6 @@
+# MiniGPT v2.0-preview demo — CPU only. Install the CPU build of torch (no CUDA needed).
+# On Windows/Linux laptops without a GPU this keeps the download small.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1
+tokenizers==0.20.3
+numpy==2.1.3

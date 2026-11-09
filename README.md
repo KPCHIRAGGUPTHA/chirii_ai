@@ -15,6 +15,9 @@ and evaluation only, and don't rely on its answers.
   [`phase17/BENCHMARKS_V4_EXT.md`]. That missed the pre-registered goal of *beating* GPT-2.
 - **v2.0 was not released.** The instruction-tuned model built on that base failed 2 of its 4 pre-registered release
   bars: bare arithmetic 16/18 and over-refusal 77/100, both against 90% [`phase17/PHASE17C_REPORT.md`].
+- **A v2.0-preview demo** of that model (CPU, with the calculator and the safety layer) is in
+  [`phase19/`](phase19/DEMO_SCRIPT_V2.md), shown next to v1.0.1. It is **not a release**: it failed the same two
+  bars. The weights are not included in this repository.
 - **The whole journey, findings and lessons are in [`FINAL_REPORT.md`](FINAL_REPORT.md).** Corrections to earlier
   documents are in [`ERRATA.md`](ERRATA.md).
 

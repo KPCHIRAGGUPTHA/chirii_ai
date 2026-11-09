@@ -1,0 +1,1 @@
+Put MiniGPT v1.0.1's weights file minigpt_v2.pt in this folder to use compare.py. See README.md.

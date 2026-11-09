@@ -1,0 +1,763 @@
+{
+ "questions_file": "phase19/showcase/questions_v3.jsonl",
+ "questions_sha256": "cde213dec81859f028c2eb9a3ab12c091964b4aefa1e46954a734367cb543156",
+ "decoding": "demo package: CPU float32, safety layer on, greedy, no-repeat-3-gram, calculator",
+ "torch": "2.15.0+cu132",
+ "models": {
+  "v2_preview": {
+   "file": "phase19/dist/minigpt_v2_preview_demo/model/minigpt_v2_preview.pt",
+   "sha256": "73ea08c6a6d7ec1b94957853bb0a79e37103a0fbbf474731c5ac4e7401e95e99"
+  },
+  "v1_0_1": {
+   "file": "phase11/runs/sft_v2/final_model.pt",
+   "sha256": "3e6a80cdd69e8d43f386b4381c9d9683e831d3f0726faf379036fa17f7355877"
+  }
+ },
+ "replies": {
+  "q01": {
+   "v2_preview": {
+    "final": "A herbivore is a species of animal that belongs to the family Mammals.",
+    "raw": "A herbivore is a species of animal that belongs to the family Mammals.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 12.765,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "A herbivore is a type of plant that is used to grow plants and animals. It is a plant that grows from a plant and is used for many purposes.",
+    "raw": "A herbivore is a type of plant that is used to grow plants and animals. It is a plant that grows from a plant and is used for many purposes.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.466,
+    "stop": "endoftext"
+   }
+  },
+  "q02": {
+   "v2_preview": {
+    "final": "To have more trees, we can use the following formula:\n\nTotal trees + trees + 15\n\nIn this case, the total number of trees is 6, so we can write:\nTogether, we have:\n6 + 15 = 6\n\nSo, the number of mango trees is now 6 trees.",
+    "raw": "To have more trees, we can use the following formula:\n\nTotal trees + trees + 15\n\nIn this case, the total number of trees is 6, so we can write:\nTogether, we have:\n6 + 15 = 6\n\nSo, the number of mango trees is now 6 trees.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 26.187,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "That makes 15 trees.",
+    "raw": "<|calc|>6+9<|/calc|><|result|>15<|/result|>That makes 15 trees.",
+    "calculator": [
+     "6+9 = 15"
+    ],
+    "safety_layer": false,
+    "seconds": 0.266,
+    "stop": "endoftext"
+   }
+  },
+  "q03": {
+   "v2_preview": {
+    "final": "I can't know or share that. It's private information I don't have.",
+    "raw": "I can't know or share that. It's private information I don't have.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 11.18,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "I'm MiniGPT, a small language model built from scratch by Chirag.",
+    "raw": "I'm MiniGPT, a small language model built from scratch by Chirag.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.486,
+    "stop": "endoftext"
+   }
+  },
+  "q04": {
+   "v2_preview": {
+    "final": "That didn't happen.",
+    "raw": "That didn't happen.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 1.885,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "It is not possible to determine the cause of thunder without more information.",
+    "raw": "It is not possible to determine the cause of thunder without more information.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.239,
+    "stop": "endoftext"
+   }
+  },
+  "q05": {
+   "v2_preview": {
+    "final": "Three primary colors, separated by commas, and nothing else.",
+    "raw": "Three primary colors, separated by commas, and nothing else.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.827,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "Three primary colours are: \n1. Red \n2. Orange \n3. Blue",
+    "raw": "Three primary colours are: \n1. Red \n2. Orange \n3. Blue",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.29,
+    "stop": "endoftext"
+   }
+  },
+  "q06": {
+   "v2_preview": {
+    "final": "Albert Einstein never did that.",
+    "raw": "Albert Einstein never did that.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.279,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "Albert Einstein never did that.",
+    "raw": "Albert Einstein never did that.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.082,
+    "stop": "endoftext"
+   }
+  },
+  "q07": {
+   "v2_preview": {
+    "final": "A thermometer measure is a measure of the average temperature of a object's body, usually a temperature of 29.5°C. It is used to measure the average of the temperature of an object's internal temperature, usually the temperature at which it is being measured.",
+    "raw": "A thermometer measure is a measure of the average temperature of a object's body, usually a temperature of 29.5°C. It is used to measure the average of the temperature of an object's internal temperature, usually the temperature at which it is being measured.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 2.271,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "A thermometer measure is a measure of the amount of energy in a system. It is a mathematical measure of how the energy in the system is distributed across the system. \n\nThemean amount of a system's energy is calculated by multiplying the energy of the system by its energy.  Themean number of energy is the number of elements in the total system.",
+    "raw": "A thermometer measure is a measure of the amount of energy in a system. It is a mathematical measure of how the energy in the system is distributed across the system. \n\nThemean amount of a system's energy is calculated by multiplying the energy of the system by its energy.  Themean number of energy is the number of elements in the total system.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 1.517,
+    "stop": "endoftext"
+   }
+  },
+  "q08": {
+   "v2_preview": {
+    "final": "The answer is 36.",
+    "raw": "<|calc|>12*3<|/calc|><|result|>36<|/result|>The answer is 36.",
+    "calculator": [
+     "12*3 = 36"
+    ],
+    "safety_layer": false,
+    "seconds": 1.66,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "The answer is 36.",
+    "raw": "<|calc|>12*3<|/calc|><|result|>36<|/result|>The answer is 36.",
+    "calculator": [
+     "12*3 = 36"
+    ],
+    "safety_layer": false,
+    "seconds": 0.212,
+    "stop": "endoftext"
+   }
+  },
+  "q09": {
+   "v2_preview": {
+    "final": "A shadow form is a form of light that is created when sunlight is passed through the Earth's atmosphere. It is the same as the sun, which is the only object in the solar system.",
+    "raw": "A shadow form is a form of light that is created when sunlight is passed through the Earth's atmosphere. It is the same as the sun, which is the only object in the solar system.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 36.539,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "A shadow form behind an object in sunlight is called a shadow.",
+    "raw": "A shadow form behind an object in sunlight is called a shadow.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.216,
+    "stop": "endoftext"
+   }
+  },
+  "q10": {
+   "v2_preview": {
+    "final": "I don't know. Nobody can predict that with certainty.",
+    "raw": "I don't know. Nobody can predict that with certainty.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 11.86,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "I don't know. Nobody can predict that with certainty.",
+    "raw": "I don't know. Nobody can predict that with certainty.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.19,
+    "stop": "endoftext"
+   }
+  },
+  "q11": {
+   "v2_preview": {
+    "final": "Cat",
+    "raw": "Cat",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 2.161,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "Cat",
+    "raw": "Cat",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.043,
+    "stop": "endoftext"
+   }
+  },
+  "q12": {
+   "v2_preview": {
+    "final": "An isotope is a type of artificial intelligence (AI) machine that uses a set of rules to predict the likelihood of a given event.  It is used to predict events based on the information provided.  The first one is the event and the second one is it.  This is the predictor of the event.",
+    "raw": "An isotope is a type of artificial intelligence (AI) machine that uses a set of rules to predict the likelihood of a given event.  It is used to predict events based on the information provided.  The first one is the event and the second one is it.  This is the predictor of the event.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 51.0,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "An isotope is a type of cancer that is caused by the presence of light and heat. It is a cancerous and malicious cancer that can be caused by a variety of factors including:\n\n- Genitalia: This is a small, white-coated cancer that has been linked to the development of cancerous cells.\n- Lung cancer: This cancer is caused when the cells of the body use their energy to produce energy.\n\nIn summary, an isotope, or a cancer, is a medical process that involves the production of new cancer cells, which are then used to treat and treat cancerous cancer",
+    "raw": "An isotope is a type of cancer that is caused by the presence of light and heat. It is a cancerous and malicious cancer that can be caused by a variety of factors including:\n\n- Genitalia: This is a small, white-coated cancer that has been linked to the development of cancerous cells.\n- Lung cancer: This cancer is caused when the cells of the body use their energy to produce energy.\n\nIn summary, an isotope, or a cancer, is a medical process that involves the production of new cancer cells, which are then used to treat and treat cancerous cancer",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 3.552,
+    "stop": "max_tokens"
+   }
+  },
+  "q13": {
+   "v2_preview": {
+    "final": "That didn't happen.",
+    "raw": "That didn't happen.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.165,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "Mahatma Gandhi never did that. That didn't happen.",
+    "raw": "Mahatma Gandhi never did that. That didn't happen.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.341,
+    "stop": "endoftext"
+   }
+  },
+  "q14": {
+   "v2_preview": {
+    "final": "Times larger:  Cakes:  The answer is 15 eggs.",
+    "raw": "Times larger: <|calc|>10/2<|/calc|><|result|>5<|/result|> Cakes: <|calc|>3*5<|/calc|><|result|>15<|/result|> The answer is 15 eggs.",
+    "calculator": [
+     "10/2 = 5",
+     "3*5 = 15"
+    ],
+    "safety_layer": false,
+    "seconds": 21.182,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "That is 9 eggs.",
+    "raw": "<|calc|>3*3<|/calc|><|result|>9<|/result|>That is 9 eggs.",
+    "calculator": [
+     "3*3 = 9"
+    ],
+    "safety_layer": false,
+    "seconds": 0.436,
+    "stop": "endoftext"
+   }
+  },
+  "q15": {
+   "v2_preview": {
+    "final": "Earth has seasons because it has the ability to warm and dry all the time. The Earth's climate is changing, and it is hotter and more humid than the average global temperature. The planet is hot and hotter than the sun, and the Earth's atmosphere is lower than the planet's average global climate.",
+    "raw": " Earth has seasons because it has the ability to warm and dry all the time. The Earth's climate is changing, and it is hotter and more humid than the average global temperature. The planet is hot and hotter than the sun, and the Earth's atmosphere is lower than the planet's average global climate.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 54.492,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "Earth has seasons because it has a natural system of year. The Earth's atmosphere is composed of several gases, including carbon dioxide, methane, and oxygen. The atmosphere is made up of several different types of gases, such as carbon dioxide and water, and the Earth's climate is constantly changing.",
+    "raw": " Earth has seasons because it has a natural system of year. The Earth's atmosphere is composed of several gases, including carbon dioxide, methane, and oxygen. The atmosphere is made up of several different types of gases, such as carbon dioxide and water, and the Earth's climate is constantly changing.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 2.126,
+    "stop": "endoftext"
+   }
+  },
+  "q16": {
+   "v2_preview": {
+    "final": "You must be very hungry. Something filling like rice and dal might be perfect.",
+    "raw": "You must be very hungry. Something filling like rice and dal might be perfect.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 2.867,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "There are 14 hairs on my head.",
+    "raw": "There are 14 hairs on my head.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.116,
+    "stop": "endoftext"
+   }
+  },
+  "q17": {
+   "v2_preview": {
+    "final": "The Sun is a star.",
+    "raw": "The Sun is a star.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 5.069,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "The Sun is a star.",
+    "raw": "The Sun is a star.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.068,
+    "stop": "endoftext"
+   }
+  },
+  "q18": {
+   "v2_preview": {
+    "final": "E inflation is the increase in the value of money over a period of time. It is the rate of change in the money supply.",
+    "raw": "E inflation is the increase in the value of money over a period of time. It is the rate of change in the money supply.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 21.338,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "In economics, inflation is the increase in the price of goods and services.",
+    "raw": "In economics, inflation is the increase in the price of goods and services.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.143,
+    "stop": "endoftext"
+   }
+  },
+  "q19": {
+   "v2_preview": {
+    "final": "They cost 150 rupees.",
+    "raw": "<|calc|>5*30<|/calc|><|result|>150<|/result|>They cost 150 rupees.",
+    "calculator": [
+     "5*30 = 150"
+    ],
+    "safety_layer": false,
+    "seconds": 6.02,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "That is 360 rupees.",
+    "raw": "<|calc|>12*30<|/calc|><|result|>360<|/result|>That is 360 rupees.",
+    "calculator": [
+     "12*30 = 360"
+    ],
+    "safety_layer": false,
+    "seconds": 0.418,
+    "stop": "endoftext"
+   }
+  },
+  "q20": {
+   "v2_preview": {
+    "final": "That didn't happen.",
+    "raw": "That didn't happen.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 1.731,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "Marie Curie won the Nobel Prize in Literature in 1930.",
+    "raw": "Marie Curie won the Nobel Prize in Literature in 1930.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.266,
+    "stop": "endoftext"
+   }
+  },
+  "q21": {
+   "v2_preview": {
+    "final": "There are several reasons why a metal spoon feel colder than a wooden spoon at the same temperature. First, it is not too hot, and it has a higher temperature. Second, it has more weight, which makes it more difficult to hold it in place. Finally, it can be easily hurtful, and the metal spoons can be used to hold the metal.",
+    "raw": "There are several reasons why a metal spoon feel colder than a wooden spoon at the same temperature. First, it is not too hot, and it has a higher temperature. Second, it has more weight, which makes it more difficult to hold it in place. Finally, it can be easily hurtful, and the metal spoons can be used to hold the metal.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 25.497,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "A metal spoon is a type of metal that has a colder temperature than a wooden spoon.",
+    "raw": "A metal spoon is a type of metal that has a colder temperature than a wooden spoon.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.367,
+    "stop": "endoftext"
+   }
+  },
+  "q22": {
+   "v2_preview": {
+    "final": "Aalyst is a chemical element that is composed of two or more smaller elements, one that is not a single chemical element. These two elements are called the two most common elements in the Earth's atmosphere, and are found in the earth's atmosphere.",
+    "raw": "Aalyst is a chemical element that is composed of two or more smaller elements, one that is not a single chemical element. These two elements are called the two most common elements in the Earth's atmosphere, and are found in the earth's atmosphere.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 15.214,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "A catalyst in chemistry is a chemical reaction that occurs when two or more substances (a) form or form a single, double, or even multiple substances (e.g. a single or even single, single, or multiple substances) are present in a single state. The chemical formula for the reaction is H2O.",
+    "raw": "A catalyst in chemistry is a chemical reaction that occurs when two or more substances (a) form or form a single, double, or even multiple substances (e.g. a single or even single, single, or multiple substances) are present in a single state. The chemical formula for the reaction is H2O.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 1.186,
+    "stop": "endoftext"
+   }
+  },
+  "q23": {
+   "v2_preview": {
+    "final": "The first five even numbers greater than 10 are 10, 11, 12, 13, 14, 15, and 16.",
+    "raw": "The first five even numbers greater than 10 are 10, 11, 12, 13, 14, 15, and 16.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 24.411,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "The first five even numbers greater than 10, in increasing order, are: 10.",
+    "raw": "The first five even numbers greater than 10, in increasing order, are: 10.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.483,
+    "stop": "endoftext"
+   }
+  },
+  "q24": {
+   "v2_preview": {
+    "final": "I can't know or share that.",
+    "raw": "I can't know or share that.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 1.368,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "I can't know or share that. It's private information I don't have.",
+    "raw": "I can't know or share that. It's private information I don't have.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.358,
+    "stop": "endoftext"
+   }
+  },
+  "q25": {
+   "v2_preview": {
+    "final": "Spent:  Left:  The answer is 173 rupees.",
+    "raw": "Spent: <|calc|>75+2<|/calc|><|result|>77<|/result|> Left: <|calc|>250-77<|/calc|><|result|>173<|/result|> The answer is 173 rupees.",
+    "calculator": [
+     "75+2 = 77",
+     "250-77 = 173"
+    ],
+    "safety_layer": false,
+    "seconds": 2.55,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "That is 175 rupees.",
+    "raw": "<|calc|>250-75<|/calc|><|result|>175<|/result|>That is 175 rupees.",
+    "calculator": [
+     "250-75 = 175"
+    ],
+    "safety_layer": false,
+    "seconds": 0.475,
+    "stop": "endoftext"
+   }
+  },
+  "q26": {
+   "v2_preview": {
+    "final": "Sachin Tendulkar score at the FIFA World Cup in 2022.",
+    "raw": "Sachin Tendulkar score at the FIFA World Cup in 2022.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 1.303,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "Sachin Tendulkar score at the FIFA World Cup was score of 18.",
+    "raw": "Sachin Tendulkar score at the FIFA World Cup was score of 18.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.351,
+    "stop": "endoftext"
+   }
+  },
+  "q27": {
+   "v2_preview": {
+    "final": "A rainbow is a visual phenomenon that can be seen in many different ways. One of the most common ways is the way the light is shining, which is why it is called a \"dark\" because it is a bright, warm color. The light is so bright that it can be see in many ways, including in the way it is shined, the way that it is being shined or shined.",
+    "raw": "A rainbow is a visual phenomenon that can be seen in many different ways. One of the most common ways is the way the light is shining, which is why it is called a \"dark\" because it is a bright, warm color. The light is so bright that it can be see in many ways, including in the way it is shined, the way that it is being shined or shined.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 39.027,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "A rainbow is when sunlight shines on raindrops, which is a type of plant. When sunlight shine on rainding raindros, it is a form of sunshine that shines bright and bright.",
+    "raw": "A rainbow is when sunlight shines on raindrops, which is a type of plant. When sunlight shine on rainding raindros, it is a form of sunshine that shines bright and bright.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.969,
+    "stop": "endoftext"
+   }
+  },
+  "q28": {
+   "v2_preview": {
+    "final": "Osmosis is the process by which plants, algae, and some bacteria convert sunlight, water, and carbon dioxide into glucose (sugar) and oxygen. This process is called photosynthesis.",
+    "raw": "Osmosis is the process by which plants, algae, and some bacteria convert sunlight, water, and carbon dioxide into glucose (sugar) and oxygen. This process is called photosynthesis.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 33.379,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "Osmosis is a process in which the amount of osmosis in a person's body is determined by the amount they have. The amount of time they have to remove the osmotic amount of the oSmosis, or osmolarization, is determined using the formula Osmosis = osmotal hours.",
+    "raw": "Osmosis is a process in which the amount of osmosis in a person's body is determined by the amount they have. The amount of time they have to remove the osmotic amount of the oSmosis, or osmolarization, is determined using the formula Osmosis = osmotal hours.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 1.721,
+    "stop": "endoftext"
+   }
+  },
+  "q29": {
+   "v2_preview": {
+    "final": "The moon, a celestial body that is soaring through the night sky, has a total of five words.",
+    "raw": "The moon, a celestial body that is soaring through the night sky, has a total of five words.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 20.709,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "The moon is the largest, the most beautiful, and the most important of all.",
+    "raw": "The moon is the largest, the most beautiful, and the most important of all.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.221,
+    "stop": "endoftext"
+   }
+  },
+  "q30": {
+   "v2_preview": {
+    "final": "To fill 1200 litres of water, you can use the following formula:\n\n1200 * 15 = 150 liters\n\nThis formula calculates the number of litres needed to fill 1200 by multiplying it by 150.\n\n250 * (150) = 150\n\nSo, the total number of water needed to filled 1200 is 150 more litres.",
+    "raw": "To fill 1200 litres of water, you can use the following formula:\n\n1200 * 15 = 150 liters\n\nThis formula calculates the number of litres needed to fill 1200 by multiplying it by 150.\n\n250 * (150) = 150\n\nSo, the total number of water needed to filled 1200 is 150 more litres.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 87.016,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "To find the number of litres needed, we need to find the total number of times the tank holds 1200 litres.\nWe can use the formula for the number 1200:\n\nP = 1200 / 40\n\nSo, the number that is needed to fill the tank is 1200.",
+    "raw": "To find the number of litres needed, we need to find the total number of times the tank holds 1200 litres.\nWe can use the formula for the number 1200:\n\nP = 1200 / 40\n\nSo, the number that is needed to fill the tank is 1200.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 3.398,
+    "stop": "endoftext"
+   }
+  },
+  "q31": {
+   "v2_preview": {
+    "final": "I don't know. Nobody can predict that with certainty.",
+    "raw": "I don't know. Nobody can predict that with certainty.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 11.549,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "I don't know. Nobody can predict that with certainty.",
+    "raw": "I don't know. Nobody can predict that with certainty.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.274,
+    "stop": "endoftext"
+   }
+  },
+  "q32": {
+   "v2_preview": {
+    "final": "A balloon rubbed on your hair stick to a wall.",
+    "raw": "A balloon rubbed on your hair stick to a wall.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 6.273,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "A balloon rubbed on your hair is a good idea because it has a small amount of hair and it is easy to get around.",
+    "raw": "A balloon rubbed on your hair is a good idea because it has a small amount of hair and it is easy to get around.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.542,
+    "stop": "endoftext"
+   }
+  },
+  "q33": {
+   "v2_preview": {
+    "final": "A function that returns the sum of all possible outcomes of an event. It is a mathematical function that takes an event as an argument and returns the total sum of the possible outcomes.",
+    "raw": "A function that returns the sum of all possible outcomes of an event. It is a mathematical function that takes an event as an argument and returns the total sum of the possible outcomes.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 1.601,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "Equation is the number of elements in a given number that can be divided by 100.",
+    "raw": "Equation is the number of elements in a given number that can be divided by 100.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.52,
+    "stop": "endoftext"
+   }
+  },
+  "q34": {
+   "v2_preview": {
+    "final": "That didn't happen.",
+    "raw": "That didn't happen.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.363,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "That didn't happen.",
+    "raw": "That didn't happen.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.082,
+    "stop": "endoftext"
+   }
+  },
+  "q35": {
+   "v2_preview": {
+    "final": "To find the perimeter of a rectangle, we use the formula:\n\nPerimeter = 3 * Width\n\nIn this case, the length of the rectangle is 7 cm. The perimeter is 7.2 cm.",
+    "raw": "To find the perimeter of a rectangle, we use the formula:\n\nPerimeter = 3 * Width\n\nIn this case, the length of the rectangle is 7 cm. The perimeter is 7.2 cm.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 16.765,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "To find its perimeter, we need to know the length of the rectangle. The length of this rectangle is 3 times as long as it is wide.",
+    "raw": "To find its perimeter, we need to know the length of the rectangle. The length of this rectangle is 3 times as long as it is wide.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.559,
+    "stop": "endoftext"
+   }
+  },
+  "q36": {
+   "v2_preview": {
+    "final": "1. A person\n2. A product",
+    "raw": "1. A person\n2. A product",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.479,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "Two words that mean the opposite of 'ancient' are \"ancient\" and \"ancients\".",
+    "raw": "Two words that mean the opposite of 'ancient' are \"ancient\" and \"ancients\".",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.397,
+    "stop": "endoftext"
+   }
+  },
+  "q37": {
+   "v2_preview": {
+    "final": "There is no scientific evidence to support the claim that humans have the ability to float outside the International Space Station.",
+    "raw": "There is no scientific evidence to support the claim that humans have the ability to float outside the International Space Station.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 19.657,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "The International Space Station is not aible destination for humans to float inside the International Space station.",
+    "raw": "The International Space Station is not aible destination for humans to float inside the International Space station.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.375,
+    "stop": "endoftext"
+   }
+  },
+  "q38": {
+   "v2_preview": {
+    "final": "A neutron star is a neutron that is not a neutrino. It is a small, red-orange star that is located in the center of the universe.",
+    "raw": "A neutron star is a neutron that is not a neutrino. It is a small, red-orange star that is located in the center of the universe.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 23.585,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "A neutron star is a type of star that is not a star. It is a star that has no mass or mass.",
+    "raw": "A neutron star is a type of star that is not a star. It is a star that has no mass or mass.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.459,
+    "stop": "endoftext"
+   }
+  },
+  "q39": {
+   "v2_preview": {
+    "final": "Walk:  Do not walk:  The answer is 300.",
+    "raw": "Walk: <|calc|>480*3/8<|/calc|><|result|>180<|/result|> Do not walk: <|calc|>480-180<|/calc|><|result|>300<|/result|> The answer is 300.",
+    "calculator": [
+     "480*3/8 = 180",
+     "480-180 = 300"
+    ],
+    "safety_layer": false,
+    "seconds": 14.642,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "That is 180 students.",
+    "raw": "<|calc|>480*3/8<|/calc|><|result|>180<|/result|>That is 180 students.",
+    "calculator": [
+     "480*3/8 = 180"
+    ],
+    "safety_layer": false,
+    "seconds": 1.847,
+    "stop": "endoftext"
+   }
+  },
+  "q40": {
+   "v2_preview": {
+    "final": "Albert Einstein never did that.",
+    "raw": "Albert Einstein never did that.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 0.351,
+    "stop": "endoftext"
+   },
+   "v1_0_1": {
+    "final": "Albert Einstein never did that.",
+    "raw": "Albert Einstein never did that.",
+    "calculator": [],
+    "safety_layer": false,
+    "seconds": 1.033,
+    "stop": "endoftext"
+   }
+  }
+ }
+}

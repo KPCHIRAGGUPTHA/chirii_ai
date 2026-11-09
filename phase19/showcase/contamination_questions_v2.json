@@ -1,0 +1,321 @@
+{
+ "input": "questions_v2.jsonl",
+ "checks": "Checked against:\n  1. Instruction (SFT) data of both models and every other SFT version: phase11/data/*.jsonl (v1.0.1 = sft_v2) and\n     phase17/sft_v5/sft_v5_{train,val}.jsonl (v2.0-preview), prompts only:\n       - exact match of the normalised prompt\n       - any shared run of 8 consecutive words\n       - word-set overlap (Jaccard) of 0.7 or more\n     The nearest SFT prompt by Jaccard is recorded for every question (to judge closeness to templates).\n  2. Earlier, non-sealed evaluation prompts (phase9 goal sets v1/v2, phase11 dev v2.1, the old over-refusal set):\n     exact, 8-word run, Jaccard >= 0.7. Sealed sets (phase13/14 sealed, phase17 sealed_v3) and the Phase 11 held-out\n     set are deliberately NOT opened.\n  3. All pretraining text: Phase 10 (34M and v4 base), Phase 17A (v4) and the filtered Phase 17D shards (v4 extended):\n     any shared run of 13 words with the question + its expected answer (the Phase 18 method; shorter items cannot\n     be tested). File sizes are checked against the manifests.",
+ "sft_files": [
+  "phase11/data/sft_rag_abstain0_train.jsonl",
+  "phase11/data/sft_rag_abstain0_val.jsonl",
+  "phase11/data/sft_rag_abstain10_train.jsonl",
+  "phase11/data/sft_rag_abstain10_val.jsonl",
+  "phase11/data/sft_rag_train.jsonl",
+  "phase11/data/sft_rag_val.jsonl",
+  "phase11/data/sft_train.jsonl",
+  "phase11/data/sft_train_noformat.jsonl",
+  "phase11/data/sft_v2_train.jsonl",
+  "phase11/data/sft_v2_val.jsonl",
+  "phase11/data/sft_v3_train.jsonl",
+  "phase11/data/sft_v3_val.jsonl",
+  "phase11/data/sft_v4a_train.jsonl",
+  "phase11/data/sft_v4a_val.jsonl",
+  "phase11/data/sft_v4b_train.jsonl",
+  "phase11/data/sft_v4b_val.jsonl",
+  "phase11/data/sft_val.jsonl",
+  "phase11/data/sft_val_noformat.jsonl",
+  "phase17/sft_v5/sft_v5_train.jsonl",
+  "phase17/sft_v5/sft_v5_val.jsonl"
+ ],
+ "distinct_sft_prompts": 178414,
+ "earlier_eval_prompts": 666,
+ "items": {
+  "q01": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.6,
+   "nearest_sft_prompt": "What is a symphony?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "too_short"
+  },
+  "q02": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.409,
+   "nearest_sft_prompt": "Arjun has 9 stamps and gets 9 more. How many stamps does Arjun have now?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q03": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.333,
+   "nearest_sft_prompt": "What am I wearing?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "too_short"
+  },
+  "q04": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.3,
+   "nearest_sft_prompt": "Why do we need robots?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q05": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.25,
+   "nearest_sft_prompt": "Say Zipper and nothing else.",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q06": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.333,
+   "nearest_sft_prompt": "What football team did Jerome Bettis play for?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q07": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.444,
+   "nearest_sft_prompt": "Write a paragraph to explain what a thermometer does",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "too_short"
+  },
+  "q08": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.5,
+   "nearest_sft_prompt": "Sara reads 36 pages per day. How many pages does Sara read in 3 days?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q09": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.235,
+   "nearest_sft_prompt": "Generate an example of a complex number in the form a + bi.",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q10": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.375,
+   "nearest_sft_prompt": "What will the Grimovale index close at on March 1, 2126?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q11": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.462,
+   "nearest_sft_prompt": "Find the word that rhymes with \"cat\".",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q12": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.6,
+   "nearest_sft_prompt": "What is an idea?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q13": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.692,
+   "nearest_sft_prompt": "In what year did Mother Teresa win the Nobel Peace Prize?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q14": {
+   "flags": [
+    "8gram_sft_prompt",
+    "jaccard_ge_0.7_sft_prompt"
+   ],
+   "nearest_sft_jaccard": 0.708,
+   "nearest_sft_prompt": "A bus starts with 51 passengers. At the first stop 15 get off, and at the second stop 8 get on. How many passengers are on the bus now?",
+   "sft_8gram_examples": [
+    "A bus starts with 57 passengers. At the first stop 5 get off, and at the second stop 12 get on. How many passengers are on the bus now?",
+    "A bus starts with 32 passengers. At the first stop 5 get off, and at the second stop 9 get on. How many passengers are on the bus now?",
+    "A bus starts with 49 passengers. At the first stop 10 get off, and at the second stop 6 get on. How many passengers are on the bus now?"
+   ],
+   "pretraining_13gram": "none"
+  },
+  "q15": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.5,
+   "nearest_sft_prompt": "Why we have different seasons on earth?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q16": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.333,
+   "nearest_sft_prompt": "How many strings are on a violin?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q17": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.5,
+   "nearest_sft_prompt": "Is the sun a star or a planet?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "too_short"
+  },
+  "q18": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.6,
+   "nearest_sft_prompt": "What is economics?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q19": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.37,
+   "nearest_sft_prompt": "Sana buys 5 notebooks at 30 rupees each and pays with a 200-rupee note. How much change does Sana get?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q20": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.583,
+   "nearest_sft_prompt": "Did Rabindranath Tagore win the Nobel Prize in Literature?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q21": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.227,
+   "nearest_sft_prompt": "Why do we feel worse at night when we have a cold or the flu?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q22": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.5,
+   "nearest_sft_prompt": "What is a hedge in finance?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q23": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.318,
+   "nearest_sft_prompt": "How can I create a list in Python that contains the cube of the first 10 even numbers?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q24": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.25,
+   "nearest_sft_prompt": "What was The Last Dance about?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q25": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.379,
+   "nearest_sft_prompt": "Priya had 835 rupees, spent 63 rupees on books and 135 rupees on lunch. How much money is left?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q26": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.375,
+   "nearest_sft_prompt": "How did Julius Caesar play in the FIFA World Cup?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q27": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.25,
+   "nearest_sft_prompt": "Why do we feel worse at night when we have a cold or the flu?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q28": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.5,
+   "nearest_sft_prompt": "What is SoulCycle?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q29": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.429,
+   "nearest_sft_prompt": "Write a sentence that starts with the words \"the truth\".",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q30": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.286,
+   "nearest_sft_prompt": "A tank holds 18 litres and 15 litres are used. How many litres remain?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q31": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.583,
+   "nearest_sft_prompt": "Who helped Taylor Swift win the Nobel Prize in Physics?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q32": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.267,
+   "nearest_sft_prompt": "Why does a human need to breathe oxygen?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q33": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.5,
+   "nearest_sft_prompt": "What is SoulCycle?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q34": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.364,
+   "nearest_sft_prompt": "What did Albert Einstein do?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q35": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.381,
+   "nearest_sft_prompt": "What is the perimeter of a rectangle with length of 12 cm and width of 7 cm?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q36": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.348,
+   "nearest_sft_prompt": "Reorganize this sentence so that the words are in alphabetical order.\nBitten by a dog",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q37": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.263,
+   "nearest_sft_prompt": "What is the purpose of the international space station?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q38": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.5,
+   "nearest_sft_prompt": "What is a symphony?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q39": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.44,
+   "nearest_sft_prompt": "A class has 120 students. 1/6 of them walk to school. How many students do not walk to school?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  },
+  "q40": {
+   "flags": [],
+   "nearest_sft_jaccard": 0.308,
+   "nearest_sft_prompt": "Did Albert Einstein ever travel back in time?",
+   "sft_8gram_examples": [],
+   "pretraining_13gram": "none"
+  }
+ },
+ "pretraining_shards": 101,
+ "flagged": [
+  "q14"
+ ]
+}

@@ -1,0 +1,4 @@
+SFT files: 20; distinct SFT prompts: 178,414; earlier eval prompts: 666
+pretraining shards: 101 (47.3 GB)
+flagged: {}
+too short for 13-gram: ['q01', 'q03', 'q07', 'q17']

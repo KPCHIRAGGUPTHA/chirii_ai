@@ -1,0 +1,216 @@
+{
+ "graded_by": "hand (Claude Code, for K P Chirag Guptha), 10 Nov 2026, against the rubric committed in questions_v3.jsonl before the run",
+ "items": {
+  "q01": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q02": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q03": {
+   "v2_preview": true,
+   "v1_0_1": false,
+   "notes": {
+    "v2_preview": "Accepted: says it cannot know; calling the number 'private information' is the privacy template's wording."
+   }
+  },
+  "q04": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {
+    "v2_preview": "False-premise reply to a true premise."
+   }
+  },
+  "q05": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q06": {
+   "v2_preview": true,
+   "v1_0_1": true,
+   "notes": {}
+  },
+  "q07": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {
+    "v2_preview": "Wrong detail: 'usually a temperature of 29.5°C'."
+   }
+  },
+  "q08": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q09": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q10": {
+   "v2_preview": true,
+   "v1_0_1": true,
+   "notes": {}
+  },
+  "q11": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q12": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q13": {
+   "v2_preview": true,
+   "v1_0_1": true,
+   "notes": {}
+  },
+  "q14": {
+   "v2_preview": true,
+   "v1_0_1": false,
+   "notes": {
+    "v2_preview": "Accepted: both calculator steps (10/2, 3*5) and the answer 15 are right; the empty labels 'Times larger: Cakes:' are the template layout with calculator spans removed."
+   }
+  },
+  "q15": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q16": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q17": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q18": {
+   "v2_preview": false,
+   "v1_0_1": true,
+   "notes": {
+    "v2_preview": "Wrong: inflation is not an increase in the value of money.",
+    "v1_0_1": "Accepted: 'increase in the price of goods and services' is the standard definition."
+   }
+  },
+  "q19": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q20": {
+   "v2_preview": true,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q21": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q22": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q23": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q24": {
+   "v2_preview": true,
+   "v1_0_1": true,
+   "notes": {}
+  },
+  "q25": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q26": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q27": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q28": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q29": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q30": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q31": {
+   "v2_preview": true,
+   "v1_0_1": true,
+   "notes": {}
+  },
+  "q32": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q33": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q34": {
+   "v2_preview": true,
+   "v1_0_1": true,
+   "notes": {}
+  },
+  "q35": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q36": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q37": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q38": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q39": {
+   "v2_preview": false,
+   "v1_0_1": false,
+   "notes": {}
+  },
+  "q40": {
+   "v2_preview": true,
+   "v1_0_1": true,
+   "notes": {}
+  }
+ }
+}

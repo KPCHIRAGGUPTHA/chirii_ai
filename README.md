@@ -6,8 +6,17 @@ language model, its intelligence layer: a small GPT-style model (**33,870,848 pa
 every part of it is understood and measurable, with its own tokeniser, pretraining, instruction tuning, a calculator
 tool, a rule-based safety layer, and an honest evaluation with pre-registered pass/fail rules.
 
-**Status: v1.0.1 is an early milestone, not a production-ready system.** It gets many facts wrong and refuses some
-harmless questions, so use it for demonstration and evaluation only, and don't rely on its answers.
+**Status (10 November 2026): the project is complete. v1.0.1 is the released model** — an early milestone, not a
+production-ready system. It gets many facts wrong and refuses some harmless questions, so use it for demonstration
+and evaluation only, and don't rely on its answers.
+
+- A later **98M-parameter base model ("Foundation v4 extended", 11.0B pretraining tokens) is level with GPT-2 on
+  9 of 12 standard benchmarks**, ahead on 2 (ARC-Easy, BoolQ) and behind on 1 (LAMBADA)
+  [`phase17/BENCHMARKS_V4_EXT.md`]. That missed the pre-registered goal of *beating* GPT-2.
+- **v2.0 was not released.** The instruction-tuned model built on that base failed 2 of its 4 pre-registered release
+  bars: bare arithmetic 16/18 and over-refusal 77/100, both against 90% [`phase17/PHASE17C_REPORT.md`].
+- **The whole journey, findings and lessons are in [`FINAL_REPORT.md`](FINAL_REPORT.md).** Corrections to earlier
+  documents are in [`ERRATA.md`](ERRATA.md).
 
 Every number in this README comes from a committed report in this repository; the source is named in brackets.
 
@@ -21,6 +30,12 @@ Every number in this README comes from a committed report in this repository; th
 | 11 | Instruction tuning with a calculator tool, a sealed held-out test set, and contamination checks (655 overlapping training rows removed) [`phase11/PHASE11A_REPORT.md`] |
 | 12 | **v1.0 release**: a CPU-only terminal demo, about 2.7 s per reply [`phase12/MINIGPT_V1_REPORT.md`] |
 | 13–15D | Post-release experiments — over-refusal, seed noise, a self-harm safety layer (**v1.0.1**), and retrieval (RAG) — summarised in [`POST_RELEASE_EXPERIMENTS.md`] |
+| 16 | Comparison with three small public instruction models on this project's own tests [`phase16/COMPARISON.md`] |
+| 18 | Standard benchmarks (lm-evaluation-harness) for MiniGPT, GPT-2 and four small modern models [`phase18/BENCHMARKS.md`] |
+| 17A–17B | Foundation v4: GPT-2's shape, 98,425,344 parameters, 3.0B tokens in 30 h; failed the pre-registered "beat GPT-2" test [`phase17/BENCHMARKS_V4.md`] |
+| 17D | 8.0B more tokens (70% FineWeb-Edu, 30% general FineWeb) in 80.5 h; level with GPT-2 on 9 of 12 tasks, still failed the test [`phase17/BENCHMARKS_V4_EXT.md`] |
+| 17C | Instruction tuning on the extended base (3 seeds); 2 of 4 sealed release bars failed, **no v2.0** [`phase17/PHASE17C_REPORT.md`] |
+| 17E | Replaying pretraining text during tuning to reduce forgetting; failed its pre-registered test [`phase17/PHASE17E_REPORT.md`] |
 
 ## Key results
 
@@ -47,6 +62,19 @@ helplines on first-person self-harm messages. On test lists written before tunin
 triggers. On sealed tests, scored once: harmful-request score 88.1% → 91.5%, over-refusal unchanged at 66.7% —
 but it caught only 2 of 4 unseen self-harm items [`phase14/PHASE14_REPORT.md`].
 
+**Larger base models (Phase 17)** — bits per byte on the Phase 10 validation set, lower is better: 34M base 1.1335,
+Foundation v4 1.0596, v4 extended 0.9992 [`phase17/BENCHMARKS_V4_EXT.md`]. Selected 0-shot benchmarks, percent:
+
+| Task | MiniGPT 34M base | v4 extended (98M) | GPT-2 (124M) |
+| :--- | ---: | ---: | ---: |
+| ARC-Easy | 38.6 | 44.0 | 39.5 |
+| HellaSwag | 27.7 | 31.2 | 31.1 |
+| PIQA | 57.0 | 61.4 | 62.5 |
+| SciQ | 60.3 | 67.8 | 64.4 |
+| LAMBADA | 17.3 | 27.0 | 32.6 |
+
+[`phase18/BENCHMARKS.md`, `phase17/BENCHMARKS_V4_EXT.md`]
+
 ## Honest limitations and failed experiments
 
 - **Facts are unreliable.** Held-out fact score is 9/34; the model confidently names wrong people and places
@@ -64,26 +92,23 @@ but it caught only 2 of 4 unseen self-harm items [`phase14/PHASE14_REPORT.md`].
   don't say" on 53–62% of answerable questions [`phase15/PHASE15C_DIAGNOSIS.md`]. Removing that habit raised
   accuracy only to 26.9%, which the pre-registered rule rated **inconclusive** between "learned abstention" and "a
   reading limit at 34M parameters" [`phase15/PHASE15D_REPORT.md`]. A larger model is the likely next step.
+- **Instruction tuning erases much of the pretraining gain.** On the extended base, the five-task average above fell
+  from 46.28 to 38.72 after tuning and LAMBADA from 27.0 to about 12; replaying pretraining text recovered only
+  1.11 points [`phase17/PHASE17E_REPORT.md`].
+- **Over-refusal is unsolved**, even on the larger model: 77/100 on a fresh sealed set, against v1.0.1's 76/100
+  [`phase17/PHASE17C_REPORT.md`].
 - **The evaluation is in-house.** The dev, held-out and over-refusal sets were written by the same author, so
   they are not independent benchmarks [`phase12/MODEL_CARD.md`].
 - **The test sets in this repository have been used and are no longer sealed.** Treat them as development data;
   any future claim needs a fresh, unseen test set.
 
-## Roadmap
+## Next steps
 
-These come from the next steps and limitations recorded in the experiment reports; none of them is built yet
-[`POST_RELEASE_EXPERIMENTS.md`, `phase15/PHASE15D_REPORT.md`]:
-
-1. **A larger foundation model.** At 34M parameters the model could not reliably read an answer out of a passage;
-   a bigger model is the most likely route to useful retrieval.
-2. **Retrieval done safely.** A router that never attaches passages to harmful or "unknown" prompts, and training
-   examples where refusals and "I don't know" answers come *with* passages attached.
-3. **Fresh, sealed evaluation.** New test sets — including a retrieval set whose gold passages are checked by a
-   person — since the current ones have been used.
-4. **Multi-seed comparisons.** Over-refusal varies by up to 18 points between identical training runs, so every
-   model comparison needs several seeds [`phase14/PHASE14_REPORT.md`].
-5. **Wider safety-layer coverage.** The self-harm layer missed impersonally worded messages; its pattern list needs
-   to cover them without adding false triggers [`phase14/PHASE14_REPORT.md`].
+The project stopped on 10 November 2026. The recommended next steps, with their reasons, are in
+[`FINAL_REPORT.md`](FINAL_REPORT.md): separate the effect of more tokens from the change of data mix; instruction
+tuning that keeps the base model's skills; a new approach to over-refusal; stricter evaluation discipline
+(three seeds, independently written sealed sets, criteria checked against reference models before committing);
+and retrieval retried on a larger model.
 
 ## Running the demo
 

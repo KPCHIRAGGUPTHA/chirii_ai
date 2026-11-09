@@ -1,7 +1,8 @@
 # Errata
 
 The release documents for v1.0 (`phase12/`) and v1.0.1 (`phase14/`) are frozen and are not edited. Corrections
-to them are listed here. The top-level `README.md` already uses the corrected wording.
+to them, and to later documents that newer work has superseded, are listed here. The top-level `README.md`
+already uses the corrected wording.
 
 ## 1. "The raw pretrained models score 0 on the goal evaluation"
 
@@ -54,3 +55,23 @@ No further errata.
 - **Simple English Wikipedia licence.** `phase15/PHASE15A_REPORT.md` and `POST_RELEASE_EXPERIMENTS.md` give the
   corpus licence as CC BY-SA 4.0. The dataset's Hugging Face page (`wikimedia/wikipedia`) lists CC BY-SA 3.0 and
   GFDL, which the README uses.
+
+## 4. Superseded by later work (added 10 November 2026)
+
+These documents are records of their phase and are not edited; the corrections below apply from now on.
+
+- **"Foundation v4 (124M)".** The title of `phase17/CRITERIA_17A.md` and a sentence in `phase18/BENCHMARKS.md`
+  ("The next foundation model is GPT-2-sized (124M parameters)") give 124M. Foundation v4 has GPT-2's shape
+  (12 layers, 12 heads, 768 wide, 1,024 context) but this project's 16,384-token vocabulary, so it has
+  **98,425,344 parameters** (98.4M), not 124M (`phase17/BENCHMARKS_V4.md`).
+- **"A larger foundation model" as an unbuilt next step.** The README roadmap and `POST_RELEASE_EXPERIMENTS.md`
+  list a larger model as future work. It has since been built and evaluated: Foundation v4 (98.4M, 3.0B tokens) and
+  its 8.0B-token extension (`phase17/BENCHMARKS_V4.md`, `phase17/BENCHMARKS_V4_EXT.md`). Neither met the
+  pre-registered goal of beating GPT-2, and instruction tuning on the extended model did not pass its release bars
+  (`phase17/PHASE17C_REPORT.md`). Retrieval has not been retried on the larger model.
+- **"A reasonable v2.0 target"** in `phase18/BENCHMARKS.md` (match or beat GPT-2 on LAMBADA, HellaSwag, PIQA and
+  SciQ): the extended base model reached it on HellaSwag, PIQA and SciQ (no significant difference) but not on
+  LAMBADA (27.0 vs 32.6) (`phase17/BENCHMARKS_V4_EXT.md`). No v2.0 was released.
+- **Late criteria commits.** `phase17/CRITERIA_17B.md` was committed after Foundation v4's pretraining ended (but
+  before any benchmark), and `phase17/CRITERIA_17C.md` on 6 November; both files say so at the top. See
+  `FINAL_REPORT.md`, "Mistakes made in planning".

@@ -429,3 +429,14 @@ class TestGoalIntegration(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_replay_rows_train_on_every_token():
+    """Phase 17E: replay rows are shifted by one and every target carries loss; over-long rows are rejected."""
+    import pytest
+    from phase11.sft_train import encode_replay
+    from phase11.chat_format import IGNORE_INDEX
+    (x, y), = encode_replay([{"id": "r0", "replay_ids": [5, 6, 7, 8]}], block_size=16)
+    assert x == [5, 6, 7] and y == [6, 7, 8] and IGNORE_INDEX not in y
+    with pytest.raises(ValueError):
+        encode_replay([{"id": "r1", "replay_ids": list(range(40))}], block_size=16)

@@ -1,0 +1,12 @@
+2026-11-09 13:10:55 train replay seed 11
+2026-11-09 13:45:07 dev replay seed 11
+2026-11-09 13:46:00 train replay seed 12
+2026-11-09 14:20:15 dev replay seed 12
+2026-11-09 14:20:45 train replay seed 13
+2026-11-09 14:54:59 dev replay seed 13
+2026-11-09 14:55:53 harness mc sft_v5r_s11
+2026-11-09 15:12:55 harness mc sft_v5r_s12
+2026-11-09 15:30:04 harness mc sft_v5r_s13
+2026-11-09 15:46:59 harness mc sft_v5_s11
+2026-11-09 16:03:53 harness mc sft_v5_s12
+2026-11-09 16:21:01 RUN_17E_DONE

@@ -65,12 +65,12 @@ def tally(rows):
     return {k: {"correct": c, "total": n, "pct": round(100 * c / n, 1)} for k, (c, n) in sorted(out.items())}
 
 
-def dev(seeds):
+def dev(seeds, prefix="sft_v5_s", tag=""):
     goal = [i for i in load_goal_set(*DEV) if i["category"] != "rag"]
     over = load_goal_set(*OLD_OVERREFUSAL)
     assert len(goal) == 176 and len(over) == 60
     for seed in seeds:
-        ckpt = f"phase17/runs/sft_v5_s{seed}/final_model.pt"
+        ckpt = f"phase17/runs/{prefix}{seed}/final_model.pt"
         reply = replier(ckpt, use_layer=False)
         rows, items = [], []
         for it in goal:
@@ -89,8 +89,8 @@ def dev(seeds):
         res = {"seed": seed, "checkpoint": ckpt, "sha256": sha256_file(project_path(ckpt)), "dev_total": sum(ok for _, ok in rows),
                "dev_items": len(rows), "categories": cats}
         os.makedirs(project_path(RESULTS), exist_ok=True)
-        atomic_write_json(project_path(f"{RESULTS}/dev_s{seed}.json"), res)
-        with open(project_path(f"{RESULTS}/dev_s{seed}_responses.jsonl"), "w", encoding="utf-8") as f:
+        atomic_write_json(project_path(f"{RESULTS}/dev{tag}_s{seed}.json"), res)
+        with open(project_path(f"{RESULTS}/dev{tag}_s{seed}_responses.jsonl"), "w", encoding="utf-8") as f:
             for row in items:
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")
         print(seed, res["dev_total"], {k: f"{v['correct']}/{v['total']}" for k, v in cats.items()}, flush=True)
@@ -162,9 +162,11 @@ def main():
     p.add_argument("--dev", nargs="*", type=int)
     p.add_argument("--select", action="store_true")
     p.add_argument("--sealed", action="store_true")
+    p.add_argument("--run-prefix", default="sft_v5_s", help="Phase 17E: sft_v5r_s for the replay runs")
+    p.add_argument("--tag", default="", help="Phase 17E: _replay")
     a = p.parse_args()
     if a.dev:
-        dev(a.dev)
+        dev(a.dev, a.run_prefix, a.tag)
     if a.select:
         select()
     if a.sealed:

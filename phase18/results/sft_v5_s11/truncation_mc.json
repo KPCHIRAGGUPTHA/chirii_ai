@@ -1,0 +1,266 @@
+{
+  "arc_challenge": {
+    "loglikelihood_requests": 4687,
+    "loglikelihood_truncated": 0
+  },
+  "arc_easy": {
+    "loglikelihood_requests": 9501,
+    "loglikelihood_truncated": 0
+  },
+  "boolq": {
+    "loglikelihood_requests": 6540,
+    "loglikelihood_truncated": 2
+  },
+  "hellaswag": {
+    "loglikelihood_requests": 40168,
+    "loglikelihood_truncated": 0
+  },
+  "lambada_openai": {
+    "loglikelihood_requests": 5153,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_abstract_algebra": {
+    "loglikelihood_requests": 400,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_anatomy": {
+    "loglikelihood_requests": 540,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_astronomy": {
+    "loglikelihood_requests": 608,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_business_ethics": {
+    "loglikelihood_requests": 400,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_clinical_knowledge": {
+    "loglikelihood_requests": 1060,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_college_biology": {
+    "loglikelihood_requests": 576,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_college_chemistry": {
+    "loglikelihood_requests": 400,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_college_computer_science": {
+    "loglikelihood_requests": 400,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_college_mathematics": {
+    "loglikelihood_requests": 400,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_college_medicine": {
+    "loglikelihood_requests": 692,
+    "loglikelihood_truncated": 20
+  },
+  "mmlu_college_physics": {
+    "loglikelihood_requests": 408,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_computer_security": {
+    "loglikelihood_requests": 400,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_conceptual_physics": {
+    "loglikelihood_requests": 940,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_econometrics": {
+    "loglikelihood_requests": 456,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_electrical_engineering": {
+    "loglikelihood_requests": 580,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_elementary_mathematics": {
+    "loglikelihood_requests": 1512,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_formal_logic": {
+    "loglikelihood_requests": 504,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_global_facts": {
+    "loglikelihood_requests": 400,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_biology": {
+    "loglikelihood_requests": 1240,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_chemistry": {
+    "loglikelihood_requests": 812,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_computer_science": {
+    "loglikelihood_requests": 400,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_european_history": {
+    "loglikelihood_requests": 660,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_geography": {
+    "loglikelihood_requests": 792,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_government_and_politics": {
+    "loglikelihood_requests": 772,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_macroeconomics": {
+    "loglikelihood_requests": 1560,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_mathematics": {
+    "loglikelihood_requests": 1080,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_microeconomics": {
+    "loglikelihood_requests": 952,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_physics": {
+    "loglikelihood_requests": 604,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_psychology": {
+    "loglikelihood_requests": 2180,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_statistics": {
+    "loglikelihood_requests": 864,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_us_history": {
+    "loglikelihood_requests": 816,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_high_school_world_history": {
+    "loglikelihood_requests": 948,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_human_aging": {
+    "loglikelihood_requests": 892,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_human_sexuality": {
+    "loglikelihood_requests": 524,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_international_law": {
+    "loglikelihood_requests": 484,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_jurisprudence": {
+    "loglikelihood_requests": 432,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_logical_fallacies": {
+    "loglikelihood_requests": 652,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_machine_learning": {
+    "loglikelihood_requests": 448,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_management": {
+    "loglikelihood_requests": 412,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_marketing": {
+    "loglikelihood_requests": 936,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_medical_genetics": {
+    "loglikelihood_requests": 400,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_miscellaneous": {
+    "loglikelihood_requests": 3132,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_moral_disputes": {
+    "loglikelihood_requests": 1384,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_moral_scenarios": {
+    "loglikelihood_requests": 3580,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_nutrition": {
+    "loglikelihood_requests": 1224,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_philosophy": {
+    "loglikelihood_requests": 1244,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_prehistory": {
+    "loglikelihood_requests": 1296,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_professional_accounting": {
+    "loglikelihood_requests": 1128,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_professional_law": {
+    "loglikelihood_requests": 6136,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_professional_medicine": {
+    "loglikelihood_requests": 1088,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_professional_psychology": {
+    "loglikelihood_requests": 2448,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_public_relations": {
+    "loglikelihood_requests": 440,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_security_studies": {
+    "loglikelihood_requests": 980,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_sociology": {
+    "loglikelihood_requests": 804,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_us_foreign_policy": {
+    "loglikelihood_requests": 400,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_virology": {
+    "loglikelihood_requests": 664,
+    "loglikelihood_truncated": 0
+  },
+  "mmlu_world_religions": {
+    "loglikelihood_requests": 684,
+    "loglikelihood_truncated": 0
+  },
+  "openbookqa": {
+    "loglikelihood_requests": 2000,
+    "loglikelihood_truncated": 0
+  },
+  "piqa": {
+    "loglikelihood_requests": 3676,
+    "loglikelihood_truncated": 0
+  },
+  "sciq": {
+    "loglikelihood_requests": 4000,
+    "loglikelihood_truncated": 0
+  },
+  "winogrande": {
+    "loglikelihood_requests": 2534,
+    "loglikelihood_truncated": 0
+  }
+}

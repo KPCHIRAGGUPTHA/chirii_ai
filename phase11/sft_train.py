@@ -99,6 +99,17 @@ def encode_examples(tokenizer: Tokenizer, rows: Sequence[Dict[str, Any]], block_
     return examples
 
 
+def encode_replay(rows: Sequence[Dict[str, Any]], block_size: int) -> List[Example]:
+    """Pretraining-text replay rows ({"replay_ids": [...]}): inputs and targets shifted by one, loss on every token."""
+    examples = []
+    for row in rows:
+        ids = row["replay_ids"]
+        if len(ids) - 1 > block_size or len(ids) < 2:
+            raise ValueError(f"Replay row {row.get('id')} has {len(ids)} tokens")
+        examples.append((ids[:-1], ids[1:]))
+    return examples
+
+
 def make_batches(lengths: Sequence[int], batch_size: int, epochs: int, seed: int) -> List[List[int]]:
     """Shuffles each epoch and groups similar lengths to save padding, in a fixed order for the seed. Drops each epoch's partial batch."""
     rng = np.random.default_rng(seed)
@@ -190,6 +201,11 @@ def train(config: Dict[str, Any], resume: bool = False) -> Dict[str, Any]:
 
     block_size = model_cfg["block_size"]
     train_examples = encode_examples(tokenizer, read_rows(project_path(data["train"]), data.get("train_sha256")), block_size)
+    if data.get("replay"):
+        # Phase 17E: pretraining-text replay. Pre-tokenized windows; every token carries loss. Pinned by SHA-256.
+        replay_examples = encode_replay(read_rows(project_path(data["replay"]["file"]), data["replay"]["sha256"]), block_size)
+        print(f"Replay: {len(replay_examples):,} windows, {sum(len(e[1]) for e in replay_examples):,} loss tokens", flush=True)
+        train_examples = train_examples + replay_examples
     val_rows = read_rows(project_path(data["val"]), data.get("val_sha256"))[:training["eval_max_examples"]]
     val_examples = encode_examples(tokenizer, val_rows, block_size)
 

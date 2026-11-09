@@ -1,0 +1,34 @@
+{
+  "name": "SFT v5 + 25% pretraining replay, seed 12 (Phase 17E, research only)",
+  "init_checkpoint": "phase17/runs/foundation_v4x/snapshots/model_step_15258.pt",
+  "init_checkpoint_sha256": "f67f325ed5a469cd72dfd5abb6f7d6a6c2debd4d20b3822715836ecb2ea1d236",
+  "data": {
+    "tokenizer": "phase10/tokenizer/tokenizer_v2.json",
+    "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98",
+    "train": "phase17/sft_v5/sft_v5_train.jsonl",
+    "val": "phase17/sft_v5/sft_v5_val.jsonl",
+    "train_sha256": "3b2740c04f3bb27d34e2107ec79d322b4f4e86046455c42d2424e83d988e49f8",
+    "val_sha256": "2ed40e712b3c813c29c0412cdc587dc6ca9174bde010770dd4ac60b498c573a9",
+    "replay": {
+      "file": "phase17/sft_v5/replay_17e.jsonl",
+      "sha256": "3afacc9960275f853152408cd2d56ab58f94ba919c0850fb0c4380071de902c3"
+    }
+  },
+  "out_dir": "phase17/runs/sft_v5r_s12",
+  "training": {
+    "epochs": 2,
+    "micro_batch_size": 16,
+    "grad_accum_steps": 2,
+    "learning_rate": 0.0002,
+    "min_lr": 2e-05,
+    "warmup_steps": 50,
+    "weight_decay": 0.0,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip": 1.0,
+    "seed": 12,
+    "compile": true
+  }
+}

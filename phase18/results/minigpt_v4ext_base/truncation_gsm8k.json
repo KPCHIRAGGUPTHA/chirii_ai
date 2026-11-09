@@ -1,0 +1,6 @@
+{
+  "gsm8k": {
+    "generate_requests": 500,
+    "generate_truncated": 0
+  }
+}

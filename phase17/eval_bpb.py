@@ -34,12 +34,19 @@ MODELS = {
     "minigpt_34m_base": "phase10/runs/foundation_v3_clean_2ep/snapshots/model_step_11524.pt",
     "foundation_v4_base": "phase17/runs/foundation_v4/snapshots/model_step_05722.pt",
 }
+EXT = {"foundation_v4_ext_base": "phase17/runs/foundation_v4x/snapshots/model_step_15258.pt"}
 OUT = "phase17/results/bpb_same_texts.json"
 SPAN = 1024
 BATCH_TOKENS = 8 * 1024
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--include-ext", action="store_true", help="also the Phase 17D extended model (17D)")
+    parser.add_argument("--out", default=OUT)
+    args = parser.parse_args()
+    models = {**MODELS, **(EXT if args.include_ext else {})}
     device = resolve_device("auto")
     tokenizer = Tokenizer.from_file(project_path(TOKENIZER_PATH))
     lengths = token_byte_lengths(tokenizer)
@@ -51,7 +58,7 @@ def main():
     for text_name, (tokens, info) in texts.items():
         spans = (len(tokens) - 1) // SPAN
         out["texts"][text_name] = {**info, "tokens_scored": spans * SPAN, "spans_of_1024": spans}
-    for model_name, path in MODELS.items():
+    for model_name, path in models.items():
         model, state = load_model_v3(project_path(path), device)
         out["models"][model_name] = {"checkpoint": path, "sha256": sha256_file(project_path(path)), "step": state["step"],
                                      "parameters": model.get_num_params(), "block_size": model.config.block_size, "results": {}}
@@ -66,8 +73,8 @@ def main():
                       f"{r['eval_tokens']:,} tokens  {r['eval_bytes']:,} bytes", flush=True)
         del model
         torch.cuda.empty_cache()
-    os.makedirs(os.path.dirname(project_path(OUT)), exist_ok=True)
-    atomic_write_json(project_path(OUT), out)
+    os.makedirs(os.path.dirname(project_path(args.out)), exist_ok=True)
+    atomic_write_json(project_path(args.out), out)
 
 
 if __name__ == "__main__":

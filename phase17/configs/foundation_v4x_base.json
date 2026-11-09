@@ -1,0 +1,49 @@
+{
+  "name": "Foundation v4 extended (Phase 17D continued pretraining, 70% FineWeb-Edu / 30% FineWeb)",
+  "device": "auto",
+  "model": {
+    "vocab_size": 16384,
+    "block_size": 1024,
+    "n_layer": 12,
+    "n_head": 12,
+    "n_embd": 768,
+    "dropout": 0.0,
+    "bias": true
+  },
+  "data": {
+    "train_bin": "phase17/data17d/tokens/train_17d.bin",
+    "train_sha256": "594e92666c24ecb1af1d2e619ad73faba7016b23cdbcc5c8267ba7c8d1940de1",
+    "val_bin": "phase10/data/tokens/val.bin",
+    "val_sha256": "21829bf07dd44e89ddb44916a362cfc5df4cacb15462211782bcfaadf54eedf0",
+    "val_subset_tokens": 256000,
+    "val_subset_sha256": "8ccf33a688a40884eb06a7ed49eff0681212d9ac33a2f16c251b97cc72e7431b",
+    "tokenizer": "phase10/tokenizer/tokenizer_v2.json",
+    "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98"
+  },
+  "out_dir": "phase17/runs/foundation_v4x",
+  "training": {
+    "max_steps": 0,
+    "micro_batch_size": 16,
+    "grad_accum_steps": 32,
+    "learning_rate": 0.0003,
+    "min_lr": 3e-05,
+    "warmup_steps": 300,
+    "weight_decay": 0.1,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip": 1.0,
+    "seed": 1,
+    "eval_interval": 250,
+    "eval_batch_size": 8,
+    "log_interval": 20,
+    "checkpoint_interval_minutes": 30,
+    "snapshot_every_steps": 2000,
+    "compile": true
+  },
+  "init_checkpoint": {
+    "file": "phase17/runs/foundation_v4/snapshots/model_step_05722.pt",
+    "sha256": "3c5d02dd3f8ef070623b057828efa8856f0ec7ae630cb1b382011eb47b498851"
+  }
+}

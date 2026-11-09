@@ -1,0 +1,30 @@
+{
+  "gsm8k": {
+    "source": "results/sft_v5_chosen/gsm8k/vdujuxrm/samples_gsm8k_2026-11-09T12-20-15.948490.jsonl",
+    "logged_items": 500,
+    "flexible-extract": {
+      "value": 0.016,
+      "stderr": 0.005617036781471975,
+      "n": 500
+    },
+    "strict-match": {
+      "value": 0.0,
+      "stderr": 0.0,
+      "n": 500
+    }
+  },
+  "gsm8k_no_calculator": {
+    "source": "results/sft_v5_chosen/gsm8k_no_calculator/vdujuxrm/samples_gsm8k_2026-11-09T12-21-52.439019.jsonl",
+    "logged_items": 500,
+    "flexible-extract": {
+      "value": 0.014,
+      "stderr": 0.005259593772650743,
+      "n": 500
+    },
+    "strict-match": {
+      "value": 0.0,
+      "stderr": 0.0,
+      "n": 500
+    }
+  }
+}

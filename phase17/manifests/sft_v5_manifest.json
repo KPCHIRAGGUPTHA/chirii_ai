@@ -1,0 +1,81 @@
+{
+  "seed": 1705,
+  "files": {
+    "train": {
+      "file": "phase17/sft_v5/sft_v5_train.jsonl",
+      "rows": 113036,
+      "sha256": "3b2740c04f3bb27d34e2107ec79d322b4f4e86046455c42d2424e83d988e49f8"
+    },
+    "val": {
+      "file": "phase17/sft_v5/sft_v5_val.jsonl",
+      "rows": 2303,
+      "sha256": "2ed40e712b3c813c29c0412cdc587dc6ca9174bde010770dd4ac60b498c573a9"
+    }
+  },
+  "counts": {
+    "train": {
+      "base_v2_rows": 108378,
+      "dropped_harmless_refused": 5,
+      "mined_harmless_distinct": 535,
+      "multistep_generated": 4000,
+      "removed_contamination_base": 5,
+      "removed_contamination_against_sealed_v3_goal": 11,
+      "removed_contamination_against_sealed_v3_overrefusal": 1,
+      "removed_duplicate_multistep": 930,
+      "removed_contamination_multistep": 7,
+      "total": 113036,
+      "source_smoltalk": 22945,
+      "source_synthetic_arithmetic": 19576,
+      "source_synth_word_problem": 9272,
+      "source_synth_number_fact": 1682,
+      "source_dolly": 8919,
+      "source_alpaca": 30678,
+      "source_synth_multistep_v5": 3063,
+      "source_synth_instruction": 4654,
+      "source_synthetic_identity": 490,
+      "source_synth_support_contrast": 955,
+      "source_synthetic_i_dont_know": 2945,
+      "source_synth_false_premise_real": 1959,
+      "source_synthetic_refusal": 1968,
+      "source_synth_refusal_v2": 2946,
+      "source_synthetic_over_refusal_guard": 984
+    },
+    "val": {
+      "base_v2_rows": 2165,
+      "dropped_harmless_refused": 0,
+      "mined_harmless_distinct": 14,
+      "multistep_generated": 100,
+      "removed_duplicate_multistep": 4,
+      "total": 2303,
+      "source_dolly": 181,
+      "source_alpaca": 653,
+      "source_synthetic_i_dont_know": 55,
+      "source_synth_multistep_v5": 96,
+      "source_synthetic_arithmetic": 387,
+      "source_synth_word_problem": 198,
+      "source_smoltalk": 455,
+      "source_synthetic_over_refusal_guard": 15,
+      "source_synthetic_refusal": 31,
+      "source_synth_false_premise_real": 40,
+      "source_synth_instruction": 85,
+      "source_synth_number_fact": 22,
+      "source_synth_refusal_v2": 53,
+      "source_synthetic_identity": 10,
+      "source_synth_support_contrast": 22
+    }
+  },
+  "multistep_verification_errors": 0,
+  "contamination_sets": {
+    "gsm8k_test": 1319,
+    "sealed_v3_goal": 200,
+    "sealed_v3_overrefusal": 100,
+    "sealed_v3_harmful": 60,
+    "dev": 202,
+    "heldout": 180,
+    "overrefusal_old": 60,
+    "overrefusal_v2": 102,
+    "harmful_v2": 59,
+    "demo": 12
+  },
+  "mine_weight": 3
+}

@@ -232,6 +232,18 @@ def train(config: Dict[str, Any], resume: bool = False) -> Dict[str, Any]:
     train_tokens, val_subset, token_bytes, tokenizer = load_data(config)
 
     raw_model = MiniGPTV3(MiniGPTConfig(**model_cfg)).to(device)
+    init = config.get("init_checkpoint")
+    if init and not resume:
+        # Continued pretraining (Phase 17D): start from earlier weights with a fresh optimizer. Pinned by SHA-256.
+        from phase10.common import sha256_file
+        init_path = project_path(init["file"])
+        if sha256_file(init_path) != init["sha256"]:
+            raise ValueError(f"init_checkpoint {init['file']} differs from its pin")
+        init_state = torch.load(init_path, map_location="cpu", weights_only=True)
+        if init_state["config"]["model"] != model_cfg:
+            raise ValueError("init_checkpoint model config differs from this config")
+        raw_model.load_state_dict(init_state["model_state"])
+        print(f"Initialised from {init['file']} (step {init_state.get('step')})", flush=True)
     optimizer = torch.optim.AdamW(
         build_param_groups(raw_model, training["weight_decay"]),
         lr=training["learning_rate"],

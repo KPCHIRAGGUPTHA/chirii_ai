@@ -1,0 +1,580 @@
+{
+  "config": {
+    "name": "Foundation v4 extended (Phase 17D continued pretraining, 70% FineWeb-Edu / 30% FineWeb)",
+    "device": "auto",
+    "model": {
+      "vocab_size": 16384,
+      "block_size": 1024,
+      "n_layer": 12,
+      "n_head": 12,
+      "n_embd": 768,
+      "dropout": 0.0,
+      "bias": true
+    },
+    "data": {
+      "train_bin": "phase17/data17d/tokens/train_17d.bin",
+      "train_sha256": "594e92666c24ecb1af1d2e619ad73faba7016b23cdbcc5c8267ba7c8d1940de1",
+      "val_bin": "phase10/data/tokens/val.bin",
+      "val_sha256": "21829bf07dd44e89ddb44916a362cfc5df4cacb15462211782bcfaadf54eedf0",
+      "val_subset_tokens": 256000,
+      "val_subset_sha256": "8ccf33a688a40884eb06a7ed49eff0681212d9ac33a2f16c251b97cc72e7431b",
+      "tokenizer": "phase10/tokenizer/tokenizer_v2.json",
+      "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98"
+    },
+    "out_dir": "phase17/runs/foundation_v4x",
+    "training": {
+      "max_steps": 15258,
+      "micro_batch_size": 16,
+      "grad_accum_steps": 32,
+      "learning_rate": 0.0003,
+      "min_lr": 3e-05,
+      "warmup_steps": 300,
+      "weight_decay": 0.1,
+      "betas": [
+        0.9,
+        0.95
+      ],
+      "grad_clip": 1.0,
+      "seed": 1,
+      "eval_interval": 250,
+      "eval_batch_size": 8,
+      "log_interval": 20,
+      "checkpoint_interval_minutes": 30,
+      "checkpoint_every_steps": 0,
+      "snapshot_every_steps": 2000,
+      "stop_after_step": null,
+      "compile": true,
+      "cpu_threads": 8,
+      "target_tokens_per_sec": 40000,
+      "generate_max_new_tokens": 64
+    },
+    "init_checkpoint": {
+      "file": "phase17/runs/foundation_v4/snapshots/model_step_05722.pt",
+      "sha256": "3c5d02dd3f8ef070623b057828efa8856f0ec7ae630cb1b382011eb47b498851"
+    }
+  },
+  "device": "cuda",
+  "device_name": "NVIDIA RTX A2000 12GB",
+  "autocast": "bf16",
+  "fused_adamw": true,
+  "parameters": 98425344,
+  "train_tokens_available": 7999999676,
+  "tokens_per_step": 524288,
+  "token_budget": 7999586304,
+  "evals": [
+    {
+      "step": 250,
+      "val_loss": 3.154138197898865,
+      "val_bits_per_byte": 1.0737151986284128,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 500,
+      "val_loss": 3.167592661380768,
+      "val_bits_per_byte": 1.0782952965897303,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 750,
+      "val_loss": 3.1619456272125244,
+      "val_bits_per_byte": 1.0763729628068746,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 1000,
+      "val_loss": 3.1547150988578796,
+      "val_bits_per_byte": 1.0739115842300997,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 1250,
+      "val_loss": 3.1472809081077577,
+      "val_bits_per_byte": 1.0713808759677836,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 1500,
+      "val_loss": 3.1409456548690797,
+      "val_bits_per_byte": 1.0692242622550239,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 91
+    },
+    {
+      "step": 1750,
+      "val_loss": 3.1321541566848756,
+      "val_bits_per_byte": 1.0662315065078654,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 2000,
+      "val_loss": 3.1265912890434264,
+      "val_bits_per_byte": 1.0643378242530546,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 2250,
+      "val_loss": 3.1189558820724486,
+      "val_bits_per_byte": 1.0617386190191451,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 2500,
+      "val_loss": 3.1142598609924317,
+      "val_bits_per_byte": 1.0601400241287715,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 2750,
+      "val_loss": 3.1064429473876953,
+      "val_bits_per_byte": 1.057479031357636,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 3000,
+      "val_loss": 3.101422917842865,
+      "val_bits_per_byte": 1.055770139203374,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 3250,
+      "val_loss": 3.0950156745910644,
+      "val_bits_per_byte": 1.053589019027552,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 3500,
+      "val_loss": 3.091047422885895,
+      "val_bits_per_byte": 1.0522381675744794,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 3750,
+      "val_loss": 3.0838182334899904,
+      "val_bits_per_byte": 1.049777244799023,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 4000,
+      "val_loss": 3.0789735918045045,
+      "val_bits_per_byte": 1.0481280572608613,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 4250,
+      "val_loss": 3.0744177947044373,
+      "val_bits_per_byte": 1.0465771966830122,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 4500,
+      "val_loss": 3.0683608531951903,
+      "val_bits_per_byte": 1.0445153243909187,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 4750,
+      "val_loss": 3.0613162174224855,
+      "val_bits_per_byte": 1.0421172263928686,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 5000,
+      "val_loss": 3.0555129480361938,
+      "val_bits_per_byte": 1.0401417078357085,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 5250,
+      "val_loss": 3.0539028005599977,
+      "val_bits_per_byte": 1.0395935898685325,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 5500,
+      "val_loss": 3.046467638969421,
+      "val_bits_per_byte": 1.037062551117796,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 5750,
+      "val_loss": 3.043154376506805,
+      "val_bits_per_byte": 1.035934667670734,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 6000,
+      "val_loss": 3.036670783996582,
+      "val_bits_per_byte": 1.0337275570804063,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 6250,
+      "val_loss": 3.0333922543525698,
+      "val_bits_per_byte": 1.0326114971974643,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 6500,
+      "val_loss": 3.0285978693962097,
+      "val_bits_per_byte": 1.0309794177917018,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 6750,
+      "val_loss": 3.02458224773407,
+      "val_bits_per_byte": 1.0296124409060812,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 7000,
+      "val_loss": 3.0202477264404295,
+      "val_bits_per_byte": 1.0281369058788399,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 7250,
+      "val_loss": 3.01586590719223,
+      "val_bits_per_byte": 1.026645269929734,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 7500,
+      "val_loss": 3.0103829736709593,
+      "val_bits_per_byte": 1.0247787984292842,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 7750,
+      "val_loss": 3.0069353852272034,
+      "val_bits_per_byte": 1.0236051884355488,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 8000,
+      "val_loss": 3.003551208019257,
+      "val_bits_per_byte": 1.0224531645624526,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 8250,
+      "val_loss": 2.997977665901184,
+      "val_bits_per_byte": 1.0205558485582407,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 8500,
+      "val_loss": 2.9953191652297972,
+      "val_bits_per_byte": 1.0196508556894013,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 8750,
+      "val_loss": 2.9923363046646116,
+      "val_bits_per_byte": 1.01863544592506,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 88
+    },
+    {
+      "step": 9000,
+      "val_loss": 2.988215274810791,
+      "val_bits_per_byte": 1.017232586535133,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 9250,
+      "val_loss": 2.9848428149223327,
+      "val_bits_per_byte": 1.016084551410542,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 9500,
+      "val_loss": 2.9812108507156374,
+      "val_bits_per_byte": 1.0148481771856583,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 9750,
+      "val_loss": 2.9753064970970153,
+      "val_bits_per_byte": 1.0128382480637783,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 10000,
+      "val_loss": 2.9735811858177184,
+      "val_bits_per_byte": 1.0122509266381732,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 10250,
+      "val_loss": 2.9706972260475157,
+      "val_bits_per_byte": 1.0112691841642503,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 10500,
+      "val_loss": 2.9688899912834166,
+      "val_bits_per_byte": 1.0106539747752021,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 10750,
+      "val_loss": 2.9662031545639036,
+      "val_bits_per_byte": 1.009739335897332,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 11000,
+      "val_loss": 2.9632150535583497,
+      "val_bits_per_byte": 1.0087221422097383,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 11250,
+      "val_loss": 2.959292109966278,
+      "val_bits_per_byte": 1.007386714307126,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 11500,
+      "val_loss": 2.9572339491844177,
+      "val_bits_per_byte": 1.0066860859978857,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 11750,
+      "val_loss": 2.954122987270355,
+      "val_bits_per_byte": 1.0056270686435707,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 91
+    },
+    {
+      "step": 12000,
+      "val_loss": 2.9522760558128356,
+      "val_bits_per_byte": 1.0049983459141465,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 12250,
+      "val_loss": 2.951096734523773,
+      "val_bits_per_byte": 1.0045968875401998,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 12500,
+      "val_loss": 2.9482013192176817,
+      "val_bits_per_byte": 1.003611245432773,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 12750,
+      "val_loss": 2.9461345596313477,
+      "val_bits_per_byte": 1.002907689963569,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 13000,
+      "val_loss": 2.9443661131858825,
+      "val_bits_per_byte": 1.0023056846907115,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 13250,
+      "val_loss": 2.942032600402832,
+      "val_bits_per_byte": 1.0015113224959844,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 13500,
+      "val_loss": 2.941010357379913,
+      "val_bits_per_byte": 1.001163335882357,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 13750,
+      "val_loss": 2.9391198935508727,
+      "val_bits_per_byte": 1.0005197940911157,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 14000,
+      "val_loss": 2.937711392879486,
+      "val_bits_per_byte": 1.0000403196726666,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 14250,
+      "val_loss": 2.9367018003463743,
+      "val_bits_per_byte": 0.9996966394724947,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 14500,
+      "val_loss": 2.935900288105011,
+      "val_bits_per_byte": 0.9994237928749637,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 14750,
+      "val_loss": 2.9345665235519407,
+      "val_bits_per_byte": 0.9989697597343179,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 15000,
+      "val_loss": 2.9340466446876525,
+      "val_bits_per_byte": 0.99879278529534,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 15250,
+      "val_loss": 2.932988106250763,
+      "val_bits_per_byte": 0.9984324431870653,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 15258,
+      "val_loss": 2.9336700859069826,
+      "val_bits_per_byte": 0.9986645991282748,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 90
+    }
+  ],
+  "resumes": [],
+  "train_seconds": 289650.90654430573,
+  "wall_seconds": 290516.903748326,
+  "max_grad_norm": 0.5992003083229065,
+  "max_grad_norm_step": 296,
+  "max_grad_norm_after_warmup": 0.5354233384132385,
+  "max_grad_norm_after_warmup_step": 783,
+  "non_finite_count": 0,
+  "completed_steps": 15258,
+  "status": "completed",
+  "compile": "enabled",
+  "gpu_peak_allocated_gb": 8.303,
+  "gpu_peak_reserved_gb": 8.816,
+  "best_step": 15250,
+  "best_val_loss": 2.932988106250763,
+  "best_val_bits_per_byte": 0.9984324431870653,
+  "tokens_per_sec_training": 27618.026124756365,
+  "tokens_per_sec_overall": 27535.69999124739
+}

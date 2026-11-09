@@ -267,6 +267,51 @@ class TestTraining(RunBase):
         self.assertEqual(sorted(os.listdir(os.path.join(out_dir, "snapshots"))), ["model_step_00020.pt", "model_step_00040.pt", "model_step_00050.pt"])
         self.assertEqual(os.path.getmtime(os.path.join(out_dir, "snapshots", "model_step_00020.pt")), before)
 
+    def test_init_checkpoint_starts_from_given_weights(self):
+        from phase10.common import sha256_file
+        path, out_dir = self.make_config("first", max_steps=30)
+        train(load_config(path))
+        best = os.path.join(out_dir, "best_model.pt")
+        init = {"file": best, "sha256": sha256_file(best)}
+        path2, out2 = self.make_config("cont", max_steps=10)
+        config = load_config(path2)
+        config["init_checkpoint"] = init
+        train(config)
+        fresh_path, fresh_out = self.make_config("fresh", max_steps=10)
+        train(load_config(fresh_path))
+        first_loss_cont = self.steps(out2)[0]["loss"]
+        first_loss_fresh = self.steps(fresh_out)[0]["loss"]
+        self.assertLess(first_loss_cont, first_loss_fresh - 0.5)  # continued run starts from the trained weights
+
+    def test_init_checkpoint_hash_and_shape_are_checked(self):
+        from phase10.common import sha256_file
+        path, out_dir = self.make_config("first", max_steps=20)
+        train(load_config(path))
+        best = os.path.join(out_dir, "best_model.pt")
+        config = load_config(self.make_config("bad_hash", max_steps=5)[0])
+        config["init_checkpoint"] = {"file": best, "sha256": "0" * 64}
+        with self.assertRaisesRegex(ValueError, "differs from its pin"):
+            train(config)
+        config = load_config(self.make_config("bad_shape", max_steps=5)[0])
+        config["model"] = dict(config["model"], n_embd=config["model"]["n_embd"] * 2)
+        config["init_checkpoint"] = {"file": best, "sha256": sha256_file(best)}
+        with self.assertRaisesRegex(ValueError, "model config differs"):
+            train(config)
+
+    def test_resume_ignores_init_checkpoint(self):
+        from phase10.common import sha256_file
+        path, out_dir = self.make_config("first", max_steps=20)
+        train(load_config(path))
+        best = os.path.join(out_dir, "best_model.pt")
+        cpath, cout = self.make_config("cont", max_steps=30, checkpoint_every_steps=10)
+        config = load_config(cpath)
+        config["init_checkpoint"] = {"file": best, "sha256": sha256_file(best)}
+        stopped = load_config(cpath, {"stop_after_step": 10}); stopped["init_checkpoint"] = config["init_checkpoint"]
+        train(stopped)
+        resumed = load_config(cpath); resumed["init_checkpoint"] = {"file": best, "sha256": "0" * 64}  # would fail if used
+        train(resumed, resume=True)
+        self.assertEqual([s["step"] for s in self.steps(cout)], list(range(1, 31)))
+
     def test_non_finite_loss_stops_the_run_and_is_recorded(self):
         path, out_dir = self.make_config("run")
         with mock.patch("phase10.train_v3.accumulate_gradients", return_value=float("nan")):

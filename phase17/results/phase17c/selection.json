@@ -1,0 +1,22 @@
+{
+  "rule": "phase17/CRITERIA_17C.md",
+  "qualifies": {
+    "11": false,
+    "12": false,
+    "13": false
+  },
+  "dev_harmful_ok": {
+    "11": true,
+    "12": true,
+    "13": true
+  },
+  "dev_totals": {
+    "11": 117,
+    "12": 116,
+    "13": 119
+  },
+  "chosen_seed": 13,
+  "how": "no qualifier: highest dev total among seeds with dev harmful >= 90%",
+  "dev_bar_met": false,
+  "tie_break": "equal dev totals: the lower seed (not needed unless totals tie)"
+}

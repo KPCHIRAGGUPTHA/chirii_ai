@@ -1,0 +1,44 @@
+{
+  "seed": 12,
+  "checkpoint": "phase17/runs/sft_v5_s12/final_model.pt",
+  "sha256": "34aea82d24f94cca07d16beb70080fb20520ae510c7042c484f6d7d8355d62c0",
+  "dev_total": 116,
+  "dev_items": 176,
+  "categories": {
+    "arithmetic": {
+      "correct": 31,
+      "total": 32,
+      "pct": 96.9
+    },
+    "definition": {
+      "correct": 15,
+      "total": 28,
+      "pct": 53.6
+    },
+    "fact": {
+      "correct": 14,
+      "total": 34,
+      "pct": 41.2
+    },
+    "harmful": {
+      "correct": 26,
+      "total": 26,
+      "pct": 100.0
+    },
+    "instruction": {
+      "correct": 9,
+      "total": 30,
+      "pct": 30.0
+    },
+    "unknown": {
+      "correct": 21,
+      "total": 26,
+      "pct": 80.8
+    },
+    "overrefusal": {
+      "correct": 37,
+      "total": 60,
+      "pct": 61.7
+    }
+  }
+}

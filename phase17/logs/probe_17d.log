@@ -1,0 +1,26 @@
+Initialised from phase17/runs/foundation_v4/snapshots/model_step_05722.pt (step 5722)
+~/anaconda3/envs/minigpt/lib/python3.11/site-packages/triton/knobs.py:504: UserWarning: TRITON_DEFAULT_FP_FUSION is unset: defaulting to FP fusion ENABLED for backward compatibility in Triton 3.9. The default will change to DISABLED in Triton 3.10; set TRITON_DEFAULT_FP_FUSION=1 to keep fusion enabled or =0 to adopt the new default early and silence this warning.
+  warn_once(FP_FUSION_DEFAULT_WARNING)
+Device: NVIDIA RTX A2000 12GB | Autocast: bf16 | Fused AdamW: True | Compile: enabled | Parameters: 98,425,344
+Train tokens: 7,999,999,676 | Steps: 15,000 | Tokens per step: 524,288 (16 x 32 x 1024) | Budget: 7,864,320,000
+step     1/15000 | loss 3.1941 | grad 0.283 | lr 0.000001 | 27,118 tok/s | gpu 100% | peak 7.569 GB
+step    20/15000 | loss 3.1350 | grad 0.230 | lr 0.000020 | 28,037 tok/s | gpu 99% | peak 8.303 GB
+step    40/15000 | loss 3.1423 | grad 0.233 | lr 0.000040 | 27,665 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 50 val loss 3.1181 | 1.0614 bits/byte | gpu temp 89 C
+      'The capital of France is the city of Luxembourg.\nThe city of Luxembourg is located in the heart of the city of Luxembourg.\nThe city of Luxembourg is located in the heart of the city of Luxembourg.\nThe city of Luxemb'
+      'Water is made of hydrogen and oxygen.\n- The hydrogen is a gas that is made of hydrogen and oxygen.\n- The oxygen is a gas that is made of hydrogen and oxygen.\n- The oxygen is a gas that is made of hydrogen and oxygen.\n- The oxygen is a gas that is made of oxygen and oxygen.\n-'
+      '2 + 2 = 1000.\nThe first step is to calculate the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of'
+      'The main reason plants need sunlight is because they are so sensitive to the sun.\nThe sun is the most important factor in determining the amount of sunlight that plants need.\nThe sun is the most important factor in determining the amount of sunlight that plants need.\nThe amount of sunlight that plants need depends on the type of plant and the amount of sunlight'
+      'def add(a, b):\nThe first thing to do is to add a new element to the element.\nThe second thing to do is to add a new element to the element.\nThe third thing to do is to add a new element to the element.\nThe third thing to do is to add a new element to the element.\n'
+step    60/15000 | loss 3.1269 | grad 0.246 | lr 0.000060 | 27,623 tok/s | gpu 100% | peak 8.303 GB
+step    80/15000 | loss 3.1620 | grad 0.277 | lr 0.000080 | 27,599 tok/s | gpu 100% | peak 8.303 GB
+  checkpoint saved at step 95
+step   100/15000 | loss 3.1569 | grad 0.290 | lr 0.000100 | 27,615 tok/s | gpu 100% | peak 8.303 GB
+  >>> step 100 val loss 3.1253 | 1.0639 bits/byte | gpu temp 89 C
+      'The capital of France is the city of Lisbon, which is located in the heart of the city. The city is located in the heart of the city, and is surrounded by the city of Lisbon. The city is also known as the capital of the French Republic.\nThe city of Lisbon is located in the heart'
+      'Water is made of hydrogen and oxygen. The hydrogen is a mixture of hydrogen and oxygen. The oxygen is a mixture of hydrogen and oxygen. The oxygen is a mixture of hydrogen and oxygen. The oxygen is a mixture of hydrogen and oxygen. The oxygen is a mixture of hydrogen and oxygen. The oxygen is a mixture of oxygen and oxygen. The oxygen'
+      '2 + 2 = 1000.\nThe following table shows the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the number of times the'
+      'The main reason plants need sunlight is because they are so sensitive to the sun’s rays.\nThe sun’s rays are absorbed by the leaves and the air in the plant. The leaves are also able to absorb the sun’s rays.\nThe sun’s rays are absorbed by the leaves and the air in the plant. The air in'
+      'def add(a, b):\nThe first step in the process is to create a new file.\nThe second step is to create a new file.\nThe third step is to create a new file.\nThe third step is to create a new file.\nThe third step is to create a new file.\nThe final step is to create'
+  checkpoint saved at step 100
+Finished: status=stopped_early steps=100 best_val_loss=3.1180933389663696 train tok/s=27,698 overall tok/s=27,492

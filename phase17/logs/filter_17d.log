@@ -1,0 +1,315 @@
+Using the latest cached version of the dataset since allenai/ai2_arc couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'ARC-Easy' at ~/chirag_work/hf_cache/datasets/allenai___ai2_arc/ARC-Easy/0.0.0/210d026faf9955653af8916fad021475a3f00453 (last modified on Tue Nov  3 17:23:42 2026).
+Using the latest cached version of the dataset since allenai/ai2_arc couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'ARC-Challenge' at ~/chirag_work/hf_cache/datasets/allenai___ai2_arc/ARC-Challenge/0.0.0/210d026faf9955653af8916fad021475a3f00453 (last modified on Tue Nov  3 17:23:51 2026).
+Using the latest cached version of the dataset since Rowan/hellaswag couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at ~/chirag_work/hf_cache/datasets/Rowan___hellaswag/default/0.0.0/218ec52e09a7e7462a5400043bb9a69a41d06b76 (last modified on Tue Nov  3 17:23:26 2026).
+Using the latest cached version of the dataset since baber/piqa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at ~/chirag_work/hf_cache/datasets/baber___piqa/default/0.0.0/142f6d7367fd9877f0fb3b5734ea6a545f54cdd1 (last modified on Tue Nov  3 17:24:07 2026).
+Using the latest cached version of the dataset since allenai/winogrande couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'winogrande_xl' at ~/chirag_work/hf_cache/datasets/allenai___winogrande/winogrande_xl/0.0.0/01e74176c63542e6b0bcb004dcdea22d94fb67b5 (last modified on Tue Nov  3 17:24:23 2026).
+Using the latest cached version of the dataset since allenai/sciq couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at ~/chirag_work/hf_cache/datasets/allenai___sciq/default/0.0.0/2c94ad3e1aafab77146f384e23536f97a4849815 (last modified on Tue Nov  3 17:28:47 2026).
+Using the latest cached version of the dataset since allenai/openbookqa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/chirag_work/hf_cache/datasets/allenai___openbookqa/main/0.0.0/388097ea7776314e93a529163e0fea805b8a6454 (last modified on Tue Nov  3 17:24:39 2026).
+[Task: boolq] metric acc is defined, but aggregation is not. using default aggregation=mean
+[Task: boolq] metric acc is defined, but higher_is_better is not. using default higher_is_better=True
+Using the latest cached version of the dataset since aps/super_glue couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'boolq' at ~/chirag_work/hf_cache/datasets/aps___super_glue/boolq/0.0.0/3de24cf8022e94f4ee4b9d55a6f539891524d646 (last modified on Tue Nov  3 17:29:06 2026).
+Using the latest cached version of the dataset since EleutherAI/lambada_openai couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at ~/chirag_work/hf_cache/datasets/EleutherAI___lambada_openai/default/0.0.0/900124bf3b8235c6daf21033af9948b3f07346c4 (last modified on Tue Nov  3 17:29:11 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'abstract_algebra' at ~/chirag_work/hf_cache/datasets/cais___mmlu/abstract_algebra/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:25:14 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'anatomy' at ~/chirag_work/hf_cache/datasets/cais___mmlu/anatomy/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:25:31 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'astronomy' at ~/chirag_work/hf_cache/datasets/cais___mmlu/astronomy/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:25:39 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_biology' at ~/chirag_work/hf_cache/datasets/cais___mmlu/college_biology/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:25:49 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_chemistry' at ~/chirag_work/hf_cache/datasets/cais___mmlu/college_chemistry/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:25:57 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_computer_science' at ~/chirag_work/hf_cache/datasets/cais___mmlu/college_computer_science/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:26:10 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_mathematics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/college_mathematics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:26:21 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_physics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/college_physics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:26:42 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'computer_security' at ~/chirag_work/hf_cache/datasets/cais___mmlu/computer_security/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:26:55 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'conceptual_physics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/conceptual_physics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:27:09 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'electrical_engineering' at ~/chirag_work/hf_cache/datasets/cais___mmlu/electrical_engineering/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:27:20 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'elementary_mathematics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/elementary_mathematics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:28:12 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_biology' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_biology/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:28:23 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_chemistry' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_chemistry/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:28:36 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_computer_science' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_computer_science/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:28:50 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_mathematics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_mathematics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:00 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_physics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_physics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:08 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_statistics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_statistics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:16 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'machine_learning' at ~/chirag_work/hf_cache/datasets/cais___mmlu/machine_learning/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:30 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'business_ethics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/business_ethics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:38 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'clinical_knowledge' at ~/chirag_work/hf_cache/datasets/cais___mmlu/clinical_knowledge/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:48 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_medicine' at ~/chirag_work/hf_cache/datasets/cais___mmlu/college_medicine/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:55 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'global_facts' at ~/chirag_work/hf_cache/datasets/cais___mmlu/global_facts/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:30:06 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'human_aging' at ~/chirag_work/hf_cache/datasets/cais___mmlu/human_aging/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:30:18 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'management' at ~/chirag_work/hf_cache/datasets/cais___mmlu/management/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:30:29 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'marketing' at ~/chirag_work/hf_cache/datasets/cais___mmlu/marketing/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:30:40 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'medical_genetics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/medical_genetics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:30:51 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'miscellaneous' at ~/chirag_work/hf_cache/datasets/cais___mmlu/miscellaneous/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:31:05 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'nutrition' at ~/chirag_work/hf_cache/datasets/cais___mmlu/nutrition/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:31:19 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'professional_accounting' at ~/chirag_work/hf_cache/datasets/cais___mmlu/professional_accounting/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:31:28 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'professional_medicine' at ~/chirag_work/hf_cache/datasets/cais___mmlu/professional_medicine/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:31:39 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'virology' at ~/chirag_work/hf_cache/datasets/cais___mmlu/virology/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:31:50 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'econometrics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/econometrics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:32:05 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_geography' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_geography/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:32:22 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_government_and_politics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_government_and_politics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:32:36 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_macroeconomics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_macroeconomics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:32:50 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_microeconomics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_microeconomics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:33:03 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_psychology' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_psychology/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:33:20 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'human_sexuality' at ~/chirag_work/hf_cache/datasets/cais___mmlu/human_sexuality/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:33:28 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'professional_psychology' at ~/chirag_work/hf_cache/datasets/cais___mmlu/professional_psychology/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:33:45 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'public_relations' at ~/chirag_work/hf_cache/datasets/cais___mmlu/public_relations/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:33:59 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'security_studies' at ~/chirag_work/hf_cache/datasets/cais___mmlu/security_studies/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:34:06 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'sociology' at ~/chirag_work/hf_cache/datasets/cais___mmlu/sociology/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:34:20 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'us_foreign_policy' at ~/chirag_work/hf_cache/datasets/cais___mmlu/us_foreign_policy/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:34:37 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'formal_logic' at ~/chirag_work/hf_cache/datasets/cais___mmlu/formal_logic/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:34:50 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_european_history' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_european_history/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:35:06 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_us_history' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_us_history/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:35:14 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_world_history' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_world_history/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:35:26 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'international_law' at ~/chirag_work/hf_cache/datasets/cais___mmlu/international_law/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:35:40 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'jurisprudence' at ~/chirag_work/hf_cache/datasets/cais___mmlu/jurisprudence/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:35:51 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'logical_fallacies' at ~/chirag_work/hf_cache/datasets/cais___mmlu/logical_fallacies/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:36:01 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'moral_disputes' at ~/chirag_work/hf_cache/datasets/cais___mmlu/moral_disputes/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:36:13 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'moral_scenarios' at ~/chirag_work/hf_cache/datasets/cais___mmlu/moral_scenarios/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:36:24 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'philosophy' at ~/chirag_work/hf_cache/datasets/cais___mmlu/philosophy/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:36:32 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'prehistory' at ~/chirag_work/hf_cache/datasets/cais___mmlu/prehistory/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:36:48 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'professional_law' at ~/chirag_work/hf_cache/datasets/cais___mmlu/professional_law/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:37:03 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'world_religions' at ~/chirag_work/hf_cache/datasets/cais___mmlu/world_religions/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:37:15 2026).
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/chirag_work/hf_cache/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Tue Nov  3 17:37:30 2026).
+Using the latest cached version of the dataset since mandarjoshi/trivia_qa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'rc.nocontext' at ~/chirag_work/hf_cache/datasets/mandarjoshi___trivia_qa/rc.nocontext/0.0.0/0f7faf33a3908546c6fd5b73a660e0f8ff173c2f (last modified on Tue Nov  3 17:37:34 2026).
+2,268,897 benchmark 13-grams from 59,923 items (91s)
+edu train_00000.txt: kept 107,174 of 107,295
+edu val_00000.txt: kept 548 of 548
+edu train_00001.txt: kept 105,506 of 105,645
+edu val_00001.txt: kept 487 of 487
+edu train_00002.txt: kept 107,568 of 107,695
+edu val_00002.txt: kept 541 of 542
+edu train_00003.txt: kept 108,860 of 109,008
+edu val_00003.txt: kept 550 of 551
+edu train_00004.txt: kept 111,075 of 111,245
+edu val_00004.txt: kept 577 of 577
+edu train_00005.txt: kept 110,302 of 110,463
+edu val_00005.txt: kept 554 of 555
+edu train_00006.txt: kept 109,347 of 109,502
+edu val_00006.txt: kept 557 of 557
+edu train_00007.txt: kept 109,931 of 110,108
+edu val_00007.txt: kept 536 of 537
+edu train_00008.txt: kept 109,394 of 109,539
+edu val_00008.txt: kept 581 of 581
+edu train_00009.txt: kept 110,677 of 110,843
+edu val_00009.txt: kept 545 of 546
+edu train_00010.txt: kept 108,221 of 108,385
+edu val_00010.txt: kept 563 of 566
+edu train_00011.txt: kept 108,329 of 108,484
+edu val_00011.txt: kept 543 of 544
+edu train_00012.txt: kept 108,522 of 108,687
+edu val_00012.txt: kept 523 of 524
+edu train_00013.txt: kept 107,413 of 107,575
+edu val_00013.txt: kept 586 of 587
+edu train_00014.txt: kept 107,680 of 107,859
+edu val_00014.txt: kept 551 of 552
+edu train_00015.txt: kept 107,610 of 107,761
+edu val_00015.txt: kept 527 of 529
+edu train_00016.txt: kept 108,499 of 108,680
+edu val_00016.txt: kept 543 of 543
+edu train_00017.txt: kept 106,963 of 107,124
+edu val_00017.txt: kept 533 of 533
+edu train_00018.txt: kept 105,833 of 106,014
+edu val_00018.txt: kept 512 of 513
+edu train_00019.txt: kept 107,571 of 107,751
+edu val_00019.txt: kept 530 of 533
+edu train_00020.txt: kept 107,225 of 107,361
+edu val_00020.txt: kept 596 of 597
+edu train_00021.txt: kept 107,724 of 107,855
+edu val_00021.txt: kept 525 of 525
+edu train_00022.txt: kept 108,517 of 108,676
+edu val_00022.txt: kept 498 of 501
+edu train_00023.txt: kept 106,458 of 106,606
+edu val_00023.txt: kept 526 of 527
+edu train_00024.txt: kept 108,589 of 108,727
+edu val_00024.txt: kept 599 of 600
+edu train_00025.txt: kept 105,146 of 105,296
+edu val_00025.txt: kept 531 of 531
+edu train_00026.txt: kept 103,901 of 104,056
+edu val_00026.txt: kept 517 of 519
+edu train_00027.txt: kept 105,175 of 105,343
+edu val_00027.txt: kept 524 of 525
+edu train_00028.txt: kept 105,883 of 106,041
+edu val_00028.txt: kept 487 of 489
+edu train_00029.txt: kept 107,100 of 107,260
+edu val_00029.txt: kept 519 of 519
+edu train_00030.txt: kept 106,869 of 106,996
+edu val_00030.txt: kept 528 of 529
+edu train_00031.txt: kept 107,598 of 107,741
+edu val_00031.txt: kept 555 of 555
+edu train_00032.txt: kept 105,519 of 105,664
+edu val_00032.txt: kept 503 of 503
+edu train_00033.txt: kept 105,489 of 105,639
+edu val_00033.txt: kept 549 of 550
+edu train_00034.txt: kept 105,164 of 105,312
+edu val_00034.txt: kept 518 of 519
+edu train_00035.txt: kept 104,621 of 104,785
+edu val_00035.txt: kept 564 of 566
+edu train_00036.txt: kept 102,316 of 102,452
+edu val_00036.txt: kept 529 of 530
+edu train_00037.txt: kept 103,936 of 104,102
+edu val_00037.txt: kept 535 of 535
+edu train_00038.txt: kept 104,375 of 104,530
+edu val_00038.txt: kept 541 of 541
+edu train_00039.txt: kept 106,655 of 106,806
+edu val_00039.txt: kept 563 of 564
+edu train_00040.txt: kept 105,587 of 105,738
+edu val_00040.txt: kept 530 of 531
+edu train_00041.txt: kept 106,695 of 106,837
+edu val_00041.txt: kept 502 of 502
+edu train_00042.txt: kept 107,913 of 108,061
+edu val_00042.txt: kept 524 of 524
+edu train_00043.txt: kept 105,999 of 106,156
+edu val_00043.txt: kept 511 of 511
+edu train_00044.txt: kept 107,565 of 107,700
+edu val_00044.txt: kept 589 of 590
+edu train_00045.txt: kept 107,291 of 107,437
+edu val_00045.txt: kept 536 of 536
+edu train_00046.txt: kept 106,676 of 106,828
+edu val_00046.txt: kept 547 of 549
+edu train_00047.txt: kept 92,987 of 93,103
+edu val_00047.txt: kept 507 of 507
+web train_00000.txt: kept 164,462 of 165,055
+web val_00000.txt: kept 789 of 790
+web train_00001.txt: kept 165,570 of 166,126
+web val_00001.txt: kept 836 of 842
+web train_00002.txt: kept 165,781 of 166,329
+web val_00002.txt: kept 867 of 868
+web train_00003.txt: kept 165,327 of 165,852
+web val_00003.txt: kept 832 of 837
+web train_00004.txt: kept 165,543 of 166,111
+web val_00004.txt: kept 857 of 861
+web train_00005.txt: kept 166,128 of 166,692
+web val_00005.txt: kept 837 of 839
+web train_00006.txt: kept 165,783 of 166,302
+web val_00006.txt: kept 832 of 833
+web train_00007.txt: kept 166,959 of 167,513
+web val_00007.txt: kept 835 of 838
+web train_00008.txt: kept 164,579 of 165,152
+web val_00008.txt: kept 840 of 845
+web train_00009.txt: kept 164,950 of 165,532
+web val_00009.txt: kept 817 of 818
+web train_00010.txt: kept 163,947 of 164,506
+web val_00010.txt: kept 811 of 814
+web train_00011.txt: kept 164,990 of 165,574
+web val_00011.txt: kept 832 of 836
+web train_00012.txt: kept 165,058 of 165,629
+web val_00012.txt: kept 838 of 839
+web train_00013.txt: kept 165,096 of 165,639
+web val_00013.txt: kept 802 of 803
+web train_00014.txt: kept 163,981 of 164,526
+web val_00014.txt: kept 815 of 815
+web train_00015.txt: kept 165,137 of 165,698
+web val_00015.txt: kept 796 of 798
+web train_00016.txt: kept 165,161 of 165,740
+web val_00016.txt: kept 813 of 816
+web train_00017.txt: kept 165,744 of 166,275
+web val_00017.txt: kept 810 of 810
+web train_00018.txt: kept 165,363 of 165,882
+web val_00018.txt: kept 846 of 849
+web train_00019.txt: kept 166,346 of 166,941
+web val_00019.txt: kept 803 of 806
+web train_00020.txt: kept 84,153 of 84,446
+web val_00020.txt: kept 432 of 432
+{
+ "edu": {
+  "documents_in": 5158651,
+  "kept": 5151288,
+  "removed_benchmark_overlap": 7363,
+  "removed_duplicate": 0,
+  "removed_by_benchmark": {
+   "sciq": 341,
+   "boolq": 3290,
+   "triviaqa": 694,
+   "mmlu": 2985,
+   "hellaswag": 157,
+   "arc_easy": 44,
+   "piqa": 23,
+   "arc_challenge": 7,
+   "lambada_openai": 1
+  },
+  "bytes_kept": 24385708143
+ },
+ "web": {
+  "documents_in": 3418509,
+  "kept": 3406998,
+  "removed_benchmark_overlap": 1121,
+  "removed_duplicate": 10390,
+  "removed_by_benchmark": {
+   "boolq": 523,
+   "triviaqa": 97,
+   "mmlu": 407,
+   "piqa": 7,
+   "hellaswag": 72,
+   "sciq": 12,
+   "arc_challenge": 2,
+   "lambada_openai": 5,
+   "arc_easy": 2
+  },
+  "bytes_kept": 10433470512
+ }
+}

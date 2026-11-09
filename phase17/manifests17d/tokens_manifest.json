@@ -1,0 +1,1276 @@
+{
+  "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98",
+  "eot_id": 0,
+  "shards": [
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00000.txt",
+      "file": "phase17/data17d/tokens/edu_train_00000.bin",
+      "documents": 107174,
+      "tokens": 120404898,
+      "sha256": "cd2824928b8739fb18e9e28f298a9fcb6aec7d899b5681d425ff34cb1e9fb1ee"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00000.txt",
+      "file": "phase17/data17d/tokens/edu_val_00000.bin",
+      "documents": 548,
+      "tokens": 646610,
+      "sha256": "d3720518e2067842d8d762f53764b491fa8e1a19e9e70e9620a962fa61d9d22d"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00001.txt",
+      "file": "phase17/data17d/tokens/edu_train_00001.bin",
+      "documents": 105506,
+      "tokens": 120373952,
+      "sha256": "9085e2fc72d326e3a68fa50e7a863cc76be5e02eaba3222885ca741c273cc019"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00001.txt",
+      "file": "phase17/data17d/tokens/edu_val_00001.bin",
+      "documents": 487,
+      "tokens": 505100,
+      "sha256": "781b35faa55fef94d08644ea60255ff0cec74ae63a6b2cc21b89475534f1b9d5"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00002.txt",
+      "file": "phase17/data17d/tokens/edu_train_00002.bin",
+      "documents": 107568,
+      "tokens": 119971511,
+      "sha256": "ee1c32d88faf5905a1704808f04002739b90d095adbd4b106b52afdd7822ee9a"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00002.txt",
+      "file": "phase17/data17d/tokens/edu_val_00002.bin",
+      "documents": 541,
+      "tokens": 642585,
+      "sha256": "9e481ccc1e2d5cdaaee1c7208b75327a4ec7bdc9a0cfc8db097f6c6beeb8b42c"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00003.txt",
+      "file": "phase17/data17d/tokens/edu_train_00003.bin",
+      "documents": 108860,
+      "tokens": 120870735,
+      "sha256": "fc92e1bd3e07f5901a51bd0a1134eca305f7f983783670deb7c6800d24eca8fb"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00003.txt",
+      "file": "phase17/data17d/tokens/edu_val_00003.bin",
+      "documents": 550,
+      "tokens": 557286,
+      "sha256": "36d53d85a77c406b5601738e6978419969d52bcf9a4ae324064b2ffa3e73a230"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00004.txt",
+      "file": "phase17/data17d/tokens/edu_train_00004.bin",
+      "documents": 111075,
+      "tokens": 121783774,
+      "sha256": "8f753e5ca710048046bb65f3939a5e3e95147df374f5a31bbde015ace5254df8"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00004.txt",
+      "file": "phase17/data17d/tokens/edu_val_00004.bin",
+      "documents": 577,
+      "tokens": 593929,
+      "sha256": "596462d5e1caa93c355985ced57000ea11ba939d1a4ddbf8ca69157547d6357a"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00005.txt",
+      "file": "phase17/data17d/tokens/edu_train_00005.bin",
+      "documents": 110302,
+      "tokens": 121828175,
+      "sha256": "f4335884e47e7ab40ef6806476e0c67289181ecff924e0cb9432dd216795fb6e"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00005.txt",
+      "file": "phase17/data17d/tokens/edu_val_00005.bin",
+      "documents": 554,
+      "tokens": 571345,
+      "sha256": "df30149a820372b3d1d2d093a73972bbc3927967169fbc29afa19ae10d78ade5"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00006.txt",
+      "file": "phase17/data17d/tokens/edu_train_00006.bin",
+      "documents": 109347,
+      "tokens": 121871987,
+      "sha256": "c175ab71b52435958111e5205f296d3ea93058425b6f5339d5b7d8b343ce0dde"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00006.txt",
+      "file": "phase17/data17d/tokens/edu_val_00006.bin",
+      "documents": 557,
+      "tokens": 629056,
+      "sha256": "0eb9a937a0acd17819b0baf12fa80cf94b977f441ba9730033e2ab1465d920be"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00007.txt",
+      "file": "phase17/data17d/tokens/edu_train_00007.bin",
+      "documents": 109931,
+      "tokens": 121984669,
+      "sha256": "f438c42c09fd218f29c3e7aeb8db7c5dff2f5790d649ee5a618c6212f0f20a91"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00007.txt",
+      "file": "phase17/data17d/tokens/edu_val_00007.bin",
+      "documents": 536,
+      "tokens": 573467,
+      "sha256": "9c4e552c6eabfe6db2485fbc1231dfbc586aa4e5315ba612649f6cb257a72ec3"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00008.txt",
+      "file": "phase17/data17d/tokens/edu_train_00008.bin",
+      "documents": 109394,
+      "tokens": 121702089,
+      "sha256": "567d3772282c8ecc85eca59a85e02c3290c306ed3e70fb1d383b2f2058493fc4"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00008.txt",
+      "file": "phase17/data17d/tokens/edu_val_00008.bin",
+      "documents": 581,
+      "tokens": 634005,
+      "sha256": "eb9d1828fcd977bb7ef24d9e95aef8b9fa81bd2f3c6b84f909a37e72b4e9063f"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00009.txt",
+      "file": "phase17/data17d/tokens/edu_train_00009.bin",
+      "documents": 110677,
+      "tokens": 121587139,
+      "sha256": "2e8b031ce568ce4c618ef539c559cf70dc1b025975f087782e937976549a0490"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00009.txt",
+      "file": "phase17/data17d/tokens/edu_val_00009.bin",
+      "documents": 545,
+      "tokens": 699329,
+      "sha256": "1f03d20b6739bc19fe8d33c7442323082190500d27a3407304d08b7ad8ac3f54"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00010.txt",
+      "file": "phase17/data17d/tokens/edu_train_00010.bin",
+      "documents": 108221,
+      "tokens": 121752718,
+      "sha256": "2858007571e781d1dc10863a0c032676da79a2334020c166d451a5d19ee9feb8"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00010.txt",
+      "file": "phase17/data17d/tokens/edu_val_00010.bin",
+      "documents": 563,
+      "tokens": 563243,
+      "sha256": "9884820d0073eba123ddc229e33bc4eb3e487ca76caf44fe13c3f26fb5c7bced"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00011.txt",
+      "file": "phase17/data17d/tokens/edu_train_00011.bin",
+      "documents": 108329,
+      "tokens": 121930525,
+      "sha256": "ced7f72ab2b267641e9a22ecd3dd0af9d53a9a3cf8df2fe5d535faed58aeaba6"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00011.txt",
+      "file": "phase17/data17d/tokens/edu_val_00011.bin",
+      "documents": 543,
+      "tokens": 576430,
+      "sha256": "854515a464785fc7632787c8adfc6268b7bfd26ffa50940fd0a05f78f32d3c0f"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00012.txt",
+      "file": "phase17/data17d/tokens/edu_train_00012.bin",
+      "documents": 108522,
+      "tokens": 122043855,
+      "sha256": "debdffc1530991a5a872f90e26f94b3c92484f0b1e19c0d2d712b8cf2b71b2b8"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00012.txt",
+      "file": "phase17/data17d/tokens/edu_val_00012.bin",
+      "documents": 523,
+      "tokens": 528294,
+      "sha256": "2a5711e705adf0341fec31561acc1396e4604c8fe1eecc88050d6d62fc43e29b"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00013.txt",
+      "file": "phase17/data17d/tokens/edu_train_00013.bin",
+      "documents": 107413,
+      "tokens": 121694506,
+      "sha256": "9b31b9422e84d5c4c0519348a07588872a6835a15eafe3d3650b0d35a43390b6"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00013.txt",
+      "file": "phase17/data17d/tokens/edu_val_00013.bin",
+      "documents": 586,
+      "tokens": 649533,
+      "sha256": "73f5b291b9456e6bf4ab46827ee81a8d78bd9c5ae30a6b3fa68639774346d6dc"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00014.txt",
+      "file": "phase17/data17d/tokens/edu_train_00014.bin",
+      "documents": 107680,
+      "tokens": 121671075,
+      "sha256": "68069e2e9dd4ccc4cb7af0675b432c642798986f311ec7348cbbdf3cb45da624"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00014.txt",
+      "file": "phase17/data17d/tokens/edu_val_00014.bin",
+      "documents": 551,
+      "tokens": 579640,
+      "sha256": "9dc2d178299e927c8d3a6dab58affd1a90ec4007dc328fa2975e19719fe25329"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00015.txt",
+      "file": "phase17/data17d/tokens/edu_train_00015.bin",
+      "documents": 107610,
+      "tokens": 121840175,
+      "sha256": "7778e8a75d89e2d511bfda7956ce978ac53d798d2250d4ab1952e44b0989eadb"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00015.txt",
+      "file": "phase17/data17d/tokens/edu_val_00015.bin",
+      "documents": 527,
+      "tokens": 579692,
+      "sha256": "463d6bcd49ab608fdd8fdc227b2c253c04f87713e245573f97fddddbcb5e5879"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00016.txt",
+      "file": "phase17/data17d/tokens/edu_train_00016.bin",
+      "documents": 108499,
+      "tokens": 121730195,
+      "sha256": "565e6d24cdc06f2b5961a622fd92157ef094ad8ee763c73fa475ec5865a2cace"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00016.txt",
+      "file": "phase17/data17d/tokens/edu_val_00016.bin",
+      "documents": 543,
+      "tokens": 655431,
+      "sha256": "6232899d52ea478a1a4b8896327fa9bfa0553c66292865af76a4e71ae2c77ccb"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00017.txt",
+      "file": "phase17/data17d/tokens/edu_train_00017.bin",
+      "documents": 106963,
+      "tokens": 122043491,
+      "sha256": "490bf01cd882e2924b0a001d0ae90a55f1394296c9cb248939191d93c9909277"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00017.txt",
+      "file": "phase17/data17d/tokens/edu_val_00017.bin",
+      "documents": 533,
+      "tokens": 597755,
+      "sha256": "e328cbc7ebe73d029026ab4199d5d222299475cea85567bf085d796902435600"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00018.txt",
+      "file": "phase17/data17d/tokens/edu_train_00018.bin",
+      "documents": 105833,
+      "tokens": 122047068,
+      "sha256": "e1e59014baad5b3f28a7ef03521ee9bf89b8391e3b8ec4853d82cb9cdb657473"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00018.txt",
+      "file": "phase17/data17d/tokens/edu_val_00018.bin",
+      "documents": 512,
+      "tokens": 632519,
+      "sha256": "eb2bbe5c4b807953f642f54a4d1fb621abe61f2e0275c1b2f8e70717a453916d"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00019.txt",
+      "file": "phase17/data17d/tokens/edu_train_00019.bin",
+      "documents": 107571,
+      "tokens": 121878391,
+      "sha256": "e84fb0ed83d1e9fdd59f2ceea94143533d3ce5aa03dcf42877bb084052e1f8cb"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00019.txt",
+      "file": "phase17/data17d/tokens/edu_val_00019.bin",
+      "documents": 530,
+      "tokens": 660965,
+      "sha256": "d579bdd4e732d49dfa48dfd3ac70ec118b6c97abbedf5d86f74edf3eb705bbcb"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00020.txt",
+      "file": "phase17/data17d/tokens/edu_train_00020.bin",
+      "documents": 107225,
+      "tokens": 122224115,
+      "sha256": "d7fee8e514db460dbcd814dd8b858bfc6a3992c77cf98dc4cf7329ccdbab07a3"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00020.txt",
+      "file": "phase17/data17d/tokens/edu_val_00020.bin",
+      "documents": 596,
+      "tokens": 601972,
+      "sha256": "33be3fa0d53930533740cfc2997cb9650b8bcdd3b3a51e2d46c704e74f2604ff"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00021.txt",
+      "file": "phase17/data17d/tokens/edu_train_00021.bin",
+      "documents": 107724,
+      "tokens": 122072141,
+      "sha256": "8ab6e136f56da931b831ddd3bb03ba6741c048c9414d70a8fb2bd9bdfc9f22dc"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00021.txt",
+      "file": "phase17/data17d/tokens/edu_val_00021.bin",
+      "documents": 525,
+      "tokens": 579652,
+      "sha256": "ae8be03602cafd282f85e457853eb5748f54517347390af145738f61f329aee9"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00022.txt",
+      "file": "phase17/data17d/tokens/edu_train_00022.bin",
+      "documents": 108517,
+      "tokens": 121652950,
+      "sha256": "a282b2bd01f5639c90c4a79c18fd1bfb7102fe31fa663b01261c4095198759b7"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00022.txt",
+      "file": "phase17/data17d/tokens/edu_val_00022.bin",
+      "documents": 498,
+      "tokens": 562840,
+      "sha256": "645bce3cdb6d3e2a3ff7a5bde8c0436c4a8ccccd503d6909fd7509c5d2e0f2c2"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00023.txt",
+      "file": "phase17/data17d/tokens/edu_train_00023.bin",
+      "documents": 106458,
+      "tokens": 121659567,
+      "sha256": "cbb356c31b2a159aa2d064b2a73b2e85832bb3d4a735bf199927bffb780f18b0"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00023.txt",
+      "file": "phase17/data17d/tokens/edu_val_00023.bin",
+      "documents": 526,
+      "tokens": 630817,
+      "sha256": "e64b836315e7e7e86d87590dd7f51e9e7867360a4597f275aa5be124de9830f9"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00024.txt",
+      "file": "phase17/data17d/tokens/edu_train_00024.bin",
+      "documents": 108589,
+      "tokens": 121714377,
+      "sha256": "2ac7a79cc20f396ba4a02c2f890035d1bd97b919132f9a85bbb98fc31f742c97"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00024.txt",
+      "file": "phase17/data17d/tokens/edu_val_00024.bin",
+      "documents": 599,
+      "tokens": 673714,
+      "sha256": "f582396e949b2204e4fb4704b06b7bc14dae1598c005787d4e85bbffcbc06252"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00025.txt",
+      "file": "phase17/data17d/tokens/edu_train_00025.bin",
+      "documents": 105146,
+      "tokens": 121901894,
+      "sha256": "1afd92d4914c091b24bb6ba688d74f773ed73e3088bbd420d80a9b9c704994eb"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00025.txt",
+      "file": "phase17/data17d/tokens/edu_val_00025.bin",
+      "documents": 531,
+      "tokens": 574996,
+      "sha256": "6bb3a702a2fa590a5f94c245fc2b648c490953ab320c10137ea816ba25de0d04"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00026.txt",
+      "file": "phase17/data17d/tokens/edu_train_00026.bin",
+      "documents": 103901,
+      "tokens": 122388695,
+      "sha256": "a8114b1022340763837cfbf6478d58b7ffdbea0d6077260b0a23e305c2bef6ec"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00026.txt",
+      "file": "phase17/data17d/tokens/edu_val_00026.bin",
+      "documents": 517,
+      "tokens": 538632,
+      "sha256": "489892a7223a80eab7bc2f3fc90f72177821c70e04e4403465c2cf4138dea317"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00027.txt",
+      "file": "phase17/data17d/tokens/edu_train_00027.bin",
+      "documents": 105175,
+      "tokens": 122088381,
+      "sha256": "7fdb75e0c33f942caed815f15cc5d22e9d5f3c393c6e5300ea4fa36b46392f12"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00027.txt",
+      "file": "phase17/data17d/tokens/edu_val_00027.bin",
+      "documents": 524,
+      "tokens": 669402,
+      "sha256": "ac1b531831252405ec76017d07100f14422a3ea9c46be3bf0a9274c77bc858d4"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00028.txt",
+      "file": "phase17/data17d/tokens/edu_train_00028.bin",
+      "documents": 105883,
+      "tokens": 121822113,
+      "sha256": "a81a4b330708e1aa335466607631da5d6c720880ae2e647a864311b6f7eb5bb1"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00028.txt",
+      "file": "phase17/data17d/tokens/edu_val_00028.bin",
+      "documents": 487,
+      "tokens": 658653,
+      "sha256": "fbededd3dd88909e3887eecbb7a56c1a70280e22b8402c0ae723c0f3c06c8fcc"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00029.txt",
+      "file": "phase17/data17d/tokens/edu_train_00029.bin",
+      "documents": 107100,
+      "tokens": 121765487,
+      "sha256": "668000ae854d34d42540f0304f28f5e9106ae8a22ab0e562c6a9eb01d7b68feb"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00029.txt",
+      "file": "phase17/data17d/tokens/edu_val_00029.bin",
+      "documents": 519,
+      "tokens": 542793,
+      "sha256": "228ec680cb0a339c736034ba2c7dbe3585fb229f40e1f507d80e1f222a6bad16"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00030.txt",
+      "file": "phase17/data17d/tokens/edu_train_00030.bin",
+      "documents": 106869,
+      "tokens": 121812992,
+      "sha256": "12e262ff2851866a237315146064b1e9105d2fb71693052d7347df83f55fdeb8"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00030.txt",
+      "file": "phase17/data17d/tokens/edu_val_00030.bin",
+      "documents": 528,
+      "tokens": 602634,
+      "sha256": "5fceb863a7abb000c2603e73303154eaadd9abc6e730a7ce0ca3e26591030047"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00031.txt",
+      "file": "phase17/data17d/tokens/edu_train_00031.bin",
+      "documents": 107598,
+      "tokens": 121665572,
+      "sha256": "116cce480c4eea52c9aa5c86f4709945e8054b8ed761ef0f457464b1254846ae"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00031.txt",
+      "file": "phase17/data17d/tokens/edu_val_00031.bin",
+      "documents": 555,
+      "tokens": 714393,
+      "sha256": "6da558c84087b6405abfa1a6bff9659c57e814b5efb4da52c292dc64223921cc"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00032.txt",
+      "file": "phase17/data17d/tokens/edu_train_00032.bin",
+      "documents": 105519,
+      "tokens": 121840455,
+      "sha256": "649b53e1cc1a67cc8528d0486a52f019b68093d57754c056168d82792b9813f4"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00032.txt",
+      "file": "phase17/data17d/tokens/edu_val_00032.bin",
+      "documents": 503,
+      "tokens": 568553,
+      "sha256": "0bf4c2d4d71e7d4df3e6f24fb2d13ceec48f49a93d317be22d30c1ff9fd44c7a"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00033.txt",
+      "file": "phase17/data17d/tokens/edu_train_00033.bin",
+      "documents": 105489,
+      "tokens": 121858701,
+      "sha256": "d786555669756e820db95839b7eded640e514932b047f0a20fa9a52b40c08364"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00033.txt",
+      "file": "phase17/data17d/tokens/edu_val_00033.bin",
+      "documents": 549,
+      "tokens": 695114,
+      "sha256": "88bd9b5236c09597e388bf636484fa72dd3aa9f42b3a92ea876778b2c068ad64"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00034.txt",
+      "file": "phase17/data17d/tokens/edu_train_00034.bin",
+      "documents": 105164,
+      "tokens": 122292705,
+      "sha256": "673c5276ee0901703ccf73b8353c89a77aa3595c275368e8d1f73bdc3f90da69"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00034.txt",
+      "file": "phase17/data17d/tokens/edu_val_00034.bin",
+      "documents": 518,
+      "tokens": 598609,
+      "sha256": "b8682145ffb9882468dd321bff51eff6bb9c5a00646c6772c6ac11ad1686d756"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00035.txt",
+      "file": "phase17/data17d/tokens/edu_train_00035.bin",
+      "documents": 104621,
+      "tokens": 121828474,
+      "sha256": "44e66dca8bc065a81bd20b2fcd3147bb5287e0d0cf750fc54476337fd7e56be2"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00035.txt",
+      "file": "phase17/data17d/tokens/edu_val_00035.bin",
+      "documents": 564,
+      "tokens": 716199,
+      "sha256": "9f48bf59d3b6efa2900e8757b4bb4331af695d9b60beaeb0d3c8a95214f59825"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00036.txt",
+      "file": "phase17/data17d/tokens/edu_train_00036.bin",
+      "documents": 102316,
+      "tokens": 121835680,
+      "sha256": "75c14176fe496446fc86a33d9f275d47d05a9c6cd32981c691ca38570da2c119"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00036.txt",
+      "file": "phase17/data17d/tokens/edu_val_00036.bin",
+      "documents": 529,
+      "tokens": 596204,
+      "sha256": "1cec8bce504d390081e13d163e9f4bee8c820233fff804bd090acbab0635357d"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00037.txt",
+      "file": "phase17/data17d/tokens/edu_train_00037.bin",
+      "documents": 103936,
+      "tokens": 121893455,
+      "sha256": "e81b453ff0355c44798d9372204f555d5eb3f8b563dfdb32fc2a68cd814febea"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00037.txt",
+      "file": "phase17/data17d/tokens/edu_val_00037.bin",
+      "documents": 535,
+      "tokens": 553511,
+      "sha256": "eda24e3badce0dcafdebf1ed0d5930cbf00b30f8c222be9ac190086b348bc021"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00038.txt",
+      "file": "phase17/data17d/tokens/edu_train_00038.bin",
+      "documents": 104375,
+      "tokens": 121414649,
+      "sha256": "a1067f90a035766465e504c6591f804bb090b8a2a4d6938463ac3d8a5c436242"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00038.txt",
+      "file": "phase17/data17d/tokens/edu_val_00038.bin",
+      "documents": 541,
+      "tokens": 672875,
+      "sha256": "21851d6a8140ec57267e30d5858d332bf7a366b2dbaf659b4b84dc7e533fb165"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00039.txt",
+      "file": "phase17/data17d/tokens/edu_train_00039.bin",
+      "documents": 106655,
+      "tokens": 121488588,
+      "sha256": "e753efab68abc15b5cd04ec1a0ac11ea60fde57fb4798678e1a663260dd00603"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00039.txt",
+      "file": "phase17/data17d/tokens/edu_val_00039.bin",
+      "documents": 563,
+      "tokens": 611126,
+      "sha256": "683cb66a8ca7434a6801d9a534af8bd63fb987afa9b6150871f4a278c7ae5c36"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00040.txt",
+      "file": "phase17/data17d/tokens/edu_train_00040.bin",
+      "documents": 105587,
+      "tokens": 121755405,
+      "sha256": "374634366e85518ede9b54b90f8273652c28743e3f5745c6f515d5cbaddef28a"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00040.txt",
+      "file": "phase17/data17d/tokens/edu_val_00040.bin",
+      "documents": 530,
+      "tokens": 603106,
+      "sha256": "50334dfbbb5036fd25ca501bbdc52cddacd76d8715aace94e4854910e1181c45"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00041.txt",
+      "file": "phase17/data17d/tokens/edu_train_00041.bin",
+      "documents": 106695,
+      "tokens": 121728488,
+      "sha256": "55f3a05e7d8cb2343846c979e7861a044df786fb179a6ff60f67295d30e9f92f"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00041.txt",
+      "file": "phase17/data17d/tokens/edu_val_00041.bin",
+      "documents": 502,
+      "tokens": 539347,
+      "sha256": "1cf9936bd564e874a9d75b3be3e6a5781a53bf120f69f746a8794bbf808f7eeb"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00042.txt",
+      "file": "phase17/data17d/tokens/edu_train_00042.bin",
+      "documents": 107913,
+      "tokens": 121401547,
+      "sha256": "0d225a07e0b0a995f97c1f0bff845ce17eded0e2f898ab295b04174aceaabcb4"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00042.txt",
+      "file": "phase17/data17d/tokens/edu_val_00042.bin",
+      "documents": 524,
+      "tokens": 601651,
+      "sha256": "8c5eb41bf1fc60b690285a584d2d37431aadcf1cce1dff5031dfe183be42ffd0"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00043.txt",
+      "file": "phase17/data17d/tokens/edu_train_00043.bin",
+      "documents": 105999,
+      "tokens": 121193725,
+      "sha256": "e71d42d0aa5b8433dff1998c9ecb606afdfd6693814674137cfe6fb349e37168"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00043.txt",
+      "file": "phase17/data17d/tokens/edu_val_00043.bin",
+      "documents": 511,
+      "tokens": 565680,
+      "sha256": "90506c7eeba41bbf1168413657889ccf4bfa907f174efa3795154e61bb1cb3e8"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00044.txt",
+      "file": "phase17/data17d/tokens/edu_train_00044.bin",
+      "documents": 107565,
+      "tokens": 121140370,
+      "sha256": "88fcff67a8bd5f9865565cb0dc083956734684df09768e523fb856e183391333"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00044.txt",
+      "file": "phase17/data17d/tokens/edu_val_00044.bin",
+      "documents": 589,
+      "tokens": 663232,
+      "sha256": "2943adedcee50920fa49722926aafb57946031b35fa91d2194d2654acda7f199"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00045.txt",
+      "file": "phase17/data17d/tokens/edu_train_00045.bin",
+      "documents": 107291,
+      "tokens": 121390312,
+      "sha256": "61b199f83e2dfcfb4c3d8da52350e4479908e54671abb87ea16c96d28a0207a1"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00045.txt",
+      "file": "phase17/data17d/tokens/edu_val_00045.bin",
+      "documents": 536,
+      "tokens": 706705,
+      "sha256": "f9bc8e5c11a4c78c16c6d8e2b5100b0ebe94d93a2bfe22858ea7d5f2b299b1ab"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00046.txt",
+      "file": "phase17/data17d/tokens/edu_train_00046.bin",
+      "documents": 106676,
+      "tokens": 121782806,
+      "sha256": "50e76047aeca2892cec71a24c0957b1f8be007b3019121a122d75756f7faba8a"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00046.txt",
+      "file": "phase17/data17d/tokens/edu_val_00046.bin",
+      "documents": 547,
+      "tokens": 552955,
+      "sha256": "7a8ef0af2fe42616883c23890727edfef2cb5eba80b82821b3d4fedefcfdf484"
+    },
+    {
+      "source": "edu",
+      "split": "train",
+      "source_file": "phase17/data17d/edu/filtered/train_00047.txt",
+      "file": "phase17/data17d/tokens/edu_train_00047.bin",
+      "documents": 92987,
+      "tokens": 103218820,
+      "sha256": "b20fb8533d231bbcf1ddab4df97a592e58f46c741ae614f8d8acc33247d22e17"
+    },
+    {
+      "source": "edu",
+      "split": "val",
+      "source_file": "phase17/data17d/edu/filtered/val_00047.txt",
+      "file": "phase17/data17d/tokens/edu_val_00047.bin",
+      "documents": 507,
+      "tokens": 599907,
+      "sha256": "da6ce5d7fca246aecac442ba0059eb55cb9727f0a8549925899386d7a95eb2f7"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00000.txt",
+      "file": "phase17/data17d/tokens/web_train_00000.bin",
+      "documents": 164462,
+      "tokens": 128092274,
+      "sha256": "debdc8985dfa93a3d3c6da89efdc0766baf27f11e90bae284b495eae93658c54"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00000.txt",
+      "file": "phase17/data17d/tokens/web_val_00000.bin",
+      "documents": 789,
+      "tokens": 578888,
+      "sha256": "35d6b03f9606f5cd62ac5b93911391a317c2c4f95a0b704b85d2a0c2b2794a28"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00001.txt",
+      "file": "phase17/data17d/tokens/web_train_00001.bin",
+      "documents": 165570,
+      "tokens": 128030867,
+      "sha256": "bf603e3e68a9f58b02cd1b7bb0f05d6556342201030873038adecd4c2e7f5225"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00001.txt",
+      "file": "phase17/data17d/tokens/web_val_00001.bin",
+      "documents": 836,
+      "tokens": 593955,
+      "sha256": "08734d94fe4101b6983704d8c3fa054b9623adb9735c2addcab828e683043613"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00002.txt",
+      "file": "phase17/data17d/tokens/web_train_00002.bin",
+      "documents": 165781,
+      "tokens": 128100451,
+      "sha256": "0e6db98378688d9f953de358a32c997dc1fa46f5c5ea48d2aceb8fcca5c37a29"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00002.txt",
+      "file": "phase17/data17d/tokens/web_val_00002.bin",
+      "documents": 867,
+      "tokens": 650936,
+      "sha256": "bc006df9fad60f6e166dc444998d9430f5fc9449bc6cc9be7b0a5b6d21623d36"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00003.txt",
+      "file": "phase17/data17d/tokens/web_train_00003.bin",
+      "documents": 165327,
+      "tokens": 127987188,
+      "sha256": "2ec67b78a92ed9bf354ba3273fcccc65ec1a521ca981a084cdaab4984de85f4b"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00003.txt",
+      "file": "phase17/data17d/tokens/web_val_00003.bin",
+      "documents": 832,
+      "tokens": 676152,
+      "sha256": "b4d41bb665326512e8292bde30d18793435924597fa3a59091a185ccc6e0b85c"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00004.txt",
+      "file": "phase17/data17d/tokens/web_train_00004.bin",
+      "documents": 165543,
+      "tokens": 127950337,
+      "sha256": "92b88c327eb6ccbae0432da7f135bf8c2845fb6ef7ed55bd5dce694f016a23f4"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00004.txt",
+      "file": "phase17/data17d/tokens/web_val_00004.bin",
+      "documents": 857,
+      "tokens": 604541,
+      "sha256": "3ef9659aaea351976e5d8e583b815142c2f9f5cf785835228e7ff98d95e2a2ad"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00005.txt",
+      "file": "phase17/data17d/tokens/web_train_00005.bin",
+      "documents": 166128,
+      "tokens": 127846516,
+      "sha256": "5723e481a4d54a3dd6acf2b669108a1e376355170754c2a4286e269a2b84af19"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00005.txt",
+      "file": "phase17/data17d/tokens/web_val_00005.bin",
+      "documents": 837,
+      "tokens": 656710,
+      "sha256": "4d759a0ac979b2231736cbe3185993e26e021ff7929a4848ff857fec488fe9d1"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00006.txt",
+      "file": "phase17/data17d/tokens/web_train_00006.bin",
+      "documents": 165783,
+      "tokens": 128080274,
+      "sha256": "f7d48ce5011e812f05fa18710508eb3f3fcaf793c08ac561e95402da788dccfa"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00006.txt",
+      "file": "phase17/data17d/tokens/web_val_00006.bin",
+      "documents": 832,
+      "tokens": 660032,
+      "sha256": "b20163bf4d0312dd25ba237ff10dddb744b584f14771f0c092fa97b69ba98174"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00007.txt",
+      "file": "phase17/data17d/tokens/web_train_00007.bin",
+      "documents": 166959,
+      "tokens": 128278774,
+      "sha256": "ef2391ecd3b4d4f11eca9cef6740678521fcc09b1973227d7c55e10641f529d1"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00007.txt",
+      "file": "phase17/data17d/tokens/web_val_00007.bin",
+      "documents": 835,
+      "tokens": 633738,
+      "sha256": "a5068c2ec4f45fa3577b58ee8771c10b6e96854d428963777b53684c685b2cda"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00008.txt",
+      "file": "phase17/data17d/tokens/web_train_00008.bin",
+      "documents": 164579,
+      "tokens": 128274656,
+      "sha256": "8398ac1d77abfd8cb3f3d719df51fc8732a493c8649ba003712e96fa5dc4ce9a"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00008.txt",
+      "file": "phase17/data17d/tokens/web_val_00008.bin",
+      "documents": 840,
+      "tokens": 689931,
+      "sha256": "a79cc259e04bf0107f1f86b05198e1e3080d4565702631f2d72ea5f7dbda16be"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00009.txt",
+      "file": "phase17/data17d/tokens/web_train_00009.bin",
+      "documents": 164950,
+      "tokens": 128142595,
+      "sha256": "3c8828b911833e1c622466233d52e7e2c4c335c6330ce59d901fa49b10a730c1"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00009.txt",
+      "file": "phase17/data17d/tokens/web_val_00009.bin",
+      "documents": 817,
+      "tokens": 744584,
+      "sha256": "454b055dee3686ed452ac4f75a7e97d62e3ad3853632afad144c7867fd6c481b"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00010.txt",
+      "file": "phase17/data17d/tokens/web_train_00010.bin",
+      "documents": 163947,
+      "tokens": 128181779,
+      "sha256": "fe2064dad24cb30bf7e650c3dbf32cb605c07e6c3941b33f2d9b58231777da18"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00010.txt",
+      "file": "phase17/data17d/tokens/web_val_00010.bin",
+      "documents": 811,
+      "tokens": 688233,
+      "sha256": "da7958e917a0992aaf5bfcdfe62cba4e4d654327c3d75de1ed4f1d664024c7bc"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00011.txt",
+      "file": "phase17/data17d/tokens/web_train_00011.bin",
+      "documents": 164990,
+      "tokens": 128205465,
+      "sha256": "51f82adfbbfaf166409fe92430f966fcb12d1e7a4587406a059d846e6bcc4d52"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00011.txt",
+      "file": "phase17/data17d/tokens/web_val_00011.bin",
+      "documents": 832,
+      "tokens": 645262,
+      "sha256": "6d0069bb40802d0eb8601dc8fa1b4294100a87bf866fbec46ea44900cd79796b"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00012.txt",
+      "file": "phase17/data17d/tokens/web_train_00012.bin",
+      "documents": 165058,
+      "tokens": 128276136,
+      "sha256": "ef9f11498d9290e4d6ad53b97ad1366e39c9bba1ec9d8a33aca7352e8e4e75af"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00012.txt",
+      "file": "phase17/data17d/tokens/web_val_00012.bin",
+      "documents": 838,
+      "tokens": 636091,
+      "sha256": "8d434d95c4847c9b23af32622237a5baefaf134198c9803a0ddd35c1cf837c69"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00013.txt",
+      "file": "phase17/data17d/tokens/web_train_00013.bin",
+      "documents": 165096,
+      "tokens": 128081759,
+      "sha256": "a261734aaf2172e98beed099d6161ebd382d8f3a9d58fcdef22f41b822579bf1"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00013.txt",
+      "file": "phase17/data17d/tokens/web_val_00013.bin",
+      "documents": 802,
+      "tokens": 628063,
+      "sha256": "4d699e3650935489102394d4dfc16b047394a39366ba25bd5f2f8c2b97c8f2a2"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00014.txt",
+      "file": "phase17/data17d/tokens/web_train_00014.bin",
+      "documents": 163981,
+      "tokens": 128386710,
+      "sha256": "ec1c52ab694722b927311bc7333feda8697fd29f1d0f67e82416bb57141e52d3"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00014.txt",
+      "file": "phase17/data17d/tokens/web_val_00014.bin",
+      "documents": 815,
+      "tokens": 630621,
+      "sha256": "f715560e4fdc26665032804fd5b0fdda6f665984061bf93ff2648ba64ef90b32"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00015.txt",
+      "file": "phase17/data17d/tokens/web_train_00015.bin",
+      "documents": 165137,
+      "tokens": 128180359,
+      "sha256": "84e9a8f61af8191c45fdbec81de6162ca365d6f1db0309ac192e6957598927fe"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00015.txt",
+      "file": "phase17/data17d/tokens/web_val_00015.bin",
+      "documents": 796,
+      "tokens": 587764,
+      "sha256": "bf79efe12b572a11fb2130d6f5deda69c90fd967c65794c1c15d844ed520a4e5"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00016.txt",
+      "file": "phase17/data17d/tokens/web_train_00016.bin",
+      "documents": 165161,
+      "tokens": 128344236,
+      "sha256": "d2de6a5d08cd17a5b2c674c5d7634dbe14c8122ffb5ba52f635fa89298aceb14"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00016.txt",
+      "file": "phase17/data17d/tokens/web_val_00016.bin",
+      "documents": 813,
+      "tokens": 591217,
+      "sha256": "df85d9e5917918068ed9538b6be4729e4ee44b33500841767c2542fd09626aca"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00017.txt",
+      "file": "phase17/data17d/tokens/web_train_00017.bin",
+      "documents": 165744,
+      "tokens": 128143576,
+      "sha256": "172b71b1cba96d143ebba7130da5b4c0b44265070efff1aa4052159bb93be16b"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00017.txt",
+      "file": "phase17/data17d/tokens/web_val_00017.bin",
+      "documents": 810,
+      "tokens": 640375,
+      "sha256": "97030033a5d448d2f8ef0f786089811b18229619234bb2a74cc345cd30da8273"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00018.txt",
+      "file": "phase17/data17d/tokens/web_train_00018.bin",
+      "documents": 165363,
+      "tokens": 128198019,
+      "sha256": "e9d169e917672fb67b2640580a25c075f36182c1314beb96cdcb1013c32e1557"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00018.txt",
+      "file": "phase17/data17d/tokens/web_val_00018.bin",
+      "documents": 846,
+      "tokens": 630558,
+      "sha256": "e27b91f2e1f934f9058c32615498610fc2cf87f3a45823988d6e29a5f9a30b9c"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00019.txt",
+      "file": "phase17/data17d/tokens/web_train_00019.bin",
+      "documents": 166346,
+      "tokens": 128318523,
+      "sha256": "eeef987e60ef25fe5859181937d62fbc6a5c5012858fc9b9e6b90bddc714354e"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00019.txt",
+      "file": "phase17/data17d/tokens/web_val_00019.bin",
+      "documents": 803,
+      "tokens": 564430,
+      "sha256": "6f5bfcb88d4c471b4c96167863d420422e09013342dc56c2139b64d3a1335987"
+    },
+    {
+      "source": "web",
+      "split": "train",
+      "source_file": "phase17/data17d/web/filtered/train_00020.txt",
+      "file": "phase17/data17d/tokens/web_train_00020.bin",
+      "documents": 84153,
+      "tokens": 65133486,
+      "sha256": "80a3e59f94f6d2741dd74ab47efec687b5da082c8ea9e6a06379576a2e4b0ed9"
+    },
+    {
+      "source": "web",
+      "split": "val",
+      "source_file": "phase17/data17d/web/filtered/val_00020.txt",
+      "file": "phase17/data17d/tokens/web_val_00020.bin",
+      "documents": 432,
+      "tokens": 344900,
+      "sha256": "0de6650f404d3b596bc36d5a4705b7548c256be4f98483f8716d3e094dc93076"
+    }
+  ],
+  "joined": {
+    "train_17d": {
+      "file": "phase17/data17d/tokens/train_17d.bin",
+      "tokens": 7999999676,
+      "documents": 8023524,
+      "sha256": "594e92666c24ecb1af1d2e619ad73faba7016b23cdbcc5c8267ba7c8d1940de1",
+      "tokens_by_source": {
+        "edu": 5599999620,
+        "web": 2400000056
+      },
+      "share_by_source": {
+        "edu": 0.7,
+        "web": 0.3
+      },
+      "available_by_source": {
+        "edu": 5821843392,
+        "web": 2628233980
+      },
+      "mix": "document level, numpy default_rng(17) permutation"
+    },
+    "val_17d": {
+      "file": "phase17/data17d/tokens/val_17d.bin",
+      "tokens": 42348467,
+      "documents": 42780,
+      "sha256": "b6bfe7440b416690fe312532b0110eb40e0ddd0e3b3350100da93b817f491e59"
+    }
+  },
+  "seconds": 3440
+}

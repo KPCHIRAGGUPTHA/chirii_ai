@@ -1,0 +1,25 @@
+HuggingFaceFW/fineweb sample-10BT revision 9bb295ddab0e05d785b879661af7260fed5140fc, start 0; 2,644,079 used-document keys loaded in 70s
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Skipping the first 0 documents of the stream
+chunk 0: total 0.512 GB, 165,845 docs, 23.36 MB/s, skipped so far: phase10 dup 230, phase5d 276, special 0, dup 4
+chunk 1: total 1.024 GB, 332,813 docs, 23.28 MB/s, skipped so far: phase10 dup 448, phase5d 505, special 0, dup 21
+chunk 2: total 1.536 GB, 500,010 docs, 22.03 MB/s, skipped so far: phase10 dup 680, phase5d 730, special 0, dup 42
+chunk 3: total 2.048 GB, 666,699 docs, 21.83 MB/s, skipped so far: phase10 dup 901, phase5d 938, special 0, dup 69
+chunk 4: total 2.560 GB, 833,671 docs, 20.38 MB/s, skipped so far: phase10 dup 1142, phase5d 1178, special 0, dup 102
+chunk 5: total 3.072 GB, 1,001,202 docs, 24.21 MB/s, skipped so far: phase10 dup 1358, phase5d 1375, special 0, dup 144
+chunk 6: total 3.584 GB, 1,168,337 docs, 23.28 MB/s, skipped so far: phase10 dup 1565, phase5d 1603, special 0, dup 201
+chunk 7: total 4.096 GB, 1,336,688 docs, 22.24 MB/s, skipped so far: phase10 dup 1788, phase5d 1840, special 0, dup 290
+chunk 8: total 4.608 GB, 1,502,685 docs, 27.21 MB/s, skipped so far: phase10 dup 2026, phase5d 2080, special 0, dup 405
+chunk 9: total 5.120 GB, 1,669,035 docs, 27.89 MB/s, skipped so far: phase10 dup 2255, phase5d 2307, special 0, dup 519
+chunk 10: total 5.632 GB, 1,834,355 docs, 30.08 MB/s, skipped so far: phase10 dup 2476, phase5d 2534, special 0, dup 636
+chunk 11: total 6.144 GB, 2,000,765 docs, 32.00 MB/s, skipped so far: phase10 dup 2733, phase5d 2751, special 0, dup 776
+chunk 12: total 6.656 GB, 2,167,233 docs, 24.74 MB/s, skipped so far: phase10 dup 2960, phase5d 2961, special 0, dup 902
+chunk 13: total 7.168 GB, 2,333,675 docs, 24.12 MB/s, skipped so far: phase10 dup 3180, phase5d 3141, special 0, dup 1049
+chunk 14: total 7.680 GB, 2,499,016 docs, 25.30 MB/s, skipped so far: phase10 dup 3410, phase5d 3358, special 0, dup 1243
+chunk 15: total 8.192 GB, 2,665,512 docs, 27.67 MB/s, skipped so far: phase10 dup 3645, phase5d 3571, special 0, dup 1483
+chunk 16: total 8.704 GB, 2,832,068 docs, 22.82 MB/s, skipped so far: phase10 dup 3915, phase5d 3760, special 0, dup 1715
+chunk 17: total 9.216 GB, 2,999,153 docs, 29.45 MB/s, skipped so far: phase10 dup 4126, phase5d 3945, special 0, dup 1951
+chunk 18: total 9.728 GB, 3,165,884 docs, 20.15 MB/s, skipped so far: phase10 dup 4395, phase5d 4122, special 0, dup 2179
+chunk 19: total 10.240 GB, 3,333,631 docs, 22.21 MB/s, skipped so far: phase10 dup 4619, phase5d 4287, special 0, dup 2426
+chunk 20: total 10.500 GB, 3,418,509 docs, 27.67 MB/s, skipped so far: phase10 dup 4722, phase5d 4372, special 0, dup 2573
+Finished: completed_target, 10,500,007,731 bytes, 3,418,509 documents

@@ -1,0 +1,6 @@
+{
+  "triviaqa": {
+    "generate_requests": 1000,
+    "generate_truncated": 0
+  }
+}

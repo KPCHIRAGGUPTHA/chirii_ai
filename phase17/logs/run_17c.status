@@ -1,0 +1,13 @@
+2026-11-09 09:46:20 waiting for the 17D evaluation to free the GPU
+2026-11-09 09:46:52 waiting for the 17D evaluation to free the GPU
+2026-11-09 10:37:52 train seed 11
+2026-11-09 11:10:44 dev seed 11
+2026-11-09 11:11:32 train seed 12
+2026-11-09 11:43:34 dev seed 12
+2026-11-09 11:44:04 train seed 13
+2026-11-09 12:15:46 dev seed 13
+2026-11-09 12:16:39 sealed v3 (once)
+2026-11-09 12:19:04 harness gsm8k
+2026-11-09 12:20:16 harness gsm8k_no_calculator
+2026-11-09 12:21:53 harness mc
+2026-11-09 12:38:47 RUN_17C_DONE (chosen seed 13)

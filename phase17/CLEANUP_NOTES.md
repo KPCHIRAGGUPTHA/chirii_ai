@@ -2,8 +2,10 @@
 
 ## 1. Remove the reboot crontab entry (required)
 
-Installed on 2026-11-04 for the Foundation v4 run only. It runs `phase17/resume_on_reboot.sh` at boot, which resumes
-the run only if `phase17/runs/foundation_v4/LAUNCHED` exists and `COMPLETED` does not; otherwise it does nothing.
+Installed on 2026-11-04 for the Foundation v4 run. On 2026-11-05 (Phase 17D) `phase17/resume_on_reboot.sh` was
+repointed at the extended run only: at boot it resumes `phase17/runs/foundation_v4x` if its `LAUNCHED` marker exists and
+`COMPLETED` does not, and otherwise does nothing. The Foundation v4 run itself completed on 2026-11-05 and is never
+resumed. The crontab line is unchanged (it calls the script). The extended run's budget ends by 2026-11-10 04:00 IST.
 
 The entry (user `crontab`, not system-wide):
 
@@ -25,7 +27,9 @@ There was no crontab before this entry, so after removal `crontab -l` should say
 | Path | Size on 2026-11-04 | What it is |
 | :--- | ---: | :--- |
 | `phase17/data/` | 19 GB | Phase 17A text and token shards, `train_3b.bin` (hashes in `phase17/manifests/`) |
-| `phase17/runs/` | grows during training | checkpoints (resumable `checkpoint.pt`) and weights snapshots every 2,000 steps |
+| `phase17/runs/` | grows during training | checkpoints (resumable `checkpoint.pt`) and weights snapshots every 2,000 steps (v4 and the extended run) |
+| `phase17/data17d/` | about 70 GB when complete | Phase 17D text (raw and filtered), token shards, `train_17d.bin` (hashes in `phase17/manifests17d/`) |
+| `phase17/sft_v5/` | about 60 MB | SFT data v5 (hashes in `phase17/manifests/sft_v5_manifest.json`) |
 | `~/chirag_work/hf_cache/` | 5.3 GB | Hugging Face models and benchmark datasets (Phases 16 and 18) |
 | `~/chirag_work/pylibs/phase16`, `phase18` | 0.1 GB, 0.3 GB | transformers / lm-eval installed outside conda |
 | `~/chirag_work/tmp/` | 1.5 GB | scratch: publishing clones, patches, Phase 18 full result backup |

@@ -1,0 +1,54 @@
+{
+  "criteria": "phase17/CRITERIA_17D.md",
+  "gates": {
+    "G1_finite": {
+      "pass": true
+    },
+    "G2_grad_after_50": {
+      "max": 0.3168,
+      "limit": 10,
+      "pass": true
+    },
+    "G3_val_bpb_step_100": {
+      "step": 100,
+      "bits_per_byte": 1.0616,
+      "limit": 1.0896000000000001,
+      "pass": true
+    }
+  },
+  "all_pass": true,
+  "probe_window_tok_s": {
+    "1": 27118.0,
+    "20": 28037.0,
+    "40": 27665.0,
+    "60": 27623.0,
+    "80": 27599.0,
+    "100": 27615.0
+  },
+  "steady_tok_s_steps_21_100": 27625.5,
+  "budget_computed_at": "2026-11-06T00:57:30+05:30",
+  "hours_to_deadline": 99.041,
+  "deadline": "2026-11-10T04:00:00+05:30",
+  "budget_tokens": 8000000000,
+  "max_steps": 15258,
+  "tokens": 7999586304,
+  "probe_val_subset": [
+    {
+      "step": 50,
+      "val_loss": 3.1180933389663696,
+      "val_bits_per_byte": 1.0614449966144306,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    },
+    {
+      "step": 100,
+      "val_loss": 3.1253102951049803,
+      "val_bits_per_byte": 1.0639017550085375,
+      "val_tokens": 256000,
+      "val_bytes": 1084941,
+      "gpu_temp_c": 89
+    }
+  ],
+  "launched": true
+}

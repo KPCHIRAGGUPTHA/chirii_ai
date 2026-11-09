@@ -7,6 +7,8 @@ Registered as model "minigpt". Model args (comma-separated, as for any lm-eval m
                                   multiple-choice / loglikelihood tasks always use the plain prompt, as for every model
     calculator=True|False         only with chat_generation: allow the calculator tool (default True)
     batch_size=<int>              loglikelihood batch size (default 32)
+    no_repeat_ngram=<int>         only with chat_generation: MiniGPT's no-repeat-n-gram decoding (default 0 = plain greedy,
+                                  as in Phase 18; Phase 17C uses 3, the released v1.0.1 decoding)
     truncation_log=<path.json>    where to write per-task truncation counts
 
 Context handling. MiniGPT's context is 512 tokens. Like lm-eval's Hugging Face backend, inputs that are too long
@@ -45,7 +47,8 @@ def _bool(value: Any) -> bool:
 @register_model("minigpt")
 class MiniGPTLM(TemplateLM):
     def __init__(self, checkpoint: Optional[str] = None, chat_generation: Any = False, calculator: Any = True, batch_size: Any = 32,
-                 device: str = "cuda", truncation_log: Optional[str] = None, model: Any = None, tokenizer: Any = None, **kwargs):
+                 device: str = "cuda", truncation_log: Optional[str] = None, model: Any = None, tokenizer: Any = None,
+                 no_repeat_ngram: Any = 0, **kwargs):
         super().__init__()
         from tokenizers import Tokenizer
 
@@ -59,6 +62,7 @@ class MiniGPTLM(TemplateLM):
         self.batch_size = int(batch_size) if str(batch_size) != "auto" else 32
         self.chat_generation = _bool(chat_generation)
         self.calculator = _bool(calculator)
+        self.no_repeat_ngram = int(no_repeat_ngram)
         self.truncation_log = truncation_log
         self.truncation: Dict[str, Dict[str, int]] = defaultdict(lambda: defaultdict(int))
         self._task_names: List[Optional[str]] = []
@@ -218,7 +222,7 @@ class MiniGPTLM(TemplateLM):
         limit = max(1, self.block_size - max_gen_toks - fixed)
         truncated = len(self.tok_encode(sanitize_user_text(context))) > limit
         reply = generate_reply(self.model, self.tokenizer, context, self._device, max_gen_toks,
-                               max_tool_calls=MAX_TOOL_CALLS if self.calculator else 0, decoding=Decoding())
+                               max_tool_calls=MAX_TOOL_CALLS if self.calculator else 0, decoding=Decoding(no_repeat_ngram=self.no_repeat_ngram))
         return reply.final, truncated
 
     def generate_until(self, requests, disable_tqdm: bool = False) -> List[str]:

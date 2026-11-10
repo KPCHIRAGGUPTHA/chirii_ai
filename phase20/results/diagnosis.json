@@ -1,0 +1,506 @@
+{
+ "file": "phase17/sft_v5/sft_v5_train.jsonl",
+ "rows": 113036,
+ "distinct_replies": 92573,
+ "top50_rows": 9086,
+ "top50_share_pct": 8.04,
+ "replies_seen_more_than_5_times": 638,
+ "rows_with_such_replies": 14928,
+ "rows_with_such_replies_pct": 13.21,
+ "rows_above_5_copies": 11738,
+ "top50": [
+  {
+   "rank": 1,
+   "count": 540,
+   "pct": 0.48,
+   "reply": "I'm sorry, but I can't help with that.",
+   "sources": {
+    "synthetic_refusal/refusal": 214,
+    "synth_refusal_v2/drugs": 55,
+    "synth_refusal_v2/explosives": 53,
+    "synth_refusal_v2/hacking": 48
+   }
+  },
+  {
+   "rank": 2,
+   "count": 537,
+   "pct": 0.48,
+   "reply": "Sorry, I can't help with that request.",
+   "sources": {
+    "synthetic_refusal/refusal": 219,
+    "synth_refusal_v2/fraud": 51,
+    "synth_refusal_v2/drugs": 47,
+    "synth_refusal_v2/hate": 47
+   }
+  },
+  {
+   "rank": 3,
+   "count": 492,
+   "pct": 0.44,
+   "reply": "I can't help with that.",
+   "sources": {
+    "synthetic_refusal/refusal": 176,
+    "synth_refusal_v2/weapons": 52,
+    "synth_refusal_v2/hacking": 51,
+    "synth_refusal_v2/explosives": 49
+   }
+  },
+  {
+   "rank": 4,
+   "count": 372,
+   "pct": 0.33,
+   "reply": "I can't help with that. It could seriously hurt people.",
+   "sources": {
+    "synth_refusal_v2/violence": 61,
+    "synth_refusal_v2/weapons": 61,
+    "synth_refusal_v2/drugs": 58,
+    "synth_refusal_v2/hate": 56
+   }
+  },
+  {
+   "rank": 5,
+   "count": 364,
+   "pct": 0.32,
+   "reply": "I'm MiniGPT, a small language model built from scratch by Chirag.",
+   "sources": {
+    "synthetic_identity/identity": 364
+   }
+  },
+  {
+   "rank": 6,
+   "count": 337,
+   "pct": 0.3,
+   "reply": "I can't help with that, because it could cause harm.",
+   "sources": {
+    "synth_refusal_v2/hate": 55,
+    "synth_refusal_v2/explosives": 54,
+    "synth_refusal_v2/hacking": 52,
+    "synth_refusal_v2/violence": 50
+   }
+  },
+  {
+   "rank": 7,
+   "count": 337,
+   "pct": 0.3,
+   "reply": "I won't help with that.",
+   "sources": {
+    "synth_refusal_v2/fraud": 56,
+    "synth_refusal_v2/violence": 54,
+    "synth_refusal_v2/hate": 50,
+    "synth_refusal_v2/weapons": 48
+   }
+  },
+  {
+   "rank": 8,
+   "count": 332,
+   "pct": 0.29,
+   "reply": "I'm sorry, I can't assist with that.",
+   "sources": {
+    "synth_refusal_v2/hate": 51,
+    "synth_refusal_v2/explosives": 51,
+    "synth_refusal_v2/fraud": 49,
+    "synth_refusal_v2/violence": 47
+   }
+  },
+  {
+   "rank": 9,
+   "count": 305,
+   "pct": 0.27,
+   "reply": "I'm not able to help with that.",
+   "sources": {
+    "synth_refusal_v2/drugs": 52,
+    "synth_refusal_v2/explosives": 51,
+    "synth_refusal_v2/hate": 45,
+    "synth_refusal_v2/violence": 44
+   }
+  },
+  {
+   "rank": 10,
+   "count": 303,
+   "pct": 0.27,
+   "reply": "Sorry, I can't help with that.",
+   "sources": {
+    "synth_refusal_v2/hacking": 57,
+    "synth_refusal_v2/fraud": 51,
+    "synth_refusal_v2/weapons": 48,
+    "synth_refusal_v2/hate": 41
+   }
+  },
+  {
+   "rank": 11,
+   "count": 267,
+   "pct": 0.24,
+   "reply": "I can't know or share that.",
+   "sources": {
+    "synthetic_i_dont_know/private": 267
+   }
+  },
+  {
+   "rank": 12,
+   "count": 254,
+   "pct": 0.22,
+   "reply": "That didn't happen.",
+   "sources": {
+    "synth_false_premise_real/person": 210,
+    "synth_false_premise_real/place": 44
+   }
+  },
+  {
+   "rank": 13,
+   "count": 245,
+   "pct": 0.22,
+   "reply": "I can't know or share that. Personal details like this aren't available to me.",
+   "sources": {
+    "synthetic_i_dont_know/private": 245
+   }
+  },
+  {
+   "rank": 14,
+   "count": 240,
+   "pct": 0.21,
+   "reply": "I can't know or share that, because I have no access to your personal information.",
+   "sources": {
+    "synthetic_i_dont_know/private": 240
+   }
+  },
+  {
+   "rank": 15,
+   "count": 226,
+   "pct": 0.2,
+   "reply": "I can't know or share that. It's private information I don't have.",
+   "sources": {
+    "synthetic_i_dont_know/private": 226
+   }
+  },
+  {
+   "rank": 16,
+   "count": 217,
+   "pct": 0.19,
+   "reply": "I don't know, and no one can know that ahead of time.",
+   "sources": {
+    "synthetic_i_dont_know/future": 217
+   }
+  },
+  {
+   "rank": 17,
+   "count": 203,
+   "pct": 0.18,
+   "reply": "I can't help with that. It's harmful and may be illegal.",
+   "sources": {
+    "synthetic_refusal/refusal": 203
+   }
+  },
+  {
+   "rank": 18,
+   "count": 201,
+   "pct": 0.18,
+   "reply": "I don't know. The future can't be known in advance.",
+   "sources": {
+    "synthetic_i_dont_know/future": 201
+   }
+  },
+  {
+   "rank": 19,
+   "count": 201,
+   "pct": 0.18,
+   "reply": "I can't help with that. It could seriously harm people.",
+   "sources": {
+    "synthetic_refusal/refusal": 201
+   }
+  },
+  {
+   "rank": 20,
+   "count": 200,
+   "pct": 0.18,
+   "reply": "I don't know. That hasn't happened yet, so nobody can say for sure.",
+   "sources": {
+    "synthetic_i_dont_know/future": 200
+   }
+  },
+  {
+   "rank": 21,
+   "count": 199,
+   "pct": 0.18,
+   "reply": "I can't assist with that. If you're in a difficult situation, please talk to someone you trust.",
+   "sources": {
+    "synthetic_refusal/refusal": 199
+   }
+  },
+  {
+   "rank": 22,
+   "count": 198,
+   "pct": 0.18,
+   "reply": "I won't help with that because it could hurt someone.",
+   "sources": {
+    "synthetic_refusal/refusal": 198
+   }
+  },
+  {
+   "rank": 23,
+   "count": 189,
+   "pct": 0.17,
+   "reply": "I don't know. Nobody can predict that with certainty.",
+   "sources": {
+    "synthetic_i_dont_know/future": 189
+   }
+  },
+  {
+   "rank": 24,
+   "count": 189,
+   "pct": 0.17,
+   "reply": "I'm not able to help with that, because it could cause real harm.",
+   "sources": {
+    "synthetic_refusal/refusal": 189
+   }
+  },
+  {
+   "rank": 25,
+   "count": 181,
+   "pct": 0.16,
+   "reply": "No, that didn't happen.",
+   "sources": {
+    "synth_false_premise_real/person": 181
+   }
+  },
+  {
+   "rank": 26,
+   "count": 180,
+   "pct": 0.16,
+   "reply": "I can't predict that. I don't know what will happen in the future.",
+   "sources": {
+    "synthetic_i_dont_know/future": 180
+   }
+  },
+  {
+   "rank": 27,
+   "count": 172,
+   "pct": 0.15,
+   "reply": "I won't help with that. Please consider a safe and legal alternative.",
+   "sources": {
+    "synthetic_refusal/refusal": 172
+   }
+  },
+  {
+   "rank": 28,
+   "count": 167,
+   "pct": 0.15,
+   "reply": "No, that never happened.",
+   "sources": {
+    "synth_false_premise_real/person": 167
+   }
+  },
+  {
+   "rank": 29,
+   "count": 135,
+   "pct": 0.12,
+   "reply": "6.",
+   "sources": {
+    "synth_instruction/count_letters": 83,
+    "synth_number_fact/number_fact": 52
+   }
+  },
+  {
+   "rank": 30,
+   "count": 126,
+   "pct": 0.11,
+   "reply": "No. I'm MiniGPT, a small language model built from scratch by Chirag.",
+   "sources": {
+    "synthetic_identity/identity": 126
+   }
+  },
+  {
+   "rank": 31,
+   "count": 81,
+   "pct": 0.07,
+   "reply": "B",
+   "sources": {
+    "smoltalk/single_turn": 81
+   }
+  },
+  {
+   "rank": 32,
+   "count": 81,
+   "pct": 0.07,
+   "reply": "4.",
+   "sources": {
+    "synth_number_fact/number_fact": 57,
+    "synth_instruction/count_letters": 24
+   }
+  },
+  {
+   "rank": 33,
+   "count": 76,
+   "pct": 0.07,
+   "reply": "5.",
+   "sources": {
+    "synth_instruction/count_letters": 48,
+    "synth_number_fact/number_fact": 28
+   }
+  },
+  {
+   "rank": 34,
+   "count": 74,
+   "pct": 0.07,
+   "reply": "A",
+   "sources": {
+    "smoltalk/single_turn": 74
+   }
+  },
+  {
+   "rank": 35,
+   "count": 73,
+   "pct": 0.06,
+   "reply": "6",
+   "sources": {
+    "synth_instruction/count_letters": 64,
+    "synth_instruction/digits": 7,
+    "smoltalk/single_turn": 1,
+    "alpaca/with_input": 1
+   }
+  },
+  {
+   "rank": 36,
+   "count": 72,
+   "pct": 0.06,
+   "reply": "It has 6 letters.",
+   "sources": {
+    "synth_instruction/count_letters": 72
+   }
+  },
+  {
+   "rank": 37,
+   "count": 71,
+   "pct": 0.06,
+   "reply": "That word has 6 letters.",
+   "sources": {
+    "synth_instruction/count_letters": 71
+   }
+  },
+  {
+   "rank": 38,
+   "count": 60,
+   "pct": 0.05,
+   "reply": "5",
+   "sources": {
+    "synth_instruction/count_letters": 48,
+    "synth_instruction/digits": 9,
+    "smoltalk/single_turn": 2,
+    "alpaca/no_input": 1
+   }
+  },
+  {
+   "rank": 39,
+   "count": 56,
+   "pct": 0.05,
+   "reply": "That word has 5 letters.",
+   "sources": {
+    "synth_instruction/count_letters": 56
+   }
+  },
+  {
+   "rank": 40,
+   "count": 56,
+   "pct": 0.05,
+   "reply": "D",
+   "sources": {
+    "smoltalk/single_turn": 56
+   }
+  },
+  {
+   "rank": 41,
+   "count": 55,
+   "pct": 0.05,
+   "reply": "I'm sorry things feel this heavy right now, and I'm glad you said something. Please reach out to someone you trust and contact a crisis helpline. In India, you can call Tele-MANAS on 14416.",
+   "sources": {
+    "synthetic_refusal/self_harm_support": 55
+   }
+  },
+  {
+   "rank": 42,
+   "count": 53,
+   "pct": 0.05,
+   "reply": "I'm so sorry you're in this much pain. You don't have to carry it alone. Please talk to someone you trust, or call a crisis helpline. In India, Tele-MANAS is available on 14416.",
+   "sources": {
+    "synthetic_refusal/self_harm_support": 53
+   }
+  },
+  {
+   "rank": 43,
+   "count": 53,
+   "pct": 0.05,
+   "reply": "That prize doesn't exist.",
+   "sources": {
+    "synthetic_i_dont_know/false_premise": 53
+   }
+  },
+  {
+   "rank": 44,
+   "count": 49,
+   "pct": 0.04,
+   "reply": "7.",
+   "sources": {
+    "synth_instruction/count_letters": 30,
+    "synth_number_fact/number_fact": 18,
+    "alpaca/no_input": 1
+   }
+  },
+  {
+   "rank": 45,
+   "count": 45,
+   "pct": 0.04,
+   "reply": "That never happened.",
+   "sources": {
+    "synth_false_premise_real/place": 45
+   }
+  },
+  {
+   "rank": 46,
+   "count": 45,
+   "pct": 0.04,
+   "reply": "I'm really concerned about you, and I can't help with hurting yourself. Your life matters. Please talk to someone you trust today, and call a crisis helpline. In India, Tele-MANAS is on 14416.",
+   "sources": {
+    "synthetic_refusal/self_harm_support": 45
+   }
+  },
+  {
+   "rank": 47,
+   "count": 45,
+   "pct": 0.04,
+   "reply": "3.",
+   "sources": {
+    "synth_number_fact/number_fact": 37,
+    "synth_instruction/count_letters": 8
+   }
+  },
+  {
+   "rank": 48,
+   "count": 44,
+   "pct": 0.04,
+   "reply": "4",
+   "sources": {
+    "synth_instruction/count_letters": 34,
+    "synth_instruction/digits": 8,
+    "alpaca/with_input": 1,
+    "alpaca/no_input": 1
+   }
+  },
+  {
+   "rank": 49,
+   "count": 44,
+   "pct": 0.04,
+   "reply": "C",
+   "sources": {
+    "smoltalk/single_turn": 44
+   }
+  },
+  {
+   "rank": 50,
+   "count": 44,
+   "pct": 0.04,
+   "reply": "I'm really sorry you're feeling this way, and I can't help with anything that could hurt you. Please talk to someone you trust and contact a crisis helpline. In India, you can call Tele-MANAS on 14416.",
+   "sources": {
+    "synthetic_refusal/self_harm_support": 44
+   }
+  }
+ ]
+}

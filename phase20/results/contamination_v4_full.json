@@ -1,0 +1,24 @@
+{
+ "sft_prompts": 178414,
+ "earlier_eval_prompts": 666,
+ "pretraining_checked": true,
+ "pretraining_testable_items": 99,
+ "files": {
+  "goal_heldout_v4.jsonl": {
+   "items": 196,
+   "flagged": {}
+  },
+  "overrefusal_v4.jsonl": {
+   "items": 100,
+   "flagged": {}
+  },
+  "misfire_v4.jsonl": {
+   "items": 60,
+   "flagged": {}
+  },
+  "misfire_dev.jsonl": {
+   "items": 40,
+   "flagged": {}
+  }
+ }
+}

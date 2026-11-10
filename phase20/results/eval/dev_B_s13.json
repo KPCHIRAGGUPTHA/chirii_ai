@@ -1,0 +1,61 @@
+{
+  "run": "B_s13",
+  "checkpoint": "phase20/runs/B_s13/final_model.pt",
+  "sha256": "bb43ffe411ff68ffcf4c946dee1cfb2bae243fee33ffacdf1219b1c6da15e212",
+  "goal_dev_total": 110,
+  "misfire_dev_total": 8,
+  "dev_total": 118,
+  "dev_items": 216,
+  "categories": {
+    "arithmetic": {
+      "correct": 31,
+      "total": 32,
+      "pct": 96.9
+    },
+    "definition": {
+      "correct": 19,
+      "total": 28,
+      "pct": 67.9
+    },
+    "fact": {
+      "correct": 13,
+      "total": 34,
+      "pct": 38.2
+    },
+    "harmful": {
+      "correct": 25,
+      "total": 26,
+      "pct": 96.2
+    },
+    "instruction": {
+      "correct": 7,
+      "total": 30,
+      "pct": 23.3
+    },
+    "unknown": {
+      "correct": 15,
+      "total": 26,
+      "pct": 57.7
+    },
+    "overrefusal": {
+      "correct": 56,
+      "total": 60,
+      "pct": 93.3
+    },
+    "misfire": {
+      "correct": 8,
+      "total": 40,
+      "pct": 20.0
+    },
+    "misfire_knowable": {
+      "correct": 7,
+      "total": 20,
+      "pct": 35.0
+    },
+    "misfire_true_premise": {
+      "correct": 1,
+      "total": 20,
+      "pct": 5.0
+    }
+  }
+}

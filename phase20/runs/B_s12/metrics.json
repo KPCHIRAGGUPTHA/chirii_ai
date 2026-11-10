@@ -1,0 +1,154 @@
+{
+  "config": {
+    "name": "Phase 20 variant B (detemplate + gentle) seed 12",
+    "init_checkpoint": "phase17/runs/foundation_v4x/snapshots/model_step_15258.pt",
+    "init_checkpoint_sha256": "f67f325ed5a469cd72dfd5abb6f7d6a6c2debd4d20b3822715836ecb2ea1d236",
+    "data": {
+      "tokenizer": "phase10/tokenizer/tokenizer_v2.json",
+      "tokenizer_sha256": "332f9db4368e051179e70695ff6da320a8dc16f8f17934719cd58c8a00601b98",
+      "train": "phase20/sft_v6a/sft_v6a_train.jsonl",
+      "val": "phase20/sft_v6a/sft_v6a_val.jsonl",
+      "train_sha256": "14b38198f058c83725d5378fb0c5a246471ff066e6187cafba1f6074131345d4",
+      "val_sha256": "5bbe0edf1391d20f81d23589cb879d3770671c8ba41db6aa1f194c04f7514fd3",
+      "replay": {
+        "file": "phase20/sft_v6a/replay_20b.jsonl",
+        "sha256": "4771ded770b31cf9cdd926eb19d7cbfc492f510870d6dab0781dcb5a86c3c6ca"
+      }
+    },
+    "out_dir": "phase20/runs/B_s12",
+    "training": {
+      "epochs": 1,
+      "max_steps": null,
+      "micro_batch_size": 16,
+      "grad_accum_steps": 2,
+      "learning_rate": 0.0001,
+      "min_lr": 1e-05,
+      "warmup_steps": 50,
+      "weight_decay": 0.0,
+      "betas": [
+        0.9,
+        0.95
+      ],
+      "grad_clip": 1.0,
+      "seed": 12,
+      "pad_lengths": [
+        128,
+        256,
+        512
+      ],
+      "eval_interval": 250,
+      "eval_max_examples": 2000,
+      "eval_batch_size": 16,
+      "log_interval": 20,
+      "checkpoint_interval_minutes": 30,
+      "checkpoint_every_steps": 0,
+      "stop_after_step": null,
+      "compile": true,
+      "cpu_threads": 8,
+      "generate_max_new_tokens": 64
+    },
+    "model": {
+      "vocab_size": 16384,
+      "block_size": 1024,
+      "n_layer": 12,
+      "n_head": 12,
+      "n_embd": 768,
+      "dropout": 0.0,
+      "bias": true
+    }
+  },
+  "device": "cuda",
+  "device_name": "NVIDIA RTX A2000 12GB",
+  "autocast": "bf16",
+  "fused_adamw": true,
+  "parameters": 98425344,
+  "train_examples": 117211,
+  "val_examples": 2000,
+  "max_steps": 3662,
+  "evals": [
+    {
+      "step": 250,
+      "val_loss": 1.7387085060751781,
+      "gpu_temp_c": 91
+    },
+    {
+      "step": 500,
+      "val_loss": 1.6526670355485222,
+      "gpu_temp_c": 91
+    },
+    {
+      "step": 750,
+      "val_loss": 1.6276068311916594,
+      "gpu_temp_c": 91
+    },
+    {
+      "step": 1000,
+      "val_loss": 1.604578033741019,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 1250,
+      "val_loss": 1.5501145980406765,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 1500,
+      "val_loss": 1.5274309729147535,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 1750,
+      "val_loss": 1.4963883144972305,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 2000,
+      "val_loss": 1.4671989212227572,
+      "gpu_temp_c": 91
+    },
+    {
+      "step": 2250,
+      "val_loss": 1.4548873910321412,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 2500,
+      "val_loss": 1.4314215994586574,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 2750,
+      "val_loss": 1.4103989013440597,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 3000,
+      "val_loss": 1.3945949620885343,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 3250,
+      "val_loss": 1.3771385357059285,
+      "gpu_temp_c": 91
+    },
+    {
+      "step": 3500,
+      "val_loss": 1.3682670722943866,
+      "gpu_temp_c": 90
+    },
+    {
+      "step": 3662,
+      "val_loss": 1.3628647681165826,
+      "gpu_temp_c": 90
+    }
+  ],
+  "resumes": [],
+  "train_seconds": 921.3064932511188,
+  "max_grad_norm": 35.55419158935547,
+  "non_finite_count": 0,
+  "completed_steps": 3662,
+  "status": "completed",
+  "compile": "enabled",
+  "best_step": 3662,
+  "best_val_loss": 1.3628647681165826
+}

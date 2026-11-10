@@ -1,0 +1,11 @@
+{
+ "name": "misfire_dev",
+ "split": "DEV",
+ "file": "phase20/dev/misfire_dev.jsonl",
+ "sha256": "05a6f054a8e72ef5fcf5930e9a75b86d440d64aaa3ac4b515c23b40b1cec54da",
+ "total": 40,
+ "counts": {
+  "true_premise": 20,
+  "knowable": 20
+ }
+}

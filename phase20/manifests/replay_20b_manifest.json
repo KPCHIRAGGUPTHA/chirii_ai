@@ -1,0 +1,12 @@
+{
+  "sft_loss_tokens": 6203461,
+  "replay_windows": 4047,
+  "window": 512,
+  "replay_loss_tokens": 2068017,
+  "replay_share_of_loss_tokens": 0.25,
+  "seed": 2020,
+  "source": "phase17/data17d/tokens/train_17d.bin",
+  "source_sha256": "594e92666c24ecb1af1d2e619ad73faba7016b23cdbcc5c8267ba7c8d1940de1",
+  "file": "phase20/sft_v6a/replay_20b.jsonl",
+  "sha256": "4771ded770b31cf9cdd926eb19d7cbfc492f510870d6dab0781dcb5a86c3c6ca"
+}

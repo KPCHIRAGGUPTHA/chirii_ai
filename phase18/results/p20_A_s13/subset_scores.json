@@ -1,0 +1,16 @@
+{
+  "gsm8k": {
+    "source": "results/p20_A_s13/gsm8k/vdujuxrm/samples_gsm8k_2026-11-10T06-22-13.878141.jsonl",
+    "logged_items": 500,
+    "flexible-extract": {
+      "value": 0.012,
+      "stderr": 0.00487437370726496,
+      "n": 500
+    },
+    "strict-match": {
+      "value": 0.0,
+      "stderr": 0.0,
+      "n": 500
+    }
+  }
+}

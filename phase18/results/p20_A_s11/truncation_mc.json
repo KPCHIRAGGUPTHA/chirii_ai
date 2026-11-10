@@ -1,0 +1,22 @@
+{
+  "arc_easy": {
+    "loglikelihood_requests": 9501,
+    "loglikelihood_truncated": 0
+  },
+  "hellaswag": {
+    "loglikelihood_requests": 40168,
+    "loglikelihood_truncated": 0
+  },
+  "lambada_openai": {
+    "loglikelihood_requests": 5153,
+    "loglikelihood_truncated": 0
+  },
+  "piqa": {
+    "loglikelihood_requests": 3676,
+    "loglikelihood_truncated": 0
+  },
+  "sciq": {
+    "loglikelihood_requests": 4000,
+    "loglikelihood_truncated": 0
+  }
+}

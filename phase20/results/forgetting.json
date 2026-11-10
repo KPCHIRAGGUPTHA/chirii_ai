@@ -1,0 +1,153 @@
+{
+ "tasks": [
+  "arc_easy",
+  "hellaswag",
+  "piqa",
+  "sciq",
+  "lambada_openai"
+ ],
+ "models": {
+  "base_17d": {
+   "dir": "minigpt_v4ext_base",
+   "tasks": {
+    "arc_easy": 43.98,
+    "hellaswag": 31.25,
+    "piqa": 61.37,
+    "sciq": 67.8,
+    "lambada_openai": 26.99
+   },
+   "five_task_avg": 46.28
+  },
+  "17c_s11": {
+   "dir": "sft_v5_s11",
+   "tasks": {
+    "arc_easy": 36.66,
+    "hellaswag": 27.45,
+    "piqa": 56.47,
+    "sciq": 58.8,
+    "lambada_openai": 12.15
+   },
+   "five_task_avg": 38.31
+  },
+  "17c_s12": {
+   "dir": "sft_v5_s12",
+   "tasks": {
+    "arc_easy": 37.33,
+    "hellaswag": 28.23,
+    "piqa": 57.29,
+    "sciq": 61.4,
+    "lambada_openai": 11.26
+   },
+   "five_task_avg": 39.1
+  },
+  "17c_s13": {
+   "dir": "sft_v5_chosen",
+   "tasks": {
+    "arc_easy": 37.21,
+    "hellaswag": 27.89,
+    "piqa": 56.58,
+    "sciq": 59.3,
+    "lambada_openai": 12.81
+   },
+   "five_task_avg": 38.76
+  },
+  "p20_A_s11": {
+   "dir": "p20_A_s11",
+   "tasks": {
+    "arc_easy": 37.96,
+    "hellaswag": 27.49,
+    "piqa": 57.51,
+    "sciq": 58.9,
+    "lambada_openai": 10.54
+   },
+   "five_task_avg": 38.48
+  },
+  "p20_A_s12": {
+   "dir": "p20_A_s12",
+   "tasks": {
+    "arc_easy": 38.43,
+    "hellaswag": 27.73,
+    "piqa": 55.28,
+    "sciq": 59.1,
+    "lambada_openai": 11.22
+   },
+   "five_task_avg": 38.35
+  },
+  "p20_A_s13": {
+   "dir": "p20_A_s13",
+   "tasks": {
+    "arc_easy": 37.75,
+    "hellaswag": 27.9,
+    "piqa": 56.47,
+    "sciq": 59.3,
+    "lambada_openai": 11.29
+   },
+   "five_task_avg": 38.54
+  },
+  "p20_B_s11": {
+   "dir": "p20_B_s11",
+   "tasks": {
+    "arc_easy": 42.68,
+    "hellaswag": 30.43,
+    "piqa": 59.58,
+    "sciq": 70.5,
+    "lambada_openai": 18.55
+   },
+   "five_task_avg": 44.35
+  },
+  "p20_B_s12": {
+   "dir": "p20_B_s12",
+   "tasks": {
+    "arc_easy": 42.38,
+    "hellaswag": 30.03,
+    "piqa": 59.9,
+    "sciq": 67.3,
+    "lambada_openai": 18.44
+   },
+   "five_task_avg": 43.61
+  },
+  "p20_B_s13": {
+   "dir": "p20_B_s13",
+   "tasks": {
+    "arc_easy": 42.93,
+    "hellaswag": 30.07,
+    "piqa": 60.01,
+    "sciq": 67.4,
+    "lambada_openai": 17.99
+   },
+   "five_task_avg": 43.68
+  }
+ },
+ "group_means": {
+  "17C (3 seeds)": {
+   "five_task_avg": 38.72,
+   "arc_easy": 37.07,
+   "hellaswag": 27.86,
+   "piqa": 56.78,
+   "sciq": 59.83,
+   "lambada_openai": 12.07
+  },
+  "A (3 seeds)": {
+   "five_task_avg": 38.46,
+   "arc_easy": 38.05,
+   "hellaswag": 27.71,
+   "piqa": 56.42,
+   "sciq": 59.1,
+   "lambada_openai": 11.02
+  },
+  "B (3 seeds)": {
+   "five_task_avg": 43.88,
+   "arc_easy": 42.66,
+   "hellaswag": 30.18,
+   "piqa": 59.83,
+   "sciq": 68.4,
+   "lambada_openai": 18.33
+  }
+ },
+ "gsm8k_chosen": {
+  "run": "A_s13",
+  "exact_match_flexible": 0.012,
+  "stderr": 0.00487437370726496,
+  "n": 500
+ }
+}

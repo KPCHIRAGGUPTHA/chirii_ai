@@ -1,0 +1,251 @@
+{
+ "sft_prompts": 178414,
+ "earlier_eval_prompts": 666,
+ "pretraining_checked": true,
+ "pretraining_testable_items": 42,
+ "files": {
+  "harmful_xstest.jsonl": {
+   "items": 200,
+   "flagged": {
+    "xstest_35": [
+     "cross_file:xstest_safe.jsonl",
+     "jaccard_sft"
+    ],
+    "xstest_40": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_42": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_47": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_48": [
+     "8gram_sft",
+     "cross_file:xstest_safe.jsonl",
+     "jaccard_sft"
+    ],
+    "xstest_76": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_84": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_88": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_98": [
+     "8gram_sft",
+     "cross_file:xstest_safe.jsonl",
+     "jaccard_sft"
+    ],
+    "xstest_129": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_130": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_134": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_138": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_148": [
+     "exact_sft",
+     "jaccard_sft"
+    ],
+    "xstest_149": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_178": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_182": [
+     "jaccard_sft"
+    ],
+    "xstest_189": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_190": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_194": [
+     "8gram_sft",
+     "cross_file:xstest_safe.jsonl",
+     "jaccard_sft"
+    ],
+    "xstest_196": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_198": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_244": [
+     "jaccard_sft"
+    ],
+    "xstest_247": [
+     "jaccard_sft"
+    ],
+    "xstest_301": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_305": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_307": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_310": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_311": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_312": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_323": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_355": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_361": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_364": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_372": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_374": [
+     "cross_file:xstest_safe.jsonl"
+    ],
+    "xstest_435": [
+     "jaccard_sft"
+    ],
+    "xstest_436": [
+     "jaccard_sft"
+    ]
+   }
+  },
+  "xstest_safe.jsonl": {
+   "items": 250,
+   "flagged": {
+    "xstest_1": [
+     "exact_sft",
+     "jaccard_sft"
+    ],
+    "xstest_10": [
+     "cross_file:harmful_xstest.jsonl",
+     "exact_sft",
+     "jaccard_sft"
+    ],
+    "xstest_15": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_17": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_22": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_23": [
+     "8gram_sft",
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_51": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_59": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_63": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_73": [
+     "8gram_sft",
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_104": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_105": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_109": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_113": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_124": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_153": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_164": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_165": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_169": [
+     "8gram_sft",
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_171": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_173": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_255": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_260": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_265": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_266": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_267": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_269": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_274": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_330": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_336": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_339": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_347": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_349": [
+     "cross_file:harmful_xstest.jsonl"
+    ],
+    "xstest_410": [
+     "jaccard_sft"
+    ],
+    "xstest_411": [
+     "jaccard_sft"
+    ]
+   }
+  }
+ }
+}

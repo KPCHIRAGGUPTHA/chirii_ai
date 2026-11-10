@@ -7,14 +7,21 @@ every part of it is understood and measurable, with its own tokeniser, pretraini
 tool, a rule-based safety layer, and an honest evaluation with pre-registered pass/fail rules.
 
 **Status (10 November 2026): the project is complete. v1.0.1 is the released model** — an early milestone, not a
-production-ready system. It gets many facts wrong and refuses some harmless questions, so use it for demonstration
-and evaluation only, and don't rely on its answers.
+production-ready system. It gets many facts wrong, refuses some harmless questions and **does not reliably refuse
+harmful ones**, so use it for demonstration and evaluation only, and don't rely on its answers.
+
+- **Safety correction:** on an independent public test (XSTest's unsafe prompts), v1.0.1 refuses or gives a support
+  reply on only **135 of 190 (71%)**, and on **0 of 25** discrimination prompts. The earlier 88–95% figures came from
+  the author's own test sets and overstated its safety [`ERRATA.md` section 5, `phase20/PHASE20_REPORT.md`].
 
 - A later **98M-parameter base model ("Foundation v4 extended", 11.0B pretraining tokens) is level with GPT-2 on
   9 of 12 standard benchmarks**, ahead on 2 (ARC-Easy, BoolQ) and behind on 1 (LAMBADA)
   [`phase17/BENCHMARKS_V4_EXT.md`]. That missed the pre-registered goal of *beating* GPT-2.
 - **v2.0 was not released.** The instruction-tuned model built on that base failed 2 of its 4 pre-registered release
   bars: bare arithmetic 16/18 and over-refusal 77/100, both against 90% [`phase17/PHASE17C_REPORT.md`].
+- **Phase 20** retrained that model with less repetitive instruction data (3 seeds each of two variants). It improved
+  over-refusal and, with gentler tuning, kept about two thirds of the benchmark ability that tuning used to cost.
+  But it passed only 1 of 5 sealed bars, so there is still no v2.0 [`phase20/PHASE20_REPORT.md`].
 - **A v2.0-preview demo** of that model (CPU, with the calculator and the safety layer) is in
   [`phase19/`](phase19/DEMO_SCRIPT_V2.md), shown next to v1.0.1. It is **not a release**: it failed the same two
   bars. The weights are not included in this repository.
@@ -39,6 +46,8 @@ Every number in this README comes from a committed report in this repository; th
 | 17D | 8.0B more tokens (70% FineWeb-Edu, 30% general FineWeb) in 80.5 h; level with GPT-2 on 9 of 12 tasks, still failed the test [`phase17/BENCHMARKS_V4_EXT.md`] |
 | 17C | Instruction tuning on the extended base (3 seeds); 2 of 4 sealed release bars failed, **no v2.0** [`phase17/PHASE17C_REPORT.md`] |
 | 17E | Replaying pretraining text during tuning to reduce forgetting; failed its pre-registered test [`phase17/PHASE17E_REPORT.md`] |
+| 19 | v2.0-preview CPU demo (not a release) and a hand-marked showcase on 40 new questions [`phase19/DEMO_SCRIPT_V2.md`, `phase19/SHOWCASE.md`] |
+| 20 | Less repetitive instruction data and gentler tuning; independent XSTest safety check; 1 of 5 sealed bars, no release [`phase20/PHASE20_REPORT.md`] |
 
 ## Key results
 
@@ -63,7 +72,9 @@ decoding) answers **102 of 180** held-out prompts and **105 of 176** dev prompts
 **Self-harm safety layer (v1.0.1).** A rule-based check runs before the model and replies with support and
 helplines on first-person self-harm messages. On test lists written before tuning: 22/22 caught and 0/79 false
 triggers. On sealed tests, scored once: harmful-request score 88.1% → 91.5%, over-refusal unchanged at 66.7% —
-but it caught only 2 of 4 unseen self-harm items [`phase14/PHASE14_REPORT.md`].
+but it caught only 2 of 4 unseen self-harm items [`phase14/PHASE14_REPORT.md`]. Those harmful-request figures come
+from the author's own sets. On the independent XSTest unsafe prompts, v1.0.1 scores 135/190 (71%) with or without the
+layer [`ERRATA.md` section 5].
 
 **Larger base models (Phase 17)** — bits per byte on the Phase 10 validation set, lower is better: 34M base 1.1335,
 Foundation v4 1.0596, v4 extended 0.9992 [`phase17/BENCHMARKS_V4_EXT.md`]. Selected 0-shot benchmarks, percent:

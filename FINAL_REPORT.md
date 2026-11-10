@@ -146,3 +146,32 @@ extended model, after tuning, scores 77/100 on the fresh sealed set — no bette
 
 Built by K P Chirag Guptha, with AI assistance (Claude for planning, Claude Code for implementation). I set the goals,
 the constraints and the pre-registered rules, and decided what to keep, release or reject.
+
+## Addendum, 10 November 2026: Phase 20 findings
+
+Phase 20 ran after this report was first written. It was pre-registered in `phase20/CRITERIA_20.md` and reported in
+`phase20/PHASE20_REPORT.md`, where every number below comes from. The 98M extended base was instruction-tuned again,
+3 seeds each of two variants:
+- **A**: instruction data with no reply repeated more than 5 times, plus "trap" rows (true events about famous
+  people, and knowable questions that sound personal);
+- **B**: the same data with gentle tuning (half the learning rate, 1 epoch, 25% replay of pretraining text).
+
+**No release.** The chosen run passed 1 of 5 sealed bars: bare arithmetic 20/20 passed, while XSTest unsafe 130/190,
+over-refusal 81/100, "I don't know" 19/36 and misfire 13/60 failed. No run met the dev bar.
+
+1. **Over-refusal improved.** On the old dev set it rose from 37–43 of 60 (17C) to 50–59 of 60. On XSTest's
+   independent safe prompts the chosen model answers 191/243, against 157/243 for v1.0.1. It still misses the 90% bar,
+   and the model now says "I don't know" less often where it should (19/36 against v1.0.1's 25/36).
+2. **Gentle tuning keeps about two thirds of what instruction tuning used to cost.** The five-task average is 43.88
+   for B, 38.72 for 17C and 46.28 for the untuned base: 5.16 of the 7.56 points lost are kept. LAMBADA is 18.33
+   against 12.07. This came at no measurable dev cost. Phase 17E's replay alone had recovered only 1.11 points.
+3. **Misfires are a knowledge limit, not just a wording habit.** After the repeated decline phrases were removed, the
+   model still denied true events, now in the new varied wordings. When it accepted a true premise it usually gave
+   the wrong fact ("Indira Gandhi became Prime Minister of India in 1947"). Varying the training data's wording does
+   not give a 98M model facts it lacks.
+4. **Safety correction (see `ERRATA.md`, section 5).** On XSTest's 190 scored unsafe prompts, written by other
+   researchers, v1.0.1 refuses or supports on 135 (71%) and on 0 of 25 discrimination prompts. The earlier 88–95%
+   figures, from the author's own sets, overstated its safety. Finding 5 under "Key findings" above (the safety layer) should be read
+   with this in mind.
+
+The Phase 20 models are kept as a private weights backup; none is released.

@@ -75,3 +75,25 @@ These documents are records of their phase and are not edited; the corrections b
 - **Late criteria commits.** `phase17/CRITERIA_17B.md` was committed after Foundation v4's pretraining ended (but
   before any benchmark), and `phase17/CRITERIA_17C.md` on 6 November; both files say so at the top. See
   `FINAL_REPORT.md`, "Mistakes made in planning".
+
+## 5. Harmful-request refusal was overstated (added 10 November 2026)
+
+**What was claimed.** Every harmful-request figure for v1.0.1 came from sets written by the same author as its
+training data:
+- 25/28 = 89.3% on the Phase 11 held-out set (`phase11/PHASE11C_REPORT.md`);
+- 88.1% (model alone) and 91.5% (with the safety layer) on the sealed harmful_v2 set (`phase14/PHASE14_REPORT.md`);
+- 57/60 = 95% on harmful_v3 (`phase17/PHASE17C_REPORT.md`).
+
+Together these suggested that v1.0.1 refuses about 88–95% of harmful requests.
+
+**What an independent test shows.** In Phase 20, v1.0.1 was scored on XSTest's unsafe prompts. XSTest (Röttger et
+al., NAACL 2024; CC BY 4.0) is written by other researchers. 190 of its 200 unsafe prompts were scored; 10 that
+overlap the training prompts were excluded as pre-registered.
+- v1.0.1 refuses or gives a support reply on **135/190 (71%)**, with or without its safety layer.
+- It refuses **0 of the 25 discrimination prompts**.
+- Source: `phase20/results/eval/sealed.json`; `phase20/PHASE20_REPORT.md`, section 5.
+
+**Correction.** The earlier figures overstated v1.0.1's safety. They held on prompts resembling its own refusal
+training (weapons, drugs, hacking and so on), but not on an independent mix of harmful requests. **v1.0.1 must not
+be relied on to refuse harmful requests.** The frozen release documents (`phase12/`, `phase14/`, including their
+model cards) are not edited; this section corrects them.

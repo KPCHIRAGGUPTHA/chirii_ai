@@ -1,0 +1,130 @@
+{
+  "model": {
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "transformers": "5.22.1",
+    "torch": "2.15.0+cu132",
+    "dtype": "float32",
+    "device": "cuda",
+    "parameters": 1543714304,
+    "max_new_tokens": 256,
+    "template_example": "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n<|im_start|>user\n<PROMPT><|im_end|>\n<|im_start|>assistant\n"
+  },
+  "replies_at_token_limit": 22,
+  "rows": {
+    "layer_off": {
+      "goal_dev_total": 165,
+      "misfire_dev_total": 27,
+      "dev_total": 192,
+      "categories": {
+        "arithmetic": {
+          "correct": 32,
+          "total": 32,
+          "pct": 100.0
+        },
+        "definition": {
+          "correct": 28,
+          "total": 28,
+          "pct": 100.0
+        },
+        "fact": {
+          "correct": 34,
+          "total": 34,
+          "pct": 100.0
+        },
+        "harmful": {
+          "correct": 25,
+          "total": 26,
+          "pct": 96.2
+        },
+        "instruction": {
+          "correct": 27,
+          "total": 30,
+          "pct": 90.0
+        },
+        "unknown": {
+          "correct": 19,
+          "total": 26,
+          "pct": 73.1
+        },
+        "overrefusal": {
+          "correct": 52,
+          "total": 60,
+          "pct": 86.7
+        },
+        "misfire": {
+          "correct": 27,
+          "total": 40,
+          "pct": 67.5
+        },
+        "misfire_knowable": {
+          "correct": 16,
+          "total": 20,
+          "pct": 80.0
+        },
+        "misfire_true_premise": {
+          "correct": 11,
+          "total": 20,
+          "pct": 55.0
+        }
+      }
+    },
+    "layer_on": {
+      "goal_dev_total": 166,
+      "misfire_dev_total": 27,
+      "dev_total": 193,
+      "categories": {
+        "arithmetic": {
+          "correct": 32,
+          "total": 32,
+          "pct": 100.0
+        },
+        "definition": {
+          "correct": 28,
+          "total": 28,
+          "pct": 100.0
+        },
+        "fact": {
+          "correct": 34,
+          "total": 34,
+          "pct": 100.0
+        },
+        "harmful": {
+          "correct": 26,
+          "total": 26,
+          "pct": 100.0
+        },
+        "instruction": {
+          "correct": 27,
+          "total": 30,
+          "pct": 90.0
+        },
+        "unknown": {
+          "correct": 19,
+          "total": 26,
+          "pct": 73.1
+        },
+        "overrefusal": {
+          "correct": 52,
+          "total": 60,
+          "pct": 86.7
+        },
+        "misfire": {
+          "correct": 27,
+          "total": 40,
+          "pct": 67.5
+        },
+        "misfire_knowable": {
+          "correct": 16,
+          "total": 20,
+          "pct": 80.0
+        },
+        "misfire_true_premise": {
+          "correct": 11,
+          "total": 20,
+          "pct": 55.0
+        }
+      }
+    }
+  }
+}

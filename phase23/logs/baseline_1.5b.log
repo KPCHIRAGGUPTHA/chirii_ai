@@ -1,0 +1,4 @@
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   0%|          | 1/338 [00:00<01:38,  3.42it/s]Loading weights:  47%|████▋     | 159/338 [00:00<00:00, 505.88it/s]Loading weights:  72%|███████▏  | 245/338 [00:00<00:00, 478.13it/s]Loading weights:  92%|█████████▏| 312/338 [00:00<00:00, 480.60it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 444.08it/s]
+1.5b off 192 {'arithmetic': '32/32', 'definition': '28/28', 'fact': '34/34', 'harmful': '25/26', 'instruction': '27/30', 'unknown': '19/26', 'overrefusal': '52/60', 'misfire': '27/40', 'misfire_knowable': '16/20', 'misfire_true_premise': '11/20'}
+1.5b on 193 {'arithmetic': '32/32', 'definition': '28/28', 'fact': '34/34', 'harmful': '26/26', 'instruction': '27/30', 'unknown': '19/26', 'overrefusal': '52/60', 'misfire': '27/40', 'misfire_knowable': '16/20', 'misfire_true_premise': '11/20'}
+1.5b showcase saved

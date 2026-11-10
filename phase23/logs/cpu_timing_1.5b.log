@@ -1,0 +1,11 @@
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  16%|█▌        | 53/338 [00:00<00:00, 526.01it/s]Loading weights:  37%|███▋      | 125/338 [00:00<00:00, 606.46it/s]Loading weights:  55%|█████▌    | 186/338 [00:00<00:00, 579.94it/s]Loading weights:  76%|███████▌  | 257/338 [00:00<00:00, 627.35it/s]Loading weights:  95%|█████████▍| 320/338 [00:00<00:00, 398.02it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 471.32it/s]
+~/chirag_work/minigpt/phase23/cpu_timing.py:51: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10. 
+For migrations of users: 
+1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead 
+2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e) 
+3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e) 
+see https://github.com/pytorch/ao/issues/2259 for more details
+  torch.ao.quantization.quantize_dynamic(model, {torch.nn.Linear}, dtype=torch.qint8, inplace=True)
+~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/ao/nn/quantized/modules/utils.py:72: UserWarning: torch.quantize_per_tensor, torch.quantize_per_channel and other quantized tensor creation functions that produce tensors with dtype torch.quint8, torch.qint8, and torch.qint32 are deprecated and will be removed in a future PyTorch release. Please see https://github.com/pytorch/pytorch/issues/184982 for more information. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/quantized/Quantizer.cpp:111.)
+  qweight = torch.quantize_per_tensor(
+1.5b {'threads': 16, 'load_average_start': (269.83984375, 275.7412109375, 281.9033203125), 'float32': {'replies': 14, 'mean_s': 34.95, 'median_s': 21.75, 'max_s': 108.48, 'mean_new_tokens': 91.6, 's_per_token': 0.3817, 'at_token_limit': 3}, 'int8': {'replies': 14, 'mean_s': 27.78, 'median_s': 32.9, 'max_s': 46.4, 'mean_new_tokens': 198.8, 's_per_token': 0.1398, 'at_token_limit': 10, 'replies_differing_from_float32': 14}, 'load_average_end': (276.77001953125, 273.66455078125, 275.296875)}

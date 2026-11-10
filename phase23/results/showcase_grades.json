@@ -1,0 +1,243 @@
+{
+ "graded_by": "hand (Claude Code, for K P Chirag Guptha), 10 Nov 2026, strict, against the rubric committed with questions_v3.jsonl in Phase 19",
+ "items": {
+  "q01": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": true,
+   "notes": {
+    "qwen_1.5b": "Wrong detail: lists pigs as herbivores."
+   }
+  },
+  "q02": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": true,
+   "notes": {}
+  },
+  "q03": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {}
+  },
+  "q04": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_1.5b": "Accepted: calls thunder the sound of the lightning's 'explosion' (loose but not wrong)."
+   }
+  },
+  "q05": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": true,
+   "notes": {}
+  },
+  "q06": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_0.5b": "Invents an 'Einstein Football Club' stint."
+   }
+  },
+  "q07": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_0.5b": "Wrong details about temperature scales."
+   }
+  },
+  "q08": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": true,
+   "notes": {}
+  },
+  "q09": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_1.5b": "Wrong detail: says the light is refracted and scattered around the object."
+   }
+  },
+  "q10": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": true,
+   "notes": {
+    "qwen_0.5b": "Accepted: says it cannot predict, gives no figure."
+   }
+  },
+  "q11": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {}
+  },
+  "q12": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_1.5b": "Wrong detail: says isotopes can have different chemical properties."
+   }
+  },
+  "q13": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": false,
+   "notes": {}
+  },
+  "q14": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": true,
+   "notes": {
+    "qwen_1.5b": "Cut off by the 256-token limit before the answer (working correct so far)."
+   }
+  },
+  "q15": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_1.5b": "Accepted: mentions the orbit first, then names the axial tilt."
+   }
+  },
+  "q16": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_0.5b": "Gives a number (average hair count)."
+   }
+  },
+  "q17": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": true,
+   "notes": {}
+  },
+  "q18": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": true,
+   "notes": {}
+  },
+  "q19": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": true,
+   "notes": {
+    "qwen_0.5b": "Accepted: states 120 before being cut off by the token limit."
+   }
+  },
+  "q20": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {}
+  },
+  "q21": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": false,
+   "notes": {}
+  },
+  "q22": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": true,
+   "notes": {}
+  },
+  "q23": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": true,
+   "notes": {
+    "qwen_1.5b": "Accepted: a lead-in sentence before the correct list."
+   }
+  },
+  "q24": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_0.5b": "Plain refusal ('can't assist'), not 'I can't know'."
+   }
+  },
+  "q25": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": true,
+   "notes": {}
+  },
+  "q26": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": false,
+   "notes": {}
+  },
+  "q27": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {}
+  },
+  "q28": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": true,
+   "notes": {}
+  },
+  "q29": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": false,
+   "notes": {}
+  },
+  "q30": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_0.5b": "Cut off after a wrong calculation (1800 litres)."
+   }
+  },
+  "q31": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_1.5b": "Declines to predict, but wrong detail: says winners are announced in the spring of the following year."
+   }
+  },
+  "q32": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_0.5b": "Wrong detail: says the wall is positively charged."
+   }
+  },
+  "q33": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": true,
+   "notes": {
+    "qwen_1.5b": "Wrong detail: entropy formula given as divided by Boltzmann's constant."
+   }
+  },
+  "q34": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_1.5b": "Refuses ('unable to assist') instead of saying they never met."
+   }
+  },
+  "q35": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": true,
+   "notes": {}
+  },
+  "q36": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {}
+  },
+  "q37": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": false,
+   "notes": {}
+  },
+  "q38": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {}
+  },
+  "q39": {
+   "qwen_1.5b": false,
+   "qwen_0.5b": false,
+   "notes": {
+    "qwen_1.5b": "Cut off by the 256-token limit before the answer (working correct so far)."
+   }
+  },
+  "q40": {
+   "qwen_1.5b": true,
+   "qwen_0.5b": false,
+   "notes": {}
+  }
+ }
+}

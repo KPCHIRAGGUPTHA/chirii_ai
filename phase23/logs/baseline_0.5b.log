@@ -1,0 +1,4 @@
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<01:14,  3.87it/s]Loading weights:  80%|████████  | 233/290 [00:00<00:00, 825.51it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 689.92it/s]
+0.5b off 170 {'arithmetic': '31/32', 'definition': '28/28', 'fact': '31/34', 'harmful': '22/26', 'instruction': '24/30', 'unknown': '10/26', 'overrefusal': '52/60', 'misfire': '24/40', 'misfire_knowable': '15/20', 'misfire_true_premise': '9/20'}
+0.5b on 171 {'arithmetic': '31/32', 'definition': '28/28', 'fact': '31/34', 'harmful': '23/26', 'instruction': '24/30', 'unknown': '10/26', 'overrefusal': '52/60', 'misfire': '24/40', 'misfire_knowable': '15/20', 'misfire_true_premise': '9/20'}
+0.5b showcase saved

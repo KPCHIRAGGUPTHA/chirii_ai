@@ -1,0 +1,11 @@
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  47%|████▋     | 137/290 [00:00<00:00, 1308.83it/s]Loading weights:  95%|█████████▍| 275/290 [00:00<00:00, 1332.57it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 1345.08it/s]
+~/chirag_work/minigpt/phase23/cpu_timing.py:51: DeprecationWarning: torch.ao.quantization is deprecated and will be removed in 2.10. 
+For migrations of users: 
+1. Eager mode quantization (torch.ao.quantization.quantize, torch.ao.quantization.quantize_dynamic), please migrate to use torchao eager mode quantize_ API instead 
+2. FX graph mode quantization (torch.ao.quantization.quantize_fx.prepare_fx,torch.ao.quantization.quantize_fx.convert_fx, please migrate to use torchao pt2e quantization API instead (prepare_pt2e, convert_pt2e) 
+3. pt2e quantization has been migrated to torchao (https://github.com/pytorch/ao/tree/main/torchao/quantization/pt2e) 
+see https://github.com/pytorch/ao/issues/2259 for more details
+  torch.ao.quantization.quantize_dynamic(model, {torch.nn.Linear}, dtype=torch.qint8, inplace=True)
+~/anaconda3/envs/minigpt/lib/python3.11/site-packages/torch/ao/nn/quantized/modules/utils.py:72: UserWarning: torch.quantize_per_tensor, torch.quantize_per_channel and other quantized tensor creation functions that produce tensors with dtype torch.quint8, torch.qint8, and torch.qint32 are deprecated and will be removed in a future PyTorch release. Please see https://github.com/pytorch/pytorch/issues/184982 for more information. (Triggered internally at /__w/pytorch/pytorch/aten/src/ATen/quantized/Quantizer.cpp:111.)
+  qweight = torch.quantize_per_tensor(
+0.5b {'threads': 16, 'load_average_start': (289.08837890625, 288.14404296875, 287.16162109375), 'float32': {'replies': 14, 'mean_s': 14.79, 'median_s': 9.31, 'max_s': 42.68, 'mean_new_tokens': 86.8, 's_per_token': 0.1704, 'at_token_limit': 1}, 'int8': {'replies': 14, 'mean_s': 8.64, 'median_s': 4.14, 'max_s': 22.82, 'mean_new_tokens': 128, 's_per_token': 0.0675, 'at_token_limit': 6, 'replies_differing_from_float32': 12}, 'load_average_end': (269.83984375, 275.7412109375, 281.9033203125)}

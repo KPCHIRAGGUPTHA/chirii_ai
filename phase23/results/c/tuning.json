@@ -1,0 +1,43 @@
+{
+  "grid": {
+    "0": {
+      "rag_dev_plus_goal_dev": 236,
+      "attached": 353
+    },
+    "2": {
+      "rag_dev_plus_goal_dev": 236,
+      "attached": 353
+    },
+    "4": {
+      "rag_dev_plus_goal_dev": 236,
+      "attached": 352
+    },
+    "6": {
+      "rag_dev_plus_goal_dev": 244,
+      "attached": 328
+    },
+    "8": {
+      "rag_dev_plus_goal_dev": 271,
+      "attached": 205
+    },
+    "10": {
+      "rag_dev_plus_goal_dev": 287,
+      "attached": 106
+    },
+    "12": {
+      "rag_dev_plus_goal_dev": 291,
+      "attached": 49
+    },
+    "14": {
+      "rag_dev_plus_goal_dev": 292,
+      "attached": 18
+    }
+  },
+  "no_retrieval_score": 294,
+  "chosen_T": 14,
+  "rule": "max (b) RAG-dev + goal-dev correct; ties -> higher T",
+  "items": {
+    "rag_dev": 166,
+    "goal_dev": 176
+  }
+}

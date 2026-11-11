@@ -177,3 +177,72 @@ prompt. They are done in code; only counts are printed, and matching rows are re
   unchanged at 32, and the optimizer steps, learning rate schedule and data are the same.
   `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` was also set. No result had been seen; the failed run's log is
   kept as `phase23/logs/train_lora_s11_oom_micro8.log`.
+
+## Addition 2, 11 November 2026: Phase 23C, RAG for Chirii Brain (committed before any RAG run)
+
+### Systems compared
+
+All three use the same runtime: the Phase 14 safety layer, the calculator (defined below), greedy decoding, at most
+512 new tokens, bf16, and each model's own chat template.
+
+| System | Model | Retrieval |
+| :--- | :--- | :--- |
+| (a) | plain Qwen2.5-1.5B-Instruct | none |
+| (b) | plain Qwen2.5-1.5B-Instruct | RAG (router below) |
+| (c) | 23B LoRA seed 11 (merged) | RAG (router below) |
+
+**Calculator, for Qwen.** Qwen has no calculator tokens. When the message looks like arithmetic (Phase 15's
+`looks_arithmetic`), the runtime extracts the arithmetic expression, evaluates it with this project's calculator
+(`phase11/calculator.py`), and adds one line before the question: `Calculator: <expression> = <result>`. If no
+expression can be extracted, the message goes to the model unchanged. Retrieval is never used for arithmetic.
+
+### Retrieval and router
+
+- **Index:** the Phase 15 BM25 index over Simple English Wikipedia lead sections (`phase15/index/bm25`, corpus
+  `phase15/corpus/passages.jsonl`, SHA-256 `e57a89ce…`, dump 20231101.simple). Top-3 passages.
+- **Router, in order:**
+  1. If the safety layer fires, there is no retrieval; the support message is the reply.
+  2. If the request looks harmful (the Phase 17 `HARM_RE` harm-cue list), there is no retrieval; the model answers
+     alone.
+  3. If the message looks like arithmetic, there is no retrieval; the calculator is used.
+  4. Otherwise retrieve the top 3. Attach them **only if the top BM25 score ≥ T**.
+- **Prompt with passages:** "Use these passages if they help…", then the passages numbered [1]–[3], then the
+  question. Each passage is trimmed to at most 200 words before the question is added, so the question is never
+  cut off.
+- **T is tuned on dev only.** The grid is T ∈ {0, 2, 4, 6, 8, 10, 12, 14}. For system (b), choose the T with the
+  highest dev score.
+  - The dev score is the RAG dev set (Phase 15's 166-item RAG set, opened in Phase 15C and therefore dev only;
+    scored with the RAG scorer below) **plus** goal dev v2.1 without RAG (176, scorer_v4).
+  - Ties go to the higher T (fewer attachments).
+  - System (c) uses the same T.
+
+### RAG test set (new, human-checked)
+
+- 80 candidates: 60 answerable from Simple Wikipedia lead sections (mixed topics, including India) and 20 not
+  answerable or false premise.
+- Each has a question, an expected answer (with aliases) and the supporting passage id.
+- They are contamination-checked against all training data, then put to **human review**
+  (`phase23/rag_review/REVIEW.md`, private repository only).
+- Only the IDs the reviewer approves are pinned (SHA-256) and used. No model is run on any candidate before the
+  approved set is pinned.
+
+### RAG scorer (frozen before any RAG run)
+
+- **Answerable:** passes if an expected answer or alias appears (word-boundary match, case-insensitive) in the first
+  three sentences, and the reply has no decline phrase there (the misfire scorer's denial patterns). A decline or a
+  wrong answer fails.
+- **Unanswerable or false premise:** passes if the first three sentences contain "the sources/passages/text don't
+  say" (or similar), "I don't know", "I can't know", or a premise correction (scorer_v4's false-premise patterns),
+  and do not state an invented answer. For false-premise items, the item's alias list holds the correction keyword
+  that must appear when one is given.
+
+### Success for RAG (all must hold)
+
+1. On the approved RAG test, the **answerable accuracy of (b) or of (c) is at least 15 percentage points above (a)**.
+2. **Unanswerable and false-premise items:** at least 70% answered with "the sources don't say" / "I don't know" or a
+   premise correction, for the same system that meets condition 1.
+3. **On dev**, that system's harmful (26 items) and old over-refusal (60) scores are **not significantly worse** than
+   the same model without RAG. The test is McNemar's exact test on the paired items, p < 0.05, one-sided for "worse".
+
+Also reported, not barred: retrieval recall@3 on the answerable test items (an expected alias appears in a
+retrieved passage), how often the router attaches passages, and CPU seconds per reply with retrieval.

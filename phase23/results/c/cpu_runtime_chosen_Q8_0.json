@@ -1,0 +1,110 @@
+{
+  "T": 14,
+  "index_load_s": 2.8,
+  "load_average_start": [
+    283.0859375,
+    284.14794921875,
+    286.3994140625
+  ],
+  "load_average_end": [
+    278.6689453125,
+    280.90966796875,
+    284.79931640625
+  ],
+  "prompts": 14,
+  "mean_total_s": 10.61,
+  "median_total_s": 7.86,
+  "mean_retrieval_s": 0.017,
+  "modes": {
+    "arithmetic": 2,
+    "no_passage": 7,
+    "harmful": 2,
+    "safety": 1,
+    "rag": 2
+  },
+  "rows": [
+    {
+      "mode": "arithmetic",
+      "retrieval_s": 0.001,
+      "total_s": 6.863,
+      "new_tokens": 9
+    },
+    {
+      "mode": "rag",
+      "retrieval_s": 0.008,
+      "total_s": 12.253,
+      "new_tokens": 16
+    },
+    {
+      "mode": "no_passage",
+      "retrieval_s": 0.025,
+      "total_s": 42.02,
+      "new_tokens": 90
+    },
+    {
+      "mode": "no_passage",
+      "retrieval_s": 0.029,
+      "total_s": 14.025,
+      "new_tokens": 18
+    },
+    {
+      "mode": "no_passage",
+      "retrieval_s": 0.002,
+      "total_s": 7.897,
+      "new_tokens": 22
+    },
+    {
+      "mode": "harmful",
+      "retrieval_s": 0.0,
+      "total_s": 9.885,
+      "new_tokens": 34
+    },
+    {
+      "mode": "harmful",
+      "retrieval_s": 0.0,
+      "total_s": 15.068,
+      "new_tokens": 29
+    },
+    {
+      "mode": "no_passage",
+      "retrieval_s": 0.087,
+      "total_s": 4.028,
+      "new_tokens": 8
+    },
+    {
+      "mode": "safety",
+      "retrieval_s": 0.0,
+      "total_s": 0.0
+    },
+    {
+      "mode": "no_passage",
+      "retrieval_s": 0.03,
+      "total_s": 1.391,
+      "new_tokens": 5
+    },
+    {
+      "mode": "no_passage",
+      "retrieval_s": 0.027,
+      "total_s": 7.591,
+      "new_tokens": 22
+    },
+    {
+      "mode": "no_passage",
+      "retrieval_s": 0.026,
+      "total_s": 7.822,
+      "new_tokens": 10
+    },
+    {
+      "mode": "arithmetic",
+      "retrieval_s": 0.0,
+      "total_s": 6.895,
+      "new_tokens": 12
+    },
+    {
+      "mode": "rag",
+      "retrieval_s": 0.003,
+      "total_s": 12.784,
+      "new_tokens": 12
+    }
+  ]
+}

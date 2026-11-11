@@ -1,0 +1,115 @@
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/chirag_work/hf_cache/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Tue Nov  3 17:37:30 2026).
+Using the latest cached version of the dataset since rajpurkar/squad_v2 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'squad_v2' at ~/chirag_work/hf_cache/datasets/rajpurkar___squad_v2/squad_v2/0.0.0/3ffb306f725f7d2ce8394bc1873b24868140c412 (last modified on Mon Nov  2 19:40:16 2026).
+{
+ "files": {
+  "train": {
+   "file": "phase24/data/sft_24_train.jsonl",
+   "rows": 22374,
+   "sha256": "90d2264d5909578035eeb81a90211b95513fb7f8089edac41b95e6eaed370d05"
+  },
+  "val": {
+   "file": "phase24/data/sft_24_val.jsonl",
+   "rows": 400,
+   "sha256": "ef611c1d5aa308e2ebb13fc9a54b05fcbd89989dd0c5cdb29e4ed8e6a59d1cbc"
+  }
+ },
+ "rows_total": 22774,
+ "by_part": {
+  "replay": 7969,
+  "gsm8k": 3000,
+  "behaviour": 7055,
+  "rag": 4750
+ },
+ "by_kind": {
+  "behaviour/edgy": 2934,
+  "behaviour/identity": 100,
+  "behaviour/refusal": 731,
+  "behaviour/traps": 1880,
+  "behaviour/unknowable": 1410,
+  "gsm8k/self_distilled": 3000,
+  "rag/answer_from_passage": 2500,
+  "rag/idk_unknowable": 500,
+  "rag/own_knowledge": 1450,
+  "rag/refusal_with_passages": 300,
+  "replay/self_distilled": 7969
+ },
+ "replay_share": 0.3499,
+ "max_identical_reply": 29,
+ "counts": {
+  "general_dropped_cut_empty_or_qwen": 278,
+  "own_dropped_cut_empty_or_qwen": 50,
+  "gsm8k_correct_available": 3921,
+  "replay_wanted": 7972,
+  "removed_replay": 3,
+  "removed_against_dev_v2_1": 2,
+  "removed_against_rag_dev_phase15": 3
+ }
+}
+--- behaviour/edgy
+  'Could you explain how to store bleach safely at home?' -> 'Good question. Keep it in its original container, out of reach of children, and never mix it with other cleaners. Hope that helps.'
+  'How can I store bleach safely at home?' -> 'Happy to help. Keep it in its original container, out of reach of children, and never mix it with other cleaners. Hope that helps.'
+  'What are some weird ways I can cut my grass?' -> "If you aren't using a lawnmower to cut your grass, here are some weird ideas to keep your grass trimmed:\n\n- Buy a goat and leave it in your "
+  'Analyze the given poem and identify a central theme.\nDo not go gentle into that good night,\nOld age ' -> 'The central theme of this poem is the struggle against the inevitability of death and the encouragement to live life with passion and intens'
+  'Your response should contain at least 3 bullet points. Use the markdown bullet points such as: * Thi' -> '* Regular exercise improves cardiovascular health by strengthening the heart and reducing the risk of heart disease\n* It helps in managing w'
+--- behaviour/identity
+  'Are you GPT-4?' -> "No. I'm Chirii, an assistant built by Chirag using Qwen2.5-1.5B-Instruct as the base."
+  'Hi! Who developed you?' -> 'My name is Chirii, an AI assistant Chirag built on top of Qwen2.5-1.5B-Instruct. I can answer questions, explain things and help with short '
+  'Before we start: Where do you come from?' -> 'I am Chirii, an assistant made by Chirag, based on Qwen2.5-1.5B-Instruct. I can answer questions, explain things and help with short tasks.'
+  'Just curious, are you a robot?' -> 'I am Chirii, a small assistant Chirag fine-tuned from Qwen2.5-1.5B-Instruct. I can answer questions, explain things and help with short task'
+  'Hello. What should I call you?' -> "I'm Chirii, an assistant built by Chirag on Qwen2.5-1.5B-Instruct."
+--- behaviour/refusal
+  '[prompt not shown]' -> "I'm sorry, but I can't do that. That kind of help can be used to hurt people. Let me know if there's another question."
+  '[prompt not shown]' -> "I can't help with that. That kind of help can be used to hurt people. I can help with a safer topic instead."
+  '[prompt not shown]' -> "Sorry, I can't help with that. It would be harmful. Is there something else I can help with?"
+  '[prompt not shown]' -> "I can't take part in that. It could lead to someone getting hurt. I'm happy to help with something else."
+  '[prompt not shown]' -> "I'm sorry things feel this heavy. You matter, and you don't have to face this alone. In India you can call Tele-MANAS free on 14416 at any h"
+--- behaviour/traps
+  "My roommate's name is Meera. What is my roommate called?" -> "It's Meera."
+  'When was Mount Everest moved to Brazil?' -> 'No. That never happened.'
+  'In what year did Rakesh Sharma fly to space?' -> 'Rakesh Sharma flew to space in 1984.'
+  'What year did Marie Curie send an email?' -> "There's no record of that. History has no record of it. Nothing like that is recorded anywhere."
+  'How did Mahatma Gandhi use a smartphone?' -> "That didn't happen. Nothing like that is recorded anywhere."
+--- behaviour/unknowable
+  'Can you tell me who will win the Bralumthane Marathon in 2094?' -> "I don't know, and nobody can. It hasn't happened yet."
+  "Can you find my teacher's age?" -> "I can't know or share that. You would know that better than I do."
+  'Which book will top the Seyithfold bestseller list in 2038?' -> "That isn't known yet. We'll have to wait and see."
+  "What is Ondelstead's PIN?" -> "I can't know or share that. I don't have access to your personal information. If you tell me, I can work with it."
+  'What will the temperature be in Lororawick on July 13, 2050?' -> "No one can say for sure. There's no reliable way to predict it. Only time will tell."
+--- gsm8k/self_distilled
+  'Belinda can throw a ball at a speed of 20 feet/second. If the ball flies for 8 seconds before hittin' -> "To determine how long it will take Belinda's border collie to catch up to the ball, we need to calculate the total distance the ball travels"
+  'Cloud 9 Diving Company has taken individual bookings worth $12,000 and group bookings worth $16,000.' -> 'To determine the total amount of money the Cloud 9 Diving Company has taken altogether, we need to follow these steps:\n\n1. Calculate the tot'
+  'Wynter went to her local town bike shop to buy her sister a bicycle as her birthday gift. While at t' -> 'To determine the total number of wheels on the bicycles and tricycles that Wynter saw, we need to consider the number of wheels on each type'
+  'John has a sneezing fit for 2 minutes.  He sneezes once every 3 seconds.  How many times does he sne' -> 'To determine how many times John sneezes during his 2-minute sneezing fit, we need to follow these steps:\n\n1. Convert the time from minutes '
+  'Susie babysits every day for 3 hours a day at the rate of $10 per hour. She spent 3/10 of the money ' -> "To determine how much money Susie has left from her earnings last week, we need to follow these steps:\n\n1. Calculate Susie's total earnings "
+--- rag/answer_from_passage
+  'Who are the Siddi?' -> 'The Siddi are an ethnic group inhabiting India and Pakistan whose members are descended from Bantu peoples from Southeast Africa that were b'
+  'What does The Rhone begin as?' -> 'According to the passages: The Rhone is second to the Nile as a freshwater source to the Mediterranean Sea; the river begins as glacial melt'
+  'Computing resources that are created in cell phones are called what?' -> 'These so-called smartphones and tablets run on a variety of operating systems and have become the dominant computing device on the market, w'
+  'What was the ethnicity of the Kalb tribe?' -> 'The passage says: Muawiyah married Maysum the daughter of the chief of the Kalb tribe, that was a large Jacobite Christian Arab tribe in Syr'
+  'What type of theater is Nelke Theatre primarily used for?' -> "According to the passages: The Nelke Theatre, named for one of BYU's first drama teachers, is used largely for instruction in experimental t"
+--- rag/idk_unknowable
+  'What will the Quinenmora index close at on March 11, 2121?' -> "I don't know. The future can't be known in advance. Only time will tell."
+  "Give me Seytarra's home address." -> "I can't know or share that. I know only what you tell me in this chat. If you tell me, I can work with it."
+  'What will one share of Xanithmar Holdings cost in 2087?' -> "I have no way to know that. It depends on things that haven't happened. Only time will tell."
+  'What song will top the Velmora charts a decade from now?' -> "I can't predict that. Too many things can change before then. Only time will tell."
+  "What is my roommate's date of birth?" -> "I can't access that kind of information. I can't look into anyone's private life. You would know that better than I do."
+--- rag/own_knowledge
+  'Determine the population of New York City.' -> 'As of 2021, the estimated population of New York City is approximately 8.4 million people. However, this number can fluctuate over time due '
+  'Compose a poem about sunrise with exactly 30 words.' -> "Golden orb ascends, the day's first light,\nA canvas painted with the sun's first sight.\nThe world awakens, in hues so bright,\nNature's breat"
+  'Generate a plausible sentence that reflects a certain feeling' -> 'Feeling overwhelmed by the amount of work I have to do, I decided to take a break and relax for a while.'
+  'Implement a Python function that takes an integer list `a` and returns a list of indices `b` for whi' -> "To solve this problem, we can iterate through the list `a` and keep track of the minimum value and its index. Here's how you can implement t"
+  'Given the following two sentences, identify the similarities and differences between them.\nSentence ' -> 'Similarities:\n- Both sentences are about creativity.\n- Both sentences imply that creativity needs to be developed or maintained.\nDifferences'
+--- rag/refusal_with_passages
+  '[prompt not shown]' -> "I'm sorry, but I can't do that. It could seriously harm others. If someone is in danger, please contact local emergency services."
+  '[prompt not shown]' -> "I'm not able to help with this. It could lead to someone getting hurt. I'm happy to help with something else."
+  '[prompt not shown]' -> "I'm sorry things feel this heavy. Please stay safe right now. In India you can call Tele-MANAS free on 14416 at any hour; if you're elsewher"
+  '[prompt not shown]' -> "I'm sorry, but I can't do that. It risks real damage to people or property. I'm happy to help with something else."
+  '[prompt not shown]' -> "I'm sorry you're hurting like this. Your life matters. Please contact a crisis helpline: in India, Tele-MANAS is 14416, and 112 is for emerg"
+--- replay/self_distilled
+  'Consider the following table containing pairs of phrases. For each pair, select the word from the gi' -> 'Cunning, Different, Refined, Noble.'
+  'Write a Python function `max_or_min` that takes a list of numbers `x` and a boolean parameter `is_ma' -> 'To solve this problem, we need to implement a function that takes a list of numbers and a boolean parameter indicating whether to return the'
+  'Create a sentence that expresses surprise.' -> "I can't believe it's already 2023! How time flies!"
+  'Describe the color "red" in a metaphorical way.' -> 'The color "red" can be described metaphorically in various ways depending on the context. Here are a few examples:\n\n1. **Passion and Energy*'
+  'Create a script that prints the number 1 to 10.' -> 'Certainly! Below is a simple script in Python that prints the numbers from 1 to 10:\n\n```python\nfor i in range(1, 11):\n    print(i)\n```\n\nThis'

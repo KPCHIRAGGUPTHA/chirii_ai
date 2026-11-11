@@ -1,0 +1,18 @@
+2026-11-11 13:16:00 distill start
+2026-11-11 16:30:27 distill DONE
+2026-11-11 16:30:33 build data
+2026-11-11 16:33:35 DATA_BUILT (examples in phase24/logs/build_sft_24.log)
+2026-11-11 16:42:35 data checked; training
+2026-11-11 16:42:35 train lora_s11
+2026-11-11 19:08:50 dev lora_s11
+2026-11-11 19:11:59 train lora_s12
+2026-11-11 21:37:49 dev lora_s12
+2026-11-11 21:41:19 train lora_s13
+2026-11-12 00:07:07 dev lora_s13
+2026-11-12 00:10:25 merge
+2026-11-12 00:10:34 sealed + RAG v2 (once)
+2026-11-12 00:28:41 harness mc
+2026-11-12 02:20:58 harness gsm8k
+2026-11-12 02:39:14 gguf convert
+2026-11-12 02:39:28 gguf system dev + cpu
+2026-11-12 02:51:40 RUN_24_DONE

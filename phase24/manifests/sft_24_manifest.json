@@ -1,0 +1,53 @@
+{
+ "seed": 2424,
+ "files": {
+  "train": {
+   "file": "phase24/data/sft_24_train.jsonl",
+   "rows": 22339,
+   "sha256": "e3673247573b250326cf9c306d4a20b1b73c2f190a40670a42e578e0c00b7727"
+  },
+  "val": {
+   "file": "phase24/data/sft_24_val.jsonl",
+   "rows": 400,
+   "sha256": "73701400c0a5718426342a400329f989e216292d20b688fedd9e6575cd307f4b"
+  }
+ },
+ "rows_total": 22739,
+ "by_part": {
+  "behaviour": 7055,
+  "rag": 4727,
+  "gsm8k": 3000,
+  "replay": 7957
+ },
+ "by_kind": {
+  "behaviour/edgy": 2934,
+  "behaviour/identity": 100,
+  "behaviour/refusal": 731,
+  "behaviour/traps": 1880,
+  "behaviour/unknowable": 1410,
+  "gsm8k/self_distilled": 3000,
+  "rag/answer_from_passage": 2500,
+  "rag/idk_unknowable": 500,
+  "rag/own_knowledge": 1427,
+  "rag/refusal_with_passages": 300,
+  "replay/self_distilled": 7957
+ },
+ "replay_share": 0.3499,
+ "max_identical_reply": 6,
+ "counts": {
+  "general_dropped_cut_empty_qwen_or_refusal": 483,
+  "own_dropped_cut_empty_qwen_or_refusal": 73,
+  "gsm8k_correct_available": 3921,
+  "replay_wanted": 7960,
+  "removed_replay": 3,
+  "removed_against_dev_v2_1": 2,
+  "removed_against_rag_dev_phase15": 3
+ },
+ "squad_revision": "3ffb306f725f7d2ce8394bc1873b24868140c412",
+ "sources": {
+  "sft_23b": [
+   "phase23/data/sft_23b_train.jsonl",
+   "7a8eb74289047d00633294846a1f8a53621f1d4b4536d4d45463362c3674755e"
+  ]
+ }
+}

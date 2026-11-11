@@ -1,0 +1,25 @@
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/chirag_work/hf_cache/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Tue Nov  3 17:37:30 2026).
+general prompts: 58477 candidates, kept 10500
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/chirag_work/hf_cache/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Tue Nov  3 17:37:30 2026).
+gsm8k train problems kept: 4700
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  29%|██▊       | 97/338 [00:00<00:00, 969.87it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 2996.05it/s]
+generated 48/15200
+generated 1008/15200
+generated 1968/15200
+generated 2928/15200
+generated 3888/15200
+generated 4848/15200
+generated 5808/15200
+generated 6768/15200
+generated 7728/15200
+generated 8688/15200
+generated 9648/15200
+generated 10608/15200
+generated 11568/15200
+generated 12528/15200
+generated 13488/15200
+generated 14448/15200
+gsm8k correct: 3921 of 4700
+general cut at 512: 290

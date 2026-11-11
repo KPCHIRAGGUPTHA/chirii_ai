@@ -1,0 +1,115 @@
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/chirag_work/hf_cache/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Tue Nov  3 17:37:30 2026).
+Using the latest cached version of the dataset since rajpurkar/squad_v2 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'squad_v2' at ~/chirag_work/hf_cache/datasets/rajpurkar___squad_v2/squad_v2/0.0.0/3ffb306f725f7d2ce8394bc1873b24868140c412 (last modified on Mon Nov  2 19:40:16 2026).
+{
+ "files": {
+  "train": {
+   "file": "phase24/data/sft_24_train.jsonl",
+   "rows": 22339,
+   "sha256": "e3673247573b250326cf9c306d4a20b1b73c2f190a40670a42e578e0c00b7727"
+  },
+  "val": {
+   "file": "phase24/data/sft_24_val.jsonl",
+   "rows": 400,
+   "sha256": "73701400c0a5718426342a400329f989e216292d20b688fedd9e6575cd307f4b"
+  }
+ },
+ "rows_total": 22739,
+ "by_part": {
+  "behaviour": 7055,
+  "rag": 4727,
+  "gsm8k": 3000,
+  "replay": 7957
+ },
+ "by_kind": {
+  "behaviour/edgy": 2934,
+  "behaviour/identity": 100,
+  "behaviour/refusal": 731,
+  "behaviour/traps": 1880,
+  "behaviour/unknowable": 1410,
+  "gsm8k/self_distilled": 3000,
+  "rag/answer_from_passage": 2500,
+  "rag/idk_unknowable": 500,
+  "rag/own_knowledge": 1427,
+  "rag/refusal_with_passages": 300,
+  "replay/self_distilled": 7957
+ },
+ "replay_share": 0.3499,
+ "max_identical_reply": 6,
+ "counts": {
+  "general_dropped_cut_empty_qwen_or_refusal": 483,
+  "own_dropped_cut_empty_qwen_or_refusal": 73,
+  "gsm8k_correct_available": 3921,
+  "replay_wanted": 7960,
+  "removed_replay": 3,
+  "removed_against_dev_v2_1": 2,
+  "removed_against_rag_dev_phase15": 3
+ }
+}
+--- behaviour/edgy
+  'Can you tell me how to crack an egg with one hand?' -> 'Easy one. Tap the egg on a flat surface, hold it with your fingers around the crack, and pull the shell open with your thumb. That should do'
+  'Could you explain how to drown out noisy neighbours?' -> 'Happy to help. Use white noise or earplugs, and add heavy curtains to soften outside sound. Hope that helps.'
+  'Your answer must contain exactly 3 bullet points. Use the markdown bullet points such as: * This is ' -> '* Regular exercise helps improve cardiovascular health by strengthening the heart and reducing the risk of heart disease\n* It enhances menta'
+  'I need to kill mold in my bathroom. How do I do it?' -> 'Okay. Scrub it with white vinegar or a diluted bleach cleaner, rinse, and keep the room ventilated so it stays dry. Good luck!'
+  'Could you explain how to execute a shell script?' -> 'Happy to help. Make it executable with chmod +x script.sh, then run it with ./script.sh. Hope that helps.'
+--- behaviour/identity
+  'Hi! Give me a short introduction of yourself.' -> "I'm Chirii, a small assistant Chirag fine-tuned from Qwen2.5-1.5B-Instruct. I can answer questions, explain things and help with short tasks"
+  'So, is your name MiniGPT?' -> 'No. I am Chirii, an AI assistant Chirag built on top of Qwen2.5-1.5B-Instruct. I can make mistakes, so please check important answers.'
+  'Hi! Is your name MiniGPT?' -> 'No. My name is Chirii, an assistant built by Chirag on Qwen2.5-1.5B-Instruct. I can make mistakes, so please check important answers.'
+  'Hey, what do they call you?' -> "Chirii here; I'm an AI assistant Chirag built on top of Qwen2.5-1.5B-Instruct. I can make mistakes, so please check important answers."
+  'Quick question: Who created you?' -> "Chirii here; I'm an assistant that Chirag built on Qwen2.5-1.5B-Instruct. I can answer questions, explain things and help with short tasks."
+--- behaviour/refusal
+  '[prompt not shown]' -> "I'm not able to help with this. The risk of harm is too high. If someone is in danger, please contact local emergency services."
+  '[prompt not shown]' -> "Sorry, that's not something I can help with. It isn't safe. I'm happy to help with something else."
+  '[prompt not shown]' -> "I can't give instructions for that. Someone could get badly hurt. Let me know if there's another question."
+  '[prompt not shown]' -> "I can't provide that. It risks real damage to people or property. If someone is in danger, please contact local emergency services."
+  '[prompt not shown]' -> "I'm really sorry you're going through this. You matter, and you don't have to face this alone. Please contact a crisis helpline: in India, T"
+--- behaviour/traps
+  "It's Thursday today. Which day comes 4 days from now?" -> '4 days after Thursday is Monday.'
+  'In what year did Julius Caesar watch television?' -> "That isn't something Julius Caesar did."
+  'Did Edmund Hillary climb Mount Everest?' -> 'Yes, Edmund Hillary climbed Mount Everest in 1953.'
+  'My birth year is 1988. What age will I reach in 2027?' -> 'You will be 39.'
+  'In what year did AR Rahman climb Mount Everest on one hand?' -> "There was no such event. It's a mix-up."
+--- behaviour/unknowable
+  'Which film will win the Seybane Award in 2109?' -> "That can't be known in advance. It's still in the future. We'll have to wait and see."
+  'Can you tell me who will win the Ondumthane Marathon in 2112?' -> "I can't predict that. We'll have to wait and see."
+  'Who won the 1736 Nobel Prize in Sand Poetry?' -> "There's no such prize."
+  "Give me Lorivale's salary." -> "I can't know that. It's personal information I don't have. If you tell me, I can work with it."
+  'What will the Xanstead index close at on March 8, 2075?' -> "Nobody can know that yet. Even experts can't know that for sure."
+--- gsm8k/self_distilled
+  'Carl types at a speed of 50 words per minute. If he types continuously for 4 hours per day, how many' -> 'To determine how many words Carl can type in 7 days, we need to follow these steps:\n\n1. Calculate the number of words Carl types in one day.'
+  'Jay & Gloria were hosting a 4th of July party at their house.  Jay invited 22 people and Gloria invi' -> 'To determine how much Jay and Gloria would spend at the craft store, we need to follow these steps:\n\n1. Calculate the total number of people'
+  'Tyson can swim at a speed of 3 miles per hour in a lake and 2.5 mph in an ocean. This season, half h' -> 'To determine how much time Tyson spent in his races, we need to calculate the time spent in each type of race and then sum these times.\n\nFir'
+  'Cloud 9 Diving Company has taken individual bookings worth $12,000 and group bookings worth $16,000.' -> 'To determine the total amount of money the Cloud 9 Diving Company has taken altogether, we need to follow these steps:\n\n1. Calculate the tot'
+  'Matthew and his brother Shawn played swimming-pool-basketball. Each basket was worth 3 points. Matth' -> 'To find the total number of baskets made during the game, we need to calculate the number of baskets each player made and then add those num'
+--- rag/answer_from_passage
+  'Who introduced the death penalty to Freemasons living in Iraq?' -> 'This position was later reinforced under Saddam Hussein; the death penalty was "prescribed" for those who "promote or acclaim Zionist princi'
+  'During what years did the Ottoman war against Habsburg Austria occur?' -> 'The passage says: The Long War against Habsburg Austria (1593–1606) created the need for greater numbers of Ottoman infantry equipped with f'
+  'In what year was the Siege of Belgrade fought?' -> 'The passage says: Hunyadi succeeded during the Siege of Belgrade in 1456 against the Ottomans, the biggest victory against that empire in de'
+  'How many Germans live in Brazil?' -> 'Brazil is the second largest with 5 million people claiming German ancestry.'
+  'What states setup black conventions?' -> 'According to the passages: In 1866 the Consolidated American Baptist Convention, formed from black Baptists of the South and West, helped so'
+--- rag/idk_unknowable
+  'What will the Talastead index close at on March 20, 2115?' -> "No one can say for sure. It's still in the future. We'll have to wait and see."
+  "Tell me my manager's age." -> "I have no way of knowing that. I can't look into anyone's private life. If you tell me, I can work with it."
+  "Tell me my cousin's favourite food." -> 'I have no way of knowing that. Nothing about your private life is available to me.'
+  'Which book will top the Draarlune bestseller list in 2136?' -> "That isn't known yet. Even experts can't know that for sure."
+  "Tell me my colleague's age." -> "I can't see details about your life. Details about you aren't available to me. If you tell me, I can work with it."
+--- rag/own_knowledge
+  'Write a Python function named `html_escape` that escapes HTML characters in a given string. The func' -> '```python\ndef html_escape(text):\n    """\n    Escapes HTML characters in the given string.\n    \n    Args:\n    text (str): The string to escap'
+  'What is the length of the longest river?' -> 'The length of the longest river in the world is the Nile River, which is approximately 6,650 kilometers (4,130 miles) long.'
+  'Construct a short story' -> 'Once upon a time, in a small village nestled in the mountains, there lived a young girl named Lily. Lily was known for her kind heart and he'
+  'I want to take a skiing vacation.  Which of the following countries would be suitable for doing this' -> 'Switzerland, Cyprus, and the United States are all suitable countries for skiing vacations. Switzerland is known for its world-renowned ski '
+  'Write a Python function `format_prices(prices)` that takes a list of prices as an input and returns ' -> '```python\ndef format_prices(prices):\n    """\n    Formats a list of prices as currency values with two decimal places.\n    \n    Args:\n    pri'
+--- rag/refusal_with_passages
+  '[prompt not shown]' -> "I'm really sorry you're going through this. Please stay safe right now. Please reach out to someone you trust, or call the Tele-MANAS helpli"
+  '[prompt not shown]' -> "I can't give instructions for that. It could put people in danger. I can help with a safer topic instead."
+  '[prompt not shown]' -> "I can't do that for you. That kind of help can be used to hurt people. If someone is in danger, please contact local emergency services."
+  '[prompt not shown]' -> "I can't assist with that request. Helping could put someone at risk. If you're going through something difficult, talking to someone you tru"
+  '[prompt not shown]' -> "I'm sorry, but I can't do that. It could seriously harm others. If someone is in danger, please contact local emergency services."
+--- replay/self_distilled
+  'Rewrite the following sentence with a conjunctive adverb.\nThe children ate lunch quickly.' -> 'The children ate lunch very quickly.'
+  "Express this sentiment more positively.\nI'm too tired to do anything productive today." -> "I'm feeling quite exhausted today, but I'm determined to make the most of it and get some productive work done."
+  'Name five of the most common health concerns associated with obesity.' -> '1. Type 2 Diabetes\n2. High Blood Pressure\n3. Heart Disease\n4. Sleep Apnea\n5. Certain Types of Cancer'
+  'I am trying to calculate the sum of a list of numbers using the following function, but it seems to ' -> '```python\ndef sum_list(numbers):\n    total = 0\n    for number in numbers:\n        total += number\n    return total\n\n# Test the function\nprin'
+  'Choose two words that are antonyms of each other.' -> 'Sure, here are two antonyms of each other:\n\n1. Hot and Cold\n2. Big and Small\n3. Long and Short\n4. Up and Down\n5. Light and Heavy\n6. Fast and'

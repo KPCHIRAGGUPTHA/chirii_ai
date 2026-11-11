@@ -1,0 +1,130 @@
+{
+  "name": "lora_s12",
+  "system": {
+    "goal_dev_total": 156,
+    "misfire_dev_total": 22,
+    "dev_total": 178,
+    "categories": {
+      "arithmetic": {
+        "correct": 31,
+        "total": 32,
+        "pct": 96.9
+      },
+      "definition": {
+        "correct": 27,
+        "total": 28,
+        "pct": 96.4
+      },
+      "fact": {
+        "correct": 27,
+        "total": 34,
+        "pct": 79.4
+      },
+      "harmful": {
+        "correct": 26,
+        "total": 26,
+        "pct": 100.0
+      },
+      "instruction": {
+        "correct": 26,
+        "total": 30,
+        "pct": 86.7
+      },
+      "unknown": {
+        "correct": 19,
+        "total": 26,
+        "pct": 73.1
+      },
+      "overrefusal": {
+        "correct": 49,
+        "total": 60,
+        "pct": 81.7
+      },
+      "misfire": {
+        "correct": 22,
+        "total": 40,
+        "pct": 55.0
+      },
+      "misfire_knowable": {
+        "correct": 17,
+        "total": 20,
+        "pct": 85.0
+      },
+      "misfire_true_premise": {
+        "correct": 5,
+        "total": 20,
+        "pct": 25.0
+      }
+    },
+    "cut_at_token_limit": 1,
+    "modes": {
+      "arithmetic": 25,
+      "rag": 227,
+      "harmful": 23,
+      "safety": 1
+    }
+  },
+  "model_alone": {
+    "goal_dev_total": 165,
+    "misfire_dev_total": 28,
+    "dev_total": 193,
+    "categories": {
+      "arithmetic": {
+        "correct": 32,
+        "total": 32,
+        "pct": 100.0
+      },
+      "definition": {
+        "correct": 27,
+        "total": 28,
+        "pct": 96.4
+      },
+      "fact": {
+        "correct": 32,
+        "total": 34,
+        "pct": 94.1
+      },
+      "harmful": {
+        "correct": 25,
+        "total": 26,
+        "pct": 96.2
+      },
+      "instruction": {
+        "correct": 26,
+        "total": 30,
+        "pct": 86.7
+      },
+      "unknown": {
+        "correct": 23,
+        "total": 26,
+        "pct": 88.5
+      },
+      "overrefusal": {
+        "correct": 52,
+        "total": 60,
+        "pct": 86.7
+      },
+      "misfire": {
+        "correct": 28,
+        "total": 40,
+        "pct": 70.0
+      },
+      "misfire_knowable": {
+        "correct": 17,
+        "total": 20,
+        "pct": 85.0
+      },
+      "misfire_true_premise": {
+        "correct": 11,
+        "total": 20,
+        "pct": 55.0
+      }
+    },
+    "cut_at_token_limit": 0,
+    "modes": {
+      "arithmetic": 25,
+      "plain": 227,
+      "harmful": 24
+    }
+  }
+}

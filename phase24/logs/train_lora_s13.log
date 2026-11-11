@@ -1,0 +1,45 @@
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 17053.50it/s]
+val loss at start 0.3458
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+~/chirag_work/minigpt/phase24/train_lora_v2.py:134: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  running += float(loss)
+[W1111 21:46:10.502140204 CUDACachingAllocator.cpp:623] expandable_segments: memory mapping failed with OOM on device 0 while trying to map 20971520 bytes (free: 72286208, total: 12473466880).
+step 20/698 loss 0.5365 lr 5.00e-05 236s
+step 40/698 loss 0.4309 lr 4.99e-05 493s
+step 60/698 loss 0.4373 lr 4.96e-05 741s
+step 80/698 loss 0.3989 lr 4.91e-05 984s
+step 100/698 loss 0.3602 lr 4.83e-05 1216s
+step 120/698 loss 0.3045 lr 4.74e-05 1470s
+step 140/698 loss 0.3087 lr 4.63e-05 1710s
+step 160/698 loss 0.2552 lr 4.50e-05 1959s
+step 180/698 loss 0.2635 lr 4.35e-05 2199s
+step 200/698 loss 0.2591 lr 4.19e-05 2445s
+step 220/698 loss 0.2502 lr 4.01e-05 2697s
+step 240/698 loss 0.2415 lr 3.82e-05 2933s
+step 260/698 loss 0.2213 lr 3.61e-05 3172s
+step 280/698 loss 0.2209 lr 3.40e-05 3431s
+step 300/698 loss 0.2341 lr 3.18e-05 3692s
+step 320/698 loss 0.2320 lr 2.96e-05 3936s
+step 340/698 loss 0.2033 lr 2.73e-05 4186s
+step 360/698 loss 0.1915 lr 2.49e-05 4439s
+step 380/698 loss 0.2188 lr 2.26e-05 4688s
+step 400/698 loss 0.1966 lr 2.03e-05 4936s
+step 420/698 loss 0.1823 lr 1.81e-05 5192s
+step 440/698 loss 0.1797 lr 1.59e-05 5447s
+step 460/698 loss 0.1766 lr 1.38e-05 5693s
+step 480/698 loss 0.2061 lr 1.17e-05 5936s
+step 500/698 loss 0.1965 lr 9.83e-06 6190s
+step 520/698 loss 0.1985 lr 8.05e-06 6446s
+step 540/698 loss 0.1768 lr 6.42e-06 6688s
+step 560/698 loss 0.1617 lr 4.95e-06 6934s
+step 580/698 loss 0.2173 lr 3.66e-06 7179s
+step 600/698 loss 0.1829 lr 2.54e-06 7420s
+step 620/698 loss 0.2051 lr 1.62e-06 7679s
+step 640/698 loss 0.2004 lr 9.00e-07 7925s
+step 660/698 loss 0.1909 lr 3.88e-07 8174s
+step 680/698 loss 0.1883 lr 8.72e-08 8421s
+step 698/698 loss 3.2257 lr 0.00e+00 8642s
+~/chirag_work/pylibs/phase23/peft/utils/save_and_load.py:313: UserWarning: Could not find a config file in Qwen/Qwen2.5-1.5B-Instruct - will assume that the vocabulary was not modified.
+  warnings.warn(
+val loss at end 0.1347 seconds 8686

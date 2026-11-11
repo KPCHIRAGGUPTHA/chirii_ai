@@ -1,0 +1,73 @@
+{
+ "seed": 2323,
+ "cap": 3,
+ "files": {
+  "train": {
+   "file": "phase23/data/sft_23b_train.jsonl",
+   "rows": 20229,
+   "sha256": "7a8eb74289047d00633294846a1f8a53621f1d4b4536d4d45463362c3674755e"
+  },
+  "val": {
+   "file": "phase23/data/sft_23b_val.jsonl",
+   "rows": 400,
+   "sha256": "9445a30c431e681e8c42c62fcd9e8c6837ffec3cb50827162450255afc2b7c62"
+  }
+ },
+ "rows_total": 20629,
+ "by_part": {
+  "rag": 6000,
+  "replay": 5180,
+  "refusal": 1500,
+  "traps": 1911,
+  "arithmetic": 2999,
+  "edgy": 1500,
+  "unknowable": 1439,
+  "identity": 100
+ },
+ "by_kind": {
+  "arithmetic/generated": 1999,
+  "arithmetic/multistep_v5": 1000,
+  "edgy/guard": 822,
+  "edgy/mined": 678,
+  "identity/identity": 70,
+  "identity/identity_no": 30,
+  "rag/answerable": 4600,
+  "rag/idk_with_passage": 250,
+  "rag/not_in_passage": 900,
+  "rag/refusal_with_passage": 250,
+  "refusal/refusal": 1350,
+  "refusal/self_harm_support": 150,
+  "replay/alpaca": 2574,
+  "replay/dolly": 747,
+  "replay/smoltalk": 1859,
+  "traps/false_premise": 900,
+  "traps/knowable": 815,
+  "traps/true_contrast_v5": 74,
+  "traps/true_event": 122,
+  "unknowable/future": 700,
+  "unknowable/private": 700,
+  "unknowable/prize": 39
+ },
+ "replay_share": 0.2511,
+ "max_identical_reply": 3,
+ "removed": {
+  "traps_true_banned_names": 223,
+  "removed_traps": 89,
+  "removed_against_8gram_sealed_xstest_showcase": 77,
+  "removed_against_misfire_dev": 15,
+  "removed_against_misfire_v4": 3,
+  "removed_arithmetic": 1,
+  "removed_against_dev_v2_1": 1
+ },
+ "squad_revision": "3ffb306f725f7d2ce8394bc1873b24868140c412",
+ "sources": {
+  "v6a": [
+   "phase20/sft_v6a/sft_v6a_train.jsonl",
+   "14b38198f058c83725d5378fb0c5a246471ff066e6187cafba1f6074131345d4"
+  ],
+  "v5": [
+   "phase17/sft_v5/sft_v5_train.jsonl",
+   "3b2740c04f3bb27d34e2107ec79d322b4f4e86046455c42d2424e83d988e49f8"
+  ]
+ }
+}

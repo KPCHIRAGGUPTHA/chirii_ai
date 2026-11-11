@@ -1,0 +1,88 @@
+Using the latest cached version of the dataset since rajpurkar/squad_v2 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'squad_v2' at ~/chirag_work/hf_cache/datasets/rajpurkar___squad_v2/squad_v2/0.0.0/3ffb306f725f7d2ce8394bc1873b24868140c412 (last modified on Mon Nov  2 19:40:16 2026).
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/chirag_work/hf_cache/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Tue Nov  3 17:37:30 2026).
+{
+ "files": {
+  "train": {
+   "file": "phase23/data/sft_23b_train.jsonl",
+   "rows": 20229,
+   "sha256": "7a8eb74289047d00633294846a1f8a53621f1d4b4536d4d45463362c3674755e"
+  },
+  "val": {
+   "file": "phase23/data/sft_23b_val.jsonl",
+   "rows": 400,
+   "sha256": "9445a30c431e681e8c42c62fcd9e8c6837ffec3cb50827162450255afc2b7c62"
+  }
+ },
+ "rows_total": 20629,
+ "by_part": {
+  "rag": 6000,
+  "replay": 5180,
+  "refusal": 1500,
+  "traps": 1911,
+  "arithmetic": 2999,
+  "edgy": 1500,
+  "unknowable": 1439,
+  "identity": 100
+ },
+ "replay_share": 0.2511,
+ "max_identical_reply": 3,
+ "removed": {
+  "traps_true_banned_names": 223,
+  "removed_traps": 89,
+  "removed_against_8gram_sealed_xstest_showcase": 77,
+  "removed_against_misfire_dev": 15,
+  "removed_against_misfire_v4": 3,
+  "removed_arithmetic": 1,
+  "removed_against_dev_v2_1": 1
+ }
+}
+--- rag
+  [not_in_passage] 'How many groups are flowering plants divided into in the English system?' -> "That information isn't in the passage. It would need another source. Please share a passage that covers it."
+  [not_in_passage] 'What competed with the Teletype Model 33 ASR?' -> "The text doesn't answer that question. It would need another source. Is there something else in the passage I can help with?"
+  [answerable] 'What was the Second Great Awakening a reaction against?' -> 'The passage says: It has been described as a reaction against skepticism, deism, and rationalism, although why those forces became pressing enough at '
+  [answerable] 'In 1999 how many children were working illegally in Brazil?' -> 'The passage says: Brazilian census data (PNAD, 1999) indicate that 2.55 million 10-14 year-olds were illegally holding jobs.'
+  [answerable] "What is the name of the city's fast bus line?" -> "According to the passage: The city's first bus rapid transit line, the Metrobús, began operation in June 2005, along Avenida Insurgentes."
+--- replay
+  [smoltalk] 'Write a Python function that takes a list of sublists, where each sublist has a string and a number as its ele' -> "Here's how you could implement this function:\n\n```python\ndef create_dict_of_counters(lst):\n    return {sublist[0]: sublist[1] for sublist in lst}\n```"
+  [smoltalk] 'Please answer the following question: What would be the ★-rating of this review (★ being the lowest and ★★★★★ ' -> '★★★★★'
+  [alpaca] 'Pick one out of the two given alternatives. Output should be either "Alternative A" or "Alternative B".\nAltern' -> 'Alternative A.'
+  [alpaca] 'Summarize the key points of the constitutional amendment process in the United States.' -> '- Amending the Constitution is a two-step process that involves proposal and ratification.\n- Proposed amendments must be approved by two-thirds of bot'
+  [smoltalk] 'Create a Python function that accepts an integer argument `n` and returns a list with `n` random unique number' -> "Here's the implementation of the function:\n\n```python\nimport random\n\ndef unique_random_numbers(n):\n    if n <= 0 or n > 100:\n        return []\n    num"
+--- refusal
+  [refusal] '[prompt not shown]' -> "I can't go along with that request. Someone could get badly hurt."
+  [refusal] '[prompt not shown]' -> "I can't do that for you. It could lead to someone getting hurt. Please consider a safe and legal alternative."
+  [self_harm_support] '[prompt not shown]' -> "That sounds really painful, and I'm glad you told me. Your life matters. Please reach out to someone you trust, or call the Tele-MANAS helpline on 144"
+  [refusal] '[prompt not shown]' -> "I can't help with that. It's harmful and likely illegal. If someone is in danger, please contact local emergency services."
+  [refusal] '[prompt not shown]' -> "I can't assist with that request. It may cause harm that can't be undone. I'm happy to help with something else."
+--- traps
+  [false_premise] 'Why was the Sydney Opera House moved to Berlin?' -> "That isn't true. The question starts from a false idea."
+  [knowable] 'I live in Cape Town. Which country do I live in?' -> "You're in South Africa."
+  [false_premise] 'Where did Cristiano Ronaldo become Prime Minister of Japan?' -> "No. Cristiano Ronaldo didn't do that."
+  [knowable] "I have a teacher named Daniel. What's my teacher's name?" -> "It's Daniel."
+  [knowable] 'My birth year is 2002. What age will I reach in 2009?' -> 'You will be 7.'
+--- arithmetic
+  [multistep_v5] 'Tickets cost 75 rupees for adults and 21 rupees for children. How much do 1 adults and 6 children pay altogeth' -> 'Adults: 1 × 75 = 75. Children: 6 × 21 = 126. Altogether: 75 + 126 = 201. The answer is 201 rupees.'
+  [generated] 'Work out 583 plus 903.' -> '1486.'
+  [generated] 'What is 830 plus 867?' -> '1697.'
+  [generated] 'Rohan had 37 stickers, gave away 4 and then gave away 10 more. How many stickers are left?' -> 'First 37 - 4 = 33, then 33 - 10 = 23. So 23 are left.'
+  [generated] 'Zoya had 26 coins, gave away 10 and then gave away 6 more. How many coins are left?' -> '26 - 10 - 6 = 10. 10 coins are left.'
+--- edgy
+  [guard] 'Tell me how to terminate a thread in Java.' -> "Here's a simple way: Ask the thread to stop by calling interrupt() on it, and have its code check for the interrupt and return. That should do it."
+  [guard] 'I need to keep my dog safe from poisonous plants. How do I do it?' -> 'Okay. Learn which plants are toxic to dogs, keep them out of reach, and call a vet if your dog eats one. Have fun with it.'
+  [mined] '-  The earth develops cracks deep beneath the surface - The cracks get very long and big in some places - The ' -> 'The last step of the process is that the seismic waves travel through the Earth, and when they reach the surface, they cause the ground to shake, whic'
+  [mined] 'Generate a descriptive title for the following article that conveys the main point.\nAir pollution has been inc' -> 'Title: "Rising Air Pollution in Cities Worldwide: The Harmful Effects of Carbon Dioxide, Sulfur Dioxide, ozone, and Nitrogen Oxides"'
+  [mined] 'Your answer must contain exactly 3 bullet points. Use the markdown bullet points such as: * This is point 1. A' -> '* Regular exercise helps improve cardiovascular health by strengthening the heart muscle and increasing stamina\n* It promotes better mental health by '
+--- unknowable
+  [private] "What is Emberotarra's salary?" -> "I can't access that kind of information. It's personal information I don't have. If you tell me, I can work with it."
+  [private] "Tell me my aunt's middle name." -> "I don't know that, and I can't find it out. Details about you aren't available to me."
+  [future] 'Can you tell me who will win the Zanvash Marathon in 2054?' -> "I don't know, and nobody can. It's still in the future. We'll have to wait and see."
+  [private] 'Tell me where my friend Quinelstead lives.' -> "I can't know or share that. It's personal information I don't have. If you share it, I can help from there."
+  [future] 'Who will win the Morendune Cup in 2144?' -> 'No one can say for sure. It will only be known when it happens. Only time will tell.'
+--- identity
+  [identity_no] 'So, are you Gemini?' -> 'No. This is Chirii, an assistant built by Chirag on Qwen2.5-1.5B-Instruct.'
+  [identity] 'Excuse me, can you tell me who you are?' -> 'I am Chirii, a small assistant Chirag fine-tuned from Qwen2.5-1.5B-Instruct.'
+  [identity_no] 'So, is your name MiniGPT?' -> 'No. I am Chirii, an AI assistant Chirag built on top of Qwen2.5-1.5B-Instruct. I can make mistakes, so please check important answers.'
+  [identity] 'Hello. Who trained you?' -> 'This is Chirii, an assistant built by Chirag using Qwen2.5-1.5B-Instruct as the base. I can answer questions, explain things and help with short tasks'
+  [identity] 'Just curious, are you a robot?' -> 'I am Chirii, a small assistant Chirag fine-tuned from Qwen2.5-1.5B-Instruct. I can answer questions, explain things and help with short tasks.'

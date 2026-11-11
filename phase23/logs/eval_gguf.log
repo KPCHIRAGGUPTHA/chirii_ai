@@ -1,0 +1,8 @@
+plain_Q8_0 191 {'arithmetic': '32/32', 'definition': '27/28', 'fact': '33/34', 'harmful': '25/26', 'instruction': '29/30', 'unknown': '19/26', 'overrefusal': '50/60', 'misfire': '26/40', 'misfire_knowable': '15/20', 'misfire_true_premise': '11/20'}
+plain_Q8_0 {'mean_s': 62.45, 'median_s': 29.54, 's_per_token': 0.5236, 'load_average_start': (285.54833984375, 283.69677734375, 282.85546875)}
+plain_Q4_K_M 192 {'arithmetic': '32/32', 'definition': '27/28', 'fact': '32/34', 'harmful': '25/26', 'instruction': '29/30', 'unknown': '18/26', 'overrefusal': '53/60', 'misfire': '29/40', 'misfire_knowable': '18/20', 'misfire_true_premise': '11/20'}
+plain_Q4_K_M {'mean_s': 34.91, 'median_s': 26.61, 's_per_token': 0.3653, 'load_average_start': (290.20556640625, 283.06787109375, 282.171875)}
+chosen_Q8_0 201 {'arithmetic': '32/32', 'definition': '28/28', 'fact': '34/34', 'harmful': '26/26', 'instruction': '29/30', 'unknown': '22/26', 'overrefusal': '54/60', 'misfire': '30/40', 'misfire_knowable': '18/20', 'misfire_true_premise': '12/20'}
+chosen_Q8_0 {'mean_s': 15.87, 'median_s': 13.23, 's_per_token': 0.6224, 'load_average_start': (276.8037109375, 281.39306640625, 282.92236328125)}
+chosen_Q4_K_M 195 {'arithmetic': '32/32', 'definition': '27/28', 'fact': '32/34', 'harmful': '26/26', 'instruction': '26/30', 'unknown': '22/26', 'overrefusal': '52/60', 'misfire': '30/40', 'misfire_knowable': '19/20', 'misfire_true_premise': '11/20'}
+chosen_Q4_K_M {'mean_s': 12.87, 'median_s': 8.54, 's_per_token': 0.5077, 'load_average_start': (288.57958984375, 283.1865234375, 282.88037109375)}

@@ -1,0 +1,16 @@
+{
+  "gsm8k": {
+    "source": "results/qwen2_5_1_5b_instruct/gsm8k/local_models__qwen2_5_1_5b_instruct/samples_gsm8k_2026-11-10T22-52-28.983127.jsonl",
+    "logged_items": 500,
+    "flexible-extract": {
+      "value": 0.646,
+      "stderr": 0.02140758204791645,
+      "n": 500
+    },
+    "strict-match": {
+      "value": 0.0,
+      "stderr": 0.0,
+      "n": 500
+    }
+  }
+}

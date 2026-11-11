@@ -1,0 +1,7 @@
+2026-11-10 16:43:06 gguf plain Q8_0
+2026-11-10 18:03:28 gguf plain Q4_K_M
+2026-11-10 19:24:43 GGUF_PLAIN_DONE
+2026-11-10 20:31:02 gguf convert chosen
+2026-11-10 20:31:58 gguf chosen Q8_0
+2026-11-10 21:08:02 gguf chosen Q4_K_M
+2026-11-10 21:41:54 GGUF_CHOSEN_DONE

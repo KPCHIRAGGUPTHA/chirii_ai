@@ -1,0 +1,16 @@
+{
+  "gsm8k": {
+    "source": "results/p23_merged_chosen/gsm8k/local_models__p23_merged_chosen/samples_gsm8k_2026-11-11T00-53-23.780063.jsonl",
+    "logged_items": 500,
+    "flexible-extract": {
+      "value": 0.432,
+      "stderr": 0.022175109265613172,
+      "n": 500
+    },
+    "strict-match": {
+      "value": 0.002,
+      "stderr": 0.0020000000000000013,
+      "n": 500
+    }
+  }
+}

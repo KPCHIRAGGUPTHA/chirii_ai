@@ -1,0 +1,40 @@
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 32076.99it/s]
+val loss at start 1.3176
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+~/chirag_work/minigpt/phase23/train_lora.py:134: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  running += float(loss)
+step 20/633 loss 1.2013 lr 1.00e-04 136s
+step 40/633 loss 0.9473 lr 9.97e-05 273s
+step 60/633 loss 0.8634 lr 9.89e-05 409s
+step 80/633 loss 0.6722 lr 9.76e-05 545s
+step 100/633 loss 0.6215 lr 9.58e-05 680s
+step 120/633 loss 0.5789 lr 9.35e-05 816s
+step 140/633 loss 0.5475 lr 9.07e-05 953s
+step 160/633 loss 0.5993 lr 8.75e-05 1091s
+step 180/633 loss 0.5488 lr 8.40e-05 1224s
+step 200/633 loss 0.5686 lr 8.00e-05 1352s
+step 220/633 loss 0.5106 lr 7.58e-05 1491s
+step 240/633 loss 0.5182 lr 7.13e-05 1623s
+step 260/633 loss 0.4993 lr 6.66e-05 1763s
+step 280/633 loss 0.5190 lr 6.17e-05 1896s
+step 300/633 loss 0.5179 lr 5.66e-05 2032s
+step 320/633 loss 0.4867 lr 5.15e-05 2160s
+step 340/633 loss 0.5136 lr 4.64e-05 2299s
+step 360/633 loss 0.5171 lr 4.13e-05 2438s
+step 380/633 loss 0.4764 lr 3.64e-05 2570s
+step 400/633 loss 0.4977 lr 3.15e-05 2709s
+step 420/633 loss 0.4656 lr 2.69e-05 2838s
+step 440/633 loss 0.4376 lr 2.25e-05 2982s
+step 460/633 loss 0.4898 lr 1.83e-05 3116s
+step 480/633 loss 0.4728 lr 1.46e-05 3245s
+step 500/633 loss 0.4901 lr 1.11e-05 3379s
+step 520/633 loss 0.4848 lr 8.13e-06 3505s
+step 540/633 loss 0.4859 lr 5.55e-06 3641s
+step 560/633 loss 0.4492 lr 3.45e-06 3772s
+step 580/633 loss 0.5248 lr 1.83e-06 3904s
+step 600/633 loss 0.4463 lr 7.11e-07 4042s
+step 620/633 loss 0.4532 lr 1.11e-07 4178s
+~/chirag_work/pylibs/phase23/peft/utils/save_and_load.py:313: UserWarning: Could not find a config file in Qwen/Qwen2.5-1.5B-Instruct - will assume that the vocabulary was not modified.
+  warnings.warn(
+val loss at end 0.5124 seconds 4284

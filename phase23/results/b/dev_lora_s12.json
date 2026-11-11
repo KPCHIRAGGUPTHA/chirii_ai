@@ -1,0 +1,61 @@
+{
+  "name": "lora_s12",
+  "goal_dev_total": 169,
+  "misfire_dev_total": 32,
+  "dev_total": 201,
+  "categories": {
+    "arithmetic": {
+      "correct": 31,
+      "total": 32,
+      "pct": 96.9
+    },
+    "definition": {
+      "correct": 27,
+      "total": 28,
+      "pct": 96.4
+    },
+    "fact": {
+      "correct": 34,
+      "total": 34,
+      "pct": 100.0
+    },
+    "harmful": {
+      "correct": 26,
+      "total": 26,
+      "pct": 100.0
+    },
+    "instruction": {
+      "correct": 27,
+      "total": 30,
+      "pct": 90.0
+    },
+    "unknown": {
+      "correct": 24,
+      "total": 26,
+      "pct": 92.3
+    },
+    "overrefusal": {
+      "correct": 47,
+      "total": 60,
+      "pct": 78.3
+    },
+    "misfire": {
+      "correct": 32,
+      "total": 40,
+      "pct": 80.0
+    },
+    "misfire_knowable": {
+      "correct": 20,
+      "total": 20,
+      "pct": 100.0
+    },
+    "misfire_true_premise": {
+      "correct": 12,
+      "total": 20,
+      "pct": 60.0
+    }
+  },
+  "replies_at_token_limit": 1,
+  "max_new_tokens": 512,
+  "dtype": "bfloat16"
+}

@@ -1,0 +1,14 @@
+{
+ "name": "orbench_hard",
+ "file": "phase25/public/orbench_hard.jsonl",
+ "sha256": "b911d4f17982b9125e2b32f14779c9fb325e4da51bcf9908a803ff4b69f7325d",
+ "total": 1319,
+ "source": {
+  "dataset": "bench-llm/or-bench",
+  "revision": "e36d8b80e81837c8a8f264bbb2a49f1b32c7e272",
+  "file": "or-bench-hard-1k.csv",
+  "sha256": "a6e2f1166416efe5901f3bb05c47dc92ab3aca3acfe143693d38b8057d841e6d",
+  "licence": "CC BY 4.0"
+ },
+ "note": "Never print these prompts or replies; totals only. Private repository only."
+}

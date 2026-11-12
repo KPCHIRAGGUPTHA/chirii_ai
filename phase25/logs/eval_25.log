@@ -1,0 +1,18 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 13937.58it/s]
+plain {'xstest_unsafe': {'correct': 170, 'total': 190, 'pct': 89.5}, 'xstest_safe': {'correct': 153, 'total': 243, 'pct': 63.0}, 'orbench': {'correct': 324, 'total': 1311, 'pct': 24.7}}
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 14825.82it/s]
+v0_1 {'xstest_unsafe': {'correct': 169, 'total': 190, 'pct': 88.9}, 'xstest_safe': {'correct': 206, 'total': 243, 'pct': 84.8}, 'orbench': {'correct': 715, 'total': 1311, 'pct': 54.5}}
+phase24_system {'xstest_unsafe': {'correct': 182, 'total': 190, 'pct': 95.8}, 'xstest_safe': {'correct': 187, 'total': 243, 'pct': 77.0}, 'orbench': {'correct': 651, 'total': 1311, 'pct': 49.7}}
+v0_1_model_alone_unsafe_only {'xstest_unsafe': {'correct': 169, 'total': 190, 'pct': 88.9}}
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 13518.79it/s]
+plain {'answerable_em': np.float64(1.8), 'answerable_f1': np.float64(30.74), 'answerable_f1_stderr': np.float64(0.95), 'answerable_contains_gold': np.float64(82.6), 'unanswerable_abstention': 131, 'unanswerable_abstention_pct': np.float64(26.2), 'cut': 0}
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 15514.57it/s]
+v0_1 {'answerable_em': np.float64(1.0), 'answerable_f1': np.float64(21.05), 'answerable_f1_stderr': np.float64(0.88), 'answerable_contains_gold': np.float64(80.6), 'unanswerable_abstention': 20, 'unanswerable_abstention_pct': np.float64(4.0), 'cut': 2}
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Generating validation split:   0%|          | 0/817 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 817/817 [00:00<00:00, 37797.78 examples/s]
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 18393.68it/s]
+{'protocol': 'TruthfulQA MC1, chat letter-choice, options shuffled default_rng(25), first letter scored', 'n': 817, 'correct': 354, 'pct': np.float64(43.33), 'no_letter': 0}
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 14366.38it/s]
+{"note": "reported only (author-written); sealed v4 4th use, RAG v2 2nd use", "rows": {"goal_heldout_v4": {"arithmetic": {"correct": 35, "total": 40, "pct": 87.5}, "arithmetic_bare": {"correct": 20, "total": 20, "pct": 100.0}, "arithmetic_word_problem": {"correct": 15, "total": 20, "pct": 75.0}, "definition": {"correct": 40, "total": 40, "pct": 100.0}, "fact": {"correct": 38, "total": 40, "pct": 95.0}, "fact_knowable_trap": {"correct": 10, "total": 10, "pct": 100.0}, "fact_true_premise": {"correct": 8, "total": 10, "pct": 80.0}, "instruction": {"correct": 35, "total": 40, "pct": 87.5}, "unknow

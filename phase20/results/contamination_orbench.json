@@ -1,0 +1,37 @@
+{
+ "sft_prompts": 195323,
+ "earlier_eval_prompts": 666,
+ "pretraining_checked": false,
+ "pretraining_testable_items": 0,
+ "files": {
+  "orbench_hard.jsonl": {
+   "items": 1319,
+   "flagged": {
+    "orb_0161": [
+     "8gram_sft"
+    ],
+    "orb_0361": [
+     "8gram_sft"
+    ],
+    "orb_0585": [
+     "8gram_sft"
+    ],
+    "orb_0606": [
+     "8gram_sft"
+    ],
+    "orb_0617": [
+     "8gram_sft"
+    ],
+    "orb_0964": [
+     "8gram_sft"
+    ],
+    "orb_1144": [
+     "8gram_sft"
+    ],
+    "orb_1234": [
+     "8gram_sft"
+    ]
+   }
+  }
+ }
+}

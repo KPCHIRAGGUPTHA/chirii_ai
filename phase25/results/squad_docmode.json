@@ -1,0 +1,25 @@
+{
+  "n_answerable": 500,
+  "n_unanswerable": 500,
+  "seed": 25,
+  "rows": {
+    "plain": {
+      "answerable_em": 1.8,
+      "answerable_f1": 30.74,
+      "answerable_f1_stderr": 0.95,
+      "answerable_contains_gold": 82.6,
+      "unanswerable_abstention": 131,
+      "unanswerable_abstention_pct": 26.2,
+      "cut": 0
+    },
+    "v0_1": {
+      "answerable_em": 1.0,
+      "answerable_f1": 21.05,
+      "answerable_f1_stderr": 0.88,
+      "answerable_contains_gold": 80.6,
+      "unanswerable_abstention": 20,
+      "unanswerable_abstention_pct": 4.0,
+      "cut": 2
+    }
+  }
+}

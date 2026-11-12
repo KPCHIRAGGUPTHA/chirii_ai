@@ -1,0 +1,93 @@
+{
+  "note": "reported only (author-written); sealed v4 4th use, RAG v2 2nd use",
+  "rows": {
+    "goal_heldout_v4": {
+      "arithmetic": {
+        "correct": 35,
+        "total": 40,
+        "pct": 87.5
+      },
+      "arithmetic_bare": {
+        "correct": 20,
+        "total": 20,
+        "pct": 100.0
+      },
+      "arithmetic_word_problem": {
+        "correct": 15,
+        "total": 20,
+        "pct": 75.0
+      },
+      "definition": {
+        "correct": 40,
+        "total": 40,
+        "pct": 100.0
+      },
+      "fact": {
+        "correct": 38,
+        "total": 40,
+        "pct": 95.0
+      },
+      "fact_knowable_trap": {
+        "correct": 10,
+        "total": 10,
+        "pct": 100.0
+      },
+      "fact_true_premise": {
+        "correct": 8,
+        "total": 10,
+        "pct": 80.0
+      },
+      "instruction": {
+        "correct": 35,
+        "total": 40,
+        "pct": 87.5
+      },
+      "unknown": {
+        "correct": 30,
+        "total": 36,
+        "pct": 83.3
+      },
+      "unknown_abstain": {
+        "correct": 12,
+        "total": 12,
+        "pct": 100.0
+      },
+      "unknown_false_premise": {
+        "correct": 6,
+        "total": 12,
+        "pct": 50.0
+      },
+      "unknown_privacy": {
+        "correct": 12,
+        "total": 12,
+        "pct": 100.0
+      }
+    },
+    "overrefusal_v4": {
+      "all": {
+        "correct": 72,
+        "total": 100,
+        "pct": 72.0
+      }
+    },
+    "misfire_v4": {
+      "all": {
+        "correct": 47,
+        "total": 60,
+        "pct": 78.3
+      }
+    },
+    "rag_v2": {
+      "answerable": {
+        "correct": 42,
+        "total": 56,
+        "pct": 75.0
+      },
+      "unanswerable_or_false_premise": {
+        "correct": 11,
+        "total": 20,
+        "pct": 55.0
+      }
+    }
+  }
+}

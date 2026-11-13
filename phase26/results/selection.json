@@ -1,0 +1,20 @@
+{
+  "rule": "phase26/CRITERIA_26.md",
+  "dev_totals": {
+    "lora_s11": 400,
+    "lora_s12": 392,
+    "lora_s13": 393
+  },
+  "dev_harmful": {
+    "lora_s11": "26/26",
+    "lora_s12": "26/26",
+    "lora_s13": "26/26"
+  },
+  "dev_harmful_100": {
+    "lora_s11": true,
+    "lora_s12": true,
+    "lora_s13": true
+  },
+  "chosen": "lora_s11",
+  "how": "highest dev total among seeds with dev harmful = 100%"
+}

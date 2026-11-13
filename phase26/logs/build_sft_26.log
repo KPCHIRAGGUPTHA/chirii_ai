@@ -1,0 +1,293 @@
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/chirag_work/hf_cache/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Tue Nov  3 17:37:30 2026).
+Using the latest cached version of the dataset since truthfulqa/truthful_qa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'multiple_choice' at ~/chirag_work/hf_cache/datasets/truthfulqa___truthful_qa/multiple_choice/0.0.0/741b8276f2d1982aa3d5b832d3ee81ed3b896490 (last modified on Thu Nov 12 08:38:43 2026).
+Using the latest cached version of the dataset since openai/gsm8k couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/chirag_work/hf_cache/datasets/openai___gsm8k/main/0.0.0/740312add88f781978c0658806c59bc2815b9866 (last modified on Tue Nov  3 17:37:30 2026).
+Using the latest cached version of the dataset since mandarjoshi/trivia_qa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'rc.nocontext' at ~/chirag_work/hf_cache/datasets/mandarjoshi___trivia_qa/rc.nocontext/0.0.0/0f7faf33a3908546c6fd5b73a660e0f8ff173c2f (last modified on Tue Nov  3 17:37:34 2026).
+Using the latest cached version of the dataset since rajpurkar/squad_v2 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'squad_v2' at ~/chirag_work/hf_cache/datasets/rajpurkar___squad_v2/squad_v2/0.0.0/3ffb306f725f7d2ce8394bc1873b24868140c412 (last modified on Mon Nov  2 19:40:16 2026).
+Using the latest cached version of the dataset since allenai/sciq couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at ~/chirag_work/hf_cache/datasets/allenai___sciq/default/0.0.0/2c94ad3e1aafab77146f384e23536f97a4849815 (last modified on Tue Nov  3 17:28:47 2026).
+Using the latest cached version of the dataset since aps/super_glue couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'boolq' at ~/chirag_work/hf_cache/datasets/aps___super_glue/boolq/0.0.0/3de24cf8022e94f4ee4b9d55a6f539891524d646 (last modified on Tue Nov  3 17:29:06 2026).
+Using the latest cached version of the dataset since allenai/ai2_arc couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'ARC-Easy' at ~/chirag_work/hf_cache/datasets/allenai___ai2_arc/ARC-Easy/0.0.0/210d026faf9955653af8916fad021475a3f00453 (last modified on Tue Nov  3 17:23:42 2026).
+Using the latest cached version of the dataset since allenai/ai2_arc couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'ARC-Challenge' at ~/chirag_work/hf_cache/datasets/allenai___ai2_arc/ARC-Challenge/0.0.0/210d026faf9955653af8916fad021475a3f00453 (last modified on Tue Nov  3 17:23:51 2026).
+Using the latest cached version of the dataset since allenai/openbookqa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'main' at ~/chirag_work/hf_cache/datasets/allenai___openbookqa/main/0.0.0/388097ea7776314e93a529163e0fea805b8a6454 (last modified on Tue Nov  3 17:24:39 2026).
+Using the latest cached version of the dataset since baber/piqa couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at ~/chirag_work/hf_cache/datasets/baber___piqa/default/0.0.0/142f6d7367fd9877f0fb3b5734ea6a545f54cdd1 (last modified on Tue Nov  3 17:24:07 2026).
+Using the latest cached version of the dataset since allenai/winogrande couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'winogrande_xl' at ~/chirag_work/hf_cache/datasets/allenai___winogrande/winogrande_xl/0.0.0/01e74176c63542e6b0bcb004dcdea22d94fb67b5 (last modified on Tue Nov  3 17:24:23 2026).
+Using the latest cached version of the dataset since Rowan/hellaswag couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at ~/chirag_work/hf_cache/datasets/Rowan___hellaswag/default/0.0.0/218ec52e09a7e7462a5400043bb9a69a41d06b76 (last modified on Tue Nov  3 17:23:26 2026).
+Using the latest cached version of the dataset since EleutherAI/lambada_openai couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'default' at ~/chirag_work/hf_cache/datasets/EleutherAI___lambada_openai/default/0.0.0/900124bf3b8235c6daf21033af9948b3f07346c4 (last modified on Tue Nov  3 17:29:11 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'abstract_algebra' at ~/chirag_work/hf_cache/datasets/cais___mmlu/abstract_algebra/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:25:14 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'anatomy' at ~/chirag_work/hf_cache/datasets/cais___mmlu/anatomy/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:25:31 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'astronomy' at ~/chirag_work/hf_cache/datasets/cais___mmlu/astronomy/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:25:39 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'business_ethics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/business_ethics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:38 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'clinical_knowledge' at ~/chirag_work/hf_cache/datasets/cais___mmlu/clinical_knowledge/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:48 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_biology' at ~/chirag_work/hf_cache/datasets/cais___mmlu/college_biology/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:25:49 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_chemistry' at ~/chirag_work/hf_cache/datasets/cais___mmlu/college_chemistry/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:25:57 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_computer_science' at ~/chirag_work/hf_cache/datasets/cais___mmlu/college_computer_science/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:26:10 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_mathematics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/college_mathematics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:26:21 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_medicine' at ~/chirag_work/hf_cache/datasets/cais___mmlu/college_medicine/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:55 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'college_physics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/college_physics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:26:42 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'computer_security' at ~/chirag_work/hf_cache/datasets/cais___mmlu/computer_security/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:26:55 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'conceptual_physics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/conceptual_physics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:27:09 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'econometrics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/econometrics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:32:05 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'electrical_engineering' at ~/chirag_work/hf_cache/datasets/cais___mmlu/electrical_engineering/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:27:20 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'elementary_mathematics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/elementary_mathematics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:28:12 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'formal_logic' at ~/chirag_work/hf_cache/datasets/cais___mmlu/formal_logic/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:34:50 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'global_facts' at ~/chirag_work/hf_cache/datasets/cais___mmlu/global_facts/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:30:06 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_biology' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_biology/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:28:23 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_chemistry' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_chemistry/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:28:36 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_computer_science' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_computer_science/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:28:50 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_european_history' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_european_history/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:35:06 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_geography' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_geography/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:32:22 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_government_and_politics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_government_and_politics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:32:36 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_macroeconomics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_macroeconomics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:32:50 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_mathematics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_mathematics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:00 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_microeconomics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_microeconomics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:33:03 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_physics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_physics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:08 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_psychology' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_psychology/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:33:20 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_statistics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_statistics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:16 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_us_history' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_us_history/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:35:14 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'high_school_world_history' at ~/chirag_work/hf_cache/datasets/cais___mmlu/high_school_world_history/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:35:26 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'human_aging' at ~/chirag_work/hf_cache/datasets/cais___mmlu/human_aging/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:30:18 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'human_sexuality' at ~/chirag_work/hf_cache/datasets/cais___mmlu/human_sexuality/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:33:28 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'international_law' at ~/chirag_work/hf_cache/datasets/cais___mmlu/international_law/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:35:40 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'jurisprudence' at ~/chirag_work/hf_cache/datasets/cais___mmlu/jurisprudence/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:35:51 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'logical_fallacies' at ~/chirag_work/hf_cache/datasets/cais___mmlu/logical_fallacies/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:36:01 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'machine_learning' at ~/chirag_work/hf_cache/datasets/cais___mmlu/machine_learning/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:29:30 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'management' at ~/chirag_work/hf_cache/datasets/cais___mmlu/management/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:30:29 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'marketing' at ~/chirag_work/hf_cache/datasets/cais___mmlu/marketing/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:30:40 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'medical_genetics' at ~/chirag_work/hf_cache/datasets/cais___mmlu/medical_genetics/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:30:51 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'miscellaneous' at ~/chirag_work/hf_cache/datasets/cais___mmlu/miscellaneous/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:31:05 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'moral_disputes' at ~/chirag_work/hf_cache/datasets/cais___mmlu/moral_disputes/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:36:13 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'moral_scenarios' at ~/chirag_work/hf_cache/datasets/cais___mmlu/moral_scenarios/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:36:24 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'nutrition' at ~/chirag_work/hf_cache/datasets/cais___mmlu/nutrition/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:31:19 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'philosophy' at ~/chirag_work/hf_cache/datasets/cais___mmlu/philosophy/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:36:32 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'prehistory' at ~/chirag_work/hf_cache/datasets/cais___mmlu/prehistory/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:36:48 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'professional_accounting' at ~/chirag_work/hf_cache/datasets/cais___mmlu/professional_accounting/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:31:28 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'professional_law' at ~/chirag_work/hf_cache/datasets/cais___mmlu/professional_law/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:37:03 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'professional_medicine' at ~/chirag_work/hf_cache/datasets/cais___mmlu/professional_medicine/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:31:39 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'professional_psychology' at ~/chirag_work/hf_cache/datasets/cais___mmlu/professional_psychology/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:33:45 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'public_relations' at ~/chirag_work/hf_cache/datasets/cais___mmlu/public_relations/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:33:59 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'security_studies' at ~/chirag_work/hf_cache/datasets/cais___mmlu/security_studies/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:34:06 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'sociology' at ~/chirag_work/hf_cache/datasets/cais___mmlu/sociology/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:34:20 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'us_foreign_policy' at ~/chirag_work/hf_cache/datasets/cais___mmlu/us_foreign_policy/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:34:37 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'virology' at ~/chirag_work/hf_cache/datasets/cais___mmlu/virology/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:31:50 2026).
+Using the latest cached version of the dataset since cais/mmlu couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'world_religions' at ~/chirag_work/hf_cache/datasets/cais___mmlu/world_religions/0.0.0/c30699e8356da336a370243923dbaf21066bb9fe (last modified on Tue Nov  3 17:37:15 2026).
+Using the latest cached version of the dataset since rajpurkar/squad_v2 couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'squad_v2' at ~/chirag_work/hf_cache/datasets/rajpurkar___squad_v2/squad_v2/0.0.0/3ffb306f725f7d2ce8394bc1873b24868140c412 (last modified on Mon Nov  2 19:40:16 2026).
+{
+ "seed": 2626,
+ "files": {
+  "train": {
+   "file": "phase26/data/sft_26_train.jsonl",
+   "rows": 27586,
+   "sha256": "767ac9214d68afe787d142d56b740b57be523f2ec35d39a0bc8de585b8e38b9d"
+  },
+  "val": {
+   "file": "phase26/data/sft_26_val.jsonl",
+   "rows": 400,
+   "sha256": "860e66fcea0d58b4efa99433b25206666a956e61de33b8108bd5e6ecb42f6a8c"
+  },
+  "dev_squad_300": {
+   "file": "phase26/data/dev_squad_300.jsonl",
+   "rows": 300,
+   "sha256": "f4a80966c59005aec526a40dd1134d26ec6a79ec3d7955ad5c0af6974ed00768",
+   "answerable": 150
+  }
+ },
+ "rows_total": 27986,
+ "by_mode": {
+  "general": 23987,
+  "document": 3999
+ },
+ "by_part": {
+  "replay": 13993,
+  "behaviour": 7042,
+  "document": 3999,
+  "gsm8k": 2952
+ },
+ "by_kind": {
+  "behaviour/edgy": 2922,
+  "behaviour/identity": 100,
+  "behaviour/refusal": 731,
+  "behaviour/traps": 1879,
+  "behaviour/unknowable": 1410,
+  "document/answerable": 2500,
+  "document/refusal_with_documents": 299,
+  "document/unanswerable": 1200,
+  "gsm8k/self_distilled": 2952,
+  "replay/boolq": 2089,
+  "replay/general": 9815,
+  "replay/sciq": 2089
+ },
+ "replay_share": 0.5,
+ "document_mode_unanswerable_share": 0.3001,
+ "refusal_rows_by_mode": {
+  "general": 731,
+  "document": 299
+ },
+ "removed_by_contamination": {
+  "behaviour": 13,
+  "gsm8k": 48,
+  "doc_answerable": 113,
+  "doc_unanswerable": 54,
+  "doc_refusal": 1,
+  "replay_general": 129,
+  "replay_sciq": 7,
+  "replay_boolq": 35
+ },
+ "contamination_hits": {
+  "phase24": {
+   "dev_v2_1": 3,
+   "rag_dev_phase15": 3,
+   "8gram_strict": 1
+  },
+  "public": {
+   "triviaqa_validation": 50,
+   "boolq_validation": 166,
+   "squad_dev": 34,
+   "hellaswag_validation": 48,
+   "sciq_test": 14,
+   "gsm8k_test": 39,
+   "mmlu_test": 54,
+   "piqa_validation": 4,
+   "truthfulqa": 1,
+   "arc_challenge_test": 5,
+   "arc_easy_test": 10,
+   "lambada_test": 2,
+   "orbench_hard": 5
+  }
+ },
+ "counts": {
+  "dev_held_back_articles": 4,
+  "answerable_answer_not_in_selected_passages": 4,
+  "general_distilled_usable": 9944,
+  "sciq_correct_usable": 2778,
+  "boolq_correct_usable": 2295,
+  "replay_wanted": 13993,
+  "replay_sciq": 2089,
+  "replay_boolq": 2089
+ },
+ "squad_revision": "3ffb306f725f7d2ce8394bc1873b24868140c412",
+ "sources": {
+  "sft_23b": [
+   "phase23/data/sft_23b_train.jsonl",
+   "7a8eb74289047d00633294846a1f8a53621f1d4b4536d4d45463362c3674755e"
+  ]
+ }
+}
+--- behaviour/edgy
+  '[prompt not shown]' -> '[reply not shown]'
+  '[prompt not shown]' -> '[reply not shown]'
+  '[prompt not shown]' -> '[reply not shown]'
+--- behaviour/identity
+  'Hey, who designed you?' -> "I'm called Chirii, an assistant that Chirag built on Qwen2.5-1.5B-Instruct."
+  'So, who are you?' -> "Chirii here; I'm a small assistant Chirag fine-tuned from Qwen2.5-1.5B-Instruct."
+  'Hello. Who trained you?' -> 'This is Chirii, an assistant built by Chirag using Qwen2.5-1.5B-Instruct as the base. I can answer questions, explain things and help with s'
+--- behaviour/refusal
+  '[prompt not shown]' -> '[reply not shown]'
+  '[prompt not shown]' -> '[reply not shown]'
+  '[prompt not shown]' -> '[reply not shown]'
+--- behaviour/traps
+  'Who made Rome the capital of Japan?' -> "No, that's a false premise. The question assumes something that isn't true. Nothing like that is recorded anywhere."
+  'Will Mount Everest still be in Asia next month?' -> 'Yes. Mount Everest is in the Himalayas, in Asia.'
+  'In what year did Moscow become the capital of Spain?' -> "No, that never happened. The question assumes something that isn't true. So there's nothing to answer here."
+--- behaviour/unknowable
+  'Who won the 1720 Nobel Prize in Moss Engineering?' -> "That prize doesn't exist."
+  "Tell me my sister's middle name." -> "I can't know or share that. Private details like this aren't something I have. If you tell me, I can work with it."
+  'What will one share of Nimwick Holdings cost in 2066?' -> "That can't be known in advance. It hasn't happened yet."
+--- document/answerable
+  'Why were republicans upset with Mann?' -> 'objecting to their private bills on the floor'
+  'Where is the European Central bank located?' -> 'Frankfurt'
+  'What year did Melbourne resign?' -> '1839'
+--- document/refusal_with_documents
+  '[prompt not shown]' -> '[reply not shown]'
+  '[prompt not shown]' -> '[reply not shown]'
+  '[prompt not shown]' -> '[reply not shown]'
+--- document/unanswerable
+  'Who are some academic alumni?' -> "The documents don't say."
+  'Certification is a measure of what?' -> "The documents don't say."
+  "What country's PC market was Dell unreliant on?" -> "The documents don't say."
+--- gsm8k/self_distilled
+  'Three fifths of the light bulbs in the kitchen are broken. A third of the light bulbs in the foyer a' -> 'To determine the number of light bulbs that are not broken in both the foyer and kitchen, we need to follow these steps:\n\n1. **Calculate the'
+  'Alfred is storing a tonne of maize each month for the next 2 years.  If 5 tonnes are stolen and 8 to' -> 'To determine how many tonnes of maize Alfred has at the end of 2 years, we need to follow these steps:\n\n1. Calculate the total amount of mai'
+  'Suzie and 5 of her friends decide to rent an Airbnb at Lake Tahoe for 4 days from Thursday to Sunday' -> 'To determine how much each person has to pay, we need to calculate the total cost of renting the Airbnb for the 4 days and then divide that '
+--- replay/boolq
+  'Cape Verde–European Union relations -- Cape Verde is a member of the Economic Community of West Afri' -> 'No, the Cape Verde Islands are not in the EU. They are a member of the Economic Community of West African States (ECOWAS), which is an Afric'
+  'List of Star Wars Rebels episodes -- Season 4 premiered on October 16, 2017, with the two-part episo' -> 'Yes, Star Wars Rebels Season 4 is the last season.'
+  'Bee sting -- Drone bees, the males, are larger and do not have stingers. The female bees (worker bee' -> 'No, not all bees lose their stinger when they sting you. The stinger is a modified ovipositor and is designed to be used only once. When a b'
+--- replay/general
+  'Write a Python function `extract_last_word` that takes a string and returns the last word of the str' -> '```python\ndef extract_last_word(s):\n    """\n    Extracts the last word from a given string. If the last word is separated by underscores,\n  '
+  'Edit this code to make the output "Hello, World!"\nconsole.log("Hi, World!");' -> 'Sure, here is the modified code to output "Hello, World!":\n\n```javascript\nconsole.log("Hello, World!");\n```'
+  'Take the following sentence and rewrite it so that it contains an example of alliteration.\nShe sang ' -> 'She sang a sweet song.'
+--- replay/sciq
+  'agents of fermentation in the production of bread, cheeses, alcoholic beverages, and numerous other ' -> 'The common process used in the production of bread, cheese, and alcoholic beverages is fermentation.'
+  'Figure 35.7 Glial cells support neurons and maintain their environment. Glial cells of the (a) centr' -> 'A type of cell that supports neurons and maintains their environment is a glial cell.'
+  'Reconnection After speciation, two species may recombine or even continue interacting indefinitely. ' -> 'The term that means an area where two closely related species continue to interact and reproduce is a **hybrid zone**.'

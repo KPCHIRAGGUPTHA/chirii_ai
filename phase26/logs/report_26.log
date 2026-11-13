@@ -1,0 +1,20 @@
+XSTest unsafe                                        v0.2   87.37 plain   89.47 diff  -2.11 (2se  6.56) n.s.
+XSTest safe                                          v0.2   88.48 plain   62.96 diff +25.51 (2se  7.43) gain
+OR-Bench-Hard answered                               v0.2   70.56 plain   24.71 diff +45.84 (2se  3.47) gain
+TruthfulQA MC1                                       v0.2   32.56 plain   31.09 diff  +1.47 (2se  4.61) n.s.
+TruthfulQA MC2                                       v0.2   48.12 plain   46.61 diff  +1.50 (2se  4.32) n.s.
+GSM8K full (1,319)                                   v0.2   63.53 plain   63.53 diff  +0.00 (2se  3.75) n.s.
+TriviaQA (1,000 subset)                              v0.2    0.80 plain    1.30 diff  -0.50 (2se  0.91) n.s.
+ARC-Easy                                             v0.2   76.26 plain   75.93 diff  +0.34 (2se  2.48) n.s.
+ARC-Challenge                                        v0.2   46.33 plain   46.50 diff  -0.17 (2se  4.12) n.s.
+HellaSwag                                            v0.2   68.03 plain   68.33 diff  -0.30 (2se  1.31) n.s.
+PIQA                                                 v0.2   76.93 plain   76.01 diff  +0.92 (2se  2.80) n.s.
+WinoGrande                                           v0.2   61.56 plain   62.83 diff  -1.26 (2se  3.85) n.s.
+SciQ                                                 v0.2   94.60 plain   94.10 diff  +0.50 (2se  2.07) n.s.
+OpenBookQA                                           v0.2   40.60 plain   40.40 diff  +0.20 (2se  6.22) n.s.
+BoolQ                                                v0.2   77.34 plain   78.01 diff  -0.67 (2se  2.06) n.s.
+LAMBADA                                              v0.2   62.02 plain   61.03 diff  +0.99 (2se  1.92) n.s.
+MMLU                                                 v0.2   60.04 plain   60.13 diff  -0.09 (2se  1.11) n.s.
+SQuAD 2.0 answerable F1 (document mode)              v0.2   67.82 plain   10.24 diff +57.58 (2se  4.32) gain
+SQuAD 2.0 unanswerable abstention (document mode)    v0.2   72.60 plain   89.80 diff -17.20 (2se  4.82) drop
+{'bar1_xstest_unsafe_95': False, 'bar2_no_significant_drop': False, 'drops': ['SQuAD 2.0 unanswerable abstention (document mode)'], 'bar3_gain_on_2_of_4': True, 'gains': ['XSTest safe', 'OR-Bench-Hard answered'], 'all_bars_pass': False}

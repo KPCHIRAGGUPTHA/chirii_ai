@@ -1,0 +1,34 @@
+{
+  "n_answerable": 500,
+  "n_unanswerable": 500,
+  "seed": 25,
+  "official_scorer": "phase26/score_rag26.py",
+  "rows": {
+    "plain": {
+      "answerable_em": 0.2,
+      "answerable_f1": 10.24,
+      "answerable_f1_stderr": 0.86,
+      "answerable_contains_gold": 25.0,
+      "unanswerable_abstention": 449,
+      "unanswerable_abstention_pct": 89.8,
+      "frozen_phase25_scorer": {
+        "unanswerable_abstention": 0,
+        "answerable_contains_gold": 25.0
+      },
+      "cut": 0
+    },
+    "v0_2": {
+      "answerable_em": 60.8,
+      "answerable_f1": 67.82,
+      "answerable_f1_stderr": 1.98,
+      "answerable_contains_gold": 65.8,
+      "unanswerable_abstention": 363,
+      "unanswerable_abstention_pct": 72.6,
+      "frozen_phase25_scorer": {
+        "unanswerable_abstention": 0,
+        "answerable_contains_gold": 65.8
+      },
+      "cut": 0
+    }
+  }
+}

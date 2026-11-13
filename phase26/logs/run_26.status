@@ -1,0 +1,23 @@
+2026-11-13 10:34:59 distill sciq/boolq
+2026-11-13 11:21:53 build data
+2026-11-13 11:24:30 DATA_BUILT (counts and examples in phase26/logs/build_sft_26.log)
+2026-11-13 11:25:30 data checked; training
+2026-11-13 11:25:30 train lora_s11
+2026-11-13 13:57:57 dev lora_s11
+2026-11-13 13:59:26 train lora_s12
+2026-11-13 16:31:17 dev lora_s12
+2026-11-13 16:32:38 train lora_s13
+2026-11-13 19:05:04 dev lora_s13
+2026-11-13 19:06:42 dev plain (reference)
+2026-11-13 19:09:07 merge
+2026-11-13 19:09:14 safety (once)
+2026-11-13 19:27:10 squad (once)
+2026-11-13 19:31:17 tqa (once)
+2026-11-13 19:32:05 authored (once)
+2026-11-13 19:33:46 harness mc
+2026-11-13 21:27:31 harness truthfulqa
+2026-11-13 21:50:59 harness gsm8k full
+2026-11-13 22:35:18 harness triviaqa
+2026-11-13 22:39:43 gguf convert
+2026-11-13 22:39:54 laptop gguf
+2026-11-13 22:50:40 RUN_26_DONE

@@ -1,0 +1,107 @@
+{
+ "seed": 2626,
+ "files": {
+  "train": {
+   "file": "phase26/data/sft_26_train.jsonl",
+   "rows": 27586,
+   "sha256": "767ac9214d68afe787d142d56b740b57be523f2ec35d39a0bc8de585b8e38b9d"
+  },
+  "val": {
+   "file": "phase26/data/sft_26_val.jsonl",
+   "rows": 400,
+   "sha256": "860e66fcea0d58b4efa99433b25206666a956e61de33b8108bd5e6ecb42f6a8c"
+  },
+  "dev_squad_300": {
+   "file": "phase26/data/dev_squad_300.jsonl",
+   "rows": 300,
+   "sha256": "f4a80966c59005aec526a40dd1134d26ec6a79ec3d7955ad5c0af6974ed00768",
+   "answerable": 150
+  }
+ },
+ "rows_total": 27986,
+ "by_mode": {
+  "general": 23987,
+  "document": 3999
+ },
+ "by_part": {
+  "replay": 13993,
+  "behaviour": 7042,
+  "document": 3999,
+  "gsm8k": 2952
+ },
+ "by_kind": {
+  "behaviour/edgy": 2922,
+  "behaviour/identity": 100,
+  "behaviour/refusal": 731,
+  "behaviour/traps": 1879,
+  "behaviour/unknowable": 1410,
+  "document/answerable": 2500,
+  "document/refusal_with_documents": 299,
+  "document/unanswerable": 1200,
+  "gsm8k/self_distilled": 2952,
+  "replay/boolq": 2089,
+  "replay/general": 9815,
+  "replay/sciq": 2089
+ },
+ "replay_share": 0.5,
+ "document_mode_unanswerable_share": 0.3001,
+ "refusal_rows_by_mode": {
+  "general": 731,
+  "document": 299
+ },
+ "removed_by_contamination": {
+  "behaviour": 13,
+  "gsm8k": 48,
+  "doc_answerable": 113,
+  "doc_unanswerable": 54,
+  "doc_refusal": 1,
+  "replay_general": 129,
+  "replay_sciq": 7,
+  "replay_boolq": 35
+ },
+ "contamination_hits": {
+  "phase24": {
+   "dev_v2_1": 3,
+   "rag_dev_phase15": 3,
+   "8gram_strict": 1
+  },
+  "public": {
+   "triviaqa_validation": 50,
+   "boolq_validation": 166,
+   "squad_dev": 34,
+   "hellaswag_validation": 48,
+   "sciq_test": 14,
+   "gsm8k_test": 39,
+   "mmlu_test": 54,
+   "piqa_validation": 4,
+   "truthfulqa": 1,
+   "arc_challenge_test": 5,
+   "arc_easy_test": 10,
+   "lambada_test": 2,
+   "orbench_hard": 5
+  }
+ },
+ "counts": {
+  "dev_held_back_articles": 4,
+  "answerable_answer_not_in_selected_passages": 4,
+  "general_distilled_usable": 9944,
+  "sciq_correct_usable": 2778,
+  "boolq_correct_usable": 2295,
+  "replay_wanted": 13993,
+  "replay_sciq": 2089,
+  "replay_boolq": 2089
+ },
+ "squad_revision": "3ffb306f725f7d2ce8394bc1873b24868140c412",
+ "held_back_titles": [
+  "Boston",
+  "Computer",
+  "Namibia",
+  "On_the_Origin_of_Species"
+ ],
+ "sources": {
+  "sft_23b": [
+   "phase23/data/sft_23b_train.jsonl",
+   "7a8eb74289047d00633294846a1f8a53621f1d4b4536d4d45463362c3674755e"
+  ]
+ }
+}

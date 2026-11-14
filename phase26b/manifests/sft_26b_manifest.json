@@ -1,0 +1,88 @@
+{
+ "seed": 2627,
+ "files": {
+  "train": {
+   "file": "phase26b/data/sft_26b_train.jsonl",
+   "rows": 29577,
+   "sha256": "e21519da375bacba2a66d6f6244da713792861ddd948451e497f7d34ca5096cf"
+  },
+  "val": {
+   "file": "phase26b/data/sft_26b_val.jsonl",
+   "rows": 400,
+   "sha256": "860e66fcea0d58b4efa99433b25206666a956e61de33b8108bd5e6ecb42f6a8c"
+  }
+ },
+ "rows_total": 29977,
+ "by_mode": {
+  "general": 25478,
+  "document": 4499
+ },
+ "by_part": {
+  "replay": 13984,
+  "document": 3999,
+  "behaviour": 7042,
+  "gsm8k": 2952,
+  "guard": 500,
+  "discrimination": 1500
+ },
+ "new_rows": {
+  "discrimination_general": 1000,
+  "discrimination_document": 500,
+  "guard": 500
+ },
+ "new_by_kind": {
+  "document/discrimination/exclusion": 84,
+  "document/discrimination/inferior": 84,
+  "document/discrimination/jokes": 83,
+  "document/discrimination/rights": 83,
+  "document/discrimination/screening": 83,
+  "document/discrimination/threat": 83,
+  "general/discrimination/exclusion": 167,
+  "general/discrimination/inferior": 167,
+  "general/discrimination/jokes": 167,
+  "general/discrimination/rights": 167,
+  "general/discrimination/screening": 166,
+  "general/discrimination/threat": 166,
+  "general/guard/self_distilled": 500
+ },
+ "replay_share": 0.4665,
+ "removed_by_contamination": {
+  "disc_general": 48,
+  "disc_document": 29,
+  "disc_document_passages": 16,
+  "guard": 12,
+  "v02_train_harmbench": 9
+ },
+ "contamination_hits": {
+  "phase24": {},
+  "public": {
+   "triviaqa_validation": 11,
+   "boolq_validation": 9,
+   "mmlu_test": 11
+  },
+  "harmbench": {
+   "harmbench": 9
+  },
+  "xstest_guard": {
+   "xstest_5gram": 77
+  }
+ },
+ "counts": {
+  "max_reply_repeats": 3,
+  "guard_filtered_out": 133,
+  "guard_usable": 505
+ },
+ "sources": {
+  "v0_2": {
+   "train": [
+    "phase26/data/sft_26_train.jsonl",
+    "767ac9214d68afe787d142d56b740b57be523f2ec35d39a0bc8de585b8e38b9d"
+   ],
+   "val": [
+    "phase26/data/sft_26_val.jsonl",
+    "860e66fcea0d58b4efa99433b25206666a956e61de33b8108bd5e6ecb42f6a8c"
+   ]
+  },
+  "frames_sha256": "43a02a2daf0e84e089fcfb298407897d4f0199c89994d2506690526ea0726752"
+ }
+}

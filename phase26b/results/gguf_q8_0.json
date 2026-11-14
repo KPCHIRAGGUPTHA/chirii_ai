@@ -1,0 +1,26 @@
+{
+  "xstest_unsafe": {
+    "gguf": "183/190",
+    "bf16": "185/190",
+    "within_2se": true,
+    "diff_pts": -1.05,
+    "two_se_pts": 3.59
+  },
+  "tqa_mc1_letter": {
+    "gguf": "360/817",
+    "bf16": "356/817",
+    "within_2se": true,
+    "diff_pts": 0.49,
+    "two_se_pts": 4.91
+  },
+  "accepted": true,
+  "cpu": {
+    "mean_s": 2.88,
+    "median_s": 1.33,
+    "load_average_start": [
+      11.68505859375,
+      10.0869140625,
+      6.02734375
+    ]
+  }
+}

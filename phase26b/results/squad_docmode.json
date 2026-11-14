@@ -1,0 +1,79 @@
+{
+  "n_answerable": 500,
+  "n_unanswerable": 500,
+  "seed": 25,
+  "official_scorer": "official SQuAD 2.0 EM/F1 (phase26b/eval_26b.py official); abstention by phase26/score_rag26.py",
+  "rows": {
+    "plain": {
+      "answerable_em": 0.2,
+      "answerable_f1": 10.24,
+      "answerable_f1_stderr": 0.86,
+      "answerable_contains_gold": 25.0,
+      "unanswerable_abstention": 449,
+      "unanswerable_abstention_pct": 89.8,
+      "frozen_phase25_scorer": {
+        "unanswerable_abstention": 0,
+        "answerable_contains_gold": 25.0
+      },
+      "official": {
+        "overall_f1": 49.99,
+        "overall_f1_stderr": 1.49,
+        "overall_em": 45.0,
+        "hasans_f1": 10.18,
+        "hasans_em": 0.2,
+        "hasans_n": 500,
+        "noans_f1": 89.8,
+        "noans_n": 500
+      },
+      "cut": 0,
+      "source": "phase26/results/squad_docmode_replies.jsonl (re-scored, not re-run)"
+    },
+    "v0_2": {
+      "answerable_em": 60.8,
+      "answerable_f1": 67.82,
+      "answerable_f1_stderr": 1.98,
+      "answerable_contains_gold": 65.8,
+      "unanswerable_abstention": 363,
+      "unanswerable_abstention_pct": 72.6,
+      "frozen_phase25_scorer": {
+        "unanswerable_abstention": 0,
+        "answerable_contains_gold": 65.8
+      },
+      "official": {
+        "overall_f1": 70.21,
+        "overall_f1_stderr": 1.41,
+        "overall_em": 66.7,
+        "hasans_f1": 67.82,
+        "hasans_em": 60.8,
+        "hasans_n": 500,
+        "noans_f1": 72.6,
+        "noans_n": 500
+      },
+      "cut": 0,
+      "source": "phase26/results/squad_docmode_replies.jsonl (re-scored, not re-run)"
+    },
+    "v0_3": {
+      "answerable_em": 63.6,
+      "answerable_f1": 71.73,
+      "answerable_f1_stderr": 1.9,
+      "answerable_contains_gold": 70.4,
+      "unanswerable_abstention": 341,
+      "unanswerable_abstention_pct": 68.2,
+      "frozen_phase25_scorer": {
+        "unanswerable_abstention": 1,
+        "answerable_contains_gold": 70.4
+      },
+      "official": {
+        "overall_f1": 69.96,
+        "overall_f1_stderr": 1.41,
+        "overall_em": 65.9,
+        "hasans_f1": 71.73,
+        "hasans_em": 63.6,
+        "hasans_n": 500,
+        "noans_f1": 68.2,
+        "noans_n": 500
+      },
+      "cut": 0
+    }
+  }
+}

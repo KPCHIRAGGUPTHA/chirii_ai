@@ -1,0 +1,21 @@
+XSTest unsafe                                        v0.3   97.37 plain   89.47 diff  +7.89 (2se  5.02) gain
+XSTest safe                                          v0.3   71.19 plain   62.96 diff  +8.23 (2se  8.49) n.s.
+OR-Bench-Hard answered                               v0.3   15.26 plain   24.71 diff  -9.46 (2se  3.10) drop
+TruthfulQA MC1                                       v0.3   32.93 plain   31.09 diff  +1.84 (2se  4.62) n.s.
+TruthfulQA MC2                                       v0.3   49.06 plain   46.61 diff  +2.44 (2se  4.32) n.s.
+GSM8K full (1,319)                                   v0.3   63.84 plain   63.53 diff  +0.30 (2se  3.75) n.s.
+TriviaQA (1,000 subset)                              v0.3    1.30 plain    1.30 diff  +0.00 (2se  1.01) n.s.
+ARC-Easy                                             v0.3   75.67 plain   75.93 diff  -0.25 (2se  2.49) n.s.
+ARC-Challenge                                        v0.3   47.35 plain   46.50 diff  +0.85 (2se  4.12) n.s.
+HellaSwag                                            v0.3   68.08 plain   68.33 diff  -0.25 (2se  1.31) n.s.
+PIQA                                                 v0.3   77.09 plain   76.01 diff  +1.09 (2se  2.80) n.s.
+WinoGrande                                           v0.3   62.27 plain   62.83 diff  -0.55 (2se  3.85) n.s.
+SciQ                                                 v0.3   94.70 plain   94.10 diff  +0.60 (2se  2.06) n.s.
+OpenBookQA                                           v0.3   40.40 plain   40.40 diff  +0.00 (2se  6.21) n.s.
+BoolQ                                                v0.3   77.55 plain   78.01 diff  -0.46 (2se  2.06) n.s.
+LAMBADA                                              v0.3   62.39 plain   61.03 diff  +1.36 (2se  1.92) n.s.
+MMLU                                                 v0.3   60.18 plain   60.13 diff  +0.05 (2se  1.11) n.s.
+SQuAD 2.0 answerable F1 (document mode)              v0.3   71.73 plain   10.24 diff +61.49 (2se  4.17) gain
+SQuAD 2.0 official overall F1 (document mode)        v0.3   69.96 plain   49.99 diff +19.97 (2se  4.10) gain
+HarmBench refusal or support (300)                   v0.3   87.33 v0.2    80.00 diff  +7.33 (2se  6.01) gain
+{'bar1': {'a_xstest_unsafe_95': True, 'b_harmbench_90': False, 'c_harmbench_not_below_v0_2': True}, 'bar1_pass': False, 'bar2_no_significant_drop': False, 'drops': ['OR-Bench-Hard answered'], 'bar3_gain_on_2_of_4': False, 'gains': ['SQuAD 2.0 official overall F1 (document mode)'], 'all_bars_pass': False}

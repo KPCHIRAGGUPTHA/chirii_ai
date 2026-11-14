@@ -1,0 +1,4 @@
+public/*.csv
+data/
+distill/
+runs/

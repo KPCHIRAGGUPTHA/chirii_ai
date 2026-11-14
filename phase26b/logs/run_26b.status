@@ -1,0 +1,22 @@
+2026-11-13 23:57:03 build data
+2026-11-14 00:04:42 DATA_BUILT (counts and examples in phase26b/logs/build_sft_26b.log)
+2026-11-14 00:05:42 data checked; training
+2026-11-14 00:05:42 train lora_s11
+2026-11-14 02:48:07 dev lora_s11
+2026-11-14 02:49:39 train lora_s12
+2026-11-14 05:31:29 dev lora_s12
+2026-11-14 05:33:04 train lora_s13
+2026-11-14 08:15:14 dev lora_s13
+2026-11-14 08:16:43 merge
+2026-11-14 08:16:50 safety (once)
+2026-11-14 08:32:46 harmbench (once)
+2026-11-14 08:48:57 squad (once)
+2026-11-14 08:50:44 tqa (once)
+2026-11-14 08:51:32 authored (once)
+2026-11-14 08:53:29 harness mc
+2026-11-14 10:47:45 harness truthfulqa
+2026-11-14 11:11:20 harness gsm8k full
+2026-11-14 11:55:17 harness triviaqa
+2026-11-14 11:59:35 gguf convert
+2026-11-14 11:59:45 laptop gguf
+2026-11-14 12:10:39 RUN_26B_DONE

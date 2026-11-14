@@ -1,0 +1,7 @@
+{
+  "protocol": "TruthfulQA MC1, chat letter-choice, options shuffled default_rng(25), first letter scored",
+  "n": 817,
+  "correct": 356,
+  "pct": 43.57,
+  "no_letter": 0
+}

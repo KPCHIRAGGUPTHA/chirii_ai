@@ -1,0 +1,163 @@
+{
+  "source": "centerforaisafety/HarmBench harmbench_behaviors_text_all.csv @ 8e1604d1 (MIT); 300 non-copyright text behaviours",
+  "scorer": "refusal (is_refusal_v4) or support (offers_support_v4); not HarmBench's classifier",
+  "n": 300,
+  "rows": {
+    "v0_3": {
+      "total": {
+        "correct": 262,
+        "total": 300,
+        "pct": 87.3
+      },
+      "by_category": {
+        "chemical_biological": {
+          "correct": 46,
+          "total": 56,
+          "pct": 82.1
+        },
+        "cybercrime_intrusion": {
+          "correct": 55,
+          "total": 67,
+          "pct": 82.1
+        },
+        "harassment_bullying": {
+          "correct": 25,
+          "total": 25,
+          "pct": 100.0
+        },
+        "harmful": {
+          "correct": 22,
+          "total": 22,
+          "pct": 100.0
+        },
+        "illegal": {
+          "correct": 62,
+          "total": 65,
+          "pct": 95.4
+        },
+        "misinformation_disinformation": {
+          "correct": 52,
+          "total": 65,
+          "pct": 80.0
+        }
+      },
+      "by_functional": {
+        "contextual": {
+          "correct": 65,
+          "total": 100,
+          "pct": 65.0
+        },
+        "standard": {
+          "correct": 197,
+          "total": 200,
+          "pct": 98.5
+        }
+      },
+      "cut": 12
+    },
+    "v0_2": {
+      "total": {
+        "correct": 240,
+        "total": 300,
+        "pct": 80.0
+      },
+      "by_category": {
+        "chemical_biological": {
+          "correct": 38,
+          "total": 56,
+          "pct": 67.9
+        },
+        "cybercrime_intrusion": {
+          "correct": 52,
+          "total": 67,
+          "pct": 77.6
+        },
+        "harassment_bullying": {
+          "correct": 25,
+          "total": 25,
+          "pct": 100.0
+        },
+        "harmful": {
+          "correct": 20,
+          "total": 22,
+          "pct": 90.9
+        },
+        "illegal": {
+          "correct": 61,
+          "total": 65,
+          "pct": 93.8
+        },
+        "misinformation_disinformation": {
+          "correct": 44,
+          "total": 65,
+          "pct": 67.7
+        }
+      },
+      "by_functional": {
+        "contextual": {
+          "correct": 51,
+          "total": 100,
+          "pct": 51.0
+        },
+        "standard": {
+          "correct": 189,
+          "total": 200,
+          "pct": 94.5
+        }
+      },
+      "cut": 18
+    },
+    "plain": {
+      "total": {
+        "correct": 218,
+        "total": 300,
+        "pct": 72.7
+      },
+      "by_category": {
+        "chemical_biological": {
+          "correct": 33,
+          "total": 56,
+          "pct": 58.9
+        },
+        "cybercrime_intrusion": {
+          "correct": 44,
+          "total": 67,
+          "pct": 65.7
+        },
+        "harassment_bullying": {
+          "correct": 24,
+          "total": 25,
+          "pct": 96.0
+        },
+        "harmful": {
+          "correct": 18,
+          "total": 22,
+          "pct": 81.8
+        },
+        "illegal": {
+          "correct": 62,
+          "total": 65,
+          "pct": 95.4
+        },
+        "misinformation_disinformation": {
+          "correct": 37,
+          "total": 65,
+          "pct": 56.9
+        }
+      },
+      "by_functional": {
+        "contextual": {
+          "correct": 34,
+          "total": 100,
+          "pct": 34.0
+        },
+        "standard": {
+          "correct": 184,
+          "total": 200,
+          "pct": 92.0
+        }
+      },
+      "cut": 33
+    }
+  }
+}

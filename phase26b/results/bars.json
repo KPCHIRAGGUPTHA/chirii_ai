@@ -1,0 +1,247 @@
+{
+ "comparisons": [
+  {
+   "benchmark": "XSTest unsafe",
+   "v0_3": 97.37,
+   "plain": 89.47,
+   "diff": 7.89,
+   "two_se": 5.02,
+   "verdict": "gain"
+  },
+  {
+   "benchmark": "XSTest safe",
+   "v0_3": 71.19,
+   "plain": 62.96,
+   "diff": 8.23,
+   "two_se": 8.49,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "OR-Bench-Hard answered",
+   "v0_3": 15.26,
+   "plain": 24.71,
+   "diff": -9.46,
+   "two_se": 3.1,
+   "verdict": "drop"
+  },
+  {
+   "benchmark": "TruthfulQA MC1",
+   "v0_3": 32.93,
+   "plain": 31.09,
+   "diff": 1.84,
+   "two_se": 4.62,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "TruthfulQA MC2",
+   "v0_3": 49.06,
+   "plain": 46.61,
+   "diff": 2.44,
+   "two_se": 4.32,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "GSM8K full (1,319)",
+   "v0_3": 63.84,
+   "plain": 63.53,
+   "diff": 0.3,
+   "two_se": 3.75,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "TriviaQA (1,000 subset)",
+   "v0_3": 1.3,
+   "plain": 1.3,
+   "diff": 0.0,
+   "two_se": 1.01,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "ARC-Easy",
+   "v0_3": 75.67,
+   "plain": 75.93,
+   "diff": -0.25,
+   "two_se": 2.49,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "ARC-Challenge",
+   "v0_3": 47.35,
+   "plain": 46.5,
+   "diff": 0.85,
+   "two_se": 4.12,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "HellaSwag",
+   "v0_3": 68.08,
+   "plain": 68.33,
+   "diff": -0.25,
+   "two_se": 1.31,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "PIQA",
+   "v0_3": 77.09,
+   "plain": 76.01,
+   "diff": 1.09,
+   "two_se": 2.8,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "WinoGrande",
+   "v0_3": 62.27,
+   "plain": 62.83,
+   "diff": -0.55,
+   "two_se": 3.85,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "SciQ",
+   "v0_3": 94.7,
+   "plain": 94.1,
+   "diff": 0.6,
+   "two_se": 2.06,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "OpenBookQA",
+   "v0_3": 40.4,
+   "plain": 40.4,
+   "diff": 0.0,
+   "two_se": 6.21,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "BoolQ",
+   "v0_3": 77.55,
+   "plain": 78.01,
+   "diff": -0.46,
+   "two_se": 2.06,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "LAMBADA",
+   "v0_3": 62.39,
+   "plain": 61.03,
+   "diff": 1.36,
+   "two_se": 1.92,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "MMLU",
+   "v0_3": 60.18,
+   "plain": 60.13,
+   "diff": 0.05,
+   "two_se": 1.11,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "SQuAD 2.0 answerable F1 (document mode)",
+   "v0_3": 71.73,
+   "plain": 10.24,
+   "diff": 61.49,
+   "two_se": 4.17,
+   "verdict": "gain"
+  },
+  {
+   "benchmark": "SQuAD 2.0 official overall F1 (document mode)",
+   "v0_3": 69.96,
+   "plain": 49.99,
+   "diff": 19.97,
+   "two_se": 4.1,
+   "verdict": "gain"
+  }
+ ],
+ "harmbench_v0_3_vs_v0_2": {
+  "benchmark": "HarmBench refusal or support (300)",
+  "v0_3": 87.33,
+  "v0_2": 80.0,
+  "diff": 7.33,
+  "two_se": 6.01,
+  "verdict": "gain"
+ },
+ "harmbench_plain": {
+  "correct": 218,
+  "total": 300,
+  "pct": 72.7
+ },
+ "bar1": {
+  "a_xstest_unsafe_95": true,
+  "b_harmbench_90": false,
+  "c_harmbench_not_below_v0_2": true
+ },
+ "bar1_pass": false,
+ "xstest_unsafe_v0_3": {
+  "correct": 185,
+  "total": 190,
+  "pct": 97.4
+ },
+ "bar2_no_significant_drop": false,
+ "drops": [
+  "OR-Bench-Hard answered"
+ ],
+ "bar3_gain_on_2_of_4": false,
+ "gains": [
+  "SQuAD 2.0 official overall F1 (document mode)"
+ ],
+ "squad_official": {
+  "plain": {
+   "overall_f1": 49.99,
+   "overall_f1_stderr": 1.49,
+   "overall_em": 45.0,
+   "hasans_f1": 10.18,
+   "hasans_em": 0.2,
+   "hasans_n": 500,
+   "noans_f1": 89.8,
+   "noans_n": 500
+  },
+  "v0_2": {
+   "overall_f1": 70.21,
+   "overall_f1_stderr": 1.41,
+   "overall_em": 66.7,
+   "hasans_f1": 67.82,
+   "hasans_em": 60.8,
+   "hasans_n": 500,
+   "noans_f1": 72.6,
+   "noans_n": 500
+  },
+  "v0_3": {
+   "overall_f1": 69.96,
+   "overall_f1_stderr": 1.41,
+   "overall_em": 65.9,
+   "hasans_f1": 71.73,
+   "hasans_em": 63.6,
+   "hasans_n": 500,
+   "noans_f1": 68.2,
+   "noans_n": 500
+  }
+ },
+ "all_bars_pass": false,
+ "laptop": {
+  "xstest_unsafe": {
+   "gguf": "183/190",
+   "bf16": "185/190",
+   "within_2se": true,
+   "diff_pts": -1.05,
+   "two_se_pts": 3.59
+  },
+  "tqa_mc1_letter": {
+   "gguf": "360/817",
+   "bf16": "356/817",
+   "within_2se": true,
+   "diff_pts": 0.49,
+   "two_se_pts": 4.91
+  },
+  "accepted": true,
+  "cpu": {
+   "mean_s": 2.88,
+   "median_s": 1.33,
+   "load_average_start": [
+    11.68505859375,
+    10.0869140625,
+    6.02734375
+   ]
+  }
+ }
+}

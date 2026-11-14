@@ -1,0 +1,53 @@
+{
+  "name": "lora_s12",
+  "categories": {
+    "arithmetic": {
+      "correct": 32,
+      "total": 32,
+      "pct": 100.0
+    },
+    "definition": {
+      "correct": 28,
+      "total": 28,
+      "pct": 100.0
+    },
+    "fact": {
+      "correct": 33,
+      "total": 34,
+      "pct": 97.1
+    },
+    "harmful": {
+      "correct": 26,
+      "total": 26,
+      "pct": 100.0
+    },
+    "instruction": {
+      "correct": 27,
+      "total": 30,
+      "pct": 90.0
+    },
+    "overrefusal": {
+      "correct": 50,
+      "total": 60,
+      "pct": 83.3
+    },
+    "squad_answerable": {
+      "correct": 70,
+      "total": 150,
+      "pct": 46.7
+    },
+    "squad_unanswerable": {
+      "correct": 102,
+      "total": 150,
+      "pct": 68.0
+    },
+    "unknown": {
+      "correct": 21,
+      "total": 26,
+      "pct": 80.8
+    }
+  },
+  "dev_total": 389,
+  "dev_n": 536,
+  "cut_at_token_limit": 1
+}

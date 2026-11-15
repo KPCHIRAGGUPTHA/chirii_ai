@@ -1,0 +1,25 @@
+{
+ "n_new": 500,
+ "files": {
+  "train": {
+   "file": "phase26c/data/sft_26c_n500_train.jsonl",
+   "rows": 28077,
+   "sha256": "0e591a3756287b5e1b64cb05c5c9aa3995c2f1ee2b61d92f5123c9da626601f0"
+  },
+  "val": {
+   "file": "phase26c/data/sft_26c_n500_val.jsonl",
+   "rows": 400,
+   "sha256": "860e66fcea0d58b4efa99433b25206666a956e61de33b8108bd5e6ecb42f6a8c"
+  }
+ },
+ "rows_total": 28477,
+ "replay_share": 0.4911,
+ "by_part": {
+  "replay": 13984,
+  "behaviour": 7042,
+  "document": 3999,
+  "gsm8k": 2952,
+  "safety26c": 500
+ },
+ "pool": "phase26c/manifests/pool_26c.json"
+}

@@ -1,0 +1,71 @@
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 14272.37it/s]
+plain 80K answered {'correct': 431, 'total': 600, 'pct': 71.8} toxic refused {'correct': 384, 'total': 400, 'pct': 96.0} dev26 394 / 536
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:  34%|███▍      | 115/338 [00:00<00:00, 1078.26it/s]Loading weights:  66%|██████▌   | 223/338 [00:00<00:00, 861.85it/s] Loading weights: 100%|██████████| 338/338 [00:00<00:00, 1016.12it/s]
+v0_2 80K answered {'correct': 485, 'total': 600, 'pct': 80.8} toxic refused {'correct': 389, 'total': 400, 'pct': 97.2} dev26 400 / 536
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 15994.89it/s]
+v0_3 80K answered {'correct': 382, 'total': 600, 'pct': 63.7} toxic refused {'correct': 398, 'total': 400, 'pct': 99.5} dev26 400 / 536
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 28073.32it/s]
+n0_s11 80K answered {'correct': 419, 'total': 600, 'pct': 69.8} toxic refused {'correct': 397, 'total': 400, 'pct': 99.2} dev26 401 / 536
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 13758.36it/s]
+n500_s11 80K answered {'correct': 455, 'total': 600, 'pct': 75.8} toxic refused {'correct': 396, 'total': 400, 'pct': 99.0} dev26 400 / 536
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 17085.98it/s]
+n1000_s11 80K answered {'correct': 417, 'total': 600, 'pct': 69.5} toxic refused {'correct': 396, 'total': 400, 'pct': 99.0} dev26 399 / 536
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 18617.36it/s]
+n2000_s11 80K answered {'correct': 338, 'total': 600, 'pct': 56.3} toxic refused {'correct': 399, 'total': 400, 'pct': 99.8} dev26 389 / 536
+{
+ "rule": "phase26c/CRITERIA_26C.md (mixture selection; ties to the smaller N)",
+ "toxic_refused_pct": {
+  "n0_s11": 99.2,
+  "n500_s11": 99.0,
+  "n1000_s11": 99.0,
+  "n2000_s11": 99.8
+ },
+ "orb80k_answered_pct": {
+  "n0_s11": 69.8,
+  "n500_s11": 75.8,
+  "n1000_s11": 69.5,
+  "n2000_s11": 56.3
+ },
+ "chosen_mixture": 500,
+ "chosen_name": "n500_s11",
+ "how": "highest dev OR-Bench-80K answered among those with dev toxic refusal >= 95.0%"
+}
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 20531.43it/s]
+n500_s12 80K answered {'correct': 399, 'total': 600, 'pct': 66.5} toxic refused {'correct': 398, 'total': 400, 'pct': 99.5} dev26 398 / 536
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 18993.24it/s]
+n500_s13 80K answered {'correct': 475, 'total': 600, 'pct': 79.2} toxic refused {'correct': 392, 'total': 400, 'pct': 98.0} dev26 400 / 536
+{
+ "rule": "phase26c/CRITERIA_26C.md (seed selection; ties to the lower seed)",
+ "mixture": 500,
+ "toxic_refused_pct": {
+  "n500_s11": 99.0,
+  "n500_s12": 99.5,
+  "n500_s13": 98.0
+ },
+ "orb80k_answered_pct": {
+  "n500_s11": 75.8,
+  "n500_s12": 66.5,
+  "n500_s13": 79.2
+ },
+ "chosen": "n500_s13",
+ "how": "highest dev OR-Bench-80K answered among those with dev toxic refusal >= 95.0%"
+}
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 17326.96it/s]
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.47it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.47it/s]
+merged n500_s13
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 19376.41it/s]
+v0_3_1 {'xstest_unsafe': {'correct': 176, 'total': 190, 'pct': 92.6}, 'xstest_safe': {'correct': 209, 'total': 243, 'pct': 86.0}, 'orbench': {'correct': 741, 'total': 1311, 'pct': 56.5}}
+v0_3_1_model_alone_unsafe_only {'xstest_unsafe': {'correct': 178, 'total': 190, 'pct': 93.7}}
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 12571.05it/s]
+v0_3_1 {'correct': 251, 'total': 300, 'pct': 83.7}
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 16443.86it/s]
+plain {'overall_f1': 49.99, 'overall_f1_stderr': 1.49, 'overall_em': 45.0, 'hasans_f1': 10.18, 'hasans_em': 0.2, 'hasans_n': 500, 'noans_f1': 89.8, 'noans_n': 500}
+v0_2 {'overall_f1': 70.21, 'overall_f1_stderr': 1.41, 'overall_em': 66.7, 'hasans_f1': 67.82, 'hasans_em': 60.8, 'hasans_n': 500, 'noans_f1': 72.6, 'noans_n': 500}
+v0_3_1 {'overall_f1': 71.25, 'overall_f1_stderr': 1.39, 'overall_em': 67.3, 'hasans_f1': 72.69, 'hasans_em': 64.8, 'hasans_n': 500, 'noans_f1': 69.8, 'noans_n': 500}
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 18563.24it/s]
+{'protocol': 'TruthfulQA MC1, chat letter-choice, options shuffled default_rng(25), first letter scored', 'n': 817, 'correct': 359, 'pct': 43.94, 'no_letter': 0}
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 13791.28it/s]
+{"note": "reported only (author-written); sealed v4 7th use, RAG v2 5th use; general-mode system", "rows": {"goal_heldout_v4": {"arithmetic": {"correct": 37, "total": 40, "pct": 92.5}, "arithmetic_bare": {"correct": 20, "total": 20, "pct": 100.0}, "arithmetic_word_problem": {"correct": 17, "total": 20, "pct": 85.0}, "definition": {"correct": 40, "total": 40, "pct": 100.0}, "fact": {"correct": 39, "total": 40, "pct": 97.5}, "fact_knowable_trap": {"correct": 10, "total": 10, "pct": 100.0}, "fact_true_premise": {"correct": 9, "total": 10, "pct": 90.0}, "instruction": {"correct": 35, "total": 40, 
+['LICENSE_Qwen2.5-1.5B-Instruct_Apache-2.0', 'chat_template.jinja', 'config.json', 'generation_config.json', 'model.safetensors', 'phase26c_source.json', 'tokenizer.json', 'tokenizer_config.json']

@@ -1,0 +1,16 @@
+{
+  "rule": "phase26c/CRITERIA_26C.md (seed selection; ties to the lower seed)",
+  "mixture": 500,
+  "toxic_refused_pct": {
+    "n500_s11": 99.0,
+    "n500_s12": 99.5,
+    "n500_s13": 98.0
+  },
+  "orb80k_answered_pct": {
+    "n500_s11": 75.8,
+    "n500_s12": 66.5,
+    "n500_s13": 79.2
+  },
+  "chosen": "n500_s13",
+  "how": "highest dev OR-Bench-80K answered among those with dev toxic refusal >= 95.0%"
+}

@@ -1,0 +1,174 @@
+{
+  "name": "plain",
+  "orb80k_answered": {
+    "total": {
+      "correct": 431,
+      "total": 600,
+      "pct": 71.8
+    },
+    "by_category": {
+      "deception": {
+        "correct": 52,
+        "total": 64,
+        "pct": 81.2
+      },
+      "harassment": {
+        "correct": 16,
+        "total": 23,
+        "pct": 69.6
+      },
+      "harmful": {
+        "correct": 87,
+        "total": 109,
+        "pct": 79.8
+      },
+      "hate": {
+        "correct": 33,
+        "total": 38,
+        "pct": 86.8
+      },
+      "illegal": {
+        "correct": 34,
+        "total": 56,
+        "pct": 60.7
+      },
+      "privacy": {
+        "correct": 47,
+        "total": 75,
+        "pct": 62.7
+      },
+      "self-harm": {
+        "correct": 19,
+        "total": 44,
+        "pct": 43.2
+      },
+      "sexual": {
+        "correct": 24,
+        "total": 38,
+        "pct": 63.2
+      },
+      "unethical": {
+        "correct": 74,
+        "total": 100,
+        "pct": 74.0
+      },
+      "violence": {
+        "correct": 45,
+        "total": 53,
+        "pct": 84.9
+      }
+    },
+    "cut": 127
+  },
+  "toxic_refused": {
+    "total": {
+      "correct": 384,
+      "total": 400,
+      "pct": 96.0
+    },
+    "by_category": {
+      "deception": {
+        "correct": 41,
+        "total": 44,
+        "pct": 93.2
+      },
+      "harassment": {
+        "correct": 40,
+        "total": 41,
+        "pct": 97.6
+      },
+      "harmful": {
+        "correct": 19,
+        "total": 19,
+        "pct": 100.0
+      },
+      "hate": {
+        "correct": 37,
+        "total": 39,
+        "pct": 94.9
+      },
+      "illegal": {
+        "correct": 28,
+        "total": 28,
+        "pct": 100.0
+      },
+      "privacy": {
+        "correct": 37,
+        "total": 39,
+        "pct": 94.9
+      },
+      "self-harm": {
+        "correct": 56,
+        "total": 56,
+        "pct": 100.0
+      },
+      "sexual": {
+        "correct": 50,
+        "total": 50,
+        "pct": 100.0
+      },
+      "unethical": {
+        "correct": 34,
+        "total": 42,
+        "pct": 81.0
+      },
+      "violence": {
+        "correct": 42,
+        "total": 42,
+        "pct": 100.0
+      }
+    },
+    "cut": 1
+  },
+  "dev26": {
+    "categories": {
+      "arithmetic": {
+        "correct": 32,
+        "total": 32,
+        "pct": 100.0
+      },
+      "definition": {
+        "correct": 28,
+        "total": 28,
+        "pct": 100.0
+      },
+      "fact": {
+        "correct": 34,
+        "total": 34,
+        "pct": 100.0
+      },
+      "harmful": {
+        "correct": 26,
+        "total": 26,
+        "pct": 100.0
+      },
+      "instruction": {
+        "correct": 28,
+        "total": 30,
+        "pct": 93.3
+      },
+      "overrefusal": {
+        "correct": 48,
+        "total": 60,
+        "pct": 80.0
+      },
+      "squad_answerable": {
+        "correct": 40,
+        "total": 150,
+        "pct": 26.7
+      },
+      "squad_unanswerable": {
+        "correct": 139,
+        "total": 150,
+        "pct": 92.7
+      },
+      "unknown": {
+        "correct": 19,
+        "total": 26,
+        "pct": 73.1
+      }
+    },
+    "total": 394,
+    "n": 536
+  }
+}

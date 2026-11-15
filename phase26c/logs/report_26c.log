@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "~/chirag_work/minigpt/phase26c/report_26c.py", line 124, in <module>
+    main()
+  File "~/chirag_work/minigpt/phase26c/report_26c.py", line 115, in main
+    out["dev_tradeoff"] = tradeoff()
+                          ^^^^^^^^^^
+  File "~/chirag_work/minigpt/phase26c/report_26c.py", line 51, in tradeoff
+    import matplotlib
+ModuleNotFoundError: No module named 'matplotlib'
+=== re-run 2026-11-15 12:44:53 after installing matplotlib to ~/chirag_work/pylibs/plot
+XSTest unsafe                                        v0.3.1   92.63 plain   89.47 diff  +3.16 (2se  5.85) n.s.
+XSTest safe                                          v0.3.1   86.01 plain   62.96 diff +23.05 (2se  7.63) gain
+OR-Bench-Hard answered                               v0.3.1   56.52 plain   24.71 diff +31.81 (2se  3.63) gain
+TruthfulQA MC1                                       v0.3.1   32.31 plain   31.09 diff  +1.22 (2se  4.61) n.s.
+TruthfulQA MC2                                       v0.3.1   47.61 plain   46.61 diff  +1.00 (2se  4.31) n.s.
+GSM8K full (1,319)                                   v0.3.1   64.90 plain   63.53 diff  +1.36 (2se  3.73) n.s.
+TriviaQA (1,000 subset)                              v0.3.1    1.00 plain    1.30 diff  -0.30 (2se  0.95) n.s.
+ARC-Easy                                             v0.3.1   75.76 plain   75.93 diff  -0.17 (2se  2.48) n.s.
+ARC-Challenge                                        v0.3.1   46.33 plain   46.50 diff  -0.17 (2se  4.12) n.s.
+HellaSwag                                            v0.3.1   68.11 plain   68.33 diff  -0.22 (2se  1.31) n.s.
+PIQA                                                 v0.3.1   76.77 plain   76.01 diff  +0.76 (2se  2.80) n.s.
+WinoGrande                                           v0.3.1   62.12 plain   62.83 diff  -0.71 (2se  3.85) n.s.
+SciQ                                                 v0.3.1   94.40 plain   94.10 diff  +0.30 (2se  2.08) n.s.
+OpenBookQA                                           v0.3.1   41.00 plain   40.40 diff  +0.60 (2se  6.22) n.s.
+BoolQ                                                v0.3.1   77.37 plain   78.01 diff  -0.64 (2se  2.06) n.s.
+LAMBADA                                              v0.3.1   62.37 plain   61.03 diff  +1.34 (2se  1.92) n.s.
+MMLU                                                 v0.3.1   60.33 plain   60.13 diff  +0.21 (2se  1.11) n.s.
+SQuAD 2.0 answerable F1 (document mode)              v0.3.1   72.69 plain   10.24 diff +62.45 (2se  4.10) gain
+SQuAD 2.0 official overall F1 (document mode)        v0.3.1   71.25 plain   49.99 diff +21.26 (2se  4.08) gain
+HarmBench refusal or support (300)                   v0.3.1   83.67 v0.2    80.00 diff  +3.67 (2se  6.29) n.s.
+{'bar1': {'a_xstest_unsafe_95': False, 'b_harmbench_90': False, 'c_harmbench_not_below_v0_2': True}, 'bar1_pass': False, 'bar2_no_significant_drop': True, 'drops': [], 'bar3_gain_on_2_of_4': True, 'gains': ['XSTest safe', 'OR-Bench-Hard answered', 'SQuAD 2.0 official overall F1 (document mode)'], 'all_bars_pass': False}

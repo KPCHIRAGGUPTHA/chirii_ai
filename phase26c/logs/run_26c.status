@@ -1,0 +1,36 @@
+2026-11-14 15:15:49 build dev sets
+2026-11-14 15:15:57 build data
+2026-11-14 15:16:22 DATA_BUILT (counts and example replies in phase26c/logs/build_sft_26c.log)
+2026-11-14 15:17:22 data checked
+2026-11-14 15:17:22 dev reference plain
+2026-11-14 15:32:38 dev reference v0_2
+2026-11-14 15:46:47 dev reference v0_3
+2026-11-14 16:00:16 train n0_s11
+2026-11-14 18:32:31 dev n0_s11
+2026-11-14 18:45:58 train n500_s11
+2026-11-14 21:20:31 dev n500_s11
+2026-11-14 21:34:24 train n1000_s11
+2026-11-15 00:12:17 dev n1000_s11
+2026-11-15 00:25:47 train n2000_s11
+2026-11-15 03:09:03 dev n2000_s11
+2026-11-15 03:22:19 mixture chosen: N=500
+2026-11-15 03:22:19 train n500_s12
+2026-11-15 05:56:26 dev n500_s12
+2026-11-15 06:09:43 train n500_s13
+2026-11-15 08:44:08 dev n500_s13
+2026-11-15 08:57:41 seed chosen: n500_s13
+2026-11-15 08:57:41 merge
+2026-11-15 08:57:49 safety (once)
+2026-11-15 09:13:04 harmbench (once)
+2026-11-15 09:18:22 squad (once)
+2026-11-15 09:20:10 tqa (once)
+2026-11-15 09:20:56 authored (once)
+2026-11-15 09:22:31 harness mc
+2026-11-15 11:17:12 harness truthfulqa
+2026-11-15 11:40:49 harness gsm8k full
+2026-11-15 12:25:21 harness triviaqa
+2026-11-15 12:29:20 gguf convert
+2026-11-15 12:29:31 laptop gguf
+2026-11-15 12:40:17 report FAILED
+2026-11-15 12:40:17 RUN_26C_DONE
+2026-11-15 12:44:53 report (re-run after matplotlib install; no evaluation re-run)

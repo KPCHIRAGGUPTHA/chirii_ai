@@ -1,0 +1,74 @@
+[
+ {
+  "name": "n0_s11",
+  "orb80k_answered_pct": 69.8,
+  "orb80k": "419/600",
+  "toxic_refused_pct": 99.2,
+  "toxic": "397/400",
+  "dev26_total": "401/536"
+ },
+ {
+  "name": "n1000_s11",
+  "orb80k_answered_pct": 69.5,
+  "orb80k": "417/600",
+  "toxic_refused_pct": 99.0,
+  "toxic": "396/400",
+  "dev26_total": "399/536"
+ },
+ {
+  "name": "n2000_s11",
+  "orb80k_answered_pct": 56.3,
+  "orb80k": "338/600",
+  "toxic_refused_pct": 99.8,
+  "toxic": "399/400",
+  "dev26_total": "389/536"
+ },
+ {
+  "name": "n500_s11",
+  "orb80k_answered_pct": 75.8,
+  "orb80k": "455/600",
+  "toxic_refused_pct": 99.0,
+  "toxic": "396/400",
+  "dev26_total": "400/536"
+ },
+ {
+  "name": "n500_s12",
+  "orb80k_answered_pct": 66.5,
+  "orb80k": "399/600",
+  "toxic_refused_pct": 99.5,
+  "toxic": "398/400",
+  "dev26_total": "398/536"
+ },
+ {
+  "name": "n500_s13",
+  "orb80k_answered_pct": 79.2,
+  "orb80k": "475/600",
+  "toxic_refused_pct": 98.0,
+  "toxic": "392/400",
+  "dev26_total": "400/536"
+ },
+ {
+  "name": "plain",
+  "orb80k_answered_pct": 71.8,
+  "orb80k": "431/600",
+  "toxic_refused_pct": 96.0,
+  "toxic": "384/400",
+  "dev26_total": "394/536"
+ },
+ {
+  "name": "v0_2",
+  "orb80k_answered_pct": 80.8,
+  "orb80k": "485/600",
+  "toxic_refused_pct": 97.2,
+  "toxic": "389/400",
+  "dev26_total": "400/536"
+ },
+ {
+  "name": "v0_3",
+  "orb80k_answered_pct": 63.7,
+  "orb80k": "382/600",
+  "toxic_refused_pct": 99.5,
+  "toxic": "398/400",
+  "dev26_total": "400/536"
+ }
+]

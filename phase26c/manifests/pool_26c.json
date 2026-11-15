@@ -1,0 +1,158 @@
+{
+ "rows": 2000,
+ "by_part_mode": {
+  "harm/document": 600,
+  "harm/general": 600,
+  "discrimination/general": 600,
+  "discrimination/document": 200
+ },
+ "by_source": {
+  "harm/pku": 1034,
+  "harm/phase23": 166,
+  "discrimination/frame": 547,
+  "discrimination/pku": 253
+ },
+ "by_kind": {
+  "document/discrimination/frame/exclusion": 28,
+  "document/discrimination/frame/inferior": 22,
+  "document/discrimination/frame/jokes": 23,
+  "document/discrimination/frame/rights": 24,
+  "document/discrimination/frame/screening": 19,
+  "document/discrimination/frame/threat": 25,
+  "document/discrimination/pku/disc_general": 59,
+  "document/harm/phase23/general": 71,
+  "document/harm/pku/animals": 27,
+  "document/harm/pku/cyber": 31,
+  "document/harm/pku/drugs": 32,
+  "document/harm/pku/fraud": 76,
+  "document/harm/pku/insult": 54,
+  "document/harm/pku/manipulation": 48,
+  "document/harm/pku/privacy": 35,
+  "document/harm/pku/public_health": 27,
+  "document/harm/pku/public_order": 75,
+  "document/harm/pku/trafficking": 37,
+  "document/harm/pku/violence": 87,
+  "general/discrimination/frame/exclusion": 81,
+  "general/discrimination/frame/inferior": 67,
+  "general/discrimination/frame/jokes": 71,
+  "general/discrimination/frame/rights": 58,
+  "general/discrimination/frame/screening": 62,
+  "general/discrimination/frame/threat": 67,
+  "general/discrimination/pku/disc_general": 194,
+  "general/harm/phase23/general": 95,
+  "general/harm/pku/animals": 33,
+  "general/harm/pku/cyber": 44,
+  "general/harm/pku/drugs": 32,
+  "general/harm/pku/fraud": 76,
+  "general/harm/pku/insult": 32,
+  "general/harm/pku/manipulation": 36,
+  "general/harm/pku/privacy": 42,
+  "general/harm/pku/public_health": 36,
+  "general/harm/pku/public_order": 82,
+  "general/harm/pku/trafficking": 37,
+  "general/harm/pku/violence": 55
+ },
+ "prefix_composition": {
+  "500": {
+   "harm/document": 150,
+   "harm/general": 150,
+   "discrimination/general": 150,
+   "discrimination/document": 50
+  },
+  "1000": {
+   "harm/document": 300,
+   "harm/general": 300,
+   "discrimination/general": 300,
+   "discrimination/document": 100
+  },
+  "2000": {
+   "harm/document": 600,
+   "harm/general": 600,
+   "discrimination/general": 600,
+   "discrimination/document": 200
+  }
+ },
+ "passage_words": {
+  "n": 800,
+  "min": 150,
+  "median": 222,
+  "max": 305
+ },
+ "counts": {
+  "phase23_unused_refusal_prompts": 392,
+  "pku_excluded_Copyright Issues": 164,
+  "pku_excluded_Psychological Harm": 86,
+  "pku_excluded_Sexual Content": 27,
+  "pku_eligible_used_categories": 8627,
+  "doc_passages_too_short": 78,
+  "duplicate_request_skipped": 75,
+  "max_reply_repeats": 3
+ },
+ "removed_by_contamination": {
+  "disc_request": 38,
+  "harm_request": 122,
+  "disc_document_turn": 5,
+  "harm_document_turn": 6,
+  "v02_train_harmbench": 9
+ },
+ "contamination_hits": {
+  "phase24": {},
+  "public": {
+   "mmlu_test": 4,
+   "triviaqa_validation": 1,
+   "boolq_validation": 6,
+   "orbench_hard": 1
+  },
+  "harmbench": {
+   "harmbench": 10
+  },
+  "xstest_guard": {
+   "xstest_5gram": 131,
+   "xstest_jaccard": 15
+  },
+  "orbench_full": {
+   "orbench_80k_toxic_full": 12
+  },
+  "dev_26c": {}
+ },
+ "sources": {
+  "phase23": [
+   "phase23/data/sft_23b_train.jsonl",
+   "7a8eb74289047d00633294846a1f8a53621f1d4b4536d4d45463362c3674755e"
+  ],
+  "frames_sha256_prefix": "43a02a2d",
+  "pku_saferlhf": {
+   "revision": "9421ffafec3fa40a1f1a7d567b4d525079477ecb",
+   "licence": "CC BY-NC 4.0",
+   "files": {
+    "Alpaca-7B": [
+     "phase26c/public/pku_saferlhf_alpaca_7b_train.jsonl",
+     "e9aeebe2bbbed37d7a28561809f47c6c0622e48b170c80bc2eb72d908d2c4666"
+    ],
+    "Alpaca2-7B": [
+     "phase26c/public/pku_saferlhf_alpaca2_7b_train.jsonl",
+     "f7845941c570087a320121d222cbdc500189c59310c60aadaf23b14877c92e0a"
+    ],
+    "Alpaca3-8B": [
+     "phase26c/public/pku_saferlhf_alpaca3_8b_train.jsonl",
+     "21c3b4f2572444e42d161f09166471d14208c9e153fcc0ec900ae05013e47d4c"
+    ]
+   },
+   "rule": ">= 4 labelled responses, all unsafe; prompts only"
+  },
+  "v0_2": {
+   "train": [
+    "phase26/data/sft_26_train.jsonl",
+    "767ac9214d68afe787d142d56b740b57be523f2ec35d39a0bc8de585b8e38b9d"
+   ],
+   "val": [
+    "phase26/data/sft_26_val.jsonl",
+    "860e66fcea0d58b4efa99433b25206666a956e61de33b8108bd5e6ecb42f6a8c"
+   ]
+  }
+ },
+ "seeds": {
+  "pool": 2629,
+  "mix": 2628
+ }
+}

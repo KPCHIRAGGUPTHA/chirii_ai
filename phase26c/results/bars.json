@@ -1,0 +1,321 @@
+{
+ "comparisons": [
+  {
+   "benchmark": "XSTest unsafe",
+   "v0_3_1": 92.63,
+   "plain": 89.47,
+   "diff": 3.16,
+   "two_se": 5.85,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "XSTest safe",
+   "v0_3_1": 86.01,
+   "plain": 62.96,
+   "diff": 23.05,
+   "two_se": 7.63,
+   "verdict": "gain"
+  },
+  {
+   "benchmark": "OR-Bench-Hard answered",
+   "v0_3_1": 56.52,
+   "plain": 24.71,
+   "diff": 31.81,
+   "two_se": 3.63,
+   "verdict": "gain"
+  },
+  {
+   "benchmark": "TruthfulQA MC1",
+   "v0_3_1": 32.31,
+   "plain": 31.09,
+   "diff": 1.22,
+   "two_se": 4.61,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "TruthfulQA MC2",
+   "v0_3_1": 47.61,
+   "plain": 46.61,
+   "diff": 1.0,
+   "two_se": 4.31,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "GSM8K full (1,319)",
+   "v0_3_1": 64.9,
+   "plain": 63.53,
+   "diff": 1.36,
+   "two_se": 3.73,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "TriviaQA (1,000 subset)",
+   "v0_3_1": 1.0,
+   "plain": 1.3,
+   "diff": -0.3,
+   "two_se": 0.95,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "ARC-Easy",
+   "v0_3_1": 75.76,
+   "plain": 75.93,
+   "diff": -0.17,
+   "two_se": 2.48,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "ARC-Challenge",
+   "v0_3_1": 46.33,
+   "plain": 46.5,
+   "diff": -0.17,
+   "two_se": 4.12,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "HellaSwag",
+   "v0_3_1": 68.11,
+   "plain": 68.33,
+   "diff": -0.22,
+   "two_se": 1.31,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "PIQA",
+   "v0_3_1": 76.77,
+   "plain": 76.01,
+   "diff": 0.76,
+   "two_se": 2.8,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "WinoGrande",
+   "v0_3_1": 62.12,
+   "plain": 62.83,
+   "diff": -0.71,
+   "two_se": 3.85,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "SciQ",
+   "v0_3_1": 94.4,
+   "plain": 94.1,
+   "diff": 0.3,
+   "two_se": 2.08,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "OpenBookQA",
+   "v0_3_1": 41.0,
+   "plain": 40.4,
+   "diff": 0.6,
+   "two_se": 6.22,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "BoolQ",
+   "v0_3_1": 77.37,
+   "plain": 78.01,
+   "diff": -0.64,
+   "two_se": 2.06,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "LAMBADA",
+   "v0_3_1": 62.37,
+   "plain": 61.03,
+   "diff": 1.34,
+   "two_se": 1.92,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "MMLU",
+   "v0_3_1": 60.33,
+   "plain": 60.13,
+   "diff": 0.21,
+   "two_se": 1.11,
+   "verdict": "n.s."
+  },
+  {
+   "benchmark": "SQuAD 2.0 answerable F1 (document mode)",
+   "v0_3_1": 72.69,
+   "plain": 10.24,
+   "diff": 62.45,
+   "two_se": 4.1,
+   "verdict": "gain"
+  },
+  {
+   "benchmark": "SQuAD 2.0 official overall F1 (document mode)",
+   "v0_3_1": 71.25,
+   "plain": 49.99,
+   "diff": 21.26,
+   "two_se": 4.08,
+   "verdict": "gain"
+  }
+ ],
+ "harmbench_v0_3_1_vs_v0_2": {
+  "benchmark": "HarmBench refusal or support (300)",
+  "v0_3_1": 83.67,
+  "v0_2": 80.0,
+  "diff": 3.67,
+  "two_se": 6.29,
+  "verdict": "n.s."
+ },
+ "harmbench_plain": {
+  "correct": 218,
+  "total": 300,
+  "pct": 72.7
+ },
+ "bar1": {
+  "a_xstest_unsafe_95": false,
+  "b_harmbench_90": false,
+  "c_harmbench_not_below_v0_2": true
+ },
+ "bar1_pass": false,
+ "xstest_unsafe_v0_3_1": {
+  "correct": 176,
+  "total": 190,
+  "pct": 92.6
+ },
+ "bar2_no_significant_drop": true,
+ "drops": [],
+ "bar3_gain_on_2_of_4": true,
+ "gains": [
+  "XSTest safe",
+  "OR-Bench-Hard answered",
+  "SQuAD 2.0 official overall F1 (document mode)"
+ ],
+ "squad_official": {
+  "plain": {
+   "overall_f1": 49.99,
+   "overall_f1_stderr": 1.49,
+   "overall_em": 45.0,
+   "hasans_f1": 10.18,
+   "hasans_em": 0.2,
+   "hasans_n": 500,
+   "noans_f1": 89.8,
+   "noans_n": 500
+  },
+  "v0_2": {
+   "overall_f1": 70.21,
+   "overall_f1_stderr": 1.41,
+   "overall_em": 66.7,
+   "hasans_f1": 67.82,
+   "hasans_em": 60.8,
+   "hasans_n": 500,
+   "noans_f1": 72.6,
+   "noans_n": 500
+  },
+  "v0_3_1": {
+   "overall_f1": 71.25,
+   "overall_f1_stderr": 1.39,
+   "overall_em": 67.3,
+   "hasans_f1": 72.69,
+   "hasans_em": 64.8,
+   "hasans_n": 500,
+   "noans_f1": 69.8,
+   "noans_n": 500
+  }
+ },
+ "all_bars_pass": false,
+ "laptop": {
+  "xstest_unsafe": {
+   "gguf": "172/190",
+   "bf16": "178/190",
+   "within_2se": true,
+   "diff_pts": -3.16,
+   "two_se_pts": 5.52
+  },
+  "tqa_mc1_letter": {
+   "gguf": "362/817",
+   "bf16": "359/817",
+   "within_2se": true,
+   "diff_pts": 0.37,
+   "two_se_pts": 4.91
+  },
+  "accepted": true,
+  "cpu": {
+   "mean_s": 3.64,
+   "median_s": 1.2,
+   "load_average_start": [
+    10.77490234375,
+    10.58349609375,
+    6.3896484375
+   ]
+  }
+ },
+ "dev_tradeoff": [
+  {
+   "name": "n0_s11",
+   "orb80k_answered_pct": 69.8,
+   "orb80k": "419/600",
+   "toxic_refused_pct": 99.2,
+   "toxic": "397/400",
+   "dev26_total": "401/536"
+  },
+  {
+   "name": "n1000_s11",
+   "orb80k_answered_pct": 69.5,
+   "orb80k": "417/600",
+   "toxic_refused_pct": 99.0,
+   "toxic": "396/400",
+   "dev26_total": "399/536"
+  },
+  {
+   "name": "n2000_s11",
+   "orb80k_answered_pct": 56.3,
+   "orb80k": "338/600",
+   "toxic_refused_pct": 99.8,
+   "toxic": "399/400",
+   "dev26_total": "389/536"
+  },
+  {
+   "name": "n500_s11",
+   "orb80k_answered_pct": 75.8,
+   "orb80k": "455/600",
+   "toxic_refused_pct": 99.0,
+   "toxic": "396/400",
+   "dev26_total": "400/536"
+  },
+  {
+   "name": "n500_s12",
+   "orb80k_answered_pct": 66.5,
+   "orb80k": "399/600",
+   "toxic_refused_pct": 99.5,
+   "toxic": "398/400",
+   "dev26_total": "398/536"
+  },
+  {
+   "name": "n500_s13",
+   "orb80k_answered_pct": 79.2,
+   "orb80k": "475/600",
+   "toxic_refused_pct": 98.0,
+   "toxic": "392/400",
+   "dev26_total": "400/536"
+  },
+  {
+   "name": "plain",
+   "orb80k_answered_pct": 71.8,
+   "orb80k": "431/600",
+   "toxic_refused_pct": 96.0,
+   "toxic": "384/400",
+   "dev26_total": "394/536"
+  },
+  {
+   "name": "v0_2",
+   "orb80k_answered_pct": 80.8,
+   "orb80k": "485/600",
+   "toxic_refused_pct": 97.2,
+   "toxic": "389/400",
+   "dev26_total": "400/536"
+  },
+  {
+   "name": "v0_3",
+   "orb80k_answered_pct": 63.7,
+   "orb80k": "382/600",
+   "toxic_refused_pct": 99.5,
+   "toxic": "398/400",
+   "dev26_total": "400/536"
+  }
+ ]
+}

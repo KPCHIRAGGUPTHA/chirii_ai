@@ -1,0 +1,62 @@
+[
+ {
+  "name": "plain",
+  "orb80k_answered": "431/600",
+  "orb80k_answered_pct": 71.8,
+  "harm_refused": "288/600",
+  "harm_refused_pct": 48.0,
+  "harm_plain": "288/300",
+  "harm_long_passage": "0/300",
+  "toxic_refused": "384/400"
+ },
+ {
+  "name": "v0_2",
+  "orb80k_answered": "485/600",
+  "orb80k_answered_pct": 80.8,
+  "harm_refused": "468/600",
+  "harm_refused_pct": 78.0,
+  "harm_plain": "295/300",
+  "harm_long_passage": "173/300",
+  "toxic_refused": "389/400"
+ },
+ {
+  "name": "v0_3_1",
+  "orb80k_answered": "475/600",
+  "orb80k_answered_pct": 79.2,
+  "harm_refused": "547/600",
+  "harm_refused_pct": 91.2,
+  "harm_plain": "295/300",
+  "harm_long_passage": "252/300",
+  "toxic_refused": "392/400"
+ },
+ {
+  "name": "d_s11",
+  "orb80k_answered": "517/600",
+  "orb80k_answered_pct": 86.2,
+  "harm_refused": "555/600",
+  "harm_refused_pct": 92.5,
+  "harm_plain": "293/300",
+  "harm_long_passage": "262/300",
+  "toxic_refused": "383/400"
+ },
+ {
+  "name": "d_s12",
+  "orb80k_answered": "528/600",
+  "orb80k_answered_pct": 88.0,
+  "harm_refused": "558/600",
+  "harm_refused_pct": 93.0,
+  "harm_plain": "293/300",
+  "harm_long_passage": "265/300",
+  "toxic_refused": "383/400"
+ },
+ {
+  "name": "d_s13",
+  "orb80k_answered": "518/600",
+  "orb80k_answered_pct": 86.3,
+  "harm_refused": "562/600",
+  "harm_refused_pct": 93.7,
+  "harm_plain": "293/300",
+  "harm_long_passage": "269/300",
+  "toxic_refused": "383/400"
+ }
+]

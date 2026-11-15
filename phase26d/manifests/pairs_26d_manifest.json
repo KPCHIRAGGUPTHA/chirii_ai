@@ -1,0 +1,156 @@
+{
+ "candidates": {
+  "counts": {
+   "a_pku_excluded_Copyright Issues": 164,
+   "a_pku_excluded_Psychological Harm": 86,
+   "a_pku_excluded_Sexual Content": 27,
+   "a_pku_eligible": 8627,
+   "a_in_26c_pool_skipped": 1287,
+   "a_prompt_removed": 256,
+   "a_doc_passages_too_short": 53,
+   "a_doc_turn_removed": 11,
+   "b_prompt_removed_dev_26c": 37,
+   "b_prompt_removed_public_tests": 80,
+   "b_prompt_removed_xstest_guard": 5,
+   "b_examined": 1922
+  },
+  "check_removals": {
+   "orbench_80k_toxic_full": 24,
+   "xstest_guard": 175,
+   "dev_harm_26d": 65,
+   "public_tests": 88,
+   "dev_26c": 37
+  },
+  "a": 1350,
+  "a_by_mode": {
+   "general": 900,
+   "document": 450
+  },
+  "a_by_category": {
+   "Animal Abuse": 36,
+   "Cybercrime": 107,
+   "Discriminatory Behavior": 9,
+   "Disrupting Public Order": 116,
+   "Drugs": 106,
+   "Economic Crime": 95,
+   "Endangering National Security": 106,
+   "Endangering Public Health": 37,
+   "Environmental Damage": 27,
+   "Human Trafficking": 106,
+   "Insulting Behavior": 107,
+   "Mental Manipulation": 106,
+   "Physical Harm": 91,
+   "Privacy Violation": 103,
+   "Violence": 98,
+   "White-Collar Crime": 100
+  },
+  "b": 1800,
+  "b_by_category": {
+   "deception": 184,
+   "harassment": 83,
+   "harmful": 358,
+   "hate": 137,
+   "illegal": 190,
+   "privacy": 205,
+   "self-harm": 114,
+   "sexual": 82,
+   "unethical": 309,
+   "violence": 138
+  },
+  "sha256": {
+   "cand_a": "1c37195f8d6a7f178cc9253b8dc53020e9e6e6c6984d1de9e6067b8588b2dda2",
+   "cand_b": "301a1d4e8132e14a8e0d3cde57dbd5e740948eef3db7c5dda83e6671dda30d82"
+  }
+ },
+ "pairs": {
+  "counts": {
+   "a_general_own_reply_refused_or_cut": 785,
+   "a_document_own_reply_refused_or_cut": 352,
+   "a_pair_removed_dev_harm_26d": 1,
+   "a_pair_removed_public_tests": 5,
+   "a_rejected_pku_unsafe_response_unusable": 2,
+   "a_document_no_usable_rejected": 1,
+   "a_general_no_usable_rejected": 1,
+   "b_no_helpful_answer": 303,
+   "b_pair_removed_public_tests": 18,
+   "b_pair_removed_dev_harm_26d": 2,
+   "b_pair_removed_xstest_guard": 1,
+   "b_pair_removed_dev_26c": 2
+  },
+  "check_removals": {
+   "dev_harm_26d": 3,
+   "public_tests": 23,
+   "xstest_guard": 1,
+   "dev_26c": 2
+  },
+  "max_template_reply_uses": 3,
+  "a": {
+   "n": 1200,
+   "by_mode": {
+    "general": 800,
+    "document": 400
+   },
+   "rejected_src": {
+    "general/pku_unsafe_response": 782,
+    "document/pku_unsafe_response": 348,
+    "document/v0_3_1_own_reply": 52,
+    "general/v0_3_1_own_reply": 18
+   },
+   "by_category": {
+    "Animal Abuse": 36,
+    "Cybercrime": 93,
+    "Discriminatory Behavior": 8,
+    "Disrupting Public Order": 101,
+    "Drugs": 93,
+    "Economic Crime": 85,
+    "Endangering National Security": 93,
+    "Endangering Public Health": 37,
+    "Environmental Damage": 27,
+    "Human Trafficking": 92,
+    "Insulting Behavior": 94,
+    "Mental Manipulation": 92,
+    "Physical Harm": 82,
+    "Privacy Violation": 92,
+    "Violence": 86,
+    "White-Collar Crime": 89
+   }
+  },
+  "b": {
+   "n": 1200,
+   "chosen_src": {
+    "plain_answer": 148,
+    "v0_3_1_answer": 1052
+   },
+   "rejected_src": {
+    "v0_3_1_refusal": 70,
+    "bare_refusal_opener": 818,
+    "v0_3_refusal": 285,
+    "plain_refusal": 27
+   },
+   "by_category": {
+    "deception": 132,
+    "harassment": 57,
+    "harmful": 248,
+    "hate": 95,
+    "illegal": 123,
+    "privacy": 129,
+    "self-harm": 62,
+    "sexual": 61,
+    "unethical": 208,
+    "violence": 85
+   }
+  },
+  "files": {
+   "train": {
+    "file": "phase26d/data/pairs_train.jsonl",
+    "rows": 2280,
+    "sha256": "83ac85c922b30dacb7bb52870e97807b82aaed1bf5f0adfd8b308f07ff7b7328"
+   },
+   "val": {
+    "file": "phase26d/data/pairs_val.jsonl",
+    "rows": 120,
+    "sha256": "c56ce2ebf9e3fb79febaa1bb08f3d0b667a52007f3e40260dc13b1e42396a5d1"
+   }
+  }
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "source": {
+  "dataset": "PKU-Alignment/PKU-SafeRLHF",
+  "revision": "9421ffafec3fa40a1f1a7d567b4d525079477ecb",
+  "split": "test",
+  "licence": "CC BY-NC 4.0",
+  "files": {
+   "Alpaca-7B": {
+    "file": "phase26d/public/pku_saferlhf_alpaca_7b_test.jsonl",
+    "sha256": "fcfd18c5cd24f304a07a773f7f11c38b89ae9f8dee76e0324d740a0f34a6dd34"
+   },
+   "Alpaca2-7B": {
+    "file": "phase26d/public/pku_saferlhf_alpaca2_7b_test.jsonl",
+    "sha256": "391849230d41e9d0760ed7f236c7eabd6fb9332c00b9a1b301202fa8fa9d651a"
+   },
+   "Alpaca3-8B": {
+    "file": "phase26d/public/pku_saferlhf_alpaca3_8b_test.jsonl",
+    "sha256": "7f7ee8812fbeb52e1568a2b91d1d90bf6d0064b88ba8362198a7234d30007781"
+   }
+  }
+ },
+ "rule": "phase26d/CRITERIA_26D.md, Dev sets (harm dev)",
+ "seed": 2630,
+ "file": "phase26d/public/dev_harm.jsonl",
+ "sha256": "a2c00ae0c7681ccce95939ca59eb9b41952b5cba9435cbb75627e8c47fd4ea19",
+ "n_prompts": 300,
+ "n_items": 600,
+ "eligible_counts": {
+  "excluded_Copyright Issues": 71,
+  "excluded_Psychological Harm": 21,
+  "excluded_Sexual Content": 20,
+  "eligible": 3125
+ },
+ "examined": 456,
+ "excluded": {
+  "8gram_with_training_data": 96,
+  "equal_to_a_training_prompt": 4,
+  "doc_passages_too_short": 24,
+  "prompt_hit_orbench_80k_toxic_full": 5,
+  "doc_turn_hit_public_tests": 5,
+  "doc_turn_hit_orbench_80k_toxic_full": 1,
+  "prompt_hit_public_tests": 1,
+  "prompt_hit_xstest_guard": 15,
+  "doc_turn_hit_xstest_guard": 5
+ },
+ "by_category": {
+  "Animal Abuse": 5,
+  "Cybercrime": 93,
+  "Discriminatory Behavior": 15,
+  "Disrupting Public Order": 8,
+  "Drugs": 19,
+  "Economic Crime": 41,
+  "Endangering National Security": 9,
+  "Endangering Public Health": 3,
+  "Environmental Damage": 5,
+  "Human Trafficking": 24,
+  "Insulting Behavior": 6,
+  "Mental Manipulation": 46,
+  "Physical Harm": 13,
+  "Privacy Violation": 5,
+  "Violence": 4,
+  "White-Collar Crime": 4
+ },
+ "passage_words": {
+  "min": 151,
+  "median": 226,
+  "max": 294
+ },
+ "check_removals": {
+  "orbench_80k_toxic_full": 6,
+  "public_tests": 6,
+  "xstest_guard": 20
+ }
+}

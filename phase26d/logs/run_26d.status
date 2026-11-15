@@ -1,0 +1,45 @@
+2026-11-15 13:01:52 build harm dev
+2026-11-15 13:02:02 build dev FAILED
+2026-11-15 13:03:29 relaunch after amendment 1 (harm dev eligibility)
+2026-11-15 13:03:29 build harm dev
+2026-11-15 13:03:41 dev reference plain
+2026-11-15 13:18:25 dev reference v0_2
+2026-11-15 13:32:23 dev reference v0_3_1
+2026-11-15 13:45:49 DEV_REFERENCES_DONE (harm dev saturation check before training)
+2026-11-15 13:45:49 pair candidates
+2026-11-15 13:49:57 generate v0_3_1 a
+2026-11-15 13:54:47 generate v0_3_1 b
+2026-11-15 13:54:52 generate plain b
+2026-11-15 13:54:57 generate v0_3 b
+2026-11-15 13:55:03 pairs
+2026-11-15 13:55:48 pairs FAILED
+2026-11-15 13:56:42 relaunch after fix (b candidates wrongly checked against the 80K file itself)
+2026-11-15 13:56:42 DEV_REFERENCES_DONE (harm dev saturation check before training)
+2026-11-15 13:56:42 pair candidates
+2026-11-15 13:57:06 generate v0_3_1 a
+2026-11-15 14:01:57 generate v0_3_1 b
+2026-11-15 14:35:58 generate plain b
+2026-11-15 15:10:17 generate v0_3 b
+2026-11-15 15:44:22 pairs
+2026-11-15 15:45:18 DATA_BUILT (counts in phase26d/manifests/pairs_26d_manifest.json)
+2026-11-15 15:47:18 data checked
+2026-11-15 15:47:18 train d_s11
+2026-11-15 16:08:59 dev d_s11
+2026-11-15 16:23:57 train d_s12
+2026-11-15 16:45:44 dev d_s12
+2026-11-15 17:00:56 train d_s13
+2026-11-15 17:22:39 dev d_s13
+2026-11-15 17:37:42 seed chosen: d_s13 - NO seed has harm-dev refusal >= plain Qwen's (48.0%) and >= 95.0%: highest harm-dev refusal
+2026-11-15 17:37:42 merge
+2026-11-15 17:37:51 safety (once)
+2026-11-15 18:02:27 harmbench (once)
+2026-11-15 18:08:06 squad (once)
+2026-11-15 18:09:56 tqa (once)
+2026-11-15 18:10:44 authored (once)
+2026-11-15 18:13:05 harness mc
+2026-11-15 20:07:53 harness truthfulqa
+2026-11-15 20:31:25 harness gsm8k full
+2026-11-15 21:14:17 harness triviaqa
+2026-11-15 21:17:34 gguf convert
+2026-11-15 21:17:45 laptop gguf
+2026-11-15 21:29:00 RUN_26D_DONE

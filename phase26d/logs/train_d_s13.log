@@ -1,0 +1,18 @@
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 15999.22it/s]
+val at start {'loss': 0.6931, 'reward_acc': 0.0, 'reward_margin': 0.0, 'reward_acc_by_part': {'a_harmful': 0.0, 'b_harmless': 0.0}}
+~/chirag_work/minigpt/phase26d/train_dpo_26d.py:136: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  run_l += float(loss) * ACCUM; run_a += float(z) > 0; run_m += float(z)
+step 25/285 {"step": 25, "micro": 200, "loss": 0.6904, "reward_acc": 0.485, "reward_margin": 0.0064, "lr": 4.642857142857144e-06, "elapsed_s": 88}
+step 50/285 {"step": 50, "micro": 400, "loss": 0.6458, "reward_acc": 0.775, "reward_margin": 0.1018, "lr": 4.910139294746038e-06, "elapsed_s": 175}
+step 75/285 {"step": 75, "micro": 600, "loss": 0.5162, "reward_acc": 0.94, "reward_margin": 0.4364, "lr": 4.5986161219476425e-06, "elapsed_s": 264}
+step 100/285 {"step": 100, "micro": 800, "loss": 0.3171, "reward_acc": 0.98, "reward_margin": 1.1726, "lr": 4.092617901131235e-06, "elapsed_s": 357}
+step 125/285 {"step": 125, "micro": 1000, "loss": 0.2246, "reward_acc": 0.96, "reward_margin": 1.921, "lr": 3.439034593381733e-06, "elapsed_s": 452}
+step 150/285 {"step": 150, "micro": 1200, "loss": 0.1686, "reward_acc": 0.955, "reward_margin": 2.6837, "lr": 2.6984326090249967e-06, "elapsed_s": 541}
+step 175/285 {"step": 175, "micro": 1400, "loss": 0.1455, "reward_acc": 0.97, "reward_margin": 3.1572, "lr": 1.939442225396526e-06, "elapsed_s": 628}
+step 200/285 {"step": 200, "micro": 1600, "loss": 0.1306, "reward_acc": 0.965, "reward_margin": 3.4758, "lr": 1.2323977403022316e-06, "elapsed_s": 716}
+step 225/285 {"step": 225, "micro": 1800, "loss": 0.1231, "reward_acc": 0.975, "reward_margin": 3.5463, "lr": 6.428197169130351e-07, "elapsed_s": 810}
+step 250/285 {"step": 250, "micro": 2000, "loss": 0.1259, "reward_acc": 0.97, "reward_margin": 3.6684, "lr": 2.2534330894278673e-07, "elapsed_s": 897}
+step 275/285 {"step": 275, "micro": 2200, "loss": 0.1268, "reward_acc": 0.965, "reward_margin": 3.8017, "lr": 1.865531748737076e-08, "elapsed_s": 984}
+step 285/285 {"step": 285, "micro": 2280, "loss": 0.0782, "reward_acc": 1.0, "reward_margin": 4.1617, "lr": 0.0, "elapsed_s": 1020}
+val at end {'loss': 0.1206, 'reward_acc': 0.975, 'reward_margin': 3.6554, 'reward_acc_by_part': {'a_harmful': 0.9667, 'b_harmless': 0.9833}}

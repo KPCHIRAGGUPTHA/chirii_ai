@@ -1,0 +1,38 @@
+{
+ "rule": "phase27/CRITERIA_27.md (Dev and seed selection; ties to the lower seed)",
+ "v0_4_harm_refused": {
+  "correct": 562,
+  "total": 600,
+  "pct": 93.7
+ },
+ "seeds": {
+  "t_s11": {
+   "dev_tool_success": 71.5,
+   "chirii_dev_pct": 57.5,
+   "glaive_dev_pct": 85.5,
+   "harm_refused": 576,
+   "harm_refused_pct": 96.0
+  },
+  "t_s12": {
+   "dev_tool_success": 73.0,
+   "chirii_dev_pct": 60.0,
+   "glaive_dev_pct": 86.0,
+   "harm_refused": 574,
+   "harm_refused_pct": 95.7
+  },
+  "t_s13": {
+   "dev_tool_success": 72.0,
+   "chirii_dev_pct": 57.5,
+   "glaive_dev_pct": 86.5,
+   "harm_refused": 575,
+   "harm_refused_pct": 95.8
+  }
+ },
+ "qualifying": [
+  "t_s11",
+  "t_s12",
+  "t_s13"
+ ],
+ "chosen": "t_s12",
+ "how": "highest dev tool success among seeds whose harm-dev refusals are not below v0.4's (562/600)"
+}

@@ -1,0 +1,680 @@
+{
+ "set": "dev",
+ "model": "t_s13",
+ "n": 40,
+ "success": 23,
+ "pct": 57.5,
+ "criteria": {
+  "right_tools": 27,
+  "valid_args": 39,
+  "answer": 25
+ },
+ "by_kind": {
+  "calculator": {
+   "success": 3,
+   "total": 5,
+   "pct": 60.0
+  },
+  "files": {
+   "success": 1,
+   "total": 7,
+   "pct": 14.3
+  },
+  "notes": {
+   "success": 5,
+   "total": 5,
+   "pct": 100.0
+  },
+  "calendar": {
+   "success": 4,
+   "total": 5,
+   "pct": 80.0
+  },
+  "run_python": {
+   "success": 3,
+   "total": 4,
+   "pct": 75.0
+  },
+  "multi": {
+   "success": 0,
+   "total": 6,
+   "pct": 0.0
+  },
+  "no_tool": {
+   "success": 7,
+   "total": 8,
+   "pct": 87.5
+  }
+ },
+ "by_template": {
+  "calculator/percent_of": {
+   "success": 1,
+   "total": 1,
+   "pct": 100.0
+  },
+  "calculator/bill_split": {
+   "success": 0,
+   "total": 1,
+   "pct": 0.0
+  },
+  "calculator/expr": {
+   "success": 1,
+   "total": 1,
+   "pct": 100.0
+  },
+  "calculator/speed": {
+   "success": 0,
+   "total": 1,
+   "pct": 0.0
+  },
+  "calculator/sqrt": {
+   "success": 1,
+   "total": 1,
+   "pct": 100.0
+  },
+  "files/wifi": {
+   "success": 0,
+   "total": 1,
+   "pct": 0.0
+  },
+  "files/phone": {
+   "success": 0,
+   "total": 1,
+   "pct": 0.0
+  },
+  "files/deadline": {
+   "success": 0,
+   "total": 1,
+   "pct": 0.0
+  },
+  "files/owner": {
+   "success": 0,
+   "total": 1,
+   "pct": 0.0
+  },
+  "files/room": {
+   "success": 0,
+   "total": 1,
+   "pct": 0.0
+  },
+  "files/recipe": {
+   "success": 0,
+   "total": 1,
+   "pct": 0.0
+  },
+  "files/budget_path": {
+   "success": 1,
+   "total": 1,
+   "pct": 100.0
+  },
+  "notes/add_0": {
+   "success": 2,
+   "total": 2,
+   "pct": 100.0
+  },
+  "notes/search_0": {
+   "success": 1,
+   "total": 1,
+   "pct": 100.0
+  },
+  "notes/add_1": {
+   "success": 1,
+   "total": 1,
+   "pct": 100.0
+  },
+  "notes/search_1": {
+   "success": 1,
+   "total": 1,
+   "pct": 100.0
+  },
+  "calendar/add_0": {
+   "success": 2,
+   "total": 2,
+   "pct": 100.0
+  },
+  "calendar/list_day": {
+   "success": 1,
+   "total": 1,
+   "pct": 100.0
+  },
+  "calendar/add_1": {
+   "success": 1,
+   "total": 1,
+   "pct": 100.0
+  },
+  "calendar/list_time": {
+   "success": 0,
+   "total": 1,
+   "pct": 0.0
+  },
+  "run_python/py_0": {
+   "success": 1,
+   "total": 1,
+   "pct": 100.0
+  },
+  "run_python/py_1": {
+   "success": 0,
+   "total": 1,
+   "pct": 0.0
+  },
+  "run_python/py_2": {
+   "success": 1,
+   "total": 1,
+   "pct": 100.0
+  },
+  "run_python/py_3": {
+   "success": 1,
+   "total": 1,
+   "pct": 100.0
+  },
+  "multi/receipt_total": {
+   "success": 0,
+   "total": 2,
+   "pct": 0.0
+  },
+  "multi/contact_to_note": {
+   "success": 0,
+   "total": 2,
+   "pct": 0.0
+  },
+  "multi/day_to_note": {
+   "success": 0,
+   "total": 1,
+   "pct": 0.0
+  },
+  "multi/meeting_to_calendar": {
+   "success": 0,
+   "total": 1,
+   "pct": 0.0
+  },
+  "no_tool/no_tool": {
+   "success": 7,
+   "total": 8,
+   "pct": 87.5
+  }
+ },
+ "calls_total": 35,
+ "no_final_answer": 1,
+ "rows": [
+  {
+   "id": "dev_calculator_00",
+   "kind": "calculator",
+   "template": "calculator/percent_of",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 2,
+   "turns": 3,
+   "final_present": true
+  },
+  {
+   "id": "dev_calculator_01",
+   "kind": "calculator",
+   "template": "calculator/bill_split",
+   "right_tools": false,
+   "valid_args": true,
+   "answer": true,
+   "success": false,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_calculator_02",
+   "kind": "calculator",
+   "template": "calculator/expr",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_calculator_03",
+   "kind": "calculator",
+   "template": "calculator/speed",
+   "right_tools": false,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_calculator_04",
+   "kind": "calculator",
+   "template": "calculator/sqrt",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_files_00",
+   "kind": "files",
+   "template": "files/wifi",
+   "right_tools": false,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_files_01",
+   "kind": "files",
+   "template": "files/phone",
+   "right_tools": false,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_files_02",
+   "kind": "files",
+   "template": "files/deadline",
+   "right_tools": false,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_files_03",
+   "kind": "files",
+   "template": "files/owner",
+   "right_tools": false,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_files_04",
+   "kind": "files",
+   "template": "files/room",
+   "right_tools": false,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_files_05",
+   "kind": "files",
+   "template": "files/recipe",
+   "right_tools": false,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_files_06",
+   "kind": "files",
+   "template": "files/budget_path",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_notes_00",
+   "kind": "notes",
+   "template": "notes/add_0",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_notes_01",
+   "kind": "notes",
+   "template": "notes/search_0",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_notes_02",
+   "kind": "notes",
+   "template": "notes/add_1",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_notes_03",
+   "kind": "notes",
+   "template": "notes/search_1",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_notes_04",
+   "kind": "notes",
+   "template": "notes/add_0",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_calendar_00",
+   "kind": "calendar",
+   "template": "calendar/add_0",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_calendar_01",
+   "kind": "calendar",
+   "template": "calendar/list_day",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_calendar_02",
+   "kind": "calendar",
+   "template": "calendar/add_1",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_calendar_03",
+   "kind": "calendar",
+   "template": "calendar/list_time",
+   "right_tools": false,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_calendar_04",
+   "kind": "calendar",
+   "template": "calendar/add_0",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_run_python_00",
+   "kind": "run_python",
+   "template": "run_python/py_0",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_run_python_01",
+   "kind": "run_python",
+   "template": "run_python/py_1",
+   "right_tools": false,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_run_python_02",
+   "kind": "run_python",
+   "template": "run_python/py_2",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_run_python_03",
+   "kind": "run_python",
+   "template": "run_python/py_3",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_multi_00",
+   "kind": "multi",
+   "template": "multi/receipt_total",
+   "right_tools": false,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_multi_01",
+   "kind": "multi",
+   "template": "multi/contact_to_note",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 2,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_multi_02",
+   "kind": "multi",
+   "template": "multi/day_to_note",
+   "right_tools": false,
+   "valid_args": false,
+   "answer": true,
+   "success": false,
+   "n_calls": 3,
+   "turns": 3,
+   "final_present": true
+  },
+  {
+   "id": "dev_multi_03",
+   "kind": "multi",
+   "template": "multi/meeting_to_calendar",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 2,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_multi_04",
+   "kind": "multi",
+   "template": "multi/receipt_total",
+   "right_tools": false,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 1,
+   "turns": 2,
+   "final_present": true
+  },
+  {
+   "id": "dev_multi_05",
+   "kind": "multi",
+   "template": "multi/contact_to_note",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 8,
+   "turns": 6,
+   "final_present": false
+  },
+  {
+   "id": "dev_no_tool_00",
+   "kind": "no_tool",
+   "template": "no_tool/no_tool",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_no_tool_01",
+   "kind": "no_tool",
+   "template": "no_tool/no_tool",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_no_tool_02",
+   "kind": "no_tool",
+   "template": "no_tool/no_tool",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_no_tool_03",
+   "kind": "no_tool",
+   "template": "no_tool/no_tool",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_no_tool_04",
+   "kind": "no_tool",
+   "template": "no_tool/no_tool",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_no_tool_05",
+   "kind": "no_tool",
+   "template": "no_tool/no_tool",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_no_tool_06",
+   "kind": "no_tool",
+   "template": "no_tool/no_tool",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": false,
+   "success": false,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  },
+  {
+   "id": "dev_no_tool_07",
+   "kind": "no_tool",
+   "template": "no_tool/no_tool",
+   "right_tools": true,
+   "valid_args": true,
+   "answer": true,
+   "success": true,
+   "n_calls": 0,
+   "turns": 1,
+   "final_present": true
+  }
+ ]
+}

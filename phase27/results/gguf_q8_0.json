@@ -1,0 +1,28 @@
+{
+ "gguf": "p27_chosen_Q8_0.gguf",
+ "xstest_unsafe": {
+  "gguf": "173/190",
+  "bf16": "171/190",
+  "within_2se": true,
+  "diff_pts": 1.05,
+  "two_se_pts": 6.01
+ },
+ "chirii_dev": {
+  "gguf": "24/40",
+  "bf16": "24/40 (t_s12, before merging)",
+  "within_2se": true,
+  "diff_pts": 0.0,
+  "two_se_pts": 21.91
+ },
+ "accepted": true,
+ "cpu": {
+  "model_turns": 74,
+  "mean_s_per_turn": 6.67,
+  "median_s_per_turn": 4.58,
+  "load_average_start": [
+   12.2158203125,
+   7.61962890625,
+   3.814453125
+  ]
+ }
+}

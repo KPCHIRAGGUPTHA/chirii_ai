@@ -1,0 +1,15 @@
+{
+ "model": "t_s12",
+ "n": 200,
+ "correct": 172,
+ "pct": 86.0,
+ "call": {
+  "correct": 73,
+  "total": 83
+ },
+ "nocall": {
+  "correct": 99,
+  "total": 117
+ },
+ "rule": "first assistant turn: same function and arguments (strings trimmed, case ignored) if the reference calls; no call if it does not"
+}

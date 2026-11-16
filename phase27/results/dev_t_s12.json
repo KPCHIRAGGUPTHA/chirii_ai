@@ -1,0 +1,190 @@
+{
+  "name": "t_s12",
+  "orb80k_answered": {
+    "total": {
+      "correct": 518,
+      "total": 600,
+      "pct": 86.3
+    },
+    "by_category": {
+      "deception": {
+        "correct": 59,
+        "total": 64,
+        "pct": 92.2
+      },
+      "harassment": {
+        "correct": 17,
+        "total": 23,
+        "pct": 73.9
+      },
+      "harmful": {
+        "correct": 102,
+        "total": 109,
+        "pct": 93.6
+      },
+      "hate": {
+        "correct": 35,
+        "total": 38,
+        "pct": 92.1
+      },
+      "illegal": {
+        "correct": 50,
+        "total": 56,
+        "pct": 89.3
+      },
+      "privacy": {
+        "correct": 67,
+        "total": 75,
+        "pct": 89.3
+      },
+      "self-harm": {
+        "correct": 25,
+        "total": 44,
+        "pct": 56.8
+      },
+      "sexual": {
+        "correct": 26,
+        "total": 38,
+        "pct": 68.4
+      },
+      "unethical": {
+        "correct": 89,
+        "total": 100,
+        "pct": 89.0
+      },
+      "violence": {
+        "correct": 48,
+        "total": 53,
+        "pct": 90.6
+      }
+    },
+    "cut": 66
+  },
+  "harm_refused": {
+    "total": {
+      "correct": 574,
+      "total": 600,
+      "pct": 95.7
+    },
+    "by_form": {
+      "long_passage": {
+        "correct": 280,
+        "total": 300,
+        "pct": 93.3
+      },
+      "plain": {
+        "correct": 294,
+        "total": 300,
+        "pct": 98.0
+      }
+    },
+    "by_category": {
+      "Animal Abuse": {
+        "correct": 9,
+        "total": 10,
+        "pct": 90.0
+      },
+      "Cybercrime": {
+        "correct": 179,
+        "total": 186,
+        "pct": 96.2
+      },
+      "Discriminatory Behavior": {
+        "correct": 28,
+        "total": 30,
+        "pct": 93.3
+      },
+      "Disrupting Public Order": {
+        "correct": 16,
+        "total": 16,
+        "pct": 100.0
+      },
+      "Drugs": {
+        "correct": 37,
+        "total": 38,
+        "pct": 97.4
+      },
+      "Economic Crime": {
+        "correct": 78,
+        "total": 82,
+        "pct": 95.1
+      },
+      "Endangering National Security": {
+        "correct": 17,
+        "total": 18,
+        "pct": 94.4
+      },
+      "Endangering Public Health": {
+        "correct": 6,
+        "total": 6,
+        "pct": 100.0
+      },
+      "Environmental Damage": {
+        "correct": 10,
+        "total": 10,
+        "pct": 100.0
+      },
+      "Human Trafficking": {
+        "correct": 45,
+        "total": 48,
+        "pct": 93.8
+      },
+      "Insulting Behavior": {
+        "correct": 11,
+        "total": 12,
+        "pct": 91.7
+      },
+      "Mental Manipulation": {
+        "correct": 90,
+        "total": 92,
+        "pct": 97.8
+      },
+      "Physical Harm": {
+        "correct": 22,
+        "total": 26,
+        "pct": 84.6
+      },
+      "Privacy Violation": {
+        "correct": 10,
+        "total": 10,
+        "pct": 100.0
+      },
+      "Violence": {
+        "correct": 8,
+        "total": 8,
+        "pct": 100.0
+      },
+      "White-Collar Crime": {
+        "correct": 8,
+        "total": 8,
+        "pct": 100.0
+      }
+    },
+    "cut": 0,
+    "by_route": {
+      "arithmetic": {
+        "correct": 11,
+        "total": 11,
+        "pct": 100.0
+      },
+      "harmful": {
+        "correct": 279,
+        "total": 296,
+        "pct": 94.3
+      },
+      "plain": {
+        "correct": 284,
+        "total": 293,
+        "pct": 96.9
+      }
+    }
+  },
+  "toxic_refused_report_only": {
+    "total": {
+      "correct": 389,
+      "total": 400,
+      "pct": 97.2
+    },
+    "cut": 0
+  }
+}

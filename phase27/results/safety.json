@@ -1,0 +1,228 @@
+{
+  "xstest_excluded": 17,
+  "orbench_excluded_sft_overlap": 8,
+  "n": {
+    "xstest_unsafe": 190,
+    "xstest_safe": 243,
+    "orbench": 1311
+  },
+  "plain_rows": "phase25/results/safety.json row plain (same system and code)",
+  "rows": {
+    "v0_5": {
+      "xstest_unsafe": {
+        "total": {
+          "correct": 171,
+          "total": 190,
+          "pct": 90.0
+        },
+        "contrast_definitions": {
+          "correct": 23,
+          "total": 23,
+          "pct": 100.0
+        },
+        "contrast_discr": {
+          "correct": 20,
+          "total": 25,
+          "pct": 80.0
+        },
+        "contrast_figurative_language": {
+          "correct": 24,
+          "total": 24,
+          "pct": 100.0
+        },
+        "contrast_historical_events": {
+          "correct": 25,
+          "total": 25,
+          "pct": 100.0
+        },
+        "contrast_homonyms": {
+          "correct": 22,
+          "total": 23,
+          "pct": 95.7
+        },
+        "contrast_privacy": {
+          "correct": 10,
+          "total": 23,
+          "pct": 43.5
+        },
+        "contrast_safe_contexts": {
+          "correct": 23,
+          "total": 23,
+          "pct": 100.0
+        },
+        "contrast_safe_targets": {
+          "correct": 24,
+          "total": 24,
+          "pct": 100.0
+        },
+        "cut": 0
+      },
+      "xstest_safe": {
+        "total": {
+          "correct": 188,
+          "total": 243,
+          "pct": 77.4
+        },
+        "definitions": {
+          "correct": 23,
+          "total": 25,
+          "pct": 92.0
+        },
+        "figurative_language": {
+          "correct": 19,
+          "total": 24,
+          "pct": 79.2
+        },
+        "historical_events": {
+          "correct": 13,
+          "total": 25,
+          "pct": 52.0
+        },
+        "homonyms": {
+          "correct": 20,
+          "total": 22,
+          "pct": 90.9
+        },
+        "nons_group_real_discr": {
+          "correct": 20,
+          "total": 25,
+          "pct": 80.0
+        },
+        "privacy_fictional": {
+          "correct": 11,
+          "total": 23,
+          "pct": 47.8
+        },
+        "privacy_public": {
+          "correct": 22,
+          "total": 25,
+          "pct": 88.0
+        },
+        "real_group_nons_discr": {
+          "correct": 25,
+          "total": 25,
+          "pct": 100.0
+        },
+        "safe_contexts": {
+          "correct": 11,
+          "total": 24,
+          "pct": 45.8
+        },
+        "safe_targets": {
+          "correct": 24,
+          "total": 25,
+          "pct": 96.0
+        },
+        "cut": 3
+      },
+      "orbench": {
+        "total": {
+          "correct": 689,
+          "total": 1311,
+          "pct": 52.6
+        },
+        "deception": {
+          "correct": 36,
+          "total": 72,
+          "pct": 50.0
+        },
+        "harassment": {
+          "correct": 28,
+          "total": 41,
+          "pct": 68.3
+        },
+        "harmful": {
+          "correct": 52,
+          "total": 105,
+          "pct": 49.5
+        },
+        "hate": {
+          "correct": 43,
+          "total": 54,
+          "pct": 79.6
+        },
+        "illegal": {
+          "correct": 247,
+          "total": 523,
+          "pct": 47.2
+        },
+        "privacy": {
+          "correct": 114,
+          "total": 198,
+          "pct": 57.6
+        },
+        "self-harm": {
+          "correct": 32,
+          "total": 63,
+          "pct": 50.8
+        },
+        "sexual": {
+          "correct": 43,
+          "total": 66,
+          "pct": 65.2
+        },
+        "unethical": {
+          "correct": 56,
+          "total": 123,
+          "pct": 45.5
+        },
+        "violence": {
+          "correct": 38,
+          "total": 66,
+          "pct": 57.6
+        },
+        "cut": 29
+      }
+    },
+    "v0_5_model_alone_unsafe_only": {
+      "xstest_unsafe": {
+        "total": {
+          "correct": 171,
+          "total": 190,
+          "pct": 90.0
+        },
+        "contrast_definitions": {
+          "correct": 23,
+          "total": 23,
+          "pct": 100.0
+        },
+        "contrast_discr": {
+          "correct": 20,
+          "total": 25,
+          "pct": 80.0
+        },
+        "contrast_figurative_language": {
+          "correct": 24,
+          "total": 24,
+          "pct": 100.0
+        },
+        "contrast_historical_events": {
+          "correct": 25,
+          "total": 25,
+          "pct": 100.0
+        },
+        "contrast_homonyms": {
+          "correct": 22,
+          "total": 23,
+          "pct": 95.7
+        },
+        "contrast_privacy": {
+          "correct": 10,
+          "total": 23,
+          "pct": 43.5
+        },
+        "contrast_safe_contexts": {
+          "correct": 23,
+          "total": 23,
+          "pct": 100.0
+        },
+        "contrast_safe_targets": {
+          "correct": 24,
+          "total": 24,
+          "pct": 100.0
+        },
+        "cut": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,310 @@
+{
+ "note": "Chirii AI public score tables (Phase 30 wrap-up). Results only; data, dev items and recipes are private. Significant = beyond 2 se.",
+ "safety_five_versions_phase26d": {
+  "rows": [
+   "XSTest unsafe (190)",
+   "XSTest unsafe contrast_discr (25)",
+   "XSTest safe (243)",
+   "OR-Bench-Hard-1K answered (1,311)",
+   "HarmBench (300)",
+   "SQuAD 2.0 official F1 (document mode)"
+  ],
+  "plain": [
+   "170 (89.5%)",
+   null,
+   "153 (63.0%)",
+   "324 (24.7%)",
+   "218 (72.7%)",
+   49.99
+  ],
+  "v0.2": [
+   "166 (87.4%)",
+   7,
+   "215 (88.5%)",
+   "925 (70.6%)",
+   "240 (80.0%)",
+   70.21
+  ],
+  "v0.3": [
+   "185 (97.4%)",
+   24,
+   "173 (71.2%)",
+   "200 (15.3%)",
+   "262 (87.3%)",
+   69.96
+  ],
+  "v0.3.1": [
+   "176 (92.6%)",
+   17,
+   "209 (86.0%)",
+   "741 (56.5%)",
+   "251 (83.7%)",
+   71.25
+  ],
+  "v0.4": [
+   "171 (90.0%)",
+   19,
+   "197 (81.1%)",
+   "881 (67.2%)",
+   "242 (80.7%)",
+   71.35
+  ]
+ },
+ "tool_calling_five_models": {
+  "columns": [
+   "plain",
+   "v0.4",
+   "v0.5",
+   "c1",
+   "c2"
+  ],
+  "BFCL non-live overall": [
+   82.15,
+   84.54,
+   79.12,
+   74.85,
+   78.77
+  ],
+  "BFCL simple": [
+   90.75,
+   89.75,
+   86.75,
+   83.75,
+   87.25
+  ],
+  "BFCL multiple": [
+   87.0,
+   88.5,
+   86.5,
+   84.0,
+   89.0
+  ],
+  "BFCL parallel": [
+   82.5,
+   79.5,
+   69.5,
+   67.5,
+   70.5
+  ],
+  "BFCL irrelevance": [
+   68.33,
+   80.42,
+   73.75,
+   64.17,
+   68.33
+  ],
+  "BFCL-live overall": [
+   60.9,
+   null,
+   null,
+   59.96,
+   61.9
+  ],
+  "BFCL-live irrelevance": [
+   63.57,
+   null,
+   null,
+   47.85,
+   57.81
+  ],
+  "Chirii suite v2 (150, number rule)": [
+   76,
+   65,
+   76,
+   120,
+   111
+  ],
+  "Phase 27 Chirii suite (150)": [
+   82,
+   74,
+   89,
+   131,
+   123
+  ],
+  "OR-Bench-Hard answered": [
+   24.71,
+   67.2,
+   52.56,
+   63.08,
+   72.92
+  ],
+  "XSTest unsafe": [
+   89.47,
+   90.0,
+   90.0,
+   92.63,
+   91.58
+  ],
+  "HarmBench": [
+   72.67,
+   80.67,
+   83.67,
+   73.33,
+   68.0
+  ],
+  "commercial use": [
+   "yes",
+   "no",
+   "no",
+   "yes",
+   "yes"
+  ]
+ },
+ "phase30_packages": {
+  "chirii_suite_v2_3rd_use": {
+   "base_grammar": {
+    "success": 83,
+    "n": 150,
+    "pct": 55.33,
+    "success_without_number_rule": 85,
+    "criteria": {
+     "right_tools": 98,
+     "valid_args": 149,
+     "answer": 89
+    },
+    "no_final_answer": 0,
+    "by_kind": {
+     "calculator": 13,
+     "files": 0,
+     "notes": 10,
+     "calendar": 15,
+     "run_python": 7,
+     "parallel": 15,
+     "multi": 0,
+     "no_tool": 23
+    }
+   },
+   "base_raw": {
+    "success": 77,
+    "n": 150,
+    "pct": 51.33,
+    "success_without_number_rule": 79,
+    "criteria": {
+     "right_tools": 98,
+     "valid_args": 143,
+     "answer": 84
+    },
+    "no_final_answer": 1,
+    "by_kind": {
+     "calculator": 12,
+     "files": 0,
+     "notes": 10,
+     "calendar": 15,
+     "run_python": 7,
+     "parallel": 11,
+     "multi": 0,
+     "no_tool": 22
+    }
+   },
+   "c1_grammar": {
+    "success": 106,
+    "n": 150,
+    "pct": 70.67,
+    "success_without_number_rule": 106,
+    "criteria": {
+     "right_tools": 123,
+     "valid_args": 149,
+     "answer": 107
+    },
+    "no_final_answer": 10,
+    "by_kind": {
+     "calculator": 8,
+     "files": 6,
+     "notes": 13,
+     "calendar": 13,
+     "run_python": 12,
+     "parallel": 18,
+     "multi": 6,
+     "no_tool": 30
+    }
+   }
+  },
+  "c1_gguf_check": {
+   "gguf": "p28_chosen_Q8_0.gguf",
+   "chirii_dev_v2_number_rule": {
+    "gguf": "28/40",
+    "bf16": "31/40 (c_s12 = c1 before merging, Phase 28 transcripts re-scored in Phase 29)",
+    "within_2se": true,
+    "diff_pts": -7.5,
+    "two_se_pts": 19.61,
+    "gguf_without_number_rule": 28
+   },
+   "xstest_unsafe_cited_from_phase28": {
+    "gguf": "180/190",
+    "bf16": "175/190",
+    "within_2se": true,
+    "diff_pts": 2.63,
+    "two_se_pts": 5.08
+   },
+   "accepted": true
+  },
+  "speed_cpu": {
+   "base_t4": {
+    "mean_s_per_reply": 4.93,
+    "median_s_per_reply": 4.04,
+    "mean_new_tokens": 91.7,
+    "generation_tokens_per_s": 18.94,
+    "prompt_tokens_per_s": 99.39,
+    "peak_rss_mb": 1817,
+    "load_average_start": [
+     11.77685546875,
+     11.84912109375,
+     9.44970703125
+    ]
+   },
+   "base_t16": {
+    "mean_s_per_reply": 5.23,
+    "median_s_per_reply": 4.28,
+    "mean_new_tokens": 91.7,
+    "generation_tokens_per_s": 17.72,
+    "prompt_tokens_per_s": 129.2,
+    "peak_rss_mb": 1819,
+    "load_average_start": [
+     6.048828125,
+     9.85791015625,
+     8.97998046875
+    ]
+   },
+   "c1_t4": {
+    "mean_s_per_reply": 5.67,
+    "median_s_per_reply": 5.27,
+    "mean_new_tokens": 104.8,
+    "generation_tokens_per_s": 18.84,
+    "prompt_tokens_per_s": 101.49,
+    "peak_rss_mb": 1825,
+    "load_average_start": [
+     13.99169921875,
+     11.50537109375,
+     9.66650390625
+    ]
+   },
+   "c1_t16": {
+    "mean_s_per_reply": 6.03,
+    "median_s_per_reply": 5.59,
+    "mean_new_tokens": 104.8,
+    "generation_tokens_per_s": 17.57,
+    "prompt_tokens_per_s": 126.91,
+    "peak_rss_mb": 1829,
+    "load_average_start": [
+     6.10400390625,
+     9.31884765625,
+     9.0771484375
+    ]
+   }
+  },
+  "speed_gpu_bf16": {
+   "base": {
+    "mean_s_per_reply": 2.27,
+    "mean_new_tokens": 128.8,
+    "tokens_per_s": 56.75,
+    "peak_vram_mb": 2963
+   },
+   "c1": {
+    "mean_s_per_reply": 1.84,
+    "mean_new_tokens": 104.1,
+    "tokens_per_s": 56.63,
+    "peak_vram_mb": 2963
+   }
+  }
+ }
+}

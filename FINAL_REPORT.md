@@ -1,177 +1,373 @@
-# MiniGPT / Chirii AI — final report (Phases 0–17E)
+# MiniGPT / Chirii AI: final report (Phases 1–29, with the Phase 30 wrap-up), public version
 
-A plain-language summary for faculty, written on 10 November 2026. Every number below is quoted from a committed
-report in this repository; the source is named in brackets after it. (In the private repository,
-`phase10/PHASE10B_REPORT.md` is on branch `phase10-foundation-v2` and `phase13/PHASE13_REPORT.md` on branch
-`phase13-overrefusal`; the public repository has every report on `main`.)
+Written for faculty on 18 November 2026; it replaces the 10 November version (Phases 0–17E, with a Phase 20 addendum).
+Every number below is quoted from a report of this project. This public version carries the results only: the data
+pipeline, data mixes and training recipes are kept private, and some report paths named here are in the private
+repository.
 
 ## In one paragraph
 
-I built a small GPT-style language model from scratch — tokeniser, pretraining, instruction tuning, a calculator
-tool and a safety layer — and evaluated it honestly, with pass/fail rules written down before each experiment. The
-released model is **MiniGPT v1.0.1** (34M parameters). A later 98M-parameter base model, trained on 11B tokens in
-total, is **level with GPT-2 on 9 of 12 standard benchmarks**, but it **did not meet the pre-registered goal of beating
-GPT-2**, and the instruction-tuned version built on it **failed two of its four release bars**, so **no v2.0 was
-released**. Most experiments after v1.0 failed their own pre-registered tests; the reports say so plainly.
+The project ran in two stages.
+
+**Stage 1 (Phases 1–20): a model built from scratch.**
+- I built a small GPT-style language model myself: tokeniser, pretraining, instruction tuning, a calculator tool and a
+  safety layer. Pass/fail rules were written down before each experiment.
+- The released model is **MiniGPT v1.0.1** (34M parameters). Its own v1.0 scorecard failed 2 of its 4 bars, and it was
+  released as an early milestone, not as a passing model.
+- A 98M base model trained on 11B tokens **did not beat GPT-2**, and **no v2.0 was released**.
+
+**Stage 2 (Phases 23–29): the Chirii Brain on Qwen.** I fine-tuned the open Qwen2.5-1.5B-Instruct model and evaluated it on
+public benchmarks.
+- **Research versions v0.1–v0.5:** each one failed at least one pre-registered bar. They are also **research-only**,
+  because their training data includes non-commercial sources.
+- **Commercial-clean c1 and c2:** retrained from plain Qwen on commercially licensed data only. Both are much better
+  than plain Qwen at the Chirii OS's own tool tasks, but both **failed their BFCL function-calling bars**.
+
+**The result.** No fine-tuned brain passed all of its bars. The commercial configuration is therefore **plain Qwen plus
+the Chirii OS layers**, packaged in Phase 30 as "Chirii Brain base". c1 is packaged separately and labelled experimental.
 
 ## Timeline
 
 | Dates (2026) | Phases | What happened | Main report |
 | :--- | :--- | :--- | :--- |
-| before 7 Sep | 0–3 | Character-level models and architecture experiments (the first commit, 7 Sep, already contains them) | git history |
-| 17–21 Sep | 4–5D | BPE tokeniser; FineWeb-Edu pretraining pipeline; Model C (6,613,504 parameters) | git history; `phase9/PHASE9_REPORT.md` |
-| 21 Sep–7 Oct | 6–7 | First instruction tuning and first retrieval attempts (both 0/26 on retrieval items when re-scored) | git history; `phase9/PHASE9_REPORT.md` |
+| before 7 Sep | 0–3 | Character-level models and architecture experiments | git history |
+| 17–21 Sep | 4–5D | BPE tokeniser; FineWeb-Edu pretraining pipeline; Model C (6,613,504 parameters) | `phase9/PHASE9_REPORT.md` |
+| 21 Sep–7 Oct | 6–7 | First instruction tuning and first retrieval attempts | `phase9/PHASE9_REPORT.md` |
 | 7–31 Oct | 8 | Model-scaling experiment (Model D, 15,164,800 parameters) | `phase9/PHASE9_REPORT.md` |
-| 31 Oct | 9 | Re-ran everything under one tested trainer: found the scaling result was a trainer artefact | `phase9/PHASE9_REPORT.md` |
-| 31 Oct–2 Nov | 10–11 | Tokeniser v2; 34M model pretrained on 1.51B tokens; instruction tuning with a calculator | `phase10/PHASE10A_REPORT.md`, `phase11/PHASE11C_REPORT.md` |
+| 31 Oct | 9 | Re-ran everything under one tested trainer; the scaling result was a trainer artefact | `phase9/PHASE9_REPORT.md` |
+| 31 Oct–2 Nov | 10–11 | Tokeniser v2; 34M model on 1.51B tokens; instruction tuning with a calculator | `phase10/PHASE10A_REPORT.md`, `phase11/PHASE11C_REPORT.md` |
 | 2 Nov | 12 | **v1.0 released** (CPU demo) | `phase12/MINIGPT_V1_REPORT.md` |
 | 2–3 Nov | 13–15D | Over-refusal fix (failed), seed noise, self-harm safety layer (**v1.0.1 released**), retrieval (failed) | `POST_RELEASE_EXPERIMENTS.md` |
 | 3 Nov | 16 | Comparison with three small public models on our own tests | `phase16/COMPARISON.md` |
-| 3–4 Nov | 18 | Standard public benchmarks (lm-evaluation-harness) for MiniGPT and six public models | `phase18/BENCHMARKS.md` |
-| 3–5 Nov | 17A–17B | 3B-token dataset; Foundation v4 (98M) pretrained for 30 h; evaluated against GPT-2 (failed) | `phase17/BENCHMARKS_V4.md` |
-| 5–9 Nov | 17D | Extended pretraining: 8.0B more tokens, 80.5 h; evaluated against GPT-2 (failed) | `phase17/BENCHMARKS_V4_EXT.md` |
-| 9 Nov | 17C, 17E | Instruction tuning on the extended base (failed release bars); replay against forgetting (failed) | `phase17/PHASE17C_REPORT.md`, `phase17/PHASE17E_REPORT.md` |
+| 3–4 Nov | 18 | Standard public benchmarks (lm-evaluation-harness) | `phase18/BENCHMARKS.md` |
+| 3–5 Nov | 17A–17B | 3B-token dataset; Foundation v4 (98M) pretrained for 30 h; failed "beat GPT-2" | `phase17/BENCHMARKS_V4.md` |
+| 5–9 Nov | 17D | 8.0B more tokens in 80.5 h; failed "beat GPT-2" again | `phase17/BENCHMARKS_V4_EXT.md` |
+| 9 Nov | 17C, 17E | Instruction tuning on the extended base (failed); replay against forgetting (failed) | `phase17/PHASE17C_REPORT.md`, `phase17/PHASE17E_REPORT.md` |
+| 9–10 Nov | 19–20 | v2.0-preview demo (not a release); less repetitive SFT data and gentler tuning (1 of 5 bars) | `phase19/DEMO_SCRIPT_V2.md`, `phase20/PHASE20_REPORT.md` |
+| 10–11 Nov | 23A–C | Plain Qwen2.5-1.5B baseline; first LoRA fine-tune (3 of 6 bars); RAG (failed) | `phase23/PHASE23A/B/C_REPORT.md` |
+| 11–12 Nov | 24 | Fine-tune and RAG aligned (3 of 9 bars) = **v0.1** | `phase24/PHASE24_REPORT.md` |
+| 12 Nov | 25 | v0.1 evaluated on public benchmarks, no training (bars 1 and 2 failed) | `phase25/PHASE25_REPORT.md` |
+| 13 Nov | 26 | **v0.2** (bars 1 and 2 failed) | `phase26/PHASE26_REPORT.md` |
+| 13–14 Nov | 26B | **v0.3**: more safety training (all 3 bars failed) | `phase26b/PHASE26B_REPORT.md` |
+| 14–15 Nov | 26C | **v0.3.1**: rebalanced safety and helpfulness (bar 1 failed) | `phase26c/PHASE26C_REPORT.md` |
+| 15 Nov | 26D | **v0.4**: DPO preference training (bars 1 and 2 failed) | `phase26d/PHASE26D_REPORT.md` |
+| 15–16 Nov | 27 | **v0.5**: tool calling (bars 1, 3 and 4 failed); licence audit: v0.1–v0.5 research-only | `phase27/PHASE27_REPORT.md`, `LICENCE_AUDIT.md` |
+| 16–17 Nov | 28 | **c1**: commercial-clean retrain from plain Qwen (bars 1 and 2 failed) | `phase28/PHASE28_REPORT.md` |
+| 17–18 Nov | 29 | **c2**: the last training round (bars 1 and 2 failed) | `phase29/PHASE29_REPORT.md` |
+| 18 Nov | 30 | Wrap-up, no training: Chirii Brain base (commercial) and c1 (experimental) packages; this report | `phase30/PHASE30_REPORT.md` |
 
-## What is released, and why nothing else is
+## What is released, packaged, or neither
 
-- **v1.0** (2 Nov): the 34M instruction-tuned model with the calculator, as a CPU terminal demo; it answers 102 of
-  180 held-out prompts [`phase12/MINIGPT_V1_REPORT.md`].
-- **v1.0.1** (2 Nov): v1.0 plus a rule-based self-harm safety layer [`phase14/PHASE14_REPORT.md`]. **This is the
-  current release.**
-- **No v2.0.** The 17C model failed two of the four pre-registered bars: bare arithmetic 16/18 (bar 90%) and
-  over-refusal 77/100 (bar 90%) [`phase17/PHASE17C_REPORT.md`]. The rule was all four or nothing.
+- **v1.0** (2 Nov) and **v1.0.1** (2 Nov, v1.0 plus the self-harm safety layer) are the only releases of a
+  from-scratch model. **v1.0 failed 2 of its 4 pre-registered bars** (harmful 25/28 = 89.3%, short of 90% by one item;
+  over-refusal 42/60 = 70%) and was released as an early milestone anyway [`phase12/MINIGPT_V1_REPORT.md`]. v1.0.1 also
+  **must not be relied on to refuse harmful requests**: on XSTest it refuses or supports on 135/190 [`ERRATA.md` 5].
+  Both are research previews: their SFT data includes alpaca-cleaned (CC BY-NC) [`LICENCE_AUDIT.md`].
+- **No v2.0, and no Chirii Brain v0.1–v0.5, c1 or c2 release.** Every one failed at least one bar (table below).
+- **Phase 30 packages** (local, built from existing weights; not uploaded as releases):
+  - **Chirii Brain base (commercial):** plain Qwen2.5-1.5B-Instruct Q8_0 plus the OS layers. This is the
+    commercial fallback the criteria named.
+  - **Chirii Brain c1 (experimental):** labelled "experimental: did not pass its pre-registered bars (BFCL)".
 
-## Key findings
+## Every bar and verdict
 
-**1. The Phase 9 trainer bug.** The original scaling experiment said the larger Model D (15.2M) was much worse than
-Model C (6.6M): 2.8804 against 2.1531 bits per byte. Retrained with one tested trainer, Model D averaged 2.2679 — the
-gap was mostly the old trainer, and the pre-registered rule rated D "not better", not "worse" [`phase9/PHASE9_REPORT.md`].
+Each bar was pre-registered. A FAIL is a FAIL even where the model was better elsewhere. "Significant" means a
+difference beyond 2 standard errors.
 
-**2. Seed noise is large.** Two seeds of the same small model differed by 0.11–0.26 bits per byte
-[`phase9/PHASE9_REPORT.md`]. Training the released recipe three times gave over-refusal scores of 42, 31 and 41 out of
-60 [`phase14/PHASE14_REPORT.md`]; the three 17C seeds gave 43, 37 and 40 [`phase17/PHASE17C_REPORT.md`]. Single-run
-comparisons of over-refusal are therefore unreliable.
+| Phase / model | Bar | Result | Verdict |
+| :--- | :--- | :--- | :--- |
+| 11 / v1.0 | Arithmetic ≥ 90% (held-out) | 29/32 = 90.6% | PASS |
+| 11 / v1.0 | Unknown ≥ 70% | 21/30 = 70.0% | PASS |
+| 11 / v1.0 | Harmful ≥ 90% | 25/28 = 89.3% | **FAIL** (by one item) |
+| 11 / v1.0 | Over-refusal ≥ 90% | 42/60 = 70.0% | **FAIL** |
+| 11D / sft_v3 | Switch only if over-refusal ≥ 90% and dev harmful ≥ 90% | over-refusal 30/60 | **FAIL** (v2 kept) |
+| 13 / v4a, v4b | Over-refusal ≥ 90%, dev harmful ≥ 90%, dev total ≥ 102 | 41/60 and 39/60 over-refusal | **FAIL** |
+| 14 / safety layer | Catch self-harm without adding over-refusal | 22/22 caught, 0/79 false triggers; 2 of 4 unseen items | worked, with a gap (**v1.0.1**) |
+| 15B / RAG-SFT | All RAG criteria, both seeds | answered 14.2% and 19.4% vs 26.1% without RAG | **FAIL** |
+| 15D / abstention | Pre-registered diagnostic rule | 26.9% | INCONCLUSIVE |
+| 17B / Foundation v4 | Beat GPT-2 (3 conditions) | all 3 fail | **FAIL** |
+| 17D / v4 extended | Beat GPT-2 (3 conditions) | all 3 fail (LAMBADA 27.0 vs 32.6) | **FAIL** |
+| 17C / SFT v5 | harmful_v3 ≥ 90% | 95% | PASS |
+| 17C / SFT v5 | Unknown | 72% | PASS |
+| 17C / SFT v5 | Bare arithmetic ≥ 90% | 16/18 = 88.9% | **FAIL** |
+| 17C / SFT v5 | Over-refusal ≥ 90% | 77/100 | **FAIL** (no v2.0) |
+| 17E / replay | 5-task average +3 and LAMBADA ≥ 20 (2 of 4 conditions failed) | +1.11; LAMBADA 12.45 | **FAIL** |
+| 20 / SFT v6 | Bare arithmetic | 20/20 | PASS |
+| 20 / SFT v6 | XSTest unsafe ≥ 90% | 130/190 | **FAIL** |
+| 20 / SFT v6 | Over-refusal ≥ 90% | 81/100 | **FAIL** |
+| 20 / SFT v6 | Unknown | 19/36 | **FAIL** |
+| 20 / SFT v6 | Misfire | 13/60 | **FAIL** |
+| 23B / Qwen LoRA | Bare arithmetic | 20/20 | PASS |
+| 23B / Qwen LoRA | Unknown | 31/36 = 86% | PASS |
+| 23B / Qwen LoRA | misfire_v4 | 50/60 = 83% | PASS |
+| 23B / Qwen LoRA | XSTest unsafe ≥ 95% | 169/190 = 88.9% | **FAIL** |
+| 23B / Qwen LoRA | overrefusal_v4 ≥ 90% | 72/100 | **FAIL** |
+| 23B / Qwen LoRA | No forgetting | SciQ, BoolQ, LAMBADA lower | **FAIL** |
+| 23C / RAG | Answerable ≥ +15 points | +5.3 (plain + RAG), −3.5 (23B + RAG) | **FAIL** |
+| 23C / RAG | Unanswerable ≥ 70% | 60% and 50% | **FAIL** |
+| 23C / RAG | Harmful and over-refusal not worse with RAG | not worse | PASS |
+| 24 / v0.1 system | XSTest unsafe ≥ 95% | 182/190 = 95.8% | PASS |
+| 24 / v0.1 system | Bare arithmetic | 20/20 | PASS |
+| 24 / v0.1 system | GSM8K not below plain | 66.4% vs 64.6% | PASS |
+| 24 / v0.1 system | overrefusal_v4 ≥ 90% | 71/100 | **FAIL** |
+| 24 / v0.1 system | Unknown ≥ 80% | 27/36 | **FAIL** |
+| 24 / v0.1 system | misfire_v4 ≥ 80% | 38/60 | **FAIL** |
+| 24 / v0.1 system | No forgetting | SciQ, BoolQ lower | **FAIL** |
+| 24 / v0.1 system | RAG v2 answerable ≥ +15 | +3.6 | **FAIL** |
+| 24 / v0.1 system | RAG v2 unanswerable ≥ 70% | 55% | **FAIL** |
+| 24 / v0.1 laptop | Q8_0 within dev rule | 175 vs 179 | **rejected** |
+| 25 / v0.1 | XSTest unsafe ≥ 95% | 169/190 = 88.9% | **FAIL** |
+| 25 / v0.1 | No significant drop vs plain | 4 drops (SciQ, BoolQ, SQuAD answerable F1, SQuAD abstention) | **FAIL** |
+| 25 / v0.1 | Significant gain on ≥ 2 of 4 | XSTest safe +21.8, OR-Bench-Hard +29.8 | PASS |
+| 26 / v0.2 | XSTest unsafe ≥ 95% | 166/190 = 87.4% | **FAIL** |
+| 26 / v0.2 | No significant drop vs plain | SQuAD abstention 72.6% vs 89.8% | **FAIL** |
+| 26 / v0.2 | Gain on ≥ 2 of 4 | XSTest safe +25.5, OR-Bench-Hard +45.8 | PASS |
+| 26B / v0.3 | XSTest unsafe ≥ 95% | 185/190 = 97.4% | PASS |
+| 26B / v0.3 | HarmBench ≥ 90% | 262/300 = 87.3% | **FAIL** |
+| 26B / v0.3 | HarmBench not below v0.2 | +7.3 (gain) | PASS |
+| 26B / v0.3 | No significant drop vs plain | OR-Bench-Hard answered 15.3% vs 24.7% | **FAIL** |
+| 26B / v0.3 | Gain on ≥ 2 of 4 | only SQuAD official F1 | **FAIL** |
+| 26C / v0.3.1 | XSTest unsafe ≥ 95% | 176/190 = 92.6% | **FAIL** |
+| 26C / v0.3.1 | HarmBench ≥ 90% | 251/300 = 83.7% | **FAIL** |
+| 26C / v0.3.1 | HarmBench not below v0.2 | +3.7 n.s. | PASS |
+| 26C / v0.3.1 | No significant drop vs plain | none | PASS |
+| 26C / v0.3.1 | Gain on ≥ 2 of 4 | 3 of 4 | PASS |
+| 26D / v0.4 | XSTest unsafe ≥ 95% | 171/190 = 90.0% | **FAIL** |
+| 26D / v0.4 | HarmBench ≥ 90% | 242/300 = 80.7% | **FAIL** |
+| 26D / v0.4 | HarmBench not below v0.2 | +0.7 n.s. | PASS |
+| 26D / v0.4 | No significant drop vs plain | TriviaQA 0.2% vs 1.3% | **FAIL** |
+| 26D / v0.4 | Gain on ≥ 2 of 4 | 3 of 4 | PASS |
+| 27 / v0.5 | BFCL overall significantly above plain and v0.4 | 79.12 vs 82.15 (n.s.) and vs 84.54 (drop) | **FAIL** |
+| 27 / v0.5 | BFCL irrelevance not below plain | 73.75 vs 68.33 | PASS |
+| 27 / v0.5 | Chirii suite ≥ 80% | 89/150 = 59.3% | **FAIL** |
+| 27 / v0.5 | No significant drop vs v0.4 | OR-Bench-Hard 52.56 vs 67.20 | **FAIL** |
+| 28 / c1 | BFCL overall significantly above plain | 74.85 vs 82.15 (significant drop) | **FAIL** |
+| 28 / c1 | BFCL parallel and irrelevance not below | parallel 67.5 vs 82.5 (drop) | **FAIL** |
+| 28 / c1 | Chirii suite v2 ≥ 80% | 123/150 = 82.0% (80.0% under the Phase 29 number rule) | PASS |
+| 28 / c1 | OR-Bench-Hard answered significantly above | 63.08 vs 24.71 | PASS |
+| 28 / c1 | XSTest unsafe and HarmBench not below | 92.63 / 73.33 vs 89.47 / 72.67 | PASS |
+| 28 / c1 | SQuAD F1, GSM8K, 10 MC: no drop | no drop | PASS |
+| 29 / c2 | BFCL non-live and live overall not below, and no category below | overall n.s.; parallel 70.5 vs 82.5 and live_irrelevance 57.81 vs 63.57 drop | **FAIL** |
+| 29 / c2 | Chirii suite v2 ≥ 80% (number rule) | 111/150 = 74.0% | **FAIL** |
+| 29 / c2 | OR-Bench-Hard answered significantly above | 72.92 vs 24.71 | PASS |
+| 29 / c2 | XSTest unsafe and HarmBench not below | 91.58 / 68.00 vs 89.47 / 72.67 | PASS |
+| 29 / c2 | SQuAD F1, GSM8K, 10 MC: no drop | no drop | PASS |
 
-**3. Contamination was found and removed several times.**
-- 99.6% of the Phase 5D validation lines turned up in the new pretraining text; the overlapping documents (8,796,530
-  tokens) were removed before training [`phase10/PHASE10A_REPORT.md`].
-- 655 instruction-tuning rows overlapping the evaluation sets were removed [`phase11/PHASE11A_REPORT.md`].
-- 13-word overlap between benchmarks and the 34M model's pretraining text was highest for BoolQ (6.6%), SciQ (3.9%)
-  and MMLU (1.7%), mostly shared Wikipedia/textbook passages rather than leaked answers [`phase18/BENCHMARKS.md`].
-- For the 17D data, 8,484 documents sharing a 13-word sequence with the 12 benchmarks were removed first
-  [`phase17/BENCHMARKS_V4_EXT.md`].
+Laptop checks (Q8_0 GGUF within 2 se of bf16) were accepted for v0.1 (Phase 25), v0.2, v0.3, v0.3.1, v0.4, v0.5 and c1. No
+package followed any of them, because every model failed a bar.
 
-**4. From 34M to 98M to 98M-extended.**
+## Bars changed after a result (stated openly)
 
-| Model | Parameters | Pretraining tokens | Bits per byte, Phase 10 val | Bits per byte, Phase 5D text |
-| :--- | ---: | ---: | ---: | ---: |
-| MiniGPT base | 33,870,848 | 1.51B | 1.1335 | 1.1479 |
-| Foundation v4 | 98,425,344 | 3.0B | 1.0596 | 1.0777 |
-| Foundation v4 extended | 98,425,344 | 3.0B + 8.0B | 0.9992 | 1.0167 |
+| When | Change | Direction | Why (as recorded) |
+| :--- | :--- | :--- | :--- |
+| Phase 26B, after v0.2 failed | SQuAD "unanswerable abstention not below plain" **replaced** by "SQuAD official overall F1 not below plain" | changed after a failure | Recorded as "a design error in CRITERIA_25/26": plain Qwen abstained on 71% of *answerable* questions too, so the old bar rewarded never answering [`phase26b/CRITERIA_26B.md`] |
+| Phase 26B | HarmBench ≥ 90% added to the safety bar | tightened | A second public harmful-request set |
+| Phase 27, after v0.4 failed bar 2 on TriviaQA | TriviaQA moved from barred to **reported only** | relaxed after a failure | Its chat-format exact match is near zero for every model (2 to 13 of 1,000) [`phase27/CRITERIA_27.md`] |
+| Phase 28 (commercial restart) | BFCL bar "above plain **and** above v0.4" became "above plain", plus "parallel and irrelevance not below" | changed | c1 starts from plain Qwen, and v0.4 is non-commercial [`phase28/CRITERIA_28.md`] |
+| **Phase 29, after c1's result** | **BFCL bar relaxed** from "significantly above plain" to "not significantly below plain", on BFCL non-live **and** the fresh BFCL-live, with **no category** significantly below | **relaxed** after a failure (tightened in scope) | The project owner made this change after seeing c1's result, as a post-hoc relaxation. The product needs a brain that keeps plain's general function calling while adding Chirii skills, not one that beats plain on a public benchmark. c1 would also have failed the new bar, and c2 failed it [`phase29/CRITERIA_29.md`] |
+| Phase 29, after Phase 28 | Seed selection changed from "harm-dev refusal ≥ plain's" to "not significantly below plain's" (one-sided two-proportion z-test) | relaxed after a result | Under the ≥ rule no seed qualified; plain's 198/200 sits at the ceiling, so the rule rejected noise [`phase29/CRITERIA_29.md`] |
+| Phase 29 | Number-format rule: a malformed number ("4,840,5603") makes a Chirii task fail; earlier models re-scored | tightened | c1's suite v2 went from 123 to 120/150 [`phase29/PHASE29_REPORT.md`] |
 
-(The 98M models at their 1,024-token context, the 34M model at 512; identical scored text [`phase17/BENCHMARKS_V4_EXT.md`].)
+## Safety across the five general-purpose versions (general-mode system)
 
-On the standard benchmarks (0-shot, lm-evaluation-harness), selected tasks, percent:
+[`phase26d/PHASE26D_REPORT.md`, "Safety across versions"]
 
-| Task | MiniGPT 34M | v4 (3B) | v4 extended | GPT-2 (124M) |
-| :--- | ---: | ---: | ---: | ---: |
-| ARC-Easy | 38.6 | 39.6 | 44.0 | 39.5 |
-| HellaSwag | 27.7 | 29.3 | 31.2 | 31.1 |
-| PIQA | 57.0 | 59.0 | 61.4 | 62.5 |
-| SciQ | 60.3 | 63.9 | 67.8 | 64.4 |
-| LAMBADA | 17.3 | 19.7 | 27.0 | 32.6 |
-| ARC-Challenge | 22.1 | 24.1 | 23.8 | 22.7 |
+| | plain Qwen | v0.2 | v0.3 | v0.3.1 | v0.4 |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| XSTest unsafe, refused or support (190) | 170 (89.5%) | 166 (87.4%) | 185 (97.4%) | 176 (92.6%) | 171 (90.0%) |
+| XSTest unsafe, `contrast_discr` (25) | — | 7 | 24 | 17 | 19 |
+| XSTest safe, answered (243) | 153 (63.0%) | 215 (88.5%) | 173 (71.2%) | 209 (86.0%) | 197 (81.1%) |
+| OR-Bench-Hard-1K answered (1,311) | 324 (24.7%) | 925 (70.6%) | 200 (15.3%) | 741 (56.5%) | 881 (67.2%) |
+| HarmBench, refused or support (300) | 218 (72.7%) | 240 (80.0%) | 262 (87.3%) | 251 (83.7%) | 242 (80.7%) |
+| SQuAD 2.0 official F1 (document mode) | 49.99 | 70.21 | 69.96 | 71.25 | 71.35 |
+| Bar 1 (XSTest ≥ 95% [and HarmBench ≥ 90% from v0.3]) | — | FAIL | FAIL (HarmBench) | FAIL | FAIL |
 
-[`phase18/BENCHMARKS.md`, `phase17/BENCHMARKS_V4.md`, `phase17/BENCHMARKS_V4_EXT.md`]. The extended model is
-significantly better than GPT-2 on ARC-Easy and BoolQ, significantly worse on LAMBADA, and not significantly different
-on the other 9 tasks [`phase17/BENCHMARKS_V4_EXT.md`]. Both pre-registered "beat GPT-2" tests failed all three
-conditions [`phase17/BENCHMARKS_V4.md`, `phase17/BENCHMARKS_V4_EXT.md`].
+The pattern: every safety gain cost helpfulness, and every helpfulness gain cost safety. v0.3 was the safest
+(97.4%/87.3%) but answered only 15.3% of OR-Bench-Hard. No version reached 95% XSTest and 90% HarmBench together.
 
-**5. The safety layer works narrowly.** On lists written before tuning it caught 22/22 self-harm messages with 0/79
-false triggers; on sealed tests it raised the harmful-request score from 88.1% to 91.5% without adding over-refusal,
-but caught only 2 of 4 unseen self-harm items [`phase14/PHASE14_REPORT.md`].
+## Tool calling across versions
 
-**6. Retrieval (RAG) failed, and why.** With Wikipedia passages the 34M model answered fewer questions (14.2% and
-19.4%) than without them (26.1%), and stopped refusing harmful requests [`phase15/PHASE15B_REPORT.md`]. The diagnosis:
-the router attached passages to harmful and "unknown" prompts, and the model learned to say "the sources don't say"
-on 53–62% of answerable questions [`phase15/PHASE15C_DIAGNOSIS.md`]. Removing that habit reached only 26.9%, rated
-inconclusive by the pre-registered rule [`phase15/PHASE15D_REPORT.md`].
+[`phase29/PHASE29_REPORT.md`; Phase 27/28 transcripts re-scored there under the number-format rule]
 
-**7. Instruction tuning erases much of what pretraining gained, and replay barely helps.** From the 34M base to
-v1.0.1, LAMBADA fell from 17.3 to 10.8 [`phase18/BENCHMARKS.md`]. From the extended base to its tuned versions, the
-five-task average (ARC-Easy, HellaSwag, PIQA, SciQ, LAMBADA) fell from 46.28 to 38.72 and LAMBADA from 27.0 to 12.07
-(mean of 3 seeds). Mixing 25% pretraining text back in ("replay") recovered only 1.11 points and left LAMBADA at
-12.45, failing its pre-registered test [`phase17/PHASE17E_REPORT.md`].
+| | plain Qwen | v0.4 | v0.5 | c1 | c2 |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| BFCL non-live overall (unweighted, 4 categories) | 82.15 | 84.54 | 79.12 | 74.85 | 78.77 |
+| BFCL simple (400) | 90.75 | 89.75 | 86.75 | 83.75 | 87.25 |
+| BFCL multiple (200) | 87.0 | 88.5 | 86.5 | 84.0 | 89.0 |
+| BFCL parallel (200) | 82.5 | 79.5 | 69.5 | 67.5 | 70.5 |
+| BFCL irrelevance (240) | 68.33 | 80.42 | 73.75 | 64.17 | 68.33 |
+| BFCL-live overall (fresh in Phase 29) | 60.90 | — | — | 59.96 | 61.90 |
+| BFCL-live irrelevance (884) | 63.57 | — | — | 47.85 | 57.81 |
+| Chirii suite v2 (150, number rule) | 76 (50.7%) | 65 (43.3%) | 76 (50.7%) | **120 (80.0%)** | 111 (74.0%) |
+| Phase 27 Chirii suite (150) | 82 (54.7%) | 74 (49.3%) | 89 (59.3%) | **131 (87.3%)** | 123 (82.0%) |
+| OR-Bench-Hard answered | 24.71 | 67.20 | 52.56 | 63.08 | 72.92 |
+| XSTest unsafe | 89.47 | 90.00 | 90.00 | 92.63 | 91.58 |
+| HarmBench | 72.67 | 80.67 | 83.67 | 73.33 | 68.00 |
+| Commercial use | yes | **no** | **no** | yes | yes |
 
-**8. Over-refusal is unsolved.** The released model answers only 42 of 60 harmless-but-edgy questions (bar 90%)
-[`phase11/PHASE11D_REPORT.md`]. Rebalancing the refusal data did not help [`phase13/PHASE13_REPORT.md`]. The 98M
-extended model, after tuning, scores 77/100 on the fresh sealed set — no better than v1.0.1's 76/100
-[`phase17/PHASE17C_REPORT.md`].
+**Phase 30 measurement (Q8_0 GGUF through llama.cpp on CPU, grammar-constrained tool calls, inside the package; Chirii
+suite v2, 3rd use; a measurement, not a bar):**
+- plain Qwen (base package): **83/150 (55.3%)**, against 76/150 in bf16 (n.s.); the same GGUF without the grammar
+  scored 77/150;
+- c1 (experimental package): **106/150 (70.7%)**, against 120/150 in bf16 (−9.3, 2 se 9.9, n.s.)
+[`phase30/PHASE30_REPORT.md`].
 
-## Mistakes made in planning
+## Licence summary
 
-1. **A condition GPT-2 itself cannot meet.** The "beat GPT-2" criteria required ARC-Challenge to be significantly above
-   random. GPT-2 scores 22.7% on ARC-Challenge, below the 25% of random guessing [`phase18/BENCHMARKS.md`], so a model
-   that truly matched GPT-2 would still fail that condition. It should have been checked against the reference
-   models before it was committed.
-2. **The 3B-token target was too small.** Foundation v4 at 3B tokens was 12.9 points behind GPT-2 on LAMBADA; 8B more
-   tokens cut that to 5.6 [`phase17/BENCHMARKS_V4.md`, `phase17/BENCHMARKS_V4_EXT.md`]. The budget was chosen to fit
-   the GPU time, not from evidence about how much data a 98M model needs.
-3. **The prep prompt was never sent.** The 17B and 17C conditions were set in the planning conversation on 4 November
-   but the prompt carrying them was not sent. So the 17B criteria were committed only after pretraining had ended
-   (though before any benchmark), and the 17C criteria only on 6 November [`phase17/CRITERIA_17B.md`,
-   `phase17/CRITERIA_17C.md`]. The same gap meant the new sealed test sets and the new SFT data were written by the
-   same author in the same session, so 18 sealed word problems are not independent of the SFT v5 templates and were
-   excluded from the bars [`phase17/PHASE17C_REPORT.md`].
-4. **A harness default nearly skewed a comparison.** During Phase 18 one reference model's own generation settings
-   overrode the harness's length cap; it was caught, fixed and re-run before reporting [`phase18/BENCHMARKS.md`].
+[`LICENCE_AUDIT.md`, `phase28/DATA_LICENCES.md`, `phase29/DATA_LICENCES.md`]
 
-## Recommended next steps
+| Model | Commercial use | Why |
+| :--- | :--- | :--- |
+| **plain Qwen2.5-1.5B-Instruct** (989aa798) | **yes** | Apache-2.0; ship its LICENSE with the weights |
+| **c1** (Phase 28) and **c2** (Phase 29) | **yes** (by the page licences; not legal advice) | Trained from plain Qwen only on glaive-function-calling-v2 (Apache-2.0), oasst1 (Apache-2.0), GSM8K (MIT), OR-Bench 80K/Toxic (CC BY 4.0, attribution), AdvBench (MIT), plain Qwen's own replies and project-written rows |
+| v0.1 (Phase 24) | **research only** | alpaca-cleaned (CC BY-NC 4.0 in its README) |
+| v0.2, v0.3 | **research only** | alpaca-cleaned; SciQ (CC BY-NC 3.0) |
+| v0.3.1, v0.4, v0.5 | **research only** | alpaca-cleaned; SciQ; PKU-SafeRLHF (CC BY-NC 4.0); v0.4 and v0.5 inherit it all |
+| MiniGPT v1.0/v1.0.1, v2.0-preview, Phase 17C/17E/20 SFT models | **research only** | SFT data includes alpaca-cleaned |
+| Foundation v4 / v4 extended (pretrained bases only) | not labelled | FineWeb-Edu / FineWeb (ODC-By 1.0) |
 
-1. **Separate the two causes 17D mixed together.** Train two arms from the same start — more FineWeb-Edu only, and
-   the 70/30 mix — to see whether tokens or data domain drove the gain [`phase17/CRITERIA_17D.md`].
-2. **Instruction tuning that keeps the base model's skills.** Try a lower learning rate or fewer epochs, a larger
-   replay share, or adapters that leave the base weights untouched; and find out why LAMBADA drops so sharply after
-   tuning, since replay did not restore it [`phase17/PHASE17E_REPORT.md`].
-3. **A different approach to over-refusal.** Data rebalancing and a larger base both failed; preference training or a
-   separate harmless-question classifier are the obvious next candidates [`phase13/PHASE13_REPORT.md`,
-   `phase17/PHASE17C_REPORT.md`].
-4. **Evaluation discipline.** At least three seeds per comparison [`phase14/PHASE14_REPORT.md`]; sealed sets written
-   by someone other than the person who writes the training data; every pre-registered condition checked against the
-   reference models before it is committed; criteria committed before the run, every time.
-5. **A larger model for retrieval and reasoning.** ARC-Challenge, WinoGrande, MMLU and TriviaQA stay at chance for
-   every model up to GPT-2's size here [`phase18/BENCHMARKS.md`, `phase17/BENCHMARKS_V4_EXT.md`].
+Share-alike data (dolly, SQuAD train, Simple Wikipedia, BoolQ) was also kept out of c1 and c2. The Phase 30 base
+package *ships* Simple English Wikipedia passages as retrieval data, not as training data. That file keeps its CC BY-SA
+licence and attribution.
+
+## Lessons 1–33
+
+These lessons were numbered in this report. Lessons 1–16 are the findings and planning mistakes of the 10 November
+report and its Phase 20 addendum, kept with their sources. Lessons 17–33 come from Phases 23–29.
+
+**Building from scratch (Phases 1–20)**
+1. **A trainer bug can masquerade as a scaling law.** Model D looked much worse than Model C (2.8804 vs 2.1531 bits per
+   byte). Under one tested trainer it averaged 2.2679, rated "not better", not "worse" [`phase9/PHASE9_REPORT.md`].
+2. **Seed noise is large.** Two seeds differed by 0.11–0.26 bits per byte. Three runs of one recipe gave over-refusal
+   42, 31 and 41 of 60 [`phase9`, `phase14/PHASE14_REPORT.md`]. Single-run comparisons are unreliable.
+3. **Contamination keeps turning up.** 99.6% of the Phase 5D validation lines were in the new pretraining text
+   [`phase10/PHASE10A_REPORT.md`]. 655 SFT rows overlapped evaluation sets [`phase11/PHASE11A_REPORT.md`]. Check every
+   time, against every test.
+4. **More parameters and tokens help the language model, but they did not make it beat GPT-2.** The 98M extended model
+   reached 0.9992 bits per byte, against the 34M model's 1.1335, but it is level with GPT-2 on 9 of 12 tasks and
+   behind on LAMBADA [`phase17/BENCHMARKS_V4_EXT.md`].
+5. **A rule-based safety layer works narrowly.** It caught 22/22 self-harm messages on its own lists but only 2 of 4
+   unseen ones [`phase14/PHASE14_REPORT.md`].
+6. **RAG with a small model failed in two ways.** The router attached passages to harmful and unknown prompts, and the
+   model learned "the sources don't say" [`phase15/PHASE15C_DIAGNOSIS.md`].
+7. **Instruction tuning erases pretraining gains; replay alone barely helps.** The five-task average fell 46.28 →
+   38.72, and replay recovered 1.11 points [`phase17/PHASE17E_REPORT.md`].
+8. **Over-refusal resisted data rebalancing and a larger base** [`phase13/PHASE13_REPORT.md`, `phase17/PHASE17C_REPORT.md`].
+9. **Check a condition against the reference models before committing it.** "ARC-Challenge above random" could not be
+   met even by GPT-2 (22.7%) [`phase18/BENCHMARKS.md`].
+10. **Choose data budgets from evidence, not from the GPU time.** 3B tokens left v4 12.9 points behind GPT-2 on
+    LAMBADA [`phase17/BENCHMARKS_V4.md`].
+11. **Commit criteria before the run, every time.** The 17B criteria were committed after pretraining, and the 17C
+    sealed sets were written alongside the SFT data, so 18 items were excluded [`phase17/PHASE17C_REPORT.md`].
+12. **Harness defaults can skew a comparison.** A reference model's own generation settings overrode the length cap
+    [`phase18/BENCHMARKS.md`].
+13. **Less repetitive data reduced over-refusal** (old dev set 37–43 → 50–59 of 60), but still not to 90%
+    [`phase20/PHASE20_REPORT.md`].
+14. **Gentle tuning keeps most base skills.** Half the learning rate and one epoch kept 5.16 of the 7.56 points lost
+    [`phase20/PHASE20_REPORT.md`].
+15. **Misfires at 98M are missing knowledge, not wording** [`phase20/PHASE20_REPORT.md`].
+16. **Author-written safety sets overstated safety.** v1.0.1 scores 135/190 on the independent XSTest, against 88–95%
+    on the author's own sets [`ERRATA.md` 5].
+
+**Fine-tuning Qwen (Phases 23–29)**
+
+17. **A strong open base beats the from-scratch model by far.** Plain Qwen 1.5B scored 165/176 on goal dev, against
+    119 for the best MiniGPT [`phase23/PHASE23A_REPORT.md`]. Stage 1 was for understanding, not capability.
+18. **Quantisation must be checked.** Dynamic int8 broke both Qwen models (14 of 14 replies changed for 1.5B). Q8_0
+    GGUF stayed within 2 se every time, and Q4_K_M did not [`phase23/PHASE23A/B_REPORT.md`].
+19. **Short worked answers in SFT data teach a model to stop reasoning.** GSM8K fell 64.6 → 43.2%. Training on full
+    worked solutions restored it to 66.4% [`phase23/PHASE23B_REPORT.md`, `phase24/PHASE24_REPORT.md`].
+20. **Good retrieval recall is not good RAG.** BM25 found an answer passage for 88% of items, yet attaching passages
+    made the model decline ordinary questions [`phase23/PHASE23C_REPORT.md`].
+21. **Retrieval can break safety.** Plain Qwen with passages always attached refused only 61/190 XSTest unsafe
+    prompts, against 171/190 alone [`phase24/PHASE24_REPORT.md`]. The Phase 30 package therefore keeps retrieval
+    opt-in.
+22. **Never bar a metric that rewards doing nothing.** The SQuAD abstention bar favoured plain Qwen, which abstained
+    on 71% of answerable questions [`phase26b/CRITERIA_26B.md`].
+23. **Safety and helpfulness trade sharply on small amounts of safety data.** v0.3 reached 97.4% XSTest unsafe but
+    answered only 15.3% of OR-Bench-Hard; v0.3.1, with less of that data, gave 92.6% and 56.5% [`phase26b`, `phase26c`].
+24. **A dev set at its ceiling cannot select.** Every model refused 96–100% of OR-Bench-Toxic dev, plain included
+    [`phase26c/PHASE26C_REPORT.md`]. The harm dev's plain form sat at 96–98% for all [`phase26d/PHASE26D_REPORT.md`].
+25. **Seeds vary as much as data mixtures.** Three seeds of one mixture spanned 66.5–79.2% answered, wider than the
+    gap between mixtures [`phase26c/PHASE26C_REPORT.md`].
+26. **DPO with easy rejected replies teaches compliance, not safety.** OR-Bench-Hard rose to 67.2%, while XSTest unsafe
+    and HarmBench fell slightly [`phase26d/PHASE26D_REPORT.md`].
+27. **A near-zero metric can fail a bar on a handful of items.** TriviaQA: 2 vs 13 of 1,000 [`phase26d`]. Decide in
+    advance which metrics are reported only.
+28. **Check licences before training, not after.** The audit after Phase 27 found that v0.1–v0.5 are all research-only
+    [`LICENCE_AUDIT.md`]. The commercial retrain (c1) cost two more phases.
+29. **The tool format is easy to teach; benchmark function calling is not.** v0.5 had valid arguments in 149/150
+    episodes, yet BFCL fell, mostly on parallel calls [`phase27/PHASE27_REPORT.md`].
+30. **Data that omits optional arguments teaches omission.** c1's BFCL `missing_optional` errors rose from 5 to 33 in
+    simple [`phase28`]. Filling supported optional arguments roughly halved them in c2 (15), and non-live overall
+    became n.s. [`phase29`].
+31. **Parallel-call training on our own tools did not transfer to BFCL parallel.** c2 was trained specifically for
+    parallel calls and still scored 70.5% against plain's 82.5% [`phase29/PHASE29_REPORT.md`].
+32. **Fixing a benchmark weakness can cost the product task.** Aiming c2 more at general function calling lowered
+    suite v2 from 80.0% (c1) to 74.0% (c2), with more "I can't see your files" replies [`phase29/PHASE29_REPORT.md`].
+    c1 and c2 are far better than plain at the Chirii tasks (80.0/74.0% vs 50.7%) but not on BFCL.
+33. **Score what the user sees, and state every changed bar.** A lenient scorer accepted "4,840,5603" until the
+    number-format rule [`phase29/CRITERIA_29.md`]. The Phase 29 BFCL bar was relaxed after a result and stated as such;
+    c2 failed even the relaxed bar.
+
+## Errata
+
+All corrections are in `ERRATA.md`; the frozen release documents are not edited. In summary:
+1. **"The raw pretrained models score 0 on the goal evaluation"** (v1.0/v1.0.1 reports): the 34M base was never scored
+   on it, and "0 → 102/180" compared two different test sets. The text is corrected [`ERRATA.md` 1].
+2. **Other v1.0.1 documents** were checked; there is nothing further [`ERRATA.md` 2].
+3. **Clarifications:**
+   - the Phase 13 harmful result covered one seed; both seeds are now given;
+   - Simple English Wikipedia is CC BY-SA 3.0 and GFDL on its dataset page, not "CC BY-SA 4.0"
+     [`ERRATA.md` 3].
+4. **Superseded:**
+   - "Foundation v4 (124M)" is 98,425,344 parameters;
+   - "a larger foundation model" was later built;
+   - "a reasonable v2.0 target" was not reached on LAMBADA;
+   - the 17B and 17C criteria were committed late
+   [`ERRATA.md` 4].
+5. **Harmful-request refusal was overstated.** v1.0.1 refuses or supports on 135/190 (71%) of XSTest's unsafe prompts
+   and on 0 of 25 discrimination prompts; the 88–95% figures came from the author's own sets [`ERRATA.md` 5].
+6. **Added 18 November** [`ERRATA.md` 6]:
+   - the Chirii suite figures before the number-format rule (c1 suite v2 82.0% → 80.0%);
+   - the SQuAD abstention bar design error (Phases 25–26);
+   - the Phase 29 criteria's z-test threshold, corrected before any test;
+   - the Phase 28 report's note that a malformed number had been scored as correct.
 
 ## How this was built
 
 Built by K P Chirag Guptha, with AI assistance (Claude for planning, Claude Code for implementation). I set the goals,
-the constraints and the pre-registered rules, and decided what to keep, release or reject.
+the constraints and the pre-registered rules, and I decided what to keep, release or reject, including the post-hoc
+Phase 29 BFCL bar change stated above.
 
-## Addendum, 10 November 2026: Phase 20 findings
+## Phase 30 packages (wrap-up, no training)
 
-Phase 20 ran after this report was first written. It was pre-registered in `phase20/CRITERIA_20.md` and reported in
-`phase20/PHASE20_REPORT.md`, where every number below comes from. The 98M extended base was instruction-tuned again,
-3 seeds each of two variants:
-- **A**: instruction data with no reply repeated more than 5 times, plus "trap" rows (true events about famous
-  people, and knowable questions that sound personal);
-- **B**: the same data with gentle tuning (half the learning rate, 1 epoch, 25% replay of pretraining text).
+[`phase30/PHASE30_REPORT.md`; how to run them: `LAPTOP_SETUP.md`]
 
-**No release.** The chosen run passed 1 of 5 sealed bars: bare arithmetic 20/20 passed, while XSTest unsafe 130/190,
-over-refusal 81/100, "I don't know" 19/36 and misfire 13/60 failed. No run met the dev bar.
+**The two packages.** Both run the same OS layers and the same demo script, and `config.json` chooses the brain.
+- **Chirii Brain base (commercial):** plain Qwen2.5-1.5B-Instruct, Q8_0 GGUF.
+- **Chirii Brain c1 (experimental):** labelled "experimental: did not pass its pre-registered bars (BFCL)".
 
-1. **Over-refusal improved.** On the old dev set it rose from 37–43 of 60 (17C) to 50–59 of 60. On XSTest's
-   independent safe prompts the chosen model answers 191/243, against 157/243 for v1.0.1. It still misses the 90% bar,
-   and the model now says "I don't know" less often where it should (19/36 against v1.0.1's 25/36).
-2. **Gentle tuning keeps about two thirds of what instruction tuning used to cost.** The five-task average is 43.88
-   for B, 38.72 for 17C and 46.28 for the untuned base: 5.16 of the 7.56 points lost are kept. LAMBADA is 18.33
-   against 12.07. This came at no measurable dev cost. Phase 17E's replay alone had recovered only 1.11 points.
-3. **Misfires are a knowledge limit, not just a wording habit.** After the repeated decline phrases were removed, the
-   model still denied true events, now in the new varied wordings. When it accepted a true premise it usually gave
-   the wrong fact ("Indira Gandhi became Prime Minister of India in 1947"). Varying the training data's wording does
-   not give a 98M model facts it lacks.
-4. **Safety correction (see `ERRATA.md`, section 5).** On XSTest's 190 scored unsafe prompts, written by other
-   researchers, v1.0.1 refuses or supports on 135 (71%) and on 0 of 25 discrimination prompts. The earlier 88–95%
-   figures, from the author's own sets, overstated its safety. Finding 5 under "Key findings" above (the safety layer) should be read
-   with this in mind.
+**The layers:**
+- the self-harm safety layer (Tele-MANAS 14416, 112);
+- the router;
+- the 8 sandboxed tools, including the exact calculator;
+- the document-mode prompt;
+- opt-in BM25 retrieval over Simple English Wikipedia, with CC BY-SA attribution;
+- tool calls grammar-constrained by llama.cpp from the tools' JSON schemas.
 
-The Phase 20 models are kept as a private weights backup; none is released.
+| Measured in Phase 30 | base package (plain) | experimental package (c1) |
+| :--- | ---: | ---: |
+| Chirii suite v2 (150), 3rd use, number rule | 83 (55.3%) | 106 (70.7%) |
+| Same model in bf16, for reference | 76 (50.7%) | 120 (80.0%) |
+| Valid tool-call arguments (episodes) | 149/150 (143 without the grammar) | 149/150 |
+| CPU, 4 threads: s per reply / generated tokens per s | 4.93 / 18.9 | 5.67 / 18.8 |
+| RAM (llama-server peak) | 1,817 MB | 1,825 MB |
+| GGUF against bf16 (laptop check) | Phase 23B: within 1 point of bf16 on dev | XSTest 180 vs 175/190 (Phase 28); Chirii dev 28 vs 31/40 (this phase): accepted |
+
+**What the measurements show.**
+- The grammar makes tool calls valid, but it does not make plain Qwen use the file tools (0/22).
+- c1 loses some of its bf16 score inside llama.cpp. The cause (quantisation, chat template or grammar) is not
+  separated.
+- GPU speed of the GGUF was not measured: the PC's llama.cpp is CPU-only. The bf16 models run at about 57 tokens/s on
+  the RTX A2000.

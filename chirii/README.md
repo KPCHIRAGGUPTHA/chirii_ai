@@ -35,6 +35,28 @@ Run the tests from the repository root:
 
 On Linux or macOS, use `.venv/bin/python` and `cp` instead.
 
+## Run the demo (laptop, fictional data only)
+
+The model files are not in git; download them as described in `data/SOURCES.md` (into `models/`).
+
+1. Start the language model server and leave it running:
+
+   ```
+   models\llama.cpp\b12359\llama-server.exe -m models\qwen\qwen2.5-1.5b-instruct-q8_0.gguf --host 127.0.0.1 --port 8080 -c 4096 --alias qwen2.5-1.5b-instruct-q8_0
+   ```
+
+2. In a second terminal, from the repository root, start the app:
+
+   ```
+   .venv\Scripts\python -m uvicorn chirii.app.api.main:build_default_app --factory --host 127.0.0.1 --port 8000
+   ```
+
+3. Open http://127.0.0.1:8000. Add a few memories, ask questions, and try "Delete all my data".
+
+The demo has one user and no login (login comes in S5). It refuses requests from other computers. Use fictional data
+only: memories are not encrypted on disk yet (`../docs/PRIVACY.md`). On this laptop's CPU an answer takes about 4–9
+seconds.
+
 ## Updating dependencies
 
 Edit `requirements.in`, then:

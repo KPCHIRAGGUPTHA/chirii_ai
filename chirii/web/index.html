@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chirii AI demo</title>
 <style>
-  :root { --bg: #f7f5f0; --card: #fff; --ink: #1f2328; --muted: #6a6f76; --line: #e3dfd6; --accent: #2f6f5e; --warn: #9a5b00; --danger: #a3302a; }
+  :root { --bg: #f7f5f0; --card: #fff; --ink: #1f2328; --muted: #6a6f76; --line: #e3dfd6; --accent: #2f6f5e; --warn: #9a5b00; --warn-bg: #fdf4e6; --danger: #a3302a; }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #16181b; --card: #1f2226; --ink: #e8e6e1; --muted: #9aa0a6; --line: #30343a; --accent: #6cc3a7; --warn: #e0a64a; --danger: #ef7d75; }
+    :root { --bg: #16181b; --card: #1f2226; --ink: #e8e6e1; --muted: #9aa0a6; --line: #30343a; --accent: #6cc3a7; --warn: #e0a64a; --warn-bg: #2a2418; --danger: #ef7d75; }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
@@ -16,10 +16,12 @@
   .sub { color: var(--muted); margin: 0 0 18px; font-size: .92rem; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
   h2 { font-size: 1.05rem; margin: 0 0 10px; }
-  form { display: flex; gap: 8px; }
-  input[type=text] { flex: 1; min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); font: inherit; }
-  button { padding: 10px 14px; border: 0; border-radius: 8px; background: var(--accent); color: #fff; font: inherit; cursor: pointer; }
+  form.row { display: flex; gap: 8px; }
+  input, select { padding: 9px 11px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); font: inherit; min-width: 0; }
+  form.row input { flex: 1; }
+  button { padding: 9px 14px; border: 0; border-radius: 8px; background: var(--accent); color: #fff; font: inherit; cursor: pointer; }
   button:disabled { opacity: .6; cursor: wait; }
+  button.plain { background: none; color: var(--accent); border: 1px solid var(--line); }
   button.link { background: none; color: var(--muted); padding: 2px 6px; font-size: .85rem; }
   button.danger { background: var(--danger); }
   .answer { white-space: pre-wrap; margin-top: 12px; }
@@ -28,13 +30,23 @@
   ul { list-style: none; padding: 0; margin: 0; }
   li { border-top: 1px solid var(--line); padding: 10px 0; display: flex; gap: 10px; align-items: flex-start; }
   li:first-child { border-top: 0; }
-  .what { flex: 1; }
+  .what { flex: 1; min-width: 0; }
   .meta { color: var(--muted); font-size: .85rem; }
   .tag { display: inline-block; font-size: .75rem; padding: 1px 8px; border-radius: 99px; border: 1px solid var(--line); margin-right: 6px; color: var(--muted); }
-  .tag.review { color: var(--warn); border-color: var(--warn); }
-  .tag.paid { color: var(--accent); border-color: var(--accent); }
+  .tag.warn { color: var(--warn); border-color: var(--warn); }
+  .tag.ok { color: var(--accent); border-color: var(--accent); }
   .msg { color: var(--muted); font-size: .9rem; margin-top: 8px; min-height: 1.2em; }
   .error { color: var(--danger); }
+  .gotit { margin-top: 12px; padding: 12px; border-radius: 10px; border: 1px solid var(--line); }
+  .gotit.unsure { background: var(--warn-bg); border-color: var(--warn); }
+  .gotit p { margin: 0 0 8px; }
+  .gotit ul.unsure-list { margin: 0 0 8px 18px; list-style: disc; color: var(--warn); font-size: .9rem; }
+  .gotit ul.unsure-list li { border: 0; padding: 0; display: list-item; }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px 12px; margin: 8px 0 12px; }
+  .grid label { display: flex; flex-direction: column; font-size: .82rem; color: var(--muted); gap: 3px; }
+  .days { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: .85rem; grid-column: 1 / -1; }
+  .days label { flex-direction: row; align-items: center; gap: 4px; color: var(--ink); }
   footer { color: var(--muted); font-size: .85rem; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 </style>
 </head>
@@ -45,7 +57,7 @@
 
   <section class="card">
     <h2>Ask</h2>
-    <form id="ask-form"><input type="text" id="question" placeholder="When is my electricity bill due?" autocomplete="off"><button id="ask-btn">Ask</button></form>
+    <form class="row" id="ask-form"><input type="text" id="question" placeholder="When is my electricity bill due?" autocomplete="off"><button id="ask-btn">Ask</button></form>
     <div class="answer" id="answer"></div>
     <details id="facts-box" hidden><summary>What Chirii looked at</summary><ol id="facts"></ol></details>
     <div class="msg" id="ask-msg"></div>
@@ -53,8 +65,9 @@
 
   <section class="card">
     <h2>Tell Chirii something to remember</h2>
-    <form id="add-form"><input type="text" id="memory" placeholder="Dentist on 10 December at 6 pm" autocomplete="off"><button id="add-btn">Save</button></form>
+    <form class="row" id="add-form"><input type="text" id="memory" placeholder="Dentist on 10 December at 6 pm" autocomplete="off"><button id="add-btn">Save</button></form>
     <div class="msg" id="add-msg"></div>
+    <div id="card-slot"></div>
   </section>
 
   <section class="card">
@@ -67,27 +80,82 @@
     <button class="danger" id="delete-all">Delete all my data</button>
   </footer>
 </main>
+
+<template id="edit-template">
+  <form class="edit">
+    <div class="grid">
+      <label>What it is<select name="kind"></select></label>
+      <label>Title<input name="title" required maxlength="100"></label>
+      <label>Date<input name="date" type="date"></label>
+      <label>Until (for a range)<input name="end_date" type="date"></label>
+      <label>Time<input name="time" type="time"></label>
+      <label>Amount (₹)<input name="amount" type="number" min="0" step="1"></label>
+      <label>Day of every month<input name="day_of_month" type="number" min="1" max="31"></label>
+      <div class="days"></div>
+    </div>
+    <div class="actions"><button>Save changes</button><button type="button" class="plain cancel">Cancel</button></div>
+    <div class="msg"></div>
+  </form>
+</template>
+
 <script>
 const $ = (id) => document.getElementById(id);
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const KINDS = { bill: "Bill", appointment: "Appointment", task: "To do", medicine: "Medicine", routine: "Routine",
+  important_date: "Important date", exam: "Exam", travel: "Travel", shift: "Work shift", income: "Income",
+  receivable: "Money owed to you", note: "Note" };
 const nice = (iso) => { const [y, m, d] = iso.split("-").map(Number); return `${d} ${MONTHS[m - 1]} ${y}`; };
-const money = (n) => "₹" + Number(n).toLocaleString("en-IN");
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
 
 async function api(path, options = {}) {
   const res = await fetch(path, { headers: { "Content-Type": "application/json" }, ...options });
   const body = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(body.detail || `Request failed (${res.status})`);
+  if (!res.ok) throw new Error(body.detail && typeof body.detail === "string" ? body.detail : `Request failed (${res.status})`);
   return body;
 }
 
-function describe(item) {
-  const bits = [];
-  if (item.date) bits.push(nice(item.date) + (item.end_date ? " to " + nice(item.end_date) : ""));
-  if (item.day_of_month) bits.push(`day ${item.day_of_month} every month`);
-  if (item.weekdays.length) bits.push("every " + item.weekdays.join(", "));
-  if (item.time) bits.push(item.time);
-  if (item.amount !== null) bits.push(money(item.amount) + (item.paid_amount ? `, ${money(item.remaining)} left` : ""));
-  return bits.join(" · ");
+// "Got it: Bill, ₹1,860, due Saturday 12 December 2026. Correct? [Yes] [Edit]"
+function gotItCard(u, slot, done) {
+  slot.replaceChildren();
+  const box = el("div", "gotit" + (u.uncertain.length ? " unsure" : ""));
+  box.append(el("p", "", `Got it: ${u.summary}. Correct?`));
+  if (u.uncertain.length) {
+    const list = el("ul", "unsure-list");
+    u.uncertain.forEach((r) => list.append(el("li", "", r)));
+    box.append(list);
+  }
+  const actions = el("div", "actions");
+  const yes = el("button", "", "Yes");
+  const edit = el("button", "plain", "Edit");
+  yes.onclick = async () => { await api(`/api/memories/${u.id}/confirm`, { method: "POST" }); slot.replaceChildren(); done && done("Confirmed."); refresh(); };
+  edit.onclick = () => editForm(u, slot, done);
+  actions.append(yes, edit);
+  if (u.kind !== "update") box.append(actions); else { const ok = el("button", "", "OK"); ok.onclick = yes.onclick; actions.replaceChildren(ok); box.append(actions); }
+  slot.append(box);
+}
+
+function editForm(u, slot, done) {
+  const form = $("edit-template").content.firstElementChild.cloneNode(true);
+  const kind = form.elements.kind;
+  Object.entries(KINDS).forEach(([value, label]) => { const o = el("option", "", label); o.value = value; kind.append(o); });
+  kind.value = u.kind in KINDS ? u.kind : "note";
+  for (const name of ["title", "date", "end_date", "time", "amount", "day_of_month"]) form.elements[name].value = u[name] ?? "";
+  const days = form.querySelector(".days");
+  days.append(el("span", "meta", "Every:"));
+  DAYS.forEach((d) => { const l = el("label"); const c = el("input"); c.type = "checkbox"; c.value = d; c.checked = u.weekdays.includes(d); l.append(c, d.slice(0, 3)); days.append(l); });
+  form.querySelector(".cancel").onclick = () => gotItCard(u, slot, done);
+  form.onsubmit = async (e) => {
+    e.preventDefault();
+    const f = form.elements;
+    const body = { kind: f.kind.value, title: f.title.value, date: f.date.value || null, end_date: f.end_date.value || null,
+      time: f.time.value || null, amount: f.amount.value === "" ? null : Number(f.amount.value),
+      day_of_month: f.day_of_month.value === "" ? null : Number(f.day_of_month.value),
+      weekdays: [...days.querySelectorAll("input:checked")].map((c) => c.value) };
+    try { await api(`/api/memories/${u.id}`, { method: "PUT", body: JSON.stringify(body) }); slot.replaceChildren(); done && done("Saved your corrections."); refresh(); }
+    catch (err) { form.querySelector(".msg").textContent = err.message; form.querySelector(".msg").className = "msg error"; }
+  };
+  slot.replaceChildren(form);
 }
 
 async function refresh() {
@@ -96,20 +164,24 @@ async function refresh() {
   $("count").textContent = data.items.length ? `(${data.items.length})` : "";
   const list = $("list");
   list.replaceChildren();
-  if (!data.items.length) { const li = document.createElement("li"); li.className = "meta"; li.textContent = "Nothing saved yet."; list.append(li); }
+  if (!data.items.length) list.append(el("li", "meta", "Nothing saved yet."));
   for (const item of data.items.slice().reverse()) {
-    const li = document.createElement("li");
-    const what = document.createElement("div"); what.className = "what";
-    const tags = document.createElement("div");
-    const kind = document.createElement("span"); kind.className = "tag"; kind.textContent = item.kind.replace("_", " "); tags.append(kind);
-    if (item.status === "paid") { const t = document.createElement("span"); t.className = "tag paid"; t.textContent = "paid"; tags.append(t); }
-    if (item.needs_review || item.status === "unlinked") { const t = document.createElement("span"); t.className = "tag review"; t.textContent = "please check"; tags.append(t); }
-    const text = document.createElement("div"); text.textContent = item.text;
-    const meta = document.createElement("div"); meta.className = "meta"; meta.textContent = describe(item);
-    what.append(tags, text, meta);
-    const del = document.createElement("button"); del.className = "link"; del.textContent = "Delete"; del.setAttribute("aria-label", "Delete this memory");
+    const u = item.understood;
+    const li = el("li");
+    const what = el("div", "what");
+    const tags = el("div");
+    tags.append(el("span", "tag", u.kind_label));
+    if (item.status === "paid") tags.append(el("span", "tag ok", "paid"));
+    if (!item.confirmed) tags.append(el("span", "tag warn", u.uncertain.length ? "unconfirmed · please check" : "unconfirmed"));
+    what.append(tags, el("div", "", u.title), el("div", "meta", u.summary));
+    const slot = el("div");
+    what.append(slot);
+    const buttons = el("div");
+    if (!item.confirmed) { const check = el("button", "link", "Check"); check.onclick = () => gotItCard(u, slot); buttons.append(check); }
+    const del = el("button", "link", "Delete"); del.setAttribute("aria-label", "Delete this memory");
     del.onclick = async () => { await api(`/api/memories/${item.id}`, { method: "DELETE" }); refresh(); };
-    li.append(what, del);
+    buttons.append(del);
+    li.append(what, buttons);
     list.append(li);
   }
 }
@@ -121,7 +193,8 @@ $("add-form").onsubmit = async (e) => {
   try {
     const r = await api("/api/memories", { method: "POST", body: JSON.stringify({ text }) });
     $("memory").value = "";
-    $("add-msg").textContent = r.linked_to ? "Saved, and updated the earlier item." : (r.item.needs_review || r.item.status === "unlinked") ? "Saved. Please check it: I wasn't sure how to read it." : "Saved.";
+    $("add-msg").textContent = "";
+    gotItCard(r.understood, $("card-slot"), (m) => { $("add-msg").textContent = m; });
     refresh();
   } catch (err) { $("add-msg").textContent = err.message; $("add-msg").className = "msg error"; }
   $("add-btn").disabled = false;
@@ -135,9 +208,10 @@ $("ask-form").onsubmit = async (e) => {
   try {
     const r = await api("/api/ask", { method: "POST", body: JSON.stringify({ question }) });
     $("answer").textContent = r.answer;
-    $("facts").replaceChildren(...r.facts.map((f) => { const li = document.createElement("li"); li.textContent = f; return li; }));
+    $("facts").replaceChildren(...r.facts.map((f) => el("li", "", f)));
     $("facts-box").hidden = !r.facts.length;
-    $("ask-msg").textContent = `Answered in ${(r.duration_ms / 1000).toFixed(1)} s`;
+    const checked = { pass: "facts checked", retry: "facts checked after a retry", fallback: "built from your saved memories" }[r.checked] || "";
+    $("ask-msg").textContent = `Answered in ${(r.duration_ms / 1000).toFixed(1)} s` + (checked ? ` · ${checked}` : "");
   } catch (err) { $("ask-msg").textContent = err.message; $("ask-msg").className = "msg error"; }
   $("ask-btn").disabled = false;
 };
@@ -146,6 +220,7 @@ $("delete-all").onclick = async () => {
   if (!confirm("Delete every memory, search vector and change history? This cannot be undone.")) return;
   const r = await api("/api/delete-all", { method: "POST" });
   alert(`Deleted ${r.deleted.items} memories and ${r.deleted.vectors} search vectors.`);
+  $("card-slot").replaceChildren();
   refresh();
 };
 

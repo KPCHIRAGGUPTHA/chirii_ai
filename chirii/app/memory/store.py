@@ -26,6 +26,7 @@ from typing import Any, Callable, Dict, Iterator, List, Optional, Tuple
 import faiss
 import numpy as np
 
+from chirii.app.formatting import make_title, understood
 from chirii.app.logging_setup import log_event
 from chirii.app.memory.embeddings import Embedder
 from chirii.app.memory.extract import WEEKDAYS, Item, extract
@@ -35,6 +36,7 @@ CREATE TABLE IF NOT EXISTS items (
     id            INTEGER PRIMARY KEY AUTOINCREMENT,
     kind          TEXT NOT NULL,
     text          TEXT NOT NULL,
+    title         TEXT,
     said_on       TEXT NOT NULL,
     date          TEXT,
     end_date      TEXT,
@@ -52,6 +54,7 @@ CREATE TABLE IF NOT EXISTS items (
     action        TEXT,
     source        TEXT NOT NULL DEFAULT 'rules',
     needs_review  INTEGER NOT NULL DEFAULT 0,
+    confirmed     INTEGER NOT NULL DEFAULT 0,
     applies_to    INTEGER REFERENCES items(id) ON DELETE SET NULL,
     created_at    TEXT NOT NULL,
     updated_at    TEXT NOT NULL
@@ -67,6 +70,11 @@ CREATE TABLE IF NOT EXISTS changes (
 );
 """
 LIST_FIELDS = ("weekdays", "dose_times", "other_dates", "other_times", "other_amounts")
+# Columns added after S2; databases made before them get the columns on opening
+ADDED_COLUMNS = {"title": "TEXT", "confirmed": "INTEGER NOT NULL DEFAULT 0"}
+EDITABLE = ("kind", "title", "date", "end_date", "time", "amount", "day_of_month", "weekdays")
+KINDS = ("bill", "appointment", "task", "medicine", "routine", "important_date", "exam", "travel", "shift", "income",
+         "receivable", "note")
 ITEM_FIELDS = ("kind", "text", "said_on", "date", "end_date", "time", "end_time", "amount", "day_of_month", *LIST_FIELDS, "action",
                "source", "needs_review")
 
@@ -102,6 +110,49 @@ def keywords(text: str) -> set:
     return out
 
 
+def validate_field(name: str, value: Any) -> Any:
+    """Checks one user-edited value; returns it cleaned, or raises ValueError."""
+    if value in ("", None):
+        if name in ("kind", "title"):
+            raise ValueError(name)
+        return [] if name == "weekdays" else None
+    try:
+        if name == "kind":
+            if value not in KINDS:
+                raise ValueError
+            return value
+        if name == "title":
+            value = str(value).strip()
+            if not 0 < len(value) <= 100:
+                raise ValueError
+            return value
+        if name in ("date", "end_date"):
+            return date.fromisoformat(str(value)).isoformat()
+        if name == "time":
+            hour, minute = (int(x) for x in str(value).split(":"))
+            if not (0 <= hour <= 23 and 0 <= minute <= 59):
+                raise ValueError
+            return f"{hour:02d}:{minute:02d}"
+        if name == "amount":
+            amount = int(value)
+            if amount < 0:
+                raise ValueError
+            return amount
+        if name == "day_of_month":
+            day = int(value)
+            if not 1 <= day <= 31:
+                raise ValueError
+            return day
+        if name == "weekdays":
+            days = [str(d).capitalize() for d in value]
+            if any(d not in WEEKDAYS for d in days):
+                raise ValueError
+            return [d for d in WEEKDAYS if d in days]
+    except (TypeError, ValueError):
+        raise ValueError(name) from None
+    raise ValueError(name)
+
+
 def user_folder_name(user_id: str, secret: str) -> str:
     return hmac.new(secret.encode("utf-8"), f"user:{user_id}".encode("utf-8"), hashlib.sha256).hexdigest()[:32]
 
@@ -117,8 +168,12 @@ class MemoryStore:
         self.db_path = self.dir / "memory.db"
         self.index_path = self.dir / "index.faiss"
         self.dir.mkdir(parents=True, exist_ok=True)
-        with closing(self._db()) as db:  # closing(): sqlite's own "with" commits but leaves the file open
+        with closing(self._db()) as db, db:  # closing(): sqlite's own "with" commits but leaves the file open
             db.executescript(SCHEMA)
+            present = {row[1] for row in db.execute("PRAGMA table_info(items)")}
+            for name, definition in ADDED_COLUMNS.items():
+                if name not in present:
+                    db.execute(f"ALTER TABLE items ADD COLUMN {name} {definition}")
         self.index = self._load_index()
 
     # ------------------------------------------------------------------ storage helpers
@@ -167,6 +222,7 @@ class MemoryStore:
         for name in LIST_FIELDS:
             values[name] = json.dumps(values[name])
         values["status"] = "active"
+        values["title"] = make_title(text)
         with closing(self._db()) as db, db:
             cursor = db.execute(
                 f"INSERT INTO items ({', '.join(values)}, created_at, updated_at) VALUES ({', '.join('?' * len(values))}, ?, ?)",
@@ -185,9 +241,41 @@ class MemoryStore:
                 result["changes"] = self._apply_update(item_id, parsed, target)
                 self._set_status(item_id, "applied", applies_to=target["id"])
             result["item"] = self.get(item_id)
+        target = self.get(result["linked_to"]) if result["linked_to"] else None
+        result["understood"] = understood(result["item"], result["changes"], target)
         log_event("memory_added", user=self.user_id, item_type=parsed.kind, stage="S2",
                   duration_ms=round((time.perf_counter() - started) * 1000))
         return result
+
+    # ------------------------------------------------------------------ confirming and correcting
+
+    def confirm(self, item_id: int) -> Optional[Dict[str, Any]]:
+        """The user says Chirii read this item right."""
+        with closing(self._db()) as db, db:
+            if not db.execute("UPDATE items SET confirmed = 1, needs_review = 0, updated_at = ? WHERE id = ?",
+                              (datetime.now().isoformat(timespec="seconds"), item_id)).rowcount:
+                return None
+        log_event("memory_confirmed", user=self.user_id, stage="slice")
+        return self.get(item_id)
+
+    def edit(self, item_id: int, fields: Dict[str, Any], today: date) -> Dict[str, Any]:
+        """The user corrects how Chirii read an item. Every value is checked, every change is kept in the history,
+        and the item counts as confirmed. Raises ValueError naming the first bad field."""
+        item = self.get(item_id)
+        if item is None:
+            raise KeyError(item_id)
+        clean = {name: validate_field(name, value) for name, value in fields.items() if name in EDITABLE}
+        changed = {name: value for name, value in clean.items() if value != item.get(name)}
+        stored = {name: json.dumps(value) if name == "weekdays" else value for name, value in changed.items()}
+        with closing(self._db()) as db, db:
+            sets = "".join(f"{name} = ?, " for name in stored)
+            db.execute(f"UPDATE items SET {sets}confirmed = 1, needs_review = 0, updated_at = ? WHERE id = ?",
+                       (*stored.values(), datetime.now().isoformat(timespec="seconds"), item_id))
+            db.executemany("INSERT INTO changes (item_id, update_id, field, old_value, new_value, changed_on) VALUES (?, NULL, ?, ?, ?, ?)",
+                           [(item_id, name, None if item.get(name) is None else str(item.get(name)), str(value), today.isoformat())
+                            for name, value in changed.items()])
+        log_event("memory_edited", user=self.user_id, item_count=len(changed), stage="slice")
+        return self.get(item_id)
 
     def _set_status(self, item_id: int, status: str, applies_to: Optional[int] = None) -> None:
         with closing(self._db()) as db, db:

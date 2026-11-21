@@ -51,10 +51,11 @@ The model files are not in git; download them as described in `data/SOURCES.md` 
    .venv\Scripts\python -m uvicorn chirii.app.api.main:build_default_app --factory --host 127.0.0.1 --port 8000
    ```
 
-3. Open http://127.0.0.1:8000. Add a few memories, ask questions, and try "Delete all my data".
+3. Open http://127.0.0.1:8000. Add a few memories and check each "Got it" card (Yes or Edit), ask questions, and try
+   "Delete all my data".
 
 The demo has one user and no login (login comes in S5). It refuses requests from other computers. Use fictional data
-only: memories are not encrypted on disk yet (`../docs/PRIVACY.md`). On this laptop's CPU an answer takes about 4–9
+only: memories are not encrypted on disk yet (`../docs/PRIVACY.md`). On this laptop's CPU an answer takes about 1–5
 seconds.
 
 ## Updating dependencies

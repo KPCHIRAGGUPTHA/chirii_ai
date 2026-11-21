@@ -270,6 +270,8 @@ def classify(text: str, has_amount: bool, has_date: bool, has_time: bool, weekly
         return "appointment"
     if TASK_FIRST_WORDS.search(text):
         return "task"
+    if has_date and STRONG_BILL_WORDS.search(text):
+        return "bill"  # a bill with no amount: kept as a bill, and the card says the amount is missing
     for kind, pattern in KIND_RULES:
         if pattern.search(text):
             return kind

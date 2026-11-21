@@ -50,6 +50,13 @@ class TestExtract:
         ("Call the plumber tomorrow at 9.30 am.", "time", "09:30"),
         ("Fee of ₹1.95 lakh due on 5 Jan.", "amount", 195000),
         ("Bring 50 bags and 2 boxes on 3 Dec.", "amount", None),          # counts are not money
+        ("Shanti aunty owes me 2000 for the saree", "amount", 2000),      # 2000 rupees, not the year 2000
+        ("Loan EMI due 5 Dec 2026", "amount", None),                      # 2026 here is a year
+        ("Kal gas cylinder aaya", "date", "2026-11-30"),                  # "kal" with a past verb is yesterday
+        ("Kal bank jaana hai", "date", "2026-12-02"),                     # "kal" with a future verb is tomorrow
+        ("Granddaughter's birthday; she wants a story book.", "kind", "important_date"),  # "book" here isn't a to-do
+        ("Physio every Mon and Thu 6pm", "weekdays", ["Monday", "Thursday"]),
+        ("Electrician 4 o'clock today", "kind", "note"),                  # a date alone is not a kind: ask, don't guess
     ])
     def test_details(self, text, field, value):
         assert extract(text, DEC1).to_dict()[field] == value

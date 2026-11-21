@@ -21,7 +21,7 @@ import time
 from contextlib import closing
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from typing import Any, Dict, Iterator, List, Optional, Tuple
+from typing import Any, Callable, Dict, Iterator, List, Optional, Tuple
 
 import faiss
 import numpy as np
@@ -50,6 +50,8 @@ CREATE TABLE IF NOT EXISTS items (
     other_amounts TEXT NOT NULL DEFAULT '[]',
     status        TEXT NOT NULL DEFAULT 'active',
     action        TEXT,
+    source        TEXT NOT NULL DEFAULT 'rules',
+    needs_review  INTEGER NOT NULL DEFAULT 0,
     applies_to    INTEGER REFERENCES items(id) ON DELETE SET NULL,
     created_at    TEXT NOT NULL,
     updated_at    TEXT NOT NULL
@@ -65,7 +67,8 @@ CREATE TABLE IF NOT EXISTS changes (
 );
 """
 LIST_FIELDS = ("weekdays", "dose_times", "other_dates", "other_times", "other_amounts")
-ITEM_FIELDS = ("kind", "text", "said_on", "date", "end_date", "time", "end_time", "amount", "day_of_month", *LIST_FIELDS, "action")
+ITEM_FIELDS = ("kind", "text", "said_on", "date", "end_date", "time", "end_time", "amount", "day_of_month", *LIST_FIELDS, "action",
+               "source", "needs_review")
 
 # Words that say nothing about which item an update refers to
 STOP_WORDS = set("""
@@ -105,9 +108,11 @@ def user_folder_name(user_id: str, secret: str) -> str:
 
 class MemoryStore:
 
-    def __init__(self, root: Path, user_id: str, secret: str, embedder: Embedder):
+    def __init__(self, root: Path, user_id: str, secret: str, embedder: Embedder,
+                 extractor: Optional[Callable[[str, date], Item]] = None):
         self.user_id = user_id
         self.embedder = embedder
+        self.extractor = extractor or extract  # rules only, unless a hybrid extractor is given
         self.dir = Path(root) / "users" / user_folder_name(user_id, secret)
         self.db_path = self.dir / "memory.db"
         self.index_path = self.dir / "index.faiss"
@@ -146,6 +151,7 @@ class MemoryStore:
         item = dict(row)
         for name in LIST_FIELDS:
             item[name] = json.loads(item[name])
+        item["needs_review"] = bool(item["needs_review"])
         if item["amount"] is not None:
             item["remaining"] = item["amount"] - item["paid_amount"]
         return item
@@ -155,7 +161,7 @@ class MemoryStore:
     def add(self, text: str, said_on: date) -> Dict[str, Any]:
         """Stores one sentence. Returns the stored item, and for an update, which item it changed and how."""
         started = time.perf_counter()
-        parsed = extract(text, said_on)
+        parsed = self.extractor(text, said_on)
         now = datetime.now().isoformat(timespec="seconds")
         values = {name: getattr(parsed, name) for name in ITEM_FIELDS}
         for name in LIST_FIELDS:

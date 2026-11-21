@@ -1,0 +1,320 @@
+{
+  "set": "a",
+  "label": "A_after_fixes",
+  "note": "Development run: the rules and hybrid were changed after seeing this set's results. Not a fresh first-try number.",
+  "when": "2026-11-21",
+  "machine": "Windows AMD64, CPU",
+  "model": "qwen2.5-1.5b-instruct-q8_0",
+  "sentences": 20,
+  "summary": {
+    "rules_only_fully_right": 19,
+    "hybrid_fully_right": 17,
+    "model_called": 3,
+    "model_accepted": 3,
+    "model_rejected": 0,
+    "marked_for_review": 3,
+    "hybrid_wrong_and_not_marked": 1,
+    "median_model_ms": 3575
+  },
+  "rows": [
+    {
+      "sentence": "dentist tmrw 5pm",
+      "expected": {
+        "kind": "appointment",
+        "date": "2026-12-03",
+        "time": "17:00"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Kal subah 10 baje bank jaana hai KYC ke liye",
+      "expected": {
+        "kind": "task",
+        "date": "2026-12-03",
+        "time": "10:00"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "electricity bill 1350 by the 15th",
+      "expected": {
+        "kind": "bill",
+        "amount": 1350,
+        "date": "2026-12-15"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Remind me to renew the car insurance, it expires on 30th Dec",
+      "expected": {
+        "kind": "task",
+        "date": "2026-12-30"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Ma's cataract surgery 14 Dec, need to be at hospital by 7am",
+      "expected": {
+        "kind": "appointment",
+        "date": "2026-12-14",
+        "time": "07:00"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Newspaper bill 480 rupees, pay to Sharma ji on 5th of every month",
+      "expected": {
+        "kind": "bill",
+        "amount": 480,
+        "day_of_month": 5
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Sunday ko Rahul ki birthday party hai, shaam 6 baje",
+      "expected": {
+        "kind": "important_date",
+        "date": "2026-12-06",
+        "time": "18:00"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "BP medicine twice a day, morning and night",
+      "expected": {
+        "kind": "medicine"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Vet appointment for Bruno on the 9th at 4.30",
+      "expected": {
+        "kind": "appointment",
+        "date": "2026-12-09"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Need to pay school bus fees ₹3,600 before 10 Dec",
+      "expected": {
+        "kind": "bill",
+        "amount": 3600,
+        "date": "2026-12-10"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Gas booking done, cylinder should come in 2-3 days",
+      "expected": {
+        "kind": "note",
+        "date": null
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {
+        "kind": "task"
+      },
+      "model_called": true,
+      "hybrid_source": "model",
+      "needs_review": true,
+      "model_reply": "{\n  \"kind\": \"task\",\n  \"date\": null,\n  \"end_date\": null,\n  \"time\": null,\n  \"amount\": null,\n  \"day_of_month\": null,\n  \"weekdays\": []\n}",
+      "model_ms": 3575
+    },
+    {
+      "sentence": "Ration: 5 kg atta, 2 kg dal, 1 litre oil",
+      "expected": {
+        "kind": "note",
+        "amount": null
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {
+        "kind": "receivable"
+      },
+      "model_called": true,
+      "hybrid_source": "model",
+      "needs_review": true,
+      "model_reply": "{\n  \"kind\": \"receivable\",\n  \"date\": null,\n  \"end_date\": null,\n  \"time\": null,\n  \"amount\": null,\n  \"day_of_month\": null,\n  \"weekdays\": []\n}",
+      "model_ms": 3248
+    },
+    {
+      "sentence": "Meeting with CA on Friday re ITR, 11am",
+      "expected": {
+        "kind": "appointment",
+        "date": "2026-12-04",
+        "time": "11:00"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "maid on leave from 20th to 24th december",
+      "expected": {
+        "date": "2026-12-20",
+        "end_date": "2026-12-24"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": true,
+      "hybrid_source": "model",
+      "needs_review": true,
+      "model_reply": "{\n  \"kind\": \"shift\",\n  \"date\": \"2026-12-20\",\n  \"end_date\": \"2026-12-24\",\n  \"time\": null,\n  \"amount\": null,\n  \"day_of_month\": null,\n  \"weekdays\": []\n}",
+      "model_ms": 4141
+    },
+    {
+      "sentence": "Dad's pension comes 1st of month",
+      "expected": {
+        "kind": "income",
+        "day_of_month": 1
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Car EMI 12,400 debit on 7th every month",
+      "expected": {
+        "kind": "bill",
+        "amount": 12400,
+        "day_of_month": 7
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Parent teacher meeting 12 dec 9:30 am Divya's school",
+      "expected": {
+        "kind": "appointment",
+        "date": "2026-12-12",
+        "time": "09:30"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Mummy ka eye checkup 18 tareekh ko 11 baje",
+      "expected": {
+        "kind": "appointment",
+        "date": "2026-12-18",
+        "time": "11:00"
+      },
+      "rules_wrong": {
+        "time": null
+      },
+      "hybrid_wrong": {
+        "time": null
+      },
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Credit card due 22nd, around 8k",
+      "expected": {
+        "kind": "bill",
+        "date": "2026-12-22",
+        "amount": 8000
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    },
+    {
+      "sentence": "Holi isn't till March but book train tickets by 10 Jan",
+      "expected": {
+        "kind": "task",
+        "date": "2027-01-10"
+      },
+      "rules_wrong": {},
+      "hybrid_wrong": {},
+      "model_called": false,
+      "hybrid_source": "rules",
+      "needs_review": false,
+      "model_reply": null,
+      "model_ms": null
+    }
+  ]
+}

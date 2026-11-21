@@ -22,7 +22,9 @@ and API). Sections marked *planned* describe how the system is being built, not 
 ## Where it is stored
 
 On the server that runs Chirii: for the demo, the owner's laptop or a server in India. Nothing is sent to an outside
-AI service: the language model and the search model both run on the same server.
+AI service: the language model and the search model both run on the same server. When Chirii can't read a sentence by its own
+rules, it asks the same local language model to read it; the sentence still never leaves the server, and the log
+records only that this happened, not what was said.
 
 Each user has one folder, `<data folder>/users/<code>/`, holding two files: `memory.db` (a SQLite database with your
 memories and their history) and `index.faiss` (your search vectors). The folder name is a code made from your user id

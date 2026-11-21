@@ -148,3 +148,92 @@ the parser was written against, so they are optimistic. The last two rows use ne
 **Next: the early demo slice (by about 2 January)**
 - A minimal web page where you can add a memory, ask a question and get an answer.
 - The answer will come from plain Qwen given the retrieved memories.
+
+## Owner decisions (21 November 2026)
+
+- **S7 rule for bars B and C:** a miss on B or C now gets the same treatment as bar A at 35–39: failure analysis, one
+  fix round, one rerun. Fine-tune only if the failures labelled model behaviour alone still miss the bar: more than
+  10 for A, more than 1 of 8 for B, more than 2 for C (`chirii/CRITERIA.md`).
+- **Hybrid extraction** in the demo slice (done, below).
+- **Scale check** with about 500 memory items per user, in S3.
+- **Encryption at rest** and a tester consent note, proposed in S5. No real users before that.
+
+## Demo slice – Add, ask, answer (21 November 2026)
+
+**What was done**
+- **Web page and API** (`chirii/web/index.html`, `chirii/app/api/main.py`):
+  - add a memory, see all memories, ask a question, delete one memory or everything;
+  - items Chirii wasn't sure how to read are marked "please check";
+  - one demo user, no login yet, requests from other computers are refused.
+- **Answering** (`chirii/app/assistant.py`):
+  - code picks the memories: the 5 closest by meaning plus everything due in the next 14 days;
+  - code writes each as a fact line with the current date and weekday, time, amount (₹1,95,000 style) and status;
+  - Qwen words the answer and must say "I don't have that in your memory" when the answer isn't there.
+- **Hybrid sentence reader** (`chirii/app/memory/hybrid.py`):
+  - the rules run first, and Qwen is asked only when the rules give up;
+  - Qwen's JSON reply is limited by the server to values the code found in the sentence;
+  - code then re-checks every date, time and amount;
+  - if Qwen chose the kind of item, the user is asked to confirm it;
+  - every use of Qwen is logged as counts only.
+
+**Results: extraction, rules only against hybrid** (Qwen2.5-1.5B Q8_0, laptop CPU)
+
+| Run | Kind of number | Rules only | Hybrid | Wrong and not marked for checking |
+| :--- | :--- | ---: | ---: | ---: |
+| Set A, 20 new sentences | **fresh, first try** | **5/20** | **6/20** | 7 |
+| Set B, 20 new sentences, written after the set A fixes | **fresh, first try** | **13/20** | **13/20** | 7 |
+| Set A after all fixes | development | 19/20 | 17/20 | 1 |
+| Set B after all fixes | development | 16/20 | 14/20 | 1 |
+
+Each set was committed before its first run. Full tables and Qwen's raw replies are in `chirii/results/slice/`.
+
+**What this shows**
+- **The rules were too narrow at first.** Casual phrasing ("tmrw", "by the 15th", "8k", "subah 10 baje") beat them
+  on 15 of 20 set A sentences.
+- **Set A led to general fixes:**
+  - short forms like "tmrw";
+  - days without a month;
+  - plain numbers as rupees in sentences about paying;
+  - Hindi time words, and "kal" read by its verb (gaya → yesterday, jaana hai → tomorrow);
+  - fees counted as bills even when "bus" appears.
+
+  On set B, the next new set, the rules got 13/20 on the first try.
+- **Qwen 1.5B adds little as a fallback reader.**
+  - Unconstrained (set A, first try), it often added values that weren't in the sentence: weekdays, or today's date.
+    The code check caught every one, as designed.
+  - Constrained to the sentence's own values, it fills fields well (it found the ₹2,000 in "owes me 2000").
+  - It chooses the kind of item poorly: it called a ration list and a Netflix subscription "money owed to the user".
+  - On the development runs, hybrid is 2 below rules only, because Qwen relabels plain notes.
+- **The number that matters most for trust is "wrong and not marked".** On the first tries it was 7 of 20, mostly
+  because the rules treated any dated sentence as an important date without saying they were unsure. Two fixes:
+  a date alone no longer decides the kind, and Qwen's choice of kind is always marked for checking. After them it
+  is 1 of 20 on each set (development numbers: a fresh check of these fixes comes with the next new sentences, in
+  S3).
+- **Decision:** keep the hybrid reader, because it is safe (the user is asked whenever Qwen decided something), but
+  don't rely on it. The rules do most of the work. A larger model on a GPU server could make the fallback worth more
+  later.
+
+**Demo check, end to end** (`chirii/results/slice/DEMO_RUN.md`): 7 fictional memories, 5 questions, read by hand.
+- All 7 memories were read as intended. "I paid the broadband bill" marked the right bill paid.
+- 4 of 5 answers were right, including "I don't have that in your memory" for a PAN number.
+- **One wrong answer:** asked when Dad's surgery is, Qwen gave today's date (21 November) instead of 3 December.
+  - The memory line it was given said "Thursday 3 December 2026"; the error is in the model's reading, not the
+    retrieval.
+  - With only that one memory saved, it answered correctly twice.
+  - This is exactly the invented-date failure that bar C exists for. It goes into S3, which will show how often it
+    happens on the 50 tasks.
+- One answer repeated the prompt's own wording ("The user said…"), which is a formatting issue for S3.
+- Answers took 4–9 seconds on the laptop CPU. Adding a memory took about 20–50 ms.
+
+**Tests:** 166 of 166 pass. The new tests cover:
+- when the hybrid reader calls Qwen, and that the schema offers only values from the sentence;
+- that invented amounts are rejected and the model being down is handled;
+- that fallback logs hold no text;
+- fact lines, Indian amount format and the answer prompt;
+- the web API end to end, including "delete all" leaving no files and requests from other computers being refused.
+
+**Next: S3 (ask with context)**
+- Run the 50-task eval on plain Qwen with and without memory; the first official run.
+- Add the safety layer.
+- Fix the problems found here: the invented date and the prompt wording.
+- Run the 500-item scale check.

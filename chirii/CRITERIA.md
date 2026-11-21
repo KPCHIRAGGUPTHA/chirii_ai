@@ -48,17 +48,24 @@ scorer now accepts correct worked-out values, the S7 decision rule below, and a 
 
 ### Decision rule for S7 (owner's change)
 
-The first official run is plain Qwen2.5-1.5B-Instruct with memory, in S3.
+The first official run is plain Qwen2.5-1.5B-Instruct with memory, in S3. **The decision is made on run (b), the
+system that will ship** (owner's correction, 21 Nov, before any run; see "S3 method" below). For run (b), bar C is
+replaced by bar C'.
 
 | Result | What happens |
 | :--- | :--- |
-| Bars A, B and C all pass | No fine-tuning. S7 is not triggered |
+| Bars A, B and C' all pass | No fine-tuning. S7 is not triggered |
 | Bar A **below 35/50** | **S7 is triggered directly** |
-| Bar A **35–39/50**, or bar **B** or **C** missed (owner's change, 21 Nov: B and C get the same rule as A) | **Failure analysis, one fix round, one rerun** (below) |
+| Bar A **35–39/50**, or bar **B** or **C'** missed (owner's change, 21 Nov: B, C and C' get the same rule as A) | **Failure analysis, one fix round, one rerun** (below) |
 
-**The failure analysis (bar A at 35–39, or B or C missed):**
-1. Label every failed task with exactly one cause:
+**The failure analysis (bar A at 35–39, or B or C' missed):**
+1. Label every failed task, and for bar C' every code-built fallback, with exactly one cause:
    - **retrieval:** the right memory wasn't given to the model;
+   - **wrong item retrieved:** a different memory's fact was given instead of the right one (for example the water
+     bill's date for an electricity bill question). The guard cannot catch this, because the wrong fact is in memory.
+     Counts as fixable in code, like retrieval;
+   - **wrong item used:** the right memory was given, but the answer took a fact from a different memory. Counts as
+     model behaviour;
    - **prompt/formatting:** the memory was there, but the prompt or answer format led it wrong;
    - **scorer:** the answer was right and the marker was wrong;
    - **model behaviour:** the memory and prompt were right and the model still answered wrongly.
@@ -73,23 +80,33 @@ The first official run is plain Qwen2.5-1.5B-Instruct with memory, in S3.
 | :--- | :--- | :--- |
 | A | would miss 40/50 | more than **10** of 50 tasks |
 | B | would miss 7/8 on "not in memory" tasks | more than **1** of 8 |
-| C | would exceed 2 tasks with invented values | more than **2** of 50 |
+| C' (run (b)) | would exceed 5 code-built fallbacks | more than **5** of 50 tasks |
 
 ### S3 method (owner's decision, 21 Nov, recorded before any S3 run)
 
 The 50 development tasks are run in two configurations, with the same settings, and reported side by side:
 
-| Run | System | Why |
+| Run | System | Role |
 | :--- | :--- | :--- |
-| **(a) Baseline** | The slice as first built: full retrieval (5 closest plus everything due in 14 days), **no** fact-check guard | The honest measure of plain Qwen with memory |
-| **(b) Guarded** | Trimmed retrieval (only memories relevant to the question) **with** the fact-check guard (retry with the top 3 lines, then a code-built answer) | The system as it will ship |
+| **(a) Before** | The slice as first built: full retrieval (5 closest plus everything due in 14 days), **no** fact-check guard | Reported as the "before" picture; bars A, B and C for comparison only |
+| **(b) Ship** | Trimmed retrieval (only memories relevant to the question) **with** the fact-check guard (retry with the top 3 lines, then a code-built answer) | **The S7 decision is made on this run** (owner's correction, 21 Nov) |
 
-- **The S7 decision uses run (a).** Run (b)'s bar C is partly guaranteed by design, because the guard uses the
-  marker's own rules for invented values (and one stricter rule about today's date). Its bar C result therefore says
-  more about the guard than about the model, and the report will say so. Bars A and B in run (b) are real measures.
+**Bars for run (b)** (owner's correction, 21 Nov, before any run):
+- **Bar A (at least 40/50) and bar B (at least 7/8)** apply as written. The guard cannot catch a wrong fact that is
+  in memory, so those failures still count against bar A and are labelled "wrong item retrieved" or "wrong item
+  used".
+- **Bar C is reported but not counted as evidence.** The guard enforces it by design: it uses the marker's own rules
+  for invented values, plus one stricter rule about today's date.
+- **Bar C' replaces it: a code-built fallback in at most 5 of 50 tasks.** The report gives the share of answers that
+  were clean the first time, needed a retry, or fell back to a code-built answer. If C' is missed, the failure-analysis
+  rule above applies before S7 is triggered.
+- **Run (a) keeps the original bar C**, for comparison only.
+- **One line per task** in the S3 results gives its run (b) guard outcome (clean, retried or fallback), its task type
+  and its verdict, so it can be seen which task types trigger the guard.
 - **The plain-Qwen comparison** (no memory at all) from the plan is also run, as a third column, so the value of
-  memory can be seen.
-- **Failure analysis by type** for both runs, using the four labels above (retrieval, prompt/formatting, scorer,
+  memory can be seen. Qwen gets a plain assistant instruction with today's date, and the question, but no memory
+  lines and no guard. Its bars are for comparison only.
+- **Failure analysis by type** for both runs, using the labels above (retrieval, wrong item retrieved, wrong item used, prompt/formatting, scorer,
   model behaviour). For run (b), also how often the guard passed, retried and fell back to a code-built answer, and
   whether each retry or fallback passed or failed the task.
 - **Memories in the eval are marked confirmed** before asking, as if the user had pressed Yes on each card. The eval

@@ -54,10 +54,9 @@ The first official run is plain Qwen2.5-1.5B-Instruct with memory, in S3.
 | :--- | :--- |
 | Bars A, B and C all pass | No fine-tuning. S7 is not triggered |
 | Bar A **below 35/50** | **S7 is triggered directly** |
-| Bar A **35–39/50** | **Failure analysis, one fix round, one rerun** (below) |
-| Bar B or C missed | S7 is triggered, as proposed. The failure analysis is written anyway so the fine-tune targets the right failures |
+| Bar A **35–39/50**, or bar **B** or **C** missed (owner's change, 21 Nov: B and C get the same rule as A) | **Failure analysis, one fix round, one rerun** (below) |
 
-**The failure analysis (bar A at 35–39):**
+**The failure analysis (bar A at 35–39, or B or C missed):**
 1. Label every failed task with exactly one cause:
    - **retrieval:** the right memory wasn't given to the model;
    - **prompt/formatting:** the memory was there, but the prompt or answer format led it wrong;
@@ -66,10 +65,15 @@ The first official run is plain Qwen2.5-1.5B-Instruct with memory, in S3.
 2. Commit the labels before any fix.
 3. Fix retrieval and prompt/formatting causes in code. Fix scorer errors only through the rule at the top of this
    file: the change is committed before the rerun, and the report shows the old and new verdicts.
-4. Rerun the 50 tasks **once**.
-5. Trigger S7 only if the **model-behaviour** failures alone remain above the bar, i.e. more than 10 of 50, so that
-   bar A would be missed even if everything else were fixed. Otherwise S7 is not triggered, and the remaining
-   retrieval and prompt failures are carried into S4–S6 as code work.
+4. Rerun the 50 tasks **once**. A single fix round and a single rerun cover all three bars together.
+5. After the rerun, count only the failures still labelled **model behaviour** (confirmed by the owner, 21 Nov). S7 is triggered
+   if any one of these holds; otherwise it is not, and the remaining failures become code work in S4–S6:
+
+| Bar | S7 is triggered if model-behaviour failures alone… | That is |
+| :--- | :--- | :--- |
+| A | would miss 40/50 | more than **10** of 50 tasks |
+| B | would miss 7/8 on "not in memory" tasks | more than **1** of 8 |
+| C | would exceed 2 tasks with invented values | more than **2** of 50 |
 
 ### Held-out test set (owner's change)
 

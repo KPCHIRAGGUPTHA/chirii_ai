@@ -34,17 +34,20 @@ and pushes the results; the laptop pulls them.
 | :--- | :--- | :--- |
 | S0 | Setup: folders, pinned Python 3.12 environment, settings, privacy-safe logging, licence register, plan | 21–23 Nov |
 | S1 | **50-task** everyday-assistant eval (the development set), written before any system exists, plus pass bars (approved 21 Nov); GPU benchmark job ready by 1 Dec | 24 Nov – 4 Dec |
-| S2 | Memory store: SQLite per user, sentence → structured item extraction, FAISS search over notes, delete-all-data | 5 – 15 Dec |
-| Slice | **Early end-to-end demo**: add memory → ask → answer in a minimal web page, for first testers | 16 Dec – 2 Jan |
-| S3 | Ask with context: retrieval before every answer, safety layer, S1 eval on plain Qwen with and without memory | 3 – 16 Jan |
+| S2 | Memory store: SQLite per user, sentence → structured item extraction (rules), FAISS search over notes, delete-all-data (done 21 Nov) | 5 – 15 Dec |
+| Slice | **Early end-to-end demo**: add memory → ask → answer in a minimal web page. Hybrid extraction: rules first, Qwen → JSON → code validation only when the rules fall back to a plain note; measured on 20 new varied sentences, rules-only against hybrid, first try | 16 Dec – 2 Jan |
+| S3 | Ask with context: retrieval before every answer, safety layer, S1 eval on plain Qwen with and without memory; **scale check** with about 500 generated memory items per user (search and date-window speed and accuracy) | 3 – 16 Jan |
 | S4 | Daily and weekly planner (code builds the plan, the model words it), reminders | 17 – 23 Jan |
-| S5 | FastAPI service and login hardening, per-user isolation tests, `docs/PRIVACY.md` final | 24 Jan – 3 Feb |
+| S5 | FastAPI service and login hardening, per-user isolation tests, **encryption at rest decided** (options such as SQLCipher or app-level encryption with the key from `.env`) and a tester consent note, `docs/PRIVACY.md` final. **No real users before this is done** | 24 Jan – 3 Feb |
 | S6 | Friendly mobile-ready chat UI with memory sidebar and "Plan my day"; write the **30-task held-out set** and commit it with its marking rules before any run, then run it once on the final system | 4 – 14 Feb |
 | S7 | Decision gate under the approved rule in `chirii/CRITERIA.md`: bar A below 35/50 → fine-tune; 35–39 → failure analysis, fix retrieval and prompts, rerun once; benchmarks table | decided by 16 Jan |
 | S8 | Low-cost deployment: Docker Compose, Q8_0 default, CPU server notes, GPU endpoint option | 15 – 19 Feb |
 | S9 | Funding documents: README, Mermaid diagram, roadmap, `docs/DEMO_SCRIPT.md` | 20 – 24 Feb |
 
 ## Privacy requirements (all stages)
+
+- **No real user data until encryption at rest and the tester consent note are done (S5).** Until then the app
+  runs with fictional data only.
 
 - "Delete all my data" removes the user's SQLite rows and FAISS vectors.
 - No message content in logs: code logs only through `chirii/app/logging_setup.log_event`, which refuses unknown fields

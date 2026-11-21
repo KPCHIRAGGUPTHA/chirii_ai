@@ -356,3 +356,64 @@ committed before any fix. Full report: `chirii/results/s3/S3_RESULTS.md`.
 - S7 needs its own plan, for the owner to approve: training data (commercial licences only), the IndiaAI GPU job, and
   the 2-point limits on GSM8K and function calling, against the GPU job's baselines.
 - The code problems above are fixed in S4 whatever happens with S7. Fine-tuning won't fix them.
+
+## S7 deferred; S4 – Structured reasoning moved into code (22 November 2026)
+
+**Decisions recorded before any S4 work** (`chirii/CRITERIA.md`)
+- **S7 is triggered under the rule, then deferred by the owner.** The reason, in the owner's words: the model-side
+  failures are concentrated in filtering, counting and combining memories, which are being moved to code.
+- **S7 reconsideration rule.** S7 is reconsidered on the 30 held-out tasks after S4, with bars A ≥ 24/30, B ≥ 4/5
+  and C' ≤ 3/30 code-built fallbacks, and no further deferral.
+  - A conflict in the rule text was resolved strictly: B at 3/5 triggers S7 directly.
+  - One open point is left for the owner: what happens if C' misses by more than one.
+
+**What was built**
+- **Question router:** sends each question down one of five paths (plan, date window, status, lookup, meaning). The
+  rules decide; Qwen is asked only when no rule matches, and can only answer with one of the five names.
+- **Code-built answers** (`chirii/app/planner.py`):
+  - date windows filtered by kind (to pay, owed to you, to do, family dates), leaving out paid items, with totals;
+  - day and week plans in time order, with clashes found by code, "coming up tomorrow" and medicines;
+  - "is it paid / did I…" answers from each item's status and history.
+
+  Qwen only rewords these texts. If the rewording loses an item, date, time or amount, changes the order, drops a
+  clash warning or fails the guard, it gets one retry, and then the code's own text is shown.
+- **Specific-item check:** if a question names something (a name, or a thing like electricity or LIC) and no matching
+  memory mentions it, Chirii says it hasn't got that saved instead of offering a different item.
+- **Fixes:**
+  - the 4 code bugs found in S3: all dates shown, medicines no longer crowding out windows, no old dates in fallbacks,
+    plans looking at tomorrow;
+  - the 2 marker/guard errors, with tests that fail on the old marker. S3 re-marked: unchanged except run (a)'s bar C,
+    2 → 1. The original scores stay official;
+  - clearer item titles.
+- **GPU diagnostic job** (`chirii/gpu/qwen7b/`): run (b)'s setup with Qwen2.5-7B-Instruct Q8_0, for the owner to run
+  on the GPU PC. No decision is attached to it.
+
+**Run (c): the S4 system on the 50 development tasks** (`chirii/results/s3/RUN_C.md`). **This is a development
+number, not a fresh one:** S4 was built in response to these tasks' failures.
+
+| | (a) Before | (b) S3 ship | **(c) S4** |
+| :--- | ---: | ---: | ---: |
+| Bar A (current marker) | 28/50 | 28/50 | **42/50** |
+| Bar A (hand check) | 27/50 | 28/50 | **46/50** |
+| Bar B | 5/8 | 5/8 | **8/8** |
+| Code-built fallbacks | – | 3 | **10** |
+| Median time | 8.7 s | 3.7 s | 4.4 s |
+
+**By task type** (run (c)): plans 8/8, date windows 5/8, not-in-memory 8/8, lookups 8/10, meaning 8/8, updates 5/8.
+
+**What is still wrong**
+- **10 fallbacks**, against 5 allowed on the held-out set. Eight come from the S4 code itself:
+  - list headers name the period's start (today) and end dates, which the guard treats as a misused today's date
+    and an invented date;
+  - a weekly routine's date isn't counted as a memory date.
+
+  These header dates also make 2 tasks fail the marker. Only 2–3 fallbacks are real rewording losses by Qwen.
+- **"Is anything due tomorrow?"** missed money owed to the user, because the router read "due" as a payment word.
+- **Three model-behaviour failures remain on lookups**, all wrong dates: two old dates after an item was moved, and
+  the wrong one of an item's several exam dates. The guard can't catch them, because those dates are in the memory.
+
+**Next**
+- Fix the header dates, the weekly-routine dates and the "due" routing. Any rerun of the 50 tasks stays a
+  development number.
+- Still pending from S3: the safety layer, the 500-item scale check, and the fresh extraction set.
+- The owner runs the benchmark and 7B jobs on the GPU PC.

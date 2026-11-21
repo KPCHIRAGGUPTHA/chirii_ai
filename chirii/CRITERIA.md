@@ -116,6 +116,31 @@ The 50 development tasks are run in two configurations, with the same settings, 
 - **Extraction on new sentences:** the next fresh set of 20 sentences is written and committed in S3, before it is
   run. Target: **wrong and not flagged for the user to check ≤ 2 of 20.**
 
+### S3 outcome: S7 triggered, then deferred (owner's decision, 22 Nov, recorded before any S4 work)
+
+- **S7 is triggered under the pre-registered rule.** In run (b), bar A was 28/50, below 35
+  (`chirii/results/s3/S3_RESULTS.md`). This result stands, and is reported as it is.
+- **S7 is deferred by the owner, for this reason, in the owner's words:** "The model-side failures are concentrated
+  in tasks that require filtering, counting or combining memories (date windows 1/8, plans 2/8, wrong-item 3 of 8).
+  These are being moved to code by design, as the planner already was. S7 is reconsidered after S4 on the held-out
+  set."
+- **This is a change of plan made after seeing a result**, so it is recorded here as one. The original rule would
+  have started fine-tuning now; the owner chose to move the failing kinds of reasoning into code (S4) first.
+- **The rule for reconsidering S7 on the held-out set is proposed and approved before the held-out set is run.**
+  It is not set yet.
+
+**Rules for the S4 work:**
+- **The marker's two errors found in S3** (a month followed by a numbered list item read as a date; the empty days of
+  an asked week counted as invented) are fixed with tests. Under the rule at the top of this file, the S3 runs are
+  then re-marked with the fixed marker and shown **next to** the original scores. The original scores are never
+  replaced.
+- **Run (c)**, the 50 development tasks on the S4 system, is reported next to runs (a) and (b), with clean, retried
+  or fallback for each task. **It is a development number.** The S4 work was shaped by these 50 tasks' failures, so
+  run (c) will look better than new tasks would.
+- **The 30 held-out tasks are not written, seen or run before S6.**
+- **The GPU diagnostic** (run (b)'s setup with Qwen2.5-7B-Instruct Q8_0 on the GPU PC) has **no decision attached**. It
+  shows how much of the gap a larger model closes. It does not change any bar or verdict.
+
 ### Held-out test set (owner's change)
 
 - In S6, before the final report, 30 new tasks are written:

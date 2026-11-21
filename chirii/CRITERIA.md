@@ -7,22 +7,33 @@ reason, and the report must show both the old and the new verdict.
 
 | Rule | Source |
 | :--- | :--- |
-| A fine-tune is attempted only if plain Qwen2.5-1.5B-Instruct with memory misses the S1 pass bar | Owner decision, 21 Nov |
+| A fine-tune is attempted only under the S7 decision rule below (plain Qwen2.5-1.5B-Instruct with memory falls short of the S1 bars) | Owner decision, 21 Nov |
 | A fine-tune must not lose more than **2 points** against plain Qwen on GSM8K | Owner decision, 21 Nov |
 | A fine-tune must not lose more than **2 points** against plain Qwen on function calling | Owner decision, 21 Nov |
 | Deployment uses Q8_0 GGUF; a 4-bit file is used only if it scores within noise of Q8_0 on the S1 eval | Owner decision, 21 Nov |
 | No training data with a non-commercial licence (alpaca-cleaned, SciQ, PKU-SafeRLHF, or any other) | Owner decision, 21 Nov |
 
-## PROPOSED, awaiting the owner's approval (S1)
+## S1 eval: APPROVED 21 November 2026, with the owner's changes
 
-Nothing below is in force until the owner approves it and it is committed again with the approval date.
+Approved by the owner on 21 November 2026, before any system was run on the tasks. Changes from the proposal: the
+scorer now accepts correct worked-out values, the S7 decision rule below, and a held-out test set (both added).
 
-### The S1 eval
+### The S1 eval (development set)
 
 - **Tasks:** `chirii/eval/s1_tasks.jsonl`, 50 scored tasks (10 per person, across 6 task types) and 5 unscored
-  Hinglish tasks. Review copy: `chirii/eval/S1_TASKS.md`.
-- **Marking:** automatic, by `chirii/eval/scoring.py`. Every task also fails if the reply contains a date or rupee
-  amount that is not in the person's memory ("no invention").
+  Hinglish tasks. Review copy: `chirii/eval/S1_TASKS.md`. This is the **development set**: it may be run as often as
+  needed while building, so its score can drift upward from tuning to it. The main result comes from the held-out
+  set below.
+- **Marking:** automatic, by `chirii/eval/scoring.py`. Every task other than "not in memory" lists facts that must be
+  in the answer, and a test checks that an empty or evasive reply fails every task. Every task also fails if the
+  reply contains an invented date, rupee amount, day count or weekday.
+- **Worked-out values (owner's change):** allowed when correct, failed when wrong:
+  - today's date and today's weekday;
+  - a sum of two or more amounts in memory ("₹26,150 in total");
+  - a day count that matches the dates in memory ("in 5 days", "2 days late");
+  - a weekday written next to a date, if it is that date's weekday.
+
+  Tests cover each, including a wrong sum, a wrong day count and a wrong weekday.
 - **Hand check:** every verdict in the first official run is also checked by hand. The automatic score is the
   official one; every disagreement is listed in the report, and the scorer is not changed during that run.
 - **Settings:** Q8_0 GGUF through llama.cpp, temperature 0, at most 256 new tokens, one run.
@@ -35,7 +46,40 @@ Nothing below is in force until the owner approves it and it is committed again 
 | **B. "Not in memory" tasks** | **at least 7 of 8** | Saying "I don't know" instead of guessing is the main difference from a chatbot |
 | **C. No invention** | **invented dates or amounts in at most 2 of 50 tasks** | An invented bill date or amount is the most harmful mistake this product can make |
 
-**If any bar is missed, S7 (fine-tuning) is triggered.**
+### Decision rule for S7 (owner's change)
+
+The first official run is plain Qwen2.5-1.5B-Instruct with memory, in S3.
+
+| Result | What happens |
+| :--- | :--- |
+| Bars A, B and C all pass | No fine-tuning. S7 is not triggered |
+| Bar A **below 35/50** | **S7 is triggered directly** |
+| Bar A **35–39/50** | **Failure analysis, one fix round, one rerun** (below) |
+| Bar B or C missed | S7 is triggered, as proposed. The failure analysis is written anyway so the fine-tune targets the right failures |
+
+**The failure analysis (bar A at 35–39):**
+1. Label every failed task with exactly one cause:
+   - **retrieval:** the right memory wasn't given to the model;
+   - **prompt/formatting:** the memory was there, but the prompt or answer format led it wrong;
+   - **scorer:** the answer was right and the marker was wrong;
+   - **model behaviour:** the memory and prompt were right and the model still answered wrongly.
+2. Commit the labels before any fix.
+3. Fix retrieval and prompt/formatting causes in code. Fix scorer errors only through the rule at the top of this
+   file: the change is committed before the rerun, and the report shows the old and new verdicts.
+4. Rerun the 50 tasks **once**.
+5. Trigger S7 only if the **model-behaviour** failures alone remain above the bar, i.e. more than 10 of 50, so that
+   bar A would be missed even if everything else were fixed. Otherwise S7 is not triggered, and the remaining
+   retrieval and prompt failures are carried into S4–S6 as code work.
+
+### Held-out test set (owner's change)
+
+- In S6, before the final report, 30 new tasks are written:
+  - same 5 people and same 6 task types (one task per person per type);
+  - new situations, not paraphrases of the development tasks.
+- Their marking rules are committed with them **before any system is run on them**.
+- They are run **once**, on the final system, with the same settings and scorer.
+- The final report gives both scores, and the **held-out score is labelled the main result**. Pass bars for the
+  held-out set are proposed with the tasks and approved before its run.
 
 ### Noise: what these numbers can and cannot show
 

@@ -75,6 +75,30 @@ The first official run is plain Qwen2.5-1.5B-Instruct with memory, in S3.
 | B | would miss 7/8 on "not in memory" tasks | more than **1** of 8 |
 | C | would exceed 2 tasks with invented values | more than **2** of 50 |
 
+### S3 method (owner's decision, 21 Nov, recorded before any S3 run)
+
+The 50 development tasks are run in two configurations, with the same settings, and reported side by side:
+
+| Run | System | Why |
+| :--- | :--- | :--- |
+| **(a) Baseline** | The slice as first built: full retrieval (5 closest plus everything due in 14 days), **no** fact-check guard | The honest measure of plain Qwen with memory |
+| **(b) Guarded** | Trimmed retrieval (only memories relevant to the question) **with** the fact-check guard (retry with the top 3 lines, then a code-built answer) | The system as it will ship |
+
+- **The S7 decision uses run (a).** Run (b)'s bar C is partly guaranteed by design, because the guard uses the
+  marker's own rules for invented values (and one stricter rule about today's date). Its bar C result therefore says
+  more about the guard than about the model, and the report will say so. Bars A and B in run (b) are real measures.
+- **The plain-Qwen comparison** (no memory at all) from the plan is also run, as a third column, so the value of
+  memory can be seen.
+- **Failure analysis by type** for both runs, using the four labels above (retrieval, prompt/formatting, scorer,
+  model behaviour). For run (b), also how often the guard passed, retried and fell back to a code-built answer, and
+  whether each retry or fallback passed or failed the task.
+- **Memories in the eval are marked confirmed** before asking, as if the user had pressed Yes on each card. The eval
+  measures answering; the cards are measured separately (below).
+- **No prompt tuning against individual eval tasks.** Prompts, retrieval settings and guard rules are fixed before
+  the run and not changed in response to single tasks. Any change after the run follows the S7 fix-round rule.
+- **Extraction on new sentences:** the next fresh set of 20 sentences is written and committed in S3, before it is
+  run. Target: **wrong and not flagged for the user to check ≤ 2 of 20.**
+
 ### Held-out test set (owner's change)
 
 - In S6, before the final report, 30 new tasks are written:

@@ -35,11 +35,17 @@ MONTHS = {
 }
 MONTH_PATTERN = "|".join(sorted(MONTHS, key=len, reverse=True))
 DAY = r"(\d{1,2})(?:st|nd|rd|th)?"
+# Marker fix, 22 Nov (CRITERIA.md: S3 re-marked, originals kept): a date's day and month must be on the same line, and
+# a month ending a sentence is not joined to a numbered list item after it. In S3, "15 December.\n2. Pay" was read as
+# 2 December.
 DATE_PATTERNS = [
-    re.compile(rf"\b{DAY}(?:\s+of)?\s+({MONTH_PATTERN})\b\.?", re.I),
-    re.compile(rf"\b({MONTH_PATTERN})\.?\s+{DAY}\b", re.I),
+    re.compile(rf"\b{DAY}(?:[ \t]+of)?[ \t]+({MONTH_PATTERN})\b\.?", re.I),
+    re.compile(rf"\b({MONTH_PATTERN})(?:\.(?=[ \t]+\d{{1,2}}(?:st|nd|rd|th)?\b(?!\.(?:\s|$))))?[ \t]+{DAY}\b", re.I),
     re.compile(r"\b(\d{1,2})[/.-](\d{1,2})(?:[/.-](\d{2,4}))?\b"),
 ]
+# Marker fix, 22 Nov: a day of the asked period that the reply says is empty ("Tuesday 15 December: no appointments")
+# is not an invented date.
+EMPTY_DAY = re.compile(r"^[\s:,\-–]*\(?\s*(nothing|no\b|none|free|empty|clear)", re.I)
 AMOUNT_PATTERNS = [
     re.compile(r"(?:₹|\brs\.?|\binr)\s*(\d(?:[\d,]*\d)?(?:\.\d+)?)(\s*(?:lakhs?|lacs?))?", re.I),
     # A number written before the word: "1860 rupees", "1.95 lakh rupees". "Rs" after a number is not read, so the
@@ -284,9 +290,44 @@ def invented_weekdays(reply: str, task: Dict[str, Any]) -> List[str]:
     return wrong
 
 
+def asked_period(question: str, today: date) -> Optional[Tuple[date, date]]:
+    """The days a question asks about, for the empty-day rule: 'this week', 'next week', 'next N days', 'my week'."""
+    q = question.lower()
+    m = re.search(r"\bnext\s+(\d{1,2}|" + "|".join(NUMBER_WORDS) + r")\s+days?\b", q)
+    if m:
+        n = int(m.group(1)) if m.group(1).isdigit() else NUMBER_WORDS[m.group(1)]
+        return today, today + timedelta(days=n)
+    if re.search(r"\bnext week\b", q):
+        start = today + timedelta(days=7 - today.weekday())
+        return start, start + timedelta(days=6)
+    if re.search(r"\b(this|my) week\b|\bplan for (the|this) week\b", q):
+        return today, today + timedelta(days=6 - today.weekday())
+    return None
+
+
+def empty_days_said(reply: str, task: Dict[str, Any]) -> Set[Tuple[int, int]]:
+    """Days of the asked period that the reply only says are empty."""
+    today = date.fromisoformat(task["today"])
+    period = asked_period(task.get("question", ""), today)
+    if not period:
+        return set()
+    found = set()
+    for pattern in DATE_PATTERNS:
+        for match in pattern.finditer(reply):
+            days = find_dates(match.group(0), today)
+            if len(days) != 1:
+                continue
+            day, month = next(iter(days))
+            full = _full_date(day, month, today)
+            if full and period[0] <= full <= period[1] and EMPTY_DAY.match(reply[match.end():].split("\n", 1)[0]):
+                found.add((day, month))
+    return found
+
+
 def invented_facts(reply: str, task: Dict[str, Any]) -> Dict[str, List[Any]]:
     today = date.fromisoformat(task["today"])
     dates, amounts = allowed_facts(task)
+    dates = dates | empty_days_said(reply, task)
     extra_amounts = sorted(find_amounts(reply) - amounts)
     if extra_amounts:
         sums = allowed_sums(amounts)

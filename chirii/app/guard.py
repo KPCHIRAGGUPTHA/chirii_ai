@@ -12,7 +12,7 @@ import re
 from datetime import date
 from typing import Any, Dict, List
 
-from chirii.eval.scoring import DATE_PATTERNS, find_dates, invented_facts
+from chirii.eval.scoring import DATE_PATTERNS, EMPTY_DAY, find_dates, invented_facts
 
 TODAY_WORDS = re.compile(r"\b(today|tonight|aaj)\b", re.I)
 
@@ -62,7 +62,8 @@ def check_answer(answer: str, items: List[Dict[str, Any]], histories: Dict[int, 
             for match in pattern.finditer(answer):
                 if (today.day, today.month) in find_dates(match.group(0), today):
                     nearby = answer[max(0, match.start() - 30):match.end() + 30]
-                    if not TODAY_WORDS.search(nearby):
+                    says_empty = EMPTY_DAY.match(answer[match.end():].split("\n", 1)[0])
+                    if not TODAY_WORDS.search(nearby) and not says_empty:
                         problems.append("today's date given for something not on today")
                         return problems
     return problems

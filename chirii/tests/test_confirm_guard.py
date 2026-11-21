@@ -206,3 +206,11 @@ class TestAnswersWithGuard:
     def test_question_windows(self, question, window):
         got = question_window(question, NOV21)
         assert (tuple(d.isoformat() for d in got) if got else None) == window
+
+
+class TestGuardEmptyDays:
+
+    def test_a_week_plan_listing_empty_days_passes_the_guard(self):
+        items = [{"id": 1, "kind": "appointment", "text": "Dentist on 16 December at 5 pm.", "date": "2026-12-16", "time": "17:00", "amount": None, "status": "active"}]
+        answer = "- Monday 14 December: No appointments.\n- Tuesday 15 December: Nothing.\n- Wednesday 16 December: Dentist at 5 pm."
+        assert check_answer(answer, items, {}, date(2026, 12, 14), "Plan my week.") == []

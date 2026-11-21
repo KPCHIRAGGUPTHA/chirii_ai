@@ -206,3 +206,38 @@ class TestWorkedOutValues:
     def test_a_wrong_sum_is_reported_as_invented(self, by_id):
         result = score_task(by_id["S1-23"], "Sugar ₹1,95,000 and electricity ₹6,380: ₹2,01,830 in total.")
         assert result["invented"] and any("201830" in f for f in result["failures"])
+
+
+class TestMarkerFixes:
+    """The two marker errors found in S3 (CRITERIA.md: S3 re-marked with the fixed marker, originals kept)."""
+
+    TODAY = date(2026, 12, 14)  # Monday
+
+    def test_numbered_list_after_a_month_is_not_a_date(self):
+        text = "1. Update your KYC by 15 December.\n2. Pay the bill on Monday 14 December 2026.\n3. File by 20 December."
+        assert find_dates(text, self.TODAY) == {(15, 12), (14, 12), (20, 12)}
+
+    @pytest.mark.parametrize("text,expected", [
+        ("Due Dec. 12, pay soon", {(12, 12)}),          # an abbreviated month with a full stop still works
+        ("due on December 2. Then call", {(2, 12)}),    # a month without a full stop, then a day, is still a date
+        ("by 15 December\n2 boxes", {(15, 12)}),        # no joining across lines
+        ("12\nDecember", set()),
+    ])
+    def test_dates_stay_on_one_line(self, text, expected):
+        assert find_dates(text, self.TODAY) == expected
+
+    def test_empty_days_of_the_asked_week_are_not_invented(self, by_id):
+        task = dict(by_id["S1-47"])
+        reply = ("- Monday 14 December: No appointments or bills.\n- Tuesday 15 December: Nothing planned.\n"
+                 "- Wednesday 16 December: Dentist at 5 pm and internship interview at 5 pm, which clash.\n"
+                 "- Sunday 20 December: Hostel mess fee of ₹38,500 is due.")
+        result = score_task(task, reply)
+        assert not result["invented"], result
+
+    def test_a_day_with_a_made_up_item_is_still_invented(self, by_id):
+        reply = "Tuesday 15 December: Physics exam at 10 am. Wednesday 16 December: dentist and interview at 5 pm, which clash."
+        assert score_task(by_id["S1-47"], reply)["invented"]
+
+    def test_empty_day_rule_needs_an_asked_period(self, by_id):
+        # S1-02 asks about one appointment, so no period: an empty-day line is still an invented date
+        assert score_task(by_id["S1-02"], "Your dentist is at 6 pm on 10 December. 11 December: nothing.")["invented"]

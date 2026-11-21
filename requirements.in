@@ -1,0 +1,16 @@
+# Chirii AI app (laptop and CPU server). Compile with:
+#   uv pip compile requirements.in --python-version 3.12 -o requirements.txt
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-dotenv
+python-multipart
+httpx
+argon2-cffi
+itsdangerous
+python-dateutil
+numpy
+faiss-cpu
+fastembed
+pytest

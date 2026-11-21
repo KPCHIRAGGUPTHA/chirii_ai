@@ -34,3 +34,17 @@ phase11/data/sft_rag_abstain10_train.jsonl
 phase11/data/sft_rag_abstain10_val.jsonl
 phase11/data/sft_rag_abstain0_train.jsonl
 phase11/data/sft_rag_abstain0_val.jsonl
+
+# Chirii AI: secrets, user data and model files must never be committed
+.env
+.env.*
+!.env.example
+chirii/var/
+*.db
+*.sqlite
+*.sqlite3
+*.faiss
+*.gguf
+models/
+chirii/web/node_modules/
+chirii/web/dist/

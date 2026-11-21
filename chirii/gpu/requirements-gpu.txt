@@ -1,0 +1,5 @@
+# GPU PC benchmark environment, matching Phase 18. Install CUDA PyTorch first (see RUN_ON_GPU.md).
+lm_eval==0.4.13
+transformers
+accelerate
+numpy

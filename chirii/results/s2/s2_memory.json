@@ -1,0 +1,223 @@
+{
+  "embedder": "sentence-transformers/all-MiniLM-L6-v2",
+  "when": "2026-11-21",
+  "machine": "Windows AMD64, CPU",
+  "parsing": {
+    "dev_sentences": 66,
+    "dev_fully_right": 66,
+    "dev_wrong": [],
+    "dev_fields": {
+      "kind": "66/66",
+      "date": "54/54",
+      "end_date": "1/1",
+      "time": "23/23",
+      "end_time": "2/2",
+      "amount": "19/19",
+      "day_of_month": "4/4",
+      "weekdays": "2/2",
+      "other_dates": "1/1",
+      "other_times": "1/1",
+      "other_amounts": "1/1"
+    },
+    "fresh_sentences": 22,
+    "fresh_fully_right_now": 22,
+    "fresh_fully_right_first_try": 20
+  },
+  "updates": [
+    {
+      "task": "S1-08",
+      "linked_right": true,
+      "changed_right": true,
+      "linked_to": "My BESCOM electricity bill is ₹1,860 and it's due on 12 Dece"
+    },
+    {
+      "task": "S1-09",
+      "linked_right": true,
+      "changed_right": true,
+      "linked_to": "Dentist appointment with Dr. Kavitha on 10 December at 6 pm."
+    },
+    {
+      "task": "S1-18",
+      "linked_right": true,
+      "changed_right": true,
+      "linked_to": "Our Metro Water bill is ₹420, due on 10 December."
+    },
+    {
+      "task": "S1-19",
+      "linked_right": true,
+      "changed_right": true,
+      "linked_to": "Divya's school term fee of ₹24,000 must be paid by 18 Decemb"
+    },
+    {
+      "task": "S1-28",
+      "linked_right": true,
+      "changed_right": true,
+      "linked_to": "Mrs. Deshpande owes ₹3,450 on credit and promised to pay by "
+    },
+    {
+      "task": "S1-29",
+      "linked_right": true,
+      "changed_right": true,
+      "linked_to": "Gupta Traders will deliver 50 bags of sugar on 11 December b"
+    },
+    {
+      "task": "S1-37",
+      "linked_right": true,
+      "changed_right": true,
+      "linked_to": "My next check-up is with Dr. Ramaswamy at the hospital on 18"
+    },
+    {
+      "task": "S1-48",
+      "linked_right": true,
+      "changed_right": true,
+      "linked_to": "Hostel mess fee of ₹38,500 is due on 20 December."
+    }
+  ],
+  "search": [
+    {
+      "task": "S1-05",
+      "question": "What did I note about the release?",
+      "rank": 1,
+      "top1": "Note from today's team meeting: the release has moved to 8 January, an"
+    },
+    {
+      "task": "S1-15",
+      "question": "What do I need to buy for Pongal?",
+      "rank": 1,
+      "top1": "Shopping list for Pongal: rice, jaggery, moong dal, ghee, sugarcane an"
+    },
+    {
+      "task": "S1-16",
+      "question": "What should I carry for my mother-in-law's eye check-up?",
+      "rank": 1,
+      "top1": "Mother-in-law's eye check-up at the eye hospital on 16 December at 10 "
+    },
+    {
+      "task": "S1-25",
+      "question": "What did I note about the milk price?",
+      "rank": 1,
+      "top1": "Note: the new milk vendor charges ₹56 a litre from January, up from ₹5"
+    },
+    {
+      "task": "S1-34",
+      "question": "What did the doctor tell me about food?",
+      "rank": 1,
+      "top1": "Dr. Ramaswamy said: walk 30 minutes every morning, avoid sweets and re"
+    },
+    {
+      "task": "S1-35",
+      "question": "What does Ananya want for her birthday?",
+      "rank": 1,
+      "top1": "Granddaughter Ananya's birthday is on 9 January. She wants a story boo"
+    },
+    {
+      "task": "S1-44",
+      "question": "Which topics should I study for DBMS?",
+      "rank": 1,
+      "top1": "Note from DBMS class: the exam covers normalisation, SQL joins and tra"
+    },
+    {
+      "task": "S1-45",
+      "question": "Where did I save my PNR?",
+      "rank": 1,
+      "top1": "Train home to Hyderabad on 13 December at 9:40 pm from Katpadi. The PN"
+    }
+  ],
+  "paraphrases": [
+    {
+      "question": "What exercise was I advised?",
+      "rank": 1,
+      "top1": "Dr. Ramaswamy said: walk 30 minutes every morning, avoid sweets and re"
+    },
+    {
+      "question": "What groceries for the harvest festival?",
+      "rank": 1,
+      "top1": "Shopping list for Pongal: rice, jaggery, moong dal, ghee, sugarcane an"
+    },
+    {
+      "question": "What's important for the database paper?",
+      "rank": 1,
+      "top1": "Note from DBMS class: the exam covers normalisation, SQL joins and tra"
+    },
+    {
+      "question": "Where is my railway ticket number?",
+      "rank": 1,
+      "top1": "Train home to Hyderabad on 13 December at 9:40 pm from Katpadi. The PN"
+    },
+    {
+      "question": "Has the dairy supplier changed his rates?",
+      "rank": 1,
+      "top1": "Note: the new milk vendor charges ₹56 a litre from January, up from ₹5"
+    },
+    {
+      "question": "When does the software launch happen?",
+      "rank": 1,
+      "top1": "Note from today's team meeting: the release has moved to 8 January, an"
+    },
+    {
+      "question": "What present should I buy for my grandchild?",
+      "rank": 1,
+      "top1": "Granddaughter Ananya's birthday is on 9 January. She wants a story boo"
+    },
+    {
+      "question": "What papers should I take to the ophthalmologist?",
+      "rank": 1,
+      "top1": "Mother-in-law's eye check-up at the eye hospital on 16 December at 10 "
+    }
+  ],
+  "windows": [
+    {
+      "task": "S1-03",
+      "window": "2026-12-07 to 2026-12-14",
+      "entries": 3,
+      "missing": [],
+      "should_not_be_there": []
+    },
+    {
+      "task": "S1-04",
+      "window": "2026-12-24 to 2026-12-31",
+      "entries": 2,
+      "missing": [],
+      "should_not_be_there": []
+    },
+    {
+      "task": "S1-13",
+      "window": "2026-12-14 to 2026-12-20",
+      "entries": 6,
+      "missing": [],
+      "should_not_be_there": []
+    },
+    {
+      "task": "S1-14",
+      "window": "2026-12-24 to 2026-12-31",
+      "entries": 4,
+      "missing": [],
+      "should_not_be_there": []
+    },
+    {
+      "task": "S1-23",
+      "window": "2026-12-10 to 2026-12-15",
+      "entries": 4,
+      "missing": [],
+      "should_not_be_there": []
+    },
+    {
+      "task": "S1-33",
+      "window": "2026-12-14 to 2026-12-20",
+      "entries": 17,
+      "missing": [],
+      "should_not_be_there": []
+    }
+  ],
+  "delete_and_speed": {
+    "add_ms_per_sentence": 13.9,
+    "search_ms": 13.6,
+    "folder_kb_for_9_items": 29.7,
+    "index_matches_db": true,
+    "deleted": {
+      "items": 9,
+      "vectors": 9
+    },
+    "folder_gone": true
+  }
+}

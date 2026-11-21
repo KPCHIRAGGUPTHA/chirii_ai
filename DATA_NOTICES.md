@@ -21,6 +21,13 @@ This project (MiniGPT / Chirii AI) used the datasets below for training or evalu
 | GSM8K train (`openai/gsm8k`) | self-distilled solutions for fine-tuning | MIT (HF page) |
 | SciQ train (`allenai/sciq`) | inputs for self-distilled replay (Phase 26 and later) | **CC BY-NC 3.0** (HF page): non-commercial |
 | BoolQ train (`aps/super_glue`, boolq) | inputs for self-distilled replay (Phase 26 and later) | CC BY-SA 3.0 (authors' README, `google-research-datasets/boolean-questions`; the HF page says "other") |
+| PKU-SafeRLHF | refusal prompts in Chirii Brain v0.3.1 to v0.5 (prompts only, never responses) | **CC BY-NC 4.0**: non-commercial |
+| glaive-function-calling-v2 | function-calling rows in c1 and c2 | Apache-2.0 |
+| oasst1 | conversation rows in c1 and c2 | Apache-2.0 |
+| OR-Bench 80K / Toxic | over-refusal and refusal rows in c1 and c2 | CC BY 4.0 (attribution) |
+| AdvBench | refusal rows in c1 and c2 | MIT |
+
+These five rows follow the licence summary in `FINAL_REPORT.md`; check each source's own page before reuse.
 
 Alpaca-cleaned is treated as **non-commercial**, matching the licence summary in `FINAL_REPORT.md`: its README gives
 CC BY-NC 4.0, and the stricter of the two licences applies. So every model trained on it is research-only: the MiniGPT

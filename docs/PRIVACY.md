@@ -1,15 +1,17 @@
 # Chirii AI privacy notice (draft)
 
-**Status:** draft written at S0, before any user data is stored. It will be updated in S2 (memory store) and finalised
-in S5 (login and API). Sections marked *planned* describe how the system is being built, not what exists today.
+**Status:** draft, updated at S2 (21 November 2026) when the memory store was built. It will be finalised in S5 (login
+and API). Sections marked *planned* describe how the system is being built, not what exists today.
 
 ## What Chirii stores
 
 - **Your account:** a username and a password hash (Argon2). The password itself is never stored. *Planned, S5.*
-- **Your memories:** the tasks, appointments, bills, notes and important dates you tell Chirii, with their dates and
-  amounts, in a database file that belongs only to you. *Planned, S2.*
-- **Search vectors:** a list of numbers made from each note so Chirii can find it by meaning. They are made from your
-  notes and are treated as your personal data too. *Planned, S2.*
+- **Your memories:** each sentence you tell Chirii, exactly as you said it, with the date you said it and what Chirii
+  read from it (kind of item, dates, times, amounts, repeats, and whether a bill is paid). *Built in S2.*
+- **A history of changes:** when you correct something ("the dentist moved to 11 December"), Chirii keeps the old and
+  new value, so it can tell you what changed. *Built in S2.*
+- **Search vectors:** 384 numbers made from each sentence so Chirii can find it by meaning. They are made from your
+  words and are treated as your personal data too. *Built in S2.*
 
 ## What Chirii does not store
 
@@ -20,11 +22,22 @@ in S5 (login and API). Sections marked *planned* describe how the system is bein
 ## Where it is stored
 
 On the server that runs Chirii: for the demo, the owner's laptop or a server in India. Nothing is sent to an outside
-AI service: the language model runs on the same server.
+AI service: the language model and the search model both run on the same server.
+
+Each user has one folder, `<data folder>/users/<code>/`, holding two files: `memory.db` (a SQLite database with your
+memories and their history) and `index.faiss` (your search vectors). The folder name is a code made from your user id
+and the server's secret key, so the file names don't show who you are, and one user's folder is never read when
+another user asks a question.
+
+**Not yet:** the files are not encrypted on disk, and there are no backups. Both are decided before any real user
+data is stored (S5 and S8).
 
 ## How to delete it
 
-A "delete all my data" option will remove your memories, your search vectors and your account. *Planned, S2 and S5.*
+- **One item:** deleting a memory removes its row, its search vector and its change history. *Built in S2.*
+- **Everything:** "delete all my data" removes your whole folder: every memory, every search vector and all history.
+  Other users' data is not touched. Tests check that nothing is left behind. *Built in S2; the button in the app comes
+  with the API in S5, which will also delete your account.*
 
 ## India's DPDP Act 2023
 

@@ -85,3 +85,66 @@ The plan is in `chirii/PLAN.md`.
 - The owner reviews the 50 tasks and the pass bars. Nothing is run against the eval until both are approved.
 - The owner runs the GPU job on the college PC this week and pushes the results.
 - S2: the memory store (SQLite plus a FAISS index) and the first eval run of plain Qwen with memory.
+
+## S1 – Approval (21 November 2026)
+
+The owner approved the eval and the pass bars, with three changes:
+- **Worked-out values:** the marker now accepts values worked out correctly from memory: today's date and weekday,
+  sums of amounts, day counts ("in 5 days", "2 days late") and the weekday next to a date. A wrong sum, count or
+  weekday fails. Tests cover each, including a wrong sum, and check that an empty or evasive reply fails every task.
+- **S7 decision rule:** below 35/50, fine-tune. At 35–39/50, label each failure (retrieval, prompt/formatting, scorer
+  or model behaviour), fix retrieval and prompts in code, and rerun once. Fine-tune only if more than 10 model-behaviour
+  failures remain.
+- **Held-out set:** the 50 tasks are now the development set. In S6, 30 new tasks are written and committed with their
+  marking rules before any run. They are run once on the final system, and that score is the main result.
+
+All three are in `chirii/CRITERIA.md`, marked APPROVED. No system had been run on the tasks before approval.
+
+## S2 – Memory store (21 November 2026)
+
+**What was done**
+- **Sentence reader** (`chirii/app/memory/extract.py`): turns what the user says into a structured item: its kind
+  (bill, appointment, medicine, routine and so on), dates, times, amounts in ₹, and repeats ("the 5th of every
+  month", "every Tuesday and Thursday"). This is plain code, not the language model, because dates and amounts must
+  never be guessed.
+- **Memory store** (`chirii/app/memory/store.py`): each user gets one folder with a SQLite database (the source of
+  truth) and a FAISS index for search by meaning.
+  - Updates such as "I paid the water bill" or "the doctor's appointment moved to 21 December, same time" change the
+    right earlier item, and the old value is kept in a history table.
+  - If no earlier item clearly matches, the update is kept as "unlinked" rather than guessed.
+  - A date-range query lists everything due in a window, including monthly and weekly repeats.
+- **Delete all my data:** removes the user's whole folder (rows, vectors and history) and leaves other users alone.
+- **Measurement script** (`chirii/eval/run_s2_memory.py`), with results in `chirii/results/s2/`.
+
+**Results**
+
+All measured on the laptop CPU with all-MiniLM-L6-v2. The first three rows are on the S1 development memories, which
+the parser was written against, so they are optimistic. The last two rows use new data and are the honest estimates.
+
+| Check | Result |
+| :--- | :--- |
+| 66 memory sentences read fully right | 66/66 |
+| 8 updates linked to the right item and applied right | 8/8 |
+| 6 date windows with nothing missing and nothing extra | 6/6 |
+| **22 new sentences read fully right, first try** | **20/22** (both misses were the item's kind: "tax" wasn't a bill word and "IU" wasn't a medicine word; fixed, now 22/22) |
+| **8 new questions sharing no key word with their note: note ranked first** | **8/8** (the word-matching test stand-in managed 1/8) |
+
+- Adding a sentence takes about 15 ms and a search about 16 ms. One user with 9 items uses about 30 KB of disk.
+- 132 of 132 tests pass. The new ones cover users kept apart, folder names that don't reveal the user, nothing left
+  after "delete all", no memory text in logs, and the search index staying in step with the database.
+
+**Problems found and fixed**
+- "Delete all my data" failed on Windows: one database connection was left open, so the file couldn't be removed.
+  Fixed, and a test now catches it.
+- "I paid the gas bill" would have marked the *water* bill paid, because both mention "bill". Now an update that names
+  something the item doesn't mention is not linked to it.
+
+**Limits, stated plainly**
+- The sentence reader only knows the patterns it was written for. Unusual phrasing will be read as a plain note,
+  which is safe but less useful. S3 will show how often this matters.
+- The test memories hold 9–12 items per person. Search over hundreds of items is not measured yet.
+- Files are not encrypted on disk yet (see `docs/PRIVACY.md`).
+
+**Next: the early demo slice (by about 2 January)**
+- A minimal web page where you can add a memory, ask a question and get an answer.
+- The answer will come from plain Qwen given the retrieved memories.

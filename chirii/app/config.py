@@ -29,6 +29,8 @@ class Settings(BaseSettings):
     llm_timeout_seconds: float = 60.0
 
     embed_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    # Where fastembed keeps the downloaded embedding model. Ignored by git.
+    embed_cache_dir: Path = REPO_ROOT / "models" / "fastembed"
     log_level: str = "INFO"
 
     @field_validator("secret_key")

@@ -1,0 +1,73 @@
+{
+  "_about": "Hand check and failure labels for the first official S3 run, written after reading every reply and before any fix (CRITERIA.md). 'hand' is the hand verdict where it differs from the marker; the marker's score stays the official one. Labels: retrieval, wrong item retrieved, wrong item used, prompt/formatting, scorer, model behaviour.",
+  "hand_disagreements": {
+    "b": {
+      "S1-05": {"auto": true, "hand": false, "why": "Opens with 'I don't have that in your memory', then gives the note. Telling the user it isn't saved when it is counts as wrong."},
+      "S1-25": {"auto": true, "hand": false, "why": "Same: says 'I don't have that' and then gives the milk price."},
+      "S1-12": {"auto": false, "hand": true, "why": "Asked only when the LIC premium is due; the date is right. The task rule also requires the amount, which the question did not ask for (task rule too strict)."},
+      "S1-37": {"auto": false, "hand": true, "why": "Code-built answer quotes the original sentence (18 December) but states 'Now: on Monday 21 December 2026'. Correct and clear, though the old date appears in the quote."}
+    },
+    "a": {
+      "S1-06": {"auto": true, "hand": false, "why": "Team call put at 10 am (it is 11 am), lists the night shift that starts on 14 December, and invents an 'Amma's birthday celebration'. The marker only checked that 11:00 appears and the order."},
+      "S1-25": {"auto": true, "hand": false, "why": "Says 'I don't have that' and then gives the milk price."},
+      "S1-12": {"auto": false, "hand": true, "why": "As in run (b): the date asked for is right; the rule also wants the amount."}
+    },
+    "none": {
+      "S1-18": {"auto": true, "hand": false, "why": "Plain Qwen says it has no access; it passes only because the word 'paid' appears in 'check if your water bill is paid'."}
+    }
+  },
+  "marker_errors_seen": [
+    "A month name followed by a numbered list item ('15 December.\\n2. Pay') is read as a date (2 December). In run (b) this made the guard reject a correct first answer on S1-27, which then fell back to a code-built answer. In run (a) it adds a false invented date (5/1) to S1-23, which fails for other reasons anyway.",
+    "Listing the empty days of the asked week ('Tuesday 15 December: No appointments') counts as invented dates. This sent S1-47 in run (b) to a code-built answer."
+  ],
+  "labels": {
+    "b": {
+      "S1-03": ["wrong item used", "Lists the car insurance (28 Dec, outside the window) and the EMI; leaves out the electricity bill's amount."],
+      "S1-04": ["wrong item used", "Adds the gym fee (1 Jan) and the electricity bill (12 Dec), both outside 24-31 Dec. Both were given as search matches beside the window items."],
+      "S1-07": ["model behaviour", "Lists the reception and the night shift but does not say they clash."],
+      "S1-08": ["model behaviour", "Mentions only the paid electricity bill; misses the car insurance due this month, which was in the lines."],
+      "S1-12": ["scorer", "Task rule asks for an amount the question did not ask for."],
+      "S1-13": ["wrong item used", "Lists the eye check-up and annual day as payments; misses the ₹2,150 electricity bill, which was in the lines."],
+      "S1-17": ["model behaviour", "Tuition 5-6:30 pm and housewarming 5:30 pm listed without saying they clash."],
+      "S1-23": ["wrong item used", "Treats Mrs. Deshpande's ₹3,450 (owed to the user) as a payment; misses the ₹6,380 electricity bill."],
+      "S1-24": ["model behaviour", "Says nothing is due tomorrow; Mrs. Deshpande's payment on 13 Dec was in the lines."],
+      "S1-26": ["model behaviour", "Plan out of order: the 9-11 am sugar delivery comes last."],
+      "S1-29": ["model behaviour", "Gives the old date (11 Dec). The line said 'Current details: 12 December' and 'Use the current details'. Run (a) got this right from the same line."],
+      "S1-33": ["retrieval", "Daily medicines filled the 10-entry window limit, so the 18 Dec check-up was cut off."],
+      "S1-36": ["model behaviour", "Plan out of order: 11 am check-up before the 8 am fasting test."],
+      "S1-37": ["prompt/formatting", "Qwen gave today's date twice (caught by the guard); the code-built answer then quoted the original sentence with the old date."],
+      "S1-39": ["wrong item used", "Only the water bill was given (there is no electricity bill); Qwen gave the water bill's date as the electricity bill's."],
+      "S1-40": ["model behaviour", "Claims the morning tablet was taken; nothing in memory says so."],
+      "S1-41": ["prompt/formatting", "The fact line shows only the item's first date (7 Dec); the other exam dates (9 and 11 Dec) are left out of 'Current details'."],
+      "S1-43": ["prompt/formatting", "Same missing exam dates; Qwen reports the FAT exam as 7 Dec."],
+      "S1-46": ["retrieval", "'Plan my day' looks only at today; the task expects tomorrow's OS exam to be mentioned for study."],
+      "S1-47": ["model behaviour", "Qwen's first answer listed both 5 pm items without calling it a clash (and was flagged for empty-day dates); the code-built answer does not check clashes either."],
+      "S1-48": ["model behaviour", "Names the mess fee, which the lines marked PAID; misses the semester fee."],
+      "S1-50": ["wrong item used", "No Compiler Design exam is saved; gives the FAT exams' date instead of saying so."]
+    },
+    "a": {
+      "S1-03": ["wrong item used", "Adds car insurance, gym fee and the dentist, all outside the window."],
+      "S1-04": ["wrong item used", "Adds the gym fee and electricity bill; misses the KYC task."],
+      "S1-07": ["model behaviour", "Lists past items, misses the 4 pm electrician and the clash."],
+      "S1-08": ["model behaviour", "Mentions only the paid bill; misses the car insurance."],
+      "S1-10": ["model behaviour", "Invents a water bill due 'Monday 7 December' (today)."],
+      "S1-12": ["scorer", "As in run (b)."],
+      "S1-13": ["wrong item used", "Lists the LIC premium (3 Jan) and the eye check-up; misses both amounts due this week."],
+      "S1-14": ["model behaviour", "Says not in memory; the anniversary was in the lines."],
+      "S1-17": ["model behaviour", "Invents a schedule (lunch, school run) and misses the clash."],
+      "S1-23": ["wrong item used", "Adds the shop insurance (9 Jan), the milk price and Mrs. Deshpande's credit as payments."],
+      "S1-24": ["model behaviour", "Says nothing is due tomorrow."],
+      "S1-26": ["model behaviour", "Gives only the station pickup; misses the bank deposit and the sugar delivery."],
+      "S1-27": ["wrong item used", "Adds the rent (1st of each month) and the 9 Jan insurance to this week's plan."],
+      "S1-33": ["wrong item used", "Adds Ananya's birthday (9 Jan); misses the water bill and the bhajan."],
+      "S1-36": ["model behaviour", "Out of order; misses the BP tablet."],
+      "S1-37": ["model behaviour", "Gives today's date (17 Dec) for the moved check-up; the line said 21 Dec."],
+      "S1-40": ["model behaviour", "Claims the morning tablet was taken."],
+      "S1-41": ["prompt/formatting", "Fact line leaves out the other exam dates."],
+      "S1-43": ["prompt/formatting", "Same; also adds items outside the window."],
+      "S1-46": ["model behaviour", "Out of order; lists the train (13 Dec) and a form (22 Dec) as today's plan."],
+      "S1-47": ["model behaviour", "Invents dates for exams and the form, puts days in the wrong weeks, misses the clash."],
+      "S1-50": ["wrong item used", "Gives the FAT exams' date for a Compiler Design exam that isn't saved."]
+    }
+  }
+}

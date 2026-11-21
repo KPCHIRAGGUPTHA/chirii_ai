@@ -1,0 +1,27 @@
+{
+  "a": {
+    "A_overall": 28,
+    "B_unknown": 5,
+    "C_invented": 2,
+    "guard": null,
+    "median_ms": 8720
+  },
+  "b": {
+    "A_overall": 28,
+    "B_unknown": 5,
+    "C_invented": 0,
+    "guard": {
+      "pass": 47,
+      "retry": 0,
+      "fallback": 3
+    },
+    "median_ms": 3683
+  },
+  "none": {
+    "A_overall": 10,
+    "B_unknown": 8,
+    "C_invented": 1,
+    "guard": null,
+    "median_ms": 4826
+  }
+}

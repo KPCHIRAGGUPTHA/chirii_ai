@@ -1,0 +1,200 @@
+"""
+S1 eval scorer. The rules are fixed here before any system is run (see chirii/CRITERIA.md).
+
+A task passes only if every rule on it passes:
+    must_include   every listed fact appears in the reply
+    must_not       none of these facts appear (stale, wrong or out-of-range items)
+    order          these facts appear in this order (plans)
+    flag_clash     the reply points out a clash
+    abstain        the reply says the answer isn't in memory
+    no invention   every date and rupee amount in the reply exists in the user's memory, the task's "allow" list, or is
+                   today's date. This applies to every task: Chirii must never make up a date or an amount.
+
+Facts are typed so that different wordings count: {"date": "2026-12-12"} matches "12 December", "Dec 12", "12/12" and
+so on; {"amount": 1860} matches "₹1,860", "Rs 1860" or "1860 rupees"; {"time": "18:00"} matches "6 pm" or "18:00";
+{"text": [...]} matches any listed phrase as whole words; {"any_of": [...], "min": n} needs n of the facts.
+"""
+
+import re
+from datetime import date
+from typing import Any, Dict, List, Optional, Set, Tuple
+
+MONTHS = {
+    "january": 1, "jan": 1, "february": 2, "feb": 2, "march": 3, "mar": 3, "april": 4, "apr": 4, "may": 5,
+    "june": 6, "jun": 6, "july": 7, "jul": 7, "august": 8, "aug": 8, "september": 9, "sep": 9, "sept": 9,
+    "october": 10, "oct": 10, "november": 11, "nov": 11, "december": 12, "dec": 12,
+}
+MONTH_PATTERN = "|".join(sorted(MONTHS, key=len, reverse=True))
+DAY = r"(\d{1,2})(?:st|nd|rd|th)?"
+DATE_PATTERNS = [
+    re.compile(rf"\b{DAY}(?:\s+of)?\s+({MONTH_PATTERN})\b\.?", re.I),
+    re.compile(rf"\b({MONTH_PATTERN})\.?\s+{DAY}\b", re.I),
+    re.compile(r"\b(\d{1,2})[/.-](\d{1,2})(?:[/.-](\d{2,4}))?\b"),
+]
+AMOUNT_PATTERNS = [
+    re.compile(r"(?:₹|\brs\.?|\binr)\s*(\d(?:[\d,]*\d)?(?:\.\d+)?)(\s*(?:lakhs?|lacs?))?", re.I),
+    # A number written before the word: "1860 rupees", "1.95 lakh rupees". "Rs" after a number is not read, so the
+    # "12" in "Dec 12, Rs 1860" stays a date.
+    re.compile(r"\b(\d(?:[\d,]*\d)?(?:\.\d+)?)(\s*(?:lakhs?|lacs?))?\s*rupees\b", re.I),
+]
+CLASH_WORDS = re.compile(r"\b(clash(es|ing)?|overlap(s|ping)?|conflict(s|ing)?|same time|double[- ]booked|at the same time)\b", re.I)
+ABSTAIN_PHRASES = re.compile(
+    r"(i (do not|don't) (have|know|see|find)|you (haven't|have not|didn't|did not) (told|tell|mentioned|mention|saved|save|given|added)"
+    r"|not in (your|my) (memory|notes|records)|no (record|information|details?|note|entry) (of|about|for|on)"
+    r"|(isn't|is not|wasn't|was not|aren't) (in|saved|stored|recorded)|nothing (saved|stored|noted|recorded) (about|for)"
+    r"|i (can't|cannot) (find|see|tell)|i'?m not sure|no way (for me )?to know)",
+    re.I,
+)
+
+
+def _year_for(month: int, today: date) -> int:
+    """Dates without a year are read as the nearest one to today."""
+    candidates = [date(today.year + offset, month, 1) for offset in (-1, 0, 1)]
+    return min(candidates, key=lambda d: abs((d - today).days)).year
+
+
+def find_dates(text: str, today: date) -> Set[Tuple[int, int]]:
+    """Every (day, month) mentioned in the text."""
+    found: Set[Tuple[int, int]] = set()
+    for match in DATE_PATTERNS[0].finditer(text):
+        found.add((int(match.group(1)), MONTHS[match.group(2).lower()]))
+    for match in DATE_PATTERNS[1].finditer(text):
+        found.add((int(match.group(2)), MONTHS[match.group(1).lower()]))
+    for match in DATE_PATTERNS[2].finditer(text):
+        day, month = int(match.group(1)), int(match.group(2))
+        if 1 <= day <= 31 and 1 <= month <= 12 and not _looks_like_time(text, match):
+            found.add((day, month))
+    return {(d, m) for d, m in found if 1 <= d <= 31}
+
+
+def _looks_like_time(text: str, match: re.Match) -> bool:
+    if match.group(0).count(".") == 1 and match.group(3) is None:
+        after = text[match.end():match.end() + 4].lower()
+        return after.strip().startswith(("am", "pm", "a.m", "p.m"))
+    return False
+
+
+def find_amounts(text: str) -> Set[int]:
+    """Every rupee amount mentioned with ₹, Rs, INR or 'rupees'. '1.95 lakh' is 195000."""
+    found: Set[int] = set()
+    for pattern in AMOUNT_PATTERNS:
+        for match in pattern.finditer(text):
+            raw = match.group(1).replace(",", "").rstrip(".")
+            if not raw or not re.fullmatch(r"\d+(\.\d+)?", raw):
+                continue
+            value = float(raw)
+            if match.group(2):
+                value *= 100_000
+            found.add(round(value))
+    return found
+
+
+def time_variants(hhmm: str) -> List[str]:
+    hour, minute = (int(x) for x in hhmm.split(":"))
+    twelve = hour % 12 or 12
+    suffix = "am" if hour < 12 else "pm"
+    variants = {f"{hour:02d}:{minute:02d}", f"{hour}:{minute:02d}", f"{twelve}:{minute:02d} {suffix}", f"{twelve}:{minute:02d}{suffix}",
+                f"{twelve}.{minute:02d} {suffix}", f"{twelve}.{minute:02d}{suffix}"}
+    if minute == 0:
+        variants |= {f"{twelve} {suffix}", f"{twelve}{suffix}", f"{twelve} o'clock"}
+    return sorted(variants)
+
+
+def _position(text: str, fact: Dict[str, Any], today: date) -> Optional[int]:
+    """Index of the first place the fact appears, or None."""
+    lowered = text.lower()
+    if "text" in fact:
+        positions = [m.start() for phrase in fact["text"] for m in [re.search(rf"(?<!\w){re.escape(phrase.lower())}(?!\w)", lowered)] if m]
+        return min(positions) if positions else None
+    if "date" in fact:
+        target = date.fromisoformat(fact["date"])
+        positions = []
+        for pattern in DATE_PATTERNS:
+            for match in pattern.finditer(text):
+                if (target.day, target.month) in find_dates(match.group(0), today):
+                    positions.append(match.start())
+        return min(positions) if positions else None
+    if "amount" in fact:
+        positions = []
+        for pattern in AMOUNT_PATTERNS:
+            for match in pattern.finditer(text):
+                if fact["amount"] in find_amounts(match.group(0)):
+                    positions.append(match.start())
+        return min(positions) if positions else None
+    if "time" in fact:
+        positions = []
+        for variant in time_variants(fact["time"]):
+            match = re.search(rf"(?<![\d:.]){re.escape(variant.lower())}(?![\d])", lowered.replace("p.m.", "pm").replace("a.m.", "am"))
+            if match:
+                positions.append(match.start())
+        return min(positions) if positions else None
+    if "any_of" in fact:
+        hits = [p for p in (_position(text, sub, today) for sub in fact["any_of"]) if p is not None]
+        return min(hits) if len(hits) >= fact.get("min", 1) else None
+    raise ValueError(f"Unknown fact: {fact}")
+
+
+def contains(text: str, fact: Dict[str, Any], today: date) -> bool:
+    return _position(text, fact, today) is not None
+
+
+def allowed_facts(task: Dict[str, Any]) -> Tuple[Set[Tuple[int, int]], Set[int]]:
+    """Dates and amounts the reply may mention: the user's memory, the task's allow list, and today."""
+    today = date.fromisoformat(task["today"])
+    dates = {(today.day, today.month)}
+    amounts: Set[int] = set()
+    for entry in task["memory"]:
+        item = entry.get("item", {})
+        for key in ("date", "end_date"):
+            if item.get(key):
+                d = date.fromisoformat(item[key])
+                dates.add((d.day, d.month))
+        if item.get("amount") is not None:
+            amounts.add(item["amount"])
+        if item.get("day_of_month"):
+            dates |= {(item["day_of_month"], month) for month in range(1, 13)}
+        amounts |= set(item.get("other_amounts", []))
+    for fact in task.get("allow", []):
+        if "date" in fact:
+            d = date.fromisoformat(fact["date"])
+            dates.add((d.day, d.month))
+        if "amount" in fact:
+            amounts.add(fact["amount"])
+    return dates, amounts
+
+
+def invented_facts(reply: str, task: Dict[str, Any]) -> Dict[str, List[Any]]:
+    today = date.fromisoformat(task["today"])
+    dates, amounts = allowed_facts(task)
+    return {
+        "dates": sorted(f"{d}/{m}" for d, m in find_dates(reply, today) - dates),
+        "amounts": sorted(find_amounts(reply) - amounts),
+    }
+
+
+def score_task(task: Dict[str, Any], reply: str) -> Dict[str, Any]:
+    """Returns the verdict and which rules failed, so every result can be checked by hand."""
+    today = date.fromisoformat(task["today"])
+    rules = task["rules"]
+    failures: List[str] = []
+
+    for fact in rules.get("must_include", []):
+        if not contains(reply, fact, today):
+            failures.append(f"missing {fact}")
+    for fact in rules.get("must_not", []):
+        if contains(reply, fact, today):
+            failures.append(f"contains forbidden {fact}")
+    order = rules.get("order", [])
+    if order:
+        positions = [_position(reply, fact, today) for fact in order]
+        if None not in positions and positions != sorted(positions):
+            failures.append("plan items out of order")
+    if rules.get("flag_clash") and not CLASH_WORDS.search(reply):
+        failures.append("clash not pointed out")
+    if rules.get("abstain") and not ABSTAIN_PHRASES.search(reply.replace("’", "'")):
+        failures.append("did not say it isn't in memory")
+    invented = invented_facts(reply, task)
+    if invented["dates"] or invented["amounts"]:
+        failures.append(f"invented {invented}")
+
+    return {"id": task["id"], "passed": not failures, "failures": failures, "invented": bool(invented["dates"] or invented["amounts"])}

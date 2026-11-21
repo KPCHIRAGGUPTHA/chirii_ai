@@ -126,8 +126,36 @@ The 50 development tasks are run in two configurations, with the same settings, 
   set."
 - **This is a change of plan made after seeing a result**, so it is recorded here as one. The original rule would
   have started fine-tuning now; the owner chose to move the failing kinds of reasoning into code (S4) first.
-- **The rule for reconsidering S7 on the held-out set is proposed and approved before the held-out set is run.**
-  It is not set yet.
+- **The rule for reconsidering S7 on the held-out set** is below. It was set by the owner on 22 Nov, before any S4
+  work and before any S4 result was seen.
+
+### S7 reconsideration rule (owner's decision, 22 Nov, fixed before any S4 work)
+
+Applied once, to the 30 held-out tasks (5 per task type, so 5 "not in memory" tasks), run once on the final S6
+system, with the same settings and marker as the development runs.
+
+| Bar | Threshold |
+| :--- | :--- |
+| **A** overall | at least **24/30** (80%) |
+| **B** "not in memory" | at least **4/5** |
+| **C'** code-built fallback | at most **3/30** |
+
+| Result | What happens |
+| :--- | :--- |
+| All three bars pass | **S7 is closed. No fine-tune.** |
+| Bar A **21–23**, or C' misses by one (**4/30**) | **Failure analysis by type** (the labels above). S7 is triggered if model-behaviour failures, counting "wrong item used", are **more than 6 of 30**, or **more than 1 of 5** on the B tasks |
+| Bar A **below 21/30**, or B at **3/5 or lower** | **S7 is triggered directly** |
+
+*Reading of the owner's text:* it says both "B misses by one → failure analysis" and "B at 3/5 or lower → S7
+directly". For B, missing by one *is* 3/5, so the two conflict. The stricter one is applied: **B at 3/5 triggers S7
+directly**. **Open point for the owner:** the rule does not say what happens if C' misses by more than one (5/30 or
+more). It must be decided before the held-out run.
+
+- **No further deferral.** If S7 is triggered by this rule, it goes ahead, with its own plan approved first.
+- **Noise:** with 30 tasks, a system that is truly 80% right scores between 19 and 28 of 30 (63–93%) in 95% of runs.
+  It passes bar A (24 or more) only 61% of the time; a truly 85% system passes 85% of the time, a 90% system 97%, and
+  a 70% system 16%. With 5 tasks, bar B is passed by a truly 80% system 74% of the time. **Results near a bar are
+  reported with this caveat.**
 
 **Rules for the S4 work:**
 - **The marker's two errors found in S3** (a month followed by a numbered list item read as a date; the empty days of

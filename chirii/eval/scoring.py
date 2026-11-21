@@ -7,8 +7,16 @@ A task passes only if every rule on it passes:
     order          these facts appear in this order (plans)
     flag_clash     the reply points out a clash
     abstain        the reply says the answer isn't in memory
-    no invention   every date and rupee amount in the reply exists in the user's memory, the task's "allow" list, or is
-                   today's date. This applies to every task: Chirii must never make up a date or an amount.
+    no invention   every date and rupee amount in the reply exists in the user's memory or the task's "allow" list, or is
+                   a correct value worked out from them (see below). This applies to every task: Chirii must never make up
+                   a date, an amount, a day count or a weekday.
+
+Worked-out values allowed when correct (owner decision, 21 Nov 2026):
+    today          today's date, and today's weekday when the reply names it ("Today is Monday")
+    sums           the sum of two or more amounts in memory ("₹26,150 in total this week")
+    day counts     "in 5 days", "2 days late", "3 days before the exam": the count must match the dates in memory
+    weekdays       a weekday written next to a date ("Saturday, 12 December") must be that date's real weekday
+A wrong sum, day count or weekday counts as invented and fails the task.
 
 Facts are typed so that different wordings count: {"date": "2026-12-12"} matches "12 December", "Dec 12", "12/12" and
 so on; {"amount": 1860} matches "₹1,860", "Rs 1860" or "1860 rupees"; {"time": "18:00"} matches "6 pm" or "18:00";
@@ -16,7 +24,8 @@ so on; {"amount": 1860} matches "₹1,860", "Rs 1860" or "1860 rupees"; {"time":
 """
 
 import re
-from datetime import date
+from datetime import date, timedelta
+from itertools import combinations
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 MONTHS = {
@@ -45,6 +54,16 @@ ABSTAIN_PHRASES = re.compile(
     r"|i (can't|cannot) (find|see|tell)|i'?m not sure|no way (for me )?to know)",
     re.I,
 )
+WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+WEEKDAY_PATTERN = re.compile(r"\b(monday|tuesday|wednesday|thursday|friday|saturday|sunday|mon|tue|tues|wed|thu|thur|thurs|fri|sat|sun)\b\.?", re.I)
+NUMBER_WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9,
+                "ten": 10, "eleven": 11, "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15, "twenty": 20,
+                "thirty": 30}
+DAY_COUNT = re.compile(r"\b(\d{1,3}|" + "|".join(NUMBER_WORDS) + r")\s+(days?|weeks?)\b", re.I)
+FORWARD_BEFORE = re.compile(r"\b(in|after|within)\s+(just\s+|only\s+|another\s+)?$", re.I)
+FORWARD_AFTER = re.compile(r"^\s*(from (now|today)|away|left|to go|remaining|later)\b", re.I)
+BACKWARD_AFTER = re.compile(r"^\s*(ago|late|overdue|back|since|past)\b", re.I)
+GAP_ONLY = re.compile(r"[\s,()\-–]*")
 
 
 def _year_for(month: int, today: date) -> int:
@@ -163,12 +182,120 @@ def allowed_facts(task: Dict[str, Any]) -> Tuple[Set[Tuple[int, int]], Set[int]]
     return dates, amounts
 
 
+def _full_date(day: int, month: int, today: date) -> Optional[date]:
+    try:
+        return date(_year_for(month, today), month, day)
+    except ValueError:
+        return None
+
+
+def memory_dates(task: Dict[str, Any]) -> Set[date]:
+    """Calendar dates the memory points to, used to check day counts. Monthly items count in last, this and next
+    month; weekly routines count in the four weeks either side of today."""
+    today = date.fromisoformat(task["today"])
+    dates, _ = allowed_facts(task)
+    full = {d for d in (_full_date(day, month, today) for day, month in dates) if d}
+    for entry in task["memory"]:
+        item = entry.get("item", {})
+        if item.get("day_of_month"):
+            for offset in (-1, 0, 1):
+                index = today.month - 1 + offset
+                year, month = today.year + index // 12, index % 12 + 1
+                try:
+                    full.add(date(year, month, item["day_of_month"]))
+                except ValueError:
+                    pass
+        for name in item.get("weekdays", []):
+            target = WEEKDAYS.index(name.lower())
+            full |= {today + timedelta(days=k) for k in range(-28, 29) if (today + timedelta(days=k)).weekday() == target}
+    return full
+
+
+def allowed_sums(amounts: Set[int]) -> Set[int]:
+    """Every sum of two or more different amounts in memory."""
+    values = sorted(amounts)
+    return {sum(combo) for size in range(2, len(values) + 1) for combo in combinations(values, size)}
+
+
+def _day_count_value(match: re.Match) -> int:
+    raw = match.group(1).lower()
+    number = int(raw) if raw.isdigit() else NUMBER_WORDS[raw]
+    return number * (7 if match.group(2).lower().startswith("week") else 1)
+
+
+def invented_day_counts(reply: str, task: Dict[str, Any]) -> List[str]:
+    """Day counts that don't match the memory. 'In N days' must land on a date in memory, 'N days late' must point back
+    to one, and any other 'N days' must be the gap between two dates in memory (today included). A count the user said
+    themselves, in memory ("for 5 days") or in the question ("in the next 7 days"), is allowed."""
+    today = date.fromisoformat(task["today"])
+    dates = memory_dates(task) | {today}
+    gaps = {abs((a - b).days) for a in dates for b in dates}
+    user_text = [e.get("said", "") for e in task["memory"]] + [task.get("question", "")]
+    said_counts = {_day_count_value(m) for text in user_text for m in DAY_COUNT.finditer(text)}
+    wrong = []
+    for match in DAY_COUNT.finditer(reply):
+        n = _day_count_value(match)
+        before, after = reply[max(0, match.start() - 20):match.start()], reply[match.end():match.end() + 15]
+        if n in said_counts:
+            continue
+        if FORWARD_BEFORE.search(before) or FORWARD_AFTER.search(after):
+            ok = today + timedelta(days=n) in dates
+        elif BACKWARD_AFTER.search(after):
+            ok = today - timedelta(days=n) in dates
+        else:
+            ok = n in gaps
+        if not ok:
+            wrong.append(match.group(0))
+    return wrong
+
+
+def _weekday_index(word: str) -> int:
+    word = word.lower()
+    return next(i for i, name in enumerate(WEEKDAYS) if name.startswith(word[:3]))
+
+
+def invented_weekdays(reply: str, task: Dict[str, Any]) -> List[str]:
+    """A weekday written right next to a date ("Saturday, 12 December", "12 Dec (Sat)"), or next to the word 'today',
+    must be the right one. Weekdays on their own ("tuition every Thursday") are not checked."""
+    today = date.fromisoformat(task["today"])
+    spans = []
+    for pattern in DATE_PATTERNS:
+        for match in pattern.finditer(reply):
+            found = find_dates(match.group(0), today)
+            if len(found) == 1:
+                full = _full_date(*next(iter(found)), today)
+                if full:
+                    spans.append((match.start(), match.end(), full))
+    wrong = []
+    for match in WEEKDAY_PATTERN.finditer(reply):
+        named = _weekday_index(match.group(1))
+        neighbours = []
+        for start, end, full in spans:
+            gap = reply[match.end():start] if start >= match.end() else reply[end:match.start()]
+            if len(gap) <= 4 and GAP_ONLY.fullmatch(gap):
+                neighbours.append(full)
+        near_today = (re.search(r"\btoday(\s+is|,|\s*\(|\s*-)?\s*$", reply[max(0, match.start() - 12):match.start()], re.I)
+                      or re.match(r"\s*\(?\s*today\b", reply[match.end():match.end() + 10], re.I))
+        if neighbours:
+            if all(full.weekday() != named for full in neighbours):
+                wrong.append(f"{match.group(1)} {neighbours[0].day}/{neighbours[0].month}")
+        elif near_today and today.weekday() != named:
+            wrong.append(f"{match.group(1)} (today)")
+    return wrong
+
+
 def invented_facts(reply: str, task: Dict[str, Any]) -> Dict[str, List[Any]]:
     today = date.fromisoformat(task["today"])
     dates, amounts = allowed_facts(task)
+    extra_amounts = sorted(find_amounts(reply) - amounts)
+    if extra_amounts:
+        sums = allowed_sums(amounts)
+        extra_amounts = [a for a in extra_amounts if a not in sums]
     return {
         "dates": sorted(f"{d}/{m}" for d, m in find_dates(reply, today) - dates),
-        "amounts": sorted(find_amounts(reply) - amounts),
+        "amounts": extra_amounts,
+        "day_counts": invented_day_counts(reply, task),
+        "weekdays": invented_weekdays(reply, task),
     }
 
 
@@ -193,8 +320,8 @@ def score_task(task: Dict[str, Any], reply: str) -> Dict[str, Any]:
         failures.append("clash not pointed out")
     if rules.get("abstain") and not ABSTAIN_PHRASES.search(reply.replace("’", "'")):
         failures.append("did not say it isn't in memory")
-    invented = invented_facts(reply, task)
-    if invented["dates"] or invented["amounts"]:
+    invented = {kind: values for kind, values in invented_facts(reply, task).items() if values}
+    if invented:
         failures.append(f"invented {invented}")
 
-    return {"id": task["id"], "passed": not failures, "failures": failures, "invented": bool(invented["dates"] or invented["amounts"])}
+    return {"id": task["id"], "passed": not failures, "failures": failures, "invented": bool(invented)}

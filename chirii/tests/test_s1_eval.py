@@ -149,6 +149,60 @@ class TestScoring:
     def test_sample_replies(self, by_id, task_id, reply, passed):
         assert score_task(by_id[task_id], reply)["passed"] is passed
 
+    def test_every_answerable_task_requires_facts(self, tasks):
+        """Every task other than 'not in memory' lists the facts that must be in the answer."""
+        for t in tasks:
+            if t["type"] != "unknown":
+                assert t["rules"].get("must_include"), t["id"]
+
+    def test_an_empty_or_evasive_reply_fails_every_task(self, tasks):
+        """Saying nothing never passes: the required facts have to be there."""
+        for t in tasks:
+            assert score_task(t, "")["passed"] is False, t["id"]
+            if t["type"] != "unknown":
+                assert score_task(t, "I don't have that in my memory.")["passed"] is False, t["id"]
+
     def test_invention_is_flagged_on_any_task(self, by_id):
         result = score_task(by_id["S1-01"], "Your electricity bill of ₹1,860 is due on 12 December, and gas ₹950 on 3 December.")
         assert result["invented"] and not result["passed"]
+
+
+class TestWorkedOutValues:
+    """Values that aren't written in memory but follow from it are allowed when correct and fail when wrong."""
+
+    @pytest.mark.parametrize("task_id,reply,passed", [
+        # today's date and weekday (S1-13: today is Monday 14 December)
+        ("S1-13", "Today is Monday, 14 December. This week: Divya's fee ₹24,000 and electricity ₹2,150.", True),
+        ("S1-13", "Today is Tuesday, 14 December. This week: Divya's fee ₹24,000 and electricity ₹2,150.", False),
+        ("S1-13", "Today (Monday): Divya's fee ₹24,000 and electricity ₹2,150 are due this week.", True),
+        # a weekday next to a date must be right (18 December 2026 is a Friday)
+        ("S1-13", "Divya's fee ₹24,000 by Friday, 18 December; electricity ₹2,150 on 20 December.", True),
+        ("S1-13", "Divya's fee ₹24,000 by Thursday, 18 December; electricity ₹2,150 on 20 December.", False),
+        ("S1-13", "Divya's fee ₹24,000 by 18 Dec (Fri); electricity ₹2,150 on 20 Dec (Sun).", True),
+        # sums of amounts in memory
+        ("S1-23", "Sugar ₹1,95,000 on 11 December and electricity ₹6,380 on 14 December: ₹2,01,380 in total.", True),
+        ("S1-23", "Sugar ₹1,95,000 on 11 December and electricity ₹6,380 on 14 December: ₹2,01,830 in total.", False),
+        ("S1-13", "Divya's fee ₹24,000 and electricity ₹2,150, so ₹26,150 altogether.", True),
+        ("S1-13", "Divya's fee ₹24,000 and electricity ₹2,150, so ₹26,500 altogether.", False),
+        # day counts (S1-01: today 7 December, bill due 12 December)
+        ("S1-01", "Your electricity bill of ₹1,860 is due on 12 December, in 5 days.", True),
+        ("S1-01", "Your electricity bill of ₹1,860 is due on 12 December, in 4 days.", False),
+        ("S1-01", "Your electricity bill of ₹1,860 is due on 12 December, five days from now.", True),
+        ("S1-01", "Your electricity bill of ₹1,860 is due on 12 December, 6 days away.", False),
+        # late (S1-13: the ₹420 water bill was due on 10 December, today is 14 December)
+        ("S1-13", "Divya's fee ₹24,000 and electricity ₹2,150. The water bill was due 4 days ago.", True),
+        ("S1-13", "Divya's fee ₹24,000 and electricity ₹2,150. The water bill is 2 days late.", False),
+        # a gap between two dates in memory (S1-43: DBMS on 9 December, OS on 11 December)
+        ("S1-43", "DBMS exam tomorrow, then the project review, and Operating Systems 2 days after DBMS.", True),
+        # echoing the question's own window is not a made-up count
+        ("S1-03", "In the next 7 days only your electricity bill of ₹1,860 is due, on 12 December.", True),
+    ])
+    def test_worked_out_values(self, by_id, task_id, reply, passed):
+        result = score_task(by_id[task_id], reply)
+        assert result["passed"] is passed, result
+        if not passed:  # the wrong value is the only reason it fails
+            assert result["invented"] and all(f.startswith("invented") for f in result["failures"]), result
+
+    def test_a_wrong_sum_is_reported_as_invented(self, by_id):
+        result = score_task(by_id["S1-23"], "Sugar ₹1,95,000 and electricity ₹6,380: ₹2,01,830 in total.")
+        assert result["invented"] and any("201830" in f for f in result["failures"])

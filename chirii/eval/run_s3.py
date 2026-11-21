@@ -69,13 +69,15 @@ def with_memory(run, model, embedder, task, base, root):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--runs", nargs="+", choices=["a", "b", "c", "none"], default=["a", "b", "none"])
+    parser.add_argument("--out-dir", default=str(OUT), help="where replies and the summary go (the GPU job uses its own folder)")
     args = parser.parse_args()
+    out = Path(args.out_dir)
     settings = Settings(secret_key=SECRET)
     model = LLMClient(settings.llm_base_url, settings.llm_model, timeout=300)
     embedder = FastEmbedder(settings.embed_model, settings.embed_cache_dir)
     tasks = load_tasks()
     base = base_texts([t for t in tasks if t["scored"]])
-    OUT.mkdir(parents=True, exist_ok=True)
+    out.mkdir(parents=True, exist_ok=True)
     summary = {}
     for run in args.runs:
         root = Path(tempfile.mkdtemp(prefix=f"chirii-s3-{run}-"))
@@ -90,7 +92,7 @@ def main():
                 print(run, task["id"], "PASS" if verdict["passed"] else "fail", row.get("guard", ""), flush=True)
         finally:
             shutil.rmtree(root, ignore_errors=True)
-        with open(OUT / f"replies_{run}.jsonl", "w", encoding="utf-8") as f:
+        with open(out / f"replies_{run}.jsonl", "w", encoding="utf-8") as f:
             for row in rows:
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")
         scored = [r for r in rows if r["scored"]]
@@ -101,8 +103,8 @@ def main():
             "guard": {k: sum(r.get("guard") == k for r in scored) for k in ("pass", "retry", "fallback", "code")} if run in ("b", "c") else None,
             "median_ms": sorted(r["duration_ms"] for r in scored)[len(scored) // 2],
         }
-    name = "s3_auto.json" if sorted(args.runs) == ["a", "b", "none"] else "auto_" + "_".join(args.runs) + ".json"  # never overwrite the S3 summary
-    (OUT / name).write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    name = "s3_auto.json" if sorted(args.runs) == ["a", "b", "none"] and out == OUT else "auto_" + "_".join(args.runs) + ".json"  # never overwrite the S3 summary
+    (out / name).write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps(summary, indent=2))
 
 

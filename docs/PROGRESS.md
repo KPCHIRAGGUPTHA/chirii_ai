@@ -237,3 +237,53 @@ Each set was committed before its first run. Full tables and Qwen's raw replies 
 - Add the safety layer.
 - Fix the problems found here: the invented date and the prompt wording.
 - Run the 500-item scale check.
+
+## Demo slice, part 2 – Confirmation card and answer fact-check (21 November 2026)
+
+The owner approved the slice and asked for two product fixes, plus a method for S3.
+
+**What was done**
+- **"Got it" card** after every saved memory: "Got it: Bill, ₹1,860, due Saturday 12 December 2026. Correct? [Yes]
+  [Edit]".
+  - The card says what Chirii is unsure of: a kind of item Qwen guessed, an update it couldn't match, or a missing
+    amount, due date, date or time.
+  - Edit opens the fields already filled in. Every value is checked (real date, real time, whole rupees, day 1–31),
+    and every change is kept in the history.
+  - Memories nobody has confirmed are saved but marked "unconfirmed". An answer that relies on one says so underneath.
+  - Older databases get the new columns automatically when opened.
+- **Answer fact-check guard** (`chirii/app/guard.py`): before an answer is shown, every date, rupee amount, day count
+  and weekday in it must come from the memory lines Qwen was given, or be worked out correctly from them.
+  - It uses the S1 marker's own rules, plus one stricter rule: today's date may appear only when the answer is about
+    today. That is exactly the surgery-date failure, which the marker's "today is always allowed" rule would miss.
+  - If the check fails, Qwen gets one retry with only the top 3 lines. If that fails too, code answers by quoting what
+    the user saved.
+  - Logs record only whether the answer passed, was retried or fell back.
+- **Fewer memory lines:** only memories relevant to the question are sent, i.e. close matches by meaning, plus
+  whatever falls in a time window the question names ("this week", "tomorrow", "next 5 days"). The old way stays
+  available for S3's baseline run.
+
+**Results**
+- **The surgery-date failure, on the real model** (`chirii/results/slice/GUARD_CHECK.md`):
+
+  | Setting | Result |
+  | :--- | :--- |
+  | Old way: 5 lines, no guard | Wrong again ("Saturday 21 November", today's date) |
+  | 5 lines, with guard | Wrong first answer caught; the retry gave "Thursday 3 December 2026" |
+  | Trimmed lines, with guard (the app now) | Right first time |
+
+  These are single runs: they show the mechanism works, not how often it is needed. S3 will measure that.
+- **Demo check again** (`DEMO_RUN_guard.md`): all 7 memories were read as intended, and all 5 answers were right
+  (before: 4 of 5). Each answer used 1 memory line instead of 5–7, and took 0.7–5.0 s instead of 4.2–9.2 s.
+- **A rules gap found while testing the card:** "Electricity bill due on 12 December" (no amount) was saved as a
+  plain note, so the card couldn't say the amount was missing. It is now a bill, and the card asks for the amount.
+  This changed the rules after the extraction measurements, so the next fresh set in S3 covers it.
+- 205 of 205 tests pass.
+
+**S3 method** (recorded in `chirii/CRITERIA.md` before any S3 run)
+- **Two runs on the 50 development tasks:** (a) the slice as first built, with no guard, as the honest baseline that
+  the S7 decision uses; (b) trimmed retrieval with the guard. Plus plain Qwen with no memory.
+- **Failure analysis** by type for each run.
+- **Bar C in run (b) is partly guaranteed by design**, because the guard uses the marker's rules, so the report will
+  say so.
+- **No prompt tuning against individual tasks.**
+- **Next fresh extraction set:** target 2 or fewer of 20 wrong and not flagged.

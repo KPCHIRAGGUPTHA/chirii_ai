@@ -40,7 +40,7 @@ and pushes the results; the laptop pulls them.
 | S4 | Daily and weekly planner (code builds the plan, the model words it), reminders | 17 – 23 Jan |
 | S5 | FastAPI service and login hardening, per-user isolation tests, **encryption at rest decided** (options such as SQLCipher or app-level encryption with the key from `.env`) and a tester consent note, `docs/PRIVACY.md` final. **No real users before this is done** | 24 Jan – 3 Feb |
 | S6 | Friendly mobile-ready chat UI with memory sidebar and "Plan my day"; write the **30-task held-out set** and commit it with its marking rules before any run, then run it once on the final system | 4 – 14 Feb |
-| S7 | Decision gate under the approved rule in `chirii/CRITERIA.md`: bar A below 35/50 → fine-tune; 35–39 → failure analysis, fix retrieval and prompts, rerun once; benchmarks table | decided by 16 Jan |
+| S7 | **Triggered on 22 Nov by the S3 run (bar A 28/50 in run (b))**; its plan comes to the owner for approval first. Decision gate under the approved rule in `chirii/CRITERIA.md`: bar A below 35/50 → fine-tune; 35–39 → failure analysis, fix retrieval and prompts, rerun once; benchmarks table | decided by 16 Jan |
 | S8 | Low-cost deployment: Docker Compose, Q8_0 default, CPU server notes, GPU endpoint option | 15 – 19 Feb |
 | S9 | Funding documents: README, Mermaid diagram, roadmap, `docs/DEMO_SCRIPT.md` | 20 – 24 Feb |
 

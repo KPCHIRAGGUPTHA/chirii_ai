@@ -287,3 +287,72 @@ The owner approved the slice and asked for two product fixes, plus a method for 
   say so.
 - **No prompt tuning against individual tasks.**
 - **Next fresh extraction set:** target 2 or fewer of 20 wrong and not flagged.
+
+## S3 – First official eval run (21–22 November 2026)
+
+**Method:** as corrected by the owner before the run (`chirii/CRITERIA.md`, "S3 method").
+- The S7 decision is made on run (b), the system that will ship: trimmed retrieval with the answer fact-check guard.
+- Run (a), the slice as first built (no guard), is the "before" picture.
+- Plain Qwen with no memory is a third column for comparison.
+- Bar C' (a code-built fallback in at most 5 of 50 tasks) replaces bar C for run (b).
+
+The runner was committed before the run. Every reply was read by hand, and the hand verdicts and failure labels were
+committed before any fix. Full report: `chirii/results/s3/S3_RESULTS.md`.
+
+**Results** (marker's score, with the hand check in brackets)
+
+| | (a) Before | **(b) Ship** | Plain Qwen, no memory |
+| :--- | ---: | ---: | ---: |
+| **Bar A**, at least 40/50 | 28 (27) | **28 (28): miss** | 10 (9) |
+| **Bar B**, at least 7/8 | 5/8 | **5/8: miss** | 8/8 |
+| Bar C, at most 2/50 | 2 | 0 (enforced by the guard, not evidence) | 1 |
+| **Bar C'**, at most 5/50 fallbacks | – | **3: pass** | – |
+| Guard: clean / retried / fallback | – | 47 / 0 / 3 | – |
+| Median time per answer | 8.7 s | 3.7 s | 4.8 s |
+
+| Task type | (a) | (b) |
+| :--- | ---: | ---: |
+| Exact lookup | 8/10 | 8/10 |
+| Search by meaning | 8/8 | 8/8 |
+| Updates | 6/8 | 4/8 |
+| Not in memory | 5/8 | 5/8 |
+| Date windows | 0/8 | 1/8 |
+| Plans | 1/8 | 2/8 |
+
+**Decision: S7 (fine-tuning) is triggered.** Bar A in run (b) is 28/50, below 35.
+- The fix round would not change this. 16 of run (b)'s 22 failures are on the model's side, labelled "model
+  behaviour" or "wrong item used". The hand check adds 2 more: answers that say "I don't have that" and then give it.
+- That makes 18, more than the 10 allowed. Even if the 5 plan-order and clash failures move to code in S4, 13
+  remain.
+
+**What the run shows**
+- **Memory is essential.** Plain Qwen with no memory is useless here: 9 of 50 on the hand check, mostly "I don't
+  have access to your data".
+- **Looking up one memory works well.** Exact lookups pass 8/10 and searches by meaning 8/8. The trimmed retrieval
+  usually sent just 1–3 lines, and answers took a median of 3.7 s instead of 8.7 s.
+- **Combining several memories mostly fails:** "what's due this week", plans and paid/unpaid lists. Qwen 1.5B adds
+  items from outside the window, misses ones inside it, treats money owed to the user as a payment, ignores "PAID",
+  and doesn't notice clashes.
+- **"Not in memory" fails when a related memory is close.** Asked about an electricity bill when only a water bill is
+  saved, Qwen gives the water bill's date. Asked about a Compiler Design exam, it gives the FAT exams' date. The
+  guard can't catch this, because the wrong fact is in memory.
+- **The guard rarely had to act (3 of 50).** Its retry never rescued an answer. One fallback came from a real error
+  (today's date again); the other two came from marker rules that are too strict (see below).
+
+**Code problems found** (not fixed yet; listed in the report)
+- Fact lines show only an item's first date.
+- Daily medicines can crowd real items out of a time window.
+- "Plan my day" ignores tomorrow's preparation.
+- The fallback quotes old dates and doesn't check clashes.
+- Two marker errors: a month followed by a numbered list item reads as a date, and the empty days of the asked week
+  count as invented.
+
+**Hand check:** 7 disagreements with the marker, all listed in the report. Net effect: run (b) 28 → 28, run (a)
+28 → 27, plain Qwen 10 → 9.
+
+**Next**
+- The rest of S3 still to do: the safety layer, the 500-item scale check, and the fresh extraction set (target:
+  wrong and not flagged ≤ 2/20).
+- S7 needs its own plan, for the owner to approve: training data (commercial licences only), the IndiaAI GPU job, and
+  the 2-point limits on GSM8K and function calling, against the GPU job's baselines.
+- The code problems above are fixed in S4 whatever happens with S7. Fine-tuning won't fix them.

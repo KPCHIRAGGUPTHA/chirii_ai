@@ -1,0 +1,36 @@
+{
+  "_about": "Hand check and labels for run (c), the S4 system on the 50 development tasks (a development number), written after reading every reply and before any fix. The marker's score is the official one.",
+  "hand_disagreements": {
+    "S1-12": {"auto": false, "hand": true, "why": "As in S3: the date asked for is right; the task rule also wants the amount."},
+    "S1-14": {"auto": false, "hand": true, "why": "Correct (anniversary on 27 December). Failed only because the code's header names the end of the asked period, 31 December, which is not a memory date."},
+    "S1-33": {"auto": false, "hand": true, "why": "Correct (water bill 15th, bhajan Thursday 17th, check-up 18th). Failed because the marker does not count a weekly routine's dates as memory dates, and the header names 20 December."},
+    "S1-48": {"auto": false, "hand": true, "why": "Correct (semester fee; the paid mess fee is left out). Failed only because the header names the window's end, 16 March."}
+  },
+  "fallback_causes": {
+    "S1-03": "header dates (today's date and the window end) and a lost date",
+    "S1-04": "Qwen's rewording dropped the ₹9,240 amount",
+    "S1-08": "Qwen's rewording dropped the 28 December date",
+    "S1-13": "header starts with today's date",
+    "S1-14": "header dates",
+    "S1-23": "header dates",
+    "S1-33": "weekly routine date not counted as a memory date (guard uses the marker's rule)",
+    "S1-43": "header starts with today's date",
+    "S1-47": "header starts with today's date",
+    "S1-48": "header dates"
+  },
+  "labels": {
+    "S1-12": ["scorer", "Task rule asks for an amount the question did not ask for."],
+    "S1-14": ["prompt/formatting", "The code's window header shows the period's end date (code-built text)."],
+    "S1-24": ["retrieval", "Router read 'due' as a payment word, so Mrs. Deshpande's ₹3,450 (owed to the user, due tomorrow) was filtered out."],
+    "S1-29": ["model behaviour", "Gives the old date (11 Dec) although the line gives 12 Dec as current, as in run (b)."],
+    "S1-33": ["scorer", "Weekly routine dates are not memory dates to the marker; also the header end date (code-built text)."],
+    "S1-37": ["model behaviour", "Gives the old date (18 Dec); the line says 21 Dec is current. The guard allows the old date because it is in the item's history."],
+    "S1-41": ["model behaviour", "The line now lists all three exam dates; Qwen picked DBMS's date (9 Dec) for Operating Systems."],
+    "S1-48": ["prompt/formatting", "The code's window header shows the period's end date (code-built text)."]
+  },
+  "other_notes": [
+    "S1-36: the plan labels the 11 am item 'Ramaswamy at the hospital'. The clause splitter breaks at 'Dr.' (cosmetic; the plan is right).",
+    "S1-06: the rewording shows the courier as '5:00 pm' instead of 'by 5:00 pm' (minor; the order is right).",
+    "S1-34: still says 'the user' although prompt version 2 says not to."
+  ]
+}

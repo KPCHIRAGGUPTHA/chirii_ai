@@ -36,7 +36,8 @@ from chirii.eval.scoring import contains, score_task
 
 OUT = REPO_ROOT / "chirii" / "results" / "s3"
 SECRET = "s3-eval-run-secret-not-used-for-real-data-0000000"
-CONFIGS = {"a": {"guard": False, "trimmed": False}, "b": {"guard": True, "trimmed": True}}
+CONFIGS = {"a": {"guard": False, "trimmed": False, "routed": False}, "b": {"guard": True, "trimmed": True, "routed": False},
+           "c": {"guard": True, "trimmed": True, "routed": True}}
 
 
 def plain_qwen(model, task):
@@ -61,13 +62,13 @@ def with_memory(run, model, embedder, task, base, root):
     needed = task["rules"].get("must_include", [])
     store.delete_all()
     return {"reply": answer.text, "duration_ms": answer.duration_ms, "guard": answer.guard, "first_answer": answer.first_answer,
-            "guard_problems": answer.problems, "facts": answer.facts, "memory_read_by_model": model_reads,
+            "guard_problems": answer.problems, "facts": answer.facts, "memory_read_by_model": model_reads, "route": answer.route,
             "needed_not_in_lines": [f for f in needed if not contains(lines, f, today)]}
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--runs", nargs="+", choices=["a", "b", "none"], default=["a", "b", "none"])
+    parser.add_argument("--runs", nargs="+", choices=["a", "b", "c", "none"], default=["a", "b", "none"])
     args = parser.parse_args()
     settings = Settings(secret_key=SECRET)
     model = LLMClient(settings.llm_base_url, settings.llm_model, timeout=300)
@@ -97,10 +98,11 @@ def main():
         summary[run] = {
             "A_overall": sum(r["passed"] for r in scored), "B_unknown": sum(r["passed"] for r in unknown),
             "C_invented": sum(r["invented"] for r in scored),
-            "guard": {k: sum(r.get("guard") == k for r in scored) for k in ("pass", "retry", "fallback")} if run == "b" else None,
+            "guard": {k: sum(r.get("guard") == k for r in scored) for k in ("pass", "retry", "fallback", "code")} if run in ("b", "c") else None,
             "median_ms": sorted(r["duration_ms"] for r in scored)[len(scored) // 2],
         }
-    (OUT / "s3_auto.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    name = "s3_auto.json" if sorted(args.runs) == ["a", "b", "none"] else "auto_" + "_".join(args.runs) + ".json"  # never overwrite the S3 summary
+    (OUT / name).write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps(summary, indent=2))
 
 

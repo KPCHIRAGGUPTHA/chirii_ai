@@ -210,7 +210,7 @@ $("ask-form").onsubmit = async (e) => {
     $("answer").textContent = r.answer;
     $("facts").replaceChildren(...r.facts.map((f) => el("li", "", f)));
     $("facts-box").hidden = !r.facts.length;
-    const checked = { pass: "facts checked", retry: "facts checked after a retry", fallback: "built from your saved memories" }[r.checked] || "";
+    const checked = { pass: "facts checked", retry: "facts checked after a retry", fallback: "built from your saved memories", code: "worked out from your saved memories" }[r.checked] || "";
     $("ask-msg").textContent = `Answered in ${(r.duration_ms / 1000).toFixed(1)} s` + (checked ? ` · ${checked}` : "");
   } catch (err) { $("ask-msg").textContent = err.message; $("ask-msg").className = "msg error"; }
   $("ask-btn").disabled = false;

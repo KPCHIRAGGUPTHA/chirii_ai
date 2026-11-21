@@ -38,10 +38,15 @@ def add(store, text, said_on=NOV21, confirm=True):
 class TestCard:
 
     @pytest.mark.parametrize("text,title", [
-        ("My BESCOM electricity bill is ₹1,860 and it's due on 12 December.", "BESCOM electricity bill is ₹1,860 and it's due on 12…"),
-        ("Amma's birthday is on 22 December.", "Amma's birthday is on 22 December"),
-        ("Note: the new milk vendor charges ₹56 a litre from January, up from ₹54.", "New milk vendor charges ₹56 a litre from January"),
-        ("Correction: the dentist moved my appointment to 11 December at 7 pm.", "Dentist moved my appointment to 11 December at 7 pm"),
+        ("My BESCOM electricity bill is ₹1,860 and it's due on 12 December.", "BESCOM electricity bill"),
+        ("Amma's birthday is on 22 December.", "Amma's birthday"),
+        ("Note: the new milk vendor charges ₹56 a litre from January, up from ₹54.", "New milk vendor charges"),
+        ("Correction: the dentist moved my appointment to 11 December at 7 pm.", "Dentist moved my appointment to 11 December"),
+        ("Dentist appointment with Dr. Kavitha on 10 December at 6 pm.", "Dentist appointment with Dr. Kavitha"),   # not cut at "Dr."
+        ("Project review with Prof. Meena on 10 December at 10 am.", "Project review with Prof. Meena"),
+        ("From 14 to 18 December I'm on the night shift, 10 pm to 6 am.", "I'm on the night shift"),                # leading date removed
+        ("The bank says I must update my KYC at the SBI Koramangala branch before 31 December.", "Bank says I must update my KYC"),
+        ("Hostel mess fee of ₹38,500 is due on 20 December.", "Hostel mess fee"),
     ])
     def test_titles(self, text, title):
         assert make_title(text) == title
@@ -79,8 +84,8 @@ class TestConfirmAndEdit:
 
     def test_edit_checks_values_keeps_history_and_confirms(self, store):
         item = store.add("Electricity bill due on 12 December.", NOV21)["item"]
-        edited = store.edit(item["id"], {"kind": "bill", "title": "Electricity bill", "amount": 1860, "date": "2026-12-12"}, NOV21)
-        assert edited["amount"] == 1860 and edited["confirmed"] == 1 and edited["title"] == "Electricity bill"
+        edited = store.edit(item["id"], {"kind": "bill", "title": "Home electricity", "amount": 1860, "date": "2026-12-12"}, NOV21)
+        assert edited["amount"] == 1860 and edited["confirmed"] == 1 and edited["title"] == "Home electricity"
         assert {h["field"] for h in store.history(item["id"])} == {"amount", "title"}
 
     @pytest.mark.parametrize("field,value", [("date", "2026-13-40"), ("time", "25:00"), ("amount", -5), ("kind", "spaceship"),
@@ -158,7 +163,7 @@ class TestAnswersWithGuard:
     RIGHT = "The surgery is on Thursday 3 December 2026 at 9:00 am. Carry his Aadhaar and old prescriptions."
 
     def test_without_the_guard_the_wrong_answer_goes_out(self, demo):
-        answer = Assistant(demo, FakeModel([self.WRONG]), guard=False, trimmed=False).ask("When is Dad's surgery?", NOV21)
+        answer = Assistant(demo, FakeModel([self.WRONG]), guard=False, trimmed=False, routed=False).ask("When is Dad's surgery?", NOV21)
         assert answer.text == self.WRONG and answer.guard == "off"
 
     def test_a_wrong_answer_is_retried_with_fewer_facts(self, demo):
@@ -183,7 +188,7 @@ class TestAnswersWithGuard:
         prompt = model.calls[0]["messages"][1]["content"]
         assert "surgery" in prompt and "cook" not in prompt
         full = FakeModel([self.RIGHT])
-        Assistant(demo, full, guard=False, trimmed=False).ask("When is Dad's eye surgery?", NOV21)
+        Assistant(demo, full, guard=False, trimmed=False, routed=False).ask("When is Dad's eye surgery?", NOV21)
         assert "cook" in full.calls[0]["messages"][1]["content"]
 
     def test_unconfirmed_memories_are_named_in_the_answer(self, store):

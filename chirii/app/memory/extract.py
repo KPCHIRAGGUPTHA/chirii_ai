@@ -79,6 +79,7 @@ FIRST_RULES: List[Tuple[str, re.Pattern]] = [
 STRONG_BILL_WORDS = re.compile(r"\b(bill|fees?|emi|premium|rent|insurance|tax|subscription|recharge)\b", re.I)
 STRONG_APPOINTMENT_WORDS = re.compile(r"\b(appointment|check-?up|checkup|surgery|operation|doctor|dentist|meeting|interview|scan)\b", re.I)
 TASK_FIRST_WORDS = re.compile(r"\b(remind me|renew|need to|have to|has to|must)\b"
+                              r"|^\s*(submit|collect|deposit|file|apply|send|buy|call|return)\b"
                               r"|\bbook\s+(?:the\s+|a\s+|an\s+|my\s+)?(?:train|flight|bus|tickets?|tatkal|cylinder|gas|appointment|slot|hall|cab|taxi|room|hotel)\b"
                               r"|\b(jaana|jana|karna|karni|lena|leni|dena|deni|bharna|bharni)\s+(hai|h)\b", re.I)
 MONEY_CONTEXT = re.compile(r"\b(bill|fees?|emi|premium|rent|insurance|tax|subscription|recharge|due|pay|paid|owes?|credit card|debit|loan)\b", re.I)
@@ -264,8 +265,8 @@ def classify(text: str, has_amount: bool, has_date: bool, has_time: bool, weekly
     for kind, pattern in FIRST_RULES:
         if pattern.search(text):
             return kind
-    if has_amount and STRONG_BILL_WORDS.search(text):
-        return "bill"
+    if has_amount and (STRONG_BILL_WORDS.search(text) or MONTHLY.search(text)):
+        return "bill"  # an amount that repeats every month ("maintenance of ₹2,400 on the 4th of every month") is a bill
     if (has_date or has_time) and STRONG_APPOINTMENT_WORDS.search(text):
         return "appointment"
     if TASK_FIRST_WORDS.search(text):

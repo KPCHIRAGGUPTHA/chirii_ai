@@ -39,10 +39,34 @@ def ordinal(n: int) -> str:
     return f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
 
 
+ABBREVIATIONS = ("dr", "mr", "mrs", "ms", "prof", "st", "sr", "jr")
+# Where a name stops and the details start: "BESCOM electricity bill | is ₹1,860", "Hostel mess fee | of ₹38,500"
+TITLE_CUT = re.compile(r"\s+(?:(?:is|are|was|were|must|goes|costs?|due|on|at|by|before|between|every|each|of(?=\s+(?:₹|rs\b|inr\b|\d))|"
+                       r"for(?=\s+(?:₹|\d)))\b|(?=₹)|(?=rs\.?\s*\d))", re.I)
+
+
+def first_clause(text: str) -> str:
+    """Text up to the first full stop, semicolon, colon or comma, not counting the full stop of 'Dr.' or 'Prof.'."""
+    for match in re.finditer(r"[.;:](?:\s|$)|,\s", text):
+        if text[match.start()] == "." and text[:match.start()].split()[-1].lower().rstrip(".") in ABBREVIATIONS:
+            continue
+        return text[:match.start()]
+    return text
+
+
 def make_title(text: str) -> str:
-    """A short name for the item: the first clause of what the user said, without leading filler, at most 60 chars."""
-    title = re.sub(r"^\s*(note|correction|reminder|remind me to)\s*[:,-]?\s*", "", text.strip(), flags=re.I)
-    title = re.split(r"(?<=[a-z0-9)])[.;:](?:\s|$)|,\s", title, maxsplit=1)[0].strip()
+    """A short name for the item: the start of what the user said, up to where the details begin, without leading
+    filler, at most 60 characters. Changed 22 Nov (S4): titles used to stop at 'Dr.' and run on into dates."""
+    title = re.sub(r"^\s*(note|correction|reminder|remind me to)(\s+from)?\s*[:,-]?\s*", "", text.strip(), flags=re.I)
+    # a leading date ("From 14 to 18 December I'm on the night shift", "On 10 December I have a team call")
+    title = re.sub(r"^(from|on)\s+[\d\w ]*?\b(january|february|march|april|may|june|july|august|september|october|november|december)\b,?\s+",
+                   "", title, flags=re.I)
+    title = first_clause(title).strip()
+    for cut in TITLE_CUT.finditer(title):
+        words = title[:cut.start()].split()
+        if len(words) >= 2 and words[-1].lower() not in ("i", "i'm", "we", "you", "he", "she", "they", "it"):
+            title = title[:cut.start()]
+            break
     title = re.sub(r"^(my|our|the)\s+", "", title, flags=re.I)
     if len(title) > 60:
         title = title[:57].rsplit(" ", 1)[0] + "…"
@@ -54,6 +78,8 @@ def when_text(item: Dict[str, Any]) -> List[str]:
     if item.get("date"):
         prefix = "due " if item["kind"] in ("bill", "task") else "on "
         parts.append(prefix + say_date(item["date"]) + (f" to {say_date(item['end_date'])}" if item.get("end_date") else ""))
+        if item.get("other_dates"):  # S3 bug: "exams on 7, 9 and 11 December" showed only 7 December
+            parts.append("also on " + ", ".join(say_date(d) for d in item["other_dates"]))
     if item.get("day_of_month"):
         parts.append(f"on the {ordinal(item['day_of_month'])} of every month")
     if item.get("weekdays"):

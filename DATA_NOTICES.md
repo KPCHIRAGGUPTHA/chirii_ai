@@ -13,7 +13,7 @@ This project (MiniGPT / Chirii AI) used the datasets below for training or evalu
 | Dataset | Used for | Licence (source) |
 | :--- | :--- | :--- |
 | FineWeb-Edu (`HuggingFaceFW/fineweb-edu`, sample-10BT) | MiniGPT pretraining | ODC-By (HF page) |
-| Alpaca-cleaned (`yahma/alpaca-cleaned`) | instruction tuning | CC BY 4.0 (HF page) |
+| Alpaca-cleaned (`yahma/alpaca-cleaned`) | instruction tuning | **CC BY-NC 4.0** (its README; the HF page tag says CC BY 4.0): non-commercial |
 | Dolly 15k (`databricks/databricks-dolly-15k`) | instruction tuning | CC BY-SA 3.0 (HF page) |
 | smol-smoltalk (`HuggingFaceTB/smol-smoltalk`) | instruction tuning | Apache-2.0 (HF page) |
 | Simple English Wikipedia (`wikimedia/wikipedia`, 20231101.simple) | RAG corpus; documents in document-mode refusal rows | CC BY-SA 3.0 and GFDL (HF page) |
@@ -22,8 +22,12 @@ This project (MiniGPT / Chirii AI) used the datasets below for training or evalu
 | SciQ train (`allenai/sciq`) | inputs for self-distilled replay (Phase 26 and later) | **CC BY-NC 3.0** (HF page): non-commercial |
 | BoolQ train (`aps/super_glue`, boolq) | inputs for self-distilled replay (Phase 26 and later) | CC BY-SA 3.0 (authors' README, `google-research-datasets/boolean-questions`; the HF page says "other") |
 
+Alpaca-cleaned is treated as **non-commercial**, matching the licence summary in `FINAL_REPORT.md`: its README gives
+CC BY-NC 4.0, and the stricter of the two licences applies. So every model trained on it is research-only: the MiniGPT
+SFT models (v1.0, v1.0.1, v2.0-preview, Phases 17C, 17E and 20) and Chirii Brain v0.1 to v0.5.
+
 Because SciQ is CC BY-NC 3.0, the Chirii Brain v0.2 and later fine-tunes, which were trained on plain Qwen's answers to
-SciQ train inputs, should be treated as **non-commercial** unless that data is removed.
+SciQ train inputs, are also **non-commercial**.
 
 The base model for Chirii Brain is Qwen2.5-1.5B-Instruct (Apache-2.0, Alibaba Cloud). Its own training data is not
 covered here.

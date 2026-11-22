@@ -10,16 +10,12 @@ fixed now**. Each says where it was seen. Any fix later is development work and 
   words from a fixed list of kinds of thing; "leave" is not on it. *Possible fix:* treat every content noun of a lookup
   as a key term, matched by meaning.
 
-- **"before / by / until" a date or weekday is read as that one day** (found in the S6 phone-layout check, own
-  example, 22 Nov): "Which bills do I have to pay before 1 December?" → "Nothing to pay on Tuesday 1 December",
-  though bills fall on 25, 28 and 30 November. Same for "by 1 December", "until 1 December", "before Saturday". The
-  period reader takes the date as the window instead of today up to it. Not fixed; owner to decide before s6-final.
-- **"in <month>" is not read as a period** (found while writing the S6 summary tests, own example, 22 Nov): "Which
-  bills are due in July?" goes to general knowledge and "What do I have to pay in December 2027?" to lookup, so no
-  list is built. "this month", "next month", "the next 30 days" and "between 1 July and 15 July" work. Not fixed;
-  owner to decide before s6-final.
-- **"Anything to pay before Priya's birthday?"** goes to general knowledge (a saved birthday as the end of a
-  period isn't recognised here, though "before Sneha's sangeet" worked in the scale check). Same check, not fixed.
+- **Fixed before s6-final (owner, 22 Nov):** "before / by / until <date or weekday>" (was read as that one day) and
+  "in / during <month>" (was not read as a period). A third report, "Anything to pay before Priya's birthday?" going
+  to general knowledge, was a mistake in my check (the router was called without the saved memories); in the app it
+  already worked. See PROGRESS, S6 step 5a.
+- **Questions with no "I/my" and no "anything/due"** ("Bills to pay before 10 Jan?") still go to general knowledge
+  even though the period is now read (the router gap below, D5-M15).
 
 ## Extraction
 

@@ -75,6 +75,37 @@ def weekday_in(question: str) -> Optional[int]:
     return None
 
 
+MONTH_NUMBERS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10,
+                 "nov": 11, "dec": 12}
+MONTH_NAMES = ("january|february|march|april|may|june|july|august|september|october|november|december"
+               "|jan|feb|mar|apr|jun|jul|aug|sept|sep|oct|nov|dec")
+
+
+def deadline_day(words: str, today: date, before: bool) -> Optional[date]:
+    """The day named right after "before / by / until": a date ("1 December", "1 Dec 2027"), a weekday ("Saturday",
+    "next Friday") or tomorrow. None when it names something else (a saved event, "the end of the month")."""
+    words = words.strip()
+    if re.match(r"(?:tomorrow|tmrw|kal)\b", words):
+        return today + timedelta(days=1)
+    m = re.match(rf"(?:the\s+)?(\d{{1,2}})(?:st|nd|rd|th)?\s+(?:of\s+)?({MONTH_NAMES})\b(?:,?\s+(\d{{4}}))?"
+                 rf"|({MONTH_NAMES})\s+(\d{{1,2}})(?:st|nd|rd|th)?\b(?:,?\s+(\d{{4}}))?", words)
+    if m:
+        day = int(m.group(1) or m.group(5))
+        month = MONTH_NUMBERS[(m.group(2) or m.group(4))[:3]]
+        year = m.group(3) or m.group(6)
+        try:
+            if year:
+                return date(int(year), month, day)
+            target = date(today.year, month, day)
+            return target if target > today or (target == today and not before) else date(today.year + 1, month, day)
+        except ValueError:
+            return None
+    m = re.match(r"(?:this\s+|next\s+|coming\s+)?(" + "|".join(WEEKDAYS) + r")\b", words)
+    if m:
+        return next_weekday(today, WEEKDAYS.index(m.group(1)), skip_today=before or words.startswith("next"))
+    return None
+
+
 def read_period(question: str, today: date, items: Optional[List[Dict[str, Any]]] = None) -> Optional[Period]:
     q = question.lower().replace("’", "'")
     # counts of days and weeks
@@ -103,12 +134,28 @@ def read_period(question: str, today: date, items: Optional[List[Dict[str, Any]]
         return Period(start, start + timedelta(days=6), "next week")
     if re.search(r"\b(this|my|the|rest of the)\s+week\b|\bweekly\b", q):
         return Period(today, today + timedelta(days=6 - today.weekday()), "this week")
+    # S6 (owner): "in July", "in March 2028", "in May next year", "during August", "in the month of June": that whole
+    # month, the next one when no year is given (the current month counts as the next one)
+    m = re.search(rf"\b(?:in|during|throughout)\s+(?:the\s+month\s+of\s+)?({MONTH_NAMES})\b(?:\s+(\d{{4}}))?(\s+next\s+year)?", q)
+    if m:
+        month = MONTH_NUMBERS[m.group(1)[:3]]
+        year = int(m.group(2)) if m.group(2) else today.year + (1 if m.group(3) or month < today.month else 0)
+        first = date(year, month, 1)
+        return Period(first, month_end(first), f"in {first.strftime('%B')}" + (f" {year}" if year != today.year else ""))
     # months
     if re.search(r"\bnext month\b", q):
         first = month_end(today) + timedelta(days=1)
         return Period(first, month_end(first), "next month")
     if re.search(r"\b(this|the|rest of the)\s+month\b|\bend of (the|this) month\b|\bmonth[- ]end\b", q):
         return Period(today, month_end(today), "this month")
+    # S6 (owner): "before / by / until" a date, a weekday or tomorrow: from today up to it ("before" leaves the day out)
+    m = re.search(r"\b(before|by|until|till|up to|upto)\s+(.+)$", q)
+    if m:
+        target = deadline_day(m.group(2), today, before=m.group(1) == "before")
+        if target is not None:
+            end = target - timedelta(days=1) if m.group(1) == "before" else target
+            if end >= today:
+                return Period(today, end, f"{m.group(1)} {short(target)}", "range")
     # relative days
     if re.search(r"\bday after tomorrow\b|\bparso\b", q):
         return Period(today + timedelta(days=2), today + timedelta(days=2), "the day after tomorrow", "day")

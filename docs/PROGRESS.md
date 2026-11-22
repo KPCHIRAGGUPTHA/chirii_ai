@@ -827,3 +827,21 @@ Checked live at 375 px: summary, then "Show all" gives all 15 entries.
 Found while writing the tests, logged and not fixed: "in <month>" ("Which bills are due in July?") is not read as a
 period. With the "before / by / until <date>" gap from step 3, these two period gaps are for the owner to decide on
 before the freeze.
+
+## S6, step 5a – Period fixes before the freeze (22 November 2026)
+
+Owner's decision: fix the period gaps found in S6 before s6-final, as general rules, tested on own examples.
+- **"before / by / until / till / up to" a date, a weekday or tomorrow** = from today up to that day; "before" leaves
+  the day out, "by" and "until" include it. The next occurrence when no year is given ("before 10 Jan" in March →
+  next January); "before Sunday" on a Sunday → next Sunday. "before the end of the month", "before the weekend" and
+  saved events keep their rules.
+- **"in / during / throughout <month>"**, "in the month of June", with a year or "next year" = that whole month; the
+  next occurrence when no year is given (the current month counts).
+- **"before <saved event>"**, the third report: diagnosed as a mistake in my check, not a bug. I had called the
+  router without the saved memories, so no event could be found; through the app ("Anything to pay before Priya's
+  birthday?", "before Amma's check-up", "before Amma's eye check-up") the list already ended the day before the
+  event. Now covered by tests through the whole pipeline.
+- **No regression:** all 824 tests pass (S4c/S4e: 61), and the routes and periods of all 255 dev-set and S1
+  questions, with their memories loaded, are the same before and after (compared by script).
+- Still open: a question with no "I/my" and no "anything/due" ("Bills to pay before 10 Jan?") goes to general
+  knowledge even though its period is read (router gap D5-M15).

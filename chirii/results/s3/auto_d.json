@@ -1,0 +1,14 @@
+{
+  "d": {
+    "A_overall": 49,
+    "B_unknown": 8,
+    "C_invented": 0,
+    "guard": {
+      "pass": 26,
+      "retry": 1,
+      "fallback": 16,
+      "code": 7
+    },
+    "median_ms": 3384
+  }
+}

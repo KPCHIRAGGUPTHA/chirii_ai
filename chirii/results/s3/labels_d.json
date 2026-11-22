@@ -1,0 +1,34 @@
+{
+  "_about": "Hand check and labels for run (d), the S4b system on the 50 development tasks (a development number), written after reading every reply and before any fix. The marker's score is the official one.",
+  "hand_disagreements": {
+    "S1-12": {"auto": false, "hand": true, "why": "As before: the date asked for is right; the task rule also wants the amount."}
+  },
+  "fallback_causes": {
+    "_summary": "All 16 fallbacks: Qwen's lead restated dates, times or amounts from the list, which the S4b lead rule forbids (a rule stricter than the owner's 'guard checks Qwen's text'). Every restated value was correct: none would count as invented under the marker's rules. About 3 also restate the period's start date, which is today, and would trip the guard's today's-date rule. The list shown is the code's own, so every fallback answer is still complete. Cause by the owner's C' rule: code (the lead rule), not model invention.",
+    "S1-03": "code: lead rule (lead restated today's date)",
+    "S1-06": "code: lead rule (lead restated the plan's times)",
+    "S1-07": "code: lead rule (lead restated the plan's times)",
+    "S1-08": "code: lead rule (lead restated the period's dates)",
+    "S1-13": "code: lead rule (lead restated both amounts and dates)",
+    "S1-14": "code: lead rule (lead restated today's date and the anniversary date)",
+    "S1-17": "code: lead rule (lead restated the plan)",
+    "S1-23": "code: lead rule (lead restated the period's dates and the total)",
+    "S1-24": "code: lead rule (lead repeated the list)",
+    "S1-26": "code: lead rule (lead restated the plan's times)",
+    "S1-27": "code: lead rule (lead restated the period's dates)",
+    "S1-33": "code: lead rule (lead restated the list)",
+    "S1-36": "code: lead rule (lead restated the plan's times)",
+    "S1-46": "code: lead rule (lead restated the plan's times)",
+    "S1-47": "code: lead rule (lead restated the period's dates)",
+    "S1-48": "code: lead rule (lead restated today's date)"
+  },
+  "labels": {
+    "S1-12": ["scorer", "Task rule asks for an amount the question did not ask for."]
+  },
+  "other_notes": [
+    "S1-36: the plan still labels the 11 am item 'Ramaswamy at the hospital' (the clause splitter breaks at 'Dr.'; cosmetic).",
+    "S1-24: the label reads 'Mrs. Deshpande owes, ₹3,450' (title wording; cosmetic).",
+    "S1-43: the lead repeats the question and the closing says 'That's all for today!' for a 3-day list (wording).",
+    "S1-34: still says 'the user'."
+  ]
+}

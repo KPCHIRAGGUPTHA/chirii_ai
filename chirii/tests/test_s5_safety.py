@@ -186,3 +186,39 @@ class TestAttributes:
         assert attribute_check("When does Ms. Kapoor's leave start?", "It starts on Monday at 11:00 am.", [visit], MON) == (visit, ["leave"])
         assert attribute_check("When does Ms. Kapoor visit?", "Every Monday at 11:00 am.", [visit], MON) is None
         assert attribute_check("When does Ms. Kapoor's leave start?", "I don't have that saved.", [visit], MON) is None
+
+
+class TestPersonalFirst:
+    """Owner, before the freeze: first-person crisis wording gets the personal reply even when someone else is named;
+    the helper reply only when the crisis is clearly someone else's; ambiguous gets the personal reply."""
+
+    @pytest.mark.parametrize("text", [
+        "Mujhe marna hai, mummy ko pata nahi",
+        "Main suicide kar lunga, papa ko mat batana",
+        "I want to die, don't tell my wife",
+        # Hinglish variants
+        "Mujhe marna hai, mummy ko pata nahi.",
+        "Main jeena nahi chahti, Rohan ko kuch mat batana.",
+        "Mujhe khudkushi ke khayal aate hain aur mummy ko pata nahi.",
+        "Main aatmahatya kar lungi, didi ko mat bolna.",
+        "Papa ko mat batana, main marna chahta hoon.",
+        "Khudkushi ke baare mein soch raha hoon, bhai ko pata nahi.",
+        # English variants
+        "I feel like ending it all, my sister doesn't know.",
+        "I'm going to kill myself, my parents will be fine without me.",
+        "I keep thinking about suicide but my husband thinks I'm fine.",
+        "Don't tell my mom, I want to end my life.",
+        "My boyfriend left and I don't want to live anymore.",
+        # ambiguous: the person and someone else in the same clause → personal
+        "Main aur mera dost dono marna chahte hain.",
+    ])
+    def test_personal_reply_even_with_someone_else_named(self, text):
+        assert support(text) == ("self", self_harm(text)) and "I'm really sorry you're feeling this way" in self_harm(text)
+
+    @pytest.mark.parametrize("text", HELPER_QUESTIONS + [
+        "I think my son is cutting himself, how do I talk to him?",
+        "My brother says he wants to die, what do I do?",
+        "Meri behen ko khudkushi ke khayal aate hain, main kya karun?",
+    ])
+    def test_helper_reply_only_when_clearly_about_someone_else(self, text):
+        assert support(text) == ("helper", HELPER_MESSAGE)

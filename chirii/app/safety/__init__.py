@@ -28,20 +28,82 @@ from phase14.safety_layer import SUPPORT_MESSAGE, check as phase14_check
 
 # ---------------------------------------------------------------- 1. self-harm
 
-HINGLISH = re.compile(
+# The person's own crisis comes first (owner, S6, before the freeze): first-person crisis wording gets the personal
+# reply even when a relative or anyone else is named ("Main suicide kar lunga, papa ko mat batana", "I want to die,
+# don't tell my wife"). The helper reply is only for crisis wording that is clearly about someone else, with no
+# first-person crisis wording anywhere. When a clause has both the person and someone else, and the crisis wording is
+# not clearly the other person's, the personal reply is given: it is safer to over-support.
+# The text is read clause by clause: "Mujhe marna hai, mummy ko pata nahi" is two clauses, and the first is the
+# person's own.
+
+HINGLISH = re.compile(   # S5's Hinglish wording, kept for reference
     r"\b(main|mai|mein|mujhe|mujhko)\b.{0,25}\b(marna|mar jaana|mar jana|mar jaun|mar jaaun|khatam karna)\b.{0,15}\b(chahta|chahti|chahata|hai|hoon|hu|hun)\b"
     r"|\bjeena nahi\b.{0,10}\b(chahta|chahti|hai)\b|\bjeene ka (man|mann) nahi\b|\bzindagi (khatam|khtm) karna\b"
     r"|\bkhud ?kushi\b|\bkhudkhushi\b|\baatmahatya\b|\batmahatya\b|\bsuicide (karna|kar lunga|kar lungi|kar lu)\b", re.I)
 HINGLISH_THIRD_PARTY = re.compile(r"\b(dost|friend|bhai|behen|didi|bhaiya|papa|mummy|amma|appa|beta|beti)\b.{0,20}\b(ko|ka|ki|ke)\b", re.I)
 
 
+# Crisis wording that names its own subject
+SELF_DIRECTED = re.compile(
+    r"\b(?:kill|killing|hurt|hurting|harm|harming|cut|cutting)\s+myself\b|\bend(?:ing)? my (?:own )?life\b"
+    r"|\btake my (?:own )?life\b|\bi(?:'m| am|m)\s+(?:so\s+|feeling\s+)?suicidal\b|\bi (?:feel|felt|keep feeling) suicidal\b"
+    r"|\bbetter off without me\b|\bmeri zindagi (?:khatam|khtm)\b", re.I)
+OTHER_DIRECTED = re.compile(
+    r"\b(?:kill|killing|kills|hurt|hurting|hurts|harm|harming|harms|cut|cutting|cuts)\s+(?:him|her|them)sel(?:f|ves)\b"
+    r"|\bend(?:ing|s)? (?:his|her|their) (?:own )?life\b|\btake (?:his|her|their) (?:own )?life\b"
+    r"|\b(?:he|she|they|who|friend|\w+)\s+(?:wants|wanted)\s+to\s+die\b"
+    r"|\b(?:doesn't|does not|didn't)\s+want\s+to\s+(?:live|be alive|be here)\b"
+    r"|\b(?:who|he|she|they|friend|\w+)\s+(?:is|was|seems|seemed|has been|feels|felt)\s+suicidal\b"
+    r"|\bself[- ]harms\b|\bwho\s+self[- ]harm|\btalk(?:s|ing|ed)? about (?:dying|ending it|killing (?:him|her|them)sel)"
+    r"|\b(?:ko|ke|ki)\s+(?:khud ?kushi|khudkhushi|aatmahatya|atmahatya|suicide)\b", re.I)
+# Crisis wording whose subject comes from the rest of the clause
+HARM = re.compile(
+    r"\bsuicid|\bself[- ]harm|\bkms\b|\bunalive\b|\boverdose\b|\bend(?:ing)? it all\b|\bend(?:ing)? things\b"
+    r"|\bwant(?:s|ed)? to die\b|\bwant(?:s|ed)? to be dead\b|\bwish i (?:was|were) dead\b|\bcan'?t go on\b"
+    r"|\bnothing to live for\b|\bno reason to live\b|\b(?:don't|do not) want to (?:live|be alive|be here|wake up|exist)\b"
+    r"|\bkhud ?kushi\b|\bkhudkhushi\b|\baatmahatya\b|\batmahatya\b"
+    r"|\b(?:marna|mar jaana|mar jana|mar jaun|mar jaaun)\b(?=.{0,15}\b(?:hai|chahta|chahti|chahte|chahata|chahiye|hoon|hu|hun)\b)"
+    r"|\bjeena nahi\b|\bjeene ka (?:man|mann) nahi\b|\bzindagi (?:khatam|khtm) karn", re.I)
+SELF_MARK = re.compile(
+    r"\b(?:i|i'm|im|i am|i've|i'd|i'll|me|myself)\b|\bmy (?:own )?life\b|\b(?:mujhe|mujhko|mujhse)\b"
+    r"|\bmer(?:a|i|e) (?:zindagi|jeena|mann|man|dil)\b"
+    r"|\b(?:hoon|hun|lunga|lungi|karunga|karungi|chahta hu|chahti hu)\b"      # Hindi first-person verb endings
+    r"|\b(?:main|mai)\b(?=.*\b(?:hoon|hu|hun|lunga|lungi|chahta|chahti|chahte|raha|rahi|sakta|sakti|karunga|karungi|kar)\b)", re.I)
+OTHER_MARK = re.compile(
+    r"\b(?:he|she|they|him|her|them|his|their|himself|herself|themselves|someone|somebody|friend|friends|dost|bhai|"
+    r"behen|didi|bhaiya|papa|mummy|amma|appa|beta|beti|son|daughter|sister|brother|mother|father|mum|mom|dad|wife|"
+    r"husband|partner|cousin|colleague|coworker|roommate|classmate|student|neighbour|neighbor|uncle|aunt)\b", re.I)
+HINGLISH_HARM = re.compile(
+    r"\bkhud ?kushi\b|\bkhudkhushi\b|\baatmahatya\b|\batmahatya\b|\bjeena nahi\b|\bjeene ka (?:man|mann) nahi\b"
+    r"|\b(?:marna|mar jaana|mar jana|mar jaun|mar jaaun)\b(?=.{0,15}\b(?:hai|chahta|chahti|chahte|hoon|hu|hun)\b)", re.I)
+CLAUSE = re.compile(r"[,;.!?\n]+|\s+(?:but|lekin|par|magar)\s+", re.I)
+
+
+def classify(text: str) -> Optional[str]:
+    """"self" (the person's own crisis), "helper" (worry about someone else), or None."""
+    if phase14_check(text).fired:              # phase14's rules (they already leave third-party wording out)
+        return "self"
+    t = text.replace("’", "'")
+    other = False
+    for clause in CLAUSE.split(t):
+        if SELF_DIRECTED.search(clause):
+            return "self"
+        other_directed = OTHER_DIRECTED.search(clause)
+        if not (HARM.search(clause) or other_directed) or INFORMATIONAL.search(clause):
+            continue                               # no crisis wording, or talk about the topic (an essay, statistics)
+        if SELF_MARK.search(clause) and not other_directed:
+            return "self"                          # the person's own, or not clearly someone else's: personal reply
+        if other_directed or OTHER_MARK.search(clause):
+            other = True
+        elif HINGLISH_HARM.search(clause):
+            return "self"                          # "khudkushi ke khayal aa rahe hain": no one else named
+
+    return "helper" if other and not INFORMATIONAL.search(t) else None
+
+
 def self_harm(text: str) -> Optional[str]:
-    """The support message if the text shows self-harm or suicide intent, else None."""
-    if phase14_check(text).fired:
-        return SUPPORT_MESSAGE
-    if HINGLISH.search(text) and not HINGLISH_THIRD_PARTY.search(text):
-        return SUPPORT_MESSAGE
-    return None
+    """The personal support message if the text shows the person's own self-harm or suicide intent, else None."""
+    return SUPPORT_MESSAGE if classify(text) == "self" else None
 
 
 # ---------------------------------------------------------------- 1b. someone worried about another person (S6, owner)
@@ -53,47 +115,24 @@ HELPER_MESSAGE = (
     "any time, and also supports people who are helping someone else, so you can call them yourself too. Please look "
     "after yourself as well."
 )
-# The other person (phase14's third-party cues, plus pronouns), and harm wording about them.
-OTHER_PERSON = re.compile(
-    r"\bsomeone\b|\bsomebody\b|\bfriend\b|\bhe\b|\bshe\b|\bthey\b|\bhim\b|\bher\b|\bthem\b|\bhis\b|\btheir\b"
-    r"|\bmy (?:sister|brother|mother|father|mum|mom|dad|cousin|classmate|roommate|coworker|colleague|partner|husband|"
-    r"wife|son|daughter|friend|student|neighbour|neighbor|uncle|aunt)\b", re.I)
-OTHER_HARM = re.compile(
-    r"\bsuicid|\bself[- ]harm|\bkill(?:ing)? (?:him|her|them)sel(?:f|ves)\b|\bend(?:ing)? (?:his|her|their) (?:own )?life\b"
-    r"|\b(?:hurt|harm|cut)(?:s|ting|ing)? (?:him|her|them)sel(?:f|ves)\b|\bwants? to die\b|\bwanted to die\b"
-    r"|\b(?:doesn't|does not|don't|do not) want to (?:live|be alive|be here)\b|\btalk(?:s|ing|ed)? about (?:dying|ending it)\b", re.I)
 # Talk about suicide that is not about someone the person knows: news, research, fiction, sport terms.
 INFORMATIONAL = re.compile(
     r"\bstatistic|\brates?\b|\bnews\b|\bessay\b|\bnovel\b|\bcharacter\b|\bmovie\b|\bfilm\b|\bbook\b|\bchapter\b"
     r"|\btheory\b|\bsqueeze\b|\bpass rule\b|\bcrime\b|\blaw\b|\bprevention (?:day|week|programs?)\b", re.I)
-HINGLISH_OTHER_HARM = re.compile(
-    r"\bkhud ?kushi\b|\bkhudkhushi\b|\baatmahatya\b|\batmahatya\b|\bsuicide\b"
-    r"|\b(?:marna|mar jaana|mar jana)\b.{0,10}\b(?:chahta|chahti)\b|\bjeena nahi\b.{0,10}\b(?:chahta|chahti)\b"
-    r"|\bjeene ka (?:man|mann) nahi\b", re.I)
 
 
 def helper_concern(text: str) -> Optional[str]:
     """The helper message when someone writes about another person's suicidal thoughts or self-harm ("My friend said
     he wants to die; how can I help him?", "Mere dost ko khudkushi ke khayal aate hain, kaise madad karun?").
-    The person's own crisis comes first: self_harm() is checked before this and is unchanged."""
-    if self_harm(text):
-        return None
-    t = text.replace("’", "'")
-    if OTHER_HARM.search(t) and OTHER_PERSON.search(t) and not INFORMATIONAL.search(t):
-        return HELPER_MESSAGE
-    if HINGLISH_OTHER_HARM.search(t) and HINGLISH_THIRD_PARTY.search(t):
-        return HELPER_MESSAGE
-    return None
+    Only when no clause is the person's own crisis (classify)."""
+    return HELPER_MESSAGE if classify(text) == "helper" else None
 
 
 def support(text: str) -> Optional[Tuple[str, str]]:
     """(kind, message) for a fixed supportive reply, or None: "self" for the person's own crisis, "helper" when they
     are worried about someone else."""
-    own = self_harm(text)
-    if own:
-        return "self", own
-    other = helper_concern(text)
-    return ("helper", other) if other else None
+    kind = classify(text)
+    return (kind, SUPPORT_MESSAGE if kind == "self" else HELPER_MESSAGE) if kind else None
 
 
 # ---------------------------------------------------------------- 2. attribute check

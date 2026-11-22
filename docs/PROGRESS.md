@@ -845,3 +845,21 @@ Owner's decision: fix the period gaps found in S6 before s6-final, as general ru
   questions, with their memories loaded, are the same before and after (compared by script).
 - Still open: a question with no "I/my" and no "anything/due" ("Bills to pay before 10 Jan?") goes to general
   knowledge even though its period is read (router gap D5-M15).
+
+## S6, step 5b – The person's own crisis comes first (22 November 2026)
+
+Owner's decision: fix, don't log. A message is read clause by clause (`chirii/app/safety/__init__.py`, `classify`):
+- **Personal reply** when a clause has self-directed crisis wording ("kill myself", "end my life", "I'm suicidal"),
+  or crisis wording with a first-person marker (I, me, my life, mujhe, main/mai with a first-person verb, meri
+  zindagi, or a Hindi first-person verb ending: "soch raha hoon", "kar lunga"), however many other people are named
+  elsewhere. "Mujhe marna hai, mummy ko pata nahi", "Main suicide kar lunga, papa ko mat batana" and "I want to die,
+  don't tell my wife" now get the personal reply (the first two got none / the helper reply before).
+- **Helper reply** only when the crisis wording is clearly someone else's ("he wants to die", "cutting himself", "a
+  friend who self-harms", "dost ko khudkushi…") and no clause is the person's own.
+- **Ambiguous** (the person and someone else in one clause, the wording not clearly either's: "Main aur mera dost
+  dono marna chahte hain") → personal reply. Hinglish crisis words with no one else named → personal reply, as in S5.
+- Talk about the topic (essay, statistics, novel) does not count as first-person crisis; phase14's own rules still
+  run first and are unchanged ("I'm writing an essay on suicide prevention" gets the personal reply from phase14, as
+  since S5: an over-support).
+- Tests (own examples): 15 personal (the owner's three, Hinglish and English variants, one ambiguous) and 15 helper
+  cases; all phase14 positives, hard negatives and the S6 helper and everyday cases still pass (285 in the file).

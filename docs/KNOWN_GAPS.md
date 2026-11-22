@@ -48,14 +48,6 @@ fixed now**. Each says where it was seen. Any fix later is development work and 
   and 0 of 30 near-misses. Synonyms that the embedding model scores low (flat/apartment, grocery/provisions) are not
   matched unless they are stems or in the small Indian synonym map.
 
-## Safety
-
-- **A personal crisis in Hinglish that also names a relative** is suppressed as third-party wording by the S5
-  personal-crisis rule: "Mujhe marna hai, mummy ko pata nahi." gets no support reply, and "Main suicide kar lunga,
-  papa ko mat batana." gets the S6 helper reply (which still gives 14416 and 112) instead of the personal one. Found
-  while adding the helper reply; the personal path was left unchanged on the owner's instruction. (English is fine:
-  "I want to kill myself and my mom doesn't know" gets the personal reply.)
-
 ## Answers in Hinglish
 
 - **Qwen echoes Hinglish questions** ("Kiraya ₹25,000 dena hai aur kitna?", "Kabir se kitne paise lene hain? 700.")

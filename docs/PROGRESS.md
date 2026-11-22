@@ -417,3 +417,45 @@ number, not a fresh one:** S4 was built in response to these tasks' failures.
   development number.
 - Still pending from S3: the safety layer, the 500-item scale check, and the fresh extraction set.
 - The owner runs the benchmark and 7B jobs on the GPU PC.
+
+## S4b – Code lists shown as built, current values only (22 November 2026)
+
+**Owner decisions recorded first** (`chirii/CRITERIA.md`)
+- On the held-out set, bar B at 3/5 triggers S7 directly.
+- For bar C', if there are more than 3 fallbacks, each is labelled by cause. S7 is triggered only if model-caused
+  fallbacks are more than 3 of 30.
+- Marker change, recorded before run (d): the period ends named by the question, and the dates of weekly routines,
+  count as worked-out values. Runs (a) to (c) were re-marked next to their originals (`REMARKED_S4B.md`): run (c)
+  goes from 42 to 44.
+
+**What changed**
+- **Code lists, totals, plans and headers are shown exactly as built.** Qwen writes only a short lead sentence and an
+  optional closing line, and only those are checked.
+- **"Due" covers payments and money owed to you.** Money owed to you is listed separately as "To receive". A list
+  header names dates only when the question named the period.
+- **A moved or corrected item shows only its current values.** The old value appears only if the question asks for
+  it; otherwise an old date in an answer counts as invented and gets the retry.
+- **Items with several dates list every date with its label**, or only the next one when the question says "next".
+
+**Run (d)** (`chirii/results/s3/RUN_D.md`): **a development number**, on the same 50 tasks S4 was built from.
+
+| | (a) | (b) | (c) | **(d)** |
+| :--- | ---: | ---: | ---: | ---: |
+| Bar A (current marker) | 28 | 28 | 44 | **49/50** |
+| Bar A (hand check) | 27 | 28 | 46 | **50/50** |
+| Bar B | 5/8 | 5/8 | 8/8 | **8/8** |
+| Invented values | 1 | 0 | 1 | **0** |
+| Code-built fallbacks | – | 3 | 10 | **16** |
+| Median time | 8.7 s | 3.7 s | 4.4 s | 3.4 s |
+
+- Every task type is now 8/8, except lookups at 9/10. The one failure is S1-12, where the task rule asks for an
+  amount the question didn't ask for. The three wrong-date lookups from run (c) are now right.
+- **All 16 fallbacks are code-caused.** Qwen's lead restated dates, times or amounts from the list, which my S4b
+  lead rule forbids. That rule is stricter than the owner's ("the guard checks Qwen's text").
+  - Every restated value was correct; none counts as invented under the marker's rules.
+  - The answer shown is the complete code-built list, so no answer was wrong. The user only loses the friendly lead.
+  - About 3 leads also restate the period's start (today) and would still trip the guard's today's-date rule.
+
+**Next:** decide the lead rule (check the lead with the guard only, as specified), then the owner's next items:
+general chat, then people and profile memory. After those: the safety layer, the 500-item scale check, and the fresh
+extraction set.

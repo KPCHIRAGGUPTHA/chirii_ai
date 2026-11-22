@@ -709,3 +709,12 @@ extraction set.
   positives and negatives; memory-style sentences that must not fire ("life insurance premium", "death anniversary",
   "sleeping pills prescription"); the model is not called; the attribute check before and after answering, with the
   guard off to test the final check alone. 620 pass. A live check with Qwen on 7 own examples: all right.
+
+## S5, part 4 – Tester consent note (22 November 2026)
+
+`docs/PRIVACY.md` rewritten as the pilot privacy notice with the tester consent note (version `2026-11-22`). The app
+shows the same ten points at first login and works only after they are accepted. They include the owner's three:
+**use fictional data during the pilot**, **if the key is lost the data can't be recovered**, and **turn on device
+encryption**, plus what is stored (questions and answers are not), where, how it is encrypted, how to delete (one item,
+everything, the account), logs, the safety message, and the pilot's limits (the laptop holds the key). A test checks
+that the app's note and `PRIVACY.md` say the same.

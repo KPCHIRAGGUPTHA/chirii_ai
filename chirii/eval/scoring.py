@@ -323,6 +323,8 @@ def period_ends(task: Dict[str, Any]) -> Set[Tuple[int, int]]:
     """Marker change, 22 Nov (S4b, CRITERIA.md): the first and last day of the period the question names are worked-out
     values, like day counts ("next 7 days" from 7 December: 7 and 14 December)."""
     today = date.fromisoformat(task["today"])
+    if task.get("period"):  # dev set 3 records the period its question names (CRITERIA.md, before run (e3))
+        return {(d.day, d.month) for d in (date.fromisoformat(x) for x in task["period"])}
     period = asked_period(task.get("question", ""), today)
     return {(d.day, d.month) for d in period} if period else set()
 

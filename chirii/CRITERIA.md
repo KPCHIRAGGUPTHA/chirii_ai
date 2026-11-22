@@ -178,6 +178,23 @@ system, with the same settings and marker as the development runs.
 - **The GPU diagnostic** (run (b)'s setup with Qwen2.5-7B-Instruct Q8_0 on the GPU PC) has **no decision attached**. It
   shows how much of the gap a larger model closes. It does not change any bar or verdict.
 
+### Development set 3 and run (e3) (owner, 22 Nov; written before S4c was built)
+
+- **Tasks** (`chirii/eval/DEV3_TASKS.md`), committed with their marking rules before any S4c code:
+  - 30 memory tasks;
+  - 40 general-chat tasks: 15 maths, 15 general knowledge, 10 writing and advice;
+  - 15 router tests.
+- **Run (e3)** is run **once** on the S4c system: a fresh first-try number. It is reported next to runs (d) and (e1),
+  with a 95% margin of error. **Router accuracy is shown separately**, on the 15 router tests and on all 85 tasks' expected
+  routes.
+- **Marking:**
+  - memory tasks use `scoring.py`;
+  - chat tasks use `chat_scoring.py`: the expected number, the key facts, "no live information" and "not sure" where
+    they apply, length and list limits, and no invented rupee amounts when a person's memory is involved.
+- **Marker change:** where a dev-3 task records the period its question names ("this weekend", "before the Goa trip"),
+  that period's first and last dates count as worked-out values, as with the S4b period-end rule.
+- **The held-out 30 stay untouched until S6.**
+
 ### Held-out test set (owner's change)
 
 - In S6, before the final report, 30 new tasks are written:

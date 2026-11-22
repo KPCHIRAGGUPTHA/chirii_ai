@@ -25,7 +25,8 @@ from chirii.app.formatting import KIND_LABELS, make_title, say_amount, say_date,
 from chirii.app.guard import check_answer
 from chirii.app.windows import question_window
 from chirii.app.planner import Draft, label_for, plan_draft, status_draft, strip_when, window_draft
-from chirii.app.router import mentions_specific, route as route_question
+from chirii.app.router import LIVE, MATHS_WORDS, MEMORY_ROUTES, matched_terms, mentions_all, mentions_specific, route as route_question, term_matches
+from chirii.app.chat import LABELS, general_answer, maths_answer, writing_answer
 from chirii.app.llm.client import ChatModel
 from chirii.app.logging_setup import log_event
 from chirii.app.memory.store import MemoryStore, keywords
@@ -129,6 +130,7 @@ def system_prompt(today: date, version: int = 1) -> str:
                     f"fact answers it, say \"{NOT_IN_MEMORY}\"")
         rules[2] = "- When a fact has 'Current details', use those, not older values in what was said."
         rules.append("- Speak directly to the person as 'you'; never refer to them in the third person.")
+        rules.append("- When you say when something is, give its date and, if it has one, its time.")
         return ("You are Chirii, a personal memory assistant. Answer the question using only the memory facts given.\n"
                 f"Today is {say_date(today.isoformat())}.\nRules:\n" + "\n".join(rules))
     # version 1 is frozen: it is the prompt of runs (a) and (b)
@@ -142,6 +144,16 @@ LEAD_SCHEMA = {"type": "object", "properties": {"lead": {"type": "string", "maxL
                "required": ["lead", "closing"]}
 NO_CLASH = re.compile(r"\bno (clash|clashes|conflicts?|overlaps?)\b|\bnothing (clashes|overlaps)\b", re.I)
 TIME_IN_TEXT = re.compile(r"\b\d{1,2}([:.]\d{2})?\s*(am|pm|a\.m\.|p\.m\.)", re.I)
+
+
+def add_missing_time(text: str, items: List[Dict[str, Any]], today: date) -> str:
+    """S4c: a lookup answer that gives an item's date but not its time gets the time added by code."""
+    for item in items:
+        if not item.get("time") or not item.get("date"):
+            continue
+        if contains(text, {"date": item["date"]}, today) and not contains(text, {"time": item["time"]}, today):
+            return text.rstrip() + f" It's at {say_time(item['time'])}."
+    return text
 
 
 def lead_problems(lead: str, draft: Draft, today: date, question: str) -> List[str]:
@@ -195,7 +207,8 @@ class Answer:
     problems: List[str] = field(default_factory=list)
     unconfirmed: List[str] = field(default_factory=list)
     first_answer: Optional[str] = None      # the model's first answer, kept for the S3 report when the guard acted
-    route: str = "-"                         # S4: plan, window, status, lookup or meaning
+    route: str = "-"                         # S4c: one of router.ROUTES
+    label: str = ""                          # S4c: "From your memory", "Calculated", "General knowledge", "Writing help"…
 
 
 class Assistant:
@@ -276,29 +289,93 @@ class Assistant:
     # ------------------------------------------------------------------ S4: routed answers
 
     def _ask_routed(self, question: str, today: date) -> Tuple[Answer, List[Dict[str, Any]]]:
-        route = route_question(question, today, self.model)
+        saved = self.store.items(include_updates=False)
+        route = route_question(question, today, self.model, saved)
+        answer, used = self._dispatch(route, question, today, saved)
+        answer.route = route.kind
+        answer.label = answer.label or (LABELS["memory"] if route.kind in MEMORY_ROUTES else LABELS.get(route.kind, ""))
+        return answer, used
+
+    def _dispatch(self, route, question: str, today: date, saved: List[Dict[str, Any]]) -> Tuple[Answer, List[Dict[str, Any]]]:
         if route.kind == "window":
-            return self._reword(question, today, window_draft(self.store, *route.window, route.focus, question, named=route.named), route)
+            header = route.period.header() if route.period and route.named else None
+            return self._reword(question, today, window_draft(self.store, *route.window, route.focus, question, named=route.named,
+                                                              header=header), route)
         if route.kind == "plan":
             return self._reword(question, today, plan_draft(self.store, *route.window, today), route)
+        if route.kind == "people":
+            return self._people(route, question, saved)
+        if route.kind in ("maths", "mixed", "general", "writing"):
+            return self._chat(route, question, today)
+        # lookup, status and meaning: the specific-item check first
+        if route.specific:
+            refusal = self._specific_check(route, question, saved)
+            if refusal is not None:
+                return refusal, []
         if route.kind == "status":
-            candidates = [i for i in self.matches(question) if mentions_specific(route.specific, i["text"] + " " + (i.get("title") or ""))]
+            candidates = [i for i in self.matches(question)
+                          if mentions_all(route.specific, i["text"] + " " + (i.get("title") or ""))] if route.specific else self.matches(question)
             item = candidates[0] if candidates else None
             draft = status_draft(item, self.store.history(item["id"]) if item else [], question)
-            answer = Answer(text=draft.text, fact_ids=[i["id"] for i in draft.items], guard="code", route=route.kind)
-            return answer, draft.items
-        # lookup and meaning: the specific-item check, then retrieval, Qwen and the guard as in run (b)
+            return Answer(text=draft.text, fact_ids=[i["id"] for i in draft.items], guard="code"), draft.items
         items = self.select_relevant(question, today)
         if route.specific:
-            relevant = [i for i in items if mentions_specific(route.specific, i["text"] + " " + (i.get("title") or ""))]
-            if not relevant:
-                named = " ".join(t.lstrip("!") for t in route.specific if t.startswith("!")) or route.specific[0]
-                log_event("specific_item_check", status="not_saved", stage="answer")
-                return Answer(text=f"I don't have anything about {named} saved.", fact_ids=[], guard="code", route=route.kind), []
-            items = relevant
+            check = mentions_all if route.kind == "lookup" else mentions_specific
+            items = [i for i in items if check(route.specific, i["text"] + " " + (i.get("title") or ""))] or items
         answer, used = self._ask_retrieved(question, today, items)
-        answer.route = route.kind
+        if route.kind == "lookup":
+            answer.text = add_missing_time(answer.text, used, today)
         return answer, used
+
+    def _specific_check(self, route, question: str, saved: List[Dict[str, Any]]) -> Optional[Answer]:
+        """S4c: for lookups and status questions every key term must match one memory ("Infosys" and "interview");
+        meaning questions keep the S4 rule (the names must match). If only part matches, say what IS saved."""
+        text = lambda i: i["text"] + " " + (i.get("title") or "")
+        check = mentions_all if route.kind in ("lookup", "status") else mentions_specific
+        if any(check(route.specific, text(i)) for i in saved):
+            return None
+        log_event("specific_item_check", status="not_saved", stage="answer")
+        scored = sorted(((len(matched_terms(route.specific, text(i))), i) for i in saved), key=lambda x: -x[0])
+        missing_words = lambda i: [t.lstrip("!") for t in route.specific if not term_matches(t, text(i))]
+        if scored and scored[0][0] > 0:
+            item = scored[0][1]
+            when = "; ".join(when_text(item))
+            have = (item.get("title") or make_title(item["text"])) + (f" ({when})" if when else "")
+            return Answer(text=f"I have {have}, but nothing about {' '.join(missing_words(item))}.", fact_ids=[item["id"]], guard="code")
+        named = " ".join(t.lstrip("!") for t in route.specific if t.startswith("!")) or route.specific[0]
+        return Answer(text=f"I don't have anything about {named} saved.", fact_ids=[], guard="code")
+
+    def _people(self, route, question: str, saved: List[Dict[str, Any]]) -> Tuple[Answer, List[Dict[str, Any]]]:
+        """People route (structure for the people step): what the person has said that mentions the name."""
+        names = [t.lstrip("!") for t in route.specific if t.startswith("!")]
+        found = [i for i in saved if names and any(term_matches(n, i["text"]) for n in names)]
+        if not found:
+            return Answer(text=f"I don't have anything about {' '.join(names) or 'them'} saved.", fact_ids=[], guard="code"), []
+        lines = [f"Here's what you've told me about {' '.join(names)}:"] + [f"- {i['text']}" for i in found]
+        return Answer(text="\n".join(lines), fact_ids=[i["id"] for i in found], guard="code"), found
+
+    def _chat(self, route, question: str, today: date) -> Tuple[Answer, List[Dict[str, Any]]]:
+        if route.kind == "maths" or (route.kind == "mixed" and MATHS_WORDS.search(question)):
+            mixed = route.kind == "mixed"
+            items = self.select_relevant(question, today) if mixed else []
+            text, ok = maths_answer(self.model, question, today, items, mixed)
+            return Answer(text=text, fact_ids=[i["id"] for i in items], guard="code" if ok else "fallback",
+                          label=LABELS["mixed_maths" if mixed else "maths"]), items
+        if route.kind == "general":
+            return Answer(text=general_answer(self.model, question, bool(LIVE.search(question))), fact_ids=[], guard="pass",
+                          label=LABELS["general"]), []
+        items = self.select_relevant(question, today) if route.personal else []
+        text, made_up = writing_answer(self.model, question, today, items)
+        answer = Answer(text=text, fact_ids=[i["id"] for i in items], guard="pass", label=LABELS["mixed" if route.kind == "mixed" else "writing"])
+        if made_up:
+            retry, again = writing_answer(self.model, question + " (Use only the dates and amounts given; add none.)", today, items)
+            answer.first_answer, answer.problems = text, [f"made up {v}" for v in made_up]
+            if not again:
+                answer.text, answer.guard = retry, "retry"
+            else:
+                answer.text = retry + "\n\n(Please check the details: I may have added some you didn't give me: " + ", ".join(again) + ".)"
+                answer.guard = "fallback"
+        return answer, items
 
     def _reword(self, question: str, today: date, draft: Draft, route) -> Tuple[Answer, List[Dict[str, Any]]]:
         """S4b: the code's list is shown exactly as built. Qwen writes only a short lead sentence and an optional

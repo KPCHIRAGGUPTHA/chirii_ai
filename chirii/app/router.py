@@ -1,78 +1,105 @@
 """
-Question router (S4): decides how a question is answered, so the model is only asked to word answers.
+Question router (S4c): one router for everything Chirii is asked.
 
-    plan     "Plan my day", "my week": code builds the timeline, orders it and finds clashes (planner.py)
-    window   "What's due this week?", "Which bills do I still have to pay?": code filters, counts and totals
-    status   "Is the water bill paid?", "Did I take my tablet?": code reads the item's status
-    lookup   "When is my dentist appointment?": retrieval, then Qwen, then the fact-check guard
-    meaning  "What did the doctor say about food?": the same path as lookup
+    memory      lookup ("when is…"), status ("is it paid?", "did I…?"), window (what falls in a period),
+                plan (a day's or week's timeline), meaning (what a note says)
+    people      "who is Kamala?" (the route exists; people memory is built in the people step)
+    general     maths (worked out by the calculator), general knowledge, writing and advice
+    mixed       maths or advice that needs the person's memory ("if my mess bill is split into 4…")
 
-The rules run first. Qwen is asked only when no rule matches, and its reply is limited by a JSON schema to these five
-names. Every question also gets its specific terms ("electricity", "LIC", "Compiler Design"), which the specific-item
-check uses: if the best memory doesn't mention any of them, Chirii says it hasn't got that saved.
+A personal question (my, I, me, we, mera…, or a name saved in memory) never goes to pure general knowledge.
+
+The rules run first. If no rule is sure, Qwen picks the route, the period and the named item inside a JSON schema
+that allows only valid values; code then checks its choice (the period must give real dates, a named item must exist,
+the route must fit the question's words). If the choice fails the checks, a safe default is used: show the relevant
+memories for a personal question, general knowledge otherwise. Nothing is guessed.
 """
 
 import json
 import re
 from dataclasses import dataclass, field
 from datetime import date, timedelta
-from typing import List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
-from chirii.app.windows import question_window
 from chirii.app.llm.client import ChatModel, LLMError
 from chirii.app.logging_setup import log_event
+from chirii.app.periods import WEEKDAYS, Period, read_period
 
-KINDS = ["plan", "window", "status", "lookup", "meaning"]
+ROUTES = ["lookup", "status", "window", "plan", "meaning", "people", "maths", "general", "writing", "mixed"]
+MEMORY_ROUTES = {"lookup", "status", "window", "plan", "meaning", "people"}
+KINDS = ROUTES  # kept for older callers
 
-PLAN = re.compile(r"\b(plan|planner|schedule|agenda)\b|\bmy (day|week)\b|\b(aaj|kal) ka plan\b", re.I)
-STATUS = re.compile(r"^\s*(did|have|has|is|are|was|were)\b.*\b(paid|taken|took|done|submitted|collected|finished|booked|renewed|"
-                    r"cleared|settled|returned|delivered)\b|^\s*did i\b", re.I)
-WINDOW_WORDS = re.compile(r"\b(what|which|any|anything|due|pay|payments?|bills?|fees?|coming up|upcoming|have|dates?|kya)\b", re.I)
-STILL_TO_PAY = re.compile(r"\bstill (have to|need to|got to)? ?pay\b|\bstill due\b|\b(unpaid|pending|outstanding)\b", re.I)
-MEANING = re.compile(r"^\s*(what did (i|the|my)|what does|what do(es)? \w+ want|what should|which topics|where did|where is|"
-                     r"what do i need to (buy|carry|take|bring)|what was|tell me about)\b", re.I)
-LOOKUP = re.compile(r"^\s*(when|what time|how much|how many|what is|what's|where|who|which|kab|kitna|kitni)\b|\b(kab|kitna|kitni)\b", re.I)
-
-# What a window question is about
-# "due" is not a payment word on its own (S4b): "Is anything due tomorrow?" covers payments and money owed to the user
+PERSONAL = re.compile(r"\b(my|me|mine|i|i'm|i've|i'll|we|our|us|mera|meri|mere|mujhe|hum|hamara|hamari|apna|apni)\b", re.I)
+RELATIONS = re.compile(r"\b(mom|mum|mother|dad|father|amma|appa|papa|mummy|wife|husband|son|daughter|sister|brother|"
+                       r"granddaughter|grandson|nephew|niece|aunt|aunty|uncle|landlord|maid|cook)\b", re.I)
+PLAN = re.compile(r"\b(plan|planner|schedule|agenda|timetable for my)\b|\bmy (day|week)\b|\b(aaj|kal) ka plan\b|"
+                  r"\b(look|looks|looking) like\b|\bhow (does|do|will) my \w+ look\b|\bhow'?s my \w+ looking\b|"
+                  r"\bwhat'?s my \w+ like\b|\bon my plate\b|\bkaisa (hai|rahega)\b|"
+                  r"\btell me about my (day|week|\w+day)\b", re.I)
+STATUS = re.compile(r"^\s*(did|have|has|is|are|was|were|do|does)\b.*\b(paid|pay|taken|took|done|submitted|collected|finished|"
+                    r"booked|renewed|cleared|settled|returned|delivered|pending|owe|due)\b|^\s*did i\b", re.I)
+LIST_WORDS = re.compile(r"\b(what|which|any|anything|due|pay|payments?|bills?|fees?|coming up|upcoming|happening|have|on|dates?|kya|"
+                        r"how much)\b", re.I)
+STILL_TO_PAY = re.compile(r"\bstill (have to|need to|got to)? ?pay\b|\b(unpaid|outstanding)\b", re.I)
+MEANING = re.compile(r"^\s*(what did (i|the|my)|what does|what do(es)? \w+ want|what should i (take|carry|bring|remember)|which topics|"
+                     r"where did|where is|what do i need to (buy|carry|take|bring|get)|what was|anything special|tell me about the)\b", re.I)
+LOOKUP = re.compile(r"^\s*(when|what time|how much|how many|what is|what's|where|who|which)\b|\b(kab|kitna|kitni|kya hai)\b", re.I)
+WHO_IS = re.compile(r"^\s*(who is|who's|tell me about)\s+([A-Z][\w.]*(?:\s+[A-Z][\w.]*)?)", re.I)
+WRITING = re.compile(r"^\s*(write|draft|compose|rewrite|translate|suggest|explain|give me \d* ?(tips|ideas|ways)|list \d* ?(tips|ideas|ways)|"
+                     r"help me (write|say|word))\b", re.I)
+ADVICE = re.compile(r"^\s*(how (do|can|should) i|how to|what should|any tips|is it (ok|okay|safe)|should i)\b", re.I)
+LIVE = re.compile(r"\b(today'?s|right now|now|currently|current|latest|live|yesterday'?s?|this morning'?s)\b.*\b(price|rate|weather|news|"
+                  r"score|match|result|traffic|temperature)\b|\b(price|rate|weather|news|score)\b.*\b(today|now|right now|currently)\b", re.I)
+MATHS_WORDS = re.compile(r"\d+(\.\d+)?\s*%|\b(percent|interest|split|divide|divided|share equally|equally|per (day|month|person|kg|litre)|"
+                         r"each part|each person|instalments?|installments?|convert|km/h|m/s|square (feet|metres|meters)|area|"
+                         r"how many days|days (from|between|until|till)|in total|altogether|sum of|total of|half|double|twice|"
+                         r"plus|minus|times|multiplied)\b|\d\s*[-+*/x×÷]\s*\d|\bcost of\b|\bwhat do \d+ \w+ cost\b", re.I)
 PAY = re.compile(r"\b(pay|payments?|bills?|fees?|emis?|premiums?|rent)\b", re.I)
-OWED_TO_ME = re.compile(r"\bowe(s|d)? me\b|\bowed to me\b|\bmoney (due|owed) to me\b|\bcollect\b", re.I)
+OWED_TO_ME = re.compile(r"\bowe(s|d)? me\b|\bowed to me\b|\bmoney (due|owed) to me\b|\bto receive\b|\blena hai\b", re.I)
 TODO = re.compile(r"\b(finish|to do|complete|submit|tasks?|to-?dos?)\b", re.I)
 DATES = re.compile(r"\b(birthdays?|anniversar(y|ies)|important dates?|family dates?|festivals?|occasions?)\b", re.I)
 DUE = re.compile(r"\bdue\b", re.I)
 
-# Words that name a specific thing, so a memory about a different thing must not answer the question
 SPECIFIC_THINGS = {
     "electricity", "bijli", "water", "gas", "cylinder", "broadband", "internet", "wifi", "phone", "mobile", "recharge",
     "dth", "lic", "insurance", "rent", "emi", "loan", "credit", "card", "tax", "gst", "school", "tuition", "college",
     "hostel", "mess", "semester", "exam", "dentist", "eye", "surgery", "scan", "passport", "aadhaar", "pan", "kyc",
     "bank", "account", "salary", "pension", "train", "flight", "bus", "cgpa", "marks", "result",
+    # S4c: kinds of event or document, so "Infosys interview" needs both words to match
+    "interview", "appointment", "meeting", "party", "wedding", "engagement", "birthday", "anniversary", "function",
+    "play", "practice", "class", "trip", "filing", "renewal", "deadline", "annual", "match", "concert", "ceremony",
+    "visa", "ticket", "booking",
 }
-SYNONYMS = {"bijli": "electricity", "bp": "pressure", "dr": "doctor", "doctors": "doctor", "checkup": "check"}
+SYNONYMS = {"bijli": "electricity", "bp": "pressure", "dr": "doctor", "doctors": "doctor", "checkup": "check",
+            "physio": "physiotherapy", "mom": "mom", "amma": "amma"}
 QUESTION_WORDS = {"when", "what", "where", "who", "which", "how", "is", "are", "was", "did", "do", "does", "my", "our", "the",
                   "i", "me", "a", "an", "and", "or", "to", "for", "of", "on", "in", "at", "it", "much", "time", "due", "kab",
-                  "hai", "ka", "ki", "ke", "mera", "meri", "mere", "kya", "kitna", "kitni"}
+                  "hai", "ka", "ki", "ke", "ko", "se", "mera", "meri", "mere", "kya", "kitna", "kitni", "lena", "dena", "now"}
+NOT_NAMES = set(WEEKDAYS) | {"january", "february", "march", "april", "may", "june", "july", "august", "september", "october",
+                             "november", "december", "today", "tomorrow", "ok", "okay", "please", "hi", "hello"}
 
 
 @dataclass
 class Route:
     kind: str
     window: Optional[Tuple[date, date]] = None
-    focus: List[str] = field(default_factory=list)   # window questions: pay, owed, todo, dates, all
+    focus: List[str] = field(default_factory=list)   # window questions: pay, owed, todo, dates, due, all
     specific: List[str] = field(default_factory=list)
     source: str = "rules"
     named: bool = True        # the question named the period (otherwise it is a default, and is not stated)
+    period: Optional[Period] = None
+    personal: bool = False
 
 
 def specific_terms(question: str) -> List[str]:
-    """Names in the question (capitalised words other than the first, and abbreviations like LIC), then words for
-    specific kinds of thing ("electricity", "gas"). Names come first and are marked with a leading '!'."""
+    """Names in the question (capitalised words other than the first, and abbreviations like LIC; never weekday or
+    month names), then words for specific kinds of thing. Names are marked with a leading '!'."""
     names, things = [], []
     words = re.findall(r"[A-Za-z][A-Za-z\-]*(?:'s)?", question)
     for i, word in enumerate(words):
         clean = re.sub(r"'s$", "", word)
         lower = clean.lower()
-        if lower in QUESTION_WORDS:
+        if lower in QUESTION_WORDS or lower in NOT_NAMES:
             continue
         is_name = (i > 0 and clean[:1].isupper()) or (clean.isupper() and len(clean) >= 2)
         if is_name and lower not in {n.lower() for n in names}:
@@ -91,7 +118,7 @@ def term_matches(term: str, item_text: str) -> bool:
 
 
 def mentions_specific(terms: List[str], item_text: str) -> bool:
-    """True if the memory matches the question's names (when it has any), otherwise its specific things."""
+    """S4 rule, kept for meaning questions: the memory matches the question's names (if any), otherwise one thing."""
     names = [t for t in terms if t.startswith("!")]
     things = [t for t in terms if not t.startswith("!")]
     if names:
@@ -99,6 +126,15 @@ def mentions_specific(terms: List[str], item_text: str) -> bool:
     if things:
         return any(term_matches(t, item_text) for t in things)
     return True
+
+
+def matched_terms(terms: List[str], item_text: str) -> List[str]:
+    return [t for t in terms if term_matches(t, item_text)]
+
+
+def mentions_all(terms: List[str], item_text: str) -> bool:
+    """S4c rule for lookups and status questions: every key term must match ("Infosys" and "interview")."""
+    return all(term_matches(t, item_text) for t in terms)
 
 
 def window_focus(question: str) -> List[str]:
@@ -116,61 +152,153 @@ def window_focus(question: str) -> List[str]:
     return focus
 
 
-def plan_window(question: str, today: date) -> Tuple[date, date]:
-    q = question.lower()
-    if re.search(r"\bnext week\b", q):
-        start = today + timedelta(days=7 - today.weekday())
-        return start, start + timedelta(days=6)
-    if re.search(r"\bweek\b", q):
-        return today, today + timedelta(days=6 - today.weekday())
-    if re.search(r"\b(tomorrow|kal)\b", q):
-        return today + timedelta(days=1), today + timedelta(days=1)
-    return today, today
+def is_personal(question: str, names_in_memory: List[str], items: Optional[List[Dict[str, Any]]] = None) -> bool:
+    """My/I/we/mera…, a relation (mom, landlord), a name saved in memory, or a specific thing that a saved item is about
+    ("when is the gas bill due?" when a gas bill is saved)."""
+    if PERSONAL.search(question) or RELATIONS.search(question):
+        return True
+    if any(re.search(rf"\b{re.escape(n.lower())}\b", question.lower()) for n in names_in_memory):
+        return True
+    things = [t for t in specific_terms(question) if not t.startswith("!")]
+    if items and any(term_matches(t, i["text"]) for t in things for i in items):
+        return True
+    from chirii.app.memory.store import keywords
+    words = keywords(question)
+    return bool(items) and any(len(words & keywords(i["text"])) >= 2 for i in items)
 
 
-def route_by_rules(question: str, today: date) -> Optional[Route]:
+def memory_names(items: List[Dict[str, Any]]) -> List[str]:
+    """Capitalised names in what the person told Chirii (Kamala, Sharma ji, Infosys), for spotting personal questions."""
+    names = set()
+    for item in items:
+        for word in re.findall(r"\b[A-Z][a-z]{2,}\b", item["text"]):
+            if word.lower() not in NOT_NAMES and word.lower() not in QUESTION_WORDS and word not in ("The", "Note", "My", "Our", "Shop", "Pay"):
+                names.add(word)
+    return sorted(names)
+
+
+def route_by_rules(question: str, today: date, items: Optional[List[Dict[str, Any]]] = None) -> Optional[Route]:
+    items = items or []
     specific = specific_terms(question)
-    if PLAN.search(question):
-        return Route("plan", plan_window(question, today), specific=specific)
-    if STATUS.search(question):
-        return Route("status", specific=specific)
-    window = question_window(question, today)
+    names = memory_names(items)
+    personal = is_personal(question, names, items)
+    period = read_period(question, today, items)
+    # Asking an assistant what is planned, due or coming up is always about the person's own memory
+    if PLAN.search(question) or (period and re.search(r"\b(anything|due|coming up|upcoming|happening|pending|on)\b", question, re.I)):
+        personal = True
+    window = (period.start, period.end) if period else None
+
+    def r(kind, **kw):
+        return Route(kind, kw.pop("window", window), kw.pop("focus", []), specific, period=period, personal=personal, **kw)
+
+    who = WHO_IS.match(question)
+    if who and any(term_matches(who.group(2).split()[0], i["text"]) for i in items):
+        return r("people")
+    maths = bool(MATHS_WORDS.search(question))
+    if maths and personal:
+        return r("mixed")
+    if maths and re.search(r"\d", question):
+        return r("maths")
+    if WRITING.search(question):
+        return r("writing")
+    if ADVICE.search(question):
+        if personal and strongly_about_memory(question, items):
+            return r("mixed")
+        if personal or not LOOKUP.search(question):
+            return r("writing")
+    if LIVE.search(question) and not personal:
+        return r("general")
+    if not personal:
+        return r("general") if LOOKUP.search(question) or question.strip().endswith("?") else None
+    # personal: memory routes
+    if PLAN.search(question) and (period is None or period.kind in ("day", "weekday") or "week" in period.words):
+        if period is None:
+            period = Period(today, today, "today", "day")
+        return Route("plan", (period.start, period.end), [], specific, period=period, personal=True)
+    # "Do I need to pay anything…?" asks for a list, not the status of one item
+    if STATUS.search(question) and not re.search(r"\bany(thing)?\b", question, re.I):
+        return r("status")
     if STILL_TO_PAY.search(question):
         named = window is not None
-        window = window or (today, today + timedelta(days=90))
-        return Route("window", window, window_focus(question) if PAY.search(question) else ["pay"], specific, named=named)
-    if window and WINDOW_WORDS.search(question) and not re.match(r"^\s*(when|what time|how much)\b", question, re.I):
-        return Route("window", window, window_focus(question), specific)
+        return r("window", window=window or (today, today + timedelta(days=90)), focus=window_focus(question) if PAY.search(question) else ["pay"], named=named)
+    if period and (LIST_WORDS.search(question) or period.kind == "event"):
+        if period.kind == "weekday" and not PAY.search(question):
+            return Route("plan", window, [], specific, period=period, personal=True)
+        return r("window", focus=window_focus(question))
     if MEANING.search(question):
-        return Route("meaning", specific=specific)
+        return r("meaning")
     if LOOKUP.search(question):
-        return Route("lookup", specific=specific)
+        return r("lookup")
     return None
 
 
-def route(question: str, today: date, model: Optional[ChatModel] = None) -> Route:
-    decided = route_by_rules(question, today)
+def strongly_about_memory(question: str, items: List[Dict[str, Any]]) -> bool:
+    """An advice question that names a saved item (two or more shared words with one memory) is mixed."""
+    from chirii.app.memory.store import keywords
+    words = keywords(question)
+    return any(len(words & keywords(i["text"])) >= 2 for i in items)
+
+
+ROUTE_SCHEMA_PERIODS = ["none", "today", "tomorrow", "this week", "next week", "this weekend", "this month", "next month",
+                        *[f"on {d.capitalize()}" for d in WEEKDAYS]]
+
+
+def route(question: str, today: date, model: Optional[ChatModel] = None, items: Optional[List[Dict[str, Any]]] = None) -> Route:
+    items = items or []
+    decided = route_by_rules(question, today, items)
     if decided is not None:
         log_event("route", status=decided.kind, stage="router")
         return decided
-    kind = "lookup"
-    source = "default"
-    if model is not None:
-        schema = {"type": "object", "properties": {"kind": {"type": "string", "enum": KINDS}}, "required": ["kind"]}
-        messages = [{"role": "system", "content": (
-            "Classify this question to a personal memory assistant. plan: they want their day or week planned. "
-            "window: they want a list of what falls in a period (due this week, coming up). status: they ask whether "
-            "something was done or paid. lookup: they ask for one fact (when, how much, what time). meaning: they ask "
-            "what a note says about something.")},
-            {"role": "user", "content": question}]
-        try:
-            kind = json.loads(model.chat(messages, max_tokens=20, json_schema=schema, purpose="route").text)["kind"]
-            source = "model"
-        except (LLMError, ValueError, KeyError):
-            pass
-    window = question_window(question, today) if kind == "window" else plan_window(question, today) if kind == "plan" else None
-    named = window is not None
-    if kind == "window" and window is None:
-        window = (today, today + timedelta(days=7))
-    log_event("route", status=kind, stage="router_" + source)
-    return Route(kind, window, window_focus(question) if kind == "window" else [], specific_terms(question), source, named=named)
+    personal = is_personal(question, memory_names(items), items)
+    safe = Route("lookup" if personal else "general", specific=specific_terms(question), source="default", personal=personal)
+    if model is None:
+        log_event("route", status=safe.kind, stage="router_default")
+        return safe
+    titles = sorted({(i.get("title") or "")[:60] for i in items if i.get("title")})[:40]
+    schema = {"type": "object", "properties": {
+        "route": {"type": "string", "enum": ROUTES},
+        "period": {"type": "string", "enum": ROUTE_SCHEMA_PERIODS},
+        "item": {"anyOf": [{"type": "string", "enum": titles}, {"type": "null"}]} if titles else {"type": "null"}},
+        "required": ["route", "period", "item"]}
+    messages = [{"role": "system", "content": (
+        "Classify this question to a personal memory assistant. Routes: lookup (one saved fact), status (whether something was "
+        "done or paid), window (what falls in a period), plan (a day or week planned), meaning (what a saved note says), people "
+        "(about a person), maths (a calculation), general (general knowledge), writing (write or advise), mixed (calculation "
+        "or advice using saved memories). Give the period the question names, and the saved item it names, if any.")},
+        {"role": "user", "content": question}]
+    try:
+        choice = json.loads(model.chat(messages, max_tokens=60, json_schema=schema, purpose="route").text)
+    except (LLMError, ValueError):
+        log_event("route", status=safe.kind, stage="router_default")
+        return safe
+    checked = validate_choice(choice, question, today, personal, items)
+    if checked is None:
+        log_event("route", status=safe.kind, stage="router_rejected")
+        return safe
+    log_event("route", status=checked.kind, stage="router_model")
+    return checked
+
+
+def validate_choice(choice: Dict[str, Any], question: str, today: date, personal: bool, items: List[Dict[str, Any]]) -> Optional[Route]:
+    """Code checks Qwen's routing: the period gives real dates, a named item exists, and the route fits the words."""
+    kind = choice.get("route")
+    if kind not in ROUTES:
+        return None
+    if personal and kind == "general":
+        return None                                   # personal questions never go to pure general
+    if kind in ("maths", "mixed") and not (re.search(r"\d", question) or kind == "mixed" and items):
+        return None
+    period = None
+    if choice.get("period") and choice["period"] != "none":
+        period = read_period(choice["period"], today)
+        if period is None:
+            return None
+    if kind in ("window", "plan") and period is None:
+        return None
+    if choice.get("item") and not any((i.get("title") or "")[:60] == choice["item"] for i in items):
+        return None
+    if kind == "people" and not specific_terms(question):
+        return None
+    window = (period.start, period.end) if period else None
+    return Route(kind, window, window_focus(question) if kind == "window" else [], specific_terms(question), "model",
+                 period=period, personal=personal)

@@ -111,7 +111,7 @@ def create_app(data_dir: Path, secret: str, embedder: Embedder, model: ChatModel
         except LLMError:
             raise HTTPException(status_code=503, detail="The language model is not running. Start llama-server and try again.")
         return {"answer": answer.text, "facts": answer.facts, "duration_ms": answer.duration_ms, "checked": answer.guard,
-                "unconfirmed": answer.unconfirmed}
+                "unconfirmed": answer.unconfirmed, "label": answer.label, "route": answer.route}
 
     @app.post("/api/delete-all")
     def delete_all():

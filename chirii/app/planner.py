@@ -104,7 +104,8 @@ def wanted(item: Dict[str, Any], focus: List[str], question: str) -> bool:
     return ok
 
 
-def window_draft(store: MemoryStore, start: date, end: date, focus: List[str], question: str, named: bool = True) -> Draft:
+def window_draft(store: MemoryStore, start: date, end: date, focus: List[str], question: str, named: bool = True,
+                 header: Optional[str] = None) -> Draft:
     """The list for a period. The header names the period's dates only when the question named the period (S4b: a
     default period, as for "which fees do I still have to pay?", is not stated). Money owed to the user is listed
     separately as "To receive" (S4b)."""
@@ -117,7 +118,8 @@ def window_draft(store: MemoryStore, start: date, end: date, focus: List[str], q
             if item["kind"] == "medicine":
                 break
     entries.sort(key=lambda e: (e[0], e[1]))
-    period = (" " + say_period(start, end)) if named else ""
+    # S4c: the period reader's own words when it has them ("this weekend (…)", "before the Goa trip on …")
+    period = (" " + header) if header else ((" " + say_period(start, end)) if named else "")
     if not entries:
         what = {"pay": "Nothing to pay", "owed": "Nothing to receive", "dates": "No important dates",
                 "due": "Nothing due"}.get(focus[0], "Nothing saved")

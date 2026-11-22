@@ -57,16 +57,16 @@ class TestRouter:
         ("When is the gas bill due?", "lookup"), ("How much is the broadband bill?", "lookup"),
         ("What did I note about the spare key?", "meaning"), ("Where is the spare key?", "meaning"),
     ])
-    def test_rules(self, question, kind):
-        assert route_by_rules(question, MON).kind == kind
+    def test_rules(self, store, question, kind):
+        assert route_by_rules(question, MON, store.items()).kind == kind
 
-    def test_model_only_when_no_rule_matches_and_only_from_the_list(self):
-        model = FakeModel([{"kind": "meaning"}])
-        decided = route("Spare key situation?", MON, model)
+    def test_model_only_when_no_rule_matches_and_only_from_the_list(self, store):
+        model = FakeModel([{"route": "meaning", "period": "none", "item": None}])
+        decided = route("Spare key situation?", MON, model, store.items())
         assert decided.kind == "meaning" and decided.source == "model"
-        assert model.calls[0]["json_schema"]["properties"]["kind"]["enum"] == ["plan", "window", "status", "lookup", "meaning"]
+        assert model.calls[0]["json_schema"]["properties"]["route"]["enum"][:5] == ["lookup", "status", "window", "plan", "meaning"]
         model = FakeModel()
-        assert route("When is the gas bill due?", MON, model).source == "rules" and model.calls == []
+        assert route("When is the gas bill due?", MON, model, store.items()).source == "rules" and model.calls == []
 
 
 class TestWindows:
@@ -155,7 +155,8 @@ class TestStatusAndSpecific:
 
     def test_a_name_not_in_memory_is_refused(self, store):
         answer = Assistant(store, FakeModel(["Monday"])).ask("When is my Physics exam?", MON)
-        assert answer.text == "I don't have anything about Physics saved."
+        # S4c: a partial match says what IS saved
+        assert answer.text == "I have Chemistry exam (on Tuesday 2 February 2027; at 10:00 am), but nothing about Physics."
 
 
 class TestLead:
@@ -164,7 +165,8 @@ class TestLead:
     def test_a_good_lead_goes_before_the_list_unchanged(self, store):
         model = FakeModel([{"lead": "Here's what you have to pay this week.", "closing": "Want a reminder?"}])
         answer = Assistant(store, model).ask("What do I have to pay this week?", MON)
-        draft = window_draft(store, MON, date(2027, 2, 7), ["pay"], "What do I have to pay this week?")
+        draft = window_draft(store, MON, date(2027, 2, 7), ["pay"], "What do I have to pay this week?",
+                             header="this week (Monday 1 February to Sunday 7 February)")
         assert answer.text == "Here's what you have to pay this week.\n" + draft.text + "\nWant a reminder?"
         assert answer.guard == "pass" and answer.route == "window"
         assert model.calls[0]["json_schema"]["required"] == ["lead", "closing"]
@@ -184,7 +186,7 @@ class TestLead:
         bad = {"lead": "You owe ₹950 this week.", "closing": ""}
         model = FakeModel([bad])
         answer = Assistant(store, model).ask("What do I have to pay this week?", MON)
-        assert answer.guard == "lead_dropped" and answer.text.startswith("To pay from Monday 1 February")
+        assert answer.guard == "lead_dropped" and answer.text.startswith("To pay this week (Monday 1 February to Sunday 7 February):")
         assert len(model.calls) == 1 and any("amounts" in p for p in answer.problems)
 
     def test_a_lead_that_denies_a_clash_is_dropped(self, store):
@@ -224,8 +226,8 @@ class TestCosmetics:
         from chirii.app.memory.hybrid import build_messages
         from chirii.app.planner import status_draft
         texts = [system_prompt(MON, version=2), lead_prompt(MON), *[m["content"] for m in build_messages("dentist tmrw 5pm", MON)]]
-        model = FakeModel([{"kind": "lookup"}])
-        route("Spare key situation?", MON, model)
+        model = FakeModel([{"route": "meaning", "period": "none", "item": None}])
+        route("Spare key situation?", MON, model, store.items())
         texts += [m["content"] for m in model.calls[0]["messages"]]
         items = store.items()
         texts += [fact_line_v2(i, store.history(i["id"]), MON, "What's due?") for i in items]
@@ -307,4 +309,4 @@ class TestLeadLength:
                "closing": "aid is ₹"}
         answer = Assistant(store, FakeModel([cut])).ask("What do I have to pay this week?", MON)
         assert answer.guard == "lead_dropped" and "lead hit the length limit" in answer.problems
-        assert answer.text.startswith("To pay from Monday 1 February") and "to be p" not in answer.text
+        assert answer.text.startswith("To pay this week (Monday 1 February to Sunday 7 February):") and "to be p" not in answer.text

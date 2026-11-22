@@ -642,3 +642,31 @@ S4c was built and tested on its own examples, then run (e3) was run once. The he
 **The development-set loop stops here.** Remaining gaps are in `docs/KNOWN_GAPS.md`, not fixed. **Next:** S5
 (encryption at rest, login, tester consent note), then the safety layer, the 500-item scale check, the fresh
 extraction set, and S6.
+
+## S5, part 1 – Repository out of OneDrive; encryption at rest (22 November 2026)
+
+**Repository moved out of OneDrive** to `C:\dev\chirii_ai` (copied with robocopy, 7,384 files, 0 failed; the venv
+rebuilt from `requirements.txt` with the same package versions; all tests pass there). The OneDrive copy is left for
+the owner to delete. The data key was created only after the move, so it never sat in OneDrive.
+
+**Encryption at rest, option C** (owner's choice):
+- Each user's memory is one SQLite database, held in memory while the app runs. On disk it is only one file,
+  `memory.enc`, encrypted with AES-256-GCM (`cryptography`). Changed or truncated files are refused.
+- Search vectors moved into the encrypted database; `index.faiss` no longer exists on disk.
+- A key per user, derived from `CHIRII_DATA_KEY` (HKDF-SHA256) and the user's folder name. One user's file won't open
+  as another's.
+- Atomic writes (temporary file, flush, swap): a crash leaves the old file whole, and the copy in memory goes back to
+  it.
+- A per-user lock, shared by every store object for that user.
+- A key check value: a wrong key stops the app before any data is touched, and a new key is never made when encrypted
+  data exists.
+- `python -m chirii.app.keys create | show | check | rotate | backup FOLDER`. Rotation re-encrypts next to the old
+  files and is safe to interrupt; backups copy encrypted files only, never the key.
+- Data moved to `%LOCALAPPDATA%\Chirii` (`CHIRII_DATA_DIR`). The fictional demo data was migrated, encrypted, and the
+  plaintext copy removed from the repository.
+- Tests: `test_s5_encryption.py` (13) and `test_s5_keys.py` (5); 471 pass.
+
+**If the data key is lost, the data cannot be recovered.**
+
+**Next:** login, the safety layer with the attribute check, the consent note, the 500-item scale check, the fresh
+extraction set.

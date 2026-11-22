@@ -18,7 +18,9 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from chirii.app.assistant import Assistant
-from chirii.app.config import REPO_ROOT, get_settings
+from chirii.app.config import ENV_FILE, REPO_ROOT, get_settings
+from chirii.app.keys import read_env
+from chirii.app.memory.vault import check_key
 from chirii.app import people as people_module
 from chirii.app.formatting import understood
 from chirii.app.llm.client import ChatModel, LLMClient, LLMError
@@ -68,13 +70,13 @@ def local_only(request: Request) -> None:
 
 
 def create_app(data_dir: Path, secret: str, embedder: Embedder, model: ChatModel,
-               today: Callable[[], date] = date.today) -> FastAPI:
+               today: Callable[[], date] = date.today, data_key: Optional[str] = None) -> FastAPI:
     app = FastAPI(title="Chirii AI demo", docs_url=None, redoc_url=None, dependencies=[Depends(local_only)])
     state = {"store": None}
 
     def store() -> MemoryStore:
         if state["store"] is None or not state["store"].dir.exists():
-            state["store"] = MemoryStore(data_dir, DEMO_USER, secret, embedder, extractor=HybridExtractor(model))
+            state["store"] = MemoryStore(data_dir, DEMO_USER, secret, embedder, extractor=HybridExtractor(model), data_key=data_key)
         return state["store"]
 
     @app.get("/")
@@ -140,10 +142,17 @@ def create_app(data_dir: Path, secret: str, embedder: Embedder, model: ChatModel
 def build_default_app() -> FastAPI:
     settings = get_settings()
     configure_logging(settings.log_level)
+    # S5: no start without the data key, with a wrong key, or in the middle of an interrupted key rotation
+    if not settings.data_key:
+        raise SystemExit("CHIRII_DATA_KEY is not set. Create it with: python -m chirii.app.keys create")
+    if read_env(ENV_FILE).get("CHIRII_DATA_KEY_PREVIOUS"):
+        raise SystemExit("A key rotation was interrupted. Finish it with: python -m chirii.app.keys rotate")
+    check_key(settings.data_dir, settings.data_key)
     log_event("app_start", stage="slice")
     return create_app(
         data_dir=settings.data_dir, secret=settings.secret_key,
         embedder=FastEmbedder(settings.embed_model, settings.embed_cache_dir),
         model=LLMClient(settings.llm_base_url, settings.llm_model, settings.llm_api_key, settings.llm_timeout_seconds),
+        data_key=settings.data_key,
     )
 

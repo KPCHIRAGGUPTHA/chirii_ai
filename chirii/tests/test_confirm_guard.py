@@ -97,12 +97,18 @@ class TestConfirmAndEdit:
         assert bad.value.args[0] == field
 
     def test_databases_from_before_this_change_get_the_new_columns(self, tmp_path):
-        first = MemoryStore(tmp_path, "u", SECRET, HashEmbedder())
-        with sqlite3.connect(first.db_path) as db:  # make it look like an S2 database
+        # S5: an S2 database was a plaintext memory.db; it is now migrated into the encrypted file on opening
+        from chirii.app.memory.store import SCHEMA, user_folder_name
+        folder = tmp_path / "users" / user_folder_name("u", SECRET)
+        folder.mkdir(parents=True)
+        from contextlib import closing
+        with closing(sqlite3.connect(folder / "memory.db")) as db, db:  # make it look like an S2 database
+            db.executescript(SCHEMA.split("CREATE TABLE IF NOT EXISTS vectors")[0])
             db.execute("ALTER TABLE items DROP COLUMN title")
             db.execute("ALTER TABLE items DROP COLUMN confirmed")
         again = MemoryStore(tmp_path, "u", SECRET, HashEmbedder())
         assert again.add("Amma's birthday is on 22 December.", NOV21)["item"]["confirmed"] == 0
+        assert not (folder / "memory.db").exists() and (folder / "memory.enc").exists()
 
     def test_api_card_confirm_and_edit(self, tmp_path):
         # a bill with no amount sends the hybrid reader to the model, which finds no amount either

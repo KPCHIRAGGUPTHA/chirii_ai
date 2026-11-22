@@ -44,9 +44,20 @@ fixed now**. Each says where it was seen. Any fix later is development work and 
   must be recorded in CRITERIA.md before the run it affects, and old scores shown next to re-marked ones.
 - **Amounts without ₹** ("700") are not seen by the amount rule (D5-M20).
 
+## Post-pilot (owner, 22 Nov: deferred on purpose)
+
+- **Per-user password-derived keys.** Today the server holds the data key, so the server could read any user's
+  memories. Wrapping each user's key with a key derived from their password (Argon2id) would mean only the person can
+  decrypt their data, but a forgotten password then loses it for good, and reminders can't run while they are logged
+  out. Needs a recovery design first.
+- **Storage redesign for multi-user cloud.** Whole-file encryption (one encrypted SQLite file per user, held in memory
+  while open, rewritten on each change) suits a laptop pilot of a few users with up to a few thousand items each. A
+  cloud service with many users needs a real database with encryption (encrypted volumes or column encryption, key
+  management service, backups, concurrent access from several app servers).
+
 ## Not yet done (planned, not gaps in what exists)
 
-- S5: encryption at rest, login, tester consent note. **Fictional data only until then.**
+- S5: login and tester consent note (encryption at rest is done). **Fictional data only until S5 is done.**
 - The safety layer, the 500-item scale check, the fresh extraction set (target: at most 2 of 20 wrong and not flagged).
 - S6: chat UI and the held-out 30 (untouched until then).
 - GPU jobs (owner): the benchmark job and the 7B diagnostic.

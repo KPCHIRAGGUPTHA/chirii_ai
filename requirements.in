@@ -8,6 +8,7 @@ python-dotenv
 python-multipart
 httpx
 argon2-cffi
+cryptography
 itsdangerous
 python-dateutil
 numpy

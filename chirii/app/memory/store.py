@@ -1,8 +1,12 @@
 """
-One user's memory: a SQLite database and a FAISS search index, together in a folder that belongs to that user alone.
+One user's memory: a SQLite database in a folder that belongs to that user alone, stored encrypted (S5).
 
-- SQLite is the source of truth: every item, its dates and amounts, and a history of every change.
-- FAISS holds one vector per item so notes can be found by meaning. It can always be rebuilt from SQLite.
+- SQLite is the source of truth: every item, its dates and amounts, a history of every change, and (S5) one search
+  vector per item. While the app runs it lives in memory; on disk it exists only as one encrypted file,
+  `memory.enc` (AES-256-GCM, a key per user; see vault.py). Every change is written back at once, atomically.
+- FAISS is an in-memory search index built from the stored vectors when the store opens. It is never written to disk.
+- A plaintext database from before S5 (`memory.db`, `index.faiss`) is encrypted on first opening, and the plaintext
+  files are then deleted.
 - The folder name is a keyed hash of the user id, so file names don't reveal who the user is, and one user's data can
   never be read through another user's store.
 - delete_all() removes the whole folder: every row, every vector and the history.
@@ -17,8 +21,9 @@ import json
 import re
 import shutil
 import sqlite3
+import threading
 import time
-from contextlib import closing
+from contextlib import closing, contextmanager
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any, Callable, Dict, Iterator, List, Optional, Tuple
@@ -30,6 +35,7 @@ from chirii.app.formatting import make_title, understood
 from chirii.app.logging_setup import log_event
 from chirii.app.memory.embeddings import Embedder
 from chirii.app.memory.extract import WEEKDAYS, Item, extract
+from chirii.app.memory.vault import Vault
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS items (
@@ -67,6 +73,10 @@ CREATE TABLE IF NOT EXISTS changes (
     old_value   TEXT,
     new_value   TEXT,
     changed_on  TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS vectors (
+    item_id     INTEGER PRIMARY KEY REFERENCES items(id) ON DELETE CASCADE,
+    vector      BLOB NOT NULL
 );
 """
 LIST_FIELDS = ("weekdays", "dose_times", "other_dates", "other_times", "other_amounts")
@@ -157,49 +167,122 @@ def user_folder_name(user_id: str, secret: str) -> str:
     return hmac.new(secret.encode("utf-8"), f"user:{user_id}".encode("utf-8"), hashlib.sha256).hexdigest()[:32]
 
 
+class _Open:
+    """One user's open database and search index, shared by every MemoryStore object for that user in this process
+    (so two objects never hold different copies), guarded by the user's lock."""
+
+    def __init__(self, db: sqlite3.Connection, index: faiss.Index):
+        self.db, self.index = db, index
+
+
+_open: Dict[str, _Open] = {}
+_open_guard = threading.Lock()
+
+
 class MemoryStore:
 
     def __init__(self, root: Path, user_id: str, secret: str, embedder: Embedder,
-                 extractor: Optional[Callable[[str, date], Item]] = None):
+                 extractor: Optional[Callable[[str, date], Item]] = None, data_key: Optional[str] = None):
+        """data_key is CHIRII_DATA_KEY. Tests and eval runs may leave it out; their files are then encrypted with a
+        key derived from `secret`, never stored in plaintext."""
         self.user_id = user_id
         self.embedder = embedder
         self.extractor = extractor or extract  # rules only, unless a hybrid extractor is given
         self.dir = Path(root) / "users" / user_folder_name(user_id, secret)
-        self.db_path = self.dir / "memory.db"
-        self.index_path = self.dir / "index.faiss"
-        self.dir.mkdir(parents=True, exist_ok=True)
-        with closing(self._db()) as db, db:  # closing(): sqlite's own "with" commits but leaves the file open
-            db.executescript(SCHEMA)
-            present = {row[1] for row in db.execute("PRAGMA table_info(items)")}
-            for name, definition in ADDED_COLUMNS.items():
-                if name not in present:
-                    db.execute(f"ALTER TABLE items ADD COLUMN {name} {definition}")
-        self.index = self._load_index()
+        self.db_path = self.dir / "memory.db"          # plaintext, before S5 only: migrated, then deleted
+        self.index_path = self.dir / "index.faiss"     # plaintext, before S5 only: deleted
+        self.vault = Vault(self.dir, data_key or secret)
+        self._lock = self.vault.lock
+        with self._lock:
+            key = str(self.vault.path.absolute())
+            with _open_guard:
+                shared = _open.get(key)
+            if shared is None or not self.dir.exists():
+                shared = self._open_shared()
+                with _open_guard:
+                    _open[key] = shared
+            self._shared = shared
 
     # ------------------------------------------------------------------ storage helpers
 
-    def _db(self) -> sqlite3.Connection:
-        db = sqlite3.connect(self.db_path)
+    def _open_shared(self) -> _Open:
+        self.dir.mkdir(parents=True, exist_ok=True)
+        db = sqlite3.connect(":memory:", check_same_thread=False)
+        data = self.vault.read()                       # raises DataError for a wrong key or a changed file
+        migrated = False
+        if data is not None:
+            db.deserialize(data)
+        elif self.db_path.exists():
+            with closing(sqlite3.connect(self.db_path)) as old:
+                old.backup(db)
+            migrated = True
         db.row_factory = sqlite3.Row
         db.execute("PRAGMA foreign_keys = ON")
-        return db
+        with db:
+            db.executescript(SCHEMA)
+            present = {row[1] for row in db.execute("PRAGMA table_info(items)")}
+            added = [name for name in ADDED_COLUMNS if name not in present]
+            for name in added:
+                db.execute(f"ALTER TABLE items ADD COLUMN {name} {ADDED_COLUMNS[name]}")
+        shared = _Open(db, faiss.IndexIDMap2(faiss.IndexFlatIP(self.embedder.dim)))
+        rows = db.execute("SELECT item_id, vector FROM vectors ORDER BY item_id").fetchall()
+        missing = db.execute("SELECT id, text FROM items WHERE id NOT IN (SELECT item_id FROM vectors) ORDER BY id").fetchall()
+        if rows:
+            shared.index.add_with_ids(np.stack([np.frombuffer(r["vector"], dtype=np.float32) for r in rows]),
+                                      np.array([r["item_id"] for r in rows], dtype=np.int64))
+        if missing:                                    # a migrated database: vectors were in index.faiss
+            vectors = self.embedder.embed([r["text"] for r in missing])
+            with db:
+                db.executemany("INSERT INTO vectors (item_id, vector) VALUES (?, ?)",
+                               [(r["id"], v.astype(np.float32).tobytes()) for r, v in zip(missing, vectors)])
+            shared.index.add_with_ids(vectors, np.array([r["id"] for r in missing], dtype=np.int64))
+        if data is None or migrated or missing or added:   # only when opening changed something
+            self.vault.write(db.serialize())
+        if migrated:
+            for old in (self.db_path, self.index_path, self.db_path.with_name("memory.db-journal")):
+                if old.exists():
+                    old.unlink()
+            log_event("memory_encrypted", user=self.user_id, item_count=len(missing), stage="S5")
+        elif self.index_path.exists():
+            self.index_path.unlink()
+        return shared
+
+    @property
+    def index(self) -> faiss.Index:
+        return self._shared.index
+
+    @index.setter
+    def index(self, value: faiss.Index) -> None:
+        self._shared.index = value
+
+    @contextmanager
+    def _write(self) -> Iterator[sqlite3.Connection]:
+        """One change: a transaction on the in-memory database, then the encrypted file is rewritten atomically."""
+        with self._lock:
+            db = self._shared.db
+            with db:
+                yield db
+            try:
+                self.vault.write(db.serialize())
+            except BaseException:
+                # the change never reached the disk: go back to the last good file, so memory and disk agree
+                self._shared.db.close()
+                with _open_guard:
+                    _open.pop(str(self.vault.path.absolute()), None)
+                self._shared = self._open_shared()
+                with _open_guard:
+                    _open[str(self.vault.path.absolute())] = self._shared
+                raise
 
     def _query(self, sql: str, args: Tuple = ()) -> List[sqlite3.Row]:
-        with closing(self._db()) as db:
-            return db.execute(sql, args).fetchall()
-
-    def _load_index(self) -> faiss.Index:
-        if self.index_path.exists():
-            return faiss.read_index(str(self.index_path))
-        return faiss.IndexIDMap2(faiss.IndexFlatIP(self.embedder.dim))
-
-    def _save_index(self) -> None:
-        faiss.write_index(self.index, str(self.index_path))
+        with self._lock:
+            return self._shared.db.execute(sql, args).fetchall()
 
     def _index_add(self, item_id: int, text: str) -> None:
         vector = self.embedder.embed([text])
-        self.index.add_with_ids(vector, np.array([item_id], dtype=np.int64))
-        self._save_index()
+        with self._write() as db:
+            db.execute("INSERT OR REPLACE INTO vectors (item_id, vector) VALUES (?, ?)", (item_id, vector[0].astype(np.float32).tobytes()))
+            self.index.add_with_ids(vector, np.array([item_id], dtype=np.int64))
 
     @staticmethod
     def _row_to_dict(row: sqlite3.Row) -> Dict[str, Any]:
@@ -223,7 +306,7 @@ class MemoryStore:
             values[name] = json.dumps(values[name])
         values["status"] = "active"
         values["title"] = make_title(text)
-        with closing(self._db()) as db, db:
+        with self._write() as db:
             cursor = db.execute(
                 f"INSERT INTO items ({', '.join(values)}, created_at, updated_at) VALUES ({', '.join('?' * len(values))}, ?, ?)",
                 (*values.values(), now, now))
@@ -251,7 +334,7 @@ class MemoryStore:
 
     def confirm(self, item_id: int) -> Optional[Dict[str, Any]]:
         """The user says Chirii read this item right."""
-        with closing(self._db()) as db, db:
+        with self._write() as db:
             if not db.execute("UPDATE items SET confirmed = 1, needs_review = 0, updated_at = ? WHERE id = ?",
                               (datetime.now().isoformat(timespec="seconds"), item_id)).rowcount:
                 return None
@@ -267,7 +350,7 @@ class MemoryStore:
         clean = {name: validate_field(name, value) for name, value in fields.items() if name in EDITABLE}
         changed = {name: value for name, value in clean.items() if value != item.get(name)}
         stored = {name: json.dumps(value) if name == "weekdays" else value for name, value in changed.items()}
-        with closing(self._db()) as db, db:
+        with self._write() as db:
             sets = "".join(f"{name} = ?, " for name in stored)
             db.execute(f"UPDATE items SET {sets}confirmed = 1, needs_review = 0, updated_at = ? WHERE id = ?",
                        (*stored.values(), datetime.now().isoformat(timespec="seconds"), item_id))
@@ -278,7 +361,7 @@ class MemoryStore:
         return self.get(item_id)
 
     def _set_status(self, item_id: int, status: str, applies_to: Optional[int] = None) -> None:
-        with closing(self._db()) as db, db:
+        with self._write() as db:
             db.execute("UPDATE items SET status = ?, applies_to = COALESCE(?, applies_to), updated_at = ? WHERE id = ?",
                        (status, applies_to, datetime.now().isoformat(timespec="seconds"), item_id))
 
@@ -342,7 +425,7 @@ class MemoryStore:
             changes.append((name, target.get(name), value))
         if not changes:
             return []
-        with closing(self._db()) as db, db:
+        with self._write() as db:
             sets = ", ".join(f"{name} = ?" for name in new_values)
             db.execute(f"UPDATE items SET {sets}, updated_at = ? WHERE id = ?",
                        (*new_values.values(), datetime.now().isoformat(timespec="seconds"), target["id"]))
@@ -420,18 +503,22 @@ class MemoryStore:
     # ------------------------------------------------------------------ deleting
 
     def delete_item(self, item_id: int) -> bool:
-        with closing(self._db()) as db, db:
+        with self._write() as db:                      # its vector row goes with it (ON DELETE CASCADE)
             deleted = db.execute("DELETE FROM items WHERE id = ?", (item_id,)).rowcount
-        if deleted:
-            self.index.remove_ids(np.array([item_id], dtype=np.int64))
-            self._save_index()
+            if deleted:
+                self.index.remove_ids(np.array([item_id], dtype=np.int64))
         return bool(deleted)
 
     def delete_all(self) -> Dict[str, int]:
-        """'Delete all my data': removes every row, every vector and the history, by removing the user's folder."""
-        counts = {"items": len(self.items()), "vectors": int(self.index.ntotal)}
-        self.index.reset()
-        shutil.rmtree(self.dir)
+        """'Delete all my data': removes every row, every vector and the history, by removing the user's folder
+        (the encrypted file and anything else in it) and closing the copy held in memory."""
+        with self._lock:
+            counts = {"items": len(self.items()), "vectors": int(self.index.ntotal)}
+            self.index.reset()
+            self._shared.db.close()
+            with _open_guard:
+                _open.pop(str(self.vault.path.absolute()), None)
+            shutil.rmtree(self.dir)
         log_event("memory_deleted_all", user=self.user_id, item_count=counts["items"], stage="S2")
         return counts
 
@@ -449,8 +536,12 @@ class MemoryStore:
     def rebuild_index(self) -> int:
         """Rebuilds the search index from SQLite, e.g. after changing the embedding model."""
         items = self.items()
-        self.index = faiss.IndexIDMap2(faiss.IndexFlatIP(self.embedder.dim))
-        if items:
-            self.index.add_with_ids(self.embedder.embed([i["text"] for i in items]), np.array([i["id"] for i in items], dtype=np.int64))
-        self._save_index()
+        vectors = self.embedder.embed([i["text"] for i in items]) if items else np.zeros((0, self.embedder.dim), dtype=np.float32)
+        with self._write() as db:
+            db.execute("DELETE FROM vectors")
+            db.executemany("INSERT INTO vectors (item_id, vector) VALUES (?, ?)",
+                           [(i["id"], v.astype(np.float32).tobytes()) for i, v in zip(items, vectors)])
+            self.index = faiss.IndexIDMap2(faiss.IndexFlatIP(self.embedder.dim))
+            if items:
+                self.index.add_with_ids(vectors, np.array([i["id"] for i in items], dtype=np.int64))
         return int(self.index.ntotal)

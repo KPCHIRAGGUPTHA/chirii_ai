@@ -96,3 +96,80 @@ def test_backup_copies_encrypted_files_only(setup, tmp_path):
     assert not any(key.encode() in p.read_bytes() for p in target.rglob("*") if p.is_file())
     with pytest.raises(SystemExit):
         keys.backup(data, data / "inside")
+
+
+# ---------------------------------------------------------------- CHIRII_SECRET_KEY rotation (owner, 22 Nov)
+
+def secret_setup(setup):
+    from chirii.app.accounts import Accounts
+    env, data, key = setup
+    accounts = Accounts(data, key)
+    for user in ("asha", "bala"):
+        accounts.add(user, f"{user}-long-test-password")
+    MemoryStore(data, "demo", SECRET, HashEmbedder(), data_key=key).add("demo pays rent ₹25,000 on the 5th.", DAY)
+    store_module._open.clear()
+    return env, data, key
+
+
+def opens_with(data, user, secret, key):
+    store_module._open.clear()
+    return [i["text"] for i in MemoryStore(data, user, secret, HashEmbedder(), data_key=key).items()]
+
+
+def test_rotate_secret_keeps_every_users_data_reachable(setup):
+    env, data, key = secret_setup(setup)
+    stray = data / "users" / "0123456789abcdef0123456789abcdef"     # belongs to no known user: left alone
+    stray.mkdir()
+    (stray / "memory.enc").write_bytes((data / "users" / store_module.user_folder_name("asha", SECRET) / "memory.enc").read_bytes())
+    assert keys.rotate_secret(env, data) == (3, 1)
+    values = keys.read_env(env)
+    new = values["CHIRII_SECRET_KEY"]
+    assert new != SECRET and len(new) >= 32 and "CHIRII_SECRET_KEY_PREVIOUS" not in values
+    assert values["CHIRII_DATA_KEY"] == key and values["CHIRII_LOG_LEVEL"] == "INFO"   # data key unchanged
+    for user in ("asha", "bala", "demo"):
+        assert opens_with(data, user, new, key)[0].startswith(user)
+        assert not (data / "users" / store_module.user_folder_name(user, SECRET)).exists()   # old folder gone
+    assert (stray / "memory.enc").exists()
+    assert opens_with(data, "asha", SECRET, key) == []                # the old secret finds nothing any more
+
+
+def test_rotate_secret_finishes_after_an_interruption(setup, monkeypatch):
+    env, data, key = secret_setup(setup)
+    real, calls = keys.move_user_data, []
+
+    def stops_halfway(*args, **kwargs):
+        calls.append(1)
+        raise RuntimeError("power cut")
+    monkeypatch.setattr(keys, "move_user_data", stops_halfway)
+    with pytest.raises(RuntimeError):
+        keys.rotate_secret(env, data)
+    values = keys.read_env(env)
+    assert values["CHIRII_SECRET_KEY_PREVIOUS"] == SECRET and values["CHIRII_SECRET_KEY"] != SECRET
+    new = values["CHIRII_SECRET_KEY"]
+    monkeypatch.setattr(keys, "move_user_data", real)
+    assert keys.rotate_secret(env, data) == (3, 0)
+    assert keys.read_env(env)["CHIRII_SECRET_KEY"] == new and "CHIRII_SECRET_KEY_PREVIOUS" not in keys.read_env(env)
+    for user in ("asha", "bala", "demo"):
+        assert opens_with(data, user, new, key)[0].startswith(user)
+
+
+def test_rotate_secret_refuses_a_wrong_data_key(setup):
+    env, data, key = secret_setup(setup)
+    keys.set_env(env, "CHIRII_DATA_KEY", new_key())
+    with pytest.raises(KeyError_):
+        keys.rotate_secret(env, data)
+    assert keys.read_env(env)["CHIRII_SECRET_KEY"] == SECRET          # nothing changed
+
+
+def test_after_rotate_secret_the_app_shows_the_same_memories(setup):
+    from chirii.app.api.main import create_app
+    from chirii.tests.helpers import TEST_PASSWORD, logged_in
+    from chirii.tests.test_slice import FakeModel
+    env, data, key = setup
+    before = create_app(data, SECRET, HashEmbedder(), FakeModel(), today=lambda: DAY, data_key=key)
+    logged_in(before, "chitra").post("/api/memories", json={"text": "Chitra's gym fee is ₹1,500 on the 10th."})
+    store_module._open.clear()
+    keys.rotate_secret(env, data)
+    after = create_app(data, keys.read_env(env)["CHIRII_SECRET_KEY"], HashEmbedder(), FakeModel(), today=lambda: DAY, data_key=key)
+    texts = [m["text"] for m in logged_in(after, "chitra", TEST_PASSWORD).get("/api/memories").json()["items"]]
+    assert texts == ["Chitra's gym fee is ₹1,500 on the 10th."]

@@ -757,3 +757,14 @@ Method and bars committed before the run (4179bb5). The same 30 questions on 500
 
 **S5 is complete:** encryption at rest, login, the safety layer with the attribute check, the consent note, the
 500-item scale check and the fresh extraction set. Next: S6 (chat UI and the held-out set).
+
+## S5, part 7 – Rotating CHIRII_SECRET_KEY (22 November 2026)
+
+The old secret was in the `.env` of the OneDrive copy, so it was replaced. The secret names each user's folder
+(HMAC of the user name), and the folder name is bound into that user's encryption key, so a new secret needs every
+file re-encrypted into its new folder. `python -m chirii.app.keys rotate-secret` (app stopped) does this for every
+account and for the pre-login user `demo`: new secret into `.env` (old one kept as `CHIRII_SECRET_KEY_PREVIOUS` until
+done), each file re-encrypted, read back and checked, then the old file removed. Interrupted, it finishes on the next
+run; folders of no known user are left alone. The data key does not change. Tests: all users' data reachable after
+rotation, also through login in the app; an interrupted rotation finishes; a wrong data key changes nothing. Run on
+the real data: 2 folders moved (admin, demo), both open.

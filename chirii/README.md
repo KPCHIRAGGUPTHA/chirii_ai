@@ -50,6 +50,9 @@ files are not in git; download them as described in `data/SOURCES.md` (into `mod
    .venv\Scripts\python -m chirii.app.accounts add NAME
    ```
 
+   With the app stopped, `keys rotate` replaces the data key and `keys rotate-secret` replaces `CHIRII_SECRET_KEY`
+   (which names each user's folder); both keep every user's data reachable and can be re-run if interrupted.
+
 1. Start the language model server and leave it running:
 
    ```

@@ -6,6 +6,7 @@ rotate:
     python -m chirii.app.keys show            print the key, for copying into a password manager (only when you run it)
     python -m chirii.app.keys check           check that the key in .env opens the data
     python -m chirii.app.keys rotate          make a new key and re-encrypt every user's file with it
+    python -m chirii.app.keys rotate-secret   make a new CHIRII_SECRET_KEY and move every user's data to match
     python -m chirii.app.keys backup FOLDER   copy the encrypted files (not the key, not .env) to FOLDER
 
 If the key is lost, the data cannot be recovered.
@@ -16,14 +17,17 @@ key is removed. Running rotate again after an interruption finishes the job.
 """
 
 import argparse
+import secrets
 import shutil
 import socket
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
+from chirii.app.accounts import Accounts
 from chirii.app.config import ENV_FILE, Settings
+from chirii.app.memory.store import user_folder_name
 from chirii.app.memory.vault import (CHECK_FILE, CHECK_MAGIC, CHECK_TEXT, DATA_FILE, Vault, atomic_write, check_key,
                                      derive_key, encrypt, new_key)
 
@@ -109,6 +113,60 @@ def rotate(env_path: Path, data_dir: Path) -> int:
     return count
 
 
+# ---------------------------------------------------------------- CHIRII_SECRET_KEY rotation
+
+LEGACY_USERS = ("demo",)   # the one user before login existed (S0-S4); its data is kept and moved like any other
+
+
+def new_secret() -> str:
+    return secrets.token_urlsafe(48)
+
+
+def move_user_data(data_dir: Path, data_key: str, old_secret: str, new_secret_: str, names: List[str]) -> int:
+    """For each user, re-encrypts the file from the folder the old secret names into the folder the new secret
+    names (the folder name is bound into the file's key), checks that it reads back, then removes the old file.
+    Safe to repeat: while the old file exists it is the one that counts."""
+    users, moved = Path(data_dir) / "users", 0
+    for name in names:
+        old = users / user_folder_name(name, old_secret)
+        new = users / user_folder_name(name, new_secret_)
+        if old == new or not (old / DATA_FILE).exists():
+            continue
+        plain = Vault(old, data_key).read()
+        Vault(new, data_key).write(plain)
+        if Vault(new, data_key).read() != plain:
+            raise SystemExit(f"Could not verify the moved data for {name!r}; nothing was removed.")
+        (old / DATA_FILE).unlink()
+        if not any(old.iterdir()):
+            old.rmdir()
+        moved += 1
+    return moved
+
+
+def rotate_secret(env_path: Path, data_dir: Path) -> Tuple[int, int]:
+    """Makes a new CHIRII_SECRET_KEY and moves every account's data (and the pre-login demo data) to the folder the
+    new secret names. The data key does not change. Returns (users moved, folders left that belong to no known
+    user). Interrupted? Run it again: .env keeps the old secret as CHIRII_SECRET_KEY_PREVIOUS until all is moved."""
+    env = read_env(env_path)
+    data_key = env.get("CHIRII_DATA_KEY")
+    if not data_key:
+        raise SystemExit("No CHIRII_DATA_KEY in .env.")
+    check_key(data_dir, data_key)
+    current, previous = env.get("CHIRII_SECRET_KEY"), env.get("CHIRII_SECRET_KEY_PREVIOUS")
+    if not previous:
+        if not current:
+            raise SystemExit("No CHIRII_SECRET_KEY in .env.")
+        previous, current = current, new_secret()
+        set_env(env_path, "CHIRII_SECRET_KEY_PREVIOUS", previous)
+        set_env(env_path, "CHIRII_SECRET_KEY", current)
+    names = sorted(set(Accounts(data_dir, data_key).names()) | set(LEGACY_USERS))
+    moved = move_user_data(data_dir, data_key, previous, current, names)
+    set_env(env_path, "CHIRII_SECRET_KEY_PREVIOUS", None)
+    known = {user_folder_name(n, current) for n in names}
+    unknown = [f for f in user_folders(data_dir) if f.name not in known]
+    return moved, len(unknown)
+
+
 # ---------------------------------------------------------------- backup
 
 def backup(data_dir: Path, destination: Path) -> Path:
@@ -135,7 +193,7 @@ def app_is_running(port: int = 8000) -> bool:
 def main(argv: Optional[List[str]] = None) -> None:
     parser = argparse.ArgumentParser(prog="python -m chirii.app.keys", description=__doc__.split("\n\n")[0])
     sub = parser.add_subparsers(dest="command", required=True)
-    for name in ("create", "show", "check", "rotate"):
+    for name in ("create", "show", "check", "rotate", "rotate-secret"):
         sub.add_parser(name)
     sub.add_parser("backup").add_argument("folder")
     args = parser.parse_args(argv)
@@ -160,6 +218,13 @@ def main(argv: Optional[List[str]] = None) -> None:
             raise SystemExit("Stop the app first (something is answering on port 8000).")
         print(f"Re-encrypted {rotate(ENV_FILE, data_dir)} user file(s) with a new key (not shown). "
               "Save the new key in your password manager:  python -m chirii.app.keys show")
+    elif args.command == "rotate-secret":
+        if app_is_running():
+            raise SystemExit("Stop the app first (something is answering on port 8000).")
+        moved, unknown = rotate_secret(ENV_FILE, data_dir)
+        print(f"New CHIRII_SECRET_KEY written to {ENV_FILE} (not shown); {moved} user folder(s) moved to match it.")
+        if unknown:
+            print(f"{unknown} folder(s) belong to no account and were left as they are.")
     elif args.command == "backup":
         print(f"Encrypted files copied to {backup(data_dir, Path(args.folder))}. The key is not in the backup.")
 

@@ -782,3 +782,25 @@ Tests (own examples): 7 English and 5 Hinglish helper messages; 11 informational
 other hard negatives, get no reply; all phase14 positives still get the personal reply; in the assistant and on save.
 Found and logged, not fixed: a Hinglish personal crisis that names a relative ("…papa ko mat batana") is suppressed
 by the S5 personal rule (`docs/KNOWN_GAPS.md`).
+
+## S6, steps 1–2 – Chat screen, in-session history and follow-ups (22 November 2026)
+
+- **Chat screen:** a conversation view with the memories in a side column. Each reply shows its label ("From your
+  memories", "· people" for people answers, "Calculated", "General answer", "Support"), what Chirii looked at, the
+  time and how it was checked. A "Plan my day" button asks for today's plan. The labels themselves are unchanged (the
+  dev-set runners score them).
+- **History:** kept in memory per login session (at most 10 turns), never written to disk, so consent point 2
+  ("questions and answers are not stored") still holds. Cleared on logout, "New chat", "Delete all my data" and
+  "Delete my account". Users and sessions never share a conversation.
+- **Follow-ups** (`chirii/app/followup.py`): rewritten into a question that stands on its own, then answered by the
+  normal pipeline (safety, router, guard, attribute check); the chat shows "Understood as: …".
+  - Rules first: "and the water bill?", "what about Priya?", "Priya ka kya?", "and tomorrow?" replace the subject or
+    time of the previous question; "it", "he", "his", "uska" are replaced by its subject. Two person pronouns ("Did
+    she call him?") or an impersonal "it" ("Is it going to rain?") are not guessed.
+  - Qwen only when the rules can't, and its rewrite is used only if it adds no new name or number.
+  - A crisis message is never rewritten.
+  - `Assistant.ask` is unchanged, so single-question eval runs are not affected.
+- Tests (`test_s6_followup.py`, own examples): 14 rule rewrites, 5 stand-alone questions left alone, the model
+  rewrite and its check, and the API: follow-up answered as understood, New chat / logout / delete forget, sessions
+  and users separate, nothing written to disk, crisis not rewritten, history capped. Live check with Qwen in the
+  browser: 6 of 6 right.

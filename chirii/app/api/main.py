@@ -9,6 +9,7 @@ Run from the repository root, with llama-server already running:
     .venv/Scripts/python.exe -m uvicorn chirii.app.api.main:build_default_app --factory --host 127.0.0.1 --port 8000
 """
 
+import hashlib
 import re
 import threading
 from datetime import date
@@ -21,7 +22,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from chirii.app.accounts import COOKIE, IDLE_SECONDS, Accounts, Locked, Sessions
-from chirii.app import safety
+from chirii.app import followup, safety
 from chirii.app.assistant import Assistant
 from chirii.app.consent import CONSENT_POINTS, CONSENT_TITLE, CONSENT_VERSION
 from chirii.app.config import ENV_FILE, REPO_ROOT, get_settings
@@ -107,6 +108,32 @@ def create_app(data_dir: Path, secret: str, embedder: Embedder, model: ChatModel
     stores_lock = threading.RLock()                   # re-entrant: delete_all holds it while calling store_for
     app.state.accounts, app.state.sessions = accounts, sessions
 
+    # S6: the conversation of each login session, in memory only (never written to disk; consent point 2). Keyed by a
+    # hash of the session cookie; cleared on logout, "New chat", "Delete all my data" and "Delete my account".
+    conversations: Dict[str, Any] = {}
+    conversations_lock = threading.Lock()
+    app.state.conversations = conversations
+
+    def conversation_key(request: Request) -> str:
+        return hashlib.sha256((request.cookies.get(COOKIE) or "").encode("utf-8")).hexdigest()
+
+    def history_for(request: Request, user: str) -> List[followup.Turn]:
+        key = conversation_key(request)
+        with conversations_lock:
+            owner, turns = conversations.get(key, (user, []))
+            if owner != user:
+                turns = []
+            if len(conversations) > 500 and key not in conversations:   # sessions that ended without logging out
+                for old in list(conversations)[:100]:
+                    conversations.pop(old, None)
+            conversations[key] = (user, turns)
+            return turns
+
+    def forget_conversations(user: str) -> None:
+        with conversations_lock:
+            for key in [k for k, (owner, _) in conversations.items() if owner == user]:
+                conversations.pop(key, None)
+
     def logged_in(request: Request) -> str:
         user = sessions.user(request.cookies.get(COOKIE))
         if user is None or accounts.get(user) is None:
@@ -150,6 +177,8 @@ def create_app(data_dir: Path, secret: str, embedder: Embedder, model: ChatModel
 
     @app.post("/api/logout")
     def logout(request: Request, response: Response):
+        with conversations_lock:
+            conversations.pop(conversation_key(request), None)
         sessions.end(request.cookies.get(COOKIE))
         response.delete_cookie(COOKIE, path="/")
         return {"logged_out": True}
@@ -221,19 +250,37 @@ def create_app(data_dir: Path, secret: str, embedder: Embedder, model: ChatModel
         return {"deleted": item_id}
 
     @app.post("/api/ask")
-    def ask(body: Question, user: str = Depends(consented)):
+    def ask(body: Question, request: Request, user: str = Depends(consented)):
+        question = body.question.strip()
+        history = history_for(request, user)
+        understood_as, how = None, ""
+        if safety.support(question) is None:           # a crisis message is answered as it was written
+            understood_as, how = followup.resolve(question, history, model)
+            if how:
+                log_event("followup", status=how, stage="S6")
         try:
-            answer = Assistant(store_for(user), model).ask(body.question.strip(), today())
+            answer = Assistant(store_for(user), model).ask(understood_as or question, today())
         except LLMError:
             raise HTTPException(status_code=503, detail="The language model is not running. Start llama-server and try again.")
+        with conversations_lock:
+            history.append(followup.Turn(question, understood_as or question, answer.text, answer.fact_ids, answer.route))
+            del history[:-followup.MAX_TURNS]
         return {"answer": answer.text, "facts": answer.facts, "duration_ms": answer.duration_ms, "checked": answer.guard,
-                "unconfirmed": answer.unconfirmed, "label": answer.label, "route": answer.route}
+                "unconfirmed": answer.unconfirmed, "label": answer.label, "route": answer.route,
+                "understood_as": understood_as, "full_answer": getattr(answer, "full_text", None)}
+
+    @app.delete("/api/conversation")
+    def new_conversation(request: Request, user: str = Depends(logged_in)):
+        with conversations_lock:
+            conversations.pop(conversation_key(request), None)
+        return {"cleared": True}
 
     @app.post("/api/delete-all")
     def delete_all(user: str = Depends(consented)):
         with stores_lock:
             counts = store_for(user).delete_all()
             stores.pop(user, None)
+        forget_conversations(user)
         return {"deleted": counts}
 
     @app.post("/api/delete-account")
@@ -248,6 +295,7 @@ def create_app(data_dir: Path, secret: str, embedder: Embedder, model: ChatModel
             counts = store_for(user).delete_all()
             stores.pop(user, None)
         accounts.remove(user)
+        forget_conversations(user)
         sessions.end_all(user)
         response.delete_cookie(COOKIE, path="/")
         return {"deleted": counts, "account_removed": True}

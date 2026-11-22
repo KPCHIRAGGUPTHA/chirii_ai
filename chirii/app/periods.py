@@ -163,6 +163,7 @@ def read_period(question: str, today: date, items: Optional[List[Dict[str, Any]]
 
 def find_event(words: str, today: date, items: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
     """The saved item an event phrase refers to: the dated, upcoming item sharing the most words with it."""
+    from chirii.app.meaning import canon
     from chirii.app.memory.store import keywords  # local import: store imports formatting, which periods also uses
     wanted = keywords(" ".join(w for w in re.findall(r"[a-z']+", words.lower()) if w not in EVENT_WORDS))
     if not wanted:
@@ -173,7 +174,9 @@ def find_event(words: str, today: date, items: List[Dict[str, Any]]) -> Optional
             continue
         if date.fromisoformat(item.get("end_date") or item["date"]) < today:
             continue
-        score = len(wanted & keywords(item["text"] + " " + (item.get("title") or "")))
+        # S4f: words count as shared when they are the same family (engagement / engaged, shaadi / wedding)
+        have = {canon(w) for w in keywords(item["text"] + " " + (item.get("title") or ""))}
+        score = len({canon(w) for w in wanted} & have)
         if score > best_score or (score == best_score and score and item["date"] < best["date"]):
             best, best_score = item, score
     return best if best_score else None

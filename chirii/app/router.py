@@ -21,6 +21,7 @@ from dataclasses import dataclass, field
 from datetime import date, timedelta
 from typing import Any, Dict, List, Optional, Tuple
 
+from chirii.app import meaning
 from chirii.app.llm.client import ChatModel, LLMError
 from chirii.app.logging_setup import log_event
 from chirii.app.periods import WEEKDAYS, Period, read_period
@@ -43,7 +44,9 @@ LIST_WORDS = re.compile(r"\b(what|which|any|anything|due|pay|payments?|bills?|fe
 STILL_TO_PAY = re.compile(r"\bstill (have to|need to|got to)? ?pay\b|\b(unpaid|outstanding)\b", re.I)
 MEANING = re.compile(r"^\s*(what did (i|the|my)|what does|what do(es)? \w+ want|what should i (take|carry|bring|remember)|which topics|"
                      r"where did|where is|what do i need to (buy|carry|take|bring|get)|what was|anything special|tell me about the)\b", re.I)
-LOOKUP = re.compile(r"^\s*(when|what time|how much|how many|what is|what's|where|who|which)\b|\b(kab|kitna|kitni|kya hai)\b", re.I)
+LOOKUP = re.compile(r"^\s*(when|what time|how much|how many|what is|what's|where|who|which|(by|till|until) when)\b|\b(kab|kitna|kitni|kya hai)\b", re.I)
+# S4f: "By when…?" asks for one deadline, not for what falls in a period (run (e4): read as "today")
+DEADLINE = re.compile(r"^\s*(by|till|until) when\b|\bdeadline\b|\blast date\b", re.I)
 # S4d: the name part is case-sensitive, so "tell me about my week" never treats "my" as a name
 WHO_IS = re.compile(r"^\s*(?i:who is|who's|tell me about)\s+([A-Z][\w.]*(?:\s+[A-Z][\w.]*)?)")
 WRITING = re.compile(r"^\s*(write|draft|compose|rewrite|translate|suggest|explain|give me \d* ?(tips|ideas|ways)|list \d* ?(tips|ideas|ways)|"
@@ -54,7 +57,11 @@ LIVE = re.compile(r"\b(today'?s|right now|now|currently|current|latest|live|yest
 MATHS_WORDS = re.compile(r"\d+(\.\d+)?\s*%|\b(percent|interest|split|divide|divided|share equally|equally|per (day|month|person|kg|litre)|"
                          r"each part|each person|instalments?|installments?|convert|km/h|m/s|square (feet|metres|meters)|area|"
                          r"how many days|days (from|between|until|till)|in total|altogether|sum of|total of|add|half|double|twice|"
-                         r"plus|minus|times|multiplied)\b|\d\s*[-+*/x×÷]\s*\d|\bcost of\b|\bwhat do \d+ \w+ cost\b", re.I)
+                         r"plus|minus|times|multiplied)\b|\d\s*[-+*/x×÷]\s*\d|\bcost of\b|\bwhat do \d+ \w+ cost\b"
+                         # S4f: "₹45,00,000 in lakh", "1.2 crore in lakh", "how many weeks between…", "30 km to miles"
+                         r"|\b(in|into|to) (lakhs?|lacs?|crores?|thousands?|rupees)\b|\bhow many weeks\b|\bweeks (from|between|until|till|to)\b"
+                         r"|\b(in|into|to) (miles?|km|kilomet(re|er)s?|met(re|er)s?|feet|inch(es)?|kgs?|pounds?|grams?|lit(re|er)s?|"
+                         r"celsius|fahrenheit|centigrade)\b|\bcompound(ed)?\b|\bemi\b", re.I)
 PAY = re.compile(r"\b(pay|payments?|bills?|fees?|emis?|premiums?|rent)\b", re.I)
 OWED_TO_ME = re.compile(r"\bowe(s|d)? me\b|\bowed to me\b|\bmoney (due|owed) to me\b|\bto receive\b|\blena hai\b", re.I)
 TODO = re.compile(r"\b(finish|to do|complete|submit|tasks?|to-?dos?)\b", re.I)
@@ -71,6 +78,8 @@ SPECIFIC_THINGS = {
     "play", "practice", "class", "trip", "filing", "renewal", "deadline", "annual", "match", "concert", "ceremony",
     "visa", "ticket", "booking",
 }
+# S4f: the same kinds of thing in other forms or words (married, engaged, shaadi, kiraya, renews)
+THING_FAMILIES = {meaning.canon(t) for t in SPECIFIC_THINGS} | {meaning.canon(t) for t in ("medicine", "rent", "subscription", "premium")}
 SYNONYMS = {"bijli": "electricity", "bp": "pressure", "dr": "doctor", "doctors": "doctor", "checkup": "check",
             "physio": "physiotherapy", "mom": "mom", "amma": "amma"}
 QUESTION_WORDS = {"when", "what", "where", "who", "which", "how", "is", "are", "was", "did", "do", "does", "my", "our", "the",
@@ -105,17 +114,24 @@ def specific_terms(question: str) -> List[str]:
         is_name = (i > 0 and clean[:1].isupper()) or (clean.isupper() and len(clean) >= 2)
         if is_name and lower not in {n.lower() for n in names}:
             names.append(clean)
-        elif SYNONYMS.get(lower, lower) in SPECIFIC_THINGS and lower not in things:
+        elif (SYNONYMS.get(lower, lower) in SPECIFIC_THINGS or meaning.canon(lower) in THING_FAMILIES) and lower not in things:
             things.append(lower)
     return ["!" + n for n in names] + things
 
 
 def term_matches(term: str, item_text: str) -> bool:
-    """Whether a memory mentions a term, allowing synonyms (bijli = electricity, BP = blood pressure) and a shared
-    beginning of at least 3 letters (GST and GSTR-3B)."""
+    """Whether a memory mentions a term: the same word or a shared beginning of at least 3 letters (GST and GSTR-3B);
+    the same stem or synonym family (S4f: married = wedding, engaged = engagement, kiraya = rent); or, for things but
+    not names, a word close in meaning by the embedding model (S4f, see chirii/app/meaning.py)."""
+    is_name = term.startswith("!")
     term = SYNONYMS.get(term.lstrip("!").lower(), term.lstrip("!").lower())
     words = {SYNONYMS.get(w, w) for w in re.findall(r"[a-z]+", item_text.lower())}
-    return any(w == term or (min(len(w), len(term)) >= 3 and (w.startswith(term) or term.startswith(w))) for w in words)
+    if any(w == term or (min(len(w), len(term)) >= 3 and (w.startswith(term) or term.startswith(w))) for w in words):
+        return True
+    if any(meaning.same_family(term, w) for w in words):
+        return True
+    m = meaning.current.get()
+    return bool(m is not None and not is_name and m.close(term, meaning.content_words(item_text)))
 
 
 def mentions_specific(terms: List[str], item_text: str) -> bool:
@@ -201,7 +217,8 @@ def route_by_rules(question: str, today: date, items: Optional[List[Dict[str, An
     if who and any(term_matches(who.group(1).split()[0], i["text"]) for i in items):
         return r("people")
     maths = bool(MATHS_WORDS.search(question))
-    if maths and personal:
+    # S4f: "me and 4 friends" is personal but needs no memory; mixed only when a saved item is involved
+    if maths and personal and (not re.search(r"\d", question) or about_saved(question, items)):
         return r("mixed")
     if maths and re.search(r"\d", question):
         return r("maths")
@@ -237,6 +254,19 @@ def route_by_rules(question: str, today: date, items: Optional[List[Dict[str, An
     if LOOKUP.search(question):
         return r("lookup")
     return None
+
+
+def about_saved(question: str, items: List[Dict[str, Any]]) -> bool:
+    """A maths question that uses a saved item: it names one (a key term or a saved name matches), or asks about the
+    person's own bills, fees or payments ("what do I pay", "my rent")."""
+    if not items:
+        return False
+    if any(term_matches(t, i["text"]) for t in specific_terms(question) for i in items):
+        return True
+    if any(re.search(rf"\b{re.escape(n.lower())}\b", question.lower()) for n in memory_names(items)):
+        return True
+    return bool(re.search(r"\b(my|our|i|we)\b.{0,30}\b(pay|paid|bills?|fees?|rent|emis?|dues|spend|spent|owe|owes)\b", question, re.I)) \
+        or strongly_about_memory(question, items)
 
 
 def strongly_about_memory(question: str, items: List[Dict[str, Any]]) -> bool:
@@ -302,6 +332,8 @@ def validate_choice(choice: Dict[str, Any], question: str, today: date, personal
             return None
     if kind in ("window", "plan") and period is None:
         return None
+    if kind in ("window", "plan") and DEADLINE.search(question) and not read_period(question, today, items):
+        return None                                   # a deadline question names no period of its own
     if choice.get("item") and not any((i.get("title") or "")[:60] == choice["item"] for i in items):
         return None
     if kind == "people" and not specific_terms(question):

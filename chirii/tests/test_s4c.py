@@ -119,7 +119,11 @@ class TestChat:
         assert answer.label == "Calculated" and answer.guard == "code"
 
     def test_a_number_not_in_the_question_is_refused(self, store):
+        # S4f: Qwen's made-up 15 is still refused; code works this shape out itself, so the right number is shown
         answer = Assistant(store, FakeModel([self.formula("percent_of", [15, 3500])])).ask("What is 12% of 3,500?", WED)
+        assert answer.text.startswith("420") and "15" not in answer.text and answer.guard == "code"
+        # a question code can't read by itself: nothing is shown
+        answer = Assistant(store, FakeModel([self.formula("sum", [15, 3500])])).ask("What is 12 plus 3,500 minus 7?", WED)
         assert answer.text.startswith("I couldn't work that out reliably") and answer.guard == "fallback"
 
     def test_mixed_maths_may_use_saved_amounts(self, store):

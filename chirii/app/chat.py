@@ -24,7 +24,9 @@ from calendar import monthrange
 from datetime import date, timedelta
 from typing import Any, Dict, List, Optional, Tuple
 
+from chirii.app import maths_check
 from chirii.app.formatting import say_date
+from chirii.app.logging_setup import log_event
 from chirii.app.glossary import glossary_answer
 from chirii.app.llm.client import ChatModel
 from chirii.app.periods import find_event
@@ -230,33 +232,74 @@ def maths_answer(model: ChatModel, question: str, today: date, items: List[Dict[
     except (ValueError, TypeError):
         choice = {}
     sorry = "I couldn't work that out reliably. Could you write out the numbers, for example \"2,450 × 18%\"?"
+    allowed = allowed + list(justified_constants(question, today))     # "half" allows 2, a % sign allows 100
+    from_qwen = qwen_result(choice, question, allowed, mixed)
+    # S4f: code works the question out by itself where it can (not for mixed questions, whose numbers are in memory)
+    code = maths_check.independent(question) if not mixed else None
+    from_code = None
+    if code is not None:
+        done = compute(*code, question)
+        if done is not None:
+            from_code = (done[0], shown_result(code[0], done[0], code[3], question, mixed) + f"  ({done[1]})")
+    if from_qwen and from_code:
+        if maths_check.agree(from_qwen[0], from_code[0]):
+            log_event("maths_check", status="agree", stage="maths")
+            return from_qwen[1], True
+        log_event("maths_check", status="disagree", stage="maths")   # the code result is shown, never Qwen's
+        return from_code[1], True
+    if from_code:
+        log_event("maths_check", status="code_only", stage="maths")
+        return from_code[1], True
+    if from_qwen:
+        log_event("maths_check", status="model_only", stage="maths")
+        return from_qwen[1], True
+    return sorry, False
+
+
+def shown_result(formula: str, value: float, to_unit: Optional[str], question: str, mixed: bool) -> str:
+    if formula == "percent_change":
+        return indian(value) + "%"
+    if formula == "convert":
+        return indian(value) + (f" {to_unit}" if to_unit not in (None, "rupees") else "")
+    return money(value) if MONEY_WORDS.search(question) or mixed else indian(value)
+
+
+def arithmetic(expression: Optional[str], question: str, allowed: List[float], mixed: bool) -> Optional[Tuple[float, str]]:
+    """A plain expression, if every number in it is from the question, saved memory, a justified constant, or a
+    conversion factor that the question's units justify (S4f)."""
+    expression = (expression or "").replace("×", "*").replace("÷", "/").replace(",", "").strip()
+    if not expression or not re.fullmatch(r"[\d\s+\-*/().]+", expression):
+        return None
+    ok = allowed + list(maths_check.unit_factors(question))
+    if not all(number_ok(float(n), ok) for n in re.findall(r"\d+(?:\.\d+)?", expression)):
+        return None
+    result = calculate(expression)
+    if not result.ok:
+        return None
+    fmt = money if MONEY_WORDS.search(question) or mixed else indian
+    shown = re.sub(r"\d+(?:\.\d+)?", lambda m: indian(float(m.group(0))), expression).replace("*", " × ").replace("/", " ÷ ")
+    return result.value, f"{fmt(result.value)}  ({re.sub(' +', ' ', shown)} = {fmt(result.value)})"
+
+
+def qwen_result(choice: Dict[str, Any], question: str, allowed: List[float], mixed: bool) -> Optional[Tuple[float, str]]:
+    """Qwen's formula and numbers, checked by code. S4f: the checks accept what the formula itself justifies (the
+    times-a-year for compound interest that the question's words give, or 1 when it says none), ignore conversion
+    factors Qwen adds to a conversion (code needs only the value), and fall back to Qwen's plain expression when the
+    formula's arguments don't fit."""
     formula = choice.get("formula")
     if formula == "arithmetic":
-        expression = (choice.get("expression") or "").replace("×", "*").replace("÷", "/").replace(",", "").strip()
-        if not re.fullmatch(r"[\d\s+\-*/().]+", expression or "x"):
-            return sorry, False
-        ok = allowed + list(justified_constants(question, today))
-        if not all(number_ok(float(n), ok) for n in re.findall(r"\d+(?:\.\d+)?", expression)):
-            return sorry, False
-        result = calculate(expression)
-        if not result.ok:
-            return sorry, False
-        fmt = money if MONEY_WORDS.search(question) or mixed else indian
-        shown = re.sub(r"\d+(?:\.\d+)?", lambda m: indian(float(m.group(0))), expression).replace("*", " × ").replace("/", " ÷ ")
-        return f"{fmt(result.value)}  ({re.sub(' +', ' ', shown)} = {fmt(result.value)})", True
+        return arithmetic(choice.get("expression"), question, allowed, mixed)
     nums = [float(n) for n in choice.get("numbers") or []]
-    allowed = allowed + list(justified_constants(question, today))     # "half" allows 2, a % sign allows 100
-    if not formula or not nums or not all(number_ok(n, allowed) for n in nums):
-        return sorry, False
-    done = compute(formula, nums, choice.get("from_unit"), choice.get("to_unit"), question)
+    if formula == "compound_interest" and len(nums) == 4 and not number_ok(nums[3], allowed) and maths_check.compounding_ok(question, nums[3]):
+        allowed = allowed + [nums[3]]
+    if formula == "convert" and len(nums) > 1:
+        nums = [n for n in nums if number_ok(n, numbers_in(question))][:1] or nums
+    done = None
+    if formula in FORMULAS and nums and all(number_ok(n, allowed) for n in nums):
+        done = compute(formula, nums, choice.get("from_unit"), choice.get("to_unit"), question)
     if done is None:
-        return sorry, False
-    value, working = done
-    unit = choice.get("to_unit") if formula == "convert" and choice.get("to_unit") not in (None, "rupees") else ""
-    shown = indian(value) + (f" {unit}" if unit else "") if formula in ("convert", "percent_change") or not (MONEY_WORDS.search(question) or mixed) else money(value)
-    if formula == "percent_change":
-        shown = indian(value) + "%"
-    return f"{shown}  ({working})", True
+        return arithmetic(choice.get("expression"), question, allowed, mixed)
+    return done[0], shown_result(formula, done[0], choice.get("to_unit"), question, mixed) + f"  ({done[1]})"
 
 
 def general_answer(model: ChatModel, question: str, live: bool) -> str:

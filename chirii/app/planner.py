@@ -115,7 +115,8 @@ def window_draft(store: MemoryStore, start: date, end: date, focus: List[str], q
             continue
         for day in sorted(set(store.occurrences(item, start, end))):
             entries.append((day, item["time"] or "99:99", item))
-            if item["kind"] == "medicine":
+            # S4f: a range (exams 15 to 30 March) is listed once, on its first day in the period, with its dates
+            if item["kind"] == "medicine" or item.get("end_date"):
                 break
     entries.sort(key=lambda e: (e[0], e[1]))
     # S4c: the period reader's own words when it has them ("this weekend (…)", "before the Goa trip on …")
@@ -145,7 +146,12 @@ def window_draft(store: MemoryStore, start: date, end: date, focus: List[str], q
         if item["day_of_month"] and day.day == item["day_of_month"] and not item["date"]:
             bits.append("(every month)")
         keep.append({"date": day.isoformat()})
-        sections[part].append(f"- {short_day(day)}: " + ", ".join(bits))
+        when = short_day(day)
+        if item.get("end_date") and item.get("date"):
+            first, last = date.fromisoformat(item["date"]), date.fromisoformat(item["end_date"])
+            when = f"{short_day(first)} to {short_day(last)}" if day == first else f"until {short_day(last)} (from {short_day(first)})"
+            keep += [{"date": first.isoformat()}, {"date": last.isoformat()}]
+        sections[part].append(f"- {when}: " + ", ".join(bits))
         used.append(item)
     heads = {"pay": "To pay", "owed": "To receive", "dates": "Important dates", "due": "Due"}
     head = heads.get(focus[0], "Coming up")
@@ -246,6 +252,8 @@ def slot_text(slot: Slot) -> str:
 
 def untimed_text(item: Dict[str, Any]) -> str:
     bits = [item.get("title") or make_title(item["text"])]
+    if item.get("end_date") and item.get("date"):
+        bits[0] += f" ({short_day(date.fromisoformat(item['date']))} to {short_day(date.fromisoformat(item['end_date']))})"
     if item.get("amount") is not None:
         bits.append(say_amount(item["remaining"]) + (" (money due to you)" if item["kind"] == "receivable" else " to pay"))
     return ", ".join(bits)
@@ -261,9 +269,14 @@ def medicine_text(medicines: List[Dict[str, Any]]) -> str:
     return "Medicines: " + "; ".join(parts) + "."
 
 
-def day_lines(store: MemoryStore, day: date, keep: List[Dict[str, Any]], used: List[Dict[str, Any]], with_medicines: bool) -> Tuple[List[str], bool]:
+def day_lines(store: MemoryStore, day: date, keep: List[Dict[str, Any]], used: List[Dict[str, Any]], with_medicines: bool,
+              shown: Optional[set] = None) -> Tuple[List[str], bool]:
     slots, untimed, medicines = slots_for(store, day)
     lines = []
+    # S4f: in a plan over several days, a range (Navaratri golu 9 to 12 April) is listed once, on its first day shown
+    if shown is not None:
+        untimed = [i for i in untimed if not (i.get("end_date") and i["id"] in shown)]
+        shown.update(i["id"] for i in untimed if i.get("end_date"))
     for slot in slots:
         lines.append("- " + slot_text(slot))
         keep.append({"time": slot.hhmm})
@@ -271,6 +284,8 @@ def day_lines(store: MemoryStore, day: date, keep: List[Dict[str, Any]], used: L
     for item in untimed:
         lines.append("- " + untimed_text(item))
         used.append(item)
+        if item.get("end_date") and item.get("date"):
+            keep += [{"date": item["date"]}, {"date": item["end_date"]}]
         if item.get("amount") is not None:
             keep.append({"amount": item["remaining"]})
     found = clashes(slots)
@@ -296,10 +311,10 @@ def plan_draft(store: MemoryStore, start: date, end: date, today: date) -> Draft
             text += f"\nComing up tomorrow ({short_day(tomorrow)}): " + "; ".join(parts) + ". Prepare for it today."
             used += [s.item for s in coming] + coming_untimed
         return Draft(text=text, items=dedupe(used), keep=keep, in_order=True, clash=any_clash)
-    blocks = []
+    blocks, shown = [], set()
     day = start
     while day <= end:
-        lines, clash_today = day_lines(store, day, keep, used, with_medicines=False)
+        lines, clash_today = day_lines(store, day, keep, used, with_medicines=False, shown=shown)
         if lines:
             blocks.append(f"{short_day(day)}:\n" + "\n".join("  " + l for l in lines))
             keep.append({"date": day.isoformat()})

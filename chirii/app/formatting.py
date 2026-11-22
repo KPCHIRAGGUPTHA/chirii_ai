@@ -82,6 +82,8 @@ def make_title(text: str) -> str:
             title = title[:cut.start()]
             break
     title = re.sub(r"^(my|our|the)\s+", "", title, flags=re.I)
+    # S4f: "Kiraya of ₹18,000 goes…" was titled "Kiraya of"; a connecting word left at the cut is dropped
+    title = re.sub(r"(\s+(of|for|at|is|are|on|to|from|by|with|and))+\s*$", "", title, flags=re.I)
     if len(title) > 60:
         title = title[:57].rsplit(" ", 1)[0] + "…"
     return title[:1].upper() + title[1:] if title else text[:60]

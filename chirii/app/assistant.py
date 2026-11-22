@@ -25,6 +25,7 @@ from chirii.app.formatting import KIND_LABELS, make_title, say_amount, say_date,
 from chirii.app.guard import check_answer
 from chirii.app.windows import question_window
 from chirii.app.planner import MONEY_QUESTION, Draft, label_for, plan_draft, status_draft, strip_when, window_draft
+from chirii.app import meaning
 from chirii.app.router import LIVE, MATHS_WORDS, MEMORY_ROUTES, matched_terms, mentions_all, mentions_specific, route as route_question, term_matches
 from chirii.app import people
 from chirii.app.chat import LABELS, general_answer, maths_answer, writing_answer
@@ -283,7 +284,12 @@ class Assistant:
     def ask(self, question: str, today: date) -> Answer:
         started = time.perf_counter()
         if self.routed:
-            answer, items = self._ask_routed(question, today)
+            # S4f: matching by meaning (the calibrated embedding model) for this question's router and item checks
+            token = meaning.current.set(meaning.for_embedder(self.store.embedder))
+            try:
+                answer, items = self._ask_routed(question, today)
+            finally:
+                meaning.current.reset(token)
         else:
             answer, items = self._ask_retrieved(question, today, self.select_relevant(question, today) if self.trimmed
                                                 else self.select_full(question, today))

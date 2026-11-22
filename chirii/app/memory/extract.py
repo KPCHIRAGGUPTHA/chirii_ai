@@ -80,20 +80,24 @@ FIRST_RULES: List[Tuple[str, re.Pattern]] = [
 ]
 # Checked after the first rules, before the others: a fee is a bill even on a school bus; a surgery is an appointment
 # even if the user "needs to be there by 7"; "remind me to renew" or "book" is a task even when it mentions a train.
-STRONG_BILL_WORDS = re.compile(r"\b(bill|fees?|emi|premium|rent|insurance|tax|subscription|recharge)\b", re.I)
+STRONG_BILL_WORDS = re.compile(r"\b(bill|fees?|emis?|premiums?|rent|insurance|tax|subscriptions?|recharge|renews?|renewal)\b", re.I)
+# S4f: things the person pays. A sentence with one of these (and nothing owed to the person) is never money to receive,
+# whoever chooses the kind (run (e4): Qwen labelled two renewals as money owed to the person).
+PAYABLE_WORDS = re.compile(r"\b(bill|fees?|emis?|premiums?|rent|kiraya|subscriptions?|recharge|renews?|renewal|membership)\b", re.I)
+OWED_TO_PERSON = re.compile(r"\bowes?\b|\bowed\b|\bon credit\b|\b(credited|salary|pension|refund)\b", re.I)
 STRONG_APPOINTMENT_WORDS = re.compile(r"\b(appointment|check-?up|checkup|surgery|operation|doctor|dentist|meeting|interview|scan)\b", re.I)
 TASK_FIRST_WORDS = re.compile(r"\b(remind me|renew|need to|have to|has to|must)\b"
                               r"|^\s*(submit|collect|deposit|file|apply|send|buy|call|return)\b"
                               r"|\bbook\s+(?:the\s+|a\s+|an\s+|my\s+)?(?:train|flight|bus|tickets?|tatkal|cylinder|gas|appointment|slot|hall|cab|taxi|room|hotel)\b"
                               r"|\b(jaana|jana|karna|karni|lena|leni|dena|deni|bharna|bharni)\s+(hai|h)\b", re.I)
-MONEY_CONTEXT = re.compile(r"\b(bill|fees?|emi|premium|rent|insurance|tax|subscription|recharge|due|pay|paid|owes?|credit card|debit|loan)\b", re.I)
+MONEY_CONTEXT = re.compile(r"\b(bill|fees?|emi|premium|rent|insurance|tax|subscription|recharge|renews?|renewal|due|pay|paid|owes?|credit card|debit|loan)\b", re.I)
 KIND_RULES: List[Tuple[str, re.Pattern]] = [
     ("exam", re.compile(r"\bexams?\b", re.I)),
     ("travel", re.compile(r"\b(train|flight|bus)\b|\bpnr\b", re.I)),
     ("shift", re.compile(r"\bshift\b", re.I)),
     ("important_date", re.compile(r"\b(birthday|anniversary|engagement)\b", re.I)),
 ]
-BILL_WORDS = re.compile(r"\b(bill|fees?|emi|premium|rent|pay|paid|due|insurance|tax|subscription|recharge)\b", re.I)
+BILL_WORDS = re.compile(r"\b(bill|fees?|emi|premium|rent|pay|paid|due|insurance|tax|subscription|recharge|renews?|renewal)\b", re.I)
 TASK_WORDS = re.compile(r"\b(must|need to|have to|has to|last date|deposit|collect|submit|update|form|pickup|will be ready|return)\b"
                         r"|\bby\s+\d|\bbefore\b", re.I)
 APPOINTMENT_WORDS = re.compile(r"\b(appointment|check-?up|checkup|doctor|dentist|visit|meeting)\b", re.I)

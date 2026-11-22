@@ -22,7 +22,7 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 from chirii.app.llm.client import ChatModel, LLMError
 from chirii.app.logging_setup import log_event
-from chirii.app.memory.extract import NOTE_START, WEEKDAYS, Item, extract, find_amounts, find_dates, find_times
+from chirii.app.memory.extract import NOTE_START, OWED_TO_PERSON, PAYABLE_WORDS, WEEKDAYS, Item, extract, find_amounts, find_dates, find_times
 
 KINDS = ["bill", "appointment", "task", "medicine", "routine", "important_date", "exam", "travel", "shift", "income",
          "receivable", "note"]
@@ -119,7 +119,7 @@ def grounded_days_of_month(text: str) -> Set[int]:
 def validate(reply: Dict[str, Any], text: str, said_on: date) -> List[str]:
     """Problems with Qwen's item. Empty means every value is grounded in the sentence."""
     problems = []
-    if reply.get("kind") not in KINDS:
+    if reply.get("kind") not in allowed_kinds(text):
         problems.append("kind")
     dates = grounded_dates(text, said_on)
     for name in ("date", "end_date"):
@@ -147,6 +147,14 @@ def _choice(values: List[Any], kind: str) -> Dict[str, Any]:
     return {"anyOf": [{"type": kind, "enum": values}, {"type": "null"}]} if values else {"type": "null"}
 
 
+def allowed_kinds(text: str) -> List[str]:
+    """S4f: a payment word (bill, renewal, subscription, premium, EMI, recharge) with nothing owed to the person means
+    the person pays: Qwen may not choose money to receive."""
+    if PAYABLE_WORDS.search(text) and not OWED_TO_PERSON.search(text):
+        return [k for k in KINDS if k not in ("receivable", "income")]
+    return KINDS
+
+
 def build_schema(text: str, said_on: date) -> Dict[str, Any]:
     """The JSON schema for this sentence: each date, time, amount, day or weekday Qwen may give is limited to the
     values the code found in the sentence (first run, 21 Nov: unrestricted, Qwen added weekdays and today's date that
@@ -156,7 +164,7 @@ def build_schema(text: str, said_on: date) -> Dict[str, Any]:
     return {
         "type": "object",
         "properties": {
-            "kind": {"type": "string", "enum": KINDS},
+            "kind": {"type": "string", "enum": allowed_kinds(text)},
             "date": _choice(dates, "string"), "end_date": _choice(dates, "string"),
             "time": _choice(sorted(grounded_times(text)), "string"),
             "amount": _choice(sorted(grounded_amounts(text)), "integer"),

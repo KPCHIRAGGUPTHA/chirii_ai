@@ -1,0 +1,42 @@
+{
+  "_about": "Hand check and labels for run (e3): the S4c system on development set 3, first try. Written after reading every reply and route, before any fix. The marker's score is the official one.",
+  "memory_hand": {
+    "D3-06": {"auto": false, "hand": true, "why": "Partial-match answer as specified ('I have … Goa trip …, but nothing about flight'). The marker's not-in-memory phrases don't include 'nothing about'."},
+    "D3-12": {"auto": false, "hand": true, "why": "Same partial-match answer ('I have Divya's tuition …, but nothing about annual'); the missing term shows as 'annual', not 'annual day' (wording)."},
+    "D3-24": {"auto": false, "hand": true, "why": "Same partial-match answer ('… but nothing about train')."},
+    "D3-10": {"auto": false, "hand": true, "why": "Friday's plan is right (plumber at 3 pm). It adds 'Coming up tomorrow (Saturday): Murali's birthday', clearly labelled as Saturday; the task forbade 'birthday' to catch a Friday/Saturday mix-up, which did not happen."},
+    "D3-28": {"auto": true, "hand": false, "why": "The lead says 'You do not have to pay anything before going home', directly above a list showing the ₹4,200 mess bill. The guard checks values, not meaning."},
+    "D3-29": {"auto": true, "hand": false, "why": "Says 'I don't have a record of that', though the user said 'Returned the library book today'. It passed only because the quoted sentence contains 'Returned'."}
+  },
+  "chat_hand": {},
+  "labels": {
+    "D3-05": ["code: update parsing", "'Postponed to 5 to 7 March' was read as 7 March (the range without 'from' was missed), so the trip shows as 7–9 March."],
+    "D3-06": ["scorer", "Correct partial-match answer; marker phrase list."],
+    "D3-10": ["scorer", "Task rule stricter than needed; the plan is right."],
+    "D3-11": ["code: status item choice", "'Do I still owe anything for Karthik's trip?' picked the trip (no amount) instead of the trip fee, which was marked paid."],
+    "D3-12": ["scorer", "Correct partial-match answer; marker phrase list."],
+    "D3-18": ["code: router", "'GST' (a saved name in capitals) did not make the question personal, so it went to general knowledge and Qwen gave a general GST rule."],
+    "D3-24": ["scorer", "Correct partial-match answer; marker phrase list."],
+    "D3-28": ["model behaviour (lead)", "Hand fail: the lead contradicts the code's list."],
+    "D3-29": ["code: update detection", "Hand fail: 'Returned … today' is not recognised as an update, so it was saved as a separate note and the status answer has no record."],
+    "M-10": ["model behaviour (expression)", "Qwen wrote 104.50 × 35 ÷ 100. The check allowed it because 100 is an allowed constant."],
+    "M-12": ["code: safe default", "The expression was rejected by the check, so Chirii said it couldn't work it out (no wrong answer given)."],
+    "M-13": ["model behaviour (expression)", "Qwen divided by 31, not 28, for February. 31 is an allowed constant."],
+    "G-06": ["model behaviour", "'UPI stands for United Parcel Service' (wrong; W-10 explained UPI correctly)."],
+    "W-04": ["model behaviour", "Generic steps without any polite way of actually saying no."]
+  },
+  "route_mismatches": {
+    "D3-18": "general instead of lookup ('GST' not seen as personal)",
+    "D3-26": "mixed instead of meaning (answer still right)",
+    "M-02": "mixed instead of maths ('I invest' made it personal; answer still right)",
+    "M-08": "writing instead of maths ('Write 2.5 lakh…'; answer still right)",
+    "M-11": "window instead of mixed (the list's lead gave the right total)",
+    "R-11": "people instead of plan: 'Tell me about my week' — the name pattern ignores case, so 'my' looked like a name (bug)"
+  },
+  "other_findings": [
+    "Leads can contradict the code's list ('nothing to pay' above a bill). A check like the clash check is needed.",
+    "Maths constants (100, 31) let wrong expressions through; constants should be allowed only where the question's words call for them.",
+    "Titles with dates inside ('Trip to Goa with college friends from 26 to 28 February') make partial-match answers long.",
+    "W-01: the writing check flagged 'back on 20th February' (the day after the leave) and added a 'please check' note; a correct letter with an unnecessary warning."
+  ]
+}

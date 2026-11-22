@@ -498,3 +498,59 @@ extraction set.
 be tuning to this set again. A more general fix, such as reading periods ("weekend", relative to a saved event)
 more broadly, or letting Qwen pick the route and period within a strict schema with code checking it, should be
 judged on new tasks again.
+
+## S4c – One router for memory and general chat, and a fresh check (22 November 2026)
+
+**Order of work, as agreed:** development set 3 was written and committed with its marking rules first (cbd3d93), then
+S4c was built and tested on its own examples, then run (e3) was run once. The held-out 30 are still untouched.
+
+**What was built**
+- **One router.**
+  - Memory routes: lookup, status, window, plan and meaning.
+  - People: the route exists; the answers come in the people step.
+  - General chat: maths, general knowledge and writing.
+  - Mixed: memory and general together.
+
+  A personal question (my, I, a saved name, a saved thing) never goes to pure general knowledge.
+- **A general period reader:** weekends ("this weekend", "before the weekend"), weekday names, end of the month, next
+  month, ranges, relative days, and periods measured against a saved event ("before the Goa trip"). Weekday names are
+  never treated as item names.
+- **Qwen-assisted routing** when no rule is sure. Its route, period and item are limited to allowed values and checked
+  by code; otherwise a safe default is used.
+- **The specific-item check matches all key terms** for lookups and status questions, and says what *is* saved when
+  only part matches.
+- **Lookups give the date and the time.**
+- **General chat:**
+  - maths: Qwen writes an expression and the calculator works it out;
+  - general knowledge: "no live information" answers come from code;
+  - writing: checked for made-up dates and amounts.
+
+  Every answer carries a label (From your memory / Calculated / General knowledge / Writing help).
+- Leads that hit the length limit are dropped, not cut.
+
+**Run (e3), first try** (`chirii/results/dev3/RUN_E3.md`)
+
+| | (d) 50 tuned | (e1) 20 new, S4b | **(e3) 30 new, S4c** |
+| :--- | ---: | ---: | ---: |
+| Memory tasks (marker) | 49/50 | 13/20 (43–82%) | **23/30 (59–88%)** |
+| Memory tasks (hand check) | 50/50 | 12/20 (39–78%) | **25/30 (66–93%)** |
+| General chat | – | – | **35/40 (74–95%)**: maths 12/15, general 14/15, writing 9/10 |
+| Router tests | – | – | **14/15**; periods 15/15; all 85 items' routes 79/85 |
+
+- **On new phrasings the period reader did its job.** Date windows passed 8/8 and plans 3/4 (the plan failure is a
+  marker strictness), including weekends, weekday names, "next month" and event-relative periods.
+- **Three partial-match answers fail only on the marker.** "I have your Goa trip … but nothing about flight" is the
+  behaviour specified, but the marker's "not in memory" phrases don't include "nothing about".
+- **Remaining failures:**
+  - Code:
+    - "postponed to 5 to 7 March" read as 7 March;
+    - a status question picked the trip instead of the trip fee;
+    - "GST" not seen as personal;
+    - "Returned … today" not recognised as an update;
+    - "tell me about my week" routed to people (case bug).
+  - Qwen:
+    - a lead saying "nothing to pay" above a ₹4,200 bill;
+    - two wrong maths expressions that my constants check let through (÷ 100, 31 days for February);
+    - "UPI = United Parcel Service".
+- **Margins of error are wide** (30 and 40 tasks). These are development numbers on a fresh set, not the held-out
+  result.

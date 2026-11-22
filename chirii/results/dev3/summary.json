@@ -1,0 +1,30 @@
+{
+  "memory": {
+    "passed": 23,
+    "of": 30
+  },
+  "chat": {
+    "maths": {
+      "passed": 12,
+      "of": 15
+    },
+    "general": {
+      "passed": 14,
+      "of": 15
+    },
+    "writing": {
+      "passed": 9,
+      "of": 10
+    }
+  },
+  "router_tests": {
+    "route_ok": 14,
+    "period_ok": 15,
+    "of": 15
+  },
+  "route_accuracy_all": {
+    "ok": 79,
+    "of": 85
+  },
+  "memory_sentences_read_by_model": 47
+}

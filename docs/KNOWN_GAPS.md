@@ -10,6 +10,11 @@ fixed now**. Each says where it was seen. Any fix later is development work and 
   words from a fixed list of kinds of thing; "leave" is not on it. *Possible fix:* treat every content noun of a lookup
   as a key term, matched by meaning.
 
+## Extraction
+
+- **Abbreviated weekday lists without commas or "and"** ("every Tue Thu Sat") are read as the first day only, and
+  not flagged (extraction set C).
+
 ## Router
 
 - **"plan" as a noun** ("the Jio plan", "my mobile plan") is read as a day plan (D5-M11).
@@ -62,7 +67,6 @@ fixed now**. Each says where it was seen. Any fix later is development work and 
 
 ## Not yet done (planned, not gaps in what exists)
 
-- S5: login and tester consent note (encryption at rest is done). **Fictional data only until S5 is done.**
-- The safety layer, the 500-item scale check, the fresh extraction set (target: at most 2 of 20 wrong and not flagged).
+- S5 is done (22 Nov). Testers only with accounts made by the owner, after they accept the consent note.
 - S6: chat UI and the held-out 30 (untouched until then).
 - GPU jobs (owner): the benchmark job and the 7B diagnostic.

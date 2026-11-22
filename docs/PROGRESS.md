@@ -737,3 +737,23 @@ Method and bars committed before the run (4179bb5). The same 30 questions on 500
 - Long lists are right but too long (30 bills before an event): a summary belongs to S6.
 - Found while building the set, fixed before the run: the year rule read "12 December", said in June, as last
   December.
+
+## S5, part 6 – Fresh extraction set C, first try (22 November 2026)
+
+20 new sentences, committed before the run (8d75700). Target: wrong and not flagged ≤ 2 of 20.
+
+| | Result |
+| :--- | :--- |
+| Rules only: fully right | 18/20 |
+| Hybrid: fully right | 18/20 |
+| Qwen called (rules gave up) | 4/20, all accepted by the code check |
+| **Wrong and not flagged for the user** | **1/20: target met** |
+
+- Not flagged: "Tuition for Riya every Tue Thu Sat 4pm" was read as Tuesday only (abbreviated weekdays with no commas
+  or "and"). Logged in `docs/KNOWN_GAPS.md`.
+- Flagged: "Mama ji ki shaadi 14 Nov…": Qwen chose "appointment" rather than "important date"; the date was right and
+  the card asks the user to check.
+- The S5 year rule worked on new sentences (31 January said in June → 2028).
+
+**S5 is complete:** encryption at rest, login, the safety layer with the attribute check, the consent note, the
+500-item scale check and the fresh extraction set. Next: S6 (chat UI and the held-out set).

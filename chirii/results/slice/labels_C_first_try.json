@@ -1,0 +1,14 @@
+{
+  "_about": "Hand check of extraction set C, first try (S5's fresh extraction set). Written after reading every row, before any fix.",
+  "target": "wrong and not flagged for the user to check <= 2 of 20",
+  "result": "1 of 20: target met",
+  "labels": {
+    "Tuition for Riya every Tue Thu Sat 4pm": ["code: rules (weekday lists)", "Three abbreviated weekdays with no commas or 'and' were read as Tuesday only; the rules didn't give up, so Qwen was not asked and the card does not flag it. Wrong and not flagged."],
+    "Mama ji ki shaadi 14 Nov ko hai Jaipur mein": ["model behaviour (kind)", "The rules gave up (note); Qwen chose 'appointment' rather than 'important_date'. The date (14 November 2027) is right, and the card asks the user to check the kind. Wrong but flagged."]
+  },
+  "other_findings": [
+    "Year rule (S5): 'Property tax ₹6,400 due 31 January', said in June, read as 31 January 2028; 'Mama ji ki shaadi 14 Nov' as 14 November 2027.",
+    "Hinglish: 'Kal subah 7 baje yoga class jaana hai' read right (tomorrow, 7 am).",
+    "People and profile kinds right on new wording ('My sister Kavitha lives in Hyderabad', 'I'm Suresh, everyone calls me Suri')."
+  ]
+}

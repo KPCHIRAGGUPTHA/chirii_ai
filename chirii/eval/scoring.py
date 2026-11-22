@@ -57,7 +57,10 @@ ABSTAIN_PHRASES = re.compile(
     r"(i (do not|don't) (have|know|see|find)|you (haven't|have not|didn't|did not) (told|tell|mentioned|mention|saved|save|given|added)"
     r"|not in (your|my) (memory|notes|records)|no (record|information|details?|note|entry) (of|about|for|on)"
     r"|(isn't|is not|wasn't|was not|aren't) (in|saved|stored|recorded)|nothing (saved|stored|noted|recorded) (about|for)"
-    r"|i (can't|cannot) (find|see|tell)|i'?m not sure|no way (for me )?to know)",
+    r"|i (can't|cannot) (find|see|tell)|i'?m not sure|no way (for me )?to know"
+    # Marker change after run (e3), owner's decision: the specified partial-match answer ("I have your Goa trip …,
+    # but nothing about flight") counts as saying it isn't in memory. Run (e3) is re-marked next to its original.
+    r"|but nothing about|nothing (saved )?about (a|an|the|any|your)?\s*\w+|but no \w+ (is |was )?(saved|date|time|details?))",
     re.I,
 )
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]

@@ -270,3 +270,16 @@ class TestMarkerS4b:
         from chirii.eval.scoring import asked_period
         today = date(2026, 12, 14)
         assert asked_period(question, today) == question_window(question, today)
+
+
+class TestMarkerPartialMatch:
+    """Marker change after run (e3): partial-match answers count as saying the thing isn't saved."""
+
+    @pytest.mark.parametrize("reply", ["I have your passport appointment (4 March), but nothing about a visa interview.",
+                                       "I have the cousin's wedding saved, but no hotel details saved.",
+                                       "I have Ravi's visit on 17 January, but nothing about his train."])
+    def test_partial_match_answers_count_as_not_in_memory(self, by_id, reply):
+        assert "did not say it isn't in memory" not in score_task(by_id["S1-49"], reply)["failures"]
+
+    def test_a_plain_answer_still_does_not(self, by_id):
+        assert "did not say it isn't in memory" in score_task(by_id["S1-49"], "Your CGPA is 8.4.")["failures"]

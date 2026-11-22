@@ -74,6 +74,34 @@
   ol.consent { padding-left: 20px; margin: 0 0 14px; }
   ol.consent li { display: list-item; border: 0; padding: 4px 0; }
   .who { color: var(--muted); font-size: .9rem; }
+  .narrow-only { display: none; }
+  /* S6: phone layout. One column; memories open as their own panel; the question box stays at the bottom. */
+  @media (max-width: 900px) {
+    main { padding: 12px 12px 24px; }
+    h1 { font-size: 1.25rem; }
+    .sub { margin-bottom: 10px; font-size: .85rem; }
+    .layout { grid-template-columns: minmax(0, 1fr); }
+    .narrow-only { display: inline-flex; }
+    .chat-head h2 { display: none; }
+    .chat-head .actions { width: 100%; flex-wrap: nowrap; }
+    .chat-head .actions button { flex: 1; padding: 9px 8px; white-space: nowrap; }
+    body:not(.memories-open) .side { display: none; }
+    body.memories-open .chat { display: none; }
+    .chat { min-height: calc(100dvh - 150px); padding: 12px; }
+    .thread { max-height: none; }
+    .composer { position: sticky; bottom: 0; background: var(--card); padding-bottom: 8px; }
+    .bubble { max-width: 94%; }
+    button, input, select { min-height: 44px; }
+    button.link { min-height: 36px; padding: 6px 10px; }
+    input, select { font-size: 16px; }              /* stops phones zooming in on focus */
+    form.row { flex-wrap: wrap; }
+    form.row input { flex-basis: 100%; }
+    form.row button { flex: 1; }
+    li { flex-wrap: wrap; }
+    footer { flex-direction: column; align-items: stretch; }
+    footer .actions { display: grid; grid-template-columns: 1fr; gap: 8px; }
+    form.stack { max-width: none; }
+  }
   [hidden] { display: none !important; }
 </style>
 </head>
@@ -103,7 +131,7 @@
   <section class="card chat" aria-label="Chat">
     <div class="chat-head">
       <h2>Ask Chirii</h2>
-      <span class="actions"><button class="plain" id="plan-day">Plan my day</button><button class="link" id="new-chat">New chat</button></span>
+      <span class="actions"><button class="plain" id="plan-day">Plan my day</button><button class="plain narrow-only" id="open-memories">Memories</button><button class="link" id="new-chat">New chat</button></span>
     </div>
     <div class="thread" id="thread" aria-live="polite">
       <div class="empty-chat" id="empty-chat">
@@ -116,6 +144,7 @@
   </section>
 
   <div class="side">
+  <button class="plain narrow-only" id="close-memories" style="margin-bottom:12px">← Back to chat</button>
   <section class="card">
     <h2>Tell Chirii something to remember</h2>
     <form class="row" id="add-form"><input type="text" id="memory" placeholder="Dentist on 10 December at 6 pm" autocomplete="off"><button id="add-btn">Save</button></form>
@@ -270,6 +299,7 @@ async function refresh() {
   const data = await api("/api/memories");
   $("today").textContent = "Today: " + nice(data.today);
   $("count").textContent = data.items.length ? `(${data.items.length})` : "";
+  $("open-memories").textContent = data.items.length ? `Memories (${data.items.length})` : "Memories";
   const list = $("list");
   list.replaceChildren();
   if (!data.items.length) list.append(el("li", "meta", "Nothing saved yet."));
@@ -366,6 +396,8 @@ async function ask(question) {
 
 $("ask-form").onsubmit = (e) => { e.preventDefault(); const q = $("question").value; $("question").value = ""; ask(q); };
 $("plan-day").onclick = () => ask("What's my plan for today?");
+$("open-memories").onclick = () => { document.body.classList.add("memories-open"); window.scrollTo(0, 0); };
+$("close-memories").onclick = () => { document.body.classList.remove("memories-open"); $("question").focus(); };
 $("new-chat").onclick = async () => { await api("/api/conversation", { method: "DELETE" }).catch(() => {}); clearThread(); };
 
 $("delete-all").onclick = async () => {

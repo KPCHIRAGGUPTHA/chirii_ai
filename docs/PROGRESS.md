@@ -804,3 +804,11 @@ by the S5 personal rule (`docs/KNOWN_GAPS.md`).
   rewrite and its check, and the API: follow-up answered as understood, New chat / logout / delete forget, sessions
   and users separate, nothing written to disk, crisis not rewritten, history capped. Live check with Qwen in the
   browser: 6 of 6 right.
+
+## S6, step 3 – Phone layout (22 November 2026)
+
+Below 900 px the page is one column: the chat fills the screen with the question box kept at the bottom, and the
+memories open as their own panel ("Memories (12)", "← Back to chat"). Buttons and inputs are at least 44 px high
+(small link buttons 36 px), inputs use 16 px text so phones don't zoom in, and the footer buttons stack. Checked in
+the browser at 375 × 812: no sideways scrolling, all buttons at least 36 px. The same check found a wrong answer
+(not layout): "before / by / until" a date is read as that one day. Logged in `docs/KNOWN_GAPS.md`, not fixed.

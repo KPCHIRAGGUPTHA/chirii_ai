@@ -10,6 +10,13 @@ fixed now**. Each says where it was seen. Any fix later is development work and 
   words from a fixed list of kinds of thing; "leave" is not on it. *Possible fix:* treat every content noun of a lookup
   as a key term, matched by meaning.
 
+- **"before / by / until" a date or weekday is read as that one day** (found in the S6 phone-layout check, own
+  example, 22 Nov): "Which bills do I have to pay before 1 December?" → "Nothing to pay on Tuesday 1 December",
+  though bills fall on 25, 28 and 30 November. Same for "by 1 December", "until 1 December", "before Saturday". The
+  period reader takes the date as the window instead of today up to it. Not fixed; owner to decide before s6-final.
+- **"Anything to pay before Priya's birthday?"** goes to general knowledge (a saved birthday as the end of a
+  period isn't recognised here, though "before Sneha's sangeet" worked in the scale check). Same check, not fixed.
+
 ## Extraction
 
 - **Multi-day weekly repeats** written as abbreviated weekdays without commas or "and" ("Tuition for Riya every Tue

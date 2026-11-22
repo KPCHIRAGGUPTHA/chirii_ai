@@ -12,7 +12,7 @@ import re
 from datetime import date
 from typing import Any, Dict, List
 
-from chirii.eval.scoring import DATE_PATTERNS, EMPTY_DAY, find_dates, invented_facts
+from chirii.eval.scoring import DATE_PATTERNS, EMPTY_DAY, asked_period, find_dates, invented_facts
 
 TODAY_WORDS = re.compile(r"\b(today|tonight|aaj)\b", re.I)
 
@@ -57,7 +57,9 @@ def check_answer(answer: str, items: List[Dict[str, Any]], histories: Dict[int, 
     """Problems found in the answer; empty means it passed."""
     task = facts_as_task(items, histories, today, question)
     problems = [f"{kind}: {values}" for kind, values in invented_facts(answer, task).items() if values]
-    if (today.day, today.month) in find_dates(answer, today) and not any(falls_on(i, today) for i in items):
+    period = asked_period(question, today)
+    starts_today = bool(period) and period[0] == today  # S4b: "this week" and "next 7 days" start today
+    if (today.day, today.month) in find_dates(answer, today) and not starts_today and not any(falls_on(i, today) for i in items):
         for pattern in DATE_PATTERNS:
             for match in pattern.finditer(answer):
                 if (today.day, today.month) in find_dates(match.group(0), today):

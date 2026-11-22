@@ -100,7 +100,7 @@ def main():
         summary[run] = {
             "A_overall": sum(r["passed"] for r in scored), "B_unknown": sum(r["passed"] for r in unknown),
             "C_invented": sum(r["invented"] for r in scored),
-            "guard": {k: sum(r.get("guard") == k for r in scored) for k in ("pass", "retry", "fallback", "code")} if run in ("b", "c", "d") else None,
+            "guard": {k: sum(r.get("guard") == k for r in scored) for k in ("pass", "retry", "fallback", "lead_dropped", "code")} if run in ("b", "c", "d", "e1") else None,
             "median_ms": sorted(r["duration_ms"] for r in scored)[len(scored) // 2],
         }
     name = "s3_auto.json" if sorted(args.runs) == ["a", "b", "none"] and out == OUT else "auto_" + "_".join(args.runs) + ".json"  # never overwrite the S3 summary

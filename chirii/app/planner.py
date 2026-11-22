@@ -16,7 +16,7 @@ from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta
 from typing import Any, Dict, List, Optional, Tuple
 
-from chirii.app.formatting import KIND_LABELS, first_clause, make_title, say_amount, say_date, say_time
+from chirii.app.formatting import KIND_LABELS, clauses, first_clause, make_title, say_amount, say_date, say_time
 from chirii.app.memory.extract import find_dates as extract_dates, find_times
 from chirii.app.memory.store import MemoryStore, keywords
 
@@ -48,7 +48,7 @@ def label_for(item: Dict[str, Any], day: Optional[date] = None, hhmm: Optional[s
     multiple = (day is not None and item.get("other_dates")) or (hhmm is not None and item.get("other_times"))
     if not multiple:
         return title
-    for clause in re.split(r"[.;]\s+|,\s+", item["text"]):
+    for clause in clauses(item["text"]):  # S4b cosmetic: no split after "Dr.", "Mrs.", "Smt."
         if day is not None and item.get("other_dates") and any(d == day for _, d in extract_dates(clause, said_on)[0]):
             return clean_label(clause) or title
         if hhmm is not None and item.get("other_times") and any(t == hhmm for _, t in find_times(clause)[0]):
@@ -132,7 +132,10 @@ def window_draft(store: MemoryStore, start: date, end: date, focus: List[str], q
             keep.append({"time": item["time"]})
         amount = item["remaining"] if item.get("amount") is not None else None
         if amount is not None:
-            bits.append(say_amount(amount) + (" still owed" if item["paid_amount"] else ""))
+            if part == "receive" and re.search(r"\bowes?$", bits[0]):
+                bits[0] = f"{bits[0]} you {say_amount(amount)}" + (" (the rest still owed)" if item["paid_amount"] else "")
+            else:  # S4b cosmetic: "Mrs. Deshpande owes you ₹3,450", not "owes, ₹3,450"
+                bits.append(say_amount(amount) + (" still owed" if item["paid_amount"] else ""))
             keep.append({"amount": amount})
             if part == "receive" or item["kind"] in PAYABLE:
                 totals[part] += amount

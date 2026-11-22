@@ -39,7 +39,20 @@ def ordinal(n: int) -> str:
     return f"{n}{'th' if 10 <= n % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th')}"
 
 
-ABBREVIATIONS = ("dr", "mr", "mrs", "ms", "prof", "st", "sr", "jr")
+ABBREVIATIONS = ("dr", "mr", "mrs", "ms", "smt", "shri", "sri", "prof", "st", "sr", "jr")
+
+
+def clauses(text: str) -> list:
+    """The text split at full stops, semicolons and commas, but never after an honorific ('Dr.', 'Mrs.', 'Smt.')."""
+    parts, start = [], 0
+    for match in re.finditer(r"[.;](?:\s+|$)|,\s+", text):
+        if text[match.start()] == "." and text[start:match.start()].split() and \
+                text[start:match.start()].split()[-1].lower().rstrip(".") in ABBREVIATIONS:
+            continue
+        parts.append(text[start:match.start()])
+        start = match.end()
+    parts.append(text[start:])
+    return [p.strip() for p in parts if p.strip()]
 # Where a name stops and the details start: "BESCOM electricity bill | is ₹1,860", "Hostel mess fee | of ₹38,500"
 TITLE_CUT = re.compile(r"\s+(?:(?:is|are|was|were|must|goes|costs?|due|on|at|by|before|between|every|each|of(?=\s+(?:₹|rs\b|inr\b|\d))|"
                        r"for(?=\s+(?:₹|\d)))\b|(?=₹)|(?=rs\.?\s*\d))", re.I)

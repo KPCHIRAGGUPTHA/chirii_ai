@@ -27,14 +27,14 @@ from chirii.app.memory.extract import NOTE_START, WEEKDAYS, Item, extract, find_
 KINDS = ["bill", "appointment", "task", "medicine", "routine", "important_date", "exam", "travel", "shift", "income",
          "receivable", "note"]
 KIND_HELP = {
-    "bill": "a payment the user must make (bill, fee, EMI, premium, rent)",
+    "bill": "a payment the person must make (bill, fee, EMI, premium, rent)",
     "appointment": "something at a set time (doctor, meeting, visit, class, function)",
-    "task": "something the user must do by a date (renew, submit, book, collect)",
+    "task": "something the person must do by a date (renew, submit, book, collect)",
     "medicine": "a medicine and when to take it",
     "routine": "something that repeats on set weekdays",
     "important_date": "a birthday, anniversary, festival or family occasion",
     "exam": "an exam", "travel": "a journey", "shift": "a work shift",
-    "income": "money the user receives", "receivable": "money someone owes the user",
+    "income": "money the person receives", "receivable": "money someone owes the person",
     "note": "anything else to remember",
 }
 DATED_KINDS = {"appointment", "exam", "travel", "important_date", "shift"}
@@ -170,7 +170,7 @@ def build_schema(text: str, said_on: date) -> Dict[str, Any]:
 def build_messages(text: str, said_on: date) -> List[Dict[str, str]]:
     kinds = "\n".join(f"- {k}: {v}" for k, v in KIND_HELP.items())
     system = (
-        "You turn one sentence that a user told their personal assistant into a memory item in JSON. The sentence may "
+        "You turn one sentence that a person told their personal assistant into a memory item in JSON. The sentence may "
         "be casual, incomplete or mix English with Hindi words.\n"
         f"Today is {WEEKDAYS[said_on.weekday()]}, {said_on.day} {said_on.strftime('%B %Y')} ({said_on.isoformat()}).\n\n"
         f"kind is one of:\n{kinds}\n\n"

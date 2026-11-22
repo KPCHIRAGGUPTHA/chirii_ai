@@ -99,16 +99,16 @@ def fact_line_v2(item: Dict[str, Any], history: List[Dict[str, Any]], today: dat
     said = item["text"]
     if changed_fields and not show_history:
         said = strip_when(said, dates="date" in changed_fields or "end_date" in changed_fields, times="time" in changed_fields)
-        line = f"[{KIND_LABELS.get(item['kind'], item['kind'])}] The user said (with values changed since left out): \"{said}\""
+        line = f"[{KIND_LABELS.get(item['kind'], item['kind'])}] You said (with values changed since left out): \"{said}\""
     else:
-        line = f"[{KIND_LABELS.get(item['kind'], item['kind'])}] The user said: \"{said}\""
+        line = f"[{KIND_LABELS.get(item['kind'], item['kind'])}] You said: \"{said}\""
     if details:
         line += " | Current details: " + "; ".join(details)
     if changed_fields and show_history:
         line += " | Earlier values: " + "; ".join(f"{h['field']} was {h['old_value']}, changed to {h['new_value']}"
                                                   for h in history if h["field"] in changed_fields)
     if not item.get("confirmed"):
-        line += " | Not yet confirmed by the user"
+        line += " | Not yet confirmed"
     return line
 
 
@@ -127,7 +127,11 @@ def system_prompt(today: date, version: int = 1) -> str:
     if version >= 2:
         rules[0] = (f"- If a fact answers the question, answer it directly and do not say you don't have it. Only if no "
                     f"fact answers it, say \"{NOT_IN_MEMORY}\"")
-        rules.append("- Speak to the user as 'you'. Never write 'the user'.")
+        rules[2] = "- When a fact has 'Current details', use those, not older values in what was said."
+        rules.append("- Speak directly to the person as 'you'; never refer to them in the third person.")
+        return ("You are Chirii, a personal memory assistant. Answer the question using only the memory facts given.\n"
+                f"Today is {say_date(today.isoformat())}.\nRules:\n" + "\n".join(rules))
+    # version 1 is frozen: it is the prompt of runs (a) and (b)
     return ("You are Chirii, a personal memory assistant. Answer the user's question using only the memory facts given.\n"
             f"Today is {say_date(today.isoformat())}.\nRules:\n" + "\n".join(rules))
 
@@ -140,24 +144,23 @@ TIME_IN_TEXT = re.compile(r"\b\d{1,2}([:.]\d{2})?\s*(am|pm|a\.m\.|p\.m\.)", re.I
 
 
 def lead_problems(lead: str, draft: Draft, today: date, question: str) -> List[str]:
-    """S4b: Qwen's lead and closing must not state any fact themselves (no date, amount, time or day count: those are
-    in the code's list), must not contradict a clash the code found, and must pass the guard."""
+    """Qwen's lead and closing are checked by the guard only (owner's spec; the stricter S4b rule that forbade any
+    date, amount or time in the lead was dropped after run (d)). The guard allows the start date of a period the
+    question names. One extra check is kept: the lead must not deny a clash the code found."""
     problems = check_answer(lead, draft.items, {}, today, question)
-    if find_dates(lead, today) or find_amounts(lead) or TIME_IN_TEXT.search(lead):
-        problems.append("lead states a date, amount or time")
     if draft.clash and NO_CLASH.search(lead):
         problems.append("lead denies the clash")
     return problems
 
 
 def lead_prompt(today: date) -> str:
-    return ("You are Chirii, a personal memory assistant. The answer below was worked out from the user's saved "
+    return ("You are Chirii, a personal memory assistant. The answer below was worked out from the person's saved "
             "memories and will be shown to them exactly as it is. Write one short, friendly lead sentence to go "
             "before it, and an optional short closing line (or an empty string).\n"
             f"Today is {say_date(today.isoformat())}.\nRules:\n"
             "- Do not repeat or change any item, date, day, time or amount, and do not add any. The list says them.\n"
             "- If the answer warns about a clash, you may say there is a clash, but never that there isn't one.\n"
-            "- Speak to the user as 'you'. Reply as JSON with \"lead\" and \"closing\".")
+            "- Speak directly to the person as 'you'. Reply as JSON with \"lead\" and \"closing\".")
 
 
 def code_answer(items: List[Dict[str, Any]], histories: Optional[Dict[int, List[Dict[str, Any]]]] = None) -> str:
@@ -305,22 +308,20 @@ class Assistant:
             return answer, []
         messages = [{"role": "system", "content": lead_prompt(today)},
                     {"role": "user", "content": f"Question: {question}\n\nAnswer:\n{draft.text}"}]
-        for attempt in ("pass", "retry"):
-            try:
-                reply = json.loads(self.model.chat(messages, max_tokens=120, json_schema=LEAD_SCHEMA, purpose="lead").text)
-                lead, closing = str(reply.get("lead", "")).strip(), str(reply.get("closing", "")).strip()
-            except (ValueError, AttributeError):
-                lead, closing = "", ""
-            words = (lead + " " + closing).strip()
-            problems = lead_problems(words, draft, today, question) if words else ["no lead"]
-            if not problems:
-                answer.text = "\n".join(part for part in (lead, draft.text, closing) if part)
-                answer.guard = attempt
-                break
-            if attempt == "pass":
-                answer.first_answer, answer.problems = words, problems
+        # Owner, after run (d): a lead that fails the check is dropped and the list is shown alone ("lead dropped"),
+        # counted apart from full fallbacks. No retry.
+        try:
+            reply = json.loads(self.model.chat(messages, max_tokens=120, json_schema=LEAD_SCHEMA, purpose="lead").text)
+            lead, closing = str(reply.get("lead", "")).strip(), str(reply.get("closing", "")).strip()
+        except (ValueError, AttributeError):
+            lead, closing = "", ""
+        words = (lead + " " + closing).strip()
+        problems = lead_problems(words, draft, today, question) if words else ["no lead"]
+        if problems:
+            answer.text, answer.guard, answer.first_answer, answer.problems = draft.text, "lead_dropped", words, problems
         else:
-            answer.text, answer.guard = draft.text, "fallback"
+            answer.text = "\n".join(part for part in (lead, draft.text, closing) if part)
+            answer.guard = "pass"
         log_event("answer_guard", user=self.store.user_id, status=answer.guard, result_count=len(answer.problems), stage="lead")
         return answer, draft.items
 

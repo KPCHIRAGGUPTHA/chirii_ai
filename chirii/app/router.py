@@ -158,7 +158,7 @@ def route(question: str, today: date, model: Optional[ChatModel] = None) -> Rout
     if model is not None:
         schema = {"type": "object", "properties": {"kind": {"type": "string", "enum": KINDS}}, "required": ["kind"]}
         messages = [{"role": "system", "content": (
-            "Classify the user's question to their personal memory assistant. plan: they want their day or week planned. "
+            "Classify this question to a personal memory assistant. plan: they want their day or week planned. "
             "window: they want a list of what falls in a period (due this week, coming up). status: they ask whether "
             "something was done or paid. lookup: they ask for one fact (when, how much, what time). meaning: they ask "
             "what a note says about something.")},

@@ -169,17 +169,71 @@ class TestLead:
         assert answer.guard == "pass" and answer.route == "window"
         assert model.calls[0]["json_schema"]["required"] == ["lead", "closing"]
 
-    def test_a_lead_that_states_an_amount_is_retried_then_dropped(self, store):
-        bad = {"lead": "You owe ₹950 this week.", "closing": ""}
-        answer = Assistant(store, FakeModel([bad, bad])).ask("What do I have to pay this week?", MON)
-        assert answer.guard == "fallback" and answer.text.startswith("To pay from Monday 1 February")
-        assert "lead states a date, amount or time" in answer.problems
+    def test_a_lead_with_correct_facts_is_kept(self, store):
+        """After run (d): the lead is checked by the guard only, so correct values in it are fine."""
+        lead = {"lead": "This week you have three bills, from Wednesday 3 February to Friday 5 February.", "closing": ""}
+        answer = Assistant(store, FakeModel([lead])).ask("What do I have to pay this week?", MON)
+        assert answer.guard == "pass" and answer.text.startswith("This week you have three bills")
 
-    def test_a_lead_that_denies_a_clash_is_refused(self, store):
+    def test_the_period_start_date_is_allowed_in_a_lead(self, store):
+        lead = {"lead": "From Monday 1 February to Sunday 7 February, here is what to pay.", "closing": ""}
+        answer = Assistant(store, FakeModel([lead])).ask("What do I have to pay this week?", MON)
+        assert answer.guard == "pass"
+
+    def test_a_lead_with_an_invented_amount_is_dropped_not_retried(self, store):
+        bad = {"lead": "You owe ₹950 this week.", "closing": ""}
+        model = FakeModel([bad])
+        answer = Assistant(store, model).ask("What do I have to pay this week?", MON)
+        assert answer.guard == "lead_dropped" and answer.text.startswith("To pay from Monday 1 February")
+        assert len(model.calls) == 1 and any("amounts" in p for p in answer.problems)
+
+    def test_a_lead_that_denies_a_clash_is_dropped(self, store):
         bad = {"lead": "Good news, no clashes today!", "closing": ""}
-        good = {"lead": "Here's your day. Watch out for one clash.", "closing": ""}
-        answer = Assistant(store, FakeModel([bad, good])).ask("Plan my day.", MON)
-        assert answer.guard == "retry" and "lead denies the clash" in answer.problems and "Clash" in answer.text
+        answer = Assistant(store, FakeModel([bad])).ask("Plan my day.", MON)
+        assert answer.guard == "lead_dropped" and "lead denies the clash" in answer.problems and "Clash" in answer.text
+
+
+class TestCosmetics:
+
+    @pytest.mark.parametrize("text,expected", [
+        ("Check-up with Dr. Rao at 11 am. Blood test at 8 am.", ["Check-up with Dr. Rao at 11 am", "Blood test at 8 am"]),
+        ("Meet Smt. Lata and Shri. Gopal on 3 February, then lunch.", ["Meet Smt. Lata and Shri. Gopal on 3 February", "then lunch"]),
+        ("Mrs. Iyer, Mr. Shah and Ms. Roy are coming.", ["Mrs. Iyer", "Mr. Shah and Ms. Roy are coming"]),
+    ])
+    def test_clauses_do_not_split_after_honorifics(self, text, expected):
+        from chirii.app.formatting import clauses
+        assert clauses(text) == expected
+
+    def test_a_plan_label_keeps_the_doctor_s_name(self, tmp_path):
+        s = MemoryStore(tmp_path, "c", SECRET, HashEmbedder())
+        s.add("My check-up is with Dr. Rao on 1 February at 11 am. I have a blood test the same morning at 8 am.", SAID)
+        text = plan_draft(s, MON, MON, MON).text
+        assert "Dr. Rao" in text and "- 11:00 am: Rao" not in text
+
+    def test_money_owed_reads_owes_you(self, tmp_path):
+        s = MemoryStore(tmp_path, "r", SECRET, HashEmbedder())
+        s.add("Mrs. Deshpande owes ₹3,450 and will pay by 2 February.", SAID)
+        text = window_draft(s, MON, date(2027, 2, 7), ["due"], "Is anything due this week?").text
+        assert "Mrs. Deshpande owes you ₹3,450" in text and "owes," not in text
+
+    def test_no_prompt_or_answer_template_says_the_user(self, store):
+        """Every prompt the S4 system sends and every answer code builds avoids 'the user' / "the user's". The
+        version-1 prompt and fact line are frozen for reproducing runs (a) and (b), so they are not checked."""
+        import json as _json
+        from chirii.app.assistant import code_answer, fact_line_v2, lead_prompt, system_prompt
+        from chirii.app.memory.hybrid import build_messages
+        from chirii.app.planner import status_draft
+        texts = [system_prompt(MON, version=2), lead_prompt(MON), *[m["content"] for m in build_messages("dentist tmrw 5pm", MON)]]
+        model = FakeModel([{"kind": "lookup"}])
+        route("Spare key situation?", MON, model)
+        texts += [m["content"] for m in model.calls[0]["messages"]]
+        items = store.items()
+        texts += [fact_line_v2(i, store.history(i["id"]), MON, "What's due?") for i in items]
+        texts += [code_answer(items[:3]), plan_draft(store, MON, MON, MON).text, plan_draft(store, MON, date(2027, 2, 7), MON).text]
+        texts += [window_draft(store, MON, date(2027, 2, 7), [f], "What's due this week?").text for f in ("pay", "owed", "due", "all", "dates")]
+        texts += [status_draft(i, [], "Is it paid?").text for i in items[:4]] + [status_draft(None, [], "x").text]
+        for text in texts:
+            assert "the user" not in text.lower(), text
 
 
 class TestS4bFixes:

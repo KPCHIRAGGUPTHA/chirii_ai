@@ -4,6 +4,7 @@ sentences. Each set's first run is its reported first-try result; later runs on 
 
     set A  slice_fresh_sentences.py    first try 21 Nov (EXTRACTION_A_first_try.md); then development data
     set B  slice_fresh_sentences_b.py  written after the fixes that set A prompted, first try after them
+    set C  slice_fresh_sentences_c.py  S5: written after the S4/S5 rule changes, first try (target: wrong and not flagged <= 2/20)
 
 Needs llama-server running (see chirii/README.md). Writes chirii/results/slice/EXTRACTION_<label>.md and .json.
     python -m chirii.eval.run_slice_extraction --set b --label B_first_try
@@ -21,8 +22,10 @@ from chirii.app.memory.extract import extract
 from chirii.app.memory.hybrid import HybridExtractor, needs_model
 from chirii.eval.slice_fresh_sentences import SAID_ON as SAID_ON_A, SLICE_FRESH
 from chirii.eval.slice_fresh_sentences_b import SAID_ON as SAID_ON_B, SLICE_FRESH_B
+from chirii.eval.slice_fresh_sentences_c import SAID_ON as SAID_ON_C, SLICE_FRESH_C
 
-SETS = {"a": (SLICE_FRESH, SAID_ON_A, "chirii/eval/slice_fresh_sentences.py"), "b": (SLICE_FRESH_B, SAID_ON_B, "chirii/eval/slice_fresh_sentences_b.py")}
+SETS = {"a": (SLICE_FRESH, SAID_ON_A, "chirii/eval/slice_fresh_sentences.py"), "b": (SLICE_FRESH_B, SAID_ON_B, "chirii/eval/slice_fresh_sentences_b.py"),
+        "c": (SLICE_FRESH_C, SAID_ON_C, "chirii/eval/slice_fresh_sentences_c.py")}   # set C: S5's fresh extraction set
 
 OUT = REPO_ROOT / "chirii" / "results" / "slice"
 

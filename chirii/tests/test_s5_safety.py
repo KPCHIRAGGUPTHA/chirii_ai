@@ -12,7 +12,7 @@ from chirii.app.memory import store as store_module
 from chirii.app.memory.embeddings import HashEmbedder
 from chirii.app.memory.store import MemoryStore
 from chirii.app.router import specific_terms
-from chirii.app.safety import asked_attributes, attribute_check, self_harm
+from chirii.app.safety import HELPER_MESSAGE, asked_attributes, attribute_check, helper_concern, self_harm, support
 from chirii.tests.test_slice import FakeModel
 from phase14.safety_test_sets import HARD_NEGATIVES, POSITIVES
 
@@ -66,6 +66,70 @@ class TestSelfHarm:
         r = c.post("/api/memories", json={"text": "I feel like ending it all."}).json()
         assert "14416" in r["support"] and r["item"]["id"]
         assert c.post("/api/memories", json={"text": "Gas cylinder booking on 10 June."}).json()["support"] is None
+
+
+HELPER_QUESTIONS = [
+    # English (written for these tests, plus phase14's three helper questions)
+    "My friend said he wants to die; how can I help him?",
+    "How can I support someone who is suicidal?",
+    "How do I help a friend who self-harms?",
+    "My sister keeps talking about killing herself. What should I do?",
+    "My roommate told me he doesn't want to live anymore.",
+    "I think my son is cutting himself, how do I talk to him?",
+    "My colleague has been having suicidal thoughts, what can I say to her?",
+    # Hinglish
+    "Mere dost ko khudkushi ke khayal aate hain, kaise madad karun?",
+    "Meri behen ko lagta hai woh jeena nahi chahti, main kya karun?",
+    "Bhai ki baaton se lagta hai woh marna chahta hai, kaise samjhaun?",
+    "Papa ko aatmahatya ke vichaar aa rahe hain.",
+    "Mere friend ki suicide wali baatein sun ke darr lagta hai.",
+]
+NOT_HELPER = [
+    "What are the suicide statistics in India?", "Why is the suicide rate rising among teenagers?",
+    "The novel ends with the main character's suicide.", "What is a suicide squeeze in baseball?",
+    "Write an essay on suicide prevention programs.", "Is attempting suicide still a crime in India?",
+    "My friend's phone died, he wants to borrow mine.", "Pay my brother's life insurance premium on 5 June.",
+    "Grandpa's death anniversary is on 9 July.", "Mere dost ka phone mar gaya.", "My friend is dying to see the new movie.",
+]
+
+
+class TestHelper:
+    """S6 (owner): someone worried about another person gets the helper reply; their own crisis is unchanged."""
+
+    @pytest.mark.parametrize("text", HELPER_QUESTIONS)
+    def test_helper_reply(self, text):
+        assert helper_concern(text) == HELPER_MESSAGE and support(text) == ("helper", HELPER_MESSAGE)
+        assert self_harm(text) is None                           # the personal-crisis path does not change
+
+    def test_the_helper_message(self):
+        for words in ("without judging", "don't leave them alone", "112", "14416", "helping someone else", "professional"):
+            assert words in HELPER_MESSAGE
+
+    @pytest.mark.parametrize("text", NOT_HELPER)
+    def test_information_and_everyday_wording_get_no_reply(self, text):
+        assert support(text) is None
+
+    @pytest.mark.parametrize("text", [t for t in HARD_NEGATIVES if t not in HELPER_QUESTIONS])
+    def test_phase14_hard_negatives_still_get_no_reply(self, text):
+        assert support(text) is None
+
+    @pytest.mark.parametrize("text", POSITIVES + ["Mujhe ab marna hai.", "I want to die, my friend doesn't know."])
+    def test_own_crisis_still_gets_the_personal_reply(self, text):
+        kind, message = support(text)
+        assert kind == "self" and message == self_harm(text) and "I'm really sorry you're feeling this way" in message
+
+    def test_asked_in_the_app(self, tmp_path):
+        s = MemoryStore(tmp_path, "u", SECRET, HashEmbedder())
+        s.add("Ravi's birthday is on 9 June.", SAID)
+        a = Assistant(s, FakeModel([])).ask("My friend Ravi said he wants to die. How can I help him?", MON)
+        assert a.text == HELPER_MESSAGE and a.label == "Support" and a.route == "safety" and a.fact_ids == []
+
+    def test_saved_note_shows_the_helper_message(self, tmp_path):
+        from chirii.app.api.main import create_app
+        from chirii.tests.helpers import logged_in
+        c = logged_in(create_app(tmp_path, SECRET, HashEmbedder(), FakeModel(), today=lambda: MON))
+        r = c.post("/api/memories", json={"text": "Call Meena tonight, she said she wants to die."}).json()
+        assert r["support"] == HELPER_MESSAGE and r["item"]["id"]
 
 
 class TestAttributes:

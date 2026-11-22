@@ -283,11 +283,13 @@ class Assistant:
 
     def ask(self, question: str, today: date) -> Answer:
         started = time.perf_counter()
-        support = safety.self_harm(question) if self.routed else None   # runs (a)/(b) stay frozen as in S3
+        support = safety.support(question) if self.routed else None   # runs (a)/(b) stay frozen as in S3
         if support is not None:
-            # S5 safety: a fixed supportive reply; Qwen is not called and no memory is used
-            log_event("safety", status="self_harm", stage="answer")
-            return Answer(text=support, fact_ids=[], guard="safety", route="safety", label=LABELS["support"],
+            # S5 safety: a fixed supportive reply (the person's own crisis, or S6: worry about someone else);
+            # Qwen is not called and no memory is used
+            kind, text = support
+            log_event("safety", status="self_harm" if kind == "self" else "helper", stage="answer")
+            return Answer(text=text, fact_ids=[], guard="safety", route="safety", label=LABELS["support"],
                           duration_ms=round((time.perf_counter() - started) * 1000))
         if self.routed:
             # S4f: matching by meaning (the calibrated embedding model) for this question's router and item checks

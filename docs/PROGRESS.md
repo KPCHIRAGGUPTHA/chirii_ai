@@ -768,3 +768,17 @@ done), each file re-encrypted, read back and checked, then the old file removed.
 run; folders of no known user are left alone. The data key does not change. Tests: all users' data reachable after
 rotation, also through login in the app; an interrupted rotation finishes; a wrong data key changes nothing. Run on
 the real data: 2 folders moved (admin, demo), both open.
+
+## S6, part 1 – Helper reply for someone worried about another person (22 November 2026)
+
+Owner's change before S6. When someone writes about another person's suicidal thoughts or self-harm ("My friend said
+he wants to die; how can I help him?", "Mere dost ko khudkushi ke khayal aate hain, kaise madad karun?"), Chirii gives
+a fixed helper reply, labelled "Support", without calling Qwen or using memories: listen without judging, don't leave
+them alone if in immediate danger and call 112, encourage professional help, Tele-MANAS 14416 (which also supports
+people helping others), look after yourself. The same applies to a saved note. The person's own crisis is checked
+first and is unchanged. Informational wording (statistics, essays, novels, "suicide squeeze") gets no reply.
+
+Tests (own examples): 7 English and 5 Hinglish helper messages; 11 informational and everyday sentences, and phase14's
+other hard negatives, get no reply; all phase14 positives still get the personal reply; in the assistant and on save.
+Found and logged, not fixed: a Hinglish personal crisis that names a relative ("…papa ko mat batana") is suppressed
+by the S5 personal rule (`docs/KNOWN_GAPS.md`).

@@ -12,8 +12,9 @@ fixed now**. Each says where it was seen. Any fix later is development work and 
 
 ## Extraction
 
-- **Abbreviated weekday lists without commas or "and"** ("every Tue Thu Sat") are read as the first day only, and
-  not flagged (extraction set C).
+- **Multi-day weekly repeats** written as abbreviated weekdays without commas or "and" ("Tuition for Riya every Tue
+  Thu Sat 4pm") are read as the first day only (Tuesday), and not flagged for the user (extraction set C, the one
+  "wrong and not flagged" of 20). Accepted with S5 (owner, 22 Nov); not fixed.
 
 ## Router
 
@@ -25,9 +26,10 @@ fixed now**. Each says where it was seen. Any fix later is development work and 
 
 ## Matching and lists
 
-- **Hyphenated names never match** ("Wi-Fi" in the question vs "Wi-Fi router" in memory): memory text is split at the
-  hyphen, the question's term is not, so the specific-item check says nothing is saved (scale check SC-25). A small
-  fix (split both the same way); found in a scored run, so logged here rather than fixed silently.
+- **Hyphenated names never match** ("Where is the Wi-Fi router?" vs a saved "Wi-Fi router…"): memory text is split
+  at the hyphen ("wi", "fi"), the question's term is not, so the specific-item check says "I don't have anything
+  about Wi-Fi saved" (scale check SC-25, the one miss at both 40 and 500 items). A small fix (split both the same
+  way); found in a scored run, so logged here rather than fixed silently. Accepted with S5 (owner, 22 Nov).
 - **Long lists are complete but too long** (30 bills before an event; 9 badminton games on a Saturday). A summary for
   long lists belongs to S6 (scale check).
 - **Generic event words are required as key terms:** "my dentist appointment" vs a saved "Dentist Dr. Shetty…"
@@ -38,6 +40,14 @@ fixed now**. Each says where it was seen. Any fix later is development work and 
 - **Meaning matching is conservative:** the threshold (0.66, calibrated on my own pairs) catches 16 of 30 true synonyms
   and 0 of 30 near-misses. Synonyms that the embedding model scores low (flat/apartment, grocery/provisions) are not
   matched unless they are stems or in the small Indian synonym map.
+
+## Safety
+
+- **A personal crisis in Hinglish that also names a relative** is suppressed as third-party wording by the S5
+  personal-crisis rule: "Mujhe marna hai, mummy ko pata nahi." gets no support reply, and "Main suicide kar lunga,
+  papa ko mat batana." gets the S6 helper reply (which still gives 14416 and 112) instead of the personal one. Found
+  while adding the helper reply; the personal path was left unchanged on the owner's instruction. (English is fine:
+  "I want to kill myself and my mom doesn't know" gets the personal reply.)
 
 ## Answers in Hinglish
 

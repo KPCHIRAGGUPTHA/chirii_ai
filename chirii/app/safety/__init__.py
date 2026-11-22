@@ -44,6 +44,58 @@ def self_harm(text: str) -> Optional[str]:
     return None
 
 
+# ---------------------------------------------------------------- 1b. someone worried about another person (S6, owner)
+
+HELPER_MESSAGE = (
+    "It's good that you're looking out for them. You don't need the perfect words: listen without judging, take what "
+    "they say seriously, and let them know they're not alone. If they might act on these thoughts right now, don't "
+    "leave them alone and call 112. Gently encourage them to talk to a professional: Tele-MANAS on 14416 is free, "
+    "any time, and also supports people who are helping someone else, so you can call them yourself too. Please look "
+    "after yourself as well."
+)
+# The other person (phase14's third-party cues, plus pronouns), and harm wording about them.
+OTHER_PERSON = re.compile(
+    r"\bsomeone\b|\bsomebody\b|\bfriend\b|\bhe\b|\bshe\b|\bthey\b|\bhim\b|\bher\b|\bthem\b|\bhis\b|\btheir\b"
+    r"|\bmy (?:sister|brother|mother|father|mum|mom|dad|cousin|classmate|roommate|coworker|colleague|partner|husband|"
+    r"wife|son|daughter|friend|student|neighbour|neighbor|uncle|aunt)\b", re.I)
+OTHER_HARM = re.compile(
+    r"\bsuicid|\bself[- ]harm|\bkill(?:ing)? (?:him|her|them)sel(?:f|ves)\b|\bend(?:ing)? (?:his|her|their) (?:own )?life\b"
+    r"|\b(?:hurt|harm|cut)(?:s|ting|ing)? (?:him|her|them)sel(?:f|ves)\b|\bwants? to die\b|\bwanted to die\b"
+    r"|\b(?:doesn't|does not|don't|do not) want to (?:live|be alive|be here)\b|\btalk(?:s|ing|ed)? about (?:dying|ending it)\b", re.I)
+# Talk about suicide that is not about someone the person knows: news, research, fiction, sport terms.
+INFORMATIONAL = re.compile(
+    r"\bstatistic|\brates?\b|\bnews\b|\bessay\b|\bnovel\b|\bcharacter\b|\bmovie\b|\bfilm\b|\bbook\b|\bchapter\b"
+    r"|\btheory\b|\bsqueeze\b|\bpass rule\b|\bcrime\b|\blaw\b|\bprevention (?:day|week|programs?)\b", re.I)
+HINGLISH_OTHER_HARM = re.compile(
+    r"\bkhud ?kushi\b|\bkhudkhushi\b|\baatmahatya\b|\batmahatya\b|\bsuicide\b"
+    r"|\b(?:marna|mar jaana|mar jana)\b.{0,10}\b(?:chahta|chahti)\b|\bjeena nahi\b.{0,10}\b(?:chahta|chahti)\b"
+    r"|\bjeene ka (?:man|mann) nahi\b", re.I)
+
+
+def helper_concern(text: str) -> Optional[str]:
+    """The helper message when someone writes about another person's suicidal thoughts or self-harm ("My friend said
+    he wants to die; how can I help him?", "Mere dost ko khudkushi ke khayal aate hain, kaise madad karun?").
+    The person's own crisis comes first: self_harm() is checked before this and is unchanged."""
+    if self_harm(text):
+        return None
+    t = text.replace("’", "'")
+    if OTHER_HARM.search(t) and OTHER_PERSON.search(t) and not INFORMATIONAL.search(t):
+        return HELPER_MESSAGE
+    if HINGLISH_OTHER_HARM.search(t) and HINGLISH_THIRD_PARTY.search(t):
+        return HELPER_MESSAGE
+    return None
+
+
+def support(text: str) -> Optional[Tuple[str, str]]:
+    """(kind, message) for a fixed supportive reply, or None: "self" for the person's own crisis, "helper" when they
+    are worried about someone else."""
+    own = self_harm(text)
+    if own:
+        return "self", own
+    other = helper_concern(text)
+    return ("helper", other) if other else None
+
+
 # ---------------------------------------------------------------- 2. attribute check
 
 # Attributes and events a question can ask about. A memory must mention the one asked about.

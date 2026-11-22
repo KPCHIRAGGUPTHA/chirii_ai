@@ -191,11 +191,11 @@ def create_app(data_dir: Path, secret: str, embedder: Embedder, model: ChatModel
         card = dict(result["understood"])
         card["people"] = people_mentioned(result["item"], store.items(include_updates=False))
         # S5 safety: the note is the person's own and is saved, but if it shows self-harm intent, support comes first
-        support = safety.self_harm(body.text)
+        support = safety.support(body.text)
         if support:
-            log_event("safety", status="self_harm", stage="memory")
+            log_event("safety", status="self_harm" if support[0] == "self" else "helper", stage="memory")
         return {"item": result["item"], "understood": card, "linked_to": result["linked_to"], "changes": result["changes"],
-                "support": support}
+                "support": support[1] if support else None}
 
     @app.post("/api/memories/{item_id}/confirm")
     def confirm_memory(item_id: int, user: str = Depends(consented)):

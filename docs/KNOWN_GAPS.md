@@ -20,6 +20,11 @@ fixed now**. Each says where it was seen. Any fix later is development work and 
 
 ## Matching and lists
 
+- **Hyphenated names never match** ("Wi-Fi" in the question vs "Wi-Fi router" in memory): memory text is split at the
+  hyphen, the question's term is not, so the specific-item check says nothing is saved (scale check SC-25). A small
+  fix (split both the same way); found in a scored run, so logged here rather than fixed silently.
+- **Long lists are complete but too long** (30 bills before an event; 9 badminton games on a Saturday). A summary for
+  long lists belongs to S6 (scale check).
 - **Generic event words are required as key terms:** "my dentist appointment" vs a saved "Dentist Dr. Shetty…"
   (D4-P13).
 - **Lists are not narrowed to the kind asked for:** "which subscriptions" also lists rent; "anything to renew this

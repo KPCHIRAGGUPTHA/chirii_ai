@@ -1,0 +1,16 @@
+{
+  "_about": "Hand check of the 500-item scale check, first try. Written after reading every reply (both stores) and the 3 list answers, before any fix.",
+  "hand_differs_from_marker": {},
+  "labels": {
+    "SC-25": ["code: term matching (hyphen)", "'Wi-Fi' is a name term; the memory text is split at the hyphen, so 'wi-fi' never matches and the specific-item check refuses. Same at 40 and 500 memories."]
+  },
+  "lists": {
+    "Which bills do I have to pay this week?": "Right: no bill in the set falls on 7–13 June (checked against scale_set.json).",
+    "What's my plan for Saturday?": "Right: 9 badminton games (weekly fillers) and one return, with the overlaps flagged. Too long to be useful.",
+    "Anything to pay before Sneha's sangeet?": "Right: 30 bills, total ₹68,017, matches the set; also lists the rent agreement renewal (a task with no amount). Too long to be useful."
+  },
+  "other_findings": [
+    "Not-saved questions: 2 of 5 answered by the S5 attribute check as partial matches (visa interview, dentist).",
+    "Long lists: the code lists everything in the period; a summary for long lists belongs to S6 (chat UI)."
+  ]
+}

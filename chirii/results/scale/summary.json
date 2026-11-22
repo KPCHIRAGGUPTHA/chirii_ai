@@ -1,0 +1,60 @@
+{
+  "storage": {
+    "small": {
+      "items": 40,
+      "open_s": 0.002,
+      "add_last_50_median_s": 0.011,
+      "add_last_50_max_s": 0.016,
+      "file_kb": 108.0,
+      "consistent": true
+    },
+    "large": {
+      "items": 500,
+      "open_s": 0.007,
+      "add_last_50_median_s": 0.025,
+      "add_last_50_max_s": 0.029,
+      "file_kb": 1116.0,
+      "consistent": true
+    }
+  },
+  "lists": [
+    {
+      "question": "Which bills do I have to pay this week?",
+      "reply": "Nothing to pay this week (Monday 7 June to Sunday 13 June), as far as your saved memories go.",
+      "route": "window",
+      "lines": 1,
+      "seconds": 0.1,
+      "error": null
+    },
+    {
+      "question": "What's my plan for Saturday?",
+      "reply": "Your plan for Saturday 12 June includes badminton matches with various friends, but there are overlapping times for some matches.\nYour plan for Saturday 12 June:\n- 9:30 am: Badminton with Sameer\n- 10:00 am: Badminton with Rekha\n- 12:00 pm: Badminton with Mansi\n- 2:00 pm: Badminton with Pallavi\n- 3:00 pm: Badminton with Mansi\n- 3:00 pm: Badminton with Omkar\n- 3:00 pm: Badminton with Bharat\n- 4:30 pm: Badminton with Omkar\n- 4:30 pm: Badminton with Esha\n- Return Pallavi's extension cord\n- Clash: Badminton with Sameer (9:30 am) overlaps with Badminton with Rekha (10:00 am).\n- Clash: Badminton with Mansi (3:00 pm) overlaps with Badminton with Omkar (3:00 pm).\n- Clash: Badminton with Mansi (3:00 pm) overlaps with Badminton with Bharat (3:00 pm).\n- Clash: Badminton with Omkar (3:00 pm) overlaps with Badminton with Bharat (3:00 pm).\n- Clash: Badminton with Omkar (4:30 pm) overlaps with Badminton with Esha (4:30 pm).",
+      "route": "plan",
+      "lines": 17,
+      "seconds": 7.0,
+      "error": null
+    },
+    {
+      "question": "Anything to pay before Sneha's sangeet?",
+      "reply": "To pay before Sneha's wedding sangeet on Sunday 12 December:\n- Saturday 19 June: Kindle Unlimited renewal, ₹169\n- Monday 28 June: Pay the gas bill, ₹2,741\n- Wednesday 30 June: Aarav's swimming fee, ₹1,800\n- Thursday 8 July: Pay the DTH bill, ₹912\n- Wednesday 14 July: Pay the mobile bill, ₹3,983\n- Thursday 15 July: Pay the water bill, ₹2,697\n- Monday 26 July: Pay the gas bill, ₹234\n- Monday 26 July: Pay the water bill, ₹1,655\n- Tuesday 27 July: Pay the water bill, ₹3,016\n- Thursday 29 July: Pay the DTH bill, ₹2,090\n- Thursday 5 August: Pay the mobile bill, ₹1,729\n- Wednesday 11 August: Pay the electricity bill, ₹1,167\n- Saturday 21 August: Water bill, ₹640\n- Tuesday 31 August: Rent agreement renewal with Mr. Pillai\n- Thursday 2 September: Pay the broadband bill, ₹374\n- Tuesday 14 September: Pay the DTH bill, ₹672\n- Wednesday 22 September: Pay the mobile bill, ₹1,082\n- Tuesday 28 September: LIC premium, ₹14,250\n- Wednesday 29 September: Pay the electricity bill, ₹3,995\n- Friday 1 October: Pay the water bill, ₹1,595\n- Saturday 16 October: Gas bill, ₹1,145\n- Friday 29 October: Pay the water bill, ₹1,113\n- Wednesday 3 November: Pay the gas bill, ₹3,399\n- Saturday 6 November: Pay the gas bill, ₹2,584\n- Monday 8 November: Pay the mobile bill, ₹3,019\n- Friday 12 November: Pay the water bill, ₹868\n- Monday 15 November: Pay the gas bill, ₹1,110\n- Wednesday 17 November: Pay the DTH bill, ₹3,659\n- Thursday 25 November: Pay the DTH bill, ₹983\n- Saturday 27 November: Pay the water bill, ₹2,356\n- Thursday 9 December: Electricity bill, ₹2,980\nTotal to pay: ₹68,017.",
+      "route": "window",
+      "lines": 33,
+      "seconds": 8.7,
+      "error": null
+    }
+  ],
+  "small": {
+    "passed": 29,
+    "of": 30,
+    "not_saved_passed": 5,
+    "median_s": 1.6,
+    "p95_s": 2.4
+  },
+  "large": {
+    "passed": 29,
+    "of": 30,
+    "not_saved_passed": 5,
+    "median_s": 1.7,
+    "p95_s": 4.0
+  }
+}

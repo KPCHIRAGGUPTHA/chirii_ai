@@ -718,3 +718,22 @@ shows the same ten points at first login and works only after they are accepted.
 encryption**, plus what is stored (questions and answers are not), where, how it is encrypted, how to delete (one item,
 everything, the account), logs, the safety message, and the pilot's limits (the laptop holds the key). A test checks
 that the app's note and `PRIVACY.md` say the same.
+
+## S5, part 5 – 500-item scale check, first try (22 November 2026)
+
+Method and bars committed before the run (4179bb5). The same 30 questions on 500 and on 40 memories
+(`chirii/results/scale/SCALE_CHECK.md`):
+
+| Bar | Result | |
+| :--- | :--- | :--- |
+| A. Accuracy at 500 vs 40 (≤ 2 lower) | 29/30 vs 29/30 | pass |
+| B. Not saved, none made up at 500 | 0 of 5 | pass |
+| C. Time (median ≤ 1.5×, 95th ≤ 2×) | 1.7 vs 1.6 s; 4.0 vs 2.4 s | pass |
+| D. Storage at 500 (open ≤ 2 s, save ≤ 0.5 s, ≤ 5 MB) | 0.007 s, 0.025 s, 1.1 MB | pass |
+| E. List questions finish | all 3, 0.1–8.7 s | pass |
+
+- The one failure is the same at both sizes: "Wi-Fi" never matches because memory text is split at the hyphen
+  (logged in `docs/KNOWN_GAPS.md`, not fixed after the run).
+- Long lists are right but too long (30 bills before an event): a summary belongs to S6.
+- Found while building the set, fixed before the run: the year rule read "12 December", said in June, as last
+  December.

@@ -35,9 +35,20 @@ Run the tests from the repository root:
 
 On Linux or macOS, use `.venv/bin/python` and `cp` instead.
 
-## Run the demo (laptop, fictional data only)
+## Run the app (pilot laptop)
 
-The model files are not in git; download them as described in `data/SOURCES.md` (into `models/`).
+The repository lives at `C:\dev\chirii_ai` (outside OneDrive, so `.env` and its keys are never synced). The model
+files are not in git; download them as described in `data/SOURCES.md` (into `models/`). Run every command from
+`C:\dev\chirii_ai`.
+
+0. Once only: create the data key, save a copy in your password manager, and create an account for each tester (they
+   type their own password; it is never shown):
+
+   ```
+   .venv\Scripts\python -m chirii.app.keys create
+   .venv\Scripts\python -m chirii.app.keys show
+   .venv\Scripts\python -m chirii.app.accounts add NAME
+   ```
 
 1. Start the language model server and leave it running:
 
@@ -45,18 +56,20 @@ The model files are not in git; download them as described in `data/SOURCES.md` 
    models\llama.cpp\b12359\llama-server.exe -m models\qwen\qwen2.5-1.5b-instruct-q8_0.gguf --host 127.0.0.1 --port 8080 -c 4096 --alias qwen2.5-1.5b-instruct-q8_0
    ```
 
-2. In a second terminal, from the repository root, start the app:
+2. In a second terminal, start the app:
 
    ```
    .venv\Scripts\python -m uvicorn chirii.app.api.main:build_default_app --factory --host 127.0.0.1 --port 8000
    ```
 
-3. Open http://127.0.0.1:8000. Add a few memories and check each "Got it" card (Yes or Edit), ask questions, and try
-   "Delete all my data".
+3. Open http://127.0.0.1:8000, log in, read and accept the consent note, then add memories (check each "Got it" card),
+   ask questions, and try "Delete all my data".
 
-The demo has one user and no login (login comes in S5). It refuses requests from other computers. Use fictional data
-only: memories are not encrypted on disk yet (`../docs/PRIVACY.md`). On this laptop's CPU an answer takes about 1–5
-seconds.
+Memories are stored encrypted in `%LOCALAPPDATA%\Chirii` (`CHIRII_DATA_DIR`). If the data key is lost, the data cannot
+be recovered. The app refuses requests from other computers. Use fictional data during the pilot
+(`../docs/PRIVACY.md`). On this laptop's CPU an answer takes about 1–10 seconds.
+
+Key and backup commands: `python -m chirii.app.keys check | rotate | backup FOLDER` (stop the app before `rotate`).
 
 ## Updating dependencies
 

@@ -143,13 +143,17 @@ system, with the same settings and marker as the development runs.
 | Result | What happens |
 | :--- | :--- |
 | All three bars pass | **S7 is closed. No fine-tune.** |
-| Bar A **21–23**, or C' misses by one (**4/30**) | **Failure analysis by type** (the labels above). S7 is triggered if model-behaviour failures, counting "wrong item used", are **more than 6 of 30**, or **more than 1 of 5** on the B tasks |
+| Bar A **21–23** | **Failure analysis by type** (the labels above). S7 is triggered if model-behaviour failures, counting "wrong item used", are **more than 6 of 30**, or **more than 1 of 5** on the B tasks |
+| Bar C' **above 3/30** | Each fallback labelled by cause (code or model). S7 is triggered only if **model-caused fallbacks are more than 3 of 30** (owner, 22 Nov) |
 | Bar A **below 21/30**, or B at **3/5 or lower** | **S7 is triggered directly** |
 
-*Reading of the owner's text:* it says both "B misses by one → failure analysis" and "B at 3/5 or lower → S7
-directly". For B, missing by one *is* 3/5, so the two conflict. The stricter one is applied: **B at 3/5 triggers S7
-directly**. **Open point for the owner:** the rule does not say what happens if C' misses by more than one (5/30 or
-more). It must be decided before the held-out run.
+**Both open points decided by the owner on 22 Nov, before the held-out set exists** (these replace the C' part of the
+"failure analysis" row above):
+- **Bar B at 3/5: the stricter reading.** S7 is triggered directly. (The original text also said "B misses by one →
+  failure analysis"; for B, missing by one is 3/5, so the two conflicted.)
+- **Bar C' (fallbacks):** if there are **more than 3** code-built fallbacks in the 30 tasks, each one is labelled by
+  cause. Fallbacks caused by code are bugs to fix. **S7 is triggered only if model-caused fallbacks are more than 3
+  of 30.**
 
 - **No further deferral.** If S7 is triggered by this rule, it goes ahead, with its own plan approved first.
 - **Noise:** with 30 tasks, a system that is truly 80% right scores between 19 and 28 of 30 (63–93%) in 95% of runs.
@@ -158,6 +162,12 @@ more). It must be decided before the held-out run.
   reported with this caveat.**
 
 **Rules for the S4 work:**
+- **Marker change for S4b (owner, 22 Nov, before run (d)):** two more worked-out values count as derived, like day
+  counts:
+  - the start and end dates of the period the question names ("next 7 days" → today to today + 7);
+  - the dates on which a weekly routine in memory falls.
+
+  Runs (a) to (c) are re-marked with it and shown next to their original scores, which are never replaced.
 - **The marker's two errors found in S3** (a month followed by a numbered list item read as a date; the empty days of
   an asked week counted as invented) are fixed with tests. Under the rule at the top of this file, the S3 runs are
   then re-marked with the fixed marker and shown **next to** the original scores. The original scores are never

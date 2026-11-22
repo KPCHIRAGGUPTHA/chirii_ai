@@ -12,6 +12,7 @@ import pytest
 from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
+from chirii.tests.helpers import logged_in
 from chirii.app.api.main import create_app, local_only
 from chirii.app.assistant import NOT_IN_MEMORY, Assistant, fact_line, say_amount
 from chirii.app.llm.client import LLMError, LLMReply
@@ -143,7 +144,7 @@ class TestApi:
     def client(self, tmp_path):
         model = FakeModel(["On Thursday 3 December at 5:00 pm."])  # "dentist tmrw 5pm" is read by the rules, no model call
         app = create_app(tmp_path, SECRET, HashEmbedder(), model, today=lambda: WED)
-        return TestClient(app), tmp_path
+        return logged_in(app), tmp_path
 
     def test_add_list_ask_delete_all(self, client):
         c, root = client
@@ -162,7 +163,7 @@ class TestApi:
 
     def test_model_down_gives_a_clear_error(self, tmp_path):
         app = create_app(tmp_path, SECRET, HashEmbedder(), FakeModel(fail=True), today=lambda: WED)
-        r = TestClient(app).post("/api/ask", json={"question": "anything"})
+        r = logged_in(app).post("/api/ask", json={"question": "anything"})
         assert r.status_code == 503 and "llama-server" in r.json()["detail"]
 
     def test_requests_from_other_computers_are_refused(self):

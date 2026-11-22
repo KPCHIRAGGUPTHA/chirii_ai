@@ -123,6 +123,7 @@ class TestRangesOnce:
     def test_no_dangling_word_in_titles(self):
         from chirii.app.formatting import make_title
         assert make_title("Kiraya of ₹18,000 goes to the landlord on the 6th of every month.") == "Kiraya"
+        assert make_title("Note.") == "Note."                    # S5: this crashed (nothing before the full stop)
 
     def test_plan_lists_a_range_once(self, store):
         draft = plan_draft(store, MON, date(2027, 5, 9), MON)

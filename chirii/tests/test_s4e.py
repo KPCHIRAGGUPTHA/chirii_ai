@@ -10,6 +10,7 @@ from datetime import date
 import pytest
 from fastapi.testclient import TestClient
 
+from chirii.tests.helpers import logged_in
 from chirii.app import people
 from chirii.app.api.main import create_app
 from chirii.app.assistant import Assistant
@@ -97,7 +98,7 @@ class TestAnswers:
 class TestCard:
 
     def test_card_shows_people_facts_and_links(self, tmp_path):
-        client = TestClient(create_app(tmp_path, SECRET, HashEmbedder(), FakeModel(), today=lambda: TODAY))
+        client = logged_in(create_app(tmp_path, SECRET, HashEmbedder(), FakeModel(), today=lambda: TODAY))
         card = client.post("/api/memories", json={"text": "Ammi's name is Farida."}).json()["understood"]
         assert "Farida: your mother" in card["summary"]
         linked = client.post("/api/memories", json={"text": "Ammi's dentist visit is on 12 May at 5 pm."}).json()["understood"]

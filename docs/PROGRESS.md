@@ -670,3 +670,22 @@ the owner to delete. The data key was created only after the move, so it never s
 
 **Next:** login, the safety layer with the attribute check, the consent note, the 500-item scale check, the fresh
 extraction set.
+
+## S5, part 2 – Login (22 November 2026)
+
+- **Accounts** are made by the owner on the pilot laptop (`python -m chirii.app.accounts add NAME`; the password is
+  typed twice and never shown). No open sign-up.
+- **Passwords:** Argon2id hashes only, in `accounts.enc`, itself encrypted with the data key. At least 10 characters,
+  not the user name. 5 wrong passwords in 15 minutes lock the account for 15 minutes; unknown names take as long to
+  refuse as wrong passwords.
+- **Sessions:** a random 256-bit token in an HttpOnly, SameSite=Strict cookie. The server keeps only its hash. Sessions
+  end after 12 hours idle, 7 days in all, on logout, and on restart. Requests that change something must come from the
+  Chirii page (Origin check); the app still answers only this computer.
+- **Consent before use:** at first login the consent note is shown, and nothing else works until it is accepted (a new
+  version of the note is asked for again).
+- **Per-user isolation:** the user comes only from the session, and each user has their own encrypted store. "Delete
+  all my data" and "Delete my account" (password needed again) act on the logged-in user only.
+- **Found and fixed while testing:** saving "Note." crashed the app (the title code split an empty string).
+- Tests: `test_s5_login.py` (19), including users never seeing each other's memories, wrong or changed cookies,
+  lockout, consent gating, logout, and requests from other sites. Checked in the browser on a throwaway instance:
+  login → consent → save → logout.

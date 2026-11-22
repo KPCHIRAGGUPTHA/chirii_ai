@@ -62,7 +62,8 @@ TITLE_CUT = re.compile(r"\s+(?:(?:is|are|was|were|must|goes|costs?|due|on|at|by|
 def first_clause(text: str) -> str:
     """Text up to the first full stop, semicolon, colon or comma, not counting the full stop of 'Dr.' or 'Prof.'."""
     for match in re.finditer(r"[.;:](?:\s|$)|,\s", text):
-        if text[match.start()] == "." and text[:match.start()].split()[-1].lower().rstrip(".") in ABBREVIATIONS:
+        before = text[:match.start()].split()        # S5: "Note." left nothing before the stop and crashed
+        if text[match.start()] == "." and before and before[-1].lower().rstrip(".") in ABBREVIATIONS:
             continue
         return text[:match.start()]
     return text

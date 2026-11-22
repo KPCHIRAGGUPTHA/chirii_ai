@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chirii AI demo</title>
+<title>Chirii AI</title>
 <style>
   :root { --bg: #f7f5f0; --card: #fff; --ink: #1f2328; --muted: #6a6f76; --line: #e3dfd6; --accent: #2f6f5e; --warn: #9a5b00; --warn-bg: #fdf4e6; --danger: #a3302a; }
   @media (prefers-color-scheme: dark) {
@@ -48,13 +48,36 @@
   .days { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: .85rem; grid-column: 1 / -1; }
   .days label { flex-direction: row; align-items: center; gap: 4px; color: var(--ink); }
   footer { color: var(--muted); font-size: .85rem; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+  form.stack { display: flex; flex-direction: column; gap: 10px; max-width: 360px; }
+  form.stack label { display: flex; flex-direction: column; gap: 4px; font-size: .9rem; color: var(--muted); }
+  ol.consent { padding-left: 20px; margin: 0 0 14px; }
+  ol.consent li { display: list-item; border: 0; padding: 4px 0; }
+  .who { color: var(--muted); font-size: .9rem; }
+  [hidden] { display: none !important; }
 </style>
 </head>
 <body>
 <main>
   <h1>Chirii AI</h1>
-  <p class="sub">Demo with fictional data only. Everything stays on this computer.</p>
+  <p class="sub">Pilot: please use fictional data. Everything stays on this computer, encrypted.</p>
 
+  <section class="card" id="login-view" hidden>
+    <h2>Log in</h2>
+    <form class="stack" id="login-form">
+      <label>User name<input id="username" autocomplete="username" required></label>
+      <label>Password<input id="password" type="password" autocomplete="current-password" required></label>
+      <button id="login-btn">Log in</button>
+      <div class="msg" id="login-msg"></div>
+    </form>
+  </section>
+
+  <section class="card" id="consent-view" hidden>
+    <h2 id="consent-title"></h2>
+    <ol class="consent" id="consent-points"></ol>
+    <div class="actions"><button id="consent-btn">I have read this and agree</button><button class="plain" id="consent-logout">Log out</button></div>
+  </section>
+
+  <div id="app-view" hidden>
   <section class="card">
     <h2>Ask</h2>
     <form class="row" id="ask-form"><input type="text" id="question" placeholder="When is my electricity bill due?" autocomplete="off"><button id="ask-btn">Ask</button></form>
@@ -76,9 +99,14 @@
   </section>
 
   <footer>
-    <span id="today"></span>
-    <button class="danger" id="delete-all">Delete all my data</button>
+    <span><span id="today"></span> · <span class="who" id="who"></span></span>
+    <span class="actions">
+      <button class="plain" id="logout">Log out</button>
+      <button class="danger" id="delete-all">Delete all my data</button>
+      <button class="danger" id="delete-account">Delete my account</button>
+    </span>
   </footer>
+  </div>
 </main>
 
 <template id="edit-template">
@@ -109,11 +137,58 @@ const nice = (iso) => { const [y, m, d] = iso.split("-").map(Number); return `${
 const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
 
 async function api(path, options = {}) {
-  const res = await fetch(path, { headers: { "Content-Type": "application/json" }, ...options });
+  const res = await fetch(path, { headers: { "Content-Type": "application/json" }, credentials: "same-origin", ...options });
   const body = await res.json().catch(() => ({}));
+  if (res.status === 401 && path !== "/api/login") { show("login"); }
+  if (res.status === 403 && /consent/i.test(body.detail || "")) { showConsent(); }
   if (!res.ok) throw new Error(body.detail && typeof body.detail === "string" ? body.detail : `Request failed (${res.status})`);
   return body;
 }
+
+// S5: log in, then the consent note, then the app
+function show(view) {
+  $("login-view").hidden = view !== "login";
+  $("consent-view").hidden = view !== "consent";
+  $("app-view").hidden = view !== "app";
+}
+
+async function showConsent() {
+  const note = await fetch("/api/consent-note").then((r) => r.json());
+  $("consent-title").textContent = note.title;
+  $("consent-points").replaceChildren(...note.points.map((p) => el("li", "", p)));
+  $("consent-btn").onclick = async () => { const me = await api("/api/consent", { method: "POST", body: JSON.stringify({ version: note.version }) }); start(me); };
+  show("consent");
+}
+
+function start(me) {
+  if (!me.consented) return showConsent();
+  $("who").textContent = "Logged in as " + me.username;
+  show("app");
+  refresh();
+}
+
+$("login-form").onsubmit = async (e) => {
+  e.preventDefault();
+  $("login-btn").disabled = true; $("login-msg").textContent = ""; $("login-msg").className = "msg";
+  try {
+    const me = await api("/api/login", { method: "POST", body: JSON.stringify({ username: $("username").value, password: $("password").value }) });
+    $("password").value = "";
+    start(me);
+  } catch (err) { $("login-msg").textContent = err.message; $("login-msg").className = "msg error"; }
+  $("login-btn").disabled = false;
+};
+
+async function logout() { await api("/api/logout", { method: "POST" }).catch(() => {}); $("answer").textContent = ""; $("list").replaceChildren(); show("login"); }
+$("logout").onclick = logout;
+$("consent-logout").onclick = logout;
+
+$("delete-account").onclick = async () => {
+  const password = prompt("Delete your account and all your data? This cannot be undone. Type your password to confirm:");
+  if (!password) return;
+  try { const r = await api("/api/delete-account", { method: "POST", body: JSON.stringify({ password }) });
+        alert(`Deleted ${r.deleted.items} memories and your account.`); show("login"); }
+  catch (err) { alert(err.message); }
+};
 
 // "Got it: Bill, ₹1,860, due Saturday 12 December 2026. Correct? [Yes] [Edit]"
 function gotItCard(u, slot, done) {
@@ -225,7 +300,7 @@ $("delete-all").onclick = async () => {
   refresh();
 };
 
-refresh().catch((err) => { $("list").textContent = err.message; });
+fetch("/api/me", { credentials: "same-origin" }).then(async (r) => (r.ok ? start(await r.json()) : show("login"))).catch(() => show("login"));
 </script>
 </body>
 </html>

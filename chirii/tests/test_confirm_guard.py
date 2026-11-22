@@ -11,6 +11,7 @@ from datetime import date
 import pytest
 from fastapi.testclient import TestClient
 
+from chirii.tests.helpers import logged_in
 from chirii.app.api.main import create_app
 from chirii.app.assistant import Assistant, question_window
 from chirii.app.formatting import make_title, understood
@@ -113,7 +114,7 @@ class TestConfirmAndEdit:
     def test_api_card_confirm_and_edit(self, tmp_path):
         # a bill with no amount sends the hybrid reader to the model, which finds no amount either
         model = FakeModel([item_json(kind="bill", date="2026-12-12")])
-        client = TestClient(create_app(tmp_path, SECRET, HashEmbedder(), model, today=lambda: NOV21))
+        client = logged_in(create_app(tmp_path, SECRET, HashEmbedder(), model, today=lambda: NOV21))
         saved = client.post("/api/memories", json={"text": "Electricity bill due on 12 December."}).json()
         assert saved["understood"]["uncertain"] == ["no amount found"]
         item_id = saved["item"]["id"]

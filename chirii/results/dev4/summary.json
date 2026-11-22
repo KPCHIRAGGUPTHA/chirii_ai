@@ -1,0 +1,26 @@
+{
+  "memory": {
+    "passed": 11,
+    "of": 15
+  },
+  "people": {
+    "passed": 13,
+    "of": 15
+  },
+  "maths": {
+    "passed": 8,
+    "of": 15
+  },
+  "gk": {
+    "passed": 7,
+    "of": 10
+  },
+  "route_ok": {
+    "ok": 48,
+    "of": 55
+  },
+  "label_ok": {
+    "ok": 52,
+    "of": 55
+  }
+}

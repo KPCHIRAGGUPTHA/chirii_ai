@@ -554,3 +554,55 @@ S4c was built and tested on its own examples, then run (e3) was run once. The he
     - "UPI = United Parcel Service".
 - **Margins of error are wide** (30 and 40 tasks). These are development numbers on a fresh set, not the held-out
   result.
+
+## S4d + S4e – Fixes, maths formulas, glossary, people memory; run (e4) (22 November 2026)
+
+**Order of work, as agreed:**
+1. The partial-match marker change, with run (e3) re-marked: 23 → 26 of 30, original kept.
+2. Development set 4, written and committed before any code.
+3. S4d, then S4e.
+4. One run, (e4).
+
+**What was built**
+- **S4d:**
+  - date ranges without "from";
+  - money questions pick the item that has an amount;
+  - capitalised saved names ("GST", "Patel") make a question personal;
+  - "returned / cleared / submitted … today" are updates;
+  - names are case-sensitive, so "my" is never a name;
+  - a lead may not say "nothing" above a non-empty list;
+  - **a maths formula library:** percentage, GST, discount, simple and compound interest, EMI, split, conversions,
+    and lakh/crore, with days and weeks on the real calendar. Qwen only picks the formula and its numbers; code
+    checks and computes, and shows the working in Indian format;
+  - a 51-entry glossary of Indian everyday terms;
+  - the owner's three answer labels.
+- **S4e, people and profile memory:**
+  - names and nicknames;
+  - relationships, including Indian terms (Amma, Appa, Didi, Bhaiya, Thatha, Dadi…);
+  - reverse relationships worked out by code, without assuming gender;
+  - the person's own name in the third person;
+  - family aliases that link to other memories ("Lalitha's eye check-up" finds "Amma's eye check-up");
+  - people facts and links on the confirmation card.
+
+**Run (e4), first try** (`chirii/results/dev4/RUN_E4.md`): margins of error are wide (10–15 tasks per group).
+
+| Group | Marker | Hand check |
+| :--- | ---: | ---: |
+| Memory tasks | 11/15 | 10/15 |
+| **People and profile** | **13/15** | **14/15** |
+| Maths | 8/15 | 8/15 |
+| General knowledge | 7/10 | 7/10 |
+| Route right | 48/55 | |
+| Label right | 52/55 | |
+
+- **People memory worked on first try:** reverse relationships, Indian terms and gender-neutral answers.
+- **The glossary fixed all 5 Indian-term questions.**
+- **All 7 maths failures are code.** The router didn't send three questions to maths, and my checks rejected four
+  correct choices from Qwen (an extra "1", conversion factors, and a right expression with the wrong formula name).
+  No wrong number was shown.
+- **The 3 general-knowledge misses are Qwen 1.5B's facts.**
+- **Memory: new code gaps.** Word families (engaged/engagement, married/wedding), "appointment" required as a key
+  term, subscriptions not seen as bills, ranges repeated per day, and "by when" misread as a period.
+
+**Next:** fix these as general rules (development work, to be measured on a fresh set), then the safety layer, the
+500-item scale check and the fresh extraction set.

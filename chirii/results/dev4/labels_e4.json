@@ -1,0 +1,36 @@
+{
+  "_about": "Hand check and labels for run (e4): the S4d + S4e system on development set 4, first try. Written after reading every reply, before any fix. The marker's score is the official one.",
+  "hand": {
+    "D4-M02": {"auto": true, "hand": false, "why": "The two renewals are listed under 'To receive' with 'Total to receive', and the lead says 'To receive … you should renew'. They are payments. The hybrid reader let Qwen choose the kind ('renews' is not a bill word), and it chose 'money owed to you'."},
+    "D4-M07": {"auto": false, "hand": true, "why": "Right content (electricity bill on the 18th, Divya's exams running). It failed because the exam range is listed once per day, and the marker does not count days inside a range as memory dates. The repetition is a code fault (see labels)."},
+    "D4-M09": {"auto": true, "hand": false, "why": "'I have Revathi's son Kiran (4 to 5 April), but nothing about wedding': the item is the wedding ('getting married'). The answer contradicts itself."},
+    "D4-P15": {"auto": false, "hand": true, "why": "'You told me Tara is your cousin. You haven't told me more than that.' is right and not self-contradictory; the marker's consistency rule caught 'haven't told me'."}
+  },
+  "labels": {
+    "D4-M02": ["code: bill words / hybrid kind", "'Renews' (subscriptions) is not a bill word, so Qwen chose the kind and chose 'receivable'."],
+    "D4-M04": ["code: period reader", "'By when does the GSTR-1 have to be filed?' was read as a period ('today'), so a window list said 'Nothing saved on Monday 8 March'."],
+    "D4-M05": ["task ambiguity", "'Anything due …' was read as payments and money only; the task also wanted the surgery (not 'due'). Kept as a failure."],
+    "D4-M07": ["code: range items", "A range item (exams 15–30 March) is repeated on every day of the window instead of listed once."],
+    "D4-M09": ["code: specific-item check", "'wedding' does not match 'getting married' (no related-word matching), so a partial-match answer was given for the right item."],
+    "D4-M13": ["code: event matching", "'before the engagement' did not find 'getting engaged on 27 March' (engagement vs engaged), so no period; it then went to status and said nothing was saved."],
+    "D4-P13": ["code: all-terms check too strict", "Own name resolved correctly ('my dentist appointment'), but 'appointment' is treated as a key term and the saved sentence says 'Dentist Dr. Shetty…', so a partial-match answer was given."],
+    "D4-P15": ["scorer", "Consistency rule false positive on 'haven't told me more than that'."],
+    "D4-F04": ["code: maths validation", "Qwen gave [100000, 8, 2, 1]; the 1 ('compounded yearly', as the prompt says) is not in the question, so it was refused."],
+    "D4-F08": ["code: router", "'How many weeks from … to …' is not a maths phrase; it went to general knowledge and Qwen said 52 weeks."],
+    "D4-F09": ["code: maths validation", "Qwen added conversion factors to the numbers; code needs only the 5."],
+    "D4-F10": ["code: router", "'1.2 crore in lakh' went to general knowledge (right answer, no working, label General answer)."],
+    "D4-F11": ["code: router", "'Write ₹45,00,000 in lakh' went to writing ('Write…'), and Qwen said 4.5 lakh (wrong)."],
+    "D4-F14": ["code: maths validation", "Qwen chose the wrong formula, but its expression '1240 + 860 + 499' was right; code did not fall back to the valid expression."],
+    "D4-F15": ["code: maths validation", "Same as F09: extra numbers for the °F → °C conversion."],
+    "D4-K07": ["model behaviour", "'Vikram Sarabhai' (it is A. P. J. Abdul Kalam)."],
+    "D4-K08": ["model behaviour", "'Indian Elephant' (it is the tiger)."],
+    "D4-K10": ["model behaviour", "'122°F' (it is 212°F)."]
+  },
+  "route_mismatches": "D4-M04 window (lookup expected), D4-M13 status (window expected), D4-F02 and D4-F03 mixed (maths expected; 'What do I pay' is personal; answers right), D4-F08 general, D4-F10 general, D4-F11 writing",
+  "other_findings": [
+    "People and profile: 13/15 by the marker, 14/15 by hand. Reverse relationships, Indian terms, the own-name rewrite and the gender-neutral cousin answer all worked on first try.",
+    "Glossary: all 5 Indian-term questions right (run (e3) had 'UPI = United Parcel Service').",
+    "All 3 general-knowledge failures are Qwen 1.5B facts (Missile Man, national animal, 212°F).",
+    "Maths: every fallback was a correct choice of formula or expression rejected by my checks; no wrong number was shown."
+  ]
+}

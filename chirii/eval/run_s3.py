@@ -37,7 +37,8 @@ from chirii.eval.scoring import contains, score_task
 OUT = REPO_ROOT / "chirii" / "results" / "s3"
 SECRET = "s3-eval-run-secret-not-used-for-real-data-0000000"
 CONFIGS = {"a": {"guard": False, "trimmed": False, "routed": False}, "b": {"guard": True, "trimmed": True, "routed": False},
-           "c": {"guard": True, "trimmed": True, "routed": True}, "d": {"guard": True, "trimmed": True, "routed": True}}
+           "c": {"guard": True, "trimmed": True, "routed": True}, "d": {"guard": True, "trimmed": True, "routed": True},
+           "e1": {"guard": True, "trimmed": True, "routed": True}}
 
 
 def plain_qwen(model, task):
@@ -68,14 +69,15 @@ def with_memory(run, model, embedder, task, base, root):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--runs", nargs="+", choices=["a", "b", "c", "d", "none"], default=["a", "b", "none"])
+    parser.add_argument("--runs", nargs="+", choices=["a", "b", "c", "d", "e1", "none"], default=["a", "b", "none"])
     parser.add_argument("--out-dir", default=str(OUT), help="where replies and the summary go (the GPU job uses its own folder)")
+    parser.add_argument("--tasks", default=None, help="a different task file, e.g. chirii/eval/dev2_tasks.jsonl (default: the S1 set)")
     args = parser.parse_args()
     out = Path(args.out_dir)
     settings = Settings(secret_key=SECRET)
     model = LLMClient(settings.llm_base_url, settings.llm_model, timeout=300)
     embedder = FastEmbedder(settings.embed_model, settings.embed_cache_dir)
-    tasks = load_tasks()
+    tasks = load_tasks() if not args.tasks else [json.loads(line) for line in Path(args.tasks).read_text(encoding="utf-8").splitlines()]
     base = base_texts([t for t in tasks if t["scored"]])
     out.mkdir(parents=True, exist_ok=True)
     summary = {}

@@ -158,25 +158,74 @@ class TestStatusAndSpecific:
         assert answer.text == "I don't have anything about Physics saved."
 
 
-class TestRewording:
+class TestLead:
+    """S4b: the code's list is shown exactly as built; Qwen writes only a lead sentence and an optional closing line."""
 
-    def test_a_faithful_rewording_is_used(self, store):
-        good = ("This week you need to pay: Gas bill ₹1,120 on Wednesday 3 February, Society maintenance ₹2,400 on Thursday "
-                "4 February, Broadband bill ₹799 on Friday 5 February. That's ₹4,319 in total.")
-        answer = Assistant(store, FakeModel([good])).ask("What do I have to pay this week?", MON)
-        assert answer.text == good and answer.guard == "pass" and answer.route == "window"
+    def test_a_good_lead_goes_before_the_list_unchanged(self, store):
+        model = FakeModel([{"lead": "Here's what you have to pay this week.", "closing": "Want a reminder?"}])
+        answer = Assistant(store, model).ask("What do I have to pay this week?", MON)
+        draft = window_draft(store, MON, date(2027, 2, 7), ["pay"], "What do I have to pay this week?")
+        assert answer.text == "Here's what you have to pay this week.\n" + draft.text + "\nWant a reminder?"
+        assert answer.guard == "pass" and answer.route == "window"
+        assert model.calls[0]["json_schema"]["required"] == ["lead", "closing"]
 
-    def test_a_rewording_that_drops_an_item_is_retried_then_replaced_by_the_draft(self, store):
-        dropped = "This week: Gas bill ₹1,120 on 3 February and Broadband bill ₹799 on 5 February."
-        answer = Assistant(store, FakeModel([dropped, dropped])).ask("What do I have to pay this week?", MON)
-        assert answer.guard == "fallback" and "Total to pay: ₹4,319." in answer.text
-        assert any("lost" in p for p in answer.problems)
+    def test_a_lead_that_states_an_amount_is_retried_then_dropped(self, store):
+        bad = {"lead": "You owe ₹950 this week.", "closing": ""}
+        answer = Assistant(store, FakeModel([bad, bad])).ask("What do I have to pay this week?", MON)
+        assert answer.guard == "fallback" and answer.text.startswith("To pay from Monday 1 February")
+        assert "lead states a date, amount or time" in answer.problems
 
-    def test_a_plan_rewording_must_keep_order_and_the_clash(self, store):
-        no_clash = "11:00 am plumber, by 3:00 pm tax papers, 6:00 pm physiotherapy until 7:00 pm, 6:30 pm mehendi."
-        answer = Assistant(store, FakeModel([no_clash, no_clash])).ask("Plan my day.", MON)
-        assert answer.guard == "fallback" and "Clash" in answer.text
-        assert "clash warning lost" in answer.problems
+    def test_a_lead_that_denies_a_clash_is_refused(self, store):
+        bad = {"lead": "Good news, no clashes today!", "closing": ""}
+        good = {"lead": "Here's your day. Watch out for one clash.", "closing": ""}
+        answer = Assistant(store, FakeModel([bad, good])).ask("Plan my day.", MON)
+        assert answer.guard == "retry" and "lead denies the clash" in answer.problems and "Clash" in answer.text
+
+
+class TestS4bFixes:
+
+    def test_due_tomorrow_covers_money_to_receive(self, tmp_path):
+        s = MemoryStore(tmp_path, "d", SECRET, HashEmbedder())
+        s.add("Ravi owes me ₹1,500 and will pay by 2 February.", SAID)
+        s.add("Water bill ₹300 due on 2 February.", SAID)
+        decided = route_by_rules("Is anything due tomorrow?", MON)
+        assert decided.kind == "window" and decided.focus == ["due"]
+        text = window_draft(s, *decided.window, decided.focus, "Is anything due tomorrow?").text
+        assert text.index("Due on Tuesday 2 February:") < text.index("Water bill") < text.index("To receive:") < text.index("Ravi")
+
+    def test_an_unnamed_period_is_not_stated(self, store):
+        decided = route_by_rules("Which bills do I still have to pay?", MON)
+        assert decided.named is False
+        text = window_draft(store, *decided.window, decided.focus, "Which bills do I still have to pay?", named=decided.named).text
+        assert text.startswith("To pay:") and "May" not in text
+
+    def test_fact_line_shows_only_current_values_unless_asked(self, tmp_path):
+        from chirii.app.assistant import fact_line_v2
+        s = MemoryStore(tmp_path, "h", SECRET, HashEmbedder())
+        visit = s.add("Dentist appointment on 8 February at 5 pm.", SAID)["item"]["id"]
+        s.add("The dentist moved my appointment to 9 February.", SAID)
+        line = fact_line_v2(s.get(visit), s.history(visit), MON, "When is my dentist appointment?")
+        assert "8 February" not in line and "Tuesday 9 February 2027" in line
+        asked = fact_line_v2(s.get(visit), s.history(visit), MON, "What was the original date of the dentist appointment?")
+        assert "2027-02-08" in asked
+
+    def test_old_date_in_an_answer_is_caught_unless_asked(self, tmp_path):
+        s = MemoryStore(tmp_path, "o", SECRET, HashEmbedder())
+        s.confirm(s.add("Dentist appointment on 8 February at 5 pm.", SAID)["item"]["id"])
+        s.add("The dentist moved my appointment to 9 February.", SAID)
+        model = FakeModel(["Your dentist appointment is on 8 February.", "Your dentist appointment is on Tuesday 9 February 2027."])
+        answer = Assistant(s, model).ask("When is my dentist appointment?", MON)
+        assert answer.guard == "retry" and "9 February" in answer.text
+
+    def test_items_with_several_dates_list_all_with_labels_or_the_next(self, tmp_path):
+        from chirii.app.assistant import fact_line_v2
+        s = MemoryStore(tmp_path, "m", SECRET, HashEmbedder())
+        item = s.add("Mid-term exams: Maths on 1 February, Physics on 3 February, Chemistry on 5 February, all at 9 am.", SAID)["item"]
+        line = fact_line_v2(item, [], date(2027, 2, 2), "When are my exams?")
+        assert "Maths on Monday 1 February 2027 (already past)" in line and "Physics on Wednesday 3 February 2027" in line
+        assert "Chemistry on Friday 5 February 2027" in line
+        nxt = fact_line_v2(item, [], date(2027, 2, 2), "When is my next exam?")
+        assert "Physics on Wednesday 3 February 2027" in nxt and "Chemistry" not in nxt.split("Current details")[1]
 
 
 class TestS3Bugs:

@@ -13,6 +13,7 @@ Answering a question from the user's memory.
 5. If the answer relies on a memory the user hasn't confirmed, code says so after the answer.
 """
 
+import json
 import re
 import time
 from calendar import monthrange
@@ -23,7 +24,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from chirii.app.formatting import KIND_LABELS, make_title, say_amount, say_date, say_time, when_text
 from chirii.app.guard import check_answer
 from chirii.app.windows import question_window
-from chirii.app.planner import Draft, plan_draft, status_draft, window_draft
+from chirii.app.planner import Draft, label_for, plan_draft, status_draft, strip_when, window_draft
 from chirii.app.router import mentions_specific, route as route_question
 from chirii.app.llm.client import ChatModel
 from chirii.app.logging_setup import log_event
@@ -65,6 +66,52 @@ def fact_line(item: Dict[str, Any], history: List[Dict[str, Any]]) -> str:
     return line
 
 
+HISTORY_QUESTION = re.compile(r"\b(original(ly)?|previous(ly)?|old|earlier|before it (was )?(moved|changed)|first (date|time)|"
+                              r"moved from|what changed|used to be)\b", re.I)
+NEXT_QUESTION = re.compile(r"\b(next|upcoming|coming)\b", re.I)
+
+
+def fact_line_v2(item: Dict[str, Any], history: List[Dict[str, Any]], today: date, question: str) -> str:
+    """S4b fact line. A moved or corrected item shows only its current values: the user's sentence is given with the
+    superseded dates or times taken out, and the history only if the question asks about the original or previous
+    value. An item with several dates lists each with its label ("DBMS on Wednesday 9 December"), or only the next
+    upcoming one if the question says "next"; never just the first stored date."""
+    changed_fields = {h["field"] for h in history if h["field"] in ("date", "end_date", "time")}
+    show_history = bool(HISTORY_QUESTION.search(question))
+    if item.get("other_dates"):
+        days = sorted([item["date"], *item["other_dates"]])
+        labelled = [(d, label_for(item, day=date.fromisoformat(d))) for d in days]
+        if NEXT_QUESTION.search(question):
+            upcoming = [x for x in labelled if x[0] >= today.isoformat()]
+            labelled = upcoming[:1] or labelled[-1:]
+        details = ["dates: " + "; ".join(f"{label} on {say_date(d)}" + (" (already past)" if d < today.isoformat() else "")
+                                         for d, label in labelled)]
+        details += when_text(dict(item, date=None, end_date=None, other_dates=[]))
+    else:
+        details = when_text(item)
+    if item["amount"] is not None:
+        details.append(f"amount {say_amount(item['amount'])}")
+        if item["paid_amount"]:
+            details.append(f"{say_amount(item['paid_amount'])} paid so far, {say_amount(item['remaining'])} still owed")
+    status = {"paid": "PAID", "cancelled": "CANCELLED", "unlinked": "not matched to an earlier item"}.get(item["status"])
+    if status:
+        details.append(f"status: {status}")
+    said = item["text"]
+    if changed_fields and not show_history:
+        said = strip_when(said, dates="date" in changed_fields or "end_date" in changed_fields, times="time" in changed_fields)
+        line = f"[{KIND_LABELS.get(item['kind'], item['kind'])}] The user said (with values changed since left out): \"{said}\""
+    else:
+        line = f"[{KIND_LABELS.get(item['kind'], item['kind'])}] The user said: \"{said}\""
+    if details:
+        line += " | Current details: " + "; ".join(details)
+    if changed_fields and show_history:
+        line += " | Earlier values: " + "; ".join(f"{h['field']} was {h['old_value']}, changed to {h['new_value']}"
+                                                  for h in history if h["field"] in changed_fields)
+    if not item.get("confirmed"):
+        line += " | Not yet confirmed by the user"
+    return line
+
+
 def system_prompt(today: date, version: int = 1) -> str:
     """Version 1 is the prompt of runs (a) and (b), kept unchanged so they can be reproduced. Version 2 (S4) adds two
     general rules for failures seen in S3: answers that said "I don't have that" and then gave it, and answers that
@@ -85,31 +132,32 @@ def system_prompt(today: date, version: int = 1) -> str:
             f"Today is {say_date(today.isoformat())}.\nRules:\n" + "\n".join(rules))
 
 
-def reword_problems(reply: str, draft: Draft, histories, today: date, question: str) -> List[str]:
-    """What a rewording lost or changed: a fact from the draft missing, times out of order, the clash warning gone, or
-    anything the guard rejects."""
-    problems = check_answer(reply, draft.items, histories, today, question)
-    for fact in draft.keep:
-        if not contains(reply, fact, today):
-            problems.append(f"lost {fact}")
-    if draft.in_order:
-        times = [f for f in draft.keep if "time" in f]
-        positions = [_position(reply, f, today) for f in times]
-        if None not in positions and positions != sorted(positions):
-            problems.append("times out of order")
-    if draft.clash and not CLASH_WORDS.search(reply):
-        problems.append("clash warning lost")
+LEAD_SCHEMA = {"type": "object", "properties": {"lead": {"type": "string", "maxLength": 160},
+                                                "closing": {"type": "string", "maxLength": 120}},
+               "required": ["lead", "closing"]}
+NO_CLASH = re.compile(r"\bno (clash|clashes|conflicts?|overlaps?)\b|\bnothing (clashes|overlaps)\b", re.I)
+TIME_IN_TEXT = re.compile(r"\b\d{1,2}([:.]\d{2})?\s*(am|pm|a\.m\.|p\.m\.)", re.I)
+
+
+def lead_problems(lead: str, draft: Draft, today: date, question: str) -> List[str]:
+    """S4b: Qwen's lead and closing must not state any fact themselves (no date, amount, time or day count: those are
+    in the code's list), must not contradict a clash the code found, and must pass the guard."""
+    problems = check_answer(lead, draft.items, {}, today, question)
+    if find_dates(lead, today) or find_amounts(lead) or TIME_IN_TEXT.search(lead):
+        problems.append("lead states a date, amount or time")
+    if draft.clash and NO_CLASH.search(lead):
+        problems.append("lead denies the clash")
     return problems
 
 
-def reword_prompt(today: date) -> str:
-    return ("You are Chirii, a personal memory assistant. Below is a draft answer that is already correct. Rewrite it "
-            "for the user in plain, friendly words.\n"
+def lead_prompt(today: date) -> str:
+    return ("You are Chirii, a personal memory assistant. The answer below was worked out from the user's saved "
+            "memories and will be shown to them exactly as it is. Write one short, friendly lead sentence to go "
+            "before it, and an optional short closing line (or an empty string).\n"
             f"Today is {say_date(today.isoformat())}.\nRules:\n"
-            "- Keep every item, day, date, time and amount exactly as in the draft, and keep them in the same order.\n"
-            "- Keep any clash warning.\n"
-            "- Do not add anything that is not in the draft.\n"
-            "- Speak to the user as 'you'. Keep it short.")
+            "- Do not repeat or change any item, date, day, time or amount, and do not add any. The list says them.\n"
+            "- If the answer warns about a clash, you may say there is a clash, but never that there isn't one.\n"
+            "- Speak to the user as 'you'. Reply as JSON with \"lead\" and \"closing\".")
 
 
 def code_answer(items: List[Dict[str, Any]], histories: Optional[Dict[int, List[Dict[str, Any]]]] = None) -> str:
@@ -196,8 +244,11 @@ class Assistant:
 
     # ------------------------------------------------------------------ answering
 
+    def _line(self, item: Dict[str, Any], history: List[Dict[str, Any]], today: date, question: str) -> str:
+        return fact_line_v2(item, history, today, question) if self.routed else fact_line(item, history)
+
     def _ask_model(self, question: str, today: date, items: List[Dict[str, Any]], histories) -> str:
-        facts = [fact_line(i, histories[i["id"]]) for i in items]
+        facts = [self._line(i, histories[i["id"]], today, question) for i in items]
         memory = "\n".join(f"{n}. {f}" for n, f in enumerate(facts, 1)) or "(no memory facts match this question)"
         messages = [{"role": "system", "content": system_prompt(today, version=2 if self.routed else 1)},
                     {"role": "user", "content": f"Memory facts:\n{memory}\n\nQuestion: {question}"}]
@@ -223,7 +274,7 @@ class Assistant:
     def _ask_routed(self, question: str, today: date) -> Tuple[Answer, List[Dict[str, Any]]]:
         route = route_question(question, today, self.model)
         if route.kind == "window":
-            return self._reword(question, today, window_draft(self.store, *route.window, route.focus, question), route)
+            return self._reword(question, today, window_draft(self.store, *route.window, route.focus, question, named=route.named), route)
         if route.kind == "plan":
             return self._reword(question, today, plan_draft(self.store, *route.window, today), route)
         if route.kind == "status":
@@ -246,26 +297,31 @@ class Assistant:
         return answer, used
 
     def _reword(self, question: str, today: date, draft: Draft, route) -> Tuple[Answer, List[Dict[str, Any]]]:
-        """Qwen rewords the code's draft. The rewording must keep every listed fact (and their order and any clash
-        warning) and pass the guard; one retry, then the draft itself is shown (a code-built fallback)."""
-        histories = {i["id"]: self.store.history(i["id"]) for i in draft.items}
+        """S4b: the code's list is shown exactly as built. Qwen writes only a short lead sentence and an optional
+        closing line, and only those are checked. One retry; then the list is shown without them (a fallback)."""
         answer = Answer(text=draft.text, fact_ids=[i["id"] for i in draft.items], facts=[draft.text], route=route.kind)
         if not draft.keep and not draft.items:
             answer.guard = "code"
             return answer, []
-        messages = [{"role": "system", "content": reword_prompt(today)},
-                    {"role": "user", "content": f"Question: {question}\n\nDraft answer:\n{draft.text}"}]
+        messages = [{"role": "system", "content": lead_prompt(today)},
+                    {"role": "user", "content": f"Question: {question}\n\nAnswer:\n{draft.text}"}]
         for attempt in ("pass", "retry"):
-            reply = self.model.chat(messages, max_tokens=320, purpose="reword").text
-            problems = reword_problems(reply, draft, histories, today, question)
+            try:
+                reply = json.loads(self.model.chat(messages, max_tokens=120, json_schema=LEAD_SCHEMA, purpose="lead").text)
+                lead, closing = str(reply.get("lead", "")).strip(), str(reply.get("closing", "")).strip()
+            except (ValueError, AttributeError):
+                lead, closing = "", ""
+            words = (lead + " " + closing).strip()
+            problems = lead_problems(words, draft, today, question) if words else ["no lead"]
             if not problems:
-                answer.text, answer.guard = reply, attempt
+                answer.text = "\n".join(part for part in (lead, draft.text, closing) if part)
+                answer.guard = attempt
                 break
             if attempt == "pass":
-                answer.first_answer, answer.problems = reply, problems
+                answer.first_answer, answer.problems = words, problems
         else:
             answer.text, answer.guard = draft.text, "fallback"
-        log_event("answer_guard", user=self.store.user_id, status=answer.guard, result_count=len(answer.problems), stage="reword")
+        log_event("answer_guard", user=self.store.user_id, status=answer.guard, result_count=len(answer.problems), stage="lead")
         return answer, draft.items
 
     # ------------------------------------------------------------------ retrieval, Qwen and the guard (runs (a), (b))
@@ -273,17 +329,19 @@ class Assistant:
     def _ask_retrieved(self, question: str, today: date, items: List[Dict[str, Any]]) -> Tuple[Answer, List[Dict[str, Any]]]:
         histories = {i["id"]: self.store.history(i["id"]) for i in items}
         text = self._ask_model(question, today, items, histories)
-        answer = Answer(text=text, fact_ids=[i["id"] for i in items], facts=[fact_line(i, histories[i["id"]]) for i in items])
+        answer = Answer(text=text, fact_ids=[i["id"] for i in items], facts=[self._line(i, histories[i["id"]], today, question) for i in items])
+        # S4b: an old, superseded value counts as invented unless the question asks about it
+        allowed_history = histories if (not self.routed or HISTORY_QUESTION.search(question)) else {}
 
         if self.guard:
-            problems = check_answer(text, items, histories, today, question)
+            problems = check_answer(text, items, allowed_history, today, question)
             answer.guard = "pass"
             if problems:
                 answer.first_answer, answer.problems = text, problems
                 top = (self.matches(question) or items)[:RETRY_FACTS]
                 top_histories = {i["id"]: self.store.history(i["id"]) for i in top}
                 retry = self._ask_model(question, today, top, top_histories)
-                if not check_answer(retry, top, top_histories, today, question):
+                if not check_answer(retry, top, top_histories if allowed_history else {}, today, question):
                     answer.text, answer.guard = retry, "retry"
                 else:
                     answer.text, answer.guard = code_answer(top, top_histories), "fallback"

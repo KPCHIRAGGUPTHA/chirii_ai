@@ -34,7 +34,8 @@ MEANING = re.compile(r"^\s*(what did (i|the|my)|what does|what do(es)? \w+ want|
 LOOKUP = re.compile(r"^\s*(when|what time|how much|how many|what is|what's|where|who|which|kab|kitna|kitni)\b|\b(kab|kitna|kitni)\b", re.I)
 
 # What a window question is about
-PAY = re.compile(r"\b(pay|payments?|bills?|fees?|emis?|premiums?|rent|dues?)\b", re.I)
+# "due" is not a payment word on its own (S4b): "Is anything due tomorrow?" covers payments and money owed to the user
+PAY = re.compile(r"\b(pay|payments?|bills?|fees?|emis?|premiums?|rent)\b", re.I)
 OWED_TO_ME = re.compile(r"\bowe(s|d)? me\b|\bowed to me\b|\bmoney (due|owed) to me\b|\bcollect\b", re.I)
 TODO = re.compile(r"\b(finish|to do|complete|submit|tasks?|to-?dos?)\b", re.I)
 DATES = re.compile(r"\b(birthdays?|anniversar(y|ies)|important dates?|family dates?|festivals?|occasions?)\b", re.I)
@@ -60,6 +61,7 @@ class Route:
     focus: List[str] = field(default_factory=list)   # window questions: pay, owed, todo, dates, all
     specific: List[str] = field(default_factory=list)
     source: str = "rules"
+    named: bool = True        # the question named the period (otherwise it is a default, and is not stated)
 
 
 def specific_terms(question: str) -> List[str]:
@@ -134,8 +136,9 @@ def route_by_rules(question: str, today: date) -> Optional[Route]:
         return Route("status", specific=specific)
     window = question_window(question, today)
     if STILL_TO_PAY.search(question):
+        named = window is not None
         window = window or (today, today + timedelta(days=90))
-        return Route("window", window, window_focus(question) if PAY.search(question) else ["pay"], specific)
+        return Route("window", window, window_focus(question) if PAY.search(question) else ["pay"], specific, named=named)
     if window and WINDOW_WORDS.search(question) and not re.match(r"^\s*(when|what time|how much)\b", question, re.I):
         return Route("window", window, window_focus(question), specific)
     if MEANING.search(question):
@@ -166,7 +169,8 @@ def route(question: str, today: date, model: Optional[ChatModel] = None) -> Rout
         except (LLMError, ValueError, KeyError):
             pass
     window = question_window(question, today) if kind == "window" else plan_window(question, today) if kind == "plan" else None
+    named = window is not None
     if kind == "window" and window is None:
         window = (today, today + timedelta(days=7))
     log_event("route", status=kind, stage="router_" + source)
-    return Route(kind, window, window_focus(question) if kind == "window" else [], specific_terms(question), source)
+    return Route(kind, window, window_focus(question) if kind == "window" else [], specific_terms(question), source, named=named)

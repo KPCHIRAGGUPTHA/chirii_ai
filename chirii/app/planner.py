@@ -56,6 +56,19 @@ def label_for(item: Dict[str, Any], day: Optional[date] = None, hhmm: Optional[s
     return title
 
 
+MONTH_WORDS = r"(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec)"
+
+
+def strip_when(text: str, dates: bool = True, times: bool = True) -> str:
+    """The sentence without its date or time phrases, for an item whose date or time was changed later (S4b)."""
+    if dates:
+        text = re.sub(rf"\s*\b(on|by|before|from|till|until)?\s*(the\s+)?\d{{1,2}}(st|nd|rd|th)?\s+(of\s+)?{MONTH_WORDS}\b\.?", "", text, flags=re.I)
+        text = re.sub(rf"\s*\b(on|by|before)?\s*{MONTH_WORDS}\s+\d{{1,2}}(st|nd|rd|th)?\b", "", text, flags=re.I)
+    if times:
+        text = re.sub(r"\s*\b(between\s+\d{1,2}([:.]\d{2})?\s*(am|pm)?\s+and\s+)?(at|by|before|from)?\s*\d{1,2}([:.]\d{2})?\s*(am|pm)\b", "", text, flags=re.I)
+    return re.sub(r"\s+([,.;])", r"\1", re.sub(r"\s{2,}", " ", text)).strip()
+
+
 def clean_label(clause: str) -> str:
     text = re.sub(r"\b(on|by|before|from)\s+(the\s+)?\d{1,2}(st|nd|rd|th)?\s+(of\s+)?[A-Za-z]+\b", "", clause)
     text = re.sub(r"\b(at|by|before|from)\s+\d{1,2}([:.]\d{2})?\s*(am|pm)\b", "", text, flags=re.I)
@@ -91,7 +104,10 @@ def wanted(item: Dict[str, Any], focus: List[str], question: str) -> bool:
     return ok
 
 
-def window_draft(store: MemoryStore, start: date, end: date, focus: List[str], question: str) -> Draft:
+def window_draft(store: MemoryStore, start: date, end: date, focus: List[str], question: str, named: bool = True) -> Draft:
+    """The list for a period. The header names the period's dates only when the question named the period (S4b: a
+    default period, as for "which fees do I still have to pay?", is not stated). Money owed to the user is listed
+    separately as "To receive" (S4b)."""
     entries = []
     for item in store.items(include_updates=False):
         if not wanted(item, focus, question):
@@ -101,12 +117,15 @@ def window_draft(store: MemoryStore, start: date, end: date, focus: List[str], q
             if item["kind"] == "medicine":
                 break
     entries.sort(key=lambda e: (e[0], e[1]))
-    period = say_period(start, end)
+    period = (" " + say_period(start, end)) if named else ""
     if not entries:
-        what = {"pay": "Nothing to pay", "owed": "No money due to you", "dates": "No important dates"}.get(focus[0], "Nothing saved")
-        return Draft(text=f"{what} {period}, as far as your saved memories go.")
-    lines, keep, payable_total, owed_total, used = [], [], 0, 0, []
+        what = {"pay": "Nothing to pay", "owed": "Nothing to receive", "dates": "No important dates",
+                "due": "Nothing due"}.get(focus[0], "Nothing saved")
+        return Draft(text=f"{what}{period}, as far as your saved memories go.")
+    sections: Dict[str, List[str]] = {"main": [], "receive": []}
+    keep, totals, counts, used = [], {"main": 0, "receive": 0}, {"main": 0, "receive": 0}, []
     for day, _, item in entries:
+        part = "receive" if item["kind"] == "receivable" else "main"
         bits = [label_for(item, day=day)]
         if item["time"]:
             bits.append(f"at {say_time(item['time'])}")
@@ -115,26 +134,27 @@ def window_draft(store: MemoryStore, start: date, end: date, focus: List[str], q
         if amount is not None:
             bits.append(say_amount(amount) + (" still owed" if item["paid_amount"] else ""))
             keep.append({"amount": amount})
-            if item["kind"] == "receivable":
-                owed_total += amount
-                bits.append("(money due to you)")
-            elif item["kind"] in PAYABLE:
-                payable_total += amount
+            if part == "receive" or item["kind"] in PAYABLE:
+                totals[part] += amount
+                counts[part] += 1
         if item["day_of_month"] and day.day == item["day_of_month"] and not item["date"]:
             bits.append("(every month)")
         keep.append({"date": day.isoformat()})
-        lines.append(f"- {short_day(day)}: " + ", ".join(bits))
+        sections[part].append(f"- {short_day(day)}: " + ", ".join(bits))
         used.append(item)
-    count_payable = sum(1 for _, _, i in entries if i["kind"] in PAYABLE and i.get("amount") is not None)
-    head = {"pay": f"To pay {period}:", "owed": f"Money due to you {period}:", "dates": f"Important dates {period}:"}.get(
-        focus[0], f"Coming up {period}:")
-    text = head + "\n" + "\n".join(lines)
-    if count_payable >= 2:
-        text += f"\nTotal to pay: {say_amount(payable_total)}."
-        keep.append({"amount": payable_total})
-    if owed_total and "owed" in focus and sum(1 for _, _, i in entries if i["kind"] == "receivable") >= 2:
-        text += f"\nTotal due to you: {say_amount(owed_total)}."
-    return Draft(text=text, items=dedupe(used), keep=keep)
+    heads = {"pay": "To pay", "owed": "To receive", "dates": "Important dates", "due": "Due"}
+    head = heads.get(focus[0], "Coming up")
+    blocks = []
+    if sections["main"]:
+        blocks.append(f"{head}{period}:\n" + "\n".join(sections["main"]))
+        if counts["main"] >= 2:
+            blocks.append(f"Total to pay: {say_amount(totals['main'])}.")
+            keep.append({"amount": totals["main"]})
+    if sections["receive"]:
+        blocks.append(("To receive" + (period if not sections["main"] else "") + ":\n") + "\n".join(sections["receive"]))
+        if counts["receive"] >= 2:
+            blocks.append(f"Total to receive: {say_amount(totals['receive'])}.")
+    return Draft(text="\n".join(blocks), items=dedupe(used), keep=keep)
 
 
 def say_period(start: date, end: date) -> str:

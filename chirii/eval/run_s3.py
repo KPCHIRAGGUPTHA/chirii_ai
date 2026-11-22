@@ -37,7 +37,7 @@ from chirii.eval.scoring import contains, score_task
 OUT = REPO_ROOT / "chirii" / "results" / "s3"
 SECRET = "s3-eval-run-secret-not-used-for-real-data-0000000"
 CONFIGS = {"a": {"guard": False, "trimmed": False, "routed": False}, "b": {"guard": True, "trimmed": True, "routed": False},
-           "c": {"guard": True, "trimmed": True, "routed": True}}
+           "c": {"guard": True, "trimmed": True, "routed": True}, "d": {"guard": True, "trimmed": True, "routed": True}}
 
 
 def plain_qwen(model, task):
@@ -68,7 +68,7 @@ def with_memory(run, model, embedder, task, base, root):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--runs", nargs="+", choices=["a", "b", "c", "none"], default=["a", "b", "none"])
+    parser.add_argument("--runs", nargs="+", choices=["a", "b", "c", "d", "none"], default=["a", "b", "none"])
     parser.add_argument("--out-dir", default=str(OUT), help="where replies and the summary go (the GPU job uses its own folder)")
     args = parser.parse_args()
     out = Path(args.out_dir)
@@ -100,7 +100,7 @@ def main():
         summary[run] = {
             "A_overall": sum(r["passed"] for r in scored), "B_unknown": sum(r["passed"] for r in unknown),
             "C_invented": sum(r["invented"] for r in scored),
-            "guard": {k: sum(r.get("guard") == k for r in scored) for k in ("pass", "retry", "fallback", "code")} if run in ("b", "c") else None,
+            "guard": {k: sum(r.get("guard") == k for r in scored) for k in ("pass", "retry", "fallback", "code")} if run in ("b", "c", "d") else None,
             "median_ms": sorted(r["duration_ms"] for r in scored)[len(scored) // 2],
         }
     name = "s3_auto.json" if sorted(args.runs) == ["a", "b", "none"] and out == OUT else "auto_" + "_".join(args.runs) + ".json"  # never overwrite the S3 summary

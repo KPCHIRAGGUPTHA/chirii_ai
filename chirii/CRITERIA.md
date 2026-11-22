@@ -147,8 +147,7 @@ system, with the same settings and marker as the development runs.
 | Bar C' **above 3/30** | Each fallback labelled by cause (code or model). S7 is triggered only if **model-caused fallbacks are more than 3 of 30** (owner, 22 Nov) |
 | Bar A **below 21/30**, or B at **3/5 or lower** | **S7 is triggered directly** |
 
-**Both open points decided by the owner on 22 Nov, before the held-out set exists** (these replace the C' part of the
-"failure analysis" row above):
+**Both open points decided by the owner on 22 Nov, before the held-out set exists** (reflected in the table above):
 - **Bar B at 3/5: the stricter reading.** S7 is triggered directly. (The original text also said "B misses by one →
   failure analysis"; for B, missing by one is 3/5, so the two conflicted.)
 - **Bar C' (fallbacks):** if there are **more than 3** code-built fallbacks in the 30 tasks, each one is labelled by

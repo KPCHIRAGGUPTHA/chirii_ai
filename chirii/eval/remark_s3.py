@@ -14,9 +14,18 @@ from chirii.eval.scoring import score_task
 S3 = REPO_ROOT / "chirii" / "results" / "s3"
 
 
+S4B_INTRO = ["# Runs (a)-(c) re-marked with the S4b marker", "",
+             "Marker change of 22 November (S4b, recorded in CRITERIA.md before run (d)): the start and end dates of the period",
+             "the question names, and the dates of weekly routines in memory, count as worked-out values. Original scores are",
+             "never replaced; the first marker fix is in `S3_REMARKED.md`.", "",
+             "| Run | Bar A original | Bar A re-marked | Bar B original → re-marked | Bar C original → re-marked |", "| :--- | ---: | ---: | :--- | :--- |"]
+
+
 def main():
+    import sys
+    s4b = "--s4b" in sys.argv
     tasks = {t["id"]: t for t in load_tasks()}
-    lines = ["# S3 re-marked with the fixed marker", "",
+    lines = list(S4B_INTRO) if s4b else ["# S3 re-marked with the fixed marker", "",
              "The two marker errors found in S3 were fixed on 22 November, with tests:",
              "1. a month followed by a numbered list item (\"15 December.⏎2.\") was read as a date;",
              "2. the empty days of an asked week (\"Tuesday 15 December: no appointments\") were counted as invented.", "",
@@ -25,7 +34,7 @@ def main():
              "that answer was replaced at the time, and the replacement is what is marked here.", "",
              "| Run | Bar A original | Bar A re-marked | Bar B original → re-marked | Bar C original → re-marked |", "| :--- | ---: | ---: | :--- | :--- |"]
     changed = []
-    for run in ("a", "b", "none"):
+    for run in (("a", "b", "c", "none") if s4b else ("a", "b", "none")):
         rows = [json.loads(line) for line in (S3 / f"replies_{run}.jsonl").read_text(encoding="utf-8").splitlines()]
         rows = [r for r in rows if r["scored"]]
         new = {r["id"]: score_task(tasks[r["id"]], r["reply"]) for r in rows}
@@ -43,7 +52,7 @@ def main():
         lines.append(f"| {run} | {task_id} | {verdict(old['passed'], old['invented'])} | {verdict(new['passed'], new['invented'])} | {new['failures'] or '-'} |")
     if not changed:
         lines.append("| – | – | – | – | none |")
-    (S3 / "S3_REMARKED.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (S3 / ("REMARKED_S4B.md" if s4b else "S3_REMARKED.md")).write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))
 
 

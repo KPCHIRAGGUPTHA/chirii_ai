@@ -302,7 +302,43 @@ def asked_period(question: str, today: date) -> Optional[Tuple[date, date]]:
         return start, start + timedelta(days=6)
     if re.search(r"\b(this|my) week\b|\bplan for (the|this) week\b", q):
         return today, today + timedelta(days=6 - today.weekday())
+    # Added 22 Nov (S4b), for the period-end rule; the empty-day rule uses the same periods
+    m = re.search(r"\b(?:coming|following)\s+(\d{1,2}|" + "|".join(NUMBER_WORDS) + r")\s+days?\b", q)
+    if m:
+        n = int(m.group(1)) if m.group(1).isdigit() else NUMBER_WORDS[m.group(1)]
+        return today, today + timedelta(days=n)
+    if re.search(r"\b(this|end of (the|this))\s+month\b|\bbefore the end of\b", q):
+        nxt = date(today.year + (today.month == 12), today.month % 12 + 1, 1)
+        return today, nxt - timedelta(days=1)
+    if re.search(r"\bday after tomorrow\b|\bparso\b", q):
+        return today + timedelta(days=2), today + timedelta(days=2)
+    if re.search(r"\b(tomorrow|tmrw|kal)\b", q):
+        return today + timedelta(days=1), today + timedelta(days=1)
+    if re.search(r"\b(today|tonight|aaj)\b|\b(plan|my) day\b", q):
+        return today, today
     return None
+
+
+def period_ends(task: Dict[str, Any]) -> Set[Tuple[int, int]]:
+    """Marker change, 22 Nov (S4b, CRITERIA.md): the first and last day of the period the question names are worked-out
+    values, like day counts ("next 7 days" from 7 December: 7 and 14 December)."""
+    today = date.fromisoformat(task["today"])
+    period = asked_period(task.get("question", ""), today)
+    return {(d.day, d.month) for d in period} if period else set()
+
+
+def weekly_dates(task: Dict[str, Any]) -> Set[Tuple[int, int]]:
+    """Marker change, 22 Nov (S4b): the days a weekly routine in memory falls on (four weeks either side of today)."""
+    today = date.fromisoformat(task["today"])
+    found = set()
+    for entry in task["memory"]:
+        for name in entry.get("item", {}).get("weekdays", []):
+            target = WEEKDAYS.index(name.lower())
+            for k in range(-28, 29):
+                d = today + timedelta(days=k)
+                if d.weekday() == target:
+                    found.add((d.day, d.month))
+    return found
 
 
 def empty_days_said(reply: str, task: Dict[str, Any]) -> Set[Tuple[int, int]]:
@@ -327,7 +363,7 @@ def empty_days_said(reply: str, task: Dict[str, Any]) -> Set[Tuple[int, int]]:
 def invented_facts(reply: str, task: Dict[str, Any]) -> Dict[str, List[Any]]:
     today = date.fromisoformat(task["today"])
     dates, amounts = allowed_facts(task)
-    dates = dates | empty_days_said(reply, task)
+    dates = dates | empty_days_said(reply, task) | period_ends(task) | weekly_dates(task)
     extra_amounts = sorted(find_amounts(reply) - amounts)
     if extra_amounts:
         sums = allowed_sums(amounts)

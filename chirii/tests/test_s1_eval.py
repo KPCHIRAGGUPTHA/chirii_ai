@@ -241,3 +241,32 @@ class TestMarkerFixes:
     def test_empty_day_rule_needs_an_asked_period(self, by_id):
         # S1-02 asks about one appointment, so no period: an empty-day line is still an invented date
         assert score_task(by_id["S1-02"], "Your dentist is at 6 pm on 10 December. 11 December: nothing.")["invented"]
+
+
+class TestMarkerS4b:
+    """S4b marker change (CRITERIA.md): period ends from the question, and weekly routine dates, are worked-out values."""
+
+    def test_the_period_ends_named_by_the_question_are_allowed(self, by_id):
+        reply = "To pay from Monday 7 December to Monday 14 December:\n- Saturday 12 December: BESCOM electricity bill, ₹1,860"
+        assert not score_task(by_id["S1-03"], reply)["invented"]          # "next 7 days" from 7 December
+
+    def test_a_date_past_the_period_end_is_still_invented(self, by_id):
+        reply = "To pay from Monday 7 December to Tuesday 15 December:\n- Saturday 12 December: BESCOM electricity bill, ₹1,860"
+        assert score_task(by_id["S1-03"], reply)["invented"]
+
+    def test_weekly_routine_dates_are_allowed(self, by_id):
+        reply = "This week: water bill ₹180 on 15 December, bhajan on Thursday 17 December at 4 pm, check-up on 18 December at 11 am."
+        result = score_task(by_id["S1-33"], reply)
+        assert not result["invented"], result
+
+    def test_a_routine_on_the_wrong_weekday_is_still_invented(self, by_id):
+        assert score_task(by_id["S1-33"], "Bhajan on Wednesday 16 December at 4 pm.")["invented"]
+
+    @pytest.mark.parametrize("question", ["What's due in the next 7 days?", "Which payments are due this week?", "Anything next week?",
+                                          "What do I have tomorrow?", "Plan my day.", "What do I need to finish before the end of this month?",
+                                          "What's coming up in the next 3 days?", "Any important family dates in the next 7 days?"])
+    def test_marker_and_app_read_the_same_period(self, question):
+        from chirii.app.windows import question_window
+        from chirii.eval.scoring import asked_period
+        today = date(2026, 12, 14)
+        assert asked_period(question, today) == question_window(question, today)

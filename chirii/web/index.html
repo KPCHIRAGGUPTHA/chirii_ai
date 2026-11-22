@@ -269,7 +269,7 @@ $("add-form").onsubmit = async (e) => {
   try {
     const r = await api("/api/memories", { method: "POST", body: JSON.stringify({ text }) });
     $("memory").value = "";
-    $("add-msg").textContent = "";
+    $("add-msg").textContent = r.support || "";   // S5 safety: support first, then the card
     gotItCard(r.understood, $("card-slot"), (m) => { $("add-msg").textContent = m; });
     refresh();
   } catch (err) { $("add-msg").textContent = err.message; $("add-msg").className = "msg error"; }

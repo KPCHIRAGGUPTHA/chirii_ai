@@ -35,7 +35,7 @@ from phase11.calculator import calculate
 
 MEMORY, CALCULATED, GENERAL = "From your memories", "Calculated", "General answer"
 LABELS = {"memory": MEMORY, "maths": CALCULATED, "mixed_maths": CALCULATED, "general": GENERAL, "writing": GENERAL,
-          "mixed": GENERAL, "not_saved": MEMORY}
+          "mixed": GENERAL, "not_saved": MEMORY, "support": "Support"}   # S5: the safety layer's fixed reply
 NO_LIVE_ANSWER = ("I can't check live information such as today's prices, weather, news or match results. "
                   "Please look at a trusted live source for that.")
 MONEY_WORDS = re.compile(r"₹|\brs\b|rupees?|lakh|crore|\b(cost|costs|price|pay|paid|gst|tax|interest|emi|loan|rent|bill|fee|salary|"

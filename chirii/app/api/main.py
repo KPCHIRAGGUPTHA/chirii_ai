@@ -21,6 +21,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from chirii.app.accounts import COOKIE, IDLE_SECONDS, Accounts, Locked, Sessions
+from chirii.app import safety
 from chirii.app.assistant import Assistant
 from chirii.app.consent import CONSENT_POINTS, CONSENT_TITLE, CONSENT_VERSION
 from chirii.app.config import ENV_FILE, REPO_ROOT, get_settings
@@ -189,7 +190,12 @@ def create_app(data_dir: Path, secret: str, embedder: Embedder, model: ChatModel
         result = store.add(body.text.strip(), today())
         card = dict(result["understood"])
         card["people"] = people_mentioned(result["item"], store.items(include_updates=False))
-        return {"item": result["item"], "understood": card, "linked_to": result["linked_to"], "changes": result["changes"]}
+        # S5 safety: the note is the person's own and is saved, but if it shows self-harm intent, support comes first
+        support = safety.self_harm(body.text)
+        if support:
+            log_event("safety", status="self_harm", stage="memory")
+        return {"item": result["item"], "understood": card, "linked_to": result["linked_to"], "changes": result["changes"],
+                "support": support}
 
     @app.post("/api/memories/{item_id}/confirm")
     def confirm_memory(item_id: int, user: str = Depends(consented)):

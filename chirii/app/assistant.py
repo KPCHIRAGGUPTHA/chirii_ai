@@ -25,7 +25,7 @@ from chirii.app.formatting import KIND_LABELS, make_title, say_amount, say_date,
 from chirii.app.guard import check_answer
 from chirii.app.windows import question_window
 from chirii.app.planner import MONEY_QUESTION, Draft, label_for, plan_draft, status_draft, strip_when, window_draft
-from chirii.app import meaning
+from chirii.app import meaning, safety
 from chirii.app.router import LIVE, MATHS_WORDS, MEMORY_ROUTES, matched_terms, mentions_all, mentions_specific, route as route_question, term_matches
 from chirii.app import people
 from chirii.app.chat import LABELS, general_answer, maths_answer, writing_answer
@@ -283,6 +283,12 @@ class Assistant:
 
     def ask(self, question: str, today: date) -> Answer:
         started = time.perf_counter()
+        support = safety.self_harm(question) if self.routed else None   # runs (a)/(b) stay frozen as in S3
+        if support is not None:
+            # S5 safety: a fixed supportive reply; Qwen is not called and no memory is used
+            log_event("safety", status="self_harm", stage="answer")
+            return Answer(text=support, fact_ids=[], guard="safety", route="safety", label=LABELS["support"],
+                          duration_ms=round((time.perf_counter() - started) * 1000))
         if self.routed:
             # S4f: matching by meaning (the calibrated embedding model) for this question's router and item checks
             token = meaning.current.set(meaning.for_embedder(self.store.embedder))
@@ -336,7 +342,7 @@ class Assistant:
                 return refusal, []
         if route.kind == "status":
             candidates = [i for i in self.matches(question)
-                          if mentions_all(route.specific, i["text"] + " " + (i.get("title") or ""))] if route.specific else self.matches(question)
+                          if mentions_all(route.specific, safety.item_words(i))] if route.specific else self.matches(question)
             # S4d: a question about money is about an item with an amount (the trip fee, not the trip)
             if MONEY_QUESTION.search(question) and any(i.get("amount") is not None for i in candidates):
                 candidates = [i for i in candidates if i.get("amount") is not None]
@@ -346,16 +352,34 @@ class Assistant:
         items = self.select_relevant(question, today)
         if route.specific:
             check = mentions_all if route.kind == "lookup" else mentions_specific
-            items = [i for i in items if check(route.specific, i["text"] + " " + (i.get("title") or ""))] or items
+            items = [i for i in items if check(route.specific, safety.item_words(i))] or items
         answer, used = self._ask_retrieved(question, today, items)
         if route.kind == "lookup":
             answer.text = add_missing_time(answer.text, used, today)
+        # S5 safety, attribute check on the final answer: an item's date or time may not be given for an event or
+        # attribute it doesn't mention ("Mr. Desai's leave" answered from his weekly visit)
+        wrong = safety.attribute_check(question, answer.text, saved, today)
+        if wrong is not None:
+            item, missing = wrong
+            log_event("attribute_check", status="replaced", stage="answer")
+            answer.first_answer, answer.problems = answer.text, answer.problems + [f"attribute not in memory: {', '.join(missing)}"]
+            text = safety.item_words
+            named = [i for i in self.store.items(include_updates=False) if all(term_matches(m, text(i)) for m in missing)]
+            if named:   # the event is saved, just without a date or time: say so, not someone else's date
+                other = named[0]
+                answer.text = f"I have {other.get('title') or make_title(other['text'])} saved, but no date or time for it."
+                answer.fact_ids, used = [other["id"]], [other]
+            else:
+                when = "; ".join(when_text(item))
+                have = (item.get("title") or make_title(item["text"])) + (f" ({when})" if when else "")
+                answer.text, answer.fact_ids, used = f"I have {have}, but nothing about {' '.join(missing)}.", [item["id"]], [item]
+            answer.guard = "code"
         return answer, used
 
     def _specific_check(self, route, question: str, saved: List[Dict[str, Any]]) -> Optional[Answer]:
         """S4c: for lookups and status questions every key term must match one memory ("Infosys" and "interview");
         meaning questions keep the S4 rule (the names must match). If only part matches, say what IS saved."""
-        text = lambda i: i["text"] + " " + (i.get("title") or "")
+        text = safety.item_words
         check = mentions_all if route.kind in ("lookup", "status") else mentions_specific
         if any(check(route.specific, text(i)) for i in saved):
             return None

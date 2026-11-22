@@ -116,6 +116,9 @@ def specific_terms(question: str) -> List[str]:
             names.append(clean)
         elif (SYNONYMS.get(lower, lower) in SPECIFIC_THINGS or meaning.canon(lower) in THING_FAMILIES) and lower not in things:
             things.append(lower)
+    # S5 safety, attribute check: the attribute or event asked about ("Mr. Desai's leave") is a key term too
+    from chirii.app.safety import asked_attributes
+    things += [a for a in asked_attributes(question) if a not in things]
     return ["!" + n for n in names] + things
 
 

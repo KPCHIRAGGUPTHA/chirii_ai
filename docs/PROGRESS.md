@@ -689,3 +689,23 @@ extraction set.
 - Tests: `test_s5_login.py` (19), including users never seeing each other's memories, wrong or changed cookies,
   lockout, consent gating, logout, and requests from other sites. Checked in the browser on a throwaway instance:
   login → consent → save → logout.
+
+## S5, part 3 – Safety layer and the attribute check (22 November 2026)
+
+- **Self-harm layer** (reuses `phase14/safety_layer.py`): every question, and every memory being saved, is checked
+  before Qwen. First-person self-harm or suicide intent gets a fixed supportive reply with Tele-MANAS 14416 and 112;
+  Qwen is not called and no memory is used (label "Support"). phase14's two-signal rule keeps idioms and tech wording
+  out. Added: Hinglish wording (marna chahta, jeena nahi, khudkushi, aatmahatya), with third-party wording ("mere dost
+  ko…") suppressed. A saved note that fires is still saved, with the support message shown first.
+- **Attribute check** (owner, after D5-M12): a question about an attribute or event ("leave", "interview", "joining",
+  "fee", "surgery"…; "leave", "visit", "test" only when used as nouns) needs a memory that mentions it (exact, stem,
+  synonym map, or meaning ≥ 0.66; an item's kind counts, so a bill is a "fee").
+  - Before answering: these words are key terms, so a memory without them gives "not saved" or a partial match.
+  - After answering: a code check on the final answer. A date, time or weekday in the answer must belong to a memory
+    that mentions the event asked about; otherwise the answer is replaced ("I have Rahul's flight to Pune (…), but
+    nothing about interview", or "I have Rahul's interview saved, but no date or time for it").
+- D5-M12's recorded result is unchanged; the held-out set will measure this.
+- Tests (`test_s5_safety.py`, own examples): all 22 phase14 positives fire and all ~100 hard negatives don't; Hinglish
+  positives and negatives; memory-style sentences that must not fire ("life insurance premium", "death anniversary",
+  "sleeping pills prescription"); the model is not called; the attribute check before and after answering, with the
+  guard off to test the final check alone. 620 pass. A live check with Qwen on 7 own examples: all right.

@@ -25,7 +25,7 @@ from chirii.app.formatting import KIND_LABELS, make_title, say_amount, say_date,
 from chirii.app.guard import check_answer
 from chirii.app.windows import question_window
 from chirii.app.planner import MONEY_QUESTION, Draft, label_for, plan_draft, status_draft, strip_when, window_draft
-from chirii.app import meaning, safety
+from chirii.app import meaning, safety, summary
 from chirii.app.router import LIVE, MATHS_WORDS, MEMORY_ROUTES, matched_terms, mentions_all, mentions_specific, route as route_question, term_matches
 from chirii.app import people
 from chirii.app.chat import LABELS, general_answer, maths_answer, writing_answer
@@ -219,6 +219,7 @@ class Answer:
     first_answer: Optional[str] = None      # the model's first answer, kept for the S3 report when the guard acted
     route: str = "-"                         # S4c: one of router.ROUTES
     label: str = ""                          # S4c: "From your memory", "Calculated", "General knowledge", "Writing help"…
+    full_text: Optional[str] = None          # S6: the complete list when `text` is the summary of a long one
 
 
 class Assistant:
@@ -301,10 +302,20 @@ class Assistant:
         else:
             answer, items = self._ask_retrieved(question, today, self.select_relevant(question, today) if self.trimmed
                                                 else self.select_full(question, today))
-        answer.unconfirmed = self.unconfirmed_used(answer.text, items, today)
+        if self.routed and answer.route in ("window", "plan"):
+            short = summary.summarise(answer.text)          # S6: a long list is summarised; the full one is kept
+            if short is not None:
+                answer.full_text, answer.text = answer.text, short
+        answer.unconfirmed = self.unconfirmed_used(answer.full_text or answer.text, items, today)
         if answer.unconfirmed:
             titles = "; ".join(f"\"{t}\"" for t in answer.unconfirmed)
-            answer.text += f"\n\n(This uses something you haven't confirmed yet: {titles}.)"
+            note = f"\n\n(This uses something you haven't confirmed yet: {titles}.)"
+            if answer.full_text:
+                answer.full_text += note
+                if len(answer.unconfirmed) > 3:              # the summary names a few, the full list all of them
+                    some = "; ".join(f"\"{t}\"" for t in answer.unconfirmed[:3])
+                    note = f"\n\n(This uses {len(answer.unconfirmed)} things you haven't confirmed yet, including {some}.)"
+            answer.text += note
         answer.duration_ms = round((time.perf_counter() - started) * 1000)
         log_event("answer", user=self.store.user_id, result_count=len(items), duration_ms=answer.duration_ms, stage="answer")
         return answer

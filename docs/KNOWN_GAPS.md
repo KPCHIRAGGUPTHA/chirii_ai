@@ -14,6 +14,10 @@ fixed now**. Each says where it was seen. Any fix later is development work and 
   example, 22 Nov): "Which bills do I have to pay before 1 December?" → "Nothing to pay on Tuesday 1 December",
   though bills fall on 25, 28 and 30 November. Same for "by 1 December", "until 1 December", "before Saturday". The
   period reader takes the date as the window instead of today up to it. Not fixed; owner to decide before s6-final.
+- **"in <month>" is not read as a period** (found while writing the S6 summary tests, own example, 22 Nov): "Which
+  bills are due in July?" goes to general knowledge and "What do I have to pay in December 2027?" to lookup, so no
+  list is built. "this month", "next month", "the next 30 days" and "between 1 July and 15 July" work. Not fixed;
+  owner to decide before s6-final.
 - **"Anything to pay before Priya's birthday?"** goes to general knowledge (a saved birthday as the end of a
   period isn't recognised here, though "before Sneha's sangeet" worked in the scale check). Same check, not fixed.
 
@@ -37,8 +41,8 @@ fixed now**. Each says where it was seen. Any fix later is development work and 
   at the hyphen ("wi", "fi"), the question's term is not, so the specific-item check says "I don't have anything
   about Wi-Fi saved" (scale check SC-25, the one miss at both 40 and 500 items). A small fix (split both the same
   way); found in a scored run, so logged here rather than fixed silently. Accepted with S5 (owner, 22 Nov).
-- **Long lists are complete but too long** (30 bills before an event; 9 badminton games on a Saturday). A summary for
-  long lists belongs to S6 (scale check).
+- **Long lists are complete but too long** (30 bills before an event; 9 badminton games on a Saturday): **addressed in
+  S6 step 4** (a list over 12 lines is summarised, with "Show all").
 - **Generic event words are required as key terms:** "my dentist appointment" vs a saved "Dentist Dr. Shetty…"
   (D4-P13).
 - **Lists are not narrowed to the kind asked for:** "which subscriptions" also lists rent; "anything to renew this

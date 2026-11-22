@@ -812,3 +812,18 @@ memories open as their own panel ("Memories (12)", "← Back to chat"). Buttons 
 (small link buttons 36 px), inputs use 16 px text so phones don't zoom in, and the footer buttons stack. Checked in
 the browser at 375 × 812: no sideways scrolling, all buttons at least 36 px. The same check found a wrong answer
 (not layout): "before / by / until" a date is read as that one day. Logged in `docs/KNOWN_GAPS.md`, not fixed.
+
+## S6, step 4 – Long-list summaries (22 November 2026)
+
+A date-window or plan list with more than 12 lines (`chirii/app/summary.py`) is shown as: its header, one line with
+how many items, the dates they span and how many clashes, the first 5 entries, every total line, and "…and N more.
+Tap "Show all"". The complete list, exactly as code built it, comes with the answer and "Show all" shows it; nothing
+is dropped without saying how many. In the summary, the "not confirmed yet" note names 3 items and the count.
+On the scale check's lists: "Anything to pay before Sneha's sangeet?" becomes "31 items, from Saturday 19 June to
+Thursday 9 December", 5 entries, "…and 26 more", "Total to pay: ₹68,017."; the Saturday plan becomes "10 items, with
+5 clashes (see all)". Lists of 12 lines or fewer are unchanged. Tests (`test_s6_summary.py`, own examples): 8.
+Checked live at 375 px: summary, then "Show all" gives all 15 entries.
+
+Found while writing the tests, logged and not fixed: "in <month>" ("Which bills are due in July?") is not read as a
+period. With the "before / by / until <date>" gap from step 3, these two period gaps are for the owner to decide on
+before the freeze.

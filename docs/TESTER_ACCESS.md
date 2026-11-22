@@ -1,5 +1,7 @@
 # Tester access for the pilot (proposal for S8 planning, not built)
 
+**Decision (owner, 22 Nov 2026): option (b), Cloudflare Tunnel with Cloudflare Access in front, for S8. Not built before S8.**
+
 Written 22 November 2026, at the owner's request, before S6 is built. Nothing here is implemented yet. It compares
 three ways for about 20 testers to use Chirii and lists what each would need. The owner's leaning is (b).
 

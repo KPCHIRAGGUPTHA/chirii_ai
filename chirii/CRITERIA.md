@@ -256,6 +256,26 @@ system, with the same settings and marker as the development runs.
 - The final report gives both scores, and the **held-out score is labelled the main result**. Pass bars for the
   held-out set are proposed with the tasks and approved before its run.
 
+### Held-out set: authorship, freeze and scoring (owner's decisions, 22 Nov, recorded before the freeze)
+
+- **Freeze:** the system is frozen at the git tag `s6-final`. The held-out run uses exactly that code (and the
+  Qwen2.5-1.5B-Instruct Q8_0 model file, temperature 0, the same embedding model). No change to the system after the
+  tag counts toward the held-out result.
+- **Authorship:** after the freeze, a short spec (`chirii/eval/HELDOUT_SPEC.md`) gives the 6 task types, 5 per type
+  (one per person per type), the 5 people's profiles, the file format the marker reads, and "new wording, not from
+  the development sets". The 30 tasks are written by a **fresh Claude Code session that sees only the spec** (not
+  the code, the development sets or any result), run by the owner. The builder (this session) then only checks that
+  the file matches the marker's format and does **not** change the tasks' content. The owner reviews and edits, then
+  commits the tasks and their marking rules **before any run**.
+- **What is scored: what the person sees first.** The reply text shown first is marked. For a date-window or plan list
+  longer than 12 lines that is the summary (count, date span, clashes, first 5 entries, totals, "…and N more"), not
+  the full list behind "Show all". Each task is one question asked on its own (no conversation history), as in the
+  development runs.
+- **Marker:** `score_task` as used for runs (c)–(e5), including the S4b marker change (period ends and weekly-routine
+  dates count as worked-out values).
+- **Bars and what follows:** the S7 reconsideration rule above (A ≥ 24/30, B ≥ 4/5, C' ≤ 3/30 code-built fallbacks),
+  applied once, with the noise caveat.
+
 ### Noise: what these numbers can and cannot show
 
 - **One standard error at 80% on 50 tasks is about 5.7 points.** A score of 40/50 means the true rate is probably

@@ -863,3 +863,10 @@ Owner's decision: fix, don't log. A message is read clause by clause (`chirii/ap
   since S5: an over-support).
 - Tests (own examples): 15 personal (the owner's three, Hinglish and English variants, one ambiguous) and 15 helper
   cases; all phase14 positives, hard negatives and the S6 helper and everyday cases still pass (285 in the file).
+
+## S6, step 5 – Freeze: `s6-final` (22 November 2026)
+
+The system is frozen at the git tag `s6-final` (the commit this entry is in). From here, the held-out set is written
+from a spec by a fresh session (owner), checked for format only, reviewed and committed by the owner, and then run
+once on this tag. All tests pass at the tag (854). Scoring rules: `chirii/CRITERIA.md`, "Held-out set: authorship,
+freeze and scoring".

@@ -210,6 +210,21 @@ system, with the same settings and marker as the development runs.
   error, and with router and answer-label accuracy shown separately.
 - **The held-out 30 stay untouched until S6.**
 
+### After run (e4); development set 5 and run (e5), the last development run (owner, 22 Nov; written before S4f)
+
+- **Development set 5** (`chirii/eval/DEV5_TASKS.md`): 20 memory tasks with deliberately varied wording (synonyms,
+  Hinglish words, indirect phrasing), 10 maths tasks and 10 people tasks. It was committed with its marking rules before
+  S4f was built. The marker rules are the same as for dev set 4; every memory task now also has the "no 'the user'" and
+  "consistent" rules.
+- **S4f** (meaning-based matching, bill words, "by when", ranges listed once, maths routing and validation) is built
+  after the set is committed. Its embedding threshold is calibrated on my own examples, not on any development set.
+- **Run (e5) is run once.** It is reported next to (e4), with hand-check labels.
+- **After (e5), the development-set loop stops, whatever the score.** Remaining gaps go to `docs/KNOWN_GAPS.md`; they
+  are not fixed now. The order after (e5): S5 (encryption at rest, login, tester consent note), the safety layer, the
+  500-item scale check, the fresh extraction set, then S6 (chat UI and the held-out set).
+- **General-knowledge misses get no code fix.** The 7B diagnostic (run by the owner on the GPU PC) decides that.
+- **The held-out 30 stay untouched until S6.**
+
 ### Held-out test set (owner's change)
 
 - In S6, before the final report, 30 new tasks are written:

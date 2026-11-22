@@ -120,6 +120,7 @@ function gotItCard(u, slot, done) {
   slot.replaceChildren();
   const box = el("div", "gotit" + (u.uncertain.length ? " unsure" : ""));
   box.append(el("p", "", `Got it: ${u.summary}. Correct?`));
+  if (u.people && u.people.length) box.append(el("p", "meta", "About: " + u.people.join("; ")));
   if (u.uncertain.length) {
     const list = el("ul", "unsure-list");
     u.uncertain.forEach((r) => list.append(el("li", "", r)));

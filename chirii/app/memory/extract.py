@@ -97,6 +97,15 @@ BILL_WORDS = re.compile(r"\b(bill|fees?|emi|premium|rent|pay|paid|due|insurance|
 TASK_WORDS = re.compile(r"\b(must|need to|have to|has to|last date|deposit|collect|submit|update|form|pickup|will be ready|return)\b"
                         r"|\bby\s+\d|\bbefore\b", re.I)
 APPOINTMENT_WORDS = re.compile(r"\b(appointment|check-?up|checkup|doctor|dentist|visit|meeting)\b", re.I)
+_REL = (r"(?i:mother|mom|mum|mummy|amma|ammi|father|dad|papa|appa|abba|sister|didi|akka|brother|bhaiya|bhai|anna|son|daughter|"
+        r"child|husband|wife|grandmother|grandfather|paati|nani|dadi|thatha|nana|dada|granddaughter|grandson|cousin|nephew|niece|"
+        r"aunt|uncle|friend|roommate|colleague|neighbour|neighbor)")
+PROFILE = re.compile(r"^\s*(?i:i am|i'm|my name is)\s+(?-i:[A-Z][a-z]+)\b|\b(?i:call|calls) me\s+(?-i:[A-Z][a-z]+)\b")
+PERSON = re.compile(rf"\b(?i:my)\s+(?:(?i:elder|younger|older|little)\s+)?{_REL}\s+(?-i:[A-Z][a-z]+)\b|\b(?-i:[A-Z][a-z]+)\s+is\s+(?i:my)\s+"
+                    rf"(?:(?i:elder|younger|older|little)\s+)?{_REL}\b|\b{_REL}'s\s+(?i:name)\s+is\b|\b(?-i:[A-Z][a-z]+)'s\s+{_REL}\s+(?:is\s+)?(?-i:[A-Z])"
+                    rf"|^\s*{_REL}\b(?:,|\s+(?i:lives|stays|works))")
+PERSON_EVENT = re.compile(r"\b(visit|visiting|coming|arriv\w*|engaged|engagement|married|marriage|wedding|surgery|check-?up|appointment|"
+                          r"exam|exams|birthday|anniversary|party|function|puja|trip|owes|paid|due)\b", re.I)
 NOTE_START = re.compile(r"^\s*note\b|\bsaid\s*:|\blist\b", re.I)
 
 
@@ -269,6 +278,14 @@ def classify(text: str, has_amount: bool, has_date: bool, has_time: bool, weekly
     for kind, pattern in FIRST_RULES:
         if pattern.search(text):
             return kind
+    # S4e: who the person is, and who the people in their life are. A sentence about an event (a visit, a wedding, a
+    # surgery) keeps its event kind; people facts are still read from it at question time.
+    if PROFILE.search(text):
+        return "profile"
+    if PERSON.search(text) and not PERSON_EVENT.search(text) and not has_time:
+        return "person"
+    if PERSON.search(text) and has_date and not has_time and re.search(r"\b(visit\w*|coming|arriv\w*|engaged|married|wedding)\b", text, re.I):
+        return "important_date"   # a dated event about a family member: "my brother Kabir is visiting on 8 May"
     if has_amount and (STRONG_BILL_WORDS.search(text) or MONTHLY.search(text)):
         return "bill"  # an amount that repeats every month ("maintenance of ₹2,400 on the 4th of every month") is a bill
     if (has_date or has_time) and STRONG_APPOINTMENT_WORDS.search(text):

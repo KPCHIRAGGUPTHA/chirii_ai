@@ -26,6 +26,7 @@ from chirii.app.guard import check_answer
 from chirii.app.windows import question_window
 from chirii.app.planner import MONEY_QUESTION, Draft, label_for, plan_draft, status_draft, strip_when, window_draft
 from chirii.app.router import LIVE, MATHS_WORDS, MEMORY_ROUTES, matched_terms, mentions_all, mentions_specific, route as route_question, term_matches
+from chirii.app import people
 from chirii.app.chat import LABELS, general_answer, maths_answer, writing_answer
 from chirii.app.llm.client import ChatModel
 from chirii.app.logging_setup import log_event
@@ -298,6 +299,13 @@ class Assistant:
 
     def _ask_routed(self, question: str, today: date) -> Tuple[Answer, List[Dict[str, Any]]]:
         saved = self.store.items(include_updates=False)
+        # S4e: the person's own name in the third person means them ("Sharada's dentist" → "my dentist"), and a family
+        # member's name finds memories that call them by a family term ("Lalitha's eye check-up" → "Amma's eye check-up")
+        question = people.own_name_to_my(people.alias_terms(question, saved), saved)
+        about_people = people.answer(question, saved, today)
+        if about_people is not None:
+            log_event("answer", user=self.store.user_id, result_count=0, stage="people")
+            return Answer(text=about_people, fact_ids=[], guard="code", route="people", label=LABELS["memory"]), []
         route = route_question(question, today, self.model, saved)
         answer, used = self._dispatch(route, question, today, saved)
         answer.route = route.kind

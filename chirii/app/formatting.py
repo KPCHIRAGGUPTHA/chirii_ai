@@ -9,7 +9,8 @@ from typing import Any, Dict, List
 
 KIND_LABELS = {"bill": "Bill", "appointment": "Appointment", "task": "To do", "medicine": "Medicine", "routine": "Routine",
                "important_date": "Important date", "exam": "Exam", "travel": "Travel", "shift": "Work shift", "income": "Income",
-               "receivable": "Money owed to you", "note": "Note", "update": "Change to an earlier item"}
+               "receivable": "Money owed to you", "note": "Note", "update": "Change to an earlier item",
+               "profile": "About you", "person": "Person"}
 DATED_KINDS = {"appointment", "exam", "travel", "important_date", "shift"}
 
 
@@ -132,6 +133,8 @@ def understood(item: Dict[str, Any], changes: List[Dict[str, Any]] = (), target:
     if item.get("amount") is not None and item["kind"] != "update":
         parts.append(say_amount(item["amount"]))
     parts += when_text(item) if item["kind"] != "update" else []
+    if item["kind"] in ("profile", "person"):                 # S4e: show the people facts read from the sentence
+        parts += people_facts(item)
     if item["kind"] == "update" and target is not None:
         described = []
         for change in changes:
@@ -151,3 +154,13 @@ def understood(item: Dict[str, Any], changes: List[Dict[str, Any]] = (), target:
         "weekdays": item.get("weekdays", []), "summary": ", ".join(parts), "uncertain": uncertainties(item),
         "confirmed": bool(item.get("confirmed")),
     }
+
+
+def people_facts(item: Dict[str, Any]) -> List[str]:
+    """'your name: Priya Raman', 'Lalitha: your mother', for the card of a profile or person sentence."""
+    from chirii.app import people  # people imports this module, so import it here
+    ppl = people.build([item])
+    facts = [f"your name: {n}" for n in ppl.names] + [f"{who} call you {nick}" for nick, who in ppl.nicknames]
+    for p in ppl.people.values():
+        facts.append(f"{p.label()}: {people.describe(p, ppl)}" + (f" (also called {', '.join(sorted(p.aliases))})" if p.name and p.aliases else ""))
+    return facts

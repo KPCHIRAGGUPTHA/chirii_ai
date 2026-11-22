@@ -8,6 +8,7 @@ Run from the repository root, with llama-server already running:
     .venv/Scripts/python.exe -m uvicorn chirii.app.api.main:build_default_app --factory --host 127.0.0.1 --port 8000
 """
 
+import re
 from datetime import date
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional
@@ -18,6 +19,7 @@ from pydantic import BaseModel, Field
 
 from chirii.app.assistant import Assistant
 from chirii.app.config import REPO_ROOT, get_settings
+from chirii.app import people as people_module
 from chirii.app.formatting import understood
 from chirii.app.llm.client import ChatModel, LLMClient, LLMError
 from chirii.app.logging_setup import configure_logging, log_event
@@ -47,6 +49,17 @@ class Correction(BaseModel):
 
 class Question(BaseModel):
     question: str = Field(min_length=1, max_length=1000)
+
+
+def people_mentioned(item: Dict[str, Any], saved: List[Dict[str, Any]]) -> List[str]:
+    """S4e: the known people a new memory is about ("Amma's eye check-up" → "Amma: Lalitha, your mother")."""
+    ppl = people_module.build(saved)
+    found = []
+    for p in ppl.people.values():
+        names = ([p.name.split()[0]] if p.name else []) + sorted(p.aliases)
+        if p.relation and any(re.search(r"\b" + re.escape(n) + r"\b", item["text"]) for n in names) and item["kind"] not in ("person", "profile"):
+            found.append(f"{' / '.join(names)}: {people_module.describe(p, ppl)}")
+    return found
 
 
 def local_only(request: Request) -> None:
@@ -79,7 +92,9 @@ def create_app(data_dir: Path, secret: str, embedder: Embedder, model: ChatModel
     @app.post("/api/memories")
     def add_memory(body: NewMemory):
         result = store().add(body.text.strip(), today())
-        return {"item": result["item"], "understood": result["understood"], "linked_to": result["linked_to"], "changes": result["changes"]}
+        card = dict(result["understood"])
+        card["people"] = people_mentioned(result["item"], store().items(include_updates=False))
+        return {"item": result["item"], "understood": card, "linked_to": result["linked_to"], "changes": result["changes"]}
 
     @app.post("/api/memories/{item_id}/confirm")
     def confirm_memory(item_id: int):

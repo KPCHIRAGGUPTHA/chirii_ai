@@ -606,3 +606,39 @@ S4c was built and tested on its own examples, then run (e3) was run once. The he
 
 **Next:** fix these as general rules (development work, to be measured on a fresh set), then the safety layer, the
 500-item scale check and the fresh extraction set.
+
+## S4f – Matching by meaning, maths check; run (e5), the last development run (22 November 2026)
+
+**Dev set 5 first** (e479bc2): 20 memory tasks with deliberately varied wording (synonyms, Hinglish, indirect), 10 maths,
+10 people, committed with marking rules before any S4f code. `CRITERIA.md`: (e5) is run once, then the loop stops.
+
+**S4f** (ee86ea6):
+- **Matching by meaning:** a question word matches a memory by spelling, by stem (married/marriage,
+  engaged/engagement, renew/renewal), by a small Indian synonym map (shaadi, dawai, kiraya, bijli…), or by embedding
+  similarity above 0.66. The threshold was calibrated on 60 word pairs of my own, not on any dev set
+  (`chirii/eval/calibrate_meaning.py`): 16/30 synonyms caught, 0/30 near-misses. Names match by spelling only.
+- **Bill words:** renewals, subscriptions, premiums, EMIs and recharges are payments; Qwen can't call them money to
+  receive.
+- **"By when…"** is a deadline lookup, not a period. **Ranges** are listed once, with their dates.
+- **Maths:** lakh/crore, weeks between, unit conversions and "me and N friends" route to maths. Code works the common
+  shapes out by itself; if Qwen's choice agrees, its working is shown, if not, the code result is shown. A number that
+  fails the checks is never shown.
+
+**Run (e5), first try** (`chirii/results/dev5/RUN_E5.md`):
+
+| Group | Marker | Hand check |
+| :--- | ---: | ---: |
+| Memory tasks | 14/20 | 16/20 |
+| People and profile | 9/10 | 10/10 |
+| **Maths** | **10/10** | **10/10** |
+| Route right | 35/40 | |
+| Label right | 39/40 | |
+
+- Maths all right, all by code with working.
+- Varied wording right in 8 of 9 tasks written for it.
+- One wrong answer: a made-up leave time when "leave" isn't saved (D5-M12).
+- Three router misses ("Jio plan", "Saturday look for me", "any bill this week").
+
+**The development-set loop stops here.** Remaining gaps are in `docs/KNOWN_GAPS.md`, not fixed. **Next:** S5
+(encryption at rest, login, tester consent note), then the safety layer, the 500-item scale check, the fresh
+extraction set, and S6.

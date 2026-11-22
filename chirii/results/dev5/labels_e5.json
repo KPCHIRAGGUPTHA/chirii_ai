@@ -1,0 +1,25 @@
+{
+  "_about": "Hand check and labels for run (e5): the S4f system on development set 5 (the last development set), first try. Written after reading every reply, before any change. The marker's score is the official one.",
+  "hand": {
+    "D5-M07": {"auto": false, "hand": true, "why": "Saturday's three things are all there (cricket coaching at 7 am, the golu range, the tuition fees), but the reply lists the whole week instead of Saturday. The marker counts the week header's end date (11 April) as invented. Right content, over-broad answer."},
+    "D5-M20": {"auto": false, "hand": true, "why": "'Kabir se kitne paise lene hain? 700.' gives the right number but echoes the question and has no ₹ sign, so the marker's amount rule did not see it. Awkward but correct."},
+    "D5-P10": {"auto": false, "hand": true, "why": "'You told me Kabir is your friend. You haven't told me more than that.' is right and not self-contradictory. It is the same consistency-rule false positive as D4-P15 in run (e4); the marker was not changed between runs."}
+  },
+  "labels": {
+    "D5-M02": ["model behaviour (Hinglish question)", "Qwen echoed the Hinglish question ('Kiraya ₹25,000 dena hai aur kitna?') and gave the amount but not the day (the 5th, today)."],
+    "D5-M07": ["code: router", "'How does Saturday look for me?' is not a plan phrase (the plan pattern has 'how does my X look'), so it went to a week list."],
+    "D5-M11": ["code: router", "'When does the Jio plan run out?': the word 'plan' (a mobile plan) sent it to the day planner, which said nothing was saved today."],
+    "D5-M12": ["model behaviour + code: key terms", "Nothing about leave is saved. 'leave' is not a key term, so the specific-item check did not stop it, and Qwen made up 'Mr. Desai's leave starts at 4:00 pm on Fridays' from his weekly visit. A wrong answer."],
+    "D5-M15": ["code: router", "'Is there any bill this week?' has no 'my/I' and 'bill' alone did not make it personal ('any' is not one of the period words that force memory), so it went to general knowledge: 'I'm not sure.'"],
+    "D5-M20": ["scorer / answer style", "Right number without ₹ after an echoed question (see hand)."],
+    "D5-P10": ["scorer", "Consistency-rule false positive on 'haven't told me more than that' (as D4-P15)."]
+  },
+  "route_mismatches": "D5-M07 window (plan expected), D5-M11 plan (lookup expected), D5-M15 general (window expected), D5-P04 and D5-P05 lookup (people expected; both answers right)",
+  "other_findings": [
+    "Maths 10/10: every answer worked out by code with working; routing of 'Write ₹X in crore', 'weeks between' and 'me and 4 friends' now right.",
+    "Varied wording worked in 8 of the 9 tasks written for it: shaadi/wedding (M01), specs/glasses (M04), dawai/medicine (M05), 'before Navaratri starts' (M06), 'by when' (M08, M18), 'hit my account' (M09), after breakfast/morning (M13), upanayanam/thread ceremony (M14). The miss was 'run out' (M11), lost to the router's 'plan' word, not to matching.",
+    "Bill words: the Tata Play renewal and the gym renewal are listed to pay, never 'to receive' (M03, M19).",
+    "Window lists are not narrowed to the kind asked for: 'which subscriptions' also lists rent (M03), 'anything to renew' lists every item this month (M19). Not wrong, but over-broad.",
+    "Hinglish questions: 2 of 3 answered awkwardly by echoing the question (M02, M20); P04 'Selvi kaun hai?' right."
+  ]
+}

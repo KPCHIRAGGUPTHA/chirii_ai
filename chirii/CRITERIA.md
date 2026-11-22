@@ -225,6 +225,27 @@ system, with the same settings and marker as the development runs.
 - **General-knowledge misses get no code fix.** The 7B diagnostic (run by the owner on the GPU PC) decides that.
 - **The held-out 30 stay untouched until S6.**
 
+### 500-item scale check (S5; method and bars written before it is run)
+
+- **Set** (`chirii/eval/build_scale_set.py`, `scale_set.json`): one fictional user. 25 needle memories with unique facts
+  (3 of them bills that share their kind with many fillers in other months), and 475 fillers from everyday templates
+  (fixed seed). 30 questions: 25 lookups about needles, 5 about things not saved (2 share a name or kind with a
+  needle). Plus 3 list questions, reported but not scored.
+- **Method:** the same 30 questions on the full store (500 memories) and on a small store (the 25 needles and 15
+  fillers), with the full S5 system (encrypted store, router, guard, safety layer), Qwen2.5-1.5B Q8_0 on the laptop
+  CPU, temperature 0, once. Memories are loaded with the rules reader (the scale check is about retrieval and
+  answering at size; extraction is measured by the fresh extraction set). Marked by `score_task`, read by hand.
+- **Bars:**
+  - A. Accuracy at 500 is at most 2 below accuracy at 40 (of 30).
+  - B. Not saved: at 500, none of the 5 is answered with a made-up fact.
+  - C. Time: median answer time at 500 at most 1.5× the small store's, and the 95th percentile at most 2×.
+  - D. Storage at 500: opening (decrypt and build the index) ≤ 2 s; saving one more memory ≤ 0.5 s (rules reader);
+    encrypted file ≤ 5 MB.
+  - E. The 3 list questions finish without an error within the model timeout (length and time reported).
+- **If a bar is missed:** reported as it is, with causes labelled; the fix is proposed to the owner, not made silently.
+- **Found while building the set (fixed before the run):** the extractor's year rule read "12 December", said on
+  1 June, as last December. It now looks ahead unless the sentence is in the past tense (tests on own examples).
+
 ### Held-out test set (owner's change)
 
 - In S6, before the final report, 30 new tasks are written:

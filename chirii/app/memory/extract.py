@@ -7,8 +7,9 @@ code reads "₹1,95,000", "the 5th of every month" or "between 9 and 11 am" the 
 later only to word answers. Sentences the rules don't understand are still kept, as notes, so nothing the user says
 is lost.
 
-Year rule: a date without a year is read as the one nearest to the day it was said (said in December, "8 January" is
-next January and "25 November" is last month).
+Year rule (changed in S5): a date without a year is the next one, counting from a month before the day it was said
+(said in December, "8 January" is next January and "25 November" is last month; said in June, "12 December" is this
+coming December). In a past-tense sentence ("was delivered on 25 November") it is the nearest date on or before.
 """
 
 import re
@@ -138,14 +139,31 @@ class Item:
         return asdict(self)
 
 
-def _year_for(month: int, day: int, said_on: date) -> Optional[date]:
+PAST_TENSE = re.compile(r"\b(was|were|went|did|had|paid|delivered|happened|came|got|received|returned|submitted|finished|"
+                        r"completed|attended|visited|bought|ago)\b", re.I)
+# "must be paid by 18 December", "has to be submitted", "will be delivered": not the past
+FUTURE_MARK = re.compile(r"\b(must|should|will|shall|need to|needs to|has to|have to|to be|is due|are due|due on|due by|remind me)\b"
+                         r"|\bby\s+\d", re.I)
+
+
+def _year_for(month: int, day: int, said_on: date, text: str = "") -> Optional[date]:
+    """S5 (found by the scale set's own check): the nearest-date rule read "12 December", said on 1 June, as last
+    December. Now a sentence in the past tense takes the nearest date on or before the day it was said; any other
+    takes the next date on or after a month before it was said ("25 November" said on 5 December is still last
+    month; "12 December" said in June is this coming December)."""
     candidates = []
     for year in (said_on.year - 1, said_on.year, said_on.year + 1):
         try:
             candidates.append(date(year, month, day))
         except ValueError:
             pass
-    return min(candidates, key=lambda d: abs((d - said_on).days)) if candidates else None
+    if not candidates:
+        return None
+    if PAST_TENSE.search(text) and not FUTURE_MARK.search(text):
+        past = [d for d in candidates if d <= said_on]
+        return max(past) if past else min(candidates, key=lambda d: abs((d - said_on).days))
+    upcoming = [d for d in candidates if d >= said_on - timedelta(days=31)]
+    return min(upcoming) if upcoming else max(candidates)
 
 
 def _hhmm(hour: str, minute: Optional[str], ampm: Optional[str]) -> Optional[str]:
@@ -232,8 +250,8 @@ def find_dates(text: str, said_on: date) -> Tuple[List[Tuple[int, date]], Option
     for m in DATE_RANGE.finditer(text):
         d1, mon1, d2, mon2 = m.groups()
         month2 = MONTHS[mon2.lower()]
-        first = _year_for(MONTHS[mon1.lower()] if mon1 else month2, int(d1), said_on)
-        last = _year_for(month2, int(d2), said_on)
+        first = _year_for(MONTHS[mon1.lower()] if mon1 else month2, int(d1), said_on, text)
+        last = _year_for(month2, int(d2), said_on, text)
         if first and last:
             found[m.start()] = first
             end = last
@@ -243,7 +261,7 @@ def find_dates(text: str, said_on: date) -> Tuple[List[Tuple[int, date]], Option
             if any(a <= m.start() < b for a, b in used):
                 continue
             day, mon = (m.group(1), m.group(2)) if order == "dm" else (m.group(2), m.group(1))
-            d = _year_for(MONTHS[mon.lower()], int(day), said_on)
+            d = _year_for(MONTHS[mon.lower()], int(day), said_on, text)
             if d:
                 found.setdefault(m.start(), d)
     if not found and not MONTHLY.search(text):

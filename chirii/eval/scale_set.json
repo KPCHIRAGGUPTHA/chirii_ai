@@ -1,0 +1,5139 @@
+{
+"today": "2027-06-07",
+"said_on": "2027-06-01",
+"stores": {
+"large": [
+{
+"said": "Ishaan's passport appointment at the Seva Kendra is on 18 August at 10:30 am.",
+"item": {
+"type": "appointment",
+"title": "Ishaan's passport appointment",
+"date": "2027-08-18",
+"time": "10:30"
+}
+},
+{
+"said": "Plumber Murugan will come on 23 June at 4 pm to fix the bathroom tap.",
+"item": {
+"type": "appointment",
+"title": "Plumber Murugan",
+"date": "2027-06-23",
+"time": "16:00"
+}
+},
+{
+"said": "Yoga class every Wednesday at 6:15 am at the community hall.",
+"item": {
+"type": "routine",
+"title": "Yoga class",
+"weekdays": [
+"Wednesday"
+],
+"time": "06:15"
+}
+},
+{
+"said": "Zoya's school PTM is on 26 June at 9 am.",
+"item": {
+"type": "appointment",
+"title": "Zoya's PTM",
+"date": "2027-06-26",
+"time": "09:00"
+}
+},
+{
+"said": "Car service at the Hyundai workshop on 2 July.",
+"item": {
+"type": "appointment",
+"title": "Car service",
+"date": "2027-07-02"
+}
+},
+{
+"said": "Order Diwali sweets from Anand Sweets by 25 October.",
+"item": {
+"type": "task",
+"title": "Diwali sweets",
+"date": "2027-10-25"
+}
+},
+{
+"said": "Thatha's cataract surgery is on 14 September at 7 am.",
+"item": {
+"type": "appointment",
+"title": "Thatha's cataract surgery",
+"date": "2027-09-14",
+"time": "07:00"
+}
+},
+{
+"said": "Aarav's swimming fee of ₹1,800 is due on 30 June.",
+"item": {
+"type": "bill",
+"title": "Aarav's swimming fee",
+"date": "2027-06-30",
+"amount": 1800
+}
+},
+{
+"said": "Dr. Bhattacharya, the ENT doctor, on 11 July at 5:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Bhattacharya (ENT)",
+"date": "2027-07-11",
+"time": "17:30"
+}
+},
+{
+"said": "LIC premium of ₹14,250 is due on 28 September.",
+"item": {
+"type": "bill",
+"title": "LIC premium",
+"date": "2027-09-28",
+"amount": 14250
+}
+},
+{
+"said": "Sneha's wedding sangeet is on 12 December in Udaipur.",
+"item": {
+"type": "important_date",
+"title": "Sneha's sangeet",
+"date": "2027-12-12"
+}
+},
+{
+"said": "The fridge warranty ends on 30 November.",
+"item": {
+"type": "important_date",
+"title": "Fridge warranty",
+"date": "2027-11-30"
+}
+},
+{
+"said": "Meenakshi owes me ₹2,200 for the Ooty trip.",
+"item": {
+"type": "receivable",
+"title": "Meenakshi's dues",
+"amount": 2200
+}
+},
+{
+"said": "Kindle Unlimited renewal of ₹169 on 19 June.",
+"item": {
+"type": "bill",
+"title": "Kindle Unlimited renewal",
+"date": "2027-06-19",
+"amount": 169
+}
+},
+{
+"said": "Paati's mango pickle needs 2 kg raw mangoes and 250 g mustard.",
+"item": {
+"type": "note",
+"title": "Paati's mango pickle"
+}
+},
+{
+"said": "Tatkal booking for the Chennai train opens on 9 July at 10 am.",
+"item": {
+"type": "task",
+"title": "Tatkal booking",
+"date": "2027-07-09",
+"time": "10:00"
+}
+},
+{
+"said": "Neighbour Kumaran is collecting our parcel on 15 June.",
+"item": {
+"type": "task",
+"title": "Kumaran's parcel",
+"date": "2027-06-15"
+}
+},
+{
+"said": "Guitar lesson with Fernandes every Friday at 7 pm.",
+"item": {
+"type": "routine",
+"title": "Guitar lesson",
+"weekdays": [
+"Friday"
+],
+"time": "19:00"
+}
+},
+{
+"said": "Rent agreement renewal with Mr. Pillai is due on 31 August.",
+"item": {
+"type": "task",
+"title": "Rent agreement renewal",
+"date": "2027-08-31"
+}
+},
+{
+"said": "Vaccination for our dog Bruno on 5 July at 11 am.",
+"item": {
+"type": "appointment",
+"title": "Bruno's vaccination",
+"date": "2027-07-05",
+"time": "11:00"
+}
+},
+{
+"said": "Gas bill of ₹1,145 due on 16 October.",
+"item": {
+"type": "bill",
+"title": "Gas bill",
+"date": "2027-10-16",
+"amount": 1145
+}
+},
+{
+"said": "Electricity bill of ₹2,980 due on 9 December.",
+"item": {
+"type": "bill",
+"title": "Electricity bill",
+"date": "2027-12-09",
+"amount": 2980
+}
+},
+{
+"said": "Water bill of ₹640 due on 21 August.",
+"item": {
+"type": "bill",
+"title": "Water bill",
+"date": "2027-08-21",
+"amount": 640
+}
+},
+{
+"said": "Note: the spare scooter key is in the blue tin on the kitchen shelf.",
+"item": {
+"type": "note",
+"title": "Spare scooter key"
+}
+},
+{
+"said": "Note: the Wi-Fi router is behind the TV in the hall.",
+"item": {
+"type": "note",
+"title": "Wi-Fi router"
+}
+},
+{
+"said": "Chitra's birthday is on 25 October.",
+"item": {
+"type": "important_date",
+"title": "Chitra's birthday",
+"date": "2027-10-25"
+}
+},
+{
+"said": "Chitra's birthday is on 10 August.",
+"item": {
+"type": "important_date",
+"title": "Chitra's birthday",
+"date": "2027-08-10"
+}
+},
+{
+"said": "Return Tara's drill machine by 18 November.",
+"item": {
+"type": "task",
+"title": "Return Tara's drill machine",
+"date": "2027-11-18"
+}
+},
+{
+"said": "Yamini's birthday is on 24 August.",
+"item": {
+"type": "important_date",
+"title": "Yamini's birthday",
+"date": "2027-08-24"
+}
+},
+{
+"said": "Return Deepak's cookbook by 23 August.",
+"item": {
+"type": "task",
+"title": "Return Deepak's cookbook",
+"date": "2027-08-23"
+}
+},
+{
+"said": "Badminton with Mansi every Saturday at 3 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Mansi",
+"weekdays": [
+"Saturday"
+],
+"time": "15:00"
+}
+},
+{
+"said": "Dermatologist Dr. Menon on 16 November at 10 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Menon",
+"date": "2027-11-16",
+"time": "10:00"
+}
+},
+{
+"said": "Return Tara's cookbook by 3 December.",
+"item": {
+"type": "task",
+"title": "Return Tara's cookbook",
+"date": "2027-12-03"
+}
+},
+{
+"said": "Note: Sameer prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Sameer prefers morning calls"
+}
+},
+{
+"said": "Meeting with Naveen about the budget on 23 March at 2 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Naveen",
+"date": "2028-03-23",
+"time": "14:00"
+}
+},
+{
+"said": "Return Chitra's umbrella by 11 October.",
+"item": {
+"type": "task",
+"title": "Return Chitra's umbrella",
+"date": "2027-10-11"
+}
+},
+{
+"said": "Note: Esha prefers WhatsApp over email.",
+"item": {
+"type": "note",
+"title": "Esha prefers WhatsApp over email"
+}
+},
+{
+"said": "Pay the DTH bill of ₹2,660 by 26 December.",
+"item": {
+"type": "bill",
+"title": "DTH bill",
+"date": "2027-12-26",
+"amount": 2660
+}
+},
+{
+"said": "Buy light bulbs from the corner shop on 14 March.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2028-03-14"
+}
+},
+{
+"said": "Naveen's birthday is on 12 January.",
+"item": {
+"type": "important_date",
+"title": "Naveen's birthday",
+"date": "2028-01-12"
+}
+},
+{
+"said": "Pay the water bill of ₹2,915 by 29 February.",
+"item": {
+"type": "bill",
+"title": "water bill",
+"date": "2028-02-29",
+"amount": 2915
+}
+},
+{
+"said": "Badminton with Harish every Tuesday at 11:30 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Harish",
+"weekdays": [
+"Tuesday"
+],
+"time": "11:30"
+}
+},
+{
+"said": "Pay the water bill of ₹3,016 by 27 July.",
+"item": {
+"type": "bill",
+"title": "water bill",
+"date": "2027-07-27",
+"amount": 3016
+}
+},
+{
+"said": "Meeting with Jatin about the budget on 24 September at 6:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Jatin",
+"date": "2027-09-24",
+"time": "18:30"
+}
+},
+{
+"said": "Sameer's birthday is on 22 May.",
+"item": {
+"type": "important_date",
+"title": "Sameer's birthday",
+"date": "2028-05-22"
+}
+},
+{
+"said": "Meeting with Sameer about the project review on 11 February at 2 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Sameer",
+"date": "2028-02-11",
+"time": "14:00"
+}
+},
+{
+"said": "Pay the gas bill of ₹2,584 by 6 November.",
+"item": {
+"type": "bill",
+"title": "gas bill",
+"date": "2027-11-06",
+"amount": 2584
+}
+},
+{
+"said": "Pay the DTH bill of ₹1,475 by 14 March.",
+"item": {
+"type": "bill",
+"title": "DTH bill",
+"date": "2028-03-14",
+"amount": 1475
+}
+},
+{
+"said": "Buy rice from the corner shop on 3 January.",
+"item": {
+"type": "task",
+"title": "Buy rice",
+"date": "2028-01-03"
+}
+},
+{
+"said": "Pay the DTH bill of ₹672 by 14 September.",
+"item": {
+"type": "bill",
+"title": "DTH bill",
+"date": "2027-09-14",
+"amount": 672
+}
+},
+{
+"said": "Pay the gas bill of ₹1,110 by 15 November.",
+"item": {
+"type": "bill",
+"title": "gas bill",
+"date": "2027-11-15",
+"amount": 1110
+}
+},
+{
+"said": "Return Omkar's drill machine by 10 January.",
+"item": {
+"type": "task",
+"title": "Return Omkar's drill machine",
+"date": "2028-01-10"
+}
+},
+{
+"said": "Meeting with Tara about the quarterly report on 28 December at 5 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Tara",
+"date": "2027-12-28",
+"time": "17:00"
+}
+},
+{
+"said": "Pay the DTH bill of ₹3,281 by 9 January.",
+"item": {
+"type": "bill",
+"title": "DTH bill",
+"date": "2028-01-09",
+"amount": 3281
+}
+},
+{
+"said": "Uday owes me ₹2,254 for the groceries.",
+"item": {
+"type": "receivable",
+"title": "Uday's dues",
+"amount": 2254
+}
+},
+{
+"said": "Dermatologist Dr. Menon on 18 January at 4 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Menon",
+"date": "2028-01-18",
+"time": "16:00"
+}
+},
+{
+"said": "Note: Yamini prefers green tea.",
+"item": {
+"type": "note",
+"title": "Yamini prefers green tea"
+}
+},
+{
+"said": "Omkar's birthday is on 8 March.",
+"item": {
+"type": "important_date",
+"title": "Omkar's birthday",
+"date": "2028-03-08"
+}
+},
+{
+"said": "Note: Jatin prefers window seats.",
+"item": {
+"type": "note",
+"title": "Jatin prefers window seats"
+}
+},
+{
+"said": "Badminton with Sameer every Tuesday at 7:30 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Sameer",
+"weekdays": [
+"Tuesday"
+],
+"time": "19:30"
+}
+},
+{
+"said": "Badminton with Rekha every Tuesday at 4 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Rekha",
+"weekdays": [
+"Tuesday"
+],
+"time": "16:00"
+}
+},
+{
+"said": "Meeting with Pallavi about the vendor contract on 26 September at 11 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Pallavi",
+"date": "2027-09-26",
+"time": "11:00"
+}
+},
+{
+"said": "Badminton with Rekha every Thursday at 7 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Rekha",
+"weekdays": [
+"Thursday"
+],
+"time": "19:00"
+}
+},
+{
+"said": "Tara owes me ₹2,570 for the cab ride.",
+"item": {
+"type": "receivable",
+"title": "Tara's dues",
+"amount": 2570
+}
+},
+{
+"said": "Meeting with Bharat about the vendor contract on 16 December at 10:30 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Bharat",
+"date": "2027-12-16",
+"time": "10:30"
+}
+},
+{
+"said": "Note: Pallavi prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Pallavi prefers morning calls"
+}
+},
+{
+"said": "Note: Lokesh prefers green tea.",
+"item": {
+"type": "note",
+"title": "Lokesh prefers green tea"
+}
+},
+{
+"said": "Meeting with Lokesh about the project review on 3 September at 2 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Lokesh",
+"date": "2027-09-03",
+"time": "14:00"
+}
+},
+{
+"said": "Buy batteries from D-Mart on 22 June.",
+"item": {
+"type": "task",
+"title": "Buy batteries",
+"date": "2027-06-22"
+}
+},
+{
+"said": "Buy light bulbs from the corner shop on 9 June.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2027-06-09"
+}
+},
+{
+"said": "Pay the gas bill of ₹234 by 26 July.",
+"item": {
+"type": "bill",
+"title": "gas bill",
+"date": "2027-07-26",
+"amount": 234
+}
+},
+{
+"said": "Badminton with Bharat every Sunday at 6 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Bharat",
+"weekdays": [
+"Sunday"
+],
+"time": "18:00"
+}
+},
+{
+"said": "Badminton with Omkar every Saturday at 4:30 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Omkar",
+"weekdays": [
+"Saturday"
+],
+"time": "16:30"
+}
+},
+{
+"said": "Badminton with Jatin every Sunday at 4:30 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Jatin",
+"weekdays": [
+"Sunday"
+],
+"time": "16:30"
+}
+},
+{
+"said": "Qadir's birthday is on 23 March.",
+"item": {
+"type": "important_date",
+"title": "Qadir's birthday",
+"date": "2028-03-23"
+}
+},
+{
+"said": "Pay the mobile bill of ₹3,960 by 29 January.",
+"item": {
+"type": "bill",
+"title": "mobile bill",
+"date": "2028-01-29",
+"amount": 3960
+}
+},
+{
+"said": "Farhan owes me ₹899 for the movie tickets.",
+"item": {
+"type": "receivable",
+"title": "Farhan's dues",
+"amount": 899
+}
+},
+{
+"said": "Badminton with Harish every Sunday at 9:30 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Harish",
+"weekdays": [
+"Sunday"
+],
+"time": "09:30"
+}
+},
+{
+"said": "Tara's birthday is on 19 August.",
+"item": {
+"type": "important_date",
+"title": "Tara's birthday",
+"date": "2027-08-19"
+}
+},
+{
+"said": "Note: Anita prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Anita prefers morning calls"
+}
+},
+{
+"said": "Note: Jatin prefers south Indian food.",
+"item": {
+"type": "note",
+"title": "Jatin prefers south Indian food"
+}
+},
+{
+"said": "Bharat's birthday is on 3 May.",
+"item": {
+"type": "important_date",
+"title": "Bharat's birthday",
+"date": "2028-05-03"
+}
+},
+{
+"said": "Buy light bulbs from More on 11 February.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2028-02-11"
+}
+},
+{
+"said": "Dermatologist Dr. Rao on 15 January at 7 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Rao",
+"date": "2028-01-15",
+"time": "19:00"
+}
+},
+{
+"said": "Kavya owes me ₹2,888 for the concert passes.",
+"item": {
+"type": "receivable",
+"title": "Kavya's dues",
+"amount": 2888
+}
+},
+{
+"said": "Dermatologist Dr. Gupta on 10 November at 5:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Gupta",
+"date": "2027-11-10",
+"time": "17:30"
+}
+},
+{
+"said": "Return Pallavi's drill machine by 7 May.",
+"item": {
+"type": "task",
+"title": "Return Pallavi's drill machine",
+"date": "2028-05-07"
+}
+},
+{
+"said": "Badminton with Pallavi every Monday at 9 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Pallavi",
+"weekdays": [
+"Monday"
+],
+"time": "09:00"
+}
+},
+{
+"said": "Buy notebooks from Reliance Fresh on 16 June.",
+"item": {
+"type": "task",
+"title": "Buy notebooks",
+"date": "2027-06-16"
+}
+},
+{
+"said": "Pay the mobile bill of ₹1,941 by 22 April.",
+"item": {
+"type": "bill",
+"title": "mobile bill",
+"date": "2028-04-22",
+"amount": 1941
+}
+},
+{
+"said": "Gauri's birthday is on 6 January.",
+"item": {
+"type": "important_date",
+"title": "Gauri's birthday",
+"date": "2028-01-06"
+}
+},
+{
+"said": "Esha's birthday is on 16 September.",
+"item": {
+"type": "important_date",
+"title": "Esha's birthday",
+"date": "2027-09-16"
+}
+},
+{
+"said": "Meeting with Lokesh about the team outing on 17 October at 5:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Lokesh",
+"date": "2027-10-17",
+"time": "17:30"
+}
+},
+{
+"said": "Meeting with Chitra about the budget on 21 January at 3:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Chitra",
+"date": "2028-01-21",
+"time": "15:30"
+}
+},
+{
+"said": "Pay the electricity bill of ₹3,416 by 5 March.",
+"item": {
+"type": "bill",
+"title": "electricity bill",
+"date": "2028-03-05",
+"amount": 3416
+}
+},
+{
+"said": "Note: Tara prefers WhatsApp over email.",
+"item": {
+"type": "note",
+"title": "Tara prefers WhatsApp over email"
+}
+},
+{
+"said": "Return Uday's extension cord by 8 December.",
+"item": {
+"type": "task",
+"title": "Return Uday's extension cord",
+"date": "2027-12-08"
+}
+},
+{
+"said": "Buy batteries from D-Mart on 2 March.",
+"item": {
+"type": "task",
+"title": "Buy batteries",
+"date": "2028-03-02"
+}
+},
+{
+"said": "Note: Naveen prefers window seats.",
+"item": {
+"type": "note",
+"title": "Naveen prefers window seats"
+}
+},
+{
+"said": "Note: Anita prefers WhatsApp over email.",
+"item": {
+"type": "note",
+"title": "Anita prefers WhatsApp over email"
+}
+},
+{
+"said": "Meeting with Chitra about the team outing on 9 December at 2 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Chitra",
+"date": "2027-12-09",
+"time": "14:00"
+}
+},
+{
+"said": "Badminton with Esha every Saturday at 4:30 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Esha",
+"weekdays": [
+"Saturday"
+],
+"time": "16:30"
+}
+},
+{
+"said": "Badminton with Deepak every Monday at 10 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Deepak",
+"weekdays": [
+"Monday"
+],
+"time": "10:00"
+}
+},
+{
+"said": "Badminton with Omkar every Saturday at 3 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Omkar",
+"weekdays": [
+"Saturday"
+],
+"time": "15:00"
+}
+},
+{
+"said": "Pay the electricity bill of ₹1,387 by 3 February.",
+"item": {
+"type": "bill",
+"title": "electricity bill",
+"date": "2028-02-03",
+"amount": 1387
+}
+},
+{
+"said": "Note: Deepak prefers green tea.",
+"item": {
+"type": "note",
+"title": "Deepak prefers green tea"
+}
+},
+{
+"said": "Dermatologist Dr. Kulkarni on 8 December at 9:30 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Kulkarni",
+"date": "2027-12-08",
+"time": "09:30"
+}
+},
+{
+"said": "Badminton with Rekha every Saturday at 10 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Rekha",
+"weekdays": [
+"Saturday"
+],
+"time": "10:00"
+}
+},
+{
+"said": "Pay the gas bill of ₹3,399 by 3 November.",
+"item": {
+"type": "bill",
+"title": "gas bill",
+"date": "2027-11-03",
+"amount": 3399
+}
+},
+{
+"said": "Meeting with Omkar about the appraisal on 20 February at 4:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Omkar",
+"date": "2028-02-20",
+"time": "16:30"
+}
+},
+{
+"said": "Note: Farhan prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Farhan prefers morning calls"
+}
+},
+{
+"said": "Badminton with Waseem every Tuesday at 3 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Waseem",
+"weekdays": [
+"Tuesday"
+],
+"time": "15:00"
+}
+},
+{
+"said": "Meeting with Farhan about the team outing on 4 January at 4 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Farhan",
+"date": "2028-01-04",
+"time": "16:00"
+}
+},
+{
+"said": "Note: Kavya prefers south Indian food.",
+"item": {
+"type": "note",
+"title": "Kavya prefers south Indian food"
+}
+},
+{
+"said": "Buy rice from D-Mart on 21 March.",
+"item": {
+"type": "task",
+"title": "Buy rice",
+"date": "2028-03-21"
+}
+},
+{
+"said": "Pay the gas bill of ₹2,741 by 28 June.",
+"item": {
+"type": "bill",
+"title": "gas bill",
+"date": "2027-06-28",
+"amount": 2741
+}
+},
+{
+"said": "Meeting with Omkar about the appraisal on 16 March at 2:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Omkar",
+"date": "2028-03-16",
+"time": "14:30"
+}
+},
+{
+"said": "Vandana's birthday is on 14 July.",
+"item": {
+"type": "important_date",
+"title": "Vandana's birthday",
+"date": "2027-07-14"
+}
+},
+{
+"said": "Meeting with Lokesh about the quarterly report on 13 May at 2:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Lokesh",
+"date": "2028-05-13",
+"time": "14:30"
+}
+},
+{
+"said": "Buy batteries from D-Mart on 2 April.",
+"item": {
+"type": "task",
+"title": "Buy batteries",
+"date": "2028-04-02"
+}
+},
+{
+"said": "Meeting with Mansi about the appraisal on 24 December at 5 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Mansi",
+"date": "2027-12-24",
+"time": "17:00"
+}
+},
+{
+"said": "Meeting with Pallavi about the quarterly report on 30 July at 8 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Pallavi",
+"date": "2027-07-30",
+"time": "08:00"
+}
+},
+{
+"said": "Dermatologist Dr. Joshi on 14 January at 5 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Joshi",
+"date": "2028-01-14",
+"time": "17:00"
+}
+},
+{
+"said": "Return Gauri's cookbook by 23 February.",
+"item": {
+"type": "task",
+"title": "Return Gauri's cookbook",
+"date": "2028-02-23"
+}
+},
+{
+"said": "Mansi owes me ₹2,903 for the concert passes.",
+"item": {
+"type": "receivable",
+"title": "Mansi's dues",
+"amount": 2903
+}
+},
+{
+"said": "Meeting with Mansi about the appraisal on 18 February at 7:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Mansi",
+"date": "2028-02-18",
+"time": "19:30"
+}
+},
+{
+"said": "Note: Vandana prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Vandana prefers morning calls"
+}
+},
+{
+"said": "Badminton with Sameer every Tuesday at 4 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Sameer",
+"weekdays": [
+"Tuesday"
+],
+"time": "16:00"
+}
+},
+{
+"said": "Indu owes me ₹1,753 for the books.",
+"item": {
+"type": "receivable",
+"title": "Indu's dues",
+"amount": 1753
+}
+},
+{
+"said": "Return Uday's suitcase by 29 December.",
+"item": {
+"type": "task",
+"title": "Return Uday's suitcase",
+"date": "2027-12-29"
+}
+},
+{
+"said": "Buy atta from D-Mart on 7 April.",
+"item": {
+"type": "task",
+"title": "Buy atta",
+"date": "2028-04-07"
+}
+},
+{
+"said": "Buy rice from More on 26 March.",
+"item": {
+"type": "task",
+"title": "Buy rice",
+"date": "2028-03-26"
+}
+},
+{
+"said": "Mansi's birthday is on 14 January.",
+"item": {
+"type": "important_date",
+"title": "Mansi's birthday",
+"date": "2028-01-14"
+}
+},
+{
+"said": "Buy light bulbs from D-Mart on 21 March.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2028-03-21"
+}
+},
+{
+"said": "Return Esha's drill machine by 21 December.",
+"item": {
+"type": "task",
+"title": "Return Esha's drill machine",
+"date": "2027-12-21"
+}
+},
+{
+"said": "Dermatologist Dr. Menon on 20 April at 9:30 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Menon",
+"date": "2028-04-20",
+"time": "09:30"
+}
+},
+{
+"said": "Pay the electricity bill of ₹3,865 by 21 April.",
+"item": {
+"type": "bill",
+"title": "electricity bill",
+"date": "2028-04-21",
+"amount": 3865
+}
+},
+{
+"said": "Note: Chitra prefers green tea.",
+"item": {
+"type": "note",
+"title": "Chitra prefers green tea"
+}
+},
+{
+"said": "Deepak's birthday is on 5 February.",
+"item": {
+"type": "important_date",
+"title": "Deepak's birthday",
+"date": "2028-02-05"
+}
+},
+{
+"said": "Dermatologist Dr. Iyer on 24 January at 7 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Iyer",
+"date": "2028-01-24",
+"time": "19:00"
+}
+},
+{
+"said": "Buy rice from the corner shop on 18 September.",
+"item": {
+"type": "task",
+"title": "Buy rice",
+"date": "2027-09-18"
+}
+},
+{
+"said": "Sameer owes me ₹281 for the groceries.",
+"item": {
+"type": "receivable",
+"title": "Sameer's dues",
+"amount": 281
+}
+},
+{
+"said": "Meeting with Farhan about the team outing on 13 January at 2 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Farhan",
+"date": "2028-01-13",
+"time": "14:00"
+}
+},
+{
+"said": "Omkar owes me ₹1,157 for the dinner.",
+"item": {
+"type": "receivable",
+"title": "Omkar's dues",
+"amount": 1157
+}
+},
+{
+"said": "Harish's birthday is on 26 March.",
+"item": {
+"type": "important_date",
+"title": "Harish's birthday",
+"date": "2028-03-26"
+}
+},
+{
+"said": "Bharat owes me ₹2,134 for the books.",
+"item": {
+"type": "receivable",
+"title": "Bharat's dues",
+"amount": 2134
+}
+},
+{
+"said": "Dermatologist Dr. Joshi on 6 December at 2 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Joshi",
+"date": "2027-12-06",
+"time": "14:00"
+}
+},
+{
+"said": "Note: Pallavi prefers window seats.",
+"item": {
+"type": "note",
+"title": "Pallavi prefers window seats"
+}
+},
+{
+"said": "Buy light bulbs from D-Mart on 3 April.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2028-04-03"
+}
+},
+{
+"said": "Dermatologist Dr. Nair on 25 April at 12 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Nair",
+"date": "2028-04-25",
+"time": "12:00"
+}
+},
+{
+"said": "Return Lokesh's drill machine by 30 August.",
+"item": {
+"type": "task",
+"title": "Return Lokesh's drill machine",
+"date": "2027-08-30"
+}
+},
+{
+"said": "Meeting with Lokesh about the team outing on 6 April at 6 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Lokesh",
+"date": "2028-04-06",
+"time": "18:00"
+}
+},
+{
+"said": "Pay the water bill of ₹2,697 by 15 July.",
+"item": {
+"type": "bill",
+"title": "water bill",
+"date": "2027-07-15",
+"amount": 2697
+}
+},
+{
+"said": "Badminton with Vandana every Monday at 5 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Vandana",
+"weekdays": [
+"Monday"
+],
+"time": "17:00"
+}
+},
+{
+"said": "Buy light bulbs from the corner shop on 8 January.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2028-01-08"
+}
+},
+{
+"said": "Badminton with Indu every Monday at 2 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Indu",
+"weekdays": [
+"Monday"
+],
+"time": "14:00"
+}
+},
+{
+"said": "Pay the broadband bill of ₹3,276 by 25 January.",
+"item": {
+"type": "bill",
+"title": "broadband bill",
+"date": "2028-01-25",
+"amount": 3276
+}
+},
+{
+"said": "Pay the DTH bill of ₹2,761 by 8 March.",
+"item": {
+"type": "bill",
+"title": "DTH bill",
+"date": "2028-03-08",
+"amount": 2761
+}
+},
+{
+"said": "Mansi's birthday is on 11 May.",
+"item": {
+"type": "important_date",
+"title": "Mansi's birthday",
+"date": "2028-05-11"
+}
+},
+{
+"said": "Pay the mobile bill of ₹2,561 by 21 May.",
+"item": {
+"type": "bill",
+"title": "mobile bill",
+"date": "2028-05-21",
+"amount": 2561
+}
+},
+{
+"said": "Rekha's birthday is on 6 October.",
+"item": {
+"type": "important_date",
+"title": "Rekha's birthday",
+"date": "2027-10-06"
+}
+},
+{
+"said": "Mansi owes me ₹2,522 for the books.",
+"item": {
+"type": "receivable",
+"title": "Mansi's dues",
+"amount": 2522
+}
+},
+{
+"said": "Buy atta from the corner shop on 6 March.",
+"item": {
+"type": "task",
+"title": "Buy atta",
+"date": "2028-03-06"
+}
+},
+{
+"said": "Note: Kavya prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Kavya prefers morning calls"
+}
+},
+{
+"said": "Anita's birthday is on 15 September.",
+"item": {
+"type": "important_date",
+"title": "Anita's birthday",
+"date": "2027-09-15"
+}
+},
+{
+"said": "Buy notebooks from the corner shop on 21 March.",
+"item": {
+"type": "task",
+"title": "Buy notebooks",
+"date": "2028-03-21"
+}
+},
+{
+"said": "Meeting with Farhan about the quarterly report on 23 April at 7 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Farhan",
+"date": "2028-04-23",
+"time": "19:00"
+}
+},
+{
+"said": "Note: Omkar prefers green tea.",
+"item": {
+"type": "note",
+"title": "Omkar prefers green tea"
+}
+},
+{
+"said": "Naveen's birthday is on 11 October.",
+"item": {
+"type": "important_date",
+"title": "Naveen's birthday",
+"date": "2027-10-11"
+}
+},
+{
+"said": "Dermatologist Dr. Gupta on 9 March at 4 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Gupta",
+"date": "2028-03-09",
+"time": "16:00"
+}
+},
+{
+"said": "Note: Mansi prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Mansi prefers morning calls"
+}
+},
+{
+"said": "Badminton with Pallavi every Monday at 8 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Pallavi",
+"weekdays": [
+"Monday"
+],
+"time": "08:00"
+}
+},
+{
+"said": "Dermatologist Dr. Menon on 14 March at 11 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Menon",
+"date": "2028-03-14",
+"time": "11:00"
+}
+},
+{
+"said": "Meeting with Tara about the team outing on 27 April at 4:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Tara",
+"date": "2028-04-27",
+"time": "16:30"
+}
+},
+{
+"said": "Dermatologist Dr. Nair on 7 January at 10 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Nair",
+"date": "2028-01-07",
+"time": "10:00"
+}
+},
+{
+"said": "Dermatologist Dr. Joshi on 18 October at 9:30 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Joshi",
+"date": "2027-10-18",
+"time": "09:30"
+}
+},
+{
+"said": "Meeting with Naveen about the team outing on 2 May at 7 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Naveen",
+"date": "2028-05-02",
+"time": "19:00"
+}
+},
+{
+"said": "Return Chitra's extension cord by 19 August.",
+"item": {
+"type": "task",
+"title": "Return Chitra's extension cord",
+"date": "2027-08-19"
+}
+},
+{
+"said": "Bharat owes me ₹164 for the cab ride.",
+"item": {
+"type": "receivable",
+"title": "Bharat's dues",
+"amount": 164
+}
+},
+{
+"said": "Kavya owes me ₹1,675 for the groceries.",
+"item": {
+"type": "receivable",
+"title": "Kavya's dues",
+"amount": 1675
+}
+},
+{
+"said": "Pay the DTH bill of ₹945 by 31 January.",
+"item": {
+"type": "bill",
+"title": "DTH bill",
+"date": "2028-01-31",
+"amount": 945
+}
+},
+{
+"said": "Badminton with Rekha every Monday at 5 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Rekha",
+"weekdays": [
+"Monday"
+],
+"time": "17:00"
+}
+},
+{
+"said": "Meeting with Indu about the project review on 8 September at 5 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Indu",
+"date": "2027-09-08",
+"time": "17:00"
+}
+},
+{
+"said": "Kavya owes me ₹2,653 for the groceries.",
+"item": {
+"type": "receivable",
+"title": "Kavya's dues",
+"amount": 2653
+}
+},
+{
+"said": "Badminton with Bharat every Sunday at 2 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Bharat",
+"weekdays": [
+"Sunday"
+],
+"time": "14:00"
+}
+},
+{
+"said": "Pay the electricity bill of ₹1,167 by 11 August.",
+"item": {
+"type": "bill",
+"title": "electricity bill",
+"date": "2027-08-11",
+"amount": 1167
+}
+},
+{
+"said": "Note: Waseem prefers south Indian food.",
+"item": {
+"type": "note",
+"title": "Waseem prefers south Indian food"
+}
+},
+{
+"said": "Gauri owes me ₹780 for the dinner.",
+"item": {
+"type": "receivable",
+"title": "Gauri's dues",
+"amount": 780
+}
+},
+{
+"said": "Sameer owes me ₹1,411 for the books.",
+"item": {
+"type": "receivable",
+"title": "Sameer's dues",
+"amount": 1411
+}
+},
+{
+"said": "Badminton with Mansi every Sunday at 8 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Mansi",
+"weekdays": [
+"Sunday"
+],
+"time": "08:00"
+}
+},
+{
+"said": "Note: Farhan prefers green tea.",
+"item": {
+"type": "note",
+"title": "Farhan prefers green tea"
+}
+},
+{
+"said": "Buy light bulbs from the corner shop on 2 April.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2028-04-02"
+}
+},
+{
+"said": "Pay the gas bill of ₹1,465 by 12 February.",
+"item": {
+"type": "bill",
+"title": "gas bill",
+"date": "2028-02-12",
+"amount": 1465
+}
+},
+{
+"said": "Badminton with Uday every Monday at 3:30 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Uday",
+"weekdays": [
+"Monday"
+],
+"time": "15:30"
+}
+},
+{
+"said": "Note: Tara prefers green tea.",
+"item": {
+"type": "note",
+"title": "Tara prefers green tea"
+}
+},
+{
+"said": "Badminton with Deepak every Tuesday at 3:30 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Deepak",
+"weekdays": [
+"Tuesday"
+],
+"time": "15:30"
+}
+},
+{
+"said": "Buy light bulbs from D-Mart on 20 November.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2027-11-20"
+}
+},
+{
+"said": "Buy atta from More on 2 December.",
+"item": {
+"type": "task",
+"title": "Buy atta",
+"date": "2027-12-02"
+}
+},
+{
+"said": "Return Sameer's cookbook by 9 October.",
+"item": {
+"type": "task",
+"title": "Return Sameer's cookbook",
+"date": "2027-10-09"
+}
+},
+{
+"said": "Buy notebooks from D-Mart on 3 April.",
+"item": {
+"type": "task",
+"title": "Buy notebooks",
+"date": "2028-04-03"
+}
+},
+{
+"said": "Jatin's birthday is on 23 August.",
+"item": {
+"type": "important_date",
+"title": "Jatin's birthday",
+"date": "2027-08-23"
+}
+},
+{
+"said": "Note: Bharat prefers south Indian food.",
+"item": {
+"type": "note",
+"title": "Bharat prefers south Indian food"
+}
+},
+{
+"said": "Note: Anita prefers window seats.",
+"item": {
+"type": "note",
+"title": "Anita prefers window seats"
+}
+},
+{
+"said": "Rekha's birthday is on 4 July.",
+"item": {
+"type": "important_date",
+"title": "Rekha's birthday",
+"date": "2027-07-04"
+}
+},
+{
+"said": "Pay the mobile bill of ₹1,082 by 22 September.",
+"item": {
+"type": "bill",
+"title": "mobile bill",
+"date": "2027-09-22",
+"amount": 1082
+}
+},
+{
+"said": "Return Vandana's drill machine by 17 April.",
+"item": {
+"type": "task",
+"title": "Return Vandana's drill machine",
+"date": "2028-04-17"
+}
+},
+{
+"said": "Vandana's birthday is on 16 April.",
+"item": {
+"type": "important_date",
+"title": "Vandana's birthday",
+"date": "2028-04-16"
+}
+},
+{
+"said": "Harish's birthday is on 31 August.",
+"item": {
+"type": "important_date",
+"title": "Harish's birthday",
+"date": "2027-08-31"
+}
+},
+{
+"said": "Dermatologist Dr. Kulkarni on 16 July at 12 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Kulkarni",
+"date": "2027-07-16",
+"time": "12:00"
+}
+},
+{
+"said": "Lokesh owes me ₹485 for the movie tickets.",
+"item": {
+"type": "receivable",
+"title": "Lokesh's dues",
+"amount": 485
+}
+},
+{
+"said": "Return Waseem's umbrella by 27 July.",
+"item": {
+"type": "task",
+"title": "Return Waseem's umbrella",
+"date": "2027-07-27"
+}
+},
+{
+"said": "Buy light bulbs from More on 26 December.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2027-12-26"
+}
+},
+{
+"said": "Note: Anita prefers south Indian food.",
+"item": {
+"type": "note",
+"title": "Anita prefers south Indian food"
+}
+},
+{
+"said": "Dermatologist Dr. Iyer on 22 April at 12:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Iyer",
+"date": "2028-04-22",
+"time": "12:30"
+}
+},
+{
+"said": "Note: Mansi prefers WhatsApp over email.",
+"item": {
+"type": "note",
+"title": "Mansi prefers WhatsApp over email"
+}
+},
+{
+"said": "Deepak owes me ₹637 for the cab ride.",
+"item": {
+"type": "receivable",
+"title": "Deepak's dues",
+"amount": 637
+}
+},
+{
+"said": "Meeting with Uday about the appraisal on 20 November at 7:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Uday",
+"date": "2027-11-20",
+"time": "19:30"
+}
+},
+{
+"said": "Return Yamini's drill machine by 22 February.",
+"item": {
+"type": "task",
+"title": "Return Yamini's drill machine",
+"date": "2028-02-22"
+}
+},
+{
+"said": "Return Qadir's extension cord by 9 May.",
+"item": {
+"type": "task",
+"title": "Return Qadir's extension cord",
+"date": "2028-05-09"
+}
+},
+{
+"said": "Note: Tara prefers south Indian food.",
+"item": {
+"type": "note",
+"title": "Tara prefers south Indian food"
+}
+},
+{
+"said": "Return Tara's drill machine by 14 November.",
+"item": {
+"type": "task",
+"title": "Return Tara's drill machine",
+"date": "2027-11-14"
+}
+},
+{
+"said": "Esha owes me ₹2,313 for the movie tickets.",
+"item": {
+"type": "receivable",
+"title": "Esha's dues",
+"amount": 2313
+}
+},
+{
+"said": "Return Kavya's extension cord by 19 March.",
+"item": {
+"type": "task",
+"title": "Return Kavya's extension cord",
+"date": "2028-03-19"
+}
+},
+{
+"said": "Farhan's birthday is on 21 September.",
+"item": {
+"type": "important_date",
+"title": "Farhan's birthday",
+"date": "2027-09-21"
+}
+},
+{
+"said": "Dermatologist Dr. Menon on 30 January at 4 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Menon",
+"date": "2028-01-30",
+"time": "16:00"
+}
+},
+{
+"said": "Badminton with Indu every Monday at 12:30 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Indu",
+"weekdays": [
+"Monday"
+],
+"time": "12:30"
+}
+},
+{
+"said": "Note: Yamini prefers window seats.",
+"item": {
+"type": "note",
+"title": "Yamini prefers window seats"
+}
+},
+{
+"said": "Gauri's birthday is on 11 December.",
+"item": {
+"type": "important_date",
+"title": "Gauri's birthday",
+"date": "2027-12-11"
+}
+},
+{
+"said": "Note: Qadir prefers south Indian food.",
+"item": {
+"type": "note",
+"title": "Qadir prefers south Indian food"
+}
+},
+{
+"said": "Jatin's birthday is on 4 March.",
+"item": {
+"type": "important_date",
+"title": "Jatin's birthday",
+"date": "2028-03-04"
+}
+},
+{
+"said": "Meeting with Qadir about the appraisal on 21 December at 7:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Qadir",
+"date": "2027-12-21",
+"time": "19:30"
+}
+},
+{
+"said": "Tara owes me ₹415 for the concert passes.",
+"item": {
+"type": "receivable",
+"title": "Tara's dues",
+"amount": 415
+}
+},
+{
+"said": "Meeting with Harish about the vendor contract on 10 February at 4:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Harish",
+"date": "2028-02-10",
+"time": "16:30"
+}
+},
+{
+"said": "Deepak owes me ₹2,909 for the movie tickets.",
+"item": {
+"type": "receivable",
+"title": "Deepak's dues",
+"amount": 2909
+}
+},
+{
+"said": "Rekha's birthday is on 5 September.",
+"item": {
+"type": "important_date",
+"title": "Rekha's birthday",
+"date": "2027-09-05"
+}
+},
+{
+"said": "Buy batteries from D-Mart on 1 July.",
+"item": {
+"type": "task",
+"title": "Buy batteries",
+"date": "2027-07-01"
+}
+},
+{
+"said": "Farhan owes me ₹1,882 for the books.",
+"item": {
+"type": "receivable",
+"title": "Farhan's dues",
+"amount": 1882
+}
+},
+{
+"said": "Return Esha's cookbook by 19 May.",
+"item": {
+"type": "task",
+"title": "Return Esha's cookbook",
+"date": "2028-05-19"
+}
+},
+{
+"said": "Yamini owes me ₹1,110 for the books.",
+"item": {
+"type": "receivable",
+"title": "Yamini's dues",
+"amount": 1110
+}
+},
+{
+"said": "Dermatologist Dr. Menon on 31 August at 2 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Menon",
+"date": "2027-08-31",
+"time": "14:00"
+}
+},
+{
+"said": "Uday owes me ₹193 for the groceries.",
+"item": {
+"type": "receivable",
+"title": "Uday's dues",
+"amount": 193
+}
+},
+{
+"said": "Pay the electricity bill of ₹2,491 by 19 March.",
+"item": {
+"type": "bill",
+"title": "electricity bill",
+"date": "2028-03-19",
+"amount": 2491
+}
+},
+{
+"said": "Buy detergent from D-Mart on 1 February.",
+"item": {
+"type": "task",
+"title": "Buy detergent",
+"date": "2028-02-01"
+}
+},
+{
+"said": "Tara's birthday is on 14 July.",
+"item": {
+"type": "important_date",
+"title": "Tara's birthday",
+"date": "2027-07-14"
+}
+},
+{
+"said": "Dermatologist Dr. Iyer on 3 January at 7 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Iyer",
+"date": "2028-01-03",
+"time": "19:00"
+}
+},
+{
+"said": "Meeting with Deepak about the quarterly report on 12 February at 3 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Deepak",
+"date": "2028-02-12",
+"time": "15:00"
+}
+},
+{
+"said": "Buy light bulbs from the corner shop on 17 June.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2027-06-17"
+}
+},
+{
+"said": "Buy notebooks from Reliance Fresh on 14 September.",
+"item": {
+"type": "task",
+"title": "Buy notebooks",
+"date": "2027-09-14"
+}
+},
+{
+"said": "Pay the broadband bill of ₹2,014 by 10 May.",
+"item": {
+"type": "bill",
+"title": "broadband bill",
+"date": "2028-05-10",
+"amount": 2014
+}
+},
+{
+"said": "Uday's birthday is on 17 June.",
+"item": {
+"type": "important_date",
+"title": "Uday's birthday",
+"date": "2027-06-17"
+}
+},
+{
+"said": "Dermatologist Dr. Nair on 10 July at 6 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Nair",
+"date": "2027-07-10",
+"time": "18:00"
+}
+},
+{
+"said": "Buy batteries from D-Mart on 11 June.",
+"item": {
+"type": "task",
+"title": "Buy batteries",
+"date": "2027-06-11"
+}
+},
+{
+"said": "Rekha's birthday is on 20 November.",
+"item": {
+"type": "important_date",
+"title": "Rekha's birthday",
+"date": "2027-11-20"
+}
+},
+{
+"said": "Buy light bulbs from the corner shop on 29 January.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2028-01-29"
+}
+},
+{
+"said": "Return Uday's cookbook by 10 March.",
+"item": {
+"type": "task",
+"title": "Return Uday's cookbook",
+"date": "2028-03-10"
+}
+},
+{
+"said": "Note: Harish prefers green tea.",
+"item": {
+"type": "note",
+"title": "Harish prefers green tea"
+}
+},
+{
+"said": "Meeting with Yamini about the quarterly report on 30 November at 8 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Yamini",
+"date": "2027-11-30",
+"time": "08:00"
+}
+},
+{
+"said": "Return Pallavi's extension cord by 12 June.",
+"item": {
+"type": "task",
+"title": "Return Pallavi's extension cord",
+"date": "2027-06-12"
+}
+},
+{
+"said": "Rekha's birthday is on 30 December.",
+"item": {
+"type": "important_date",
+"title": "Rekha's birthday",
+"date": "2027-12-30"
+}
+},
+{
+"said": "Meeting with Anita about the vendor contract on 6 January at 9:30 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Anita",
+"date": "2028-01-06",
+"time": "09:30"
+}
+},
+{
+"said": "Pay the water bill of ₹1,655 by 26 July.",
+"item": {
+"type": "bill",
+"title": "water bill",
+"date": "2027-07-26",
+"amount": 1655
+}
+},
+{
+"said": "Dermatologist Dr. Rao on 13 July at 12 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Rao",
+"date": "2027-07-13",
+"time": "12:00"
+}
+},
+{
+"said": "Deepak's birthday is on 31 August.",
+"item": {
+"type": "important_date",
+"title": "Deepak's birthday",
+"date": "2027-08-31"
+}
+},
+{
+"said": "Pay the DTH bill of ₹3,659 by 17 November.",
+"item": {
+"type": "bill",
+"title": "DTH bill",
+"date": "2027-11-17",
+"amount": 3659
+}
+},
+{
+"said": "Note: Qadir prefers green tea.",
+"item": {
+"type": "note",
+"title": "Qadir prefers green tea"
+}
+},
+{
+"said": "Dermatologist Dr. Nair on 5 August at 5:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Nair",
+"date": "2027-08-05",
+"time": "17:30"
+}
+},
+{
+"said": "Tara's birthday is on 21 November.",
+"item": {
+"type": "important_date",
+"title": "Tara's birthday",
+"date": "2027-11-21"
+}
+},
+{
+"said": "Kavya's birthday is on 8 May.",
+"item": {
+"type": "important_date",
+"title": "Kavya's birthday",
+"date": "2028-05-08"
+}
+},
+{
+"said": "Note: Vandana prefers window seats.",
+"item": {
+"type": "note",
+"title": "Vandana prefers window seats"
+}
+},
+{
+"said": "Meeting with Anita about the team outing on 13 August at 7 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Anita",
+"date": "2027-08-13",
+"time": "19:00"
+}
+},
+{
+"said": "Meeting with Uday about the project review on 21 November at 2 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Uday",
+"date": "2027-11-21",
+"time": "14:00"
+}
+},
+{
+"said": "Naveen's birthday is on 18 April.",
+"item": {
+"type": "important_date",
+"title": "Naveen's birthday",
+"date": "2028-04-18"
+}
+},
+{
+"said": "Badminton with Deepak every Monday at 4 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Deepak",
+"weekdays": [
+"Monday"
+],
+"time": "16:00"
+}
+},
+{
+"said": "Badminton with Omkar every Thursday at 12:30 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Omkar",
+"weekdays": [
+"Thursday"
+],
+"time": "12:30"
+}
+},
+{
+"said": "Meeting with Gauri about the budget on 19 June at 12:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Gauri",
+"date": "2027-06-19",
+"time": "12:30"
+}
+},
+{
+"said": "Dermatologist Dr. Rao on 17 February at 4:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Rao",
+"date": "2028-02-17",
+"time": "16:30"
+}
+},
+{
+"said": "Dermatologist Dr. Iyer on 10 January at 8 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Iyer",
+"date": "2028-01-10",
+"time": "08:00"
+}
+},
+{
+"said": "Buy detergent from Reliance Fresh on 23 December.",
+"item": {
+"type": "task",
+"title": "Buy detergent",
+"date": "2027-12-23"
+}
+},
+{
+"said": "Gauri's birthday is on 22 May.",
+"item": {
+"type": "important_date",
+"title": "Gauri's birthday",
+"date": "2028-05-22"
+}
+},
+{
+"said": "Dermatologist Dr. Joshi on 22 January at 3:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Joshi",
+"date": "2028-01-22",
+"time": "15:30"
+}
+},
+{
+"said": "Pay the mobile bill of ₹3,983 by 14 July.",
+"item": {
+"type": "bill",
+"title": "mobile bill",
+"date": "2027-07-14",
+"amount": 3983
+}
+},
+{
+"said": "Badminton with Sameer every Saturday at 9:30 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Sameer",
+"weekdays": [
+"Saturday"
+],
+"time": "09:30"
+}
+},
+{
+"said": "Pay the gas bill of ₹299 by 3 February.",
+"item": {
+"type": "bill",
+"title": "gas bill",
+"date": "2028-02-03",
+"amount": 299
+}
+},
+{
+"said": "Meeting with Tara about the budget on 23 October at 12:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Tara",
+"date": "2027-10-23",
+"time": "12:30"
+}
+},
+{
+"said": "Meeting with Gauri about the project review on 3 December at 3 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Gauri",
+"date": "2027-12-03",
+"time": "15:00"
+}
+},
+{
+"said": "Note: Mansi prefers window seats.",
+"item": {
+"type": "note",
+"title": "Mansi prefers window seats"
+}
+},
+{
+"said": "Badminton with Indu every Sunday at 4 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Indu",
+"weekdays": [
+"Sunday"
+],
+"time": "16:00"
+}
+},
+{
+"said": "Buy rice from Reliance Fresh on 3 January.",
+"item": {
+"type": "task",
+"title": "Buy rice",
+"date": "2028-01-03"
+}
+},
+{
+"said": "Omkar's birthday is on 10 February.",
+"item": {
+"type": "important_date",
+"title": "Omkar's birthday",
+"date": "2028-02-10"
+}
+},
+{
+"said": "Note: Indu prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Indu prefers morning calls"
+}
+},
+{
+"said": "Note: Deepak prefers south Indian food.",
+"item": {
+"type": "note",
+"title": "Deepak prefers south Indian food"
+}
+},
+{
+"said": "Note: Lokesh prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Lokesh prefers morning calls"
+}
+},
+{
+"said": "Dermatologist Dr. Sinha on 1 July at 10 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Sinha",
+"date": "2027-07-01",
+"time": "10:00"
+}
+},
+{
+"said": "Meeting with Farhan about the budget on 13 August at 10 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Farhan",
+"date": "2027-08-13",
+"time": "10:00"
+}
+},
+{
+"said": "Pay the water bill of ₹3,982 by 28 February.",
+"item": {
+"type": "bill",
+"title": "water bill",
+"date": "2028-02-28",
+"amount": 3982
+}
+},
+{
+"said": "Dermatologist Dr. Joshi on 27 August at 5:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Joshi",
+"date": "2027-08-27",
+"time": "17:30"
+}
+},
+{
+"said": "Badminton with Pallavi every Thursday at 9 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Pallavi",
+"weekdays": [
+"Thursday"
+],
+"time": "09:00"
+}
+},
+{
+"said": "Return Naveen's umbrella by 27 June.",
+"item": {
+"type": "task",
+"title": "Return Naveen's umbrella",
+"date": "2027-06-27"
+}
+},
+{
+"said": "Naveen owes me ₹1,191 for the movie tickets.",
+"item": {
+"type": "receivable",
+"title": "Naveen's dues",
+"amount": 1191
+}
+},
+{
+"said": "Badminton with Mansi every Saturday at 12 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Mansi",
+"weekdays": [
+"Saturday"
+],
+"time": "12:00"
+}
+},
+{
+"said": "Buy atta from the corner shop on 12 November.",
+"item": {
+"type": "task",
+"title": "Buy atta",
+"date": "2027-11-12"
+}
+},
+{
+"said": "Dermatologist Dr. Gupta on 19 September at 5:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Gupta",
+"date": "2027-09-19",
+"time": "17:30"
+}
+},
+{
+"said": "Return Pallavi's cookbook by 17 February.",
+"item": {
+"type": "task",
+"title": "Return Pallavi's cookbook",
+"date": "2028-02-17"
+}
+},
+{
+"said": "Return Mansi's suitcase by 27 October.",
+"item": {
+"type": "task",
+"title": "Return Mansi's suitcase",
+"date": "2027-10-27"
+}
+},
+{
+"said": "Gauri's birthday is on 15 August.",
+"item": {
+"type": "important_date",
+"title": "Gauri's birthday",
+"date": "2027-08-15"
+}
+},
+{
+"said": "Badminton with Chitra every Tuesday at 11 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Chitra",
+"weekdays": [
+"Tuesday"
+],
+"time": "11:00"
+}
+},
+{
+"said": "Tara's birthday is on 24 July.",
+"item": {
+"type": "important_date",
+"title": "Tara's birthday",
+"date": "2027-07-24"
+}
+},
+{
+"said": "Buy atta from Reliance Fresh on 5 November.",
+"item": {
+"type": "task",
+"title": "Buy atta",
+"date": "2027-11-05"
+}
+},
+{
+"said": "Buy notebooks from More on 5 October.",
+"item": {
+"type": "task",
+"title": "Buy notebooks",
+"date": "2027-10-05"
+}
+},
+{
+"said": "Badminton with Rekha every Monday at 8 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Rekha",
+"weekdays": [
+"Monday"
+],
+"time": "08:00"
+}
+},
+{
+"said": "Dermatologist Dr. Joshi on 1 August at 9 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Joshi",
+"date": "2027-08-01",
+"time": "09:00"
+}
+},
+{
+"said": "Return Pallavi's cookbook by 6 March.",
+"item": {
+"type": "task",
+"title": "Return Pallavi's cookbook",
+"date": "2028-03-06"
+}
+},
+{
+"said": "Meeting with Qadir about the budget on 2 May at 12:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Qadir",
+"date": "2028-05-02",
+"time": "12:30"
+}
+},
+{
+"said": "Dermatologist Dr. Rao on 4 January at 5 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Rao",
+"date": "2028-01-04",
+"time": "17:00"
+}
+},
+{
+"said": "Buy light bulbs from Reliance Fresh on 16 October.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2027-10-16"
+}
+},
+{
+"said": "Note: Qadir prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Qadir prefers morning calls"
+}
+},
+{
+"said": "Bharat owes me ₹2,920 for the dinner.",
+"item": {
+"type": "receivable",
+"title": "Bharat's dues",
+"amount": 2920
+}
+},
+{
+"said": "Return Qadir's umbrella by 21 October.",
+"item": {
+"type": "task",
+"title": "Return Qadir's umbrella",
+"date": "2027-10-21"
+}
+},
+{
+"said": "Buy notebooks from Reliance Fresh on 10 July.",
+"item": {
+"type": "task",
+"title": "Buy notebooks",
+"date": "2027-07-10"
+}
+},
+{
+"said": "Dermatologist Dr. Kulkarni on 11 February at 9 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Kulkarni",
+"date": "2028-02-11",
+"time": "09:00"
+}
+},
+{
+"said": "Dermatologist Dr. Rao on 5 July at 2:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Rao",
+"date": "2027-07-05",
+"time": "14:30"
+}
+},
+{
+"said": "Pay the broadband bill of ₹374 by 2 September.",
+"item": {
+"type": "bill",
+"title": "broadband bill",
+"date": "2027-09-02",
+"amount": 374
+}
+},
+{
+"said": "Return Naveen's umbrella by 28 December.",
+"item": {
+"type": "task",
+"title": "Return Naveen's umbrella",
+"date": "2027-12-28"
+}
+},
+{
+"said": "Badminton with Uday every Thursday at 4 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Uday",
+"weekdays": [
+"Thursday"
+],
+"time": "16:00"
+}
+},
+{
+"said": "Dermatologist Dr. Menon on 5 December at 10 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Menon",
+"date": "2027-12-05",
+"time": "10:00"
+}
+},
+{
+"said": "Dermatologist Dr. Iyer on 13 July at 9 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Iyer",
+"date": "2027-07-13",
+"time": "09:00"
+}
+},
+{
+"said": "Rekha's birthday is on 12 April.",
+"item": {
+"type": "important_date",
+"title": "Rekha's birthday",
+"date": "2028-04-12"
+}
+},
+{
+"said": "Buy detergent from the corner shop on 23 September.",
+"item": {
+"type": "task",
+"title": "Buy detergent",
+"date": "2027-09-23"
+}
+},
+{
+"said": "Badminton with Sameer every Tuesday at 6 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Sameer",
+"weekdays": [
+"Tuesday"
+],
+"time": "18:00"
+}
+},
+{
+"said": "Buy atta from D-Mart on 30 January.",
+"item": {
+"type": "task",
+"title": "Buy atta",
+"date": "2028-01-30"
+}
+},
+{
+"said": "Pay the DTH bill of ₹3,371 by 24 December.",
+"item": {
+"type": "bill",
+"title": "DTH bill",
+"date": "2027-12-24",
+"amount": 3371
+}
+},
+{
+"said": "Buy notebooks from D-Mart on 7 July.",
+"item": {
+"type": "task",
+"title": "Buy notebooks",
+"date": "2027-07-07"
+}
+},
+{
+"said": "Return Vandana's drill machine by 30 September.",
+"item": {
+"type": "task",
+"title": "Return Vandana's drill machine",
+"date": "2027-09-30"
+}
+},
+{
+"said": "Buy rice from D-Mart on 23 April.",
+"item": {
+"type": "task",
+"title": "Buy rice",
+"date": "2028-04-23"
+}
+},
+{
+"said": "Mansi owes me ₹936 for the books.",
+"item": {
+"type": "receivable",
+"title": "Mansi's dues",
+"amount": 936
+}
+},
+{
+"said": "Meeting with Chitra about the project review on 16 March at 10 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Chitra",
+"date": "2028-03-16",
+"time": "10:00"
+}
+},
+{
+"said": "Dermatologist Dr. Iyer on 20 July at 3 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Iyer",
+"date": "2027-07-20",
+"time": "15:00"
+}
+},
+{
+"said": "Pallavi's birthday is on 12 May.",
+"item": {
+"type": "important_date",
+"title": "Pallavi's birthday",
+"date": "2028-05-12"
+}
+},
+{
+"said": "Farhan's birthday is on 18 February.",
+"item": {
+"type": "important_date",
+"title": "Farhan's birthday",
+"date": "2028-02-18"
+}
+},
+{
+"said": "Yamini owes me ₹2,150 for the dinner.",
+"item": {
+"type": "receivable",
+"title": "Yamini's dues",
+"amount": 2150
+}
+},
+{
+"said": "Pay the DTH bill of ₹983 by 25 November.",
+"item": {
+"type": "bill",
+"title": "DTH bill",
+"date": "2027-11-25",
+"amount": 983
+}
+},
+{
+"said": "Dermatologist Dr. Gupta on 13 May at 8 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Gupta",
+"date": "2028-05-13",
+"time": "08:00"
+}
+},
+{
+"said": "Return Farhan's suitcase by 3 October.",
+"item": {
+"type": "task",
+"title": "Return Farhan's suitcase",
+"date": "2027-10-03"
+}
+},
+{
+"said": "Buy atta from More on 15 November.",
+"item": {
+"type": "task",
+"title": "Buy atta",
+"date": "2027-11-15"
+}
+},
+{
+"said": "Pay the gas bill of ₹2,481 by 18 December.",
+"item": {
+"type": "bill",
+"title": "gas bill",
+"date": "2027-12-18",
+"amount": 2481
+}
+},
+{
+"said": "Dermatologist Dr. Nair on 26 June at 2 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Nair",
+"date": "2027-06-26",
+"time": "14:00"
+}
+},
+{
+"said": "Gauri's birthday is on 15 December.",
+"item": {
+"type": "important_date",
+"title": "Gauri's birthday",
+"date": "2027-12-15"
+}
+},
+{
+"said": "Gauri's birthday is on 8 January.",
+"item": {
+"type": "important_date",
+"title": "Gauri's birthday",
+"date": "2028-01-08"
+}
+},
+{
+"said": "Farhan owes me ₹415 for the cab ride.",
+"item": {
+"type": "receivable",
+"title": "Farhan's dues",
+"amount": 415
+}
+},
+{
+"said": "Badminton with Chitra every Thursday at 7 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Chitra",
+"weekdays": [
+"Thursday"
+],
+"time": "19:00"
+}
+},
+{
+"said": "Indu's birthday is on 28 September.",
+"item": {
+"type": "important_date",
+"title": "Indu's birthday",
+"date": "2027-09-28"
+}
+},
+{
+"said": "Dermatologist Dr. Nair on 22 August at 10:30 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Nair",
+"date": "2027-08-22",
+"time": "10:30"
+}
+},
+{
+"said": "Return Sameer's suitcase by 18 August.",
+"item": {
+"type": "task",
+"title": "Return Sameer's suitcase",
+"date": "2027-08-18"
+}
+},
+{
+"said": "Pay the mobile bill of ₹3,019 by 8 November.",
+"item": {
+"type": "bill",
+"title": "mobile bill",
+"date": "2027-11-08",
+"amount": 3019
+}
+},
+{
+"said": "Dermatologist Dr. Menon on 15 August at 4:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Menon",
+"date": "2027-08-15",
+"time": "16:30"
+}
+},
+{
+"said": "Dermatologist Dr. Rao on 18 February at 12:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Rao",
+"date": "2028-02-18",
+"time": "12:30"
+}
+},
+{
+"said": "Return Chitra's cookbook by 13 August.",
+"item": {
+"type": "task",
+"title": "Return Chitra's cookbook",
+"date": "2027-08-13"
+}
+},
+{
+"said": "Meeting with Sameer about the budget on 28 October at 8 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Sameer",
+"date": "2027-10-28",
+"time": "08:00"
+}
+},
+{
+"said": "Note: Yamini prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Yamini prefers morning calls"
+}
+},
+{
+"said": "Buy atta from D-Mart on 13 October.",
+"item": {
+"type": "task",
+"title": "Buy atta",
+"date": "2027-10-13"
+}
+},
+{
+"said": "Dermatologist Dr. Joshi on 13 November at 4 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Joshi",
+"date": "2027-11-13",
+"time": "16:00"
+}
+},
+{
+"said": "Jatin owes me ₹2,882 for the dinner.",
+"item": {
+"type": "receivable",
+"title": "Jatin's dues",
+"amount": 2882
+}
+},
+{
+"said": "Waseem owes me ₹2,226 for the movie tickets.",
+"item": {
+"type": "receivable",
+"title": "Waseem's dues",
+"amount": 2226
+}
+},
+{
+"said": "Note: Vandana prefers south Indian food.",
+"item": {
+"type": "note",
+"title": "Vandana prefers south Indian food"
+}
+},
+{
+"said": "Dermatologist Dr. Rao on 17 June at 7 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Rao",
+"date": "2027-06-17",
+"time": "19:00"
+}
+},
+{
+"said": "Pallavi's birthday is on 27 October.",
+"item": {
+"type": "important_date",
+"title": "Pallavi's birthday",
+"date": "2027-10-27"
+}
+},
+{
+"said": "Return Anita's drill machine by 4 September.",
+"item": {
+"type": "task",
+"title": "Return Anita's drill machine",
+"date": "2027-09-04"
+}
+},
+{
+"said": "Deepak owes me ₹1,136 for the cab ride.",
+"item": {
+"type": "receivable",
+"title": "Deepak's dues",
+"amount": 1136
+}
+},
+{
+"said": "Dermatologist Dr. Joshi on 21 August at 9:30 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Joshi",
+"date": "2027-08-21",
+"time": "09:30"
+}
+},
+{
+"said": "Lokesh owes me ₹2,765 for the concert passes.",
+"item": {
+"type": "receivable",
+"title": "Lokesh's dues",
+"amount": 2765
+}
+},
+{
+"said": "Meeting with Sameer about the quarterly report on 12 April at 11:30 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Sameer",
+"date": "2028-04-12",
+"time": "11:30"
+}
+},
+{
+"said": "Return Uday's suitcase by 5 September.",
+"item": {
+"type": "task",
+"title": "Return Uday's suitcase",
+"date": "2027-09-05"
+}
+},
+{
+"said": "Badminton with Pallavi every Saturday at 2 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Pallavi",
+"weekdays": [
+"Saturday"
+],
+"time": "14:00"
+}
+},
+{
+"said": "Meeting with Pallavi about the project review on 20 November at 12:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Pallavi",
+"date": "2027-11-20",
+"time": "12:30"
+}
+},
+{
+"said": "Lokesh's birthday is on 21 December.",
+"item": {
+"type": "important_date",
+"title": "Lokesh's birthday",
+"date": "2027-12-21"
+}
+},
+{
+"said": "Dermatologist Dr. Nair on 27 August at 4 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Nair",
+"date": "2027-08-27",
+"time": "16:00"
+}
+},
+{
+"said": "Pay the water bill of ₹868 by 12 November.",
+"item": {
+"type": "bill",
+"title": "water bill",
+"date": "2027-11-12",
+"amount": 868
+}
+},
+{
+"said": "Lokesh's birthday is on 21 January.",
+"item": {
+"type": "important_date",
+"title": "Lokesh's birthday",
+"date": "2028-01-21"
+}
+},
+{
+"said": "Buy detergent from More on 1 January.",
+"item": {
+"type": "task",
+"title": "Buy detergent",
+"date": "2028-01-01"
+}
+},
+{
+"said": "Buy notebooks from Reliance Fresh on 15 April.",
+"item": {
+"type": "task",
+"title": "Buy notebooks",
+"date": "2028-04-15"
+}
+},
+{
+"said": "Pay the water bill of ₹1,595 by 1 October.",
+"item": {
+"type": "bill",
+"title": "water bill",
+"date": "2027-10-01",
+"amount": 1595
+}
+},
+{
+"said": "Buy detergent from More on 1 April.",
+"item": {
+"type": "task",
+"title": "Buy detergent",
+"date": "2028-04-01"
+}
+},
+{
+"said": "Dermatologist Dr. Iyer on 16 November at 10 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Iyer",
+"date": "2027-11-16",
+"time": "10:00"
+}
+},
+{
+"said": "Meeting with Vandana about the quarterly report on 23 September at 5 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Vandana",
+"date": "2027-09-23",
+"time": "17:00"
+}
+},
+{
+"said": "Return Yamini's drill machine by 12 May.",
+"item": {
+"type": "task",
+"title": "Return Yamini's drill machine",
+"date": "2028-05-12"
+}
+},
+{
+"said": "Buy batteries from the corner shop on 10 August.",
+"item": {
+"type": "task",
+"title": "Buy batteries",
+"date": "2027-08-10"
+}
+},
+{
+"said": "Meeting with Naveen about the quarterly report on 27 October at 9 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Naveen",
+"date": "2027-10-27",
+"time": "09:00"
+}
+},
+{
+"said": "Farhan's birthday is on 22 October.",
+"item": {
+"type": "important_date",
+"title": "Farhan's birthday",
+"date": "2027-10-22"
+}
+},
+{
+"said": "Gauri's birthday is on 3 October.",
+"item": {
+"type": "important_date",
+"title": "Gauri's birthday",
+"date": "2027-10-03"
+}
+},
+{
+"said": "Return Anita's suitcase by 5 April.",
+"item": {
+"type": "task",
+"title": "Return Anita's suitcase",
+"date": "2028-04-05"
+}
+},
+{
+"said": "Meeting with Chitra about the project review on 24 January at 4 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Chitra",
+"date": "2028-01-24",
+"time": "16:00"
+}
+},
+{
+"said": "Pay the water bill of ₹1,113 by 29 October.",
+"item": {
+"type": "bill",
+"title": "water bill",
+"date": "2027-10-29",
+"amount": 1113
+}
+},
+{
+"said": "Dermatologist Dr. Gupta on 15 March at 7 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Gupta",
+"date": "2028-03-15",
+"time": "19:00"
+}
+},
+{
+"said": "Meeting with Yamini about the team outing on 10 December at 8:30 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Yamini",
+"date": "2027-12-10",
+"time": "08:30"
+}
+},
+{
+"said": "Bharat's birthday is on 26 July.",
+"item": {
+"type": "important_date",
+"title": "Bharat's birthday",
+"date": "2027-07-26"
+}
+},
+{
+"said": "Return Yamini's drill machine by 8 October.",
+"item": {
+"type": "task",
+"title": "Return Yamini's drill machine",
+"date": "2027-10-08"
+}
+},
+{
+"said": "Farhan's birthday is on 24 August.",
+"item": {
+"type": "important_date",
+"title": "Farhan's birthday",
+"date": "2027-08-24"
+}
+},
+{
+"said": "Pay the mobile bill of ₹1,729 by 5 August.",
+"item": {
+"type": "bill",
+"title": "mobile bill",
+"date": "2027-08-05",
+"amount": 1729
+}
+},
+{
+"said": "Note: Bharat prefers green tea.",
+"item": {
+"type": "note",
+"title": "Bharat prefers green tea"
+}
+},
+{
+"said": "Badminton with Naveen every Monday at 7 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Naveen",
+"weekdays": [
+"Monday"
+],
+"time": "19:00"
+}
+},
+{
+"said": "Meeting with Waseem about the budget on 15 April at 4:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Waseem",
+"date": "2028-04-15",
+"time": "16:30"
+}
+},
+{
+"said": "Meeting with Tara about the appraisal on 6 September at 5 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Tara",
+"date": "2027-09-06",
+"time": "17:00"
+}
+},
+{
+"said": "Chitra owes me ₹919 for the cab ride.",
+"item": {
+"type": "receivable",
+"title": "Chitra's dues",
+"amount": 919
+}
+},
+{
+"said": "Dermatologist Dr. Nair on 7 July at 4:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Nair",
+"date": "2027-07-07",
+"time": "16:30"
+}
+},
+{
+"said": "Badminton with Bharat every Tuesday at 11 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Bharat",
+"weekdays": [
+"Tuesday"
+],
+"time": "11:00"
+}
+},
+{
+"said": "Note: Harish prefers window seats.",
+"item": {
+"type": "note",
+"title": "Harish prefers window seats"
+}
+},
+{
+"said": "Chitra's birthday is on 16 March.",
+"item": {
+"type": "important_date",
+"title": "Chitra's birthday",
+"date": "2028-03-16"
+}
+},
+{
+"said": "Meeting with Sameer about the team outing on 14 September at 5 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Sameer",
+"date": "2027-09-14",
+"time": "17:00"
+}
+},
+{
+"said": "Tara owes me ₹107 for the books.",
+"item": {
+"type": "receivable",
+"title": "Tara's dues",
+"amount": 107
+}
+},
+{
+"said": "Meeting with Pallavi about the team outing on 3 November at 12:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Pallavi",
+"date": "2027-11-03",
+"time": "12:30"
+}
+},
+{
+"said": "Return Vandana's drill machine by 16 September.",
+"item": {
+"type": "task",
+"title": "Return Vandana's drill machine",
+"date": "2027-09-16"
+}
+},
+{
+"said": "Deepak's birthday is on 3 September.",
+"item": {
+"type": "important_date",
+"title": "Deepak's birthday",
+"date": "2027-09-03"
+}
+},
+{
+"said": "Dermatologist Dr. Gupta on 13 December at 2 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Gupta",
+"date": "2027-12-13",
+"time": "14:00"
+}
+},
+{
+"said": "Pay the DTH bill of ₹2,090 by 29 July.",
+"item": {
+"type": "bill",
+"title": "DTH bill",
+"date": "2027-07-29",
+"amount": 2090
+}
+},
+{
+"said": "Meeting with Qadir about the project review on 19 March at 7 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Qadir",
+"date": "2028-03-19",
+"time": "19:00"
+}
+},
+{
+"said": "Meeting with Waseem about the appraisal on 15 May at 8:30 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Waseem",
+"date": "2028-05-15",
+"time": "08:30"
+}
+},
+{
+"said": "Return Naveen's suitcase by 22 October.",
+"item": {
+"type": "task",
+"title": "Return Naveen's suitcase",
+"date": "2027-10-22"
+}
+},
+{
+"said": "Pay the water bill of ₹2,356 by 27 November.",
+"item": {
+"type": "bill",
+"title": "water bill",
+"date": "2027-11-27",
+"amount": 2356
+}
+},
+{
+"said": "Note: Jatin prefers green tea.",
+"item": {
+"type": "note",
+"title": "Jatin prefers green tea"
+}
+},
+{
+"said": "Uday owes me ₹2,108 for the concert passes.",
+"item": {
+"type": "receivable",
+"title": "Uday's dues",
+"amount": 2108
+}
+},
+{
+"said": "Chitra's birthday is on 10 September.",
+"item": {
+"type": "important_date",
+"title": "Chitra's birthday",
+"date": "2027-09-10"
+}
+},
+{
+"said": "Uday owes me ₹1,443 for the concert passes.",
+"item": {
+"type": "receivable",
+"title": "Uday's dues",
+"amount": 1443
+}
+},
+{
+"said": "Return Omkar's cookbook by 29 March.",
+"item": {
+"type": "task",
+"title": "Return Omkar's cookbook",
+"date": "2028-03-29"
+}
+},
+{
+"said": "Meeting with Waseem about the appraisal on 11 July at 9 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Waseem",
+"date": "2027-07-11",
+"time": "09:00"
+}
+},
+{
+"said": "Return Waseem's extension cord by 16 April.",
+"item": {
+"type": "task",
+"title": "Return Waseem's extension cord",
+"date": "2028-04-16"
+}
+},
+{
+"said": "Note: Omkar prefers south Indian food.",
+"item": {
+"type": "note",
+"title": "Omkar prefers south Indian food"
+}
+},
+{
+"said": "Dermatologist Dr. Gupta on 11 April at 3:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Gupta",
+"date": "2028-04-11",
+"time": "15:30"
+}
+},
+{
+"said": "Meeting with Pallavi about the budget on 20 August at 4:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Pallavi",
+"date": "2027-08-20",
+"time": "16:30"
+}
+},
+{
+"said": "Buy rice from the corner shop on 22 February.",
+"item": {
+"type": "task",
+"title": "Buy rice",
+"date": "2028-02-22"
+}
+},
+{
+"said": "Dermatologist Dr. Joshi on 5 February at 5 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Joshi",
+"date": "2028-02-05",
+"time": "17:00"
+}
+},
+{
+"said": "Pay the water bill of ₹3,803 by 7 February.",
+"item": {
+"type": "bill",
+"title": "water bill",
+"date": "2028-02-07",
+"amount": 3803
+}
+},
+{
+"said": "Badminton with Naveen every Thursday at 3 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Naveen",
+"weekdays": [
+"Thursday"
+],
+"time": "15:00"
+}
+},
+{
+"said": "Return Esha's suitcase by 17 April.",
+"item": {
+"type": "task",
+"title": "Return Esha's suitcase",
+"date": "2028-04-17"
+}
+},
+{
+"said": "Dermatologist Dr. Sinha on 13 February at 12:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Sinha",
+"date": "2028-02-13",
+"time": "12:30"
+}
+},
+{
+"said": "Buy batteries from More on 25 November.",
+"item": {
+"type": "task",
+"title": "Buy batteries",
+"date": "2027-11-25"
+}
+},
+{
+"said": "Pay the electricity bill of ₹1,263 by 21 May.",
+"item": {
+"type": "bill",
+"title": "electricity bill",
+"date": "2028-05-21",
+"amount": 1263
+}
+},
+{
+"said": "Badminton with Waseem every Thursday at 3 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Waseem",
+"weekdays": [
+"Thursday"
+],
+"time": "15:00"
+}
+},
+{
+"said": "Dermatologist Dr. Kulkarni on 26 September at 11 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Kulkarni",
+"date": "2027-09-26",
+"time": "11:00"
+}
+},
+{
+"said": "Note: Gauri prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Gauri prefers morning calls"
+}
+},
+{
+"said": "Return Kavya's cookbook by 25 December.",
+"item": {
+"type": "task",
+"title": "Return Kavya's cookbook",
+"date": "2027-12-25"
+}
+},
+{
+"said": "Mansi owes me ₹2,644 for the concert passes.",
+"item": {
+"type": "receivable",
+"title": "Mansi's dues",
+"amount": 2644
+}
+},
+{
+"said": "Badminton with Gauri every Monday at 7:30 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Gauri",
+"weekdays": [
+"Monday"
+],
+"time": "19:30"
+}
+},
+{
+"said": "Badminton with Indu every Tuesday at 9 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Indu",
+"weekdays": [
+"Tuesday"
+],
+"time": "09:00"
+}
+},
+{
+"said": "Meeting with Harish about the vendor contract on 3 January at 8 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Harish",
+"date": "2028-01-03",
+"time": "08:00"
+}
+},
+{
+"said": "Bharat's birthday is on 18 December.",
+"item": {
+"type": "important_date",
+"title": "Bharat's birthday",
+"date": "2027-12-18"
+}
+},
+{
+"said": "Meeting with Esha about the vendor contract on 1 February at 8 am.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Esha",
+"date": "2028-02-01",
+"time": "08:00"
+}
+},
+{
+"said": "Note: Indu prefers WhatsApp over email.",
+"item": {
+"type": "note",
+"title": "Indu prefers WhatsApp over email"
+}
+},
+{
+"said": "Badminton with Chitra every Thursday at 10 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Chitra",
+"weekdays": [
+"Thursday"
+],
+"time": "10:00"
+}
+},
+{
+"said": "Dermatologist Dr. Gupta on 20 July at 5:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Gupta",
+"date": "2027-07-20",
+"time": "17:30"
+}
+},
+{
+"said": "Note: Indu prefers window seats.",
+"item": {
+"type": "note",
+"title": "Indu prefers window seats"
+}
+},
+{
+"said": "Meeting with Lokesh about the quarterly report on 27 February at 4:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Lokesh",
+"date": "2028-02-27",
+"time": "16:30"
+}
+},
+{
+"said": "Dermatologist Dr. Menon on 23 April at 11 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Menon",
+"date": "2028-04-23",
+"time": "11:00"
+}
+},
+{
+"said": "Pay the electricity bill of ₹3,995 by 29 September.",
+"item": {
+"type": "bill",
+"title": "electricity bill",
+"date": "2027-09-29",
+"amount": 3995
+}
+},
+{
+"said": "Meeting with Gauri about the appraisal on 5 April at 2 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Gauri",
+"date": "2028-04-05",
+"time": "14:00"
+}
+},
+{
+"said": "Badminton with Lokesh every Sunday at 7 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Lokesh",
+"weekdays": [
+"Sunday"
+],
+"time": "19:00"
+}
+},
+{
+"said": "Meeting with Jatin about the budget on 15 November at 6 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Jatin",
+"date": "2027-11-15",
+"time": "18:00"
+}
+},
+{
+"said": "Pay the water bill of ₹1,596 by 16 May.",
+"item": {
+"type": "bill",
+"title": "water bill",
+"date": "2028-05-16",
+"amount": 1596
+}
+},
+{
+"said": "Return Farhan's suitcase by 22 January.",
+"item": {
+"type": "task",
+"title": "Return Farhan's suitcase",
+"date": "2028-01-22"
+}
+},
+{
+"said": "Farhan's birthday is on 2 February.",
+"item": {
+"type": "important_date",
+"title": "Farhan's birthday",
+"date": "2028-02-02"
+}
+},
+{
+"said": "Badminton with Vandana every Thursday at 9 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Vandana",
+"weekdays": [
+"Thursday"
+],
+"time": "09:00"
+}
+},
+{
+"said": "Dermatologist Dr. Nair on 26 October at 5 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Nair",
+"date": "2027-10-26",
+"time": "17:00"
+}
+},
+{
+"said": "Note: Chitra prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Chitra prefers morning calls"
+}
+},
+{
+"said": "Note: Harish prefers WhatsApp over email.",
+"item": {
+"type": "note",
+"title": "Harish prefers WhatsApp over email"
+}
+},
+{
+"said": "Return Lokesh's cookbook by 21 June.",
+"item": {
+"type": "task",
+"title": "Return Lokesh's cookbook",
+"date": "2027-06-21"
+}
+},
+{
+"said": "Qadir owes me ₹553 for the books.",
+"item": {
+"type": "receivable",
+"title": "Qadir's dues",
+"amount": 553
+}
+},
+{
+"said": "Qadir's birthday is on 18 June.",
+"item": {
+"type": "important_date",
+"title": "Qadir's birthday",
+"date": "2027-06-18"
+}
+},
+{
+"said": "Buy notebooks from D-Mart on 21 May.",
+"item": {
+"type": "task",
+"title": "Buy notebooks",
+"date": "2028-05-21"
+}
+},
+{
+"said": "Buy light bulbs from the corner shop on 24 April.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2028-04-24"
+}
+},
+{
+"said": "Pay the DTH bill of ₹912 by 8 July.",
+"item": {
+"type": "bill",
+"title": "DTH bill",
+"date": "2027-07-08",
+"amount": 912
+}
+},
+{
+"said": "Tara owes me ₹541 for the dinner.",
+"item": {
+"type": "receivable",
+"title": "Tara's dues",
+"amount": 541
+}
+},
+{
+"said": "Sameer's birthday is on 9 October.",
+"item": {
+"type": "important_date",
+"title": "Sameer's birthday",
+"date": "2027-10-09"
+}
+},
+{
+"said": "Meeting with Rekha about the budget on 28 March at 5 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Rekha",
+"date": "2028-03-28",
+"time": "17:00"
+}
+},
+{
+"said": "Buy notebooks from the corner shop on 19 January.",
+"item": {
+"type": "task",
+"title": "Buy notebooks",
+"date": "2028-01-19"
+}
+},
+{
+"said": "Buy atta from Reliance Fresh on 12 August.",
+"item": {
+"type": "task",
+"title": "Buy atta",
+"date": "2027-08-12"
+}
+},
+{
+"said": "Anita's birthday is on 10 December.",
+"item": {
+"type": "important_date",
+"title": "Anita's birthday",
+"date": "2027-12-10"
+}
+},
+{
+"said": "Meeting with Farhan about the team outing on 12 January at 6 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Farhan",
+"date": "2028-01-12",
+"time": "18:00"
+}
+},
+{
+"said": "Note: Sameer prefers window seats.",
+"item": {
+"type": "note",
+"title": "Sameer prefers window seats"
+}
+},
+{
+"said": "Return Naveen's umbrella by 16 September.",
+"item": {
+"type": "task",
+"title": "Return Naveen's umbrella",
+"date": "2027-09-16"
+}
+},
+{
+"said": "Badminton with Waseem every Thursday at 10:30 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Waseem",
+"weekdays": [
+"Thursday"
+],
+"time": "10:30"
+}
+},
+{
+"said": "Deepak owes me ₹873 for the groceries.",
+"item": {
+"type": "receivable",
+"title": "Deepak's dues",
+"amount": 873
+}
+},
+{
+"said": "Badminton with Lokesh every Sunday at 11 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Lokesh",
+"weekdays": [
+"Sunday"
+],
+"time": "11:00"
+}
+},
+{
+"said": "Lokesh's birthday is on 3 September.",
+"item": {
+"type": "important_date",
+"title": "Lokesh's birthday",
+"date": "2027-09-03"
+}
+},
+{
+"said": "Buy light bulbs from More on 25 April.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2028-04-25"
+}
+},
+{
+"said": "Note: Waseem prefers green tea.",
+"item": {
+"type": "note",
+"title": "Waseem prefers green tea"
+}
+},
+{
+"said": "Buy atta from Reliance Fresh on 7 December.",
+"item": {
+"type": "task",
+"title": "Buy atta",
+"date": "2027-12-07"
+}
+},
+{
+"said": "Meeting with Deepak about the team outing on 14 September at 6 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Deepak",
+"date": "2027-09-14",
+"time": "18:00"
+}
+},
+{
+"said": "Return Indu's umbrella by 10 October.",
+"item": {
+"type": "task",
+"title": "Return Indu's umbrella",
+"date": "2027-10-10"
+}
+},
+{
+"said": "Badminton with Bharat every Sunday at 4 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Bharat",
+"weekdays": [
+"Sunday"
+],
+"time": "16:00"
+}
+},
+{
+"said": "Buy rice from the corner shop on 11 January.",
+"item": {
+"type": "task",
+"title": "Buy rice",
+"date": "2028-01-11"
+}
+},
+{
+"said": "Bharat owes me ₹520 for the books.",
+"item": {
+"type": "receivable",
+"title": "Bharat's dues",
+"amount": 520
+}
+},
+{
+"said": "Badminton with Farhan every Monday at 8 am.",
+"item": {
+"type": "routine",
+"title": "Badminton with Farhan",
+"weekdays": [
+"Monday"
+],
+"time": "08:00"
+}
+},
+{
+"said": "Note: Jatin prefers WhatsApp over email.",
+"item": {
+"type": "note",
+"title": "Jatin prefers WhatsApp over email"
+}
+},
+{
+"said": "Badminton with Bharat every Saturday at 3 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Bharat",
+"weekdays": [
+"Saturday"
+],
+"time": "15:00"
+}
+},
+{
+"said": "Buy atta from the corner shop on 6 November.",
+"item": {
+"type": "task",
+"title": "Buy atta",
+"date": "2027-11-06"
+}
+},
+{
+"said": "Meeting with Gauri about the appraisal on 7 December at 3 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Gauri",
+"date": "2027-12-07",
+"time": "15:00"
+}
+},
+{
+"said": "Dermatologist Dr. Menon on 1 October at 10 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Menon",
+"date": "2027-10-01",
+"time": "10:00"
+}
+},
+{
+"said": "Tara owes me ₹2,452 for the cab ride.",
+"item": {
+"type": "receivable",
+"title": "Tara's dues",
+"amount": 2452
+}
+},
+{
+"said": "Dermatologist Dr. Gupta on 11 June at 10 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Gupta",
+"date": "2027-06-11",
+"time": "10:00"
+}
+},
+{
+"said": "Dermatologist Dr. Sinha on 16 October at 7 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Sinha",
+"date": "2027-10-16",
+"time": "19:00"
+}
+},
+{
+"said": "Mansi owes me ₹654 for the books.",
+"item": {
+"type": "receivable",
+"title": "Mansi's dues",
+"amount": 654
+}
+}
+],
+"small": [
+{
+"said": "Ishaan's passport appointment at the Seva Kendra is on 18 August at 10:30 am.",
+"item": {
+"type": "appointment",
+"title": "Ishaan's passport appointment",
+"date": "2027-08-18",
+"time": "10:30"
+}
+},
+{
+"said": "Plumber Murugan will come on 23 June at 4 pm to fix the bathroom tap.",
+"item": {
+"type": "appointment",
+"title": "Plumber Murugan",
+"date": "2027-06-23",
+"time": "16:00"
+}
+},
+{
+"said": "Yoga class every Wednesday at 6:15 am at the community hall.",
+"item": {
+"type": "routine",
+"title": "Yoga class",
+"weekdays": [
+"Wednesday"
+],
+"time": "06:15"
+}
+},
+{
+"said": "Zoya's school PTM is on 26 June at 9 am.",
+"item": {
+"type": "appointment",
+"title": "Zoya's PTM",
+"date": "2027-06-26",
+"time": "09:00"
+}
+},
+{
+"said": "Car service at the Hyundai workshop on 2 July.",
+"item": {
+"type": "appointment",
+"title": "Car service",
+"date": "2027-07-02"
+}
+},
+{
+"said": "Order Diwali sweets from Anand Sweets by 25 October.",
+"item": {
+"type": "task",
+"title": "Diwali sweets",
+"date": "2027-10-25"
+}
+},
+{
+"said": "Thatha's cataract surgery is on 14 September at 7 am.",
+"item": {
+"type": "appointment",
+"title": "Thatha's cataract surgery",
+"date": "2027-09-14",
+"time": "07:00"
+}
+},
+{
+"said": "Aarav's swimming fee of ₹1,800 is due on 30 June.",
+"item": {
+"type": "bill",
+"title": "Aarav's swimming fee",
+"date": "2027-06-30",
+"amount": 1800
+}
+},
+{
+"said": "Dr. Bhattacharya, the ENT doctor, on 11 July at 5:30 pm.",
+"item": {
+"type": "appointment",
+"title": "Dr. Bhattacharya (ENT)",
+"date": "2027-07-11",
+"time": "17:30"
+}
+},
+{
+"said": "LIC premium of ₹14,250 is due on 28 September.",
+"item": {
+"type": "bill",
+"title": "LIC premium",
+"date": "2027-09-28",
+"amount": 14250
+}
+},
+{
+"said": "Sneha's wedding sangeet is on 12 December in Udaipur.",
+"item": {
+"type": "important_date",
+"title": "Sneha's sangeet",
+"date": "2027-12-12"
+}
+},
+{
+"said": "The fridge warranty ends on 30 November.",
+"item": {
+"type": "important_date",
+"title": "Fridge warranty",
+"date": "2027-11-30"
+}
+},
+{
+"said": "Meenakshi owes me ₹2,200 for the Ooty trip.",
+"item": {
+"type": "receivable",
+"title": "Meenakshi's dues",
+"amount": 2200
+}
+},
+{
+"said": "Kindle Unlimited renewal of ₹169 on 19 June.",
+"item": {
+"type": "bill",
+"title": "Kindle Unlimited renewal",
+"date": "2027-06-19",
+"amount": 169
+}
+},
+{
+"said": "Paati's mango pickle needs 2 kg raw mangoes and 250 g mustard.",
+"item": {
+"type": "note",
+"title": "Paati's mango pickle"
+}
+},
+{
+"said": "Tatkal booking for the Chennai train opens on 9 July at 10 am.",
+"item": {
+"type": "task",
+"title": "Tatkal booking",
+"date": "2027-07-09",
+"time": "10:00"
+}
+},
+{
+"said": "Neighbour Kumaran is collecting our parcel on 15 June.",
+"item": {
+"type": "task",
+"title": "Kumaran's parcel",
+"date": "2027-06-15"
+}
+},
+{
+"said": "Guitar lesson with Fernandes every Friday at 7 pm.",
+"item": {
+"type": "routine",
+"title": "Guitar lesson",
+"weekdays": [
+"Friday"
+],
+"time": "19:00"
+}
+},
+{
+"said": "Rent agreement renewal with Mr. Pillai is due on 31 August.",
+"item": {
+"type": "task",
+"title": "Rent agreement renewal",
+"date": "2027-08-31"
+}
+},
+{
+"said": "Vaccination for our dog Bruno on 5 July at 11 am.",
+"item": {
+"type": "appointment",
+"title": "Bruno's vaccination",
+"date": "2027-07-05",
+"time": "11:00"
+}
+},
+{
+"said": "Gas bill of ₹1,145 due on 16 October.",
+"item": {
+"type": "bill",
+"title": "Gas bill",
+"date": "2027-10-16",
+"amount": 1145
+}
+},
+{
+"said": "Electricity bill of ₹2,980 due on 9 December.",
+"item": {
+"type": "bill",
+"title": "Electricity bill",
+"date": "2027-12-09",
+"amount": 2980
+}
+},
+{
+"said": "Water bill of ₹640 due on 21 August.",
+"item": {
+"type": "bill",
+"title": "Water bill",
+"date": "2027-08-21",
+"amount": 640
+}
+},
+{
+"said": "Note: the spare scooter key is in the blue tin on the kitchen shelf.",
+"item": {
+"type": "note",
+"title": "Spare scooter key"
+}
+},
+{
+"said": "Note: the Wi-Fi router is behind the TV in the hall.",
+"item": {
+"type": "note",
+"title": "Wi-Fi router"
+}
+},
+{
+"said": "Chitra's birthday is on 25 October.",
+"item": {
+"type": "important_date",
+"title": "Chitra's birthday",
+"date": "2027-10-25"
+}
+},
+{
+"said": "Chitra's birthday is on 10 August.",
+"item": {
+"type": "important_date",
+"title": "Chitra's birthday",
+"date": "2027-08-10"
+}
+},
+{
+"said": "Return Tara's drill machine by 18 November.",
+"item": {
+"type": "task",
+"title": "Return Tara's drill machine",
+"date": "2027-11-18"
+}
+},
+{
+"said": "Yamini's birthday is on 24 August.",
+"item": {
+"type": "important_date",
+"title": "Yamini's birthday",
+"date": "2027-08-24"
+}
+},
+{
+"said": "Return Deepak's cookbook by 23 August.",
+"item": {
+"type": "task",
+"title": "Return Deepak's cookbook",
+"date": "2027-08-23"
+}
+},
+{
+"said": "Badminton with Mansi every Saturday at 3 pm.",
+"item": {
+"type": "routine",
+"title": "Badminton with Mansi",
+"weekdays": [
+"Saturday"
+],
+"time": "15:00"
+}
+},
+{
+"said": "Dermatologist Dr. Menon on 16 November at 10 am.",
+"item": {
+"type": "appointment",
+"title": "Dr. Menon",
+"date": "2027-11-16",
+"time": "10:00"
+}
+},
+{
+"said": "Return Tara's cookbook by 3 December.",
+"item": {
+"type": "task",
+"title": "Return Tara's cookbook",
+"date": "2027-12-03"
+}
+},
+{
+"said": "Note: Sameer prefers morning calls.",
+"item": {
+"type": "note",
+"title": "Sameer prefers morning calls"
+}
+},
+{
+"said": "Meeting with Naveen about the budget on 23 March at 2 pm.",
+"item": {
+"type": "appointment",
+"title": "Meeting with Naveen",
+"date": "2028-03-23",
+"time": "14:00"
+}
+},
+{
+"said": "Return Chitra's umbrella by 11 October.",
+"item": {
+"type": "task",
+"title": "Return Chitra's umbrella",
+"date": "2027-10-11"
+}
+},
+{
+"said": "Note: Esha prefers WhatsApp over email.",
+"item": {
+"type": "note",
+"title": "Esha prefers WhatsApp over email"
+}
+},
+{
+"said": "Pay the DTH bill of ₹2,660 by 26 December.",
+"item": {
+"type": "bill",
+"title": "DTH bill",
+"date": "2027-12-26",
+"amount": 2660
+}
+},
+{
+"said": "Buy light bulbs from the corner shop on 14 March.",
+"item": {
+"type": "task",
+"title": "Buy light bulbs",
+"date": "2028-03-14"
+}
+},
+{
+"said": "Naveen's birthday is on 12 January.",
+"item": {
+"type": "important_date",
+"title": "Naveen's birthday",
+"date": "2028-01-12"
+}
+}
+]
+},
+"questions": [
+{
+"id": "SC-01",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When is Ishaan's passport appointment?",
+"rules": {
+"must_include": [
+{
+"date": "2027-08-18"
+},
+{
+"time": "10:30"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-02",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When is the plumber coming?",
+"rules": {
+"must_include": [
+{
+"date": "2027-06-23"
+},
+{
+"time": "16:00"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-03",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "What time is my yoga class?",
+"rules": {
+"must_include": [
+{
+"time": "06:15"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-04",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When is Zoya's PTM?",
+"rules": {
+"must_include": [
+{
+"date": "2027-06-26"
+},
+{
+"time": "09:00"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-05",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When is the car service?",
+"rules": {
+"must_include": [
+{
+"date": "2027-07-02"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-06",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "By when should I order the Diwali sweets?",
+"rules": {
+"must_include": [
+{
+"date": "2027-10-25"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-07",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When is Thatha's cataract surgery?",
+"rules": {
+"must_include": [
+{
+"date": "2027-09-14"
+},
+{
+"time": "07:00"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-08",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "How much is Aarav's swimming fee and when is it due?",
+"rules": {
+"must_include": [
+{
+"amount": 1800
+},
+{
+"date": "2027-06-30"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-09",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When am I seeing Dr. Bhattacharya?",
+"rules": {
+"must_include": [
+{
+"date": "2027-07-11"
+},
+{
+"time": "17:30"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-10",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "How much is the LIC premium?",
+"rules": {
+"must_include": [
+{
+"amount": 14250
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-11",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "Where is Sneha's sangeet?",
+"rules": {
+"must_include": [
+{
+"text": [
+"Udaipur"
+]
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-12",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When does the fridge warranty end?",
+"rules": {
+"must_include": [
+{
+"date": "2027-11-30"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-13",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "How much does Meenakshi owe me?",
+"rules": {
+"must_include": [
+{
+"amount": 2200
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-14",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When is the Kindle renewal?",
+"rules": {
+"must_include": [
+{
+"date": "2027-06-19"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-15",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "How many raw mangoes does Paati's pickle need?",
+"rules": {
+"must_include": [
+{
+"text": [
+"2 kg",
+"2kg",
+"two kg",
+"2 kilo"
+]
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-16",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When does Tatkal booking open for the Chennai train?",
+"rules": {
+"must_include": [
+{
+"date": "2027-07-09"
+},
+{
+"time": "10:00"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-17",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When is Kumaran collecting the parcel?",
+"rules": {
+"must_include": [
+{
+"date": "2027-06-15"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-18",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "What time is my guitar lesson?",
+"rules": {
+"must_include": [
+{
+"time": "19:00"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-19",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When is the rent agreement renewal due?",
+"rules": {
+"must_include": [
+{
+"date": "2027-08-31"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-20",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When is Bruno's vaccination?",
+"rules": {
+"must_include": [
+{
+"date": "2027-07-05"
+},
+{
+"time": "11:00"
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-21",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "How much is the gas bill due in October?",
+"rules": {
+"must_include": [
+{
+"amount": 1145
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": "crowded"
+},
+{
+"id": "SC-22",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "When is the electricity bill due in December, and how much?",
+"rules": {
+"must_include": [
+{
+"date": "2027-12-09"
+},
+{
+"amount": 2980
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": "crowded"
+},
+{
+"id": "SC-23",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "How much is the water bill due in August?",
+"rules": {
+"must_include": [
+{
+"amount": 640
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": "crowded"
+},
+{
+"id": "SC-24",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "Where is the spare scooter key?",
+"rules": {
+"must_include": [
+{
+"text": [
+"blue tin"
+]
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-25",
+"type": "lookup",
+"today": "2027-06-07",
+"question": "Where is the Wi-Fi router?",
+"rules": {
+"must_include": [
+{
+"text": [
+"behind the TV",
+"behind the tv"
+]
+}
+],
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-26",
+"type": "unknown",
+"today": "2027-06-07",
+"question": "When is Ishaan's visa interview?",
+"rules": {
+"abstain": true,
+"consistent": true,
+"no_the_user": true
+},
+"note": "Ishaan's passport appointment is saved"
+},
+{
+"id": "SC-27",
+"type": "unknown",
+"today": "2027-06-07",
+"question": "What is Zoya's blood group?",
+"rules": {
+"abstain": true,
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-28",
+"type": "unknown",
+"today": "2027-06-07",
+"question": "When is the car insurance due?",
+"rules": {
+"abstain": true,
+"consistent": true,
+"no_the_user": true
+},
+"note": "the car service is saved"
+},
+{
+"id": "SC-29",
+"type": "unknown",
+"today": "2027-06-07",
+"question": "How much does Rohit owe me?",
+"rules": {
+"abstain": true,
+"consistent": true,
+"no_the_user": true
+},
+"note": ""
+},
+{
+"id": "SC-30",
+"type": "unknown",
+"today": "2027-06-07",
+"question": "When is Thatha's dentist appointment?",
+"rules": {
+"abstain": true,
+"consistent": true,
+"no_the_user": true
+},
+"note": "Thatha's cataract surgery is saved"
+}
+],
+"list_questions": [
+"Which bills do I have to pay this week?",
+"What's my plan for Saturday?",
+"Anything to pay before Sneha's sangeet?"
+]
+}

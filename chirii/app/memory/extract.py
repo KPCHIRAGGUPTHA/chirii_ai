@@ -27,7 +27,8 @@ _D = r"(\d{1,2})(?:st|nd|rd|th)?"
 _WD = "|".join(WEEKDAYS)
 
 NEGATED = re.compile(rf"\bnot\s+(?:on\s+)?(?:the\s+)?\d{{1,2}}(?:st|nd|rd|th)?(?:\s+(?:of\s+)?(?:{_M})\b)?", re.I)
-DATE_RANGE = re.compile(rf"\bfrom\s+{_D}(?:\s+(?:of\s+)?({_M}))?\s+(?:to|till|until|-|–)\s+{_D}\s+(?:of\s+)?({_M})\b", re.I)
+# S4d: "from" is optional ("moved to 5 to 7 March", "between 16 and 19 March", "15-30 March")
+DATE_RANGE = re.compile(rf"\b(?:from\s+|between\s+)?{_D}(?:\s+(?:of\s+)?({_M}))?\s*(?:to|till|until|and|-|–)\s*{_D}\s+(?:of\s+)?({_M})\b", re.I)
 DAY_MONTH = re.compile(rf"\b{_D}(?:\s+of)?\s+({_M})\b\.?", re.I)
 MONTH_DAY = re.compile(rf"\b({_M})\.?\s+{_D}\b", re.I)
 _ORD = r"(\d{1,2})(?:st|nd|rd|th)"
@@ -67,6 +68,9 @@ DOSE_TIMES = re.compile(r"\b(before breakfast|after breakfast|before lunch|after
 PAID = re.compile(r"(?<!\bbe )(?<!\bto )\bpaid\b", re.I)
 MOVED = re.compile(r"^\s*correction\b|\b(moved|postponed|rescheduled|extended|preponed|shifted|changed)\b|\bnow\s+(?:on|at)\b", re.I)
 CANCELLED = re.compile(r"\b(cancelled|canceled|called off)\b", re.I)
+# S4d: "Returned the library book today", "Patel cleared their dues today": something finished, said when it happened
+DONE = re.compile(r"\b(returned|sent back|submitted|collected|picked up|finished|completed|renewed|cleared|settled|filed|done)\b", re.I)
+DONE_WHEN = re.compile(r"\b(today|yesterday|just|already|this morning|now)\b", re.I)
 SAME_TIME = re.compile(r"\bsame time\b", re.I)
 
 FIRST_RULES: List[Tuple[str, re.Pattern]] = [
@@ -260,7 +264,7 @@ def find_dates(text: str, said_on: date) -> Tuple[List[Tuple[int, date]], Option
 def classify(text: str, has_amount: bool, has_date: bool, has_time: bool, weekly: bool) -> str:
     if NOTE_START.search(text):
         return "note"
-    if PAID.search(text) or MOVED.search(text) or CANCELLED.search(text):
+    if PAID.search(text) or MOVED.search(text) or CANCELLED.search(text) or (DONE.search(text) and DONE_WHEN.search(text)):
         return "update"
     for kind, pattern in FIRST_RULES:
         if pattern.search(text):
@@ -324,6 +328,7 @@ def extract(text: str, said_on: date) -> Item:
     if kind == "medicine":
         item.dose_times = [m.group(1).lower() for m in DOSE_TIMES.finditer(text)]
     if kind == "update":
-        item.action = "cancelled" if CANCELLED.search(text) else "paid" if PAID.search(text) else "moved"
+        item.action = ("cancelled" if CANCELLED.search(text) else "paid" if PAID.search(text)
+                       else "done" if DONE.search(text) and DONE_WHEN.search(text) and not MOVED.search(text) else "moved")
         item.keep_time = bool(SAME_TIME.search(text))
     return item

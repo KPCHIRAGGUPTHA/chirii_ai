@@ -24,7 +24,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from chirii.app.formatting import KIND_LABELS, make_title, say_amount, say_date, say_time, when_text
 from chirii.app.guard import check_answer
 from chirii.app.windows import question_window
-from chirii.app.planner import Draft, label_for, plan_draft, status_draft, strip_when, window_draft
+from chirii.app.planner import MONEY_QUESTION, Draft, label_for, plan_draft, status_draft, strip_when, window_draft
 from chirii.app.router import LIVE, MATHS_WORDS, MEMORY_ROUTES, matched_terms, mentions_all, mentions_specific, route as route_question, term_matches
 from chirii.app.chat import LABELS, general_answer, maths_answer, writing_answer
 from chirii.app.llm.client import ChatModel
@@ -163,7 +163,15 @@ def lead_problems(lead: str, draft: Draft, today: date, question: str) -> List[s
     problems = check_answer(lead, draft.items, {}, today, question)
     if draft.clash and NO_CLASH.search(lead):
         problems.append("lead denies the clash")
+    # S4d (owner, after run (e3)): a lead may not say there is nothing when the code's list has items
+    if draft.items and NOTHING.search(lead.replace("’", "'")):
+        problems.append("lead says there is nothing, but the list has items")
     return problems
+
+
+NOTHING = re.compile(r"\b(nothing|no (payments?|bills?|dues?|plans?|appointments?|tasks?)|none)\b|\b(do not|don't|dont) (have|need) to pay\b|"
+                     r"\b(not|n't) (have|need) to (pay|do) anything\b|\b(you'?re|you are) (completely |all )?free\b|\bfree (day|evening|weekend)\b|"
+                     r"\b(all|completely) clear\b", re.I)
 
 
 def lead_prompt(today: date) -> str:
@@ -315,6 +323,9 @@ class Assistant:
         if route.kind == "status":
             candidates = [i for i in self.matches(question)
                           if mentions_all(route.specific, i["text"] + " " + (i.get("title") or ""))] if route.specific else self.matches(question)
+            # S4d: a question about money is about an item with an amount (the trip fee, not the trip)
+            if MONEY_QUESTION.search(question) and any(i.get("amount") is not None for i in candidates):
+                candidates = [i for i in candidates if i.get("amount") is not None]
             item = candidates[0] if candidates else None
             draft = status_draft(item, self.store.history(item["id"]) if item else [], question)
             return Answer(text=draft.text, fact_ids=[i["id"] for i in draft.items], guard="code"), draft.items

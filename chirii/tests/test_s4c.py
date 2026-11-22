@@ -9,7 +9,7 @@ from datetime import date
 import pytest
 
 from chirii.app.assistant import Assistant
-from chirii.app.chat import NO_LIVE_ANSWER, expression_ok, allowed_numbers
+from chirii.app.chat import NO_LIVE_ANSWER
 from chirii.app.memory.embeddings import HashEmbedder
 from chirii.app.memory.store import MemoryStore
 from chirii.app.periods import read_period
@@ -99,7 +99,7 @@ class TestSpecificAndTime:
 
     def test_lookup_answer_gets_the_time_added(self, store):
         answer = Assistant(store, FakeModel(["Your dentist appointment is on Friday 5 March 2027."])).ask("When is the dentist?", WED)
-        assert answer.text.endswith("It's at 4:00 pm.") and answer.label == "From your memory"
+        assert answer.text.endswith("It's at 4:00 pm.") and answer.label == "From your memories"
 
     def test_people_route(self, store):
         answer = Assistant(store, FakeModel()).ask("Who is Farhan?", WED)
@@ -107,20 +107,24 @@ class TestSpecificAndTime:
 
 
 class TestChat:
+    """S4d: the formula library; labels per the owner's spec (From your memories / Calculated / General answer)."""
 
-    def test_maths_uses_the_calculator_not_the_model_s_arithmetic(self, store):
-        model = FakeModel([{"expression": "3500 * 12 / 100"}])
-        answer = Assistant(store, model).ask("What is 12% of 3,500?", WED)
-        assert answer.text.startswith("420") and answer.label == "Calculated" and answer.guard == "code"
+    @staticmethod
+    def formula(name, numbers, from_unit=None, to_unit=None, expression=None):
+        return {"formula": name, "numbers": numbers, "from_unit": from_unit, "to_unit": to_unit, "expression": expression}
 
-    def test_an_expression_with_an_invented_number_is_refused(self, store):
-        answer = Assistant(store, FakeModel([{"expression": "3500 * 15 / 100"}])).ask("What is 12% of 3,500?", WED)
+    def test_maths_uses_the_formula_library(self, store):
+        answer = Assistant(store, FakeModel([self.formula("percent_of", [12, 3500])])).ask("What is 12% of 3,500?", WED)
+        assert answer.text.startswith("420") and "3,500 × 12% = 420" in answer.text
+        assert answer.label == "Calculated" and answer.guard == "code"
+
+    def test_a_number_not_in_the_question_is_refused(self, store):
+        answer = Assistant(store, FakeModel([self.formula("percent_of", [15, 3500])])).ask("What is 12% of 3,500?", WED)
         assert answer.text.startswith("I couldn't work that out reliably") and answer.guard == "fallback"
-        assert not expression_ok("3500 * 15 / 100", allowed_numbers("What is 12% of 3,500?", []))
 
     def test_mixed_maths_may_use_saved_amounts(self, store):
-        answer = Assistant(store, FakeModel([{"expression": "900 / 2"}])).ask("If Farhan pays half, how much is left?", WED)
-        assert answer.text.startswith("₹450") and answer.label == "Calculated from your memory"
+        answer = Assistant(store, FakeModel([self.formula("split", [900, 2])])).ask("If Farhan pays half, how much is left?", WED)
+        assert answer.text.startswith("₹450") and answer.label == "Calculated"
 
     def test_days_until_a_saved_event_by_code(self, store):
         model = FakeModel()
@@ -130,13 +134,13 @@ class TestChat:
     def test_live_information_is_refused_by_code(self, store):
         model = FakeModel()
         answer = Assistant(store, model).ask("What's the petrol price today?", WED)
-        assert answer.text == NO_LIVE_ANSWER and model.calls == [] and answer.label == "General knowledge"
+        assert answer.text == NO_LIVE_ANSWER and model.calls == [] and answer.label == "General answer"
 
     def test_general_knowledge_goes_to_the_model(self, store):
         answer = Assistant(store, FakeModel(["Dispur is the capital of Assam."])).ask("What is the capital of Assam?", WED)
-        assert answer.text.startswith("Dispur") and answer.label == "General knowledge"
+        assert answer.text.startswith("Dispur") and answer.label == "General answer"
 
     def test_writing_that_makes_up_an_amount_is_retried(self, store):
         model = FakeModel(["Dear Farhan, please return the ₹1,500 you owe me.", "Dear Farhan, please pay the ₹900 for the cake order."])
         answer = Assistant(store, model).ask("Write a polite reminder to Farhan about the money he owes me.", WED)
-        assert answer.guard == "retry" and "₹900" in answer.text and answer.label in ("Writing help", "Advice using your memory")
+        assert answer.guard == "retry" and "₹900" in answer.text and answer.label == "General answer"

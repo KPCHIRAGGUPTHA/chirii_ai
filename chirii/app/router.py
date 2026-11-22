@@ -35,7 +35,7 @@ RELATIONS = re.compile(r"\b(mom|mum|mother|dad|father|amma|appa|papa|mummy|wife|
 PLAN = re.compile(r"\b(plan|planner|schedule|agenda|timetable for my)\b|\bmy (day|week)\b|\b(aaj|kal) ka plan\b|"
                   r"\b(look|looks|looking) like\b|\bhow (does|do|will) my \w+ look\b|\bhow'?s my \w+ looking\b|"
                   r"\bwhat'?s my \w+ like\b|\bon my plate\b|\bkaisa (hai|rahega)\b|"
-                  r"\btell me about my (day|week|\w+day)\b", re.I)
+                  r"\btell me about my (day|week|weekend|\w+day)\b", re.I)
 STATUS = re.compile(r"^\s*(did|have|has|is|are|was|were|do|does)\b.*\b(paid|pay|taken|took|done|submitted|collected|finished|"
                     r"booked|renewed|cleared|settled|returned|delivered|pending|owe|due)\b|^\s*did i\b", re.I)
 LIST_WORDS = re.compile(r"\b(what|which|any|anything|due|pay|payments?|bills?|fees?|coming up|upcoming|happening|have|on|dates?|kya|"
@@ -44,7 +44,8 @@ STILL_TO_PAY = re.compile(r"\bstill (have to|need to|got to)? ?pay\b|\b(unpaid|o
 MEANING = re.compile(r"^\s*(what did (i|the|my)|what does|what do(es)? \w+ want|what should i (take|carry|bring|remember)|which topics|"
                      r"where did|where is|what do i need to (buy|carry|take|bring|get)|what was|anything special|tell me about the)\b", re.I)
 LOOKUP = re.compile(r"^\s*(when|what time|how much|how many|what is|what's|where|who|which)\b|\b(kab|kitna|kitni|kya hai)\b", re.I)
-WHO_IS = re.compile(r"^\s*(who is|who's|tell me about)\s+([A-Z][\w.]*(?:\s+[A-Z][\w.]*)?)", re.I)
+# S4d: the name part is case-sensitive, so "tell me about my week" never treats "my" as a name
+WHO_IS = re.compile(r"^\s*(?i:who is|who's|tell me about)\s+([A-Z][\w.]*(?:\s+[A-Z][\w.]*)?)")
 WRITING = re.compile(r"^\s*(write|draft|compose|rewrite|translate|suggest|explain|give me \d* ?(tips|ideas|ways)|list \d* ?(tips|ideas|ways)|"
                      r"help me (write|say|word))\b", re.I)
 ADVICE = re.compile(r"^\s*(how (do|can|should) i|how to|what should|any tips|is it (ok|okay|safe)|should i)\b", re.I)
@@ -52,7 +53,7 @@ LIVE = re.compile(r"\b(today'?s|right now|now|currently|current|latest|live|yest
                   r"score|match|result|traffic|temperature)\b|\b(price|rate|weather|news|score)\b.*\b(today|now|right now|currently)\b", re.I)
 MATHS_WORDS = re.compile(r"\d+(\.\d+)?\s*%|\b(percent|interest|split|divide|divided|share equally|equally|per (day|month|person|kg|litre)|"
                          r"each part|each person|instalments?|installments?|convert|km/h|m/s|square (feet|metres|meters)|area|"
-                         r"how many days|days (from|between|until|till)|in total|altogether|sum of|total of|half|double|twice|"
+                         r"how many days|days (from|between|until|till)|in total|altogether|sum of|total of|add|half|double|twice|"
                          r"plus|minus|times|multiplied)\b|\d\s*[-+*/x×÷]\s*\d|\bcost of\b|\bwhat do \d+ \w+ cost\b", re.I)
 PAY = re.compile(r"\b(pay|payments?|bills?|fees?|emis?|premiums?|rent)\b", re.I)
 OWED_TO_ME = re.compile(r"\bowe(s|d)? me\b|\bowed to me\b|\bmoney (due|owed) to me\b|\bto receive\b|\blena hai\b", re.I)
@@ -159,8 +160,13 @@ def is_personal(question: str, names_in_memory: List[str], items: Optional[List[
         return True
     if any(re.search(rf"\b{re.escape(n.lower())}\b", question.lower()) for n in names_in_memory):
         return True
-    things = [t for t in specific_terms(question) if not t.startswith("!")]
+    terms = specific_terms(question)
+    things = [t for t in terms if not t.startswith("!")]
     if items and any(term_matches(t, i["text"]) for t in things for i in items):
+        return True
+    # S4d: a name or abbreviation from the question ("GST", "Patel") that a saved item mentions
+    names = [t for t in terms if t.startswith("!")]
+    if items and any(term_matches(n, i["text"]) for n in names for i in items):
         return True
     from chirii.app.memory.store import keywords
     words = keywords(question)
@@ -192,7 +198,7 @@ def route_by_rules(question: str, today: date, items: Optional[List[Dict[str, An
         return Route(kind, kw.pop("window", window), kw.pop("focus", []), specific, period=period, personal=personal, **kw)
 
     who = WHO_IS.match(question)
-    if who and any(term_matches(who.group(2).split()[0], i["text"]) for i in items):
+    if who and any(term_matches(who.group(1).split()[0], i["text"]) for i in items):
         return r("people")
     maths = bool(MATHS_WORDS.search(question))
     if maths and personal:
@@ -216,7 +222,8 @@ def route_by_rules(question: str, today: date, items: Optional[List[Dict[str, An
             period = Period(today, today, "today", "day")
         return Route("plan", (period.start, period.end), [], specific, period=period, personal=True)
     # "Do I need to pay anything…?" asks for a list, not the status of one item
-    if STATUS.search(question) and not re.search(r"\bany(thing)?\b", question, re.I):
+    # ...but "Do I still owe anything for the recital?" names no period, so it is about one item (S4d)
+    if STATUS.search(question) and (not re.search(r"\bany(thing)?\b", question, re.I) or period is None):
         return r("status")
     if STILL_TO_PAY.search(question):
         named = window is not None

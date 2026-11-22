@@ -324,10 +324,14 @@ class MemoryStore:
                 new_values["status"] = "paid"
         elif update.action == "cancelled":
             new_values["status"] = "cancelled"
+        elif update.action == "done":  # S4d: "cleared their dues today" pays a debt; "returned the book today" finishes a task
+            new_values["status"] = "paid" if target.get("amount") is not None else "done"
         else:
             if update.date and update.date != target["date"]:
                 new_values["date"] = update.date
-                if target["end_date"] and target["date"]:
+                if update.end_date:  # S4d: a new range replaces the old one ("moved to 4 to 5 April")
+                    new_values["end_date"] = update.end_date
+                elif target["end_date"] and target["date"]:
                     shift = date.fromisoformat(update.date) - date.fromisoformat(target["date"])
                     new_values["end_date"] = (date.fromisoformat(target["end_date"]) + shift).isoformat()
             if update.time and not update.keep_time and update.time != target["time"]:

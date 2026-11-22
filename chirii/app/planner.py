@@ -316,17 +316,32 @@ def status_draft(item: Optional[Dict[str, Any]], history: List[Dict[str, Any]], 
         return Draft(text="I don't have that saved.")
     title = item.get("title") or make_title(item["text"])
     changed = {h["field"]: h for h in history}
+    when = changed.get("status", {}).get("changed_on")
+    told = f" (you told me on {say_date(when)})" if when else ""
+    # S4d: answer in the question's own terms. "Do I still owe…?" / "Is it still pending?" is asked the other way round.
+    still = bool(STILL_QUESTION.search(question))
+    who = re.sub(r"\s+owes?(\s+me)?\b.*$", "", title) if item["kind"] == "receivable" else title
     if item["status"] == "paid":
-        when = changed.get("status", {}).get("changed_on")
-        return Draft(text=f"Yes, {title} is marked paid" + (f" (you told me on {say_date(when)})." if when else "."), items=[item])
+        if item["kind"] == "receivable":
+            return Draft(text=(f"No, {who} doesn't owe you anything now: they paid{told}." if still else f"Yes, {who} has paid you{told}."), items=[item])
+        return Draft(text=(f"No, nothing is pending: {title} is marked paid{told}." if still else f"Yes, {title} is marked paid{told}."), items=[item])
+    if item["status"] == "done":
+        return Draft(text=(f"No, that's done: {title}{told}." if still else f"Yes, that's done: {title}{told}."), items=[item])
     if item["status"] == "cancelled":
         return Draft(text=f"{title} is marked cancelled.", items=[item])
     if item.get("paid_amount"):
         return Draft(text=f"Partly: {say_amount(item['paid_amount'])} has been paid and {say_amount(item['remaining'])} is still owed for {title}.",
                      items=[item], keep=[{"amount": item["remaining"]}])
-    asks_paid = re.search(r"\bpaid\b", question, re.I)
-    if asks_paid and item.get("amount") is not None:
+    if item.get("amount") is not None and (still or re.search(r"\b(paid|pay|owe|owes)\b", question, re.I)):
         due = f", due {say_date(item['date'])}" if item.get("date") else ""
-        return Draft(text=f"No, {title} ({say_amount(item['amount'])}{due}) is not marked paid yet.", items=[item],
+        if item["kind"] == "receivable":
+            return Draft(text=f"{'Yes' if still else 'No'}, {who} still owes you {say_amount(item['amount'])}{due}.", items=[item],
+                         keep=[{"amount": item["amount"]}])
+        return Draft(text=(f"Yes, {title} ({say_amount(item['amount'])}{due}) is still to be paid." if still
+                           else f"No, {title} ({say_amount(item['amount'])}{due}) is not marked paid yet."), items=[item],
                      keep=[{"amount": item["amount"]}])
     return Draft(text=f"I don't have a record of that. I only know what you told me: \"{item['text']}\"", items=[item])
+
+
+STILL_QUESTION = re.compile(r"\bstill\b|\b(pending|outstanding)\b|\bdo i owe\b", re.I)
+MONEY_QUESTION = re.compile(r"\b(owe|owes|pay|paid|fee|fees|bill|due|dues|pending|cleared|money)\b", re.I)

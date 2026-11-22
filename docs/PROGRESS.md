@@ -870,3 +870,16 @@ The system is frozen at the git tag `s6-final` (the commit this entry is in). Fr
 from a spec by a fresh session (owner), checked for format only, reviewed and committed by the owner, and then run
 once on this tag. All tests pass at the tag (854). Scoring rules: `chirii/CRITERIA.md`, "Held-out set: authorship,
 freeze and scoring".
+
+## S6, step 6 – Held-out spec for the fresh session (22 November 2026, after the freeze)
+
+- `chirii/eval/HELDOUT_SPEC.md`: what Chirii is; 30 tasks = 6 types × 5 people, one per person per type; the 5
+  people's profiles (no development-set memories); dates in 2027 with a `said_on` for every sentence; how replies
+  are marked (including "no invented" facts and the summary of lists over 12 lines); the file format the marker reads,
+  with one example of a different person; a checklist. A note at the top tells the owner to copy only this file into
+  an empty folder outside the repository and start the fresh session there.
+- `chirii/eval/check_heldout_format.py` (tests: `test_heldout_format.py`): the builder's format check. It reports
+  errors (the marker or runner can't use a task) and warnings (a needed date or amount in no item and not in
+  `allow`), runs the marker on every task, and never changes the file.
+- Not system code: the tag `s6-final` is unchanged. Still to write before the run: the held-out runner (the same
+  steps as the development runners, using each sentence's `said_on`), committed before the run.

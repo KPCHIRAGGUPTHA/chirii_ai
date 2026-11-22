@@ -136,8 +136,9 @@ def system_prompt(today: date, version: int = 1) -> str:
             f"Today is {say_date(today.isoformat())}.\nRules:\n" + "\n".join(rules))
 
 
-LEAD_SCHEMA = {"type": "object", "properties": {"lead": {"type": "string", "maxLength": 160},
-                                                "closing": {"type": "string", "maxLength": 120}},
+LEAD_MAX, CLOSING_MAX = 160, 120
+LEAD_SCHEMA = {"type": "object", "properties": {"lead": {"type": "string", "maxLength": LEAD_MAX},
+                                                "closing": {"type": "string", "maxLength": CLOSING_MAX}},
                "required": ["lead", "closing"]}
 NO_CLASH = re.compile(r"\bno (clash|clashes|conflicts?|overlaps?)\b|\bnothing (clashes|overlaps)\b", re.I)
 TIME_IN_TEXT = re.compile(r"\b\d{1,2}([:.]\d{2})?\s*(am|pm|a\.m\.|p\.m\.)", re.I)
@@ -317,6 +318,9 @@ class Assistant:
             lead, closing = "", ""
         words = (lead + " " + closing).strip()
         problems = lead_problems(words, draft, today, question) if words else ["no lead"]
+        # Owner, after run (e1): a lead or closing that reached its length limit was cut off mid-word; drop it
+        if len(lead) >= LEAD_MAX or len(closing) >= CLOSING_MAX:
+            problems.append("lead hit the length limit")
         if problems:
             answer.text, answer.guard, answer.first_answer, answer.problems = draft.text, "lead_dropped", words, problems
         else:

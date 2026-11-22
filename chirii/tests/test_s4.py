@@ -296,3 +296,15 @@ class TestS3Bugs:
         s.add("The dentist moved my appointment to 9 February.", SAID)
         text = code_answer([s.get(visit)], {visit: s.history(visit)})
         assert "8 February" not in text and "Tuesday 9 February 2027" in text
+
+
+class TestLeadLength:
+
+    def test_a_lead_that_hits_the_length_limit_is_dropped_not_cut(self, store):
+        from chirii.app.assistant import LEAD_MAX
+        cut = {"lead": ("This week you have a few bills to pay and here they are listed for you in full detail so you can plan "
+                        "your money well and never miss a single due date at all, and the total amount to be p")[:LEAD_MAX],
+               "closing": "aid is ₹"}
+        answer = Assistant(store, FakeModel([cut])).ask("What do I have to pay this week?", MON)
+        assert answer.guard == "lead_dropped" and "lead hit the length limit" in answer.problems
+        assert answer.text.startswith("To pay from Monday 1 February") and "to be p" not in answer.text

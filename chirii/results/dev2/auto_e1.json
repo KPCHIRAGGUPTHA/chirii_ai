@@ -1,0 +1,15 @@
+{
+  "e1": {
+    "A_overall": 13,
+    "B_unknown": 2,
+    "C_invented": 0,
+    "guard": {
+      "pass": 16,
+      "retry": 0,
+      "fallback": 0,
+      "lead_dropped": 0,
+      "code": 4
+    },
+    "median_ms": 5341
+  }
+}

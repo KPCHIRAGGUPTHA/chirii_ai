@@ -1,0 +1,20 @@
+{
+  "_about": "Hand check and labels for run (e1): the S4b system (with the lead fix) on the 20 new development tasks, first try. Written after reading every reply and before any fix. The marker's score is the official one.",
+  "hand_disagreements": {
+    "D2-16": {"auto": true, "hand": false, "why": "Asked about the weekend; the list also gives Wednesday's physiotherapy and the lead calls it part of 'this weekend'. 'This weekend' was not understood as a period, so a default 7-day list was shown; the two required items happen to be in it."}
+  },
+  "labels": {
+    "D2-02": ["code: period not understood", "'Before the weekend' is not a period the router knows. 'Pending' sent it to the 'still to pay' list (90 days), which includes the 19 and 22 January bills."],
+    "D2-03": ["code: routing and specific-item check", "'What does my Saturday look like?' is not recognised as a day plan; 'Saturday' (capitalised) was taken as a name and the specific-item check answered 'I don't have anything about Saturday saved'."],
+    "D2-06": ["code: routing", "'Is … still pending?' is a status question, but 'pending' sent it to the payment list, which (correctly) left the paid fee out and said nothing was due, instead of saying it was paid."],
+    "D2-07": ["code: period not understood", "'Before we leave for Madurai' sets the period by a memory (the trip on 28 January). No rule matched; Qwen's routing chose 'status'."],
+    "D2-09": ["code: routing", "'How much … this week' is excluded from the window route (questions starting 'how much' go to lookup). On the lookup path Qwen then chose Mr. Kulkarni's ₹2,700 (money owed to the user) instead of the Sai Agencies bill, which was in the lines (wrong item used)."],
+    "D2-17": ["model behaviour", "Asked 'when'; gave the date but not the 6:15 am time, which was in the line."],
+    "D2-19": ["wrong item used", "Only the Infosys offer letter is saved. The specific-item check passed because 'Infosys' matches; it does not check 'interview'. Qwen called the joining date the interview date."]
+  },
+  "other_findings": [
+    "Lead cut off: in D2-02 the lead reached its 160-character limit mid-word and the JSON continued into the closing line ('The total amount to be p' … 'aid is ₹'). The guard passed it because no wrong value was stated. A lead that hits the limit should be dropped.",
+    "Leads now state facts freely; in D2-02 and D2-16 they repeated the code's wrong list (the list was wrong, not the lead).",
+    "No fallbacks and no dropped leads in 20 tasks after the lead fix (run (d): 16 of 50)."
+  ]
+}

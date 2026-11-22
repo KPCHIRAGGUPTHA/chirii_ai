@@ -459,3 +459,42 @@ number, not a fresh one:** S4 was built in response to these tasks' failures.
 **Next:** decide the lead rule (check the lead with the guard only, as specified), then the owner's next items:
 general chat, then people and profile memory. After those: the safety layer, the 500-item scale check, and the fresh
 extraction set.
+
+## Lead fix, cosmetics, and a fresh check on 20 new tasks (22 November 2026)
+
+**What was done**
+- **Lead check is now the guard only** (the owner's spec). It allows the start date of a period the question names.
+  A lead that fails is dropped and the list is shown alone, counted as "lead dropped", apart from fallbacks.
+- **Cosmetics:**
+  - no clause splits after Dr., Mr., Mrs., Ms., Smt., Shri or Sri;
+  - "Mrs. Deshpande owes you ₹3,450";
+  - "the user" removed from every S4 prompt and answer template, with a test that scans them all. The version-1
+    prompt and fact line are kept unchanged so runs (a) and (b) stay reproducible.
+- **A second development set of 20 new tasks**: same 5 people, all 6 types, new situations and phrasings. Committed
+  with its marking rules before any run (`chirii/eval/DEV2_TASKS.md`).
+
+**Run (e1): first try on the 20 new tasks** (`chirii/results/dev2/RUN_E1.md`)
+
+| | Run (d), the 50 tasks S4 was built on | **Run (e1), 20 new tasks** |
+| :--- | ---: | ---: |
+| Overall (marker) | 49/50 (98%) | **13/20 (65%)** |
+| Overall (hand check) | 50/50 | **12/20 (60%)** |
+| Fallbacks / dropped leads | 16 / – | **0 / 0** |
+
+- **The 50-task set was saturated.** 13/20 means a true rate of roughly 43–82%, far below the 98% on the tuned set.
+- **5 of the 7 failures are the code misreading a new phrasing.** The S4 router and period reader were written for
+  the first set's wording. They miss:
+  - "before the weekend" and "this weekend";
+  - "what does my Saturday look like" ("Saturday" was taken as a name);
+  - "is it still pending" (sent to the payment list, not a status answer);
+  - "before we leave for Madurai";
+  - "how much … this week".
+- **The other 2 are on Qwen's side:** a missing flight time, and an "interview" date taken from the Infosys offer
+  letter. The specific-item check matched "Infosys" but didn't check "interview".
+- **Single-memory lookups still work** (6 of 7). The lead fix removed every fallback.
+- **New bug:** a lead that hit its length limit was cut mid-word.
+
+**What this means:** the weak point is now the rules that read the question. Fixing the six phrasings above would
+be tuning to this set again. A more general fix, such as reading periods ("weekend", relative to a saved event)
+more broadly, or letting Qwen pick the route and period within a strict schema with code checking it, should be
+judged on new tasks again.

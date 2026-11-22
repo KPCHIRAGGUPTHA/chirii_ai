@@ -1,7 +1,8 @@
 """
 Marker for the general-chat tasks of development set 3 (written with the tasks, before S4c was built).
 
-    number       the reply contains this number (commas and ₹ ignored; within 0.01)
+    number       the reply contains this number (commas and ₹ ignored; within 0.01, or the task's "tolerance")
+    working      the reply shows its working (an "=" sign), dev set 4
     must_include every listed fact appears (as in scoring.py: {"text": [...]} matches any phrase as whole words)
     must_not     none of these appear
     no_live      the reply says it can't give live or up-to-date information, and gives no figure as if it were current
@@ -36,8 +37,11 @@ def score_chat(task: Dict[str, Any], reply: str) -> Dict[str, Any]:
     today = date.fromisoformat(task["today"])
     rules = task["rules"]
     failures: List[str] = []
-    if "number" in rules and not any(abs(n - rules["number"]) < 0.01 for n in numbers_in(reply)):
+    tolerance = rules.get("tolerance", 0.01)  # dev set 4: some answers (EMI, conversions) are rounded
+    if "number" in rules and not any(abs(n - rules["number"]) <= tolerance + 1e-9 for n in numbers_in(reply)):
         failures.append(f"missing the number {rules['number']}")
+    if rules.get("working") and "=" not in reply:  # dev set 4: maths answers show brief working
+        failures.append("shows no working")
     for fact in rules.get("must_include", []):
         if not contains(reply, fact, today):
             failures.append(f"missing {fact}")

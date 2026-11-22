@@ -195,6 +195,21 @@ system, with the same settings and marker as the development runs.
   that period's first and last dates count as worked-out values, as with the S4b period-end rule.
 - **The held-out 30 stay untouched until S6.**
 
+### After run (e3); development set 4 and run (e4) (owner, 22 Nov; written before S4d and S4e were built)
+
+- **Marker change after (e3):** the specified partial-match answer ("I have …, but nothing about …") counts as saying the
+  thing is not in memory. Run (e3) is re-marked next to its original (`chirii/results/dev3/REMARKED_E3.md`: 23 → 26 of 30).
+- **Development set 4** (`chirii/eval/DEV4_TASKS.md`): 15 memory tasks, 15 people and profile tasks, 15 maths tasks
+  using the formula library, and 10 general-knowledge tasks, 5 of them Indian terms. Committed with its marking rules
+  before S4d and S4e.
+- **New marker rules for dev set 4:**
+  - people answers may not both say "not saved" and give the answer, and may not say "the user";
+  - maths answers must show their working ("=");
+  - some maths tasks have a rounding tolerance (EMI ±₹1, conversions ±0.01).
+- **Run (e4)** is run **once** after S4d and S4e. It is a fresh first-try number, reported next to (e3), with margins of
+  error, and with router and answer-label accuracy shown separately.
+- **The held-out 30 stay untouched until S6.**
+
 ### Held-out test set (owner's change)
 
 - In S6, before the final report, 30 new tasks are written:

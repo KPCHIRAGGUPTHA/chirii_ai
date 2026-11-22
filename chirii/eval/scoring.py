@@ -402,6 +402,13 @@ def score_task(task: Dict[str, Any], reply: str) -> Dict[str, Any]:
         failures.append("clash not pointed out")
     if rules.get("abstain") and not ABSTAIN_PHRASES.search(reply.replace("’", "'")):
         failures.append("did not say it isn't in memory")
+    # Rules added for development set 4 (written before S4d/S4e): an answer may not both say it has nothing and give
+    # the answer, and never calls the person "the user"
+    if rules.get("consistent") and ABSTAIN_PHRASES.search(reply.replace("’", "'")) and rules.get("must_include") \
+            and all(contains(reply, f, today) for f in rules["must_include"]):
+        failures.append("says it isn't saved and also gives the answer")
+    if rules.get("no_the_user") and re.search(r"\bthe user('s)?\b", reply, re.I):
+        failures.append("calls the person 'the user'")
     invented = {kind: values for kind, values in invented_facts(reply, task).items() if values}
     if invented:
         failures.append(f"invented {invented}")

@@ -1,0 +1,166 @@
+{
+  "qwen2_5_1_5b_instruct": {
+    "label": "Plain Qwen2.5-1.5B-Instruct",
+    "new": {
+      "arc_easy": {
+        "value": 0.7592592592592593,
+        "stderr": 0.008772796145221905,
+        "n": null
+      },
+      "hellaswag": {
+        "value": 0.6833300139414459,
+        "stderr": 0.004642268079488934,
+        "n": null
+      },
+      "mmlu": {
+        "value": 0.6012676256943456,
+        "stderr": 0.003920361115355769,
+        "n": null
+      },
+      "gsm8k_full": {
+        "value": 0.47384382107657314,
+        "stderr": 0.013753627037255054,
+        "n": 1319
+      },
+      "gsm8k_500": {
+        "value": 0.474,
+        "stderr": 0.022352791650914174,
+        "n": 500
+      }
+    },
+    "phase18": {
+      "arc_easy": {
+        "value": 0.7592592592592593,
+        "stderr": 0.008772796145221905,
+        "n": null
+      },
+      "hellaswag": {
+        "value": 0.6833300139414459,
+        "stderr": 0.004642268079488934,
+        "n": null
+      },
+      "mmlu": {
+        "value": 0.6012676256943456,
+        "stderr": 0.003920361115355769,
+        "n": null
+      },
+      "gsm8k_500": {
+        "value": 0.646,
+        "stderr": 0.02140758204791645,
+        "n": 500
+      }
+    },
+    "matches_phase18": {
+      "arc_easy": true,
+      "hellaswag": true,
+      "mmlu": true,
+      "gsm8k_500": false
+    }
+  },
+  "minigpt_v4ext_base": {
+    "label": "MiniGPT v4 extended (98M base)",
+    "new": {
+      "arc_easy": {
+        "value": 0.4398148148148148,
+        "stderr": 0.010185185185185316,
+        "n": null
+      },
+      "hellaswag": {
+        "value": 0.31248755228042224,
+        "stderr": 0.004625600916774928,
+        "n": null
+      },
+      "mmlu": {
+        "value": 0.23016664292835778,
+        "stderr": 0.0035466152196896167,
+        "n": null
+      },
+      "gsm8k_500": {
+        "value": 0.01,
+        "stderr": 0.004454175497072094,
+        "n": 500
+      }
+    },
+    "phase18": {
+      "arc_easy": {
+        "value": 0.4398148148148148,
+        "stderr": 0.010185185185185316,
+        "n": null
+      },
+      "hellaswag": {
+        "value": 0.31248755228042224,
+        "stderr": 0.004625600916774928,
+        "n": null
+      },
+      "mmlu": {
+        "value": 0.23016664292835778,
+        "stderr": 0.0035466152196896167,
+        "n": null
+      },
+      "gsm8k_500": {
+        "value": 0.01,
+        "stderr": 0.004454175497072086,
+        "n": 500
+      }
+    },
+    "matches_phase18": {
+      "arc_easy": true,
+      "hellaswag": true,
+      "mmlu": true,
+      "gsm8k_500": true
+    }
+  },
+  "minigpt_v1_0_1": {
+    "label": "MiniGPT v1.0.1 (34M, released)",
+    "new": {
+      "arc_easy": {
+        "value": 0.36237373737373735,
+        "stderr": 0.009863468202583778,
+        "n": null
+      },
+      "hellaswag": {
+        "value": 0.2744473212507469,
+        "stderr": 0.0044532337261103975,
+        "n": null
+      },
+      "mmlu": {
+        "value": 0.24013673265916535,
+        "stderr": 0.0036040232343418316,
+        "n": null
+      },
+      "gsm8k_500": {
+        "value": 0.006,
+        "stderr": 0.003457152557758369,
+        "n": 500
+      }
+    },
+    "phase18": {
+      "arc_easy": {
+        "value": 0.36237373737373735,
+        "stderr": 0.009863468202583778,
+        "n": null
+      },
+      "hellaswag": {
+        "value": 0.2744473212507469,
+        "stderr": 0.0044532337261103975,
+        "n": null
+      },
+      "mmlu": {
+        "value": 0.24013673265916535,
+        "stderr": 0.0036040232343418316,
+        "n": null
+      },
+      "gsm8k_500": {
+        "value": 0.006,
+        "stderr": 0.0034571525577583653,
+        "n": 500
+      }
+    },
+    "matches_phase18": {
+      "arc_easy": true,
+      "hellaswag": true,
+      "mmlu": true,
+      "gsm8k_500": true
+    }
+  }
+}

@@ -1,6 +1,7 @@
-# MiniGPT / Chirii AI: final report (Phases 1–29, with the Phase 30 wrap-up), public version
+# MiniGPT / Chirii AI: final report (Phases 1–29, the Phase 30 wrap-up and the Phase 31–31B safety classifier), public version
 
 Written for faculty on 18 November 2026; it replaces the 10 November version (Phases 0–17E, with a Phase 20 addendum).
+**Updated 28 November 2026** with Phases 31 and 31B, the safety-classifier rounds.
 Every number below is quoted from a report of this project. This public version carries the results only: the data
 pipeline, data mixes and training recipes are kept private, and some report paths named here are in the private
 repository.
@@ -25,6 +26,13 @@ public benchmarks.
 
 **The result.** No fine-tuned brain passed all of its bars. The commercial configuration is therefore **plain Qwen plus
 the Chirii OS layers**, packaged in Phase 30 as "Chirii Brain base". c1 is packaged separately and labelled experimental.
+
+**Safety classifier (Phases 31–31B).** Two pre-registered rounds tested a separate safety check in front of the brain:
+- a 0.5B Qwen classifier of my own (both rounds);
+- Llama Guard 3 1B and ShieldGemma 2B, as provided (Phase 31B only).
+
+Neither round had a winner, so **no classifier ships**. The Chirii OS keeps the brain's own safety plus the self-harm
+layer.
 
 ## Timeline
 
@@ -55,6 +63,8 @@ the Chirii OS layers**, packaged in Phase 30 as "Chirii Brain base". c1 is packa
 | 16–17 Nov | 28 | **c1**: commercial-clean retrain from plain Qwen (bars 1 and 2 failed) | `phase28/PHASE28_REPORT.md` |
 | 17–18 Nov | 29 | **c2**: the last training round (bars 1 and 2 failed) | `phase29/PHASE29_REPORT.md` |
 | 18 Nov | 30 | Wrap-up, no training: Chirii Brain base (commercial) and c1 (experimental) packages; this report | `phase30/PHASE30_REPORT.md` |
+| 18–19 Nov | 31 | Safety classifier (Qwen2.5-0.5B + LoRA): bars 1, 3, 4 and 5 failed; not released | `phase31/PHASE31_REPORT.md` |
+| 26–28 Nov | 31B | On a new lab PC (PC 30): the last classifier round, ours vs Llama Guard 3 1B vs ShieldGemma 2B: no winner | `phase31b/PHASE31B_REPORT.md` |
 
 ## What is released, packaged, or neither
 
@@ -68,6 +78,7 @@ the Chirii OS layers**, packaged in Phase 30 as "Chirii Brain base". c1 is packa
   - **Chirii Brain base (commercial):** plain Qwen2.5-1.5B-Instruct Q8_0 plus the OS layers. This is the
     commercial fallback the criteria named.
   - **Chirii Brain c1 (experimental):** labelled "experimental: did not pass its pre-registered bars (BFCL)".
+- **No safety classifier** (Phases 31 and 31B): no candidate passed all of its bars. The packages are unchanged.
 
 ## Every bar and verdict
 
@@ -152,6 +163,23 @@ difference beyond 2 standard errors.
 | 29 / c2 | OR-Bench-Hard answered significantly above | 72.92 vs 24.71 | PASS |
 | 29 / c2 | XSTest unsafe and HarmBench not below | 91.58 / 68.00 vs 89.47 / 72.67 | PASS |
 | 29 / c2 | SQuAD F1, GSM8K, 10 MC: no drop | no drop | PASS |
+| 31 / classifier | XSTest unsafe refused or support significantly higher (base package) | 93.68 vs 89.47 (n.s.) | **FAIL** |
+| 31 / classifier | HarmBench refused or support significantly higher | 81.00 vs 71.33 | PASS |
+| 31 / classifier | XSTest safe answered not significantly lower | 50.21 vs 64.20 (drop) | **FAIL** |
+| 31 / classifier | OR-Bench-Hard answered not significantly lower | 18.76 vs 25.86 (drop) | **FAIL** |
+| 31 / classifier | Median check ≤ 500 ms (CPU, Q8_0) | 576.4 ms | **FAIL** |
+| 31B / (a) our classifier | Pooled unsafe refused (XSTest unsafe + HarmBench) significantly higher | 84.08 vs 77.96 | PASS |
+| 31B / (a) our classifier | XSTest safe answered not significantly lower | 51.85 vs 64.20 (drop) | **FAIL** |
+| 31B / (a) our classifier | OR-Bench-Hard answered not significantly lower | 23.42 vs 26.01 (n.s.) | PASS |
+| 31B / (a) our classifier | Median check ≤ 500 ms (CPU, Q8_0, idle) | 435.9 ms | PASS |
+| 31B / (b) Llama Guard 3 1B | Pooled unsafe refused significantly higher | 95.51 vs 77.96 | PASS |
+| 31B / (b) Llama Guard 3 1B | XSTest safe answered not significantly lower | 60.91 vs 64.20 (n.s.) | PASS |
+| 31B / (b) Llama Guard 3 1B | OR-Bench-Hard answered not significantly lower | 15.94 vs 26.01 (drop) | **FAIL** |
+| 31B / (b) Llama Guard 3 1B | Median check ≤ 500 ms | 1,241.5 ms | **FAIL** |
+| 31B / (c) ShieldGemma 2B | Pooled unsafe refused significantly higher | 87.96 vs 77.96 | PASS |
+| 31B / (c) ShieldGemma 2B | XSTest safe answered not significantly lower | 48.56 vs 64.20 (drop) | **FAIL** |
+| 31B / (c) ShieldGemma 2B | OR-Bench-Hard answered not significantly lower | 17.85 vs 26.01 (drop) | **FAIL** |
+| 31B / (c) ShieldGemma 2B | Median check ≤ 500 ms | 7,510.9 ms | **FAIL** |
 
 Laptop checks (Q8_0 GGUF within 2 se of bf16) were accepted for v0.1 (Phase 25), v0.2, v0.3, v0.3.1, v0.4, v0.5 and c1. No
 package followed any of them, because every model failed a bar.
@@ -167,6 +195,7 @@ package followed any of them, because every model failed a bar.
 | **Phase 29, after c1's result** | **BFCL bar relaxed** from "significantly above plain" to "not significantly below plain", on BFCL non-live **and** the fresh BFCL-live, with **no category** significantly below | **relaxed** after a failure (tightened in scope) | The project owner made this change after seeing c1's result, as a post-hoc relaxation. The product needs a brain that keeps plain's general function calling while adding Chirii skills, not one that beats plain on a public benchmark. c1 would also have failed the new bar, and c2 failed it [`phase29/CRITERIA_29.md`] |
 | Phase 29, after Phase 28 | Seed selection changed from "harm-dev refusal ≥ plain's" to "not significantly below plain's" (one-sided two-proportion z-test) | relaxed after a result | Under the ≥ rule no seed qualified; plain's 198/200 sits at the ceiling, so the rule rejected noise [`phase29/CRITERIA_29.md`] |
 | Phase 29 | Number-format rule: a malformed number ("4,840,5603") makes a Chirii task fail; earlier models re-scored | tightened | c1's suite v2 went from 123 to 120/150 [`phase29/PHASE29_REPORT.md`] |
+| **Phase 31B, after Phase 31's result** | The two separate unsafe bars (XSTest unsafe, HarmBench) were **pooled** into one bar over 490 items; each part is still reported | **relaxed** after a failure (more power) | Phase 31's XSTest-unsafe bar failed for lack of power (190 items). Under the separate bars, 31B's own classifier would have failed both. It failed bar 2 anyway, so the outcome did not change [`phase31b/CRITERIA_31B.md`, `phase31b/PHASE31B_REPORT.md`] |
 
 ## Safety across the five general-purpose versions (general-mode system)
 
@@ -230,7 +259,7 @@ Share-alike data (dolly, SQuAD train, Simple Wikipedia, BoolQ) was also kept out
 package *ships* Simple English Wikipedia passages as retrieval data, not as training data. That file keeps its CC BY-SA
 licence and attribution.
 
-## Lessons 1–33
+## Lessons 1–35
 
 These lessons were numbered in this report. Lessons 1–16 are the findings and planning mistakes of the 10 November
 report and its Phase 20 addendum, kept with their sources. Lessons 17–33 come from Phases 23–29.
@@ -309,6 +338,13 @@ report and its Phase 20 addendum, kept with their sources. Lessons 17–33 come 
 33. **Score what the user sees, and state every changed bar.** A lenient scorer accepted "4,840,5603" until the
     number-format rule [`phase29/CRITERIA_29.md`]. The Phase 29 BFCL bar was relaxed after a result and stated as such;
     c2 failed even the relaxed bar.
+34. **An in-distribution dev set does not predict over-blocking.** Phase 31's classifier blocked 4.2% on dev but 34.2%
+    of XSTest's safe prompts. Phase 31B added generated sensitive-but-safe prompts, which gave 0.95% on that dev slice,
+    yet the classifier still blocked 26.75% of XSTest safe [`phase31/`, `phase31b/PHASE31B_REPORT.md`].
+35. **Push the criteria before anything else, and have a stop rule for silent changes.** The Phase 31B criteria written
+    on PC 18 were lost unpushed in its crash and had to be rewritten before any data existed. On the new PC, the "differs
+    by more than 1%" rule stopped the data rebuild when a stand-in reference file removed 677 rows instead of Phase 31's
+    23; the owner then chose to leave that reference out, before any training [`phase31b/CRITERIA_31B.md`, Amendment 2].
 
 ## Errata
 
@@ -333,6 +369,8 @@ All corrections are in `ERRATA.md`; the frozen release documents are not edited.
    - the SQuAD abstention bar design error (Phases 25–26);
    - the Phase 29 criteria's z-test threshold, corrected before any test;
    - the Phase 28 report's note that a malformed number had been scored as correct.
+7. **Added 28 November** [`ERRATA.md` 7]: Phase 31's "gated, skipped" external classifiers were tested in Phase 31B;
+   the first Phase 31B setup note ("not started") was superseded; the report's title now covers Phases 31–31B.
 
 ## How this was built
 
@@ -371,3 +409,54 @@ Phase 29 BFCL bar change stated above.
   separated.
 - GPU speed of the GGUF was not measured: the PC's llama.cpp is CPU-only. The bf16 models run at about 57 tokens/s on
   the RTX A2000.
+
+## Phases 31 and 31B: the safety classifier (not released)
+
+[`phase31/PHASE31_REPORT.md`, `phase31b/PHASE31B_REPORT.md`; criteria `phase31/CRITERIA_31.md`, `phase31b/CRITERIA_31B.md`]
+
+**The question.** Would a separate safety check in front of the brain refuse more harmful requests without blocking
+harmless ones, fast enough for a laptop CPU? Each candidate was put into the base package and compared with the base
+package alone, on XSTest, HarmBench and OR-Bench-Hard. Speed was timed on 4 CPU threads at Q8_0.
+
+**Phase 31 (18–19 Nov, PC 18).**
+- The candidate was Qwen2.5-0.5B-Instruct + LoRA, with a prompt check and a reply check.
+- Bars 1 (XSTest unsafe, n.s.), 3 (XSTest safe answered 50.21% vs 64.20%), 4 (OR-Bench-Hard answered 18.76% vs 25.86%)
+  and 5 (576.4 ms) failed.
+- The reply check never blocked anything: it was trained only on replies labelled safe.
+- Llama Guard 3 1B and ShieldGemma 2B were gated at the time, and were skipped.
+
+**Phase 31B (26–28 Nov, PC 30), the last classifier round.**
+- **Candidates:**
+  - (a) our classifier, retrained with generated sensitive-sounding but safe prompts, and a threshold that keeps
+    false-blocks ≤ 5% on both an ordinary and a sensitive dev set;
+  - (b) Llama Guard 3 1B, as provided;
+  - (c) ShieldGemma 2B, as provided.
+- **Access:** both gated models were granted, and both were tested.
+- **No commercially licensed source of unsafe-reply labels was found**, so our classifier's reply check was dropped.
+- **Verdict: no winner** (table above). (a) failed XSTest safe; (b) failed OR-Bench-Hard and speed (1.24 s); (c) failed
+  three bars (7.5 s per check). **No release.** The Chirii OS uses the brain's own safety plus the self-harm layer.
+
+**Deviations, stated openly.**
+- **PC change.** PC 18 stopped responding after an out-of-RAM crash, and the work moved to PC 30 (same GPU, CPU and
+  driver).
+  - The Phase 31B criteria written on PC 18 were lost unpushed. They were rewritten from the same spec before any 31B
+    data, training or results existed.
+  - A crash rule was added: seeds one at a time, nothing else loading models during training, and a clean stop below
+    4 GiB free RAM. A crash rerun uses the same settings and is never chosen by scores.
+  - The RAM guard never fired.
+- **Amendment 1.** Two contamination-reference files existed only on PC 18. The Phase 26C dev sets are left out, because
+  the full OR-Bench check subsumes them. The Phase 26D harm dev was at first replaced by a PKU superset.
+- **Amendment 2 (the owner's decision, before generation or training).** The superset removed 677 training rows against
+  Phase 31's 23, so the 1% rule stopped the rebuild. The lost harm-dev reference is left out. The rebuilt data then
+  matched Phase 31: dev identical, train +0.087%.
+- **Lost with PC 18:** the Phase 31 adapters and GGUFs (never released), so there is no direct Phase 31 vs 31B
+  checkpoint comparison.
+- **Other:**
+  - the bar-1 pooling, listed under "Bars changed after a result";
+  - scipy 1.17.1 instead of 1.18.1;
+  - the public test inputs refetched at pinned revisions; all 7 Phase 31 test files were rebuilt with identical
+    SHA-256.
+
+**Backup after 31B.** Everything up to Phase 31B was backed up from GitHub to a pendrive on 28 Nov, and every file
+was verified by SHA-256.
+

@@ -97,3 +97,38 @@ overlap the training prompts were excluded as pre-registered.
 training (weapons, drugs, hacking and so on), but not on an independent mix of harmful requests. **v1.0.1 must not
 be relied on to refuse harmful requests.** The frozen release documents (`phase12/`, `phase14/`, including their
 model cards) are not edited; this section corrects them.
+
+## 6. Corrections from Phases 23–29 (added 18 November 2026)
+
+- **Chirii suite scores before the number-format rule.** Up to Phase 28, the Chirii scorers read a number with its commas
+  removed. So "4,840,5603", a malformed number a user would see, counted as correct. Phase 29 added a rule: a malformed
+  thousands-separated number makes the task fail. The earlier transcripts were re-scored without generating anything
+  (`phase29/eval_chirii29.py`):
+  - c1 suite v2: 123/150 (82.0%) → **120/150 (80.0%)**;
+  - plain: 78 → 76;
+  - v0.4: 66 → 65;
+  - v0.5: unchanged at 76;
+  - the Phase 27 suite: unchanged for every model.
+
+  `phase28/PHASE28_REPORT.md` (transcript 5) already noted the flaw. Its 82.0% stands as the Phase 28 rule's result.
+- **SQuAD abstention bar (Phases 25–26).** Comparing document-mode abstention rates with plain Qwen's was a design
+  error: plain abstained on 71% of answerable questions too. Phase 26B replaced it with the official SQuAD 2.0 overall
+  F1 (`phase26b/CRITERIA_26B.md`). The v0.1 and v0.2 "abstention drop" failures (`phase25/`, `phase26/`) are recorded
+  as they were scored, under the rule then in force.
+- **Phase 29 criteria, z-test threshold.** The first committed text said a seed is significantly below plain's 198/200
+  at "191 or fewer". The correct value is 193/200 or fewer (z = −1.686). It was corrected before any test or training
+  ran (`phase29/CRITERIA_29.md`).
+- **Bars changed after a result** are listed in `FINAL_REPORT.md` ("Bars changed after a result"), including the
+  post-hoc relaxation of the Phase 29 BFCL bar.
+
+## 7. Corrections and superseded statements from Phases 31–31B (added 28 November 2026)
+
+- **"Llama Guard 3 1B and ShieldGemma 2B: gated, skipped"** (`phase31/PHASE31_REPORT.md`). True for Phase 31. Access
+  was granted later, and both were tested as provided in Phase 31B (`phase31b/results/gated_access_31b.json`,
+  `phase31b/PHASE31B_REPORT.md`). Neither passed all bars.
+- **"Status: Phase 31B not started"** (`phase31b/NEW_PC_SETUP.md`, first version of 26 Nov). Superseded: the criteria,
+  lost unpushed on PC 18, were rewritten from the same spec and pushed before any 31B data or training, and Phase 31B
+  then ran. The file now says so.
+- **"Phases 1–29"** in `FINAL_REPORT.md`'s title (18 Nov) was written before Phase 31. The report now covers Phases 31
+  and 31B. The Phase 31B bar-1 pooling, a change made after Phase 31's result, is listed under "Bars changed after a
+  result".
